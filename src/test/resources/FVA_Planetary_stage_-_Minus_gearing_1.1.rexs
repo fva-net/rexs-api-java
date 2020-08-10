@@ -1,0 +1,2338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model applicationId="FVA Workbench" applicationVersion="5.5" date="2019-06-05T11:46:35+02:00" version="1.1">
+  <relations>
+    <!--Side relation between Koppelung [75] @ 0,0° @ 0.0° @ 0.0° and Bolzen [71] @ 0,0° @ 0.0° @ 0.0° and Wange [67]-->
+    <relation id="218" type="side">
+      <ref hint="side_plate" id="67" role="outer_part"/>
+      <ref hint="shaft" id="235" role="inner_part"/>
+      <ref hint="coupling" id="238" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [75] @ 0,0° @ 0.0° @ 240.0° and Bolzen [71] @ 0,0° @ 0.0° @ 240.0° and Wange [67]-->
+    <relation id="219" type="side">
+      <ref hint="side_plate" id="67" role="outer_part"/>
+      <ref hint="shaft" id="236" role="inner_part"/>
+      <ref hint="coupling" id="239" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [75] @ 0,0° @ 0.0° @ 120.0° and Bolzen [71] @ 0,0° @ 0.0° @ 120.0° and Wange [67]-->
+    <relation id="220" type="side">
+      <ref hint="side_plate" id="67" role="outer_part"/>
+      <ref hint="shaft" id="237" role="inner_part"/>
+      <ref hint="coupling" id="240" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [79] @ 0,0° @ 0.0° @ 0.0° and Bolzen [71] @ 0,0° @ 0.0° @ 0.0° and Wange [68]-->
+    <relation id="221" type="side">
+      <ref hint="side_plate" id="68" role="outer_part"/>
+      <ref hint="shaft" id="235" role="inner_part"/>
+      <ref hint="coupling" id="241" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [79] @ 0,0° @ 0.0° @ 240.0° and Bolzen [71] @ 0,0° @ 0.0° @ 240.0° and Wange [68]-->
+    <relation id="222" type="side">
+      <ref hint="side_plate" id="68" role="outer_part"/>
+      <ref hint="shaft" id="236" role="inner_part"/>
+      <ref hint="coupling" id="242" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [79] @ 0,0° @ 0.0° @ 120.0° and Bolzen [71] @ 0,0° @ 0.0° @ 120.0° and Wange [68]-->
+    <relation id="223" type="side">
+      <ref hint="side_plate" id="68" role="outer_part"/>
+      <ref hint="shaft" id="237" role="inner_part"/>
+      <ref hint="coupling" id="243" role="assembly"/>
+    </relation>
+    <!--planet_shaft Relation between Planetenstufe [9] and Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="224" type="planet_shaft">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="229" role="shaft"/>
+    </relation>
+    <!--planet_shaft Relation between Planetenstufe [9] and Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="225" type="planet_shaft">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="230" role="shaft"/>
+    </relation>
+    <!--planet_shaft Relation between Planetenstufe [9] and Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="226" type="planet_shaft">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="231" role="shaft"/>
+    </relation>
+    <!--central_shaft Relation between Planetenstufe [9] and Sonnenwelle [34]-->
+    <relation id="99" type="central_shaft">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="34" role="shaft"/>
+    </relation>
+    <!--Relation between the main component Steg 1 [4] and the sub-component Belastung [61]-->
+    <relation id="12" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="external_load" id="61" role="part"/>
+    </relation>
+    <!--Relation between the main component Sonnenwelle [34] and the sub-component Belastung [38]-->
+    <relation id="13" type="assembly">
+      <ref hint="shaft" id="34" role="assembly"/>
+      <ref hint="external_load" id="38" role="part"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Bolzen [71] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="227" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="shaft" id="235" role="part"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Bolzen [71] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="228" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="shaft" id="236" role="part"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Bolzen [71] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="229" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="shaft" id="237" role="part"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Steg 2 [6]-->
+    <relation id="17" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="shaft" id="6" role="part"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Wange [67]-->
+    <relation id="18" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="side_plate" id="67" role="part"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Wange [68]-->
+    <relation id="19" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="side_plate" id="68" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Casing [2]-->
+    <relation id="1" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="gear_casing" id="2" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Koppelung [65]-->
+    <relation id="2" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="switchable_coupling" id="65" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Steg 2 [6]-->
+    <relation id="3" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="6" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Planetenstufe [9]-->
+    <relation id="20" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="planetary_stage" id="9" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Sonnenwelle [34]-->
+    <relation id="21" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="34" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="230" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="229" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="231" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="230" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="232" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="231" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Hohlradwelle [62]-->
+    <relation id="25" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="62" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Steg 1 [4]-->
+    <relation id="26" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="4" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Stirnradstufe [10] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="233" type="assembly">
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+      <ref hint="cylindrical_stage" id="211" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Stirnradstufe [10] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="234" type="assembly">
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+      <ref hint="cylindrical_stage" id="212" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Stirnradstufe [10] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="235" type="assembly">
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+      <ref hint="cylindrical_stage" id="213" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Stirnradstufe [14] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="236" type="assembly">
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+      <ref hint="cylindrical_stage" id="220" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Stirnradstufe [14] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="237" type="assembly">
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+      <ref hint="cylindrical_stage" id="221" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Stirnradstufe [14] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="238" type="assembly">
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+      <ref hint="cylindrical_stage" id="222" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenstufe [9] and the sub-component Zweiwangiger Planetenträger [3]-->
+    <relation id="33" type="assembly">
+      <ref hint="planet_carrier" id="3" role="part"/>
+      <ref hint="planetary_stage" id="9" role="assembly"/>
+    </relation>
+    <!--Relation between the main component Sonnenwelle [34] and the sub-component Sonnenrad [53]-->
+    <relation id="34" type="assembly">
+      <ref hint="shaft" id="34" role="assembly"/>
+      <ref hint="cylindrical_gear" id="53" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0° and the sub-component Planetenrad [54] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="239" type="assembly">
+      <ref hint="shaft" id="229" role="assembly"/>
+      <ref hint="cylindrical_gear" id="247" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0° and the sub-component Planetenrad [54] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="240" type="assembly">
+      <ref hint="shaft" id="230" role="assembly"/>
+      <ref hint="cylindrical_gear" id="248" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0° and the sub-component Planetenrad [54] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="241" type="assembly">
+      <ref hint="shaft" id="231" role="assembly"/>
+      <ref hint="cylindrical_gear" id="249" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Koppelung [66]-->
+    <relation id="38" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="switchable_coupling" id="66" role="part"/>
+    </relation>
+    <!--Relation between the main component Hohlradwelle [62] and the sub-component Hohlrad [58]-->
+    <relation id="39" type="assembly">
+      <ref hint="ring_gear" id="58" role="part"/>
+      <ref hint="shaft" id="62" role="assembly"/>
+    </relation>
+    <!--Relation between the main component Zweiwangiger Planetenträger [3] and the sub-component Steg 1 [4]-->
+    <relation id="40" type="assembly">
+      <ref hint="planet_carrier" id="3" role="assembly"/>
+      <ref hint="shaft" id="4" role="part"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 0.0° and Sonnenrad [53] and Planetenrad [54] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="242" type="stage">
+      <ref hint="cylindrical_gear" id="53" role="gear_1"/>
+      <ref hint="cylindrical_stage" id="211" role="stage"/>
+      <ref hint="cylindrical_gear" id="247" role="gear_2"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 240.0° and Sonnenrad [53] and Planetenrad [54] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="243" type="stage">
+      <ref hint="cylindrical_gear" id="53" role="gear_1"/>
+      <ref hint="cylindrical_stage" id="212" role="stage"/>
+      <ref hint="cylindrical_gear" id="248" role="gear_2"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 120.0° and Sonnenrad [53] and Planetenrad [54] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="244" type="stage">
+      <ref hint="cylindrical_gear" id="53" role="gear_1"/>
+      <ref hint="cylindrical_stage" id="213" role="stage"/>
+      <ref hint="cylindrical_gear" id="249" role="gear_2"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 0.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 0.0° and Hohlrad [58]-->
+    <relation id="245" type="stage">
+      <ref hint="ring_gear" id="58" role="gear_2"/>
+      <ref hint="cylindrical_stage" id="220" role="stage"/>
+      <ref hint="cylindrical_gear" id="247" role="gear_1"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 240.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 240.0° and Hohlrad [58]-->
+    <relation id="246" type="stage">
+      <ref hint="ring_gear" id="58" role="gear_2"/>
+      <ref hint="cylindrical_stage" id="221" role="stage"/>
+      <ref hint="cylindrical_gear" id="248" role="gear_1"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 120.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 120.0° and Hohlrad [58]-->
+    <relation id="247" type="stage">
+      <ref hint="ring_gear" id="58" role="gear_2"/>
+      <ref hint="cylindrical_stage" id="222" role="stage"/>
+      <ref hint="cylindrical_gear" id="249" role="gear_1"/>
+    </relation>
+    <!--Relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 0.0° and Hohlrad [58] and stage-related gear data component Individual gear data in planetary stage [226]-->
+    <relation id="248" type="stage_gear_data">
+      <ref hint="ring_gear" id="58" role="gear"/>
+      <ref hint="cylindrical_stage" id="220" role="stage"/>
+      <ref hint="stage_gear_data" id="226" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 240.0° and Hohlrad [58] and stage-related gear data component Individual gear data in planetary stage [227]-->
+    <relation id="249" type="stage_gear_data">
+      <ref hint="ring_gear" id="58" role="gear"/>
+      <ref hint="cylindrical_stage" id="221" role="stage"/>
+      <ref hint="stage_gear_data" id="227" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 120.0° and Hohlrad [58] and stage-related gear data component Individual gear data in planetary stage [228]-->
+    <relation id="250" type="stage_gear_data">
+      <ref hint="ring_gear" id="58" role="gear"/>
+      <ref hint="cylindrical_stage" id="222" role="stage"/>
+      <ref hint="stage_gear_data" id="228" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 0.0° and Sonnenrad [53] and stage-related gear data component Individual gear data in planetary stage [214]-->
+    <relation id="251" type="stage_gear_data">
+      <ref hint="cylindrical_gear" id="53" role="gear"/>
+      <ref hint="cylindrical_stage" id="211" role="stage"/>
+      <ref hint="stage_gear_data" id="214" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 240.0° and Sonnenrad [53] and stage-related gear data component Individual gear data in planetary stage [215]-->
+    <relation id="252" type="stage_gear_data">
+      <ref hint="cylindrical_gear" id="53" role="gear"/>
+      <ref hint="cylindrical_stage" id="212" role="stage"/>
+      <ref hint="stage_gear_data" id="215" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 120.0° and Sonnenrad [53] and stage-related gear data component Individual gear data in planetary stage [216]-->
+    <relation id="253" type="stage_gear_data">
+      <ref hint="cylindrical_gear" id="53" role="gear"/>
+      <ref hint="cylindrical_stage" id="213" role="stage"/>
+      <ref hint="stage_gear_data" id="216" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 0.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 0.0° and stage-related gear data component Individual gear data in planetary stage [217]-->
+    <relation id="254" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="211" role="stage"/>
+      <ref hint="stage_gear_data" id="217" role="stage_gear_data"/>
+      <ref hint="cylindrical_gear" id="247" role="gear"/>
+    </relation>
+    <!--Relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 240.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 240.0° and stage-related gear data component Individual gear data in planetary stage [218]-->
+    <relation id="255" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="212" role="stage"/>
+      <ref hint="stage_gear_data" id="218" role="stage_gear_data"/>
+      <ref hint="cylindrical_gear" id="248" role="gear"/>
+    </relation>
+    <!--Relation between Stirnradstufe [10] @ 0,0° @ 0.0° @ 120.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 120.0° and stage-related gear data component Individual gear data in planetary stage [219]-->
+    <relation id="256" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="213" role="stage"/>
+      <ref hint="stage_gear_data" id="219" role="stage_gear_data"/>
+      <ref hint="cylindrical_gear" id="249" role="gear"/>
+    </relation>
+    <!--Relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 0.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 0.0° and stage-related gear data component Individual gear data in planetary stage [223]-->
+    <relation id="257" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="220" role="stage"/>
+      <ref hint="stage_gear_data" id="223" role="stage_gear_data"/>
+      <ref hint="cylindrical_gear" id="247" role="gear"/>
+    </relation>
+    <!--Relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 240.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 240.0° and stage-related gear data component Individual gear data in planetary stage [224]-->
+    <relation id="258" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="221" role="stage"/>
+      <ref hint="stage_gear_data" id="224" role="stage_gear_data"/>
+      <ref hint="cylindrical_gear" id="248" role="gear"/>
+    </relation>
+    <!--Relation between Stirnradstufe [14] @ 0,0° @ 0.0° @ 120.0° and Planetenrad [54] @ 0,0° @ 0.0° @ 120.0° and stage-related gear data component Individual gear data in planetary stage [225]-->
+    <relation id="259" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="222" role="stage"/>
+      <ref hint="stage_gear_data" id="225" role="stage_gear_data"/>
+      <ref hint="cylindrical_gear" id="249" role="gear"/>
+    </relation>
+    <!--Side relation between Koppelung [65] and Hohlradwelle [62] and Casing [2]-->
+    <relation id="74" type="side">
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+      <ref hint="shaft" id="62" role="inner_part"/>
+      <ref hint="switchable_coupling" id="65" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [66] and Hohlradwelle [62] and Casing [2]-->
+    <relation id="75" type="side">
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+      <ref hint="shaft" id="62" role="inner_part"/>
+      <ref hint="switchable_coupling" id="66" role="assembly"/>
+    </relation>
+    <!--Side relation between Sonnenlager [36] and Sonnenwelle [34] and Casing [2]-->
+    <relation id="76" type="side">
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+      <ref hint="shaft" id="34" role="inner_part"/>
+      <ref hint="concept_bearing" id="36" role="assembly"/>
+    </relation>
+    <!--Side relation between Sonnenlager [37] and Sonnenwelle [34] and Casing [2]-->
+    <relation id="77" type="side">
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+      <ref hint="shaft" id="34" role="inner_part"/>
+      <ref hint="concept_bearing" id="37" role="assembly"/>
+    </relation>
+    <!--Side relation between Planetenlager [44] @ 0,0° @ 0.0° @ 0.0° and Bolzen [71] @ 0,0° @ 0.0° @ 0.0° and Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="260" type="side">
+      <ref hint="shaft" id="229" role="outer_part"/>
+      <ref hint="concept_bearing" id="232" role="assembly"/>
+      <ref hint="shaft" id="235" role="inner_part"/>
+    </relation>
+    <!--Side relation between Planetenlager [44] @ 0,0° @ 0.0° @ 240.0° and Bolzen [71] @ 0,0° @ 0.0° @ 240.0° and Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="261" type="side">
+      <ref hint="shaft" id="230" role="outer_part"/>
+      <ref hint="concept_bearing" id="233" role="assembly"/>
+      <ref hint="shaft" id="236" role="inner_part"/>
+    </relation>
+    <!--Side relation between Planetenlager [44] @ 0,0° @ 0.0° @ 120.0° and Bolzen [71] @ 0,0° @ 0.0° @ 120.0° and Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="262" type="side">
+      <ref hint="shaft" id="231" role="outer_part"/>
+      <ref hint="concept_bearing" id="234" role="assembly"/>
+      <ref hint="shaft" id="237" role="inner_part"/>
+    </relation>
+    <!--central_shaft Relation between Planetenstufe [9] and Hohlradwelle [62]-->
+    <relation id="100" type="central_shaft">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="62" role="shaft"/>
+    </relation>
+    <!--planet_carrier_shaft Relation between Planetenstufe [9] and Steg 1 [4]-->
+    <relation id="101" type="planet_carrier_shaft">
+      <ref hint="shaft" id="4" role="shaft"/>
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+    </relation>
+    <!--planet_carrier_shaft Relation between Planetenstufe [9] and Steg 2 [6]-->
+    <relation id="102" type="planet_carrier_shaft">
+      <ref hint="shaft" id="6" role="shaft"/>
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+    </relation>
+    <!--Side relation between Steglager [59] and Steg 1 [4] and Casing [2]-->
+    <relation id="81" type="side">
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+      <ref hint="shaft" id="4" role="inner_part"/>
+      <ref hint="concept_bearing" id="59" role="assembly"/>
+    </relation>
+    <!--Side relation between Steglager [60] and Steg 1 [4] and Casing [2]-->
+    <relation id="82" type="side">
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+      <ref hint="shaft" id="4" role="inner_part"/>
+      <ref hint="concept_bearing" id="60" role="assembly"/>
+    </relation>
+    <!--Side relation between Planetenlager [45] @ 0,0° @ 0.0° @ 0.0° and Bolzen [71] @ 0,0° @ 0.0° @ 0.0° and Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="263" type="side">
+      <ref hint="shaft" id="229" role="outer_part"/>
+      <ref hint="shaft" id="235" role="inner_part"/>
+      <ref hint="concept_bearing" id="244" role="assembly"/>
+    </relation>
+    <!--Side relation between Planetenlager [45] @ 0,0° @ 0.0° @ 240.0° and Bolzen [71] @ 0,0° @ 0.0° @ 240.0° and Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="264" type="side">
+      <ref hint="shaft" id="230" role="outer_part"/>
+      <ref hint="shaft" id="236" role="inner_part"/>
+      <ref hint="concept_bearing" id="245" role="assembly"/>
+    </relation>
+    <!--Side relation between Planetenlager [45] @ 0,0° @ 0.0° @ 120.0° and Bolzen [71] @ 0,0° @ 0.0° @ 120.0° and Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="265" type="side">
+      <ref hint="shaft" id="231" role="outer_part"/>
+      <ref hint="shaft" id="237" role="inner_part"/>
+      <ref hint="concept_bearing" id="246" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [69] and Steg 1 [4] and Wange [67]-->
+    <relation id="86" type="side">
+      <ref hint="shaft" id="4" role="inner_part"/>
+      <ref hint="side_plate" id="67" role="outer_part"/>
+      <ref hint="coupling" id="69" role="assembly"/>
+    </relation>
+    <!--Side relation between Koppelung [70] and Steg 2 [6] and Wange [68]-->
+    <relation id="87" type="side">
+      <ref hint="shaft" id="6" role="inner_part"/>
+      <ref hint="side_plate" id="68" role="outer_part"/>
+      <ref hint="coupling" id="70" role="assembly"/>
+    </relation>
+    <!--Reference relation from Casing [2] to ISO-VG-100 [91] -->
+    <relation id="266" type="reference">
+      <ref hint="gear_casing" id="2" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Sonnenlager [36] to ISO-VG-100 [91] -->
+    <relation id="267" type="reference">
+      <ref hint="concept_bearing" id="36" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Sonnenlager [37] to ISO-VG-100 [91] -->
+    <relation id="268" type="reference">
+      <ref hint="concept_bearing" id="37" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Steglager [59] to ISO-VG-100 [91] -->
+    <relation id="269" type="reference">
+      <ref hint="concept_bearing" id="59" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Steglager [60] to ISO-VG-100 [91] -->
+    <relation id="270" type="reference">
+      <ref hint="concept_bearing" id="60" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenlager [44] @ 0,0° @ 0.0° @ 0.0° to ISO-VG-100 [91] -->
+    <relation id="271" type="reference">
+      <ref hint="concept_bearing" id="232" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenlager [44] @ 0,0° @ 0.0° @ 240.0° to ISO-VG-100 [91] -->
+    <relation id="272" type="reference">
+      <ref hint="concept_bearing" id="233" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenlager [44] @ 0,0° @ 0.0° @ 120.0° to ISO-VG-100 [91] -->
+    <relation id="273" type="reference">
+      <ref hint="concept_bearing" id="234" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenlager [45] @ 0,0° @ 0.0° @ 0.0° to ISO-VG-100 [91] -->
+    <relation id="274" type="reference">
+      <ref hint="concept_bearing" id="244" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenlager [45] @ 0,0° @ 0.0° @ 240.0° to ISO-VG-100 [91] -->
+    <relation id="275" type="reference">
+      <ref hint="concept_bearing" id="245" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenlager [45] @ 0,0° @ 0.0° @ 120.0° to ISO-VG-100 [91] -->
+    <relation id="276" type="reference">
+      <ref hint="concept_bearing" id="246" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Stirnradstufe [10] @ 0,0° @ 0.0° @ 0.0° to ISO-VG-100 [91] -->
+    <relation id="277" type="reference">
+      <ref hint="cylindrical_stage" id="211" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Stirnradstufe [10] @ 0,0° @ 0.0° @ 240.0° to ISO-VG-100 [91] -->
+    <relation id="278" type="reference">
+      <ref hint="cylindrical_stage" id="212" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Stirnradstufe [10] @ 0,0° @ 0.0° @ 120.0° to ISO-VG-100 [91] -->
+    <relation id="279" type="reference">
+      <ref hint="cylindrical_stage" id="213" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Stirnradstufe [14] @ 0,0° @ 0.0° @ 0.0° to ISO-VG-100 [91] -->
+    <relation id="280" type="reference">
+      <ref hint="cylindrical_stage" id="220" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Stirnradstufe [14] @ 0,0° @ 0.0° @ 240.0° to ISO-VG-100 [91] -->
+    <relation id="281" type="reference">
+      <ref hint="cylindrical_stage" id="221" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Stirnradstufe [14] @ 0,0° @ 0.0° @ 120.0° to ISO-VG-100 [91] -->
+    <relation id="282" type="reference">
+      <ref hint="cylindrical_stage" id="222" role="origin"/>
+      <ref hint="lubricant" id="91" role="referenced"/>
+    </relation>
+    <!--Reference relation from Casing [2] to Werkstoff [89] -->
+    <relation id="283" type="reference">
+      <ref hint="gear_casing" id="2" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Sonnenrad [53] to bsp_18CrNiMo7-6_Eh [86] -->
+    <relation id="284" type="reference">
+      <ref hint="cylindrical_gear" id="53" role="origin"/>
+      <ref hint="material" id="86" role="referenced"/>
+    </relation>
+    <!--Reference relation from Hohlrad [58] to bsp_42CrMo4_V [88] -->
+    <relation id="285" type="reference">
+      <ref hint="ring_gear" id="58" role="origin"/>
+      <ref hint="material" id="88" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenrad [54] @ 0,0° @ 0.0° @ 0.0° to bsp_18CrNiMo7-6_Eh [87] -->
+    <relation id="286" type="reference">
+      <ref hint="cylindrical_gear" id="247" role="origin"/>
+      <ref hint="material" id="87" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenrad [54] @ 0,0° @ 0.0° @ 240.0° to bsp_18CrNiMo7-6_Eh [87] -->
+    <relation id="287" type="reference">
+      <ref hint="cylindrical_gear" id="248" role="origin"/>
+      <ref hint="material" id="87" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenrad [54] @ 0,0° @ 0.0° @ 120.0° to bsp_18CrNiMo7-6_Eh [87] -->
+    <relation id="288" type="reference">
+      <ref hint="cylindrical_gear" id="249" role="origin"/>
+      <ref hint="material" id="87" role="referenced"/>
+    </relation>
+    <!--Reference relation from Steg 1 [4] to Werkstoff [89] -->
+    <relation id="289" type="reference">
+      <ref hint="shaft" id="4" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Steg 2 [6] to Werkstoff [89] -->
+    <relation id="290" type="reference">
+      <ref hint="shaft" id="6" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Sonnenwelle [34] to Werkstoff [89] -->
+    <relation id="291" type="reference">
+      <ref hint="shaft" id="34" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Hohlradwelle [62] to Rigid [93] -->
+    <relation id="292" type="reference">
+      <ref hint="shaft" id="62" role="origin"/>
+      <ref hint="material" id="93" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0° to Rigid [93] -->
+    <relation id="293" type="reference">
+      <ref hint="shaft" id="229" role="origin"/>
+      <ref hint="material" id="93" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0° to Rigid [93] -->
+    <relation id="294" type="reference">
+      <ref hint="shaft" id="230" role="origin"/>
+      <ref hint="material" id="93" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0° to Rigid [93] -->
+    <relation id="295" type="reference">
+      <ref hint="shaft" id="231" role="origin"/>
+      <ref hint="material" id="93" role="referenced"/>
+    </relation>
+    <!--Reference relation from Bolzen [71] @ 0,0° @ 0.0° @ 0.0° to Werkstoff [89] -->
+    <relation id="296" type="reference">
+      <ref hint="shaft" id="235" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Bolzen [71] @ 0,0° @ 0.0° @ 240.0° to Werkstoff [89] -->
+    <relation id="297" type="reference">
+      <ref hint="shaft" id="236" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Bolzen [71] @ 0,0° @ 0.0° @ 120.0° to Werkstoff [89] -->
+    <relation id="298" type="reference">
+      <ref hint="shaft" id="237" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Wange [67] to Werkstoff [89] -->
+    <relation id="299" type="reference">
+      <ref hint="side_plate" id="67" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Wange [68] to Werkstoff [89] -->
+    <relation id="300" type="reference">
+      <ref hint="side_plate" id="68" role="origin"/>
+      <ref hint="material" id="89" role="referenced"/>
+    </relation>
+    <!--Reference relation from Sonnenrad [53] to Werkzeug [83] -->
+    <relation id="301" order="1" type="ordered_reference">
+      <ref hint="cylindrical_gear" id="53" role="origin"/>
+      <ref hint="rack_shaped_tool" id="83" role="referenced"/>
+    </relation>
+    <!--Reference relation from Hohlrad [58] to Werkzeug [85] -->
+    <relation id="302" order="1" type="ordered_reference">
+      <ref hint="ring_gear" id="58" role="origin"/>
+      <ref hint="cutter_wheel_tool" id="85" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenrad [54] @ 0,0° @ 0.0° @ 0.0° to Werkzeug [84] -->
+    <relation id="303" order="1" type="ordered_reference">
+      <ref hint="cylindrical_gear" id="247" role="origin"/>
+      <ref hint="rack_shaped_tool" id="84" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenrad [54] @ 0,0° @ 0.0° @ 240.0° to Werkzeug [84] -->
+    <relation id="304" order="1" type="ordered_reference">
+      <ref hint="cylindrical_gear" id="248" role="origin"/>
+      <ref hint="rack_shaped_tool" id="84" role="referenced"/>
+    </relation>
+    <!--Reference relation from Planetenrad [54] @ 0,0° @ 0.0° @ 120.0° to Werkzeug [84] -->
+    <relation id="305" order="1" type="ordered_reference">
+      <ref hint="cylindrical_gear" id="249" role="origin"/>
+      <ref hint="rack_shaped_tool" id="84" role="referenced"/>
+    </relation>
+    <!--Relation between the main component Steg 1 [4] and the sub-component section [268]-->
+    <relation id="306" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="268" role="part"/>
+    </relation>
+    <!--Relation between the main component Steg 2 [6] and the sub-component section [269]-->
+    <relation id="307" type="assembly">
+      <ref hint="shaft" id="6" role="assembly"/>
+      <ref hint="shaft_section" id="269" role="part"/>
+    </relation>
+    <!--Relation between the main component Sonnenwelle [34] and the sub-component section [270]-->
+    <relation id="308" type="assembly">
+      <ref hint="shaft" id="34" role="assembly"/>
+      <ref hint="shaft_section" id="270" role="part"/>
+    </relation>
+    <!--Relation between the main component Hohlradwelle [62] and the sub-component section [271]-->
+    <relation id="309" type="assembly">
+      <ref hint="shaft" id="62" role="assembly"/>
+      <ref hint="shaft_section" id="271" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0° and the sub-component section [272]-->
+    <relation id="310" type="assembly">
+      <ref hint="shaft" id="229" role="assembly"/>
+      <ref hint="shaft_section" id="272" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0° and the sub-component section [273]-->
+    <relation id="311" type="assembly">
+      <ref hint="shaft" id="230" role="assembly"/>
+      <ref hint="shaft_section" id="273" role="part"/>
+    </relation>
+    <!--Relation between the main component Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0° and the sub-component section [274]-->
+    <relation id="312" type="assembly">
+      <ref hint="shaft" id="231" role="assembly"/>
+      <ref hint="shaft_section" id="274" role="part"/>
+    </relation>
+    <!--Flank relations between gear Sonnenrad [53], left flank flank_geometry [250], and right flank flank_geometry [251]-->
+    <relation id="313" type="flank">
+      <ref hint="cylindrical_gear" id="53" role="gear"/>
+      <ref hint="flank_geometry" id="250" role="left"/>
+      <ref hint="flank_geometry" id="251" role="right"/>
+    </relation>
+    <!--Flank relations between gear Hohlrad [58], left flank flank_geometry [252], and right flank flank_geometry [253]-->
+    <relation id="314" type="flank">
+      <ref hint="ring_gear" id="58" role="gear"/>
+      <ref hint="flank_geometry" id="252" role="left"/>
+      <ref hint="flank_geometry" id="253" role="right"/>
+    </relation>
+    <!--Flank relations between gear Planetenrad [54] @ 0,0° @ 0.0° @ 0.0°, left flank flank_geometry [254], and right flank flank_geometry [255]-->
+    <relation id="315" type="flank">
+      <ref hint="cylindrical_gear" id="247" role="gear"/>
+      <ref hint="flank_geometry" id="254" role="left"/>
+      <ref hint="flank_geometry" id="255" role="right"/>
+    </relation>
+    <!--Flank relations between gear Planetenrad [54] @ 0,0° @ 0.0° @ 240.0°, left flank flank_geometry [256], and right flank flank_geometry [257]-->
+    <relation id="316" type="flank">
+      <ref hint="cylindrical_gear" id="248" role="gear"/>
+      <ref hint="flank_geometry" id="256" role="left"/>
+      <ref hint="flank_geometry" id="257" role="right"/>
+    </relation>
+    <!--Flank relations between gear Planetenrad [54] @ 0,0° @ 0.0° @ 120.0°, left flank flank_geometry [258], and right flank flank_geometry [259]-->
+    <relation id="317" type="flank">
+      <ref hint="cylindrical_gear" id="249" role="gear"/>
+      <ref hint="flank_geometry" id="258" role="left"/>
+      <ref hint="flank_geometry" id="259" role="right"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Shaft [260]-->
+    <relation id="318" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="260" role="part"/>
+    </relation>
+    <!--Relation between the main component Shaft [260] and the sub-component shaft_section [261]-->
+    <relation id="319" type="assembly">
+      <ref hint="shaft" id="260" role="assembly"/>
+      <ref hint="shaft_section" id="261" role="part"/>
+    </relation>
+    <!--Reference relation from Shaft [260] to Material [262] -->
+    <relation id="320" type="reference">
+      <ref hint="shaft" id="260" role="origin"/>
+      <ref hint="material" id="262" role="referenced"/>
+    </relation>
+    <!--Side relation between coupling [263] and Steg 1 [4] and Shaft [260]-->
+    <relation id="321" type="side">
+      <ref hint="coupling" id="263" role="assembly"/>
+      <ref hint="shaft" id="4" role="inner_part"/>
+      <ref hint="shaft" id="260" role="outer_part"/>
+    </relation>
+    <!--Side relation between coupling [264] and Steg 2 [6] and Shaft [260]-->
+    <relation id="322" type="side">
+      <ref hint="coupling" id="264" role="assembly"/>
+      <ref hint="shaft" id="6" role="inner_part"/>
+      <ref hint="shaft" id="260" role="outer_part"/>
+    </relation>
+    <!--planet_pin Relation between Planetenstufe [9] and Bolzen [71] @ 0,0° @ 0.0° @ 0.0°-->
+    <relation id="323" type="planet_pin">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="235" role="shaft"/>
+    </relation>
+    <!--Relation between the main component Bolzen [71] @ 0,0° @ 0.0° @ 0.0° and the sub-component shaft_section [265]-->
+    <relation id="324" type="assembly">
+      <ref hint="shaft" id="235" role="assembly"/>
+      <ref hint="shaft_section" id="265" role="part"/>
+    </relation>
+    <!--planet_pin Relation between Planetenstufe [9] and Bolzen [71] @ 0,0° @ 0.0° @ 240.0°-->
+    <relation id="325" type="planet_pin">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="236" role="shaft"/>
+    </relation>
+    <!--Relation between the main component Bolzen [71] @ 0,0° @ 0.0° @ 240.0° and the sub-component shaft_section [266]-->
+    <relation id="326" type="assembly">
+      <ref hint="shaft" id="236" role="assembly"/>
+      <ref hint="shaft_section" id="266" role="part"/>
+    </relation>
+    <!--planet_pin Relation between Planetenstufe [9] and Bolzen [71] @ 0,0° @ 0.0° @ 120.0°-->
+    <relation id="327" type="planet_pin">
+      <ref hint="planetary_stage" id="9" role="planetary_stage"/>
+      <ref hint="shaft" id="237" role="shaft"/>
+    </relation>
+    <!--Relation between the main component Bolzen [71] @ 0,0° @ 0.0° @ 120.0° and the sub-component shaft_section [267]-->
+    <relation id="328" type="assembly">
+      <ref hint="shaft" id="237" role="assembly"/>
+      <ref hint="shaft_section" id="267" role="part"/>
+    </relation>
+  </relations>
+  <components>
+    <component id="88" name="bsp_42CrMo4_V [88]" type="material">
+      <attribute id="core_hardness_vickers" unit="HV">300.0</attribute>
+      <attribute id="density" unit="kg / dm^3">7.85</attribute>
+      <attribute id="elastic_modulus" unit="N / mm^2">210000.0</attribute>
+      <attribute id="fatigue_limit_bending" unit="MPa">550.0</attribute>
+      <attribute id="fatigue_limit_compression_tension" unit="MPa">440.0</attribute>
+      <attribute id="fatigue_limit_torsion" unit="MPa">330.0</attribute>
+      <attribute id="material_designation" unit="none">42CrMo4</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="surface_hardness_vickers" unit="HV">300.0</attribute>
+      <attribute id="tensile_strength" unit="N / mm^2">900.0</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">470.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">43.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+      <attribute id="yield_strength" unit="N / mm^2">650.0</attribute>
+    </component>
+    <component id="89" name="Werkstoff [89]" type="material">
+      <attribute id="density" unit="kg / dm^3">7.85</attribute>
+      <attribute id="elastic_modulus" unit="N / mm^2">210000.0</attribute>
+      <attribute id="material_designation" unit="none">Material</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+    </component>
+    <component id="230" name="Planetenwelle [39] @ 0,0° @ 0.0° @ 240.0°" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="231" name="Planetenwelle [39] @ 0,0° @ 0.0° @ 120.0°" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="232" name="Planetenlager [44] @ 0,0° @ 0.0° @ 0.0°" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>112.5</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">20.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">12.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="233" name="Planetenlager [44] @ 0,0° @ 0.0° @ 240.0°" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>112.5</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">20.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">12.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="234" name="Planetenlager [44] @ 0,0° @ 0.0° @ 120.0°" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>112.5</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">20.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">12.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="235" name="Bolzen [71] @ 0,0° @ 0.0° @ 0.0°" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>92.0</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="236" name="Bolzen [71] @ 0,0° @ 0.0° @ 240.0°" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>92.0</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="237" name="Bolzen [71] @ 0,0° @ 0.0° @ 120.0°" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>92.0</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="238" name="Koppelung [75] @ 0,0° @ 0.0° @ 0.0°" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>96.0</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">4.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="91" name="ISO-VG-100 [91]" type="lubricant">
+      <attribute id="density_at_15_degree_celsius" unit="kg / dm^3">0.88</attribute>
+      <attribute id="kind" unit="none">MINERALOEL</attribute>
+      <attribute id="name" unit="none">ISO-VG-100</attribute>
+      <attribute id="viscosity_at_100_degree_celsius" unit="mm^2 / s">11.0</attribute>
+      <attribute id="viscosity_at_40_degree_celsius" unit="mm^2 / s">100.0</attribute>
+    </component>
+    <component id="239" name="Koppelung [75] @ 0,0° @ 0.0° @ 240.0°" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>96.0</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">4.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="93" name="Rigid [93]" type="material">
+      <attribute id="density" unit="kg / dm^3">7.85</attribute>
+      <attribute id="elastic_modulus" unit="N / mm^2">2.1E8</attribute>
+      <attribute id="material_designation" unit="none">Material</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+    </component>
+    <component id="240" name="Koppelung [75] @ 0,0° @ 0.0° @ 120.0°" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>96.0</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">4.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="241" name="Koppelung [79] @ 0,0° @ 0.0° @ 0.0°" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>154.0</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">62.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="242" name="Koppelung [79] @ 0,0° @ 0.0° @ 240.0°" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>154.0</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">62.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="1" name="Gear unit [1]" type="gear_unit">
+      <attribute id="account_for_gravity" unit="none">true</attribute>
+      <attribute id="account_for_shear_deformation" unit="none">true</attribute>
+      <attribute id="direction_vector_gravity_u" unit="none">0.0</attribute>
+      <attribute id="direction_vector_gravity_v" unit="none">1.0</attribute>
+      <attribute id="direction_vector_gravity_w" unit="none">0.0</attribute>
+      <attribute id="gear_shift_index" unit="none">1</attribute>
+      <attribute id="number_of_gears" unit="none">1</attribute>
+      <attribute id="number_of_nodes_in_mesh_width_for_loaddistribution" unit="none">18</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="243" name="Koppelung [79] @ 0,0° @ 0.0° @ 120.0°" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>154.0</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">62.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="2" name="Casing [2]" type="gear_casing">
+      <attribute id="temperature_lubricant" unit="C">80.0</attribute>
+    </component>
+    <component id="244" name="Planetenlager [45] @ 0,0° @ 0.0° @ 0.0°" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>137.5</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">45.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">37.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="3" name="Zweiwangiger Planetenträger [3]" type="planet_carrier"/>
+    <component id="245" name="Planetenlager [45] @ 0,0° @ 0.0° @ 240.0°" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>137.5</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">45.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">37.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="4" name="Steg 1 [4]" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="246" name="Planetenlager [45] @ 0,0° @ 0.0° @ 120.0°" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>137.5</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">45.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">37.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="247" name="Planetenrad [54] @ 0,0° @ 0.0° @ 0.0°" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="tooth_thickness_deviation_tolerance_series_din_3967_1978" unit="none">c25</attribute>
+      <attribute id="face_width" unit="mm">50.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">-0.0</attribute>
+      <attribute id="normal_module" unit="mm">4.0</attribute>
+      <attribute id="number_of_teeth" unit="none">22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>125.0</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">25.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.2817325568414294</c>
+          <c>-0.9594929736144975</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="6" name="Steg 2 [6]" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>150.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="248" name="Planetenrad [54] @ 0,0° @ 0.0° @ 240.0°" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="tooth_thickness_deviation_tolerance_series_din_3967_1978" unit="none">c25</attribute>
+      <attribute id="face_width" unit="mm">50.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">-0.0</attribute>
+      <attribute id="normal_module" unit="mm">4.0</attribute>
+      <attribute id="number_of_teeth" unit="none">22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>125.0</c>
+          <c>67.54998149518622</c>
+          <c>-38.999999999999986</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">25.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.9898214418809327</c>
+          <c>-0.14231483827328523</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="249" name="Planetenrad [54] @ 0,0° @ 0.0° @ 120.0°" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="tooth_thickness_deviation_tolerance_series_din_3967_1978" unit="none">c25</attribute>
+      <attribute id="face_width" unit="mm">50.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">-0.0</attribute>
+      <attribute id="normal_module" unit="mm">4.0</attribute>
+      <attribute id="number_of_teeth" unit="none">22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>125.0</c>
+          <c>-67.5499814951862</c>
+          <c>-39.000000000000036</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">25.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>-0.7557495743542584</c>
+          <c>0.6548607339452849</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="9" name="Planetenstufe [9]" type="planetary_stage"/>
+    <component id="34" name="Sonnenwelle [34]" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="rotational_speed" unit="1 / min">1500.0</attribute>
+      <attribute id="defines_speed" unit="none">true</attribute>
+    </component>
+    <component id="36" name="Sonnenlager [36]" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>175.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">75.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">75.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="37" name="Sonnenlager [37]" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>227.5</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">127.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">127.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="38" name="Belastung [38]" type="external_load">
+      <attribute id="torque_around_u_axis" unit="N m">1591.5494309189535</attribute>
+      <attribute id="transmits_torque" unit="none">true</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">150.0</attribute>
+      <attribute id="defines_torque" unit="none">true</attribute>
+    </component>
+    <component id="53" name="Sonnenrad [53]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="tooth_thickness_deviation_tolerance_series_din_3967_1978" unit="none">c25</attribute>
+      <attribute id="face_width" unit="mm">50.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">0.0</attribute>
+      <attribute id="normal_module" unit="mm">4.0</attribute>
+      <attribute id="number_of_teeth" unit="none">17</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>125.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">25.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>-0.18374951781657034</c>
+          <c>0.9829730996839018</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="58" name="Hohlrad [58]" type="ring_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="face_width" unit="mm">50.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">0.0</attribute>
+      <attribute id="normal_module" unit="mm">4.0</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>125.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">25.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>-0.9057022630804714</c>
+          <c>0.42391439070986076</c>
+        </array>
+      </attribute>
+      <attribute id="number_of_teeth" unit="none">61</attribute>
+    </component>
+    <component id="59" name="Steglager [59]" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>25.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">25.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">25.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="60" name="Steglager [60]" type="concept_bearing">
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="radial_force_absorption" unit="none">true</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>75.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">75.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">75.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="61" name="Belastung [61]" type="external_load">
+      <attribute id="transmits_torque" unit="none">true</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="62" name="Hohlradwelle [62]" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="65" name="Koppelung [65]" type="switchable_coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="is_engaged" unit="none">
+        <array>
+          <c>true</c>
+        </array>
+      </attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>112.5</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">12.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">12.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="66" name="Koppelung [66]" type="switchable_coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="is_engaged" unit="none">
+        <array>
+          <c>true</c>
+        </array>
+      </attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>137.5</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">37.5</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">37.5</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="67" name="Wange [67]" type="side_plate">
+      <attribute id="inner_diameter" unit="mm">80.0</attribute>
+      <attribute id="length" unit="mm">8.0</attribute>
+      <attribute id="outer_diameter" unit="mm">219.0</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>92.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="68" name="Wange [68]" type="side_plate">
+      <attribute id="inner_diameter" unit="mm">99.0</attribute>
+      <attribute id="length" unit="mm">8.0</attribute>
+      <attribute id="outer_diameter" unit="mm">219.0</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>150.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="69" name="Koppelung [69]" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>96.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">96.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="211" name="Stirnradstufe [10] @ 0,0° @ 0.0° @ 0.0°" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">78.0</attribute>
+      <attribute id="common_face_width" unit="mm">50.0</attribute>
+      <attribute id="center_distance_tolerance_field_din_3964_1980" unit="none">7</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+      <attribute id="mesh_stiffness_for_load_distribution_along_face_width" unit="N / (mm mum)">20.0</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">0.0</attribute>
+    </component>
+    <component id="212" name="Stirnradstufe [10] @ 0,0° @ 0.0° @ 240.0°" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">78.0</attribute>
+      <attribute id="common_face_width" unit="mm">50.0</attribute>
+      <attribute id="center_distance_tolerance_field_din_3964_1980" unit="none">7</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+      <attribute id="mesh_stiffness_for_load_distribution_along_face_width" unit="N / (mm mum)">20.0</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">119.99999999999999</attribute>
+    </component>
+    <component id="213" name="Stirnradstufe [10] @ 0,0° @ 0.0° @ 120.0°" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">78.0</attribute>
+      <attribute id="common_face_width" unit="mm">50.0</attribute>
+      <attribute id="center_distance_tolerance_field_din_3964_1980" unit="none">7</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+      <attribute id="mesh_stiffness_for_load_distribution_along_face_width" unit="N / (mm mum)">20.0</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">239.99999999999997</attribute>
+    </component>
+    <component id="214" name="Individual gear data in planetary stage [214]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="215" name="Individual gear data in planetary stage [215]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="216" name="Individual gear data in planetary stage [216]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="217" name="Individual gear data in planetary stage [217]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="70" name="Koppelung [70]" type="coupling">
+      <attribute id="axial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>154.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">4.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">4.0</attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="218" name="Individual gear data in planetary stage [218]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="219" name="Individual gear data in planetary stage [219]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="182" name="Material [182]" type="material">
+      <attribute id="elastic_modulus" unit="N / mm^2">2.2672197037173502E7</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="shear_modulus" unit="N / mm^2">8720075.78352827</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+    </component>
+    <component id="220" name="Stirnradstufe [14] @ 0,0° @ 0.0° @ 0.0°" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">78.0</attribute>
+      <attribute id="common_face_width" unit="mm">50.0</attribute>
+      <attribute id="center_distance_tolerance_field_din_3964_1980" unit="none">7</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+      <attribute id="mesh_stiffness_for_load_distribution_along_face_width" unit="N / (mm mum)">20.0</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">180.0</attribute>
+    </component>
+    <component id="221" name="Stirnradstufe [14] @ 0,0° @ 0.0° @ 240.0°" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">78.0</attribute>
+      <attribute id="common_face_width" unit="mm">50.0</attribute>
+      <attribute id="center_distance_tolerance_field_din_3964_1980" unit="none">7</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+      <attribute id="mesh_stiffness_for_load_distribution_along_face_width" unit="N / (mm mum)">20.0</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">300.0</attribute>
+    </component>
+    <component id="222" name="Stirnradstufe [14] @ 0,0° @ 0.0° @ 120.0°" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">78.0</attribute>
+      <attribute id="common_face_width" unit="mm">50.0</attribute>
+      <attribute id="center_distance_tolerance_field_din_3964_1980" unit="none">7</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+      <attribute id="mesh_stiffness_for_load_distribution_along_face_width" unit="N / (mm mum)">20.0</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">420.0</attribute>
+    </component>
+    <component id="223" name="Individual gear data in planetary stage [223]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="224" name="Individual gear data in planetary stage [224]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="225" name="Individual gear data in planetary stage [225]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="226" name="Individual gear data in planetary stage [226]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="106" name="Material [106]" type="material">
+      <attribute id="elastic_modulus" unit="N / mm^2">2.2672197037173502E7</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="shear_modulus" unit="N / mm^2">8720075.78352827</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+    </component>
+    <component id="227" name="Individual gear data in planetary stage [227]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="228" name="Individual gear data in planetary stage [228]" type="stage_gear_data">
+      <attribute id="is_driving_gear" unit="none">false</attribute>
+    </component>
+    <component id="229" name="Planetenwelle [39] @ 0,0° @ 0.0° @ 0.0°" type="shaft">
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>0.0</c>
+          <c>78.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+    </component>
+    <component id="83" name="Werkzeug [83]" type="rack_shaped_tool">
+      <attribute id="addendum_coefficient_reference_profile" unit="none">1.25</attribute>
+      <attribute id="dedendum_coefficient_reference_profile" unit="none">1.3</attribute>
+      <attribute id="tip_radius_factor" unit="none">0.25</attribute>
+      <attribute id="utilized_dedendum_coefficient_reference_profile" unit="none">1.3</attribute>
+    </component>
+    <component id="84" name="Werkzeug [84]" type="rack_shaped_tool">
+      <attribute id="addendum_coefficient_reference_profile" unit="none">1.25</attribute>
+      <attribute id="dedendum_coefficient_reference_profile" unit="none">1.3</attribute>
+      <attribute id="tip_radius_factor" unit="none">0.25</attribute>
+      <attribute id="utilized_dedendum_coefficient_reference_profile" unit="none">1.3</attribute>
+    </component>
+    <component id="85" name="Werkzeug [85]" type="cutter_wheel_tool">
+      <attribute id="number_of_teeth" unit="none">23</attribute>
+      <attribute id="addendum_coefficient_reference_profile" unit="none">1.25</attribute>
+      <attribute id="tip_radius_factor" unit="none">0.0</attribute>
+      <attribute id="utilized_dedendum_coefficient_reference_profile" unit="none">1.3</attribute>
+      <attribute id="dedendum_coefficient_reference_profile" unit="none">1.3</attribute>
+    </component>
+    <component id="86" name="bsp_18CrNiMo7-6_Eh [86]" type="material">
+      <attribute id="core_hardness_vickers" unit="HV">380.0</attribute>
+      <attribute id="density" unit="kg / dm^3">7.85</attribute>
+      <attribute id="elastic_modulus" unit="N / mm^2">210000.0</attribute>
+      <attribute id="fatigue_limit_bending" unit="MPa">600.0</attribute>
+      <attribute id="fatigue_limit_compression_tension" unit="MPa">480.0</attribute>
+      <attribute id="fatigue_limit_torsion" unit="MPa">360.0</attribute>
+      <attribute id="material_designation" unit="none">18CrNiMo7-6</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="surface_hardness_vickers" unit="HV">750.0</attribute>
+      <attribute id="tensile_strength" unit="N / mm^2">1350.0</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+      <attribute id="yield_strength" unit="N / mm^2">1100.0</attribute>
+    </component>
+    <component id="87" name="bsp_18CrNiMo7-6_Eh [87]" type="material">
+      <attribute id="core_hardness_vickers" unit="HV">380.0</attribute>
+      <attribute id="density" unit="kg / dm^3">7.85</attribute>
+      <attribute id="elastic_modulus" unit="N / mm^2">210000.0</attribute>
+      <attribute id="fatigue_limit_bending" unit="MPa">600.0</attribute>
+      <attribute id="fatigue_limit_compression_tension" unit="MPa">480.0</attribute>
+      <attribute id="fatigue_limit_torsion" unit="MPa">360.0</attribute>
+      <attribute id="material_designation" unit="none">18CrNiMo7-6</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="surface_hardness_vickers" unit="HV">750.0</attribute>
+      <attribute id="tensile_strength" unit="N / mm^2">1350.0</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+      <attribute id="yield_strength" unit="N / mm^2">1100.0</attribute>
+    </component>
+    <component id="268" name="section [268]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">60.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">60.0</attribute>
+      <attribute id="length" unit="mm">100.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">80.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">80.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="269" name="section [269]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">88.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">88.0</attribute>
+      <attribute id="length" unit="mm">8.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">99.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">99.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="270" name="section [270]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">150.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">34.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">34.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="271" name="section [271]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">265.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">265.0</attribute>
+      <attribute id="length" unit="mm">50.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">280.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">280.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="272" name="section [272]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">57.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">57.0</attribute>
+      <attribute id="length" unit="mm">50.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">58.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">58.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="273" name="section [273]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">57.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">57.0</attribute>
+      <attribute id="length" unit="mm">50.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">58.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">58.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="274" name="section [274]" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">57.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">57.0</attribute>
+      <attribute id="length" unit="mm">50.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">58.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">58.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+    </component>
+    <component id="250" name="" type="flank_geometry">
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="251" name="" type="flank_geometry">
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="252" name="" type="flank_geometry">
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="253" name="" type="flank_geometry">
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="254" name="" type="flank_geometry">
+      <attribute id="addendum_modification_coefficient" unit="none">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="255" name="" type="flank_geometry">
+      <attribute id="addendum_modification_coefficient" unit="none">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="256" name="" type="flank_geometry">
+      <attribute id="addendum_modification_coefficient" unit="none">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="257" name="" type="flank_geometry">
+      <attribute id="addendum_modification_coefficient" unit="none">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="258" name="" type="flank_geometry">
+      <attribute id="addendum_modification_coefficient" unit="none">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="259" name="" type="flank_geometry">
+      <attribute id="addendum_modification_coefficient" unit="none">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.0</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+    </component>
+    <component id="260" name="Shaft [260]" type="shaft">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="261" name="" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">50.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">109.5</attribute>
+      <attribute id="inner_diameter_end" unit="mm">109.5</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">164.25</attribute>
+      <attribute id="outer_diameter_end" unit="mm">164.25</attribute>
+    </component>
+    <component id="262" name="" type="material">
+      <attribute id="shear_modulus" unit="N / mm^2">8720075.78352827</attribute>
+      <attribute id="elastic_modulus" unit="N / mm^2">2.2672197037173502E7</attribute>
+      <attribute id="poisson_ratio" unit="none">0.3</attribute>
+      <attribute id="thermal_capacity" unit="J / (kg K)">430.0</attribute>
+      <attribute id="thermal_conductivity" unit="W / (m K)">40.0</attribute>
+      <attribute id="thermal_expansion_coefficient_plus" unit="1e-6 / C">11.0</attribute>
+      <attribute id="thermal_expansion_coefficient_minus" unit="1e-6 / C">-8.0</attribute>
+    </component>
+    <component id="263" name="" type="coupling">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>100.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+    </component>
+    <component id="264" name="" type="coupling">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>150.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="axial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="radial_stiffness" unit="N / m">1.0E20</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">1.0E20</attribute>
+      <attribute id="rotational_stiffness" unit="N mm / rad">1.0E20</attribute>
+    </component>
+    <component id="265" name="" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">66.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">43.2</attribute>
+      <attribute id="outer_diameter_end" unit="mm">43.2</attribute>
+    </component>
+    <component id="266" name="" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">66.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">43.2</attribute>
+      <attribute id="outer_diameter_end" unit="mm">43.2</attribute>
+    </component>
+    <component id="267" name="" type="shaft_section">
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">66.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">43.2</attribute>
+      <attribute id="outer_diameter_end" unit="mm">43.2</attribute>
+    </component>
+  </components>
+</model>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+  Copyright (C) 2020 FVA GmbH
+  
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  use this file except in compliance with the License. You may obtain a copy
+  of the License at
+  
+    http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  License for the specific language governing permissions and limitations under
+  the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.fva-gmbh.rexs-api</groupId>
+	<artifactId>rexs-api</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>REXS-API</name>
+	<description>The REXS API library contains core utility classes for the REXS interface.</description>
+	<url>https://rexs.info</url>
+
+	<scm>
+		<url>http://github.com/fva-gmbh/rexs-api/tree/master</url>
+		<connection>scm:git:git://github.com/fva-gmbh/rexs-api.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/fva-gmbh/rexs-api.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>redmine</system>
+		<url>https://access.rexs.info/</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>Apache 2.0</name>
+			<url>LICENSE.txt</url>
+		</license>
+	</licenses>
+
+	<prerequisites>
+		<maven>3.6.2</maven>
+	</prerequisites>
+
+	<properties>
+		<java.version>1.8</java.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Unit tesing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.16.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<excludes>
+					<exclude>**/*.properties</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<manifest>
+								<!-- This will add the following to the manifest file: -->
+								<!--   Implementation-Title: ${pom.name} -->
+								<!--   Implementation-Version: ${pom.version} -->
+								<!--   Implementation-Vendor-Id: ${pom.groupId} -->
+								<!--   Implementation-Vendor: ${pom.organization.name} -->
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.13.2</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9.1</version>
+					<configuration>
+						<quiet>true</quiet>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.5</version>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>schema-generate-rexs-model</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<schemaDirectory>src/main/resources/schema</schemaDirectory>
+							<schemaIncludes>
+								<include>rexs-dbmodel.xsd</include>
+							</schemaIncludes>
+							<extension>true</extension>
+							<removeOldOutput>true</removeOldOutput>
+							<generateDirectory>${project.build.directory}/generated-sources/rexs-dbmodel</generateDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>schema-generate-rexs-file</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<schemaDirectory>src/main/resources/schema</schemaDirectory>
+							<schemaIncludes>
+								<include>rexs-file.xsd</include>
+							</schemaIncludes>
+							<extension>true</extension>
+							<removeOldOutput>true</removeOldOutput>
+							<generateDirectory>${project.build.directory}/generated-sources/rexs-file</generateDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<profiles>
+
+		<profile>
+			<id>ci</id>
+			<build>
+				<plugins>
+
+					<!-- JaCoCo (Java Code Coverage) is an actively developed line coverage tool, that is used to measure how many lines of our code are tested. -->
+					<!-- Here we generate the coverage report, so that it can be viewed in SonarQube. -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.8.4</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>report</id>
+								<phase>test</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+</project>
