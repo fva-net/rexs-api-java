@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexsChangelog fromVersion="1.1" toVersion="1.2">
+    <componentChanges>
+        <componentChange type="ADD" id="tip_relief"/>
+        <componentChange type="ADD" id="root_relief"/>
+        <componentChange type="ADD" id="profile_slope"/>
+        <componentChange type="ADD" id="profile_crowning"/>
+        <componentChange type="ADD" id="helix_slope"/>
+        <componentChange type="ADD" id="helix_crowning"/>
+        <componentChange type="ADD" id="end_relief_datum_face"/>
+        <componentChange type="ADD" id="topographical_modification"/>
+        <componentChange type="ADD" id="end_relief_non_datum_face"/>
+        <componentChange type="ADD" id="worm_stage"/>
+        <componentChange type="ADD" id="worm_gear"/>
+        <componentChange type="ADD" id="worm_wheel"/>
+        <componentChange type="ADD" id="profile_deviation"/>
+        <componentChange type="ADD" id="helix_deviation"/>
+        <componentChange type="ADD" id="profile_twist"/>
+        <componentChange type="ADD" id="triangular_tip_relief"/>
+        <componentChange type="ADD" id="triangular_root_relief"/>
+    </componentChanges>
+    <attributeChanges>
+        <attributeChange type="ADD" id="profile_slope" numericId="48"/>
+        <attributeChange type="ADD" id="profile_evaluation_start" numericId="12647"/>
+        <attributeChange type="ADD" id="diameter_where_profile_slope_amount_is_specified" numericId="12648"/>
+        <attributeChange type="ADD" id="profile_evaluation_end" numericId="9291"/>
+        <attributeChange type="ADD" id="rolling_length_where_profile_slope_amount_is_specified" numericId="9292"/>
+        <attributeChange type="ADD" id="addendum_modification" numericId="4198"/>
+        <attributeChange type="ADD" id="transverse_module" numericId="4197"/>
+        <attributeChange type="ADD" id="normal_circular_pitch" numericId="15124"/>
+        <attributeChange type="ADD" id="root_diameter" numericId="746"/>
+        <attributeChange type="ADD" id="tooth_depth" numericId="4214"/>
+        <attributeChange type="ADD" id="addendum_basic_profile" numericId="4216"/>
+        <attributeChange type="ADD" id="tooth_thickness_at_pitch_diameter" numericId="4224"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_pitch_diameter" numericId="4227"/>
+        <attributeChange type="ADD" id="normal_space_width_at_pitch_diameter" numericId="4228"/>
+        <attributeChange type="ADD" id="tip_form_diameter" numericId="4208"/>
+        <attributeChange type="ADD" id="working_depth" numericId="4215"/>
+        <attributeChange type="ADD" id="working_depth_coefficient" numericId="4204"/>
+        <attributeChange type="ADD" id="tip_clearance" numericId="12884"/>
+        <attributeChange type="ADD" id="root_form_diameter" numericId="4210"/>
+        <attributeChange type="ADD" id="form_allowance" numericId="12824"/>
+        <attributeChange type="ADD" id="maximum_transverse_backlash" numericId="15113"/>
+        <attributeChange type="ADD" id="minimum_transverse_backlash" numericId="15112"/>
+        <attributeChange type="ADD" id="maximum_transverse_backlash_variation" numericId="4259"/>
+        <attributeChange type="ADD" id="minimum_transverse_backlash_variation" numericId="4261"/>
+        <attributeChange type="ADD" id="maximum_normal_backlash" numericId="15110"/>
+        <attributeChange type="ADD" id="minimum_normal_backlash" numericId="15111"/>
+        <attributeChange type="ADD" id="maximum_normal_backlash_variation" numericId="4260"/>
+        <attributeChange type="ADD" id="minimum_normal_backlash_variation" numericId="4262"/>
+        <attributeChange type="ADD" id="chordal_tooth_thickness_upper_deviation" numericId="4237"/>
+        <attributeChange type="ADD" id="chordal_tooth_thickness_lower_deviation" numericId="4238"/>
+        <attributeChange type="ADD" id="measuring_diameter_at_upper_backlash_allowance" numericId="4239"/>
+        <attributeChange type="ADD" id="chordal_transverse_tooth_thickness_upper_deviation" numericId="4225"/>
+        <attributeChange type="ADD" id="chordal_transverse_tooth_thickness_lower_deviation" numericId="4226"/>
+        <attributeChange type="ADD" id="measuring_diameter_for_span" numericId="4245"/>
+        <attributeChange type="ADD" id="conversion_factor_of_backlash_allowance" numericId="4244"/>
+        <attributeChange type="ADD" id="normal_tip_thickness" numericId="4229"/>
+        <attributeChange type="ADD" id="minimum_thickness_by_tip_chamfer_relief" numericId="8633"/>
+        <attributeChange type="ADD" id="chordal_height" numericId="4236"/>
+        <attributeChange type="ADD" id="sliding_factor_at_tip_diameter" numericId="12856"/>
+        <attributeChange type="ADD" id="specific_sliding_at_tip_diameter" numericId="12858"/>
+        <attributeChange type="ADD" id="specific_sliding_at_root_diameter" numericId="12857"/>
+        <attributeChange type="ADD" id="size_over_balls" numericId="4246"/>
+        <attributeChange type="ADD" id="measuring_diameter_ball_flank" numericId="4247"/>
+        <attributeChange type="ADD" id="size_over_pins" numericId="4248"/>
+        <attributeChange type="ADD" id="root_undercut" numericId="4212"/>
+        <attributeChange type="ADD" id="measuring_diameter_at_undercut" numericId="12848"/>
+        <attributeChange type="ADD" id="virtual_number_of_teeth" numericId="8645"/>
+        <attributeChange type="ADD" id="distance_tool_tip_line_to_manufacturing_pitch_diameter" numericId="3057"/>
+        <attributeChange type="ADD" id="relative_machining_allowance" numericId="3060"/>
+        <attributeChange type="ADD" id="relative_measurement_bz0" numericId="3076"/>
+        <attributeChange type="ADD" id="measurement_bz0" numericId="3075"/>
+        <attributeChange type="ADD" id="relative_distance_tool_profile_basic_line_to_measuring_line" numericId="3058"/>
+        <attributeChange type="ADD" id="distance_tool_profile_basic_line_to_measuring_line" numericId="3074"/>
+        <attributeChange type="ADD" id="tooth_thickness" numericId="13044"/>
+        <attributeChange type="ADD" id="upper_backlash_allowance_balls_or_pins" numericId="4250"/>
+        <attributeChange type="ADD" id="lower_backlash_allowance_balls_or_pins" numericId="4251"/>
+        <attributeChange type="ADD" id="conversion_factor" numericId="4252"/>
+        <attributeChange type="ADD" id="is_additive_modification" numericId="9293"/>
+        <attributeChange type="ADD" id="position_of_profile_modification" numericId="9294"/>
+        <attributeChange type="ADD" id="tip_relief_depth" numericId="9295"/>
+        <attributeChange type="ADD" id="tip_relief_datum_diameter" numericId="9296"/>
+        <attributeChange type="ADD" id="tip_relief_datum_length" numericId="9297"/>
+        <attributeChange type="ADD" id="tip_relief_evaluation_reference" numericId="9298"/>
+        <attributeChange type="ADD" id="tip_relief_evaluation_reference_length" numericId="9299"/>
+        <attributeChange type="ADD" id="shape_of_relief" numericId="14513"/>
+        <attributeChange type="ADD" id="specify_tangential_transition" numericId="14514"/>
+        <attributeChange type="ADD" id="tip_relief_diameter_where_tangential_transition_starts" numericId="14515"/>
+        <attributeChange type="ADD" id="tip_relief_diameter_where_tangential_transition_ends" numericId="14516"/>
+        <attributeChange type="ADD" id="tip_relief_length_of_tangential_transition_start" numericId="14517"/>
+        <attributeChange type="ADD" id="tip_relief_length_of_tangential_transition_end" numericId="14518"/>
+        <attributeChange type="ADD" id="root_relief_depth" numericId="14519"/>
+        <attributeChange type="ADD" id="root_relief_datum_diameter" numericId="14520"/>
+        <attributeChange type="ADD" id="root_relief_datum_length" numericId="14521"/>
+        <attributeChange type="ADD" id="root_relief_evaluation_reference" numericId="14522"/>
+        <attributeChange type="ADD" id="root_relief_evaluation_reference_length" numericId="14523"/>
+        <attributeChange type="ADD" id="root_relief_diameter_where_tangential_transition_starts" numericId="14524"/>
+        <attributeChange type="ADD" id="root_relief_diameter_where_tangential_transition_ends" numericId="14525"/>
+        <attributeChange type="ADD" id="root_relief_length_of_tangential_transition_start" numericId="14526"/>
+        <attributeChange type="ADD" id="root_relief_length_of_tangential_transition_end" numericId="14527"/>
+        <attributeChange type="ADD" id="profile_highest_point" numericId="14528"/>
+        <attributeChange type="ADD" id="profile_crowning_at_tip" numericId="14529"/>
+        <attributeChange type="ADD" id="profile_crowning_at_root" numericId="14530"/>
+        <attributeChange type="ADD" id="diameter_where_profile_crowning_tip_is_specified" numericId="14531"/>
+        <attributeChange type="ADD" id="diameter_where_profile_crowning_root_is_specified" numericId="14532"/>
+        <attributeChange type="ADD" id="length_where_profile_crowning_tip_is_specified" numericId="14533"/>
+        <attributeChange type="ADD" id="length_where_profile_crowning_root_is_specified" numericId="14534"/>
+        <attributeChange type="ADD" id="shape_of_profile_crowning" numericId="14535"/>
+        <attributeChange type="ADD" id="topographical_modification_amounts" numericId="14536"/>
+        <attributeChange type="ADD" id="coordinates_of_topographical_modification" numericId="14537"/>
+        <attributeChange type="ADD" id="diameters_of_topographical_modification" numericId="14538"/>
+        <attributeChange type="ADD" id="length_of_topographical_modification" numericId="14539"/>
+        <attributeChange type="ADD" id="type_of_interpolation_topographical_modification" numericId="14540"/>
+        <attributeChange type="ADD" id="helix_slope" numericId="14541"/>
+        <attributeChange type="ADD" id="helix_evaluation_reference" numericId="14542"/>
+        <attributeChange type="ADD" id="helix_evaluation_start" numericId="14543"/>
+        <attributeChange type="ADD" id="helix_evaluation_end" numericId="14544"/>
+        <attributeChange type="ADD" id="diameter_of_helix_modification" numericId="14545"/>
+        <attributeChange type="ADD" id="facewidth_usable_start" numericId="14546"/>
+        <attributeChange type="ADD" id="facewidth_usable_end" numericId="14547"/>
+        <attributeChange type="ADD" id="helix_highest_point" numericId="14548"/>
+        <attributeChange type="ADD" id="helix_crowning_amount_datum_face" numericId="14549"/>
+        <attributeChange type="ADD" id="helix_crowning_amount_non_datum_face" numericId="14550"/>
+        <attributeChange type="ADD" id="coordinate_where_helix_crowning_is_specified_datum_face" numericId="14551"/>
+        <attributeChange type="ADD" id="coordinate_where_helix_crowning_is_specified_non_datum_face" numericId="14552"/>
+        <attributeChange type="ADD" id="shape_of_helix_crowning" numericId="14553"/>
+        <attributeChange type="ADD" id="end_relief_length_datum_face" numericId="14554"/>
+        <attributeChange type="ADD" id="end_relief_depth_datum_face" numericId="14555"/>
+        <attributeChange type="ADD" id="end_relief_evaluation_reference_datum_face" numericId="14556"/>
+        <attributeChange type="ADD" id="end_relief_datum_face_length_of_tangential_transition_start" numericId="14557"/>
+        <attributeChange type="ADD" id="end_relief_datum_face_length_of_tangential_transition_end" numericId="14558"/>
+        <attributeChange type="ADD" id="end_relief_length_non_datum_face" numericId="14559"/>
+        <attributeChange type="ADD" id="end_relief_depth_non_datum_face" numericId="14560"/>
+        <attributeChange type="ADD" id="end_relief_evaluation_reference_non_datum_face" numericId="14561"/>
+        <attributeChange type="ADD" id="end_relief_non_datum_face_length_of_tangential_transition_start" numericId="14562"/>
+        <attributeChange type="ADD" id="end_relief_non_datum_face_length_of_tangential_transition_end" numericId="14563"/>
+        <attributeChange type="ADD" id="averaged_peak_to_valley_height_root" numericId="817"/>
+        <attributeChange type="ADD" id="arithmetic_average_roughness_flank" numericId="814"/>
+        <attributeChange type="ADD" id="arithmetic_average_roughness_root" numericId="815"/>
+        <attributeChange type="ADD" id="lubrication_type_din_3996_2019" numericId="2815"/>
+        <attributeChange type="ADD" id="reference_diameter_din_3975_2017" numericId="2779"/>
+        <attributeChange type="ADD" id="pressure_angle_din_3975_2017" numericId="1797"/>
+        <attributeChange type="ADD" id="axial_module_din_3975_2017" numericId="1796"/>
+        <attributeChange type="ADD" id="reference_lead_angle_din_3975_2017" numericId="1798"/>
+        <attributeChange type="ADD" id="tip_diameter_din_3975_2017" numericId="2780"/>
+        <attributeChange type="ADD" id="root_diameter_din_3975_2017" numericId="2781"/>
+        <attributeChange type="ADD" id="flank_form_din_3975_2017" numericId="2788"/>
+        <attributeChange type="ADD" id="face_width_din_3975_2017" numericId="2797"/>
+        <attributeChange type="ADD" id="topographical_deviation_amounts" numericId="14564"/>
+        <attributeChange type="ADD" id="coordinates_of_topographical_deviation" numericId="14565"/>
+        <attributeChange type="ADD" id="diameters_of_topographical_deviation" numericId="14566"/>
+        <attributeChange type="ADD" id="profile_deviation_amounts" numericId="14567"/>
+        <attributeChange type="ADD" id="diameters_of_profile_deviation" numericId="14568"/>
+        <attributeChange type="ADD" id="length_of_profile_deviation" numericId="14569"/>
+        <attributeChange type="ADD" id="position_of_profile_deviation" numericId="14570"/>
+        <attributeChange type="ADD" id="helix_deviation_amounts" numericId="14571"/>
+        <attributeChange type="ADD" id="coordinates_of_helix_deviation" numericId="14572"/>
+        <attributeChange type="ADD" id="diameter_of_helix_deviation" numericId="14573"/>
+        <attributeChange type="ADD" id="base_circle_diameter_din_3975_2017" numericId="16538"/>
+        <attributeChange type="ADD" id="axial_pitch_din_3975_2017" numericId="16539"/>
+        <attributeChange type="ADD" id="form_factor_din_3975_2017" numericId="16540"/>
+        <attributeChange type="ADD" id="normal_pitch_din_3975_2017" numericId="16541"/>
+        <attributeChange type="ADD" id="lead_din_3975_2017" numericId="16542"/>
+        <attributeChange type="ADD" id="flank_surface_din_3996_2019" numericId="16543"/>
+        <attributeChange type="ADD" id="outer_diameter_din_3975_2017" numericId="16544"/>
+        <attributeChange type="ADD" id="strut_inner_diameter" numericId="14574"/>
+        <attributeChange type="ADD" id="strut_radius_planet_recess" numericId="14575"/>
+        <attributeChange type="ADD" id="strut_circumferential_angle" numericId="14576"/>
+        <attributeChange type="ADD" id="mean_tooth_root_thickness_din_3996_2019" numericId="16546"/>
+        <attributeChange type="ADD" id="sliding_velocity_at_reference_diameter_din_3996_2019" numericId="16547"/>
+        <attributeChange type="ADD" id="mean_hertzian_stress_din_3996_2019" numericId="16548"/>
+        <attributeChange type="ADD" id="parameter_mean_hertzian_stress_din_3996_2019" numericId="16549"/>
+        <attributeChange type="ADD" id="mean_sliding_path_din_3996_2019" numericId="16550"/>
+        <attributeChange type="ADD" id="parameter_mean_sliding_path_din_3996_2019" numericId="16551"/>
+        <attributeChange type="ADD" id="shear_stress_tooth_root_din_3996_2019" numericId="16552"/>
+        <attributeChange type="ADD" id="safety_factor_root_din_3996_2019" numericId="16553"/>
+        <attributeChange type="ADD" id="deflection_din_3996_2019" numericId="16554"/>
+        <attributeChange type="ADD" id="safety_factor_deflection_din_3996_2019" numericId="16555"/>
+        <attributeChange type="ADD" id="mean_minimum_lubricant_film_thickness_din_3996_2019" numericId="16556"/>
+        <attributeChange type="ADD" id="parameter_for_mean_minimum_lubricant_film_thickness_din_3996_2019" numericId="16557"/>
+        <attributeChange type="ADD" id="limiting_value_flank_loss_din_3996_2019" numericId="16558"/>
+        <attributeChange type="ADD" id="safety_factor_pitting_din_3996_2019" numericId="16559"/>
+        <attributeChange type="ADD" id="material_loss_din_3996_2019" numericId="16560"/>
+        <attributeChange type="ADD" id="material_loss_limit_din_3996_2019" numericId="16561"/>
+        <attributeChange type="ADD" id="tooth_thickness_loss_din_3996_2019" numericId="16562"/>
+        <attributeChange type="ADD" id="profile_twist" numericId="14585"/>
+        <attributeChange type="ADD" id="profile_twist_evaluation_start" numericId="14586"/>
+        <attributeChange type="ADD" id="profile_twist_evaluation_end" numericId="14587"/>
+        <attributeChange type="ADD" id="diameter_where_profile_twist_amount_is_specified" numericId="14588"/>
+        <attributeChange type="ADD" id="rolling_length_where_profile_twist_amount_is_specified" numericId="14589"/>
+        <attributeChange type="ADD" id="position_of_profile_twist_datum_face" numericId="14590"/>
+        <attributeChange type="ADD" id="position_of_profile_twist_non_datum_face" numericId="14591"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_depth" numericId="14577"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_datum_diameter" numericId="14578"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_datum_length" numericId="14592"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_evaluation_reference" numericId="14593"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_evaluation_reference_length" numericId="14594"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_diameter_where_tangential_transition_starts" numericId="14595"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_diameter_where_tangential_transition_ends" numericId="14596"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_length_of_tangential_transition_start" numericId="14597"/>
+        <attributeChange type="ADD" id="triangular_tip_relief_length_of_tangential_transition_end" numericId="14598"/>
+        <attributeChange type="ADD" id="triangular_root_relief_depth" numericId="21000"/>
+        <attributeChange type="ADD" id="triangular_root_relief_datum_diameter" numericId="21001"/>
+        <attributeChange type="ADD" id="triangular_root_relief_datum_length" numericId="21002"/>
+        <attributeChange type="ADD" id="triangular_root_relief_evaluation_reference" numericId="21003"/>
+        <attributeChange type="ADD" id="triangular_root_relief_evaluation_reference_length" numericId="21004"/>
+        <attributeChange type="ADD" id="triangular_root_relief_diameter_where_tangential_transition_starts" numericId="21005"/>
+        <attributeChange type="ADD" id="triangular_root_relief_diameter_where_tangential_transition_ends" numericId="21006"/>
+        <attributeChange type="ADD" id="triangular_root_relief_length_of_tangential_transition_start" numericId="21007"/>
+        <attributeChange type="ADD" id="triangular_root_relief_length_of_tangential_transition_end" numericId="21008"/>
+        <attributeChange type="ADD" id="datum_face_orientation" numericId="14582"/>
+        <attributeChange type="ADD" id="description_datum_face" numericId="24583"/>
+        <attributeChange type="DELETE" id="mean_pitch_cone_diameter" numericId="10227"/>
+        <attributeChange type="EDIT" id="machining_allowance" numericId="735">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="q"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bottom_clearance_factor" numericId="759">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="bottom_clearance_factor" newValue="tip_clearance_factor"/>
+                <changedValue key="name" lang="en" oldValue="Bottom clearance factor" newValue="Tip clearance factor"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="addendum_modification_coefficient_after_finishing" numericId="783">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="x_F"/>
+                <changedValue key="name" lang="en" oldValue="Addendum modification coefficient (finished toothing)" newValue="Addendum modification coefficient (profile shift coefficient) finished gear"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="addendum_modification_coefficient" numericId="784">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="x"/>
+                <changedValue key="name" lang="en" oldValue="Addendum modification coefficient" newValue="Addendum modification coefficient (profile shift coefficient)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="flag_designation_addendum_modification" numericId="1001">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Flag designation addendum modification" newValue="Flag designation addendum modification (profile shift)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="α"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="sum_of_addendum_modification_coefficients" numericId="1057">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Sum of addendum modifications" newValue="Sum of addendum modification coefficients (profile shift coefficients)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="core_hardness_vickers" numericId="2896">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="yield_strength" numericId="2907">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_expansion_coefficient_plus" numericId="2913">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_expansion_coefficient_minus" numericId="2914">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_conductivity" numericId="2916">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Spezifische Wärmeleitfähigkeit" newValue="Wärmeleitfähigkeit"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tensile_strength" numericId="2941">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="R_m"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="fatigue_limit_compression_tension" numericId="2943">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="fatigue_limit_bending" numericId="2944">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="fatigue_limit_torsion" numericId="2945">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_capacity" numericId="3020">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Thermal capacity" newValue="Specific thermal capacity"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="addendum_coefficient_reference_profile" numericId="3055">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Kopfhöhenfaktor Bezugsprofil" newValue="Kopfhöhenfaktor des Werkzeug-Bezugsprofil (modulbezogen)"/>
+                <changedValue key="name" lang="en" oldValue="Addendum coefficient reference profile" newValue="Addendum coefficient tool reference profile relative to module"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="addendum_reference_profile" numericId="3056">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Kopfhöhe Bezugsprofil" newValue="Kopfhöhe Werkzeug-Bezugsprofil"/>
+                <changedValue key="name" lang="en" oldValue="Addendum reference profile" newValue="Addendum reference profile of tool"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="utilized_dedendum_reference_profile" numericId="3069">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Utilized dedenudum reference profile" newValue="Utilized dedendum reference profile"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="dedendum_coefficient_reference_profile" numericId="3072">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Fußhöhenfaktor Bezugsprofil" newValue="Fußhöhenfaktor des Werkzeug-Bezugsprofil (modulbezogen)"/>
+                <changedValue key="name" lang="en" oldValue="Dedendum coefficient reference profile" newValue="Dedendum coefficient tool reference profile relative to module"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_diameter" numericId="3078">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Protuberanzbetragsfaktor" newValue="Minimaler Schleifdurchmesser am Zahnrad"/>
+                <changedValue key="name" lang="en" oldValue="Protuberance amount factor" newValue="Minimum grinding diameter at the gear"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="surface_zone_tension_resistance" numericId="5770">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="σ_zdBRand"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="surface_zone_bending_resistance" numericId="5771">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="σ_bBRand"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="surface_zone_torsion_resistance" numericId="5772">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="σ_tBRand"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="generated_addendum_modification_coefficient" numericId="2406">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Generated addendum modification coefficient" newValue="Generated addendum modification coefficient (profile shift coefficient)"/>
+            </changedValues>
+        </attributeChange>
+    </attributeChanges>
+    <mappingChanges>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="rack_shaped_tool" attributeId="machining_allowance" attributeNumericId="735"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="tip_diameter" attributeNumericId="756"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="addendum_modification_coefficient" attributeNumericId="784"/>
+        <mappingChange type="ADD" componentId="worm_stage" attributeId="center_distance" attributeNumericId="995"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="force_acting_on_shaft_u" attributeNumericId="10249"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="force_acting_on_shaft_u" attributeNumericId="10249"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="force_acting_on_shaft_v" attributeNumericId="14000"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="force_acting_on_shaft_v" attributeNumericId="14000"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
+        <mappingChange type="ADD" componentId="worm_stage" attributeId="nominal_tangential_force_at_reference_circle" attributeNumericId="4263"/>
+        <mappingChange type="ADD" componentId="worm_stage" attributeId="gear_ratio" attributeNumericId="1064"/>
+    </mappingChanges>
+</rexsChangelog>

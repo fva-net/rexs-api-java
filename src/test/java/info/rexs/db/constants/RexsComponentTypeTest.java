@@ -21,13 +21,13 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
-public class ComponentTypeTest {
+public class RexsComponentTypeTest {
 
 	@Test
 	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				ComponentType.create(null);
+				RexsComponentType.create(null);
 			})
 			.withMessage("id cannot be empty");
 	}
@@ -36,52 +36,52 @@ public class ComponentTypeTest {
 	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				ComponentType.create("");
+				RexsComponentType.create("");
 			})
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_newComponentTypeHasId() throws Exception {
-		ComponentType newComponentType = ComponentType.create("foo");
+		RexsComponentType newComponentType = RexsComponentType.create("foo");
 		assertThat(newComponentType.getId()).isEqualTo("foo");
 	}
 
 	@Test
 	public void findById_givenNullReturnsNull() {
-		assertThat(ComponentType.findById(null)).isNull();
+		assertThat(RexsComponentType.findById(null)).isNull();
 	}
 
 	@Test
 	public void findById_givenUnknownIdReturnsNull() {
-		assertThat(ComponentType.findById("foo_bar")).isNull();
+		assertThat(RexsComponentType.findById("foo_bar")).isNull();
 	}
 
 	@Test
 	public void findById_returnsRexsStandardComponentType() throws Exception {
-		ComponentType componentType = ComponentType.findById(ComponentType.coupling.getId());
+		RexsComponentType componentType = RexsComponentType.findById(RexsComponentType.coupling.getId());
 		assertThat(componentType).isNotNull();
-		assertThat(componentType.getId()).isEqualTo(ComponentType.coupling.getId());
+		assertThat(componentType.getId()).isEqualTo(RexsComponentType.coupling.getId());
 	}
 
 	@Test
 	public void findById_returnsNewlyCreatedComponentType() throws Exception {
-		ComponentType.create("bar");
-		ComponentType newComponentType = ComponentType.findById("bar");
+		RexsComponentType.create("bar");
+		RexsComponentType newComponentType = RexsComponentType.findById("bar");
 		assertThat(newComponentType).isNotNull();
 		assertThat(newComponentType.getId()).isEqualTo("bar");
 	}
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(ComponentType.coupling.equals(ComponentType.coupling)).isTrue();
-		assertThat(ComponentType.create("test1")).isEqualTo(ComponentType.create("test1"));
+		assertThat(RexsComponentType.coupling.equals(RexsComponentType.coupling)).isTrue();
+		assertThat(RexsComponentType.create("test1")).isEqualTo(RexsComponentType.create("test1"));
 	}
 
 	@Test
 	public void equals_notEqualObjects() {
-		assertThat(ComponentType.bevel_stage).isNotEqualTo(ComponentType.bevel_gear);
-		assertThat(ComponentType.bevel_stage).isNotEqualTo("bevel_stage");
-		assertThat(ComponentType.create("test2")).isNotEqualTo(ComponentType.create("test3"));
+		assertThat(RexsComponentType.bevel_stage).isNotEqualTo(RexsComponentType.bevel_gear);
+		assertThat(RexsComponentType.bevel_stage).isNotEqualTo("bevel_stage");
+		assertThat(RexsComponentType.create("test2")).isNotEqualTo(RexsComponentType.create("test3"));
 	}
 }

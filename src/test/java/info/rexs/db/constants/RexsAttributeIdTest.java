@@ -21,13 +21,13 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
-public class AttributeIdTest {
+public class RexsAttributeIdTest {
 
 	@Test
 	public void create_givenNullIdThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				AttributeId.create(null, UnitId.kg);
+				RexsAttributeId.create(null, RexsUnitId.kg);
 			})
 			.withMessage("id cannot be empty");
 	}
@@ -36,7 +36,7 @@ public class AttributeIdTest {
 	public void create_givenNullUnitThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 		.isThrownBy(() -> {
-			AttributeId.create("foo_bar", null);
+			RexsAttributeId.create("foo_bar", null);
 		})
 		.withMessage("unit cannot be empty");
 	}
@@ -45,55 +45,55 @@ public class AttributeIdTest {
 	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				AttributeId.create("", UnitId.kg);
+				RexsAttributeId.create("", RexsUnitId.kg);
 			})
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_newAttributeIdHasIdAndUnit() throws Exception {
-		AttributeId newAttributeId = AttributeId.create("foo", UnitId.kg);
+		RexsAttributeId newAttributeId = RexsAttributeId.create("foo", RexsUnitId.kg);
 		assertThat(newAttributeId.getId()).isEqualTo("foo");
-		assertThat(newAttributeId.getUnit()).isEqualTo(UnitId.kg);
+		assertThat(newAttributeId.getUnit()).isEqualTo(RexsUnitId.kg);
 	}
 
 	@Test
 	public void findById_givenNullReturnsNull() {
-		assertThat(AttributeId.findById(null)).isNull();
+		assertThat(RexsAttributeId.findById(null)).isNull();
 	}
 
 	@Test
 	public void findById_givenUnknownIdReturnsNull() {
-		assertThat(AttributeId.findById("foo_bar")).isNull();
+		assertThat(RexsAttributeId.findById("foo_bar")).isNull();
 	}
 
 	@Test
 	public void findById_returnsRexsStandardAttributeId() throws Exception {
-		AttributeId attributeId = AttributeId.findById(AttributeId.width.getId());
+		RexsAttributeId attributeId = RexsAttributeId.findById(RexsAttributeId.width.getId());
 		assertThat(attributeId).isNotNull();
-		assertThat(attributeId.getId()).isEqualTo(AttributeId.width.getId());
+		assertThat(attributeId.getId()).isEqualTo(RexsAttributeId.width.getId());
 	}
 
 	@Test
 	public void findById_returnsNewlyCreatedAttributeId() throws Exception {
-		AttributeId.create("bar", UnitId.kg);
-		AttributeId newAttributeId = AttributeId.findById("bar");
+		RexsAttributeId.create("bar", RexsUnitId.kg);
+		RexsAttributeId newAttributeId = RexsAttributeId.findById("bar");
 		assertThat(newAttributeId).isNotNull();
 		assertThat(newAttributeId.getId()).isEqualTo("bar");
-		assertThat(newAttributeId.getUnit()).isEqualTo(UnitId.kg);
+		assertThat(newAttributeId.getUnit()).isEqualTo(RexsUnitId.kg);
 	}
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(AttributeId.number_of_teeth.equals(AttributeId.number_of_teeth)).isTrue();
-		assertThat(AttributeId.create("test1", UnitId.kg)).isEqualTo(AttributeId.create("test1", UnitId.kg));
+		assertThat(RexsAttributeId.number_of_teeth.equals(RexsAttributeId.number_of_teeth)).isTrue();
+		assertThat(RexsAttributeId.create("test1", RexsUnitId.kg)).isEqualTo(RexsAttributeId.create("test1", RexsUnitId.kg));
 	}
 
 	@Test
 	public void equals_notEqualObjects() {
-		assertThat(AttributeId.length).isNotEqualTo(AttributeId.width);
-		assertThat(AttributeId.length).isNotEqualTo("length");
-		assertThat(AttributeId.create("test2", UnitId.kg)).isNotEqualTo(AttributeId.create("test3", UnitId.kg));
-		assertThat(AttributeId.create("test2", UnitId.kg)).isNotEqualTo(AttributeId.create("test2", UnitId.degree));
+		assertThat(RexsAttributeId.length).isNotEqualTo(RexsAttributeId.width);
+		assertThat(RexsAttributeId.length).isNotEqualTo("length");
+		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test3", RexsUnitId.kg));
+		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test2", RexsUnitId.degree));
 	}
 }

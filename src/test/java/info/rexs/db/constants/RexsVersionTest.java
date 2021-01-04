@@ -21,18 +21,18 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
-public class VersionTest {
+public class RexsVersionTest {
 
 	@Test
 	public void getLatest_returnsNotNull() throws Exception {
-		assertThat(Version.getLatest()).isNotNull();
+		assertThat(RexsVersion.getLatest()).isNotNull();
 	}
 
 	@Test
 	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				Version.create(null);
+				RexsVersion.create(null);
 			})
 			.withMessage("name cannot be empty");
 	}
@@ -41,61 +41,61 @@ public class VersionTest {
 	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				Version.create("");
+				RexsVersion.create("");
 			})
 			.withMessage("name cannot be empty");
 	}
 
 	@Test
 	public void create_givenNullAlternativeNamesDoesNotCrash() throws Exception {
-		Version newVersion = Version.create("a.b", (String[])null);
+		RexsVersion newVersion = RexsVersion.create("a.b", (String[])null);
 		assertThat(newVersion.getName()).isEqualTo("a.b");
 	}
 
 	@Test
 	public void create_newVersionHasName() throws Exception {
-		Version newVersion = Version.create("a.b");
+		RexsVersion newVersion = RexsVersion.create("a.b");
 		assertThat(newVersion.getName()).isEqualTo("a.b");
 	}
 
 	@Test
 	public void findByName_givenNullReturnsNull() {
-		assertThat(Version.findByName(null)).isNull();
+		assertThat(RexsVersion.findByName(null)).isNull();
 	}
 
 	@Test
 	public void findByName_givenUnknownNameReturnsNull() {
-		assertThat(Version.findByName("foo.bar")).isNull();
+		assertThat(RexsVersion.findByName("foo.bar")).isNull();
 	}
 
 	@Test
 	public void findByName_returnsRexsStandardVersion() throws Exception {
-		Version version = Version.findByName(Version.V1_0.getName());
+		RexsVersion version = RexsVersion.findByName(RexsVersion.V1_0.getName());
 		assertThat(version).isNotNull();
-		assertThat(version.getName()).isEqualTo(Version.V1_0.getName());
+		assertThat(version.getName()).isEqualTo(RexsVersion.V1_0.getName());
 	}
 
 	@Test
 	public void findByName_returnsNewlyCreatedVersion() throws Exception {
-		Version.create("b.c");
-		Version newVersion = Version.findByName("b.c");
+		RexsVersion.create("b.c");
+		RexsVersion newVersion = RexsVersion.findByName("b.c");
 		assertThat(newVersion).isNotNull();
 		assertThat(newVersion.getName()).isEqualTo("b.c");
 	}
 
 	@Test
 	public void findByName_returnsNewlyCreatedVersionByAlternativeVersionName() throws Exception {
-		Version.create("c.d", "d.e", "e.f");
+		RexsVersion.create("c.d", "d.e", "e.f");
 
-		Version newVersionByName = Version.findByName("c.d");
+		RexsVersion newVersionByName = RexsVersion.findByName("c.d");
 		assertThat(newVersionByName).isNotNull();
 		assertThat(newVersionByName.getName()).isEqualTo("c.d");
 
-		Version newVersionByAlternativeName = Version.findByName("d.e");
+		RexsVersion newVersionByAlternativeName = RexsVersion.findByName("d.e");
 		assertThat(newVersionByAlternativeName).isNotNull();
 		assertThat(newVersionByAlternativeName.getName()).isEqualTo("c.d");
 
-		newVersionByAlternativeName = Version.findByName("e.f");
+		newVersionByAlternativeName = RexsVersion.findByName("e.f");
 		assertThat(newVersionByAlternativeName).isNotNull();
 		assertThat(newVersionByAlternativeName.getName()).isEqualTo("c.d");
 	}

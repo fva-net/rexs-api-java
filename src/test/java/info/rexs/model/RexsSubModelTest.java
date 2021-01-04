@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.ComponentType;
+import info.rexs.db.constants.RexsComponentType;
 import info.rexs.model.jaxb.Accumulation;
 import info.rexs.model.jaxb.Component;
 import info.rexs.model.jaxb.LoadCase;
@@ -120,7 +120,7 @@ public class RexsSubModelTest {
 	public void getComponent_componentInSubModelReturnsComponent() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.cylindrical_gear.getId());
+		rawComponent.setType(RexsComponentType.cylindrical_gear.getId());
 
 		LoadCase loadCase = new LoadCase();
 		loadCase.setId(41);
@@ -131,7 +131,7 @@ public class RexsSubModelTest {
 		RexsComponent rexsComponent = rexsSubModel.getComponent(1);
 		assertThat(rexsComponent).isNotNull();
 		assertThat(rexsComponent.getId()).isEqualTo(1);
-		assertThat(rexsComponent.getType()).isEqualTo(ComponentType.cylindrical_gear);
+		assertThat(rexsComponent.getType()).isEqualTo(RexsComponentType.cylindrical_gear);
 		assertThat(rexsComponent.getRawComponent()).isEqualTo(rawComponent);
 	}
 
@@ -139,11 +139,11 @@ public class RexsSubModelTest {
 	public void changeComponentId_nonExistingComponentIdIgnoresMethodCall() throws Exception {
 		Component rawComponent1 = new Component();
 		rawComponent1.setId(1);
-		rawComponent1.setType(ComponentType.cylindrical_gear.getId());
+		rawComponent1.setType(RexsComponentType.cylindrical_gear.getId());
 
 		Component rawComponent2 = new Component();
 		rawComponent2.setId(2);
-		rawComponent2.setType(ComponentType.bevel_gear.getId());
+		rawComponent2.setType(RexsComponentType.bevel_gear.getId());
 
 		LoadCase loadCase = new LoadCase();
 		loadCase.setId(41);
@@ -163,11 +163,11 @@ public class RexsSubModelTest {
 	public void changeComponentId_changesIdOfComponent() throws Exception {
 		Component rawComponent1 = new Component();
 		rawComponent1.setId(1);
-		rawComponent1.setType(ComponentType.cylindrical_gear.getId());
+		rawComponent1.setType(RexsComponentType.cylindrical_gear.getId());
 
 		Component rawComponent2 = new Component();
 		rawComponent2.setId(2);
-		rawComponent2.setType(ComponentType.bevel_gear.getId());
+		rawComponent2.setType(RexsComponentType.bevel_gear.getId());
 
 		LoadCase loadCase = new LoadCase();
 		loadCase.setId(41);

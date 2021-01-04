@@ -19,9 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.AttributeId;
-import info.rexs.db.constants.ComponentType;
-import info.rexs.db.constants.UnitId;
+import info.rexs.db.constants.RexsAttributeId;
+import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 
@@ -30,19 +30,19 @@ public class RexsComponentTest {
 	@Test
 	public void componentConstructor_getterMatchesValuePassedToConstructor() throws Exception {
 		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(AttributeId.overrolling_frequency_inner_ring.getId());
-		rawAttribute.setUnit(UnitId.hertz.getId());
+		rawAttribute.setId(RexsAttributeId.overrolling_frequency_inner_ring.getId());
+		rawAttribute.setUnit(RexsUnitId.hertz.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.setName("bar");
 		rawComponent.getAttribute().add(rawAttribute);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
 		assertThat(rexsComponent.getId()).isEqualTo(1);
-		assertThat(rexsComponent.getType()).isEqualTo(ComponentType.coupling);
+		assertThat(rexsComponent.getType()).isEqualTo(RexsComponentType.coupling);
 		assertThat(rexsComponent.getName()).isEqualTo("bar");
 		assertThat(rexsComponent.getRawComponent()).isEqualTo(rawComponent);
 		assertThat(rexsComponent.getAttributes().size()).isEqualTo(1);
@@ -53,7 +53,7 @@ public class RexsComponentTest {
 	public void getName_returnsEmptyStringIfNull() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.setName(null);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
@@ -65,247 +65,247 @@ public class RexsComponentTest {
 	public void hasAttribute_attributeNotInComponentReturnsFalse() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		assertThat(rexsComponent.hasAttribute(AttributeId.account_for_gravity)).isFalse();
+		assertThat(rexsComponent.hasAttribute(RexsAttributeId.account_for_gravity)).isFalse();
 	}
 
 	@Test
 	public void hasAttribute_attributeInComponentReturnsTrue() throws Exception {
 		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(AttributeId.overrolling_frequency_inner_ring.getId());
-		rawAttribute.setUnit(UnitId.hertz.getId());
+		rawAttribute.setId(RexsAttributeId.overrolling_frequency_inner_ring.getId());
+		rawAttribute.setUnit(RexsUnitId.hertz.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.getAttribute().add(rawAttribute);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		assertThat(rexsComponent.hasAttribute(AttributeId.overrolling_frequency_inner_ring)).isTrue();
+		assertThat(rexsComponent.hasAttribute(RexsAttributeId.overrolling_frequency_inner_ring)).isTrue();
 	}
 
 	@Test
 	public void getAttribute_attributeNotInComponentReturnsNull() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity)).isNull();
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity)).isNull();
 	}
 
 	@Test
 	public void getAttribute_attributeInComponentReturnsAttribute() throws Exception {
 		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(AttributeId.overrolling_frequency_inner_ring.getId());
-		rawAttribute.setUnit(UnitId.hertz.getId());
+		rawAttribute.setId(RexsAttributeId.overrolling_frequency_inner_ring.getId());
+		rawAttribute.setUnit(RexsUnitId.hertz.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.getAttribute().add(rawAttribute);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		RexsAttribute rexsAttribute = rexsComponent.getAttribute(AttributeId.overrolling_frequency_inner_ring);
+		RexsAttribute rexsAttribute = rexsComponent.getAttribute(RexsAttributeId.overrolling_frequency_inner_ring);
 		assertThat(rexsAttribute).isNotNull();
 		assertThat(rexsAttribute.getRawAttribute()).isEqualTo(rawAttribute);
-		assertThat(rexsAttribute.getAttributeId()).isEqualTo(AttributeId.overrolling_frequency_inner_ring);
-		assertThat(rexsAttribute.getUnit()).isEqualTo(UnitId.hertz);
+		assertThat(rexsAttribute.getAttributeId()).isEqualTo(RexsAttributeId.overrolling_frequency_inner_ring);
+		assertThat(rexsAttribute.getUnit()).isEqualTo(RexsUnitId.hertz);
 	}
 
 	@Test
 	public void addAttribute_replacesExistingAttribute() throws Exception {
 		Attribute rawAttribute1 = new Attribute();
-		rawAttribute1.setId(AttributeId.number_of_gears.getId());
-		rawAttribute1.setUnit(UnitId.none.getId());
+		rawAttribute1.setId(RexsAttributeId.number_of_gears.getId());
+		rawAttribute1.setUnit(RexsUnitId.none.getId());
 
 		Attribute rawAttribute2 = new Attribute();
-		rawAttribute2.setId(AttributeId.number_of_teeth.getId());
-		rawAttribute2.setUnit(UnitId.none.getId());
+		rawAttribute2.setId(RexsAttributeId.number_of_teeth.getId());
+		rawAttribute2.setUnit(RexsUnitId.none.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.getAttribute().add(rawAttribute1);
 		rawComponent.getAttribute().add(rawAttribute2);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
-		RexsAttribute rexsAttribute = new RexsAttribute(AttributeId.number_of_teeth);
+		RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.number_of_teeth);
 		rexsAttribute.setIntegerValue(42);
 		rexsComponent.addAttribute(rexsAttribute);
 
 		assertThat(rexsComponent.getAttributes().size()).isEqualTo(2);
-		assertThat(rexsComponent.getAttribute(AttributeId.number_of_teeth).getIntegerValue()).isEqualTo(42);
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.number_of_teeth).getIntegerValue()).isEqualTo(42);
 	}
 
 	@Test
 	public void addAttribute_addsNonExistingAttribute() throws Exception {
 		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(AttributeId.number_of_teeth.getId());
-		rawAttribute.setUnit(UnitId.none.getId());
+		rawAttribute.setId(RexsAttributeId.number_of_teeth.getId());
+		rawAttribute.setUnit(RexsUnitId.none.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.getAttribute().add(rawAttribute);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
-		RexsAttribute rexsAttribute = new RexsAttribute(AttributeId.number_of_gears);
+		RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.number_of_gears);
 		rexsComponent.addAttribute(rexsAttribute);
 
 		assertThat(rexsComponent.getAttributes().size()).isEqualTo(2);
-		assertThat(rexsComponent.getAttribute(AttributeId.number_of_teeth)).isNotNull();
-		assertThat(rexsComponent.getAttribute(AttributeId.number_of_gears)).isNotNull();
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.number_of_teeth)).isNotNull();
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.number_of_gears)).isNotNull();
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithStringValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, "foo_bar");
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, "foo_bar");
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getStringValue()).isEqualTo("foo_bar");
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getStringValue()).isEqualTo("foo_bar");
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithBooleanValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, Boolean.TRUE);
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, Boolean.TRUE);
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getBooleanValue()).isTrue();
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getBooleanValue()).isTrue();
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithIntegerValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, 42);
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, 42);
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getIntegerValue()).isEqualTo(42);
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getIntegerValue()).isEqualTo(42);
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithFloatingPointValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.addendum_basic_profile, 8.15);
+		rexsComponent.addAttribute(RexsAttributeId.addendum_basic_profile, 8.15);
 
-		assertThat(rexsComponent.getAttribute(AttributeId.addendum_basic_profile).getDoubleValue(UnitId.mm)).isEqualTo(8.15);
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.addendum_basic_profile).getDoubleValue(RexsUnitId.mm)).isEqualTo(8.15);
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithStringArrayValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, new String[] {"foo", "bar"});
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, new String[] {"foo", "bar"});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getStringArrayValue()).isEqualTo(new String[] {"foo", "bar"});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getStringArrayValue()).isEqualTo(new String[] {"foo", "bar"});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithBooleanArrayValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, new Boolean[] {Boolean.TRUE, Boolean.FALSE});
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, new Boolean[] {Boolean.TRUE, Boolean.FALSE});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getBooleanArrayValue()).isEqualTo(new Boolean[] {Boolean.TRUE, Boolean.FALSE});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getBooleanArrayValue()).isEqualTo(new Boolean[] {Boolean.TRUE, Boolean.FALSE});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithIntegerArrayValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, new Integer[] {8, 15});
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, new Integer[] {8, 15});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getIntegerArrayValue()).isEqualTo(new Integer[] {8, 15});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getIntegerArrayValue()).isEqualTo(new Integer[] {8, 15});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithFloatingPointArrayValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.overrolling_frequency_inner_ring, new Double[] {23.33, 24.8});
+		rexsComponent.addAttribute(RexsAttributeId.overrolling_frequency_inner_ring, new Double[] {23.33, 24.8});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.overrolling_frequency_inner_ring).getDoubleArrayValue(UnitId.hertz)).isEqualTo(new Double[] {23.33, 24.8});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.overrolling_frequency_inner_ring).getDoubleArrayValue(RexsUnitId.hertz)).isEqualTo(new Double[] {23.33, 24.8});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithStringMatrixValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, new String[][] {{"foo"}, {"bar"}});
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, new String[][] {{"foo"}, {"bar"}});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getStringMatrixValue()).isEqualTo(new String[][] {{"foo"}, {"bar"}});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getStringMatrixValue()).isEqualTo(new String[][] {{"foo"}, {"bar"}});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithBooleanMatrixValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, new Boolean[][] {{Boolean.TRUE}, {Boolean.FALSE}});
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, new Boolean[][] {{Boolean.TRUE}, {Boolean.FALSE}});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getBooleanMatrixValue()).isEqualTo(new Boolean[][] {{Boolean.TRUE}, {Boolean.FALSE}});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getBooleanMatrixValue()).isEqualTo(new Boolean[][] {{Boolean.TRUE}, {Boolean.FALSE}});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithIntegerMatrixValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.account_for_gravity, new Integer[][] {{8}, {15}});
+		rexsComponent.addAttribute(RexsAttributeId.account_for_gravity, new Integer[][] {{8}, {15}});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.account_for_gravity).getIntegerMatrixValue()).isEqualTo(new Integer[][] {{8}, {15}});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity).getIntegerMatrixValue()).isEqualTo(new Integer[][] {{8}, {15}});
 	}
 
 	@Test
 	public void addAttribute_createAndAddsAttributeWithFloatingPointMatrixValue() throws Exception {
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
 
-		rexsComponent.addAttribute(AttributeId.addendum_modification, new Double[][] {{23.33}, {24.8}});
+		rexsComponent.addAttribute(RexsAttributeId.addendum_modification, new Double[][] {{23.33}, {24.8}});
 
-		assertThat(rexsComponent.getAttribute(AttributeId.addendum_modification).getDoubleMatrixValue(UnitId.mm)).isEqualTo(new Double[][] {{23.33}, {24.8}});
+		assertThat(rexsComponent.getAttribute(RexsAttributeId.addendum_modification).getDoubleMatrixValue(RexsUnitId.mm)).isEqualTo(new Double[][] {{23.33}, {24.8}});
 	}
 
 	@Test
@@ -339,37 +339,37 @@ public class RexsComponentTest {
 	@Test
 	public void deleteAttribute_notIncludedAttributeIsIgnored() throws Exception {
 		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(AttributeId.overrolling_frequency_inner_ring.getId());
-		rawAttribute.setUnit(UnitId.hertz.getId());
+		rawAttribute.setId(RexsAttributeId.overrolling_frequency_inner_ring.getId());
+		rawAttribute.setUnit(RexsUnitId.hertz.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.getAttribute().add(rawAttribute);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
-		rexsComponent.deleteAttribute(AttributeId.number_of_gears);
+		rexsComponent.deleteAttribute(RexsAttributeId.number_of_gears);
 
 		assertThat(rexsComponent.getAttributes().size()).isEqualTo(1);
-		assertThat(rexsComponent.hasAttribute(AttributeId.overrolling_frequency_inner_ring)).isTrue();
+		assertThat(rexsComponent.hasAttribute(RexsAttributeId.overrolling_frequency_inner_ring)).isTrue();
 	}
 
 	@Test
 	public void deleteAttribute_deletesIncludedAttribute() throws Exception {
 		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(AttributeId.overrolling_frequency_inner_ring.getId());
-		rawAttribute.setUnit(UnitId.hertz.getId());
+		rawAttribute.setId(RexsAttributeId.overrolling_frequency_inner_ring.getId());
+		rawAttribute.setUnit(RexsUnitId.hertz.getId());
 
 		Component rawComponent = new Component();
 		rawComponent.setId(1);
-		rawComponent.setType(ComponentType.coupling.getId());
+		rawComponent.setType(RexsComponentType.coupling.getId());
 		rawComponent.getAttribute().add(rawAttribute);
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
-		rexsComponent.deleteAttribute(AttributeId.overrolling_frequency_inner_ring);
+		rexsComponent.deleteAttribute(RexsAttributeId.overrolling_frequency_inner_ring);
 
 		assertThat(rexsComponent.getAttributes().isEmpty()).isTrue();
-		assertThat(rexsComponent.hasAttribute(AttributeId.overrolling_frequency_inner_ring)).isFalse();
+		assertThat(rexsComponent.hasAttribute(RexsAttributeId.overrolling_frequency_inner_ring)).isFalse();
 	}
 
 	@Test

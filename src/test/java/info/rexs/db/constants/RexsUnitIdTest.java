@@ -21,13 +21,13 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
-public class UnitIdTest {
+public class RexsUnitIdTest {
 
 	@Test
 	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				UnitId.create(null);
+				RexsUnitId.create(null);
 			})
 			.withMessage("id cannot be empty");
 	}
@@ -36,38 +36,38 @@ public class UnitIdTest {
 	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				UnitId.create("");
+				RexsUnitId.create("");
 			})
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_newUnitIdHasId() throws Exception {
-		UnitId newUnitId = UnitId.create("foo");
+		RexsUnitId newUnitId = RexsUnitId.create("foo");
 		assertThat(newUnitId.getId()).isEqualTo("foo");
 	}
 
 	@Test
 	public void findById_givenNullReturnsNull() {
-		assertThat(UnitId.findById(null)).isNull();
+		assertThat(RexsUnitId.findById(null)).isNull();
 	}
 
 	@Test
 	public void findById_givenUnknownIdReturnsNull() {
-		assertThat(UnitId.findById("foo_bar")).isNull();
+		assertThat(RexsUnitId.findById("foo_bar")).isNull();
 	}
 
 	@Test
 	public void findById_returnsRexsStandardUnitId() throws Exception {
-		UnitId unitId = UnitId.findById(UnitId.hertz.getId());
+		RexsUnitId unitId = RexsUnitId.findById(RexsUnitId.hertz.getId());
 		assertThat(unitId).isNotNull();
-		assertThat(unitId.getId()).isEqualTo(UnitId.hertz.getId());
+		assertThat(unitId.getId()).isEqualTo(RexsUnitId.hertz.getId());
 	}
 
 	@Test
 	public void findById_returnsNewlyCreatedUnitId() throws Exception {
-		UnitId.create("bar");
-		UnitId newUnitId = UnitId.findById("bar");
+		RexsUnitId.create("bar");
+		RexsUnitId newUnitId = RexsUnitId.findById("bar");
 		assertThat(newUnitId).isNotNull();
 		assertThat(newUnitId.getId()).isEqualTo("bar");
 	}

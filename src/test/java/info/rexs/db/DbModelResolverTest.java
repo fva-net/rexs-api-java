@@ -27,10 +27,10 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.AttributeId;
-import info.rexs.db.constants.ComponentType;
-import info.rexs.db.constants.UnitId;
-import info.rexs.db.constants.Version;
+import info.rexs.db.constants.RexsAttributeId;
+import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.RexsModel;
@@ -41,7 +41,7 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_unknownDbModelFileReturnsNull() throws Exception {
-		Version newVersion = Version.create("r.s");
+		RexsVersion newVersion = RexsVersion.create("r.s");
 		assertThat(DbModelResolver.getInstance().resolve(newVersion, Locale.getDefault())).isNull();
 
 		assertThat(DbModelResolver.getInstance().resolve(null)).isNull();
@@ -49,7 +49,7 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_invalidDbModelFileResolverThrowsIllegalStateException() throws Exception {
-		Version newVersion = Version.create("s.t");
+		RexsVersion newVersion = RexsVersion.create("s.t");
 		DbModelFile.create(newVersion, Locale.GERMAN, new DbModelFileResolver() {
 			@Override
 			public InputStream openInputStream(DbModelFile dbModelFile) {
@@ -66,16 +66,16 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
-		RexsModel rexsModel1 = DbModelResolver.getInstance().resolve(Version.getLatest(), Locale.ENGLISH);
-		RexsModel rexsModel2 = DbModelResolver.getInstance().resolve(Version.getLatest(), Locale.ENGLISH);
+		RexsModel rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest(), Locale.ENGLISH);
+		RexsModel rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest(), Locale.ENGLISH);
 
 		assertThat(rexsModel1).isSameAs(rexsModel2);
 	}
 
 	@Test
 	public void resolve_everyRexsStandardVersionHasDbModel() throws Exception {
-		List<Version> rexsStandardVersions = Stream.of(Version.V1_0, Version.V1_1, Version.V1_2).collect(Collectors.toList());
-		for (Version version : rexsStandardVersions) {
+		List<RexsVersion> rexsStandardVersions = Stream.of(RexsVersion.V1_0, RexsVersion.V1_1, RexsVersion.V1_2).collect(Collectors.toList());
+		for (RexsVersion version : rexsStandardVersions) {
 			RexsModel rexsModelEn = DbModelResolver.getInstance().resolve(version, Locale.ENGLISH);
 			assertThat(rexsModelEn.getVersion()).isEqualTo(version.getName());
 
@@ -85,7 +85,7 @@ public class DbModelResolverTest {
 			assertThat(rexsModelEn.getUnits().getUnit().size()).isEqualTo(rexsModelDe.getUnits().getUnit().size());
 			List<String> ids = new ArrayList<>();
 			for (Unit unit : rexsModelEn.getUnits().getUnit()) {
-				assertThat(UnitId.findById(unit.getName())).isNotNull();
+				assertThat(RexsUnitId.findById(unit.getName())).isNotNull();
 				ids.add(unit.getName());
 			}
 			for (Unit unit : rexsModelDe.getUnits().getUnit()) {
@@ -95,7 +95,7 @@ public class DbModelResolverTest {
 			assertThat(rexsModelEn.getValueTypes().getValueType().size()).isEqualTo(rexsModelEn.getValueTypes().getValueType().size());
 			ids.clear();
 			for (ValueType valueType : rexsModelEn.getValueTypes().getValueType()) {
-				assertThat(info.rexs.db.constants.ValueType.findByKey(valueType.getName())).isNotNull();
+				assertThat(info.rexs.db.constants.RexsValueType.findByKey(valueType.getName())).isNotNull();
 				ids.add(valueType.getName());
 			}
 			for (ValueType valueType : rexsModelDe.getValueTypes().getValueType()) {
@@ -105,7 +105,7 @@ public class DbModelResolverTest {
 			assertThat(rexsModelEn.getComponents().getComponent().size()).isEqualTo(rexsModelDe.getComponents().getComponent().size());
 			ids.clear();
 			for (Component component : rexsModelEn.getComponents().getComponent()) {
-				assertThat(ComponentType.findById(component.getComponentId())).isNotNull();
+				assertThat(RexsComponentType.findById(component.getComponentId())).isNotNull();
 				ids.add(component.getComponentId());
 			}
 			for (Component component : rexsModelDe.getComponents().getComponent()) {
@@ -115,7 +115,7 @@ public class DbModelResolverTest {
 			assertThat(rexsModelEn.getAttributes().getAttribute().size()).isEqualTo(rexsModelDe.getAttributes().getAttribute().size());
 			ids.clear();
 			for (Attribute attribute : rexsModelEn.getAttributes().getAttribute()) {
-				assertThat(AttributeId.findById(attribute.getAttributeId())).isNotNull();
+				assertThat(RexsAttributeId.findById(attribute.getAttributeId())).isNotNull();
 				ids.add(attribute.getAttributeId());
 			}
 			for (Attribute attrbute : rexsModelDe.getAttributes().getAttribute()) {

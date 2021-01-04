@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexsChangelog fromVersion="1.0" toVersion="1.1">
+    <componentChanges>
+        <componentChange type="ADD" id="coupling"/>
+        <componentChange type="ADD" id="planetary_stage"/>
+        <componentChange type="ADD" id="planet_carrier"/>
+        <componentChange type="ADD" id="side_plate"/>
+        <componentChange type="ADD" id="ring_gear"/>
+        <componentChange type="ADD" id="assembly_group"/>
+        <componentChange type="ADD" id="reduction_point"/>
+        <componentChange type="DELETE" id="fixed_coupling"/>
+        <componentChange type="DELETE" id="general_gear"/>
+        <componentChange type="DELETE" id="general_stage"/>
+        <componentChange type="DELETE" id="root"/>
+    </componentChanges>
+    <attributeChanges>
+        <attributeChange type="ADD" id="displacement_inner_side_u" numericId="10170"/>
+        <attributeChange type="ADD" id="displacement_inner_side_v" numericId="10403"/>
+        <attributeChange type="ADD" id="displacement_inner_side_w" numericId="10404"/>
+        <attributeChange type="ADD" id="force_acting_on_inner_component_u" numericId="10412"/>
+        <attributeChange type="ADD" id="force_acting_on_inner_component_v" numericId="10413"/>
+        <attributeChange type="ADD" id="force_acting_on_inner_component_w" numericId="10414"/>
+        <attributeChange type="ADD" id="torque_acting_on_inner_component_u" numericId="10192"/>
+        <attributeChange type="ADD" id="torque_acting_on_inner_component_v" numericId="10186"/>
+        <attributeChange type="ADD" id="torque_acting_on_inner_component_w" numericId="10187"/>
+        <attributeChange type="ADD" id="tilting_inner_side_u" numericId="10190"/>
+        <attributeChange type="ADD" id="tilting_inner_side_v" numericId="10408"/>
+        <attributeChange type="ADD" id="tilting_inner_side_w" numericId="10409"/>
+        <attributeChange type="ADD" id="displacement_outer_side_u" numericId="10405"/>
+        <attributeChange type="ADD" id="displacement_outer_side_v" numericId="10406"/>
+        <attributeChange type="ADD" id="displacement_outer_side_w" numericId="10407"/>
+        <attributeChange type="ADD" id="force_acting_on_outer_component_u" numericId="10415"/>
+        <attributeChange type="ADD" id="force_acting_on_outer_component_v" numericId="10416"/>
+        <attributeChange type="ADD" id="force_acting_on_outer_component_w" numericId="10185"/>
+        <attributeChange type="ADD" id="torque_acting_on_outer_component_u" numericId="10193"/>
+        <attributeChange type="ADD" id="torque_acting_on_outer_component_v" numericId="10188"/>
+        <attributeChange type="ADD" id="torque_acting_on_outer_component_w" numericId="10189"/>
+        <attributeChange type="ADD" id="tilting_outer_side_u" numericId="10191"/>
+        <attributeChange type="ADD" id="tilting_outer_side_v" numericId="14010"/>
+        <attributeChange type="ADD" id="tilting_outer_side_w" numericId="10411"/>
+        <attributeChange type="ADD" id="rotational_stiffness" numericId="8945"/>
+        <attributeChange type="ADD" id="u_coordinates_of_beam_nodes" numericId="8873"/>
+        <attributeChange type="ADD" id="displacement_v_of_nodes" numericId="8874"/>
+        <attributeChange type="ADD" id="displacement_w_of_nodes" numericId="8875"/>
+        <attributeChange type="ADD" id="displacement_u_of_nodes" numericId="10211"/>
+        <attributeChange type="ADD" id="torsion_u" numericId="10212"/>
+        <attributeChange type="ADD" id="force_distribution_v" numericId="10105"/>
+        <attributeChange type="ADD" id="force_distribution_w" numericId="10106"/>
+        <attributeChange type="ADD" id="force_distribution_u" numericId="10210"/>
+        <attributeChange type="ADD" id="torque_distribution_u" numericId="9846"/>
+        <attributeChange type="ADD" id="torque_distribution_v" numericId="9847"/>
+        <attributeChange type="ADD" id="torque_distribution_w" numericId="9848"/>
+        <attributeChange type="ADD" id="load_distribution_along_face_width" numericId="5914"/>
+        <attributeChange type="ADD" id="load_distribution_node_positions" numericId="5913"/>
+        <attributeChange type="ADD" id="face_load_factor_flank" numericId="12390"/>
+        <attributeChange type="ADD" id="face_load_factor_root" numericId="12612"/>
+        <attributeChange type="ADD" id="force_acting_on_shaft_u" numericId="10249"/>
+        <attributeChange type="ADD" id="force_acting_on_shaft_v" numericId="14000"/>
+        <attributeChange type="ADD" id="force_acting_on_shaft_w" numericId="14001"/>
+        <attributeChange type="ADD" id="torque_acting_on_shaft_v" numericId="14002"/>
+        <attributeChange type="ADD" id="torque_acting_on_shaft_w" numericId="14003"/>
+        <attributeChange type="ADD" id="displacement_u" numericId="10205"/>
+        <attributeChange type="ADD" id="displacement_v" numericId="10206"/>
+        <attributeChange type="ADD" id="displacement_w" numericId="10207"/>
+        <attributeChange type="ADD" id="tilting_v" numericId="10208"/>
+        <attributeChange type="ADD" id="tilting_w" numericId="10209"/>
+        <attributeChange type="ADD" id="mean_pitch_cone_diameter" numericId="10227"/>
+        <attributeChange type="ADD" id="deviation_of_shaft_angle" numericId="10442"/>
+        <attributeChange type="ADD" id="axial_displacement_gear" numericId="10445"/>
+        <attributeChange type="ADD" id="deviation_of_offset" numericId="10443"/>
+        <attributeChange type="ADD" id="axial_displacement_pinion" numericId="10444"/>
+        <attributeChange type="ADD" id="account_for_gravity" numericId="3780"/>
+        <attributeChange type="ADD" id="account_for_shear_deformation" numericId="9196"/>
+        <attributeChange type="ADD" id="direction_vector_gravity_u" numericId="12369"/>
+        <attributeChange type="ADD" id="direction_vector_gravity_v" numericId="12370"/>
+        <attributeChange type="ADD" id="direction_vector_gravity_w" numericId="12371"/>
+        <attributeChange type="ADD" id="number_of_nodes_in_mesh_width_for_loaddistribution" numericId="3734"/>
+        <attributeChange type="ADD" id="inner_diameter" numericId="6691"/>
+        <attributeChange type="ADD" id="outer_diameter" numericId="6692"/>
+        <attributeChange type="ADD" id="gravitational_acceleration" numericId="9263"/>
+        <attributeChange type="ADD" id="radial_contact_ratio" numericId="990"/>
+        <attributeChange type="ADD" id="overlap_contact_ratio" numericId="991"/>
+        <attributeChange type="ADD" id="operating_pressure_angle_in_the_transverse_section" numericId="4195"/>
+        <attributeChange type="ADD" id="power_for_rotational_speed" numericId="14045"/>
+        <attributeChange type="ADD" id="power_for_rolling_rotational_speed" numericId="14044"/>
+        <attributeChange type="ADD" id="rolling_rotational_speed" numericId="14041"/>
+        <attributeChange type="ADD" id="tangential_velocity_at_reference_circle" numericId="10660"/>
+        <attributeChange type="ADD" id="nominal_tangential_force_at_reference_circle" numericId="4263"/>
+        <attributeChange type="ADD" id="pressure_angle_in_the_transverse_section" numericId="4194"/>
+        <attributeChange type="ADD" id="gear_ratio" numericId="1064"/>
+        <attributeChange type="ADD" id="helix_angle_base_circle" numericId="5305"/>
+        <attributeChange type="ADD" id="reference_circle_diameter" numericId="4206"/>
+        <attributeChange type="ADD" id="relative_tooth_root_chord_at_30_degree_tangent" numericId="4286"/>
+        <attributeChange type="ADD" id="load_angle_at_tip" numericId="4284"/>
+        <attributeChange type="ADD" id="relative_tooth_root_radius_at_30_degree_tangent" numericId="4289"/>
+        <attributeChange type="ADD" id="base_circle_diameter" numericId="4207"/>
+        <attributeChange type="ADD" id="number_of_load_cycles" numericId="4276"/>
+        <attributeChange type="ADD" id="loaded_tooth_flank" numericId="14011"/>
+        <attributeChange type="ADD" id="generated_addendum_modification_coefficient" numericId="2406"/>
+        <attributeChange type="ADD" id="relative_lever_arm_for_load_at_tip_to_30_degree_tangent" numericId="4287"/>
+        <attributeChange type="ADD" id="usable_root_circle_diameter" numericId="12861"/>
+        <attributeChange type="ADD" id="usable_addendum_circle_diameter" numericId="12862"/>
+        <attributeChange type="ADD" id="torque" numericId="12827"/>
+        <attributeChange type="ADD" id="mesh_stiffness_for_load_distribution_along_face_width" numericId="14038"/>
+        <attributeChange type="ADD" id="common_face_width" numericId="4199"/>
+        <attributeChange type="ADD" id="transverse_circular_pitch_on_reference_circle" numericId="988"/>
+        <attributeChange type="ADD" id="transverse_base_pitch" numericId="4202"/>
+        <attributeChange type="ADD" id="radial_force_absorption" numericId="2098"/>
+        <attributeChange type="ADD" id="folder" numericId="9264"/>
+        <attributeChange type="ADD" id="fem_file_format" numericId="9265"/>
+        <attributeChange type="ADD" id="reduced_static_stiffness_matrix" numericId="9266"/>
+        <attributeChange type="ADD" id="axial_force_absorption_of_row" numericId="9269"/>
+        <attributeChange type="ADD" id="axial_pitch" numericId="4201"/>
+        <attributeChange type="ADD" id="operating_pressure_angle_in_the_normal_section" numericId="12901"/>
+        <attributeChange type="ADD" id="angular_position_around_u" numericId="9274"/>
+        <attributeChange type="ADD" id="radial_bearing_clearance" numericId="9275"/>
+        <attributeChange type="ADD" id="axial_bearing_clearance" numericId="9276"/>
+        <attributeChange type="ADD" id="mounted_radial_bearing_clearance" numericId="9277"/>
+        <attributeChange type="ADD" id="mounted_axial_bearing_clearance" numericId="9278"/>
+        <attributeChange type="ADD" id="axial_clearance_class" numericId="9280"/>
+        <attributeChange type="ADD" id="minimum_axial_bearing_clearance" numericId="9281"/>
+        <attributeChange type="ADD" id="maximum_axial_bearing_clearance" numericId="9279"/>
+        <attributeChange type="ADD" id="axial_dynamic_load_rating" numericId="9282"/>
+        <attributeChange type="ADD" id="axial_static_load_rating" numericId="9283"/>
+        <attributeChange type="ADD" id="mean_operating_temperature" numericId="9284"/>
+        <attributeChange type="ADD" id="reference_temperature" numericId="9285"/>
+        <attributeChange type="ADD" id="mean_operating_temperature_outer_ring" numericId="9286"/>
+        <attributeChange type="ADD" id="mean_operating_temperature_inner_ring" numericId="9287"/>
+        <attributeChange type="ADD" id="has_inner_ring" numericId="9288"/>
+        <attributeChange type="ADD" id="has_outer_ring" numericId="9289"/>
+        <attributeChange type="DELETE" id="face_width" numericId="346"/>
+        <attributeChange type="DELETE" id="temperature_difference" numericId="465"/>
+        <attributeChange type="DELETE" id="inner_diameter" numericId="490"/>
+        <attributeChange type="DELETE" id="outer_diameter" numericId="491"/>
+        <attributeChange type="DELETE" id="rolling_bearing_file" numericId="547"/>
+        <attributeChange type="DELETE" id="lever_arm_of_axial_force" numericId="571"/>
+        <attributeChange type="DELETE" id="u_coordinate_on_shaft" numericId="596"/>
+        <attributeChange type="DELETE" id="u_coordinate_on_shaft" numericId="617"/>
+        <attributeChange type="DELETE" id="u_coordinate_on_shaft" numericId="782"/>
+        <attributeChange type="DELETE" id="number_of_teeth" numericId="813"/>
+        <attributeChange type="DELETE" id="temperature_difference_bearing_environment" numericId="2171"/>
+        <attributeChange type="DELETE" id="temperature_difference_operation_and_installation" numericId="2184"/>
+        <attributeChange type="DELETE" id="u_coordinate_on_shaft_side_1" numericId="2367"/>
+        <attributeChange type="DELETE" id="u_coordinate_on_shaft_side_2" numericId="2368"/>
+        <attributeChange type="DELETE" id="normal_pressure_angle" numericId="3050"/>
+        <attributeChange type="DELETE" id="normal_module" numericId="3051"/>
+        <attributeChange type="DELETE" id="addendum_coefficient_reference_profile" numericId="3079"/>
+        <attributeChange type="DELETE" id="addendum_reference_profile" numericId="3080"/>
+        <attributeChange type="DELETE" id="tip_radius_factor" numericId="3083"/>
+        <attributeChange type="DELETE" id="tip_radius" numericId="3084"/>
+        <attributeChange type="DELETE" id="tooth_tip_chamfer" numericId="3085"/>
+        <attributeChange type="DELETE" id="protuberance_amount" numericId="3086"/>
+        <attributeChange type="DELETE" id="protuberance_amount_factor" numericId="3087"/>
+        <attributeChange type="DELETE" id="protuberance_height_factor" numericId="3088"/>
+        <attributeChange type="DELETE" id="utilized_dedendum_coefficient_reference_profile" numericId="3090"/>
+        <attributeChange type="DELETE" id="utilized_dedendum_reference_profile" numericId="3091"/>
+        <attributeChange type="DELETE" id="chamfer_angle" numericId="3093"/>
+        <attributeChange type="DELETE" id="dedendum_coefficient_reference_profile" numericId="3094"/>
+        <attributeChange type="DELETE" id="dedendum_reference_profile" numericId="3095"/>
+        <attributeChange type="DELETE" id="protuberance_height" numericId="3098"/>
+        <attributeChange type="DELETE" id="geometry_refers_to" numericId="3655"/>
+        <attributeChange type="DELETE" id="rotational_speed" numericId="9207"/>
+        <attributeChange type="DELETE" id="all_rows_are_identical" numericId="9210"/>
+        <attributeChange type="DELETE" id="all_rolling_elements_are_identical" numericId="9211"/>
+        <attributeChange type="DELETE" id="temperature_lubricant" numericId="9216"/>
+        <attributeChange type="EDIT" id="temperature_lubricant" numericId="6">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Öltemperatur" newValue="Betriebstemperatur des Schmierstoffs"/>
+                <changedValue key="name" lang="en" oldValue="Oil temperature" newValue="Operating temperature of lubricant"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="generated_pressure_angle_drive" numericId="184">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="generated_pressure_angle_coast" numericId="185">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="face_angle" numericId="352">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Tip angle" newValue="Face angle"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="profile_shift_coefficient" numericId="359">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Addendum modification coefficient" newValue="Profile shift coefficient"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thickness_modification_coefficient" numericId="360">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Tooth thickness alteration coefficient" newValue="Tooth thickness modification coefficient"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pitch_apex_beyond_crossing_point" numericId="361">
+            <changedValues>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="face_apex_beyond_crossing_point" numericId="362">
+            <changedValues>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_apex_beyond_crossing_point" numericId="363">
+            <changedValues>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bevel_cone_orientation" numericId="373">
+            <changedValues>
+                <changedValue key="valuetype" oldValue="integer" newValue="enum"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tool_edge_radius" numericId="375">
+            <changedValues>
+                <changedValue key="symbol" oldValue="r_a0" newValue="ρ_a0"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="remaining_protuberance" numericId="376">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="s_pr"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="mean_transverse_circular_thickness" numericId="380">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Stirnzahndickenbogen in Zahnmitte" newValue="Stirnzahndickenbogen im Auslegungspunkt"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="mean_normal_topland" numericId="381">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="s_amn"/>
+                <changedValue key="name" lang="en" oldValue="Mean normal topland s_amn" newValue="Mean normal topland"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="contamination_factor_according_to_din_26281" numericId="462">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="contamination_factor_according_to_din_26281" newValue="contamination_factor_according_to_iso_281_2007"/>
+                <changedValue key="symbol" oldValue="ec" newValue="e_C"/>
+                <changedValue key="name" lang="de" oldValue="Verschmutzungsbeiwert" newValue="Verschmutzungsbeiwert nach ISO 281 2007"/>
+                <changedValue key="name" lang="en" oldValue="Contamination coefficient" newValue="Contamination coefficient according to ISO 281 2007"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;1]"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="boring_tolerance_class" numericId="463">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="boring_tolerance_class" newValue="casing_bore_tolerance_class"/>
+                <changedValue key="name" lang="de" oldValue="Toleranzklasse der Bohrung im Lagersitz" newValue="Toleranzklasse der Gehäusebohrung"/>
+                <changedValue key="name" lang="en" oldValue="Tolerance class of bore in bearing seat" newValue="Tolerance class of casing bore"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="fatigue_limit_load" numericId="464">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="catalogue_value_e" numericId="466">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="diagram_number_in_din_26281" numericId="467">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="diagram_number_in_din_26281" newValue="diagram_number_in_iso_281_2007"/>
+                <changedValue key="name" lang="de" oldValue="ec-Bildnummer nach Din 26281" newValue="Bildnummer für Verunreinigungsbeiwert e_C in ISO 281 2007"/>
+                <changedValue key="name" lang="en" oldValue="Figure number for contamination coefficient in DIN 26281" newValue="Figure number for contamination coefficient e_C in ISO 281 2007"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="roller_angle" numericId="468">
+            <changedValues>
+                <changedValue key="symbol" oldValue="ε_2" newValue="γ"/>
+                <changedValue key="name" lang="de" oldValue="Halber Kegelwinkel der Rolle" newValue="Rollenwinkel"/>
+                <changedValue key="name" lang="en" oldValue="Half of the cone angle of roller" newValue="Roller angle"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;90)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_force_absorption" numericId="470">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Axialkraftaufnahme in u-Richtung" newValue="Axialkraftaufnahme"/>
+                <changedValue key="name" lang="en" oldValue="Absorption of axial loads in the u-direction" newValue="Support of axial loads"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="clearance_class" numericId="471">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="clearance_class" newValue="radial_clearance_class"/>
+                <changedValue key="name" lang="de" oldValue="Lagerluftklasse" newValue="Radiale Lagerluftklasse (vor Einbau)"/>
+                <changedValue key="name" lang="en" oldValue="Bearing clearance class" newValue="Radial bearing clearance class (before mounting)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="significant_width_outer" numericId="472">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="significant_width_outer" newValue="significant_contact_length_outer_ring"/>
+                <changedValue key="name" lang="en" oldValue="Possible contact length of rolling element outer ring" newValue="Maximum length of outer ring contact"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="significant_width_inner" numericId="473">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="significant_width_inner" newValue="significant_contact_length_inner_ring"/>
+                <changedValue key="name" lang="en" oldValue="Possible contact length of rolling element inner ring" newValue="Maximum length of inner ring contact"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="roller_shell_radius" numericId="475">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="roller_shell_radius" newValue="roller_crowning_radius"/>
+                <changedValue key="name" lang="de" oldValue="Mantelradius des Wälzkörpers" newValue="Balligkeitsradius des Wälzkörpers"/>
+                <changedValue key="name" lang="en" oldValue="Surface radius of roller" newValue="Roller crowning radius"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="weibull_exponent" numericId="477">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="e"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pin_tolerance_class" numericId="478">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="pin_tolerance_class" newValue="shaft_tolerance_class"/>
+                <changedValue key="name" lang="de" oldValue="Toleranzklasse des Wellenzapfens" newValue="Toleranzklasse der Welle"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="number_of_bearing_rows" numericId="479">
+            <changedValues>
+                <changedValue key="range" oldValue="[0;∞)" newValue="[1;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="number_of_rolling_elements" numericId="480">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Number of rolling elements per row" newValue="Number of rolling elements"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="name" numericId="486">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="name" newValue="catalogue_designation"/>
+                <changedValue key="name" lang="en" oldValue="Catalogue name" newValue="Catalogue designation"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bending_stiffness" numericId="488">
+            <changedValues>
+                <changedValue key="symbol" oldValue="C_s" newValue="c_s"/>
+                <changedValue key="name" lang="en" oldValue="Tilting rigidity" newValue="Tilting stiffness"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pressure_angle" numericId="489">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Pressure angle" newValue="Contact angle"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="manufacturer" numericId="498">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Lagerhersteller" newValue="Hersteller"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="running_path_radius_of_outer_ring" numericId="503">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="running_path_radius_of_outer_ring" newValue="raceway_radius_of_outer_ring"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="running_path_radius_of_inner_ring" numericId="504">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="running_path_radius_of_inner_ring" newValue="raceway_radius_of_inner_ring"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_stiffness" numericId="508">
+            <changedValues>
+                <changedValue key="symbol" oldValue="C_d" newValue="c_d"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="initial_load" numericId="510">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="initial_load" newValue="preload_force"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="initial_load_shift" numericId="511">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="initial_load_shift" newValue="preload_distance"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="diameter_of_rolling_element" numericId="514">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="(Nenn-) Wälzkörperdurchmesser" newValue="Wälzkörperdurchmesser"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_factor_x_1" numericId="515">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Radialloadfactor X1 for F_a/F_r &lt;=  e" newValue="Radial load factor X1 for F_a/F_r &lt;=  e"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_factor_x_2" numericId="516">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Radialloadfactor X2 for F_a/F_r &gt;  e" newValue="Radial load factor X2 for F_a/F_r &gt;  e"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_factor_y_1" numericId="517">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Axialloadfactor Y1 for F_a/F_r &lt;= e" newValue="Axial load factor Y1 for F_a/F_r &lt;= e"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_factor_y_2" numericId="518">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Axialloadfactor Y2 for F_a/F_r &gt; e" newValue="Axial load factor Y2 for F_a/F_r &gt; e"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="dynamic_capacity" numericId="519">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="dynamic_capacity" newValue="radial_dynamic_load_rating"/>
+                <changedValue key="symbol" oldValue="C" newValue="C_r"/>
+                <changedValue key="name" lang="de" oldValue="Dynamische Tragzahl" newValue="Radiale dynamische Tragzahl"/>
+                <changedValue key="name" lang="en" oldValue="Dynamic load rating" newValue="Radial dynamic load rating"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="static_capacity" numericId="520">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="static_capacity" newValue="radial_static_load_rating"/>
+                <changedValue key="symbol" oldValue="C_0" newValue="C_0r"/>
+                <changedValue key="name" lang="de" oldValue="Statische Tragzahl" newValue="Radiale statische Tragzahl"/>
+                <changedValue key="name" lang="en" oldValue="Static load rating" newValue="Radial static load rating"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="misalignment_in_v_direction" numericId="521">
+            <changedValues>
+                <changedValue key="numericId" oldValue="521" newValue="12497"/>
+                <changedValue key="name" lang="de" oldValue="Versatz der Einbaulage des Außenrings in v-Richtung" newValue="Radialer Versatz der Einbaulage des Außenrings in v-Richtung"/>
+                <changedValue key="name" lang="en" oldValue="Misalignement in v-direction" newValue="Radial offset of the mounting position of the outer ring in the v-direction"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="misalignment_in_w_direction" numericId="522">
+            <changedValues>
+                <changedValue key="numericId" oldValue="522" newValue="12498"/>
+                <changedValue key="name" lang="de" oldValue="Versatz der Einbaulage des Außenrings in w-Richtung" newValue="Radialer Versatz der Einbaulage des Außenrings in w-Richtung"/>
+                <changedValue key="name" lang="en" oldValue="Misalignement in w-direction" newValue="Radial offset of the mounting position of the outer ring in the w-direction"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_misalignment_around_v_axis" numericId="523">
+            <changedValues>
+                <changedValue key="numericId" oldValue="523" newValue="12499"/>
+                <changedValue key="name" lang="en" oldValue="Angular misalignement around v axis" newValue="Angular offset of the mounting position of the outer ring around the v-axis"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_misalignment_around_w_axis" numericId="524">
+            <changedValues>
+                <changedValue key="numericId" oldValue="524" newValue="12500"/>
+                <changedValue key="name" lang="en" oldValue="Angular misalignement around w axis" newValue="Angular offset of the mounting position of the outer ring around the w-axis"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_deflection_in_v" numericId="525">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Radial deflection in v-direction" newValue="Relative displacement of the inner ring in the v-direction compared to the outer ring"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_deflection_in_w" numericId="526">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Radial deflection in w-direction" newValue="Relative displacement of the inner ring in the w-direction compared to the outer ring"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_deflection" numericId="527">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Axial deflection in u-direction" newValue="Relative displacement of the inner ring in the u-direction compared to the outer ring"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_deflection_in_w" numericId="541">
+            <changedValues>
+                <changedValue key="symbol" oldValue="ω_v" newValue="ω_w"/>
+                <changedValue key="name" lang="en" oldValue="Angular deflection around the w-axis" newValue="Relative tilting of the inner ring around the w-axis compared to the outer ring."/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_deflection_in_v" numericId="542">
+            <changedValues>
+                <changedValue key="symbol" oldValue="ω_w" newValue="ω_v"/>
+                <changedValue key="name" lang="en" oldValue="Angular deflection around the v-axis" newValue="Relative tilting of the inner ring around the v-axis compared to the outer ring."/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_pin_diameter" numericId="554">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="minimum_pin_diameter" newValue="minimum_shaft_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Zapfendurchmesser minimal" newValue="Minimaler Wellendurchmesser"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_pin_diameter" numericId="555">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="maximum_pin_diameter" newValue="maximum_shaft_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Zapfendurchmesser maximal" newValue="Maximaler Wellendurchmesser"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="shaft_surface_roughness" numericId="556">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Surface roughness of shaft R_z" newValue="Surface roughness of shaft"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_bore_diameter" numericId="557">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="minimum_bore_diameter" newValue="minimum_casing_bore_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Durchmesser des Lagersitzes minimal" newValue="Minimaler Durchmesser der Gehäusebohrung"/>
+                <changedValue key="name" lang="en" oldValue="Minimum bearing seat diameter" newValue="Minimum diameter of casing bore"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_bore_diameter" numericId="558">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="maximum_bore_diameter" newValue="maximum_casing_bore_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Durchmesser des Lagersitzes maximal" newValue="Maximaler Durchmesser der Gehäusebohrung"/>
+                <changedValue key="name" lang="en" oldValue="Maximum bearing seat diameter" newValue="Maximum diameter of casing bore"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bore_surface_roughness" numericId="559">
+            <changedValues>
+                <changedValue key="symbol" oldValue="Rz" newValue="R_z"/>
+                <changedValue key="name" lang="de" oldValue="Rautiefe der Bohrung" newValue="Rautiefe der Gehäusebohrung"/>
+                <changedValue key="name" lang="en" oldValue="Surface roughness of bore R_z" newValue="Surface roughness of casing bore"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_bearing_bore_diameter" numericId="563">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Lagerbohrung maximal" newValue="Maximaler Durchmesser der Lagerbohrung"/>
+                <changedValue key="name" lang="en" oldValue="Maximum bearing bore" newValue="Maximum diameter of bearing bore"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_bearing_bore_diameter" numericId="564">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Lagerbohrung minimal" newValue="Minimaler Durchmesser der Lagerbohrung"/>
+                <changedValue key="name" lang="en" oldValue="Minimum bearing bore" newValue="Minimum diameter of bearing bore"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_outer_diameter" numericId="565">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="maximum_outer_diameter" newValue="maximum_bearing_outer_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Lageraußendurchmesser maximal" newValue="Maximaler Lageraußendurchmesser"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_outer_diameter" numericId="566">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="minimum_outer_diameter" newValue="minimum_bearing_outer_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Lageraußendurchmesser minimal" newValue="Minimaler Lageraußendurchmesser"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_bearing_clearance" numericId="569">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="minimum_bearing_clearance" newValue="minimum_radial_bearing_clearance"/>
+                <changedValue key="name" lang="de" oldValue="Minimale Lagerluft" newValue="Minimale radiale Lagerluft (vor Einbau)"/>
+                <changedValue key="name" lang="en" oldValue="Minimum bearing clearance" newValue="Minimum radial bearing clearance (before mounting)"/>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_bearing_clearance" numericId="570">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="maximum_bearing_clearance" newValue="maximum_radial_bearing_clearance"/>
+                <changedValue key="name" lang="de" oldValue="Maximale Lagerluft" newValue="Maximale radiale Lagerluft (vor Einbau)"/>
+                <changedValue key="name" lang="en" oldValue="Maximum bearing play" newValue="Maximum radial bearing clearance (before mounting)"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="length" numericId="606">
+            <changedValues>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="torque_around_v_axis" numericId="609">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="M_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="torque_around_w_axis" numericId="610">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="M_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="force_u_direction" numericId="612">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="F_u"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="force_v_direction" numericId="613">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="F_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="force_w_direction" numericId="614">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="F_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="diametral_measurement" numericId="738">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="M_d"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="chamfer_at_tooth_end" numericId="742">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="b_F"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_diameter" numericId="756">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="d_a"/>
+                <changedValue key="name" lang="en" oldValue="Tip diameter" newValue="Tip circle diameter"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="din_3967_deviation_tolerance_series" numericId="775">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="din_3967_deviation_tolerance_series" newValue="tooth_thickness_deviation_tolerance_series_din_3967_1978"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="normal_module" numericId="781">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="m_n"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tooth_tip_chamfer" numericId="785">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="h_K"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="helix_angle_reference_diameter" numericId="796">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="β"/>
+                <changedValue key="name" lang="de" oldValue="Schrägungswinkel" newValue="Schrägungswinkel am Teilkreis"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="(0;90)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="face_width" numericId="808">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="b"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="din_3964_center_distance_tolerance_field" numericId="996">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="din_3964_center_distance_tolerance_field" newValue="center_distance_tolerance_field_din_3964_1980"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="upper_center_distance_allowance" numericId="1045">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="A_ae"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="lower_center_distance_allowance" numericId="1060">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="A_ai"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_stiffness" numericId="2088">
+            <changedValues>
+                <changedValue key="symbol" oldValue="C_a" newValue="c_a"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="number_of_blade_groups" numericId="2102">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="z_0"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="position_of_rolling_elements" numericId="2160">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_allowable_pressure" numericId="2162">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Allowable pressing in the bearing" newValue="Permissible pressure in the bearing"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="decisive_housing_outer_diameter" numericId="2176">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="decisive_housing_outer_diameter" newValue="casing_outer_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Maßgebender Gehäuseaußendurchmesser" newValue="Gehäuseaußendurchmesser für die Betriebsspielberechnung"/>
+                <changedValue key="name" lang="en" oldValue="Nominal outer diameter of casing" newValue="Outer diameter of casing for the operating clearance calculation"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="decisive_pin_diameter" numericId="2177">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="decisive_pin_diameter" newValue="shaft_inner_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Maßgebender Wellendurchmesser" newValue="Welleninnendurchmesser für die Betriebsspielberechnung"/>
+                <changedValue key="name" lang="en" oldValue="Nominal inner diameter of shaft" newValue="Inner shaft diameter for the operating clearance calculation"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="number_of_gears" numericId="2408">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Anzahl Gänge" newValue="Anzahl der Schaltstellungen"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[1;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="gear_shift_index" numericId="2409">
+            <changedValues>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[1;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_rating_life_rotations_din_iso_281" numericId="2625">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="nominal_rating_life_rotations_din_iso_281" newValue="nominal_rating_life_rotations_iso_281_2007"/>
+                <changedValue key="symbol" oldValue="" newValue="L_10"/>
+                <changedValue key="name" lang="de" oldValue="Nominelle Lebensdauer (L_10) DIN ISO 281" newValue="Nominelle Lebensdauer ISO 281 2007"/>
+                <changedValue key="name" lang="en" oldValue="Nominal rating life (L_10) DIN ISO 281" newValue="Nominal rating life ISO 281 2007"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_rating_life_time_din_iso_281" numericId="2626">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="nominal_rating_life_time_din_iso_281" newValue="nominal_rating_life_time_iso_281_2007"/>
+                <changedValue key="symbol" oldValue="" newValue="L_10h"/>
+                <changedValue key="name" lang="de" oldValue="Nominelle Lebensdauer (L_10h) DIN ISO 281" newValue="Nominelle Lebensdauer ISO 281 2007"/>
+                <changedValue key="name" lang="en" oldValue="Nominal rating life (L_10h) DIN ISO 281" newValue="Nominal rating life ISO 281 2007"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_factor_y_0" numericId="2881">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="speed_outer_ring" numericId="3290">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Drehzahl des Lageraußenrings" newValue="Drehzahl des Außenrings"/>
+                <changedValue key="name" lang="en" oldValue="Speed outer ring" newValue="Rotational speed outer ring"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="start_up_time" numericId="5405">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="acceleration_factor_according_fva_341" numericId="5406">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Beschleunigungsfaktor nach FVA 431" newValue="Beschleunigungsfaktor nach FVA 341"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="surface_hardness_vickers" numericId="5767">
+            <changedValues>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="speed_inner_ring" numericId="5988">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Drehzahl des Lagerinnenrings" newValue="Drehzahl des Innenrings"/>
+                <changedValue key="name" lang="en" oldValue="Speed inner ring" newValue="Rotational speed inner ring"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_reference_rating_life_rotations_din_26281" numericId="6117">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="L_10r"/>
+                <changedValue key="name" lang="de" oldValue="Nominelle Referenz-Lebensdauer (L_10r) DIN 26281" newValue="Nominelle Referenz-Lebensdauer DIN 26281"/>
+                <changedValue key="name" lang="en" oldValue="Nominal reference rating life (L_10r) DIN 26281" newValue="Nominal reference rating life DIN 26281"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="modified_reference_rating_life_rotations_din_26281" numericId="6120">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="L_nmr"/>
+                <changedValue key="name" lang="de" oldValue="Modifizierte Referenz-Lebensdauer (L_10nmr) DIN 26281" newValue="Modifizierte Referenz-Lebensdauer DIN 26281 2010"/>
+                <changedValue key="name" lang="en" oldValue="Modified reference rating life (L_10nmr) DIN 26281" newValue="Modified reference rating life DIN 26281 2010"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="modified_reference_rating_life_time_din_26281" numericId="6126">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="L_nmrh"/>
+                <changedValue key="name" lang="de" oldValue="Modifizierte Referenz-Lebensdauer (L_10nmrh) DIN 26281" newValue="Modifizierte Referenz-Lebensdauer DIN 26281 2010"/>
+                <changedValue key="name" lang="en" oldValue="Modified reference rating life (L_10nmrh) DIN 26281" newValue="Modified reference rating life DIN 26281 2010"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="equivalent_dynamic_bearing_load_din_iso_281" numericId="6140">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="equivalent_dynamic_bearing_load_din_iso_281" newValue="equivalent_dynamic_bearing_load_iso_281_2007"/>
+                <changedValue key="symbol" oldValue="" newValue="P"/>
+                <changedValue key="name" lang="de" oldValue="Dynamisch aequivalente Lagerkraft DIN ISO 281" newValue="Dynamisch äquivalente Lagerkraft ISO 281 2007"/>
+                <changedValue key="name" lang="en" oldValue="Equivalent dynamic bearing load din iso 281" newValue="Equivalent dynamic bearing load iso 281 2007"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="limiting_speed" numericId="6163">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Thermally permissible rotational speed limit" newValue="Limiting speed"/>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_u" numericId="8718">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_u" newValue="operating_point_stiffness_f_u_d_u"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_u" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_u"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_u" newValue="Operating point stiffness ∂F_u / ∂d_u"/>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_v_d_v" numericId="8719">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_v_d_v" newValue="operating_point_stiffness_f_v_d_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_v / d_v" newValue="Steifigkeit im Betriebspunkt ∂F_v / ∂d_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_v / d_v" newValue="Operating point stiffness ∂F_v / ∂d_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_w_d_w" numericId="8720">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_w_d_w" newValue="operating_point_stiffness_f_w_d_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_w / d_w" newValue="Steifigkeit im Betriebspunkt ∂F_w / ∂d_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_w / d_w" newValue="Operating point stiffness ∂F_w / ∂d_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_v_d_v_rot" numericId="8721">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_v_d_v_rot" newValue="operating_point_stiffness_m_v_rot_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_v / d_v_rot" newValue="Steifigkeit im Betriebspunkt ∂M_v / ∂rot_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_v / d_v_rot" newValue="Operating point stiffness ∂M_v / ∂rot_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_w_d_w_rot" numericId="8722">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_w_d_w_rot" newValue="operating_point_stiffness_m_w_rot_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_w / d_w_rot" newValue="Steifigkeit im Betriebspunkt ∂M_w / ∂rot_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_w / d_w_rot" newValue="Operating point stiffness ∂M_w / ∂rot_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_reference_rating_life_time_din_26281" numericId="9165">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="L_10rh"/>
+                <changedValue key="name" lang="de" oldValue="Nominelle Referenz-Lebensdauer (L_10rh) DIN 26281" newValue="Nominelle Referenz-Lebensdauer DIN 26281"/>
+                <changedValue key="name" lang="en" oldValue="Nominal reference rating life (L_10rh) DIN 26281" newValue="Nominal reference rating life DIN 26281"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="torque_around_u_axis" numericId="9201">
+            <changedValues>
+                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pitch_diameter" numericId="9206">
+            <changedValues>
+                <changedValue key="name" lang="en" oldValue="Pitch diameter" newValue="Pitch circle diameter"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="reference_speed" numericId="9208">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Bezugsdrehzahl" newValue="Thermische Bezugsdrehzahl"/>
+                <changedValue key="name" lang="en" oldValue="Reference speed" newValue="Thermal reference speed"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_backlash" numericId="9209">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="axial_backlash" newValue="operating_axial_bearing_clearance"/>
+                <changedValue key="symbol" oldValue="Ψ_B,ax" newValue="s_ax"/>
+                <changedValue key="name" lang="de" oldValue="Axiallagerspiel" newValue="Axiales Betriebsspiel"/>
+                <changedValue key="name" lang="en" oldValue="Axial backlash" newValue="Operating axial bearing clearance"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_backlash" numericId="9212">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="radial_backlash" newValue="operating_radial_bearing_clearance"/>
+                <changedValue key="symbol" oldValue="Ψ_B,rad" newValue="s_rad"/>
+                <changedValue key="name" lang="de" oldValue="Radiallagerspiel" newValue="Radiales Betriebsspiel"/>
+                <changedValue key="name" lang="en" oldValue="Radial backlash" newValue="Operating radial bearing clearance"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_viscosity" numericId="9217">
+            <changedValues>
+                <changedValue key="range" oldValue="[-273.15;∞)" newValue="(0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_v" numericId="9218">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_v" newValue="operating_point_stiffness_f_u_d_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_v" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_v" newValue="Operating point stiffness ∂F_u / ∂d_v"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_w" numericId="9219">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_w" newValue="operating_point_stiffness_f_u_d_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_w" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_w" newValue="Operating point stiffness ∂F_u / ∂d_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_v_rot" numericId="9220">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_v_rot" newValue="operating_point_stiffness_f_u_rot_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_v_rot" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂rot_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_v_rot" newValue="Operating point stiffness ∂F_u / ∂rot_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_w_rot" numericId="9221">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_w_rot" newValue="operating_point_stiffness_f_u_rot_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_w_rot" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂rot_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_w_rot" newValue="Operating point stiffness ∂F_u / ∂rot_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_v_d_u" numericId="9222">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_v_d_u" newValue="operating_point_stiffness_f_v_d_u"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_v / d_u" newValue="Steifigkeit im Betriebspunkt ∂F_v / ∂d_u"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_v / d_u" newValue="Operating point stiffness ∂F_v / ∂d_u"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_v_d_w" numericId="9223">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_v_d_w" newValue="operating_point_stiffness_f_v_d_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_v / d_w" newValue="Steifigkeit im Betriebspunkt ∂F_v / ∂d_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_v / d_w" newValue="Operating point stiffness ∂F_v / ∂d_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_v_d_v_rot" numericId="9224">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_v_d_v_rot" newValue="operating_point_stiffness_f_v_rot_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_v / d_v_rot" newValue="Steifigkeit im Betriebspunkt ∂F_v / ∂rot_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_v / d_v_rot" newValue="Operating point stiffness ∂F_v / ∂rot_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_v_d_w_rot" numericId="9225">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_v_d_w_rot" newValue="operating_point_stiffness_f_v_rot_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_v / d_w_rot" newValue="Steifigkeit im Betriebspunkt ∂F_v / ∂rot_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_v / d_w_rot" newValue="Operating point stiffness ∂F_v / ∂rot_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_w_d_u" numericId="9226">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_w_d_u" newValue="operating_point_stiffness_f_w_d_u"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_w / d_u" newValue="Steifigkeit im Betriebspunkt  ∂F_w / ∂d_u"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_w / d_u" newValue="Operating point stiffness  ∂F_w / ∂d_u"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_w_d_v" numericId="9227">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_w_d_v" newValue="operating_point_stiffness_f_w_d_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_w / d_v" newValue="Steifigkeit im Betriebspunkt ∂F_w / ∂d_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_w / d_v" newValue="Operating point stiffness ∂F_w / ∂d_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_w_d_v_rot" numericId="9228">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_w_d_v_rot" newValue="operating_point_stiffness_f_w_rot_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_w / d_v_rot" newValue="Steifigkeit im Betriebspunkt ∂F_w / ∂rot_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_w / d_v_rot" newValue="Operating point stiffness ∂F_w / ∂rot_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dF_w_d_w_rot" numericId="9229">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_w_d_w_rot" newValue="operating_point_stiffness_f_w_rot_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_w / d_w_rot" newValue="Steifigkeit im Betriebspunkt ∂F_w / ∂rot_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_w / d_w_rot" newValue="Operating point stiffness ∂F_w / ∂rot_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_v_d_u" numericId="9230">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_v_d_u" newValue="operating_point_stiffness_m_v_d_u"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_v / d_u" newValue="Steifigkeit im Betriebspunkt ∂M_v / ∂d_u"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_v / d_u" newValue="Operating point stiffness ∂M_v / ∂d_u"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_v_d_v" numericId="9231">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_v_d_v" newValue="operating_point_stiffness_m_v_d_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_v / d_v" newValue="Steifigkeit im Betriebspunkt ∂M_v / ∂d_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_v / d_v" newValue="Operating point stiffness ∂M_v / ∂d_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_v_d_w" numericId="9232">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_v_d_w" newValue="operating_point_stiffness_m_v_d_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_v / d_w" newValue="Steifigkeit im Betriebspunkt ∂M_v / ∂d_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_v / d_w" newValue="Operating point stiffness ∂M_v / ∂d_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_v_d_w_rot" numericId="9233">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_v_d_w_rot" newValue="operating_point_stiffness_m_v_rot_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_v / d_w_rot" newValue="Steifigkeit im Betriebspunkt ∂M_v / ∂rot_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_v / d_w_rot" newValue="Operating point stiffness ∂M_v / ∂rot_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_w_d_u" numericId="9234">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_w_d_u" newValue="operating_point_stiffness_m_w_d_u"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_w / d_u" newValue="Steifigkeit im Betriebspunkt ∂M_w / ∂d_u"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_w / d_u" newValue="Operating point stiffness ∂M_w / ∂d_u"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_w_d_v" numericId="9235">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_w_d_v" newValue="operating_point_stiffness_m_w_d_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_w / d_v" newValue="Steifigkeit im Betriebspunkt ∂M_w / ∂d_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_w / d_v" newValue="Operating point stiffness ∂M_w / ∂d_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_w_d_w" numericId="9236">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_w_d_w" newValue="operating_point_stiffness_m_w_d_w"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_w / d_w" newValue="Steifigkeit im Betriebspunkt ∂M_w / ∂d_w"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_w / d_w" newValue="Operating point stiffness ∂M_w / ∂d_w"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_point_stiffness_dM_w_d_v_rot" numericId="9237">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="operating_point_stiffness_dM_w_d_v_rot" newValue="operating_point_stiffness_m_w_rot_v"/>
+                <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dM_w / d_v_rot" newValue="Steifigkeit im Betriebspunkt ∂M_w / ∂rot_v"/>
+                <changedValue key="name" lang="en" oldValue="Operating point stiffness dM_w / d_v_rot" newValue="Operating point stiffness ∂M_w / ∂rot_v"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="speed_rolling_element_set" numericId="9238">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Drehzahl Waelzkoerpersatz/Kaefig" newValue="Drehzahl Wälzkörpersatz / Käfig"/>
+                <changedValue key="name" lang="en" oldValue="Speed rolling element set" newValue="Speed rolling element set / cage"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="overrolling_frequency_inner_ring" numericId="9239">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Innenring" newValue="Überrollfrequenz Innenring"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="overrolling_frequency_outer_ring" numericId="9240">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Aussenring" newValue="Überrollfrequenz Aussenring"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="overrolling_frequency_rolling_element" numericId="9241">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Waelzkoerper" newValue="Überrollfrequenz Waelzkoerper"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="viscosity_ratio_din_26281" numericId="9252">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="viscosity_ratio_din_26281" newValue="viscosity_ratio_according_to_iso_281_2007"/>
+                <changedValue key="symbol" oldValue="" newValue="κ"/>
+                <changedValue key="name" lang="de" oldValue="Viskositaetsverhaeltnis DIN 26281" newValue="Viskositätsverhältnis nach ISO 281 2007"/>
+                <changedValue key="name" lang="en" oldValue="Viscosity rating DIN 26281" newValue="Viscosity ratio according to ISO 281 2007"/>
+            </changedValues>
+        </attributeChange>
+    </attributeChanges>
+    <mappingChanges>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_catalog_geometry" attributeId="temperature_lubricant" attributeNumericId="6"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="temperature_lubricant" attributeNumericId="6"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="u_coordinate_on_shaft" attributeNumericId="348"/>
+        <mappingChange type="ADD" componentId="external_load" attributeId="u_coordinate_on_shaft" attributeNumericId="348"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="u_coordinate_on_shaft" attributeNumericId="348"/>
+        <mappingChange type="ADD" componentId="shaft_section" attributeId="u_coordinate_on_shaft" attributeNumericId="348"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="bending_stiffness" attributeNumericId="488"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="bending_stiffness" attributeNumericId="488"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="radial_stiffness" attributeNumericId="508"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="radial_stiffness" attributeNumericId="508"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="side_plate" attributeId="length" attributeNumericId="606"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="diametral_measurement" attributeNumericId="738"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="chamfer_at_tooth_end" attributeNumericId="742"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="height_over_chordal_tooth_thickness" attributeNumericId="752"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="tip_diameter" attributeNumericId="756"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="diameter_of_measuring_ball_or_pin" attributeNumericId="771"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="number_of_teeth_for_span_measurement" attributeNumericId="772"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="tooth_thickness_deviation_tolerance_series_din_3967_1978" attributeNumericId="775"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="upper_backlash_allowance_referenced_to_span" attributeNumericId="776"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="lower_backlash_allowance_referenced_to_span" attributeNumericId="777"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="rack_shaped_tool" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="zero_degree_grinding_disk_tool" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="tooth_tip_chamfer" attributeNumericId="785"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="helix_angle_reference_diameter" attributeNumericId="796"/>
+        <mappingChange type="ADD" componentId="bevel_gear" attributeId="face_width" attributeNumericId="808"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="face_width" attributeNumericId="808"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="normal_chordal_tooth_thickness" attributeNumericId="809"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="span_measurement" attributeNumericId="810"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="related_tip_thickness" attributeNumericId="971"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="normal_pressure_angle" attributeNumericId="1015"/>
+        <mappingChange type="ADD" componentId="rack_shaped_tool" attributeId="normal_pressure_angle" attributeNumericId="1015"/>
+        <mappingChange type="ADD" componentId="zero_degree_grinding_disk_tool" attributeId="normal_pressure_angle" attributeNumericId="1015"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="axial_stiffness" attributeNumericId="2088"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="axial_stiffness" attributeNumericId="2088"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_row" attributeId="position_of_rolling_elements" attributeNumericId="2160"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_catalog_geometry" attributeId="maximum_allowable_pressure" attributeNumericId="2162"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="u_coordinate_on_shaft_outer_side" attributeNumericId="2369"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="u_coordinate_on_shaft_outer_side" attributeNumericId="2369"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="basic_strength_root" attributeNumericId="2919"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="endurance_limit_flank" attributeNumericId="2922"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="endurance_limit_root" attributeNumericId="2927"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="addendum_coefficient_reference_profile" attributeNumericId="3055"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="addendum_reference_profile" attributeNumericId="3056"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="tip_radius_factor" attributeNumericId="3061"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="tip_radius" attributeNumericId="3062"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="protuberance_amount" attributeNumericId="3063"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="protuberance_amount_factor" attributeNumericId="3064"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="protuberance_height_factor" attributeNumericId="3066"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="protuberance_height" attributeNumericId="3067"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="utilized_dedendum_coefficient_reference_profile" attributeNumericId="3068"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="utilized_dedendum_reference_profile" attributeNumericId="3069"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="chamfer_angle" attributeNumericId="3070"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="dedendum_coefficient_reference_profile" attributeNumericId="3072"/>
+        <mappingChange type="ADD" componentId="cutter_wheel_tool" attributeId="dedendum_reference_profile" attributeNumericId="3073"/>
+        <mappingChange type="ADD" componentId="assembly_group" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="reduction_point" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="side_plate" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="assembly_group" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="side_plate" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="assembly_group" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="side_plate" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="assembly_group" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="reduction_point" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="side_plate" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="bevel_gear" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="speed_rolling_element_set" attributeNumericId="9238"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="overrolling_frequency_inner_ring" attributeNumericId="9239"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="overrolling_frequency_outer_ring" attributeNumericId="9240"/>
+        <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="overrolling_frequency_rolling_element" attributeNumericId="9241"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="position_of_rolling_elements" attributeNumericId="2160"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="position_of_rolling_elements" attributeNumericId="2160"/>
+    </mappingChanges>
+</rexsChangelog>

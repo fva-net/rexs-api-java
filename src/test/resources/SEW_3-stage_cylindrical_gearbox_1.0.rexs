@@ -1,0 +1,1650 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model applicationId="FVA Workbench" applicationVersion="5.0.4" date="2018-11-23T13:54:33+01:00" version="1.0">
+  <relations>
+    <!--Relation between the main component Gear unit [1] and the sub-component RW3 [5]-->
+    <relation id="10" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="5" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component RW5 [36]-->
+    <relation id="11" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="36" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component ABW [54]-->
+    <relation id="12" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="54" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Stirnradstufe [37]-->
+    <relation id="13" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="cylindrical_stage" id="37" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Stirnradstufe [55]-->
+    <relation id="14" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="cylindrical_stage" id="55" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Stirnradstufe-->
+    <relation id="15" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="cylindrical_stage" id="6" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component Last Wellenende E [22]-->
+    <relation id="16" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="external_load" id="22" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component Casing [2]-->
+    <relation id="1" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="gear_casing" id="2" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component Stirnrad pos=1 [23]-->
+    <relation id="2" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="cylindrical_gear" id="23" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component Stirnrad pos=2 [34]-->
+    <relation id="3" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="cylindrical_gear" id="34" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component Stirnrad pos=3 [38]-->
+    <relation id="4" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="cylindrical_gear" id="38" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component Stirnrad pos=4 [52]-->
+    <relation id="5" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="cylindrical_gear" id="52" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component Stirnrad pos=5 [56]-->
+    <relation id="6" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="cylindrical_gear" id="56" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component Last Wellenende A [68]-->
+    <relation id="7" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="external_load" id="68" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component Stirnrad pos=6 [69]-->
+    <relation id="8" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="cylindrical_gear" id="69" role="part"/>
+    </relation>
+    <!--Relation between the main component Gear unit [1] and the sub-component ANW [4]-->
+    <relation id="9" type="assembly">
+      <ref hint="gear_unit" id="1" role="assembly"/>
+      <ref hint="shaft" id="4" role="part"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe and Stirnrad pos=1 [23] and Stirnrad pos=2 [34]-->
+    <relation id="50" type="stage">
+      <ref hint="cylindrical_stage" id="6" role="stage"/>
+      <ref hint="cylindrical_gear" id="23" role="gear_1"/>
+      <ref hint="cylindrical_gear" id="34" role="gear_2"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [37] and Stirnrad pos=3 [38] and Stirnrad pos=4 [52]-->
+    <relation id="51" type="stage">
+      <ref hint="cylindrical_stage" id="37" role="stage"/>
+      <ref hint="cylindrical_gear" id="38" role="gear_1"/>
+      <ref hint="cylindrical_gear" id="52" role="gear_2"/>
+    </relation>
+    <!--Stage relation between Stirnradstufe [55] and Stirnrad pos=5 [56] and Stirnrad pos=6 [69]-->
+    <relation id="52" type="stage">
+      <ref hint="cylindrical_stage" id="55" role="stage"/>
+      <ref hint="cylindrical_gear" id="56" role="gear_1"/>
+      <ref hint="cylindrical_gear" id="69" role="gear_2"/>
+    </relation>
+    <!--Relation between Stirnradstufe and Stirnrad pos=1 [23] and stage-related gear data component Zahnraddaten [136]-->
+    <relation id="53" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="6" role="stage"/>
+      <ref hint="cylindrical_gear" id="23" role="gear"/>
+      <ref hint="stage_gear_data" id="136" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe and Stirnrad pos=2 [34] and stage-related gear data component Zahnraddaten [137]-->
+    <relation id="54" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="6" role="stage"/>
+      <ref hint="cylindrical_gear" id="34" role="gear"/>
+      <ref hint="stage_gear_data" id="137" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [37] and Stirnrad pos=3 [38] and stage-related gear data component Zahnraddaten [138]-->
+    <relation id="55" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="37" role="stage"/>
+      <ref hint="cylindrical_gear" id="38" role="gear"/>
+      <ref hint="stage_gear_data" id="138" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [37] and Stirnrad pos=4 [52] and stage-related gear data component Zahnraddaten [139]-->
+    <relation id="56" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="37" role="stage"/>
+      <ref hint="cylindrical_gear" id="52" role="gear"/>
+      <ref hint="stage_gear_data" id="139" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [55] and Stirnrad pos=5 [56] and stage-related gear data component Zahnraddaten [140]-->
+    <relation id="57" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="55" role="stage"/>
+      <ref hint="cylindrical_gear" id="56" role="gear"/>
+      <ref hint="stage_gear_data" id="140" role="stage_gear_data"/>
+    </relation>
+    <!--Relation between Stirnradstufe [55] and Stirnrad pos=6 [69] and stage-related gear data component Zahnraddaten [141]-->
+    <relation id="58" type="stage_gear_data">
+      <ref hint="cylindrical_stage" id="55" role="stage"/>
+      <ref hint="cylindrical_gear" id="69" role="gear"/>
+      <ref hint="stage_gear_data" id="141" role="stage_gear_data"/>
+    </relation>
+    <!--Side relation between Lager 6305-Z-J [20] and ANW [4] and Casing [2]-->
+    <relation id="59" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="20" role="assembly"/>
+      <ref hint="shaft" id="4" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6205-Z [21] and ANW [4] and Casing [2]-->
+    <relation id="60" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="21" role="assembly"/>
+      <ref hint="shaft" id="4" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6202-J [32] and RW3 [5] and Casing [2]-->
+    <relation id="61" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="32" role="assembly"/>
+      <ref hint="shaft" id="5" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6202-J [33] and RW3 [5] and Casing [2]-->
+    <relation id="62" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="33" role="assembly"/>
+      <ref hint="shaft" id="5" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6302-J [49] and RW5 [36] and Casing [2]-->
+    <relation id="63" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="49" role="assembly"/>
+      <ref hint="shaft" id="36" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager NUP204E [50] and RW5 [36] and Casing [2]-->
+    <relation id="64" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="50" role="assembly"/>
+      <ref hint="shaft" id="36" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6303-J [51] and RW5 [36] and Casing [2]-->
+    <relation id="65" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="51" role="assembly"/>
+      <ref hint="shaft" id="36" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6207-J [66] and ABW [54] and Casing [2]-->
+    <relation id="66" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="66" role="assembly"/>
+      <ref hint="shaft" id="54" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Side relation between Lager 6308-Z-J [67] and ABW [54] and Casing [2]-->
+    <relation id="67" type="side">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="67" role="assembly"/>
+      <ref hint="shaft" id="54" role="inner_part"/>
+      <ref hint="gear_casing" id="2" role="outer_part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [382]-->
+    <relation id="158" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="382" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [383]-->
+    <relation id="159" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="383" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [384]-->
+    <relation id="160" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="384" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [385]-->
+    <relation id="161" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="385" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [386]-->
+    <relation id="162" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="386" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [387]-->
+    <relation id="163" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="387" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [388]-->
+    <relation id="164" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="388" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [389]-->
+    <relation id="165" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="389" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [390]-->
+    <relation id="166" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="390" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [391]-->
+    <relation id="167" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="391" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [392]-->
+    <relation id="168" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="392" role="part"/>
+    </relation>
+    <!--Relation between the main component ANW [4] and the sub-component section [393]-->
+    <relation id="169" type="assembly">
+      <ref hint="shaft" id="4" role="assembly"/>
+      <ref hint="shaft_section" id="393" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component section [394]-->
+    <relation id="170" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="shaft_section" id="394" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component section [395]-->
+    <relation id="171" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="shaft_section" id="395" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component section [396]-->
+    <relation id="172" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="shaft_section" id="396" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component section [397]-->
+    <relation id="173" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="shaft_section" id="397" role="part"/>
+    </relation>
+    <!--Relation between the main component RW3 [5] and the sub-component section [398]-->
+    <relation id="174" type="assembly">
+      <ref hint="shaft" id="5" role="assembly"/>
+      <ref hint="shaft_section" id="398" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [399]-->
+    <relation id="175" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="399" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [400]-->
+    <relation id="176" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="400" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [401]-->
+    <relation id="177" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="401" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [402]-->
+    <relation id="178" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="402" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [403]-->
+    <relation id="179" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="403" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [404]-->
+    <relation id="180" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="404" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [405]-->
+    <relation id="181" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="405" role="part"/>
+    </relation>
+    <!--Relation between the main component RW5 [36] and the sub-component section [406]-->
+    <relation id="182" type="assembly">
+      <ref hint="shaft" id="36" role="assembly"/>
+      <ref hint="shaft_section" id="406" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [407]-->
+    <relation id="183" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="407" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [408]-->
+    <relation id="184" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="408" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [409]-->
+    <relation id="185" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="409" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [410]-->
+    <relation id="186" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="410" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [411]-->
+    <relation id="187" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="411" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [412]-->
+    <relation id="188" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="412" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [413]-->
+    <relation id="189" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="413" role="part"/>
+    </relation>
+    <!--Relation between the main component ABW [54] and the sub-component section [414]-->
+    <relation id="190" type="assembly">
+      <ref hint="shaft" id="54" role="assembly"/>
+      <ref hint="shaft_section" id="414" role="part"/>
+    </relation>
+    <!--Flank relations between gear Stirnrad pos=1 [23], left flank flank_geometry [361], and right flank flank_geometry [362]-->
+    <relation id="191" type="flank">
+      <ref hint="cylindrical_gear" id="23" role="gear"/>
+      <ref hint="flank_geometry" id="361" role="left"/>
+      <ref hint="flank_geometry" id="362" role="right"/>
+    </relation>
+    <!--Flank relations between gear Stirnrad pos=2 [34], left flank flank_geometry [363], and right flank flank_geometry [364]-->
+    <relation id="192" type="flank">
+      <ref hint="cylindrical_gear" id="34" role="gear"/>
+      <ref hint="flank_geometry" id="363" role="left"/>
+      <ref hint="flank_geometry" id="364" role="right"/>
+    </relation>
+    <!--Flank relations between gear Stirnrad pos=3 [38], left flank flank_geometry [365], and right flank flank_geometry [366]-->
+    <relation id="193" type="flank">
+      <ref hint="cylindrical_gear" id="38" role="gear"/>
+      <ref hint="flank_geometry" id="365" role="left"/>
+      <ref hint="flank_geometry" id="366" role="right"/>
+    </relation>
+    <!--Flank relations between gear Stirnrad pos=4 [52], left flank flank_geometry [367], and right flank flank_geometry [368]-->
+    <relation id="194" type="flank">
+      <ref hint="cylindrical_gear" id="52" role="gear"/>
+      <ref hint="flank_geometry" id="367" role="left"/>
+      <ref hint="flank_geometry" id="368" role="right"/>
+    </relation>
+    <!--Flank relations between gear Stirnrad pos=5 [56], left flank flank_geometry [369], and right flank flank_geometry [370]-->
+    <relation id="195" type="flank">
+      <ref hint="cylindrical_gear" id="56" role="gear"/>
+      <ref hint="flank_geometry" id="369" role="left"/>
+      <ref hint="flank_geometry" id="370" role="right"/>
+    </relation>
+    <!--Flank relations between gear Stirnrad pos=6 [69], left flank flank_geometry [371], and right flank flank_geometry [372]-->
+    <relation id="196" type="flank">
+      <ref hint="cylindrical_gear" id="69" role="gear"/>
+      <ref hint="flank_geometry" id="371" role="left"/>
+      <ref hint="flank_geometry" id="372" role="right"/>
+    </relation>
+    <!--Relation between the main component Lager 6305-Z-J [20] and the sub-component rolling_bearing_row [373]-->
+    <relation id="197" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="20" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="373" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6205-Z [21] and the sub-component rolling_bearing_row [374]-->
+    <relation id="198" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="21" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="374" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6202-J [32] and the sub-component rolling_bearing_row [375]-->
+    <relation id="199" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="32" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="375" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6202-J [33] and the sub-component rolling_bearing_row [376]-->
+    <relation id="200" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="33" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="376" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6302-J [49] and the sub-component rolling_bearing_row [377]-->
+    <relation id="201" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="49" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="377" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager NUP204E [50] and the sub-component rolling_bearing_row [378]-->
+    <relation id="202" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="50" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="378" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6303-J [51] and the sub-component rolling_bearing_row [379]-->
+    <relation id="203" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="51" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="379" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6207-J [66] and the sub-component rolling_bearing_row [380]-->
+    <relation id="204" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="66" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="380" role="part"/>
+    </relation>
+    <!--Relation between the main component Lager 6308-Z-J [67] and the sub-component rolling_bearing_row [381]-->
+    <relation id="205" order="1" type="ordered_assembly">
+      <ref hint="rolling_bearing_with_catalog_geometry" id="67" role="assembly"/>
+      <ref hint="rolling_bearing_row" id="381" role="part"/>
+    </relation>
+  </relations>
+  <components>
+    <component id="1" name="Gear unit [1]" type="gear_unit">
+      <attribute id="number_of_gears" unit="none">1</attribute>
+      <attribute id="gear_shift_index" unit="none">1</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="2" name="Casing [2]" type="gear_casing"/>
+    <component id="4" name="ANW [4]" type="shaft">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="rotational_speed" unit="1 / min">1400.0</attribute>
+      <attribute id="defines_speed" unit="none">true</attribute>
+    </component>
+    <component id="5" name="RW3 [5]" type="shaft">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>137.5</c>
+          <c>47.02148907341676</c>
+          <c>-24.45362069957225</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="6" name="Stirnradstufe" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">53.0</attribute>
+      <attribute id="din_3964_center_distance_tolerance_field" unit="none">7</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">117.47677801890632</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+    </component>
+    <component id="20" name="Lager 6305-Z-J [20]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.75</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6305-2Z</attribute>
+      <attribute id="width" unit="mm">17.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">25.0</attribute>
+      <attribute id="outer_diameter" unit="mm">62.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">22.400000000000002</attribute>
+      <attribute id="static_capacity" unit="kN">11.4</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">65.5</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">65.5</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>65.5</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="21" name="Lager 6205-Z [21]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.51</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6205</attribute>
+      <attribute id="width" unit="mm">15.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">25.0</attribute>
+      <attribute id="outer_diameter" unit="mm">52.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">14.0</attribute>
+      <attribute id="static_capacity" unit="kN">7.8</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">111.8</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">111.8</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>111.8</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="22" name="Last Wellenende E [22]" type="external_load">
+      <attribute id="u_coordinate_on_shaft" unit="mm">20.0</attribute>
+      <attribute id="torque_around_u_axis" unit="N m">4.724562306435156</attribute>
+      <attribute id="transmits_torque" unit="none">true</attribute>
+      <attribute id="defines_torque" unit="none">true</attribute>
+    </component>
+    <component id="23" name="Stirnrad pos=1 [23]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="din_3967_deviation_tolerance_series" unit="none">c25</attribute>
+      <attribute id="normal_module" unit="mm">1.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">146.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">30.0</attribute>
+      <attribute id="face_width" unit="mm">16.0</attribute>
+      <attribute id="number_of_teeth" unit="none">23</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>154.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="136" name="Zahnraddaten [136]" type="stage_gear_data"/>
+    <component id="137" name="Zahnraddaten [137]" type="stage_gear_data"/>
+    <component id="138" name="Zahnraddaten [138]" type="stage_gear_data"/>
+    <component id="139" name="Zahnraddaten [139]" type="stage_gear_data"/>
+    <component id="32" name="Lager 6202-J [32]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.22</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">negative</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6202</attribute>
+      <attribute id="width" unit="mm">11.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">15.0</attribute>
+      <attribute id="outer_diameter" unit="mm">35.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">7.8</attribute>
+      <attribute id="static_capacity" unit="kN">3.75</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">6.5</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">6.5</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>144.0</c>
+          <c>47.02148907341676</c>
+          <c>-24.45362069957225</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="33" name="Lager 6202-J [33]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.22</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">positive</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6202</attribute>
+      <attribute id="width" unit="mm">11.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">15.0</attribute>
+      <attribute id="outer_diameter" unit="mm">35.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">7.8</attribute>
+      <attribute id="static_capacity" unit="kN">3.75</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">54.5</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">54.5</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>192.0</c>
+          <c>47.02148907341676</c>
+          <c>-24.45362069957225</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="34" name="Stirnrad pos=2 [34]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="din_3967_deviation_tolerance_series" unit="none">c25</attribute>
+      <attribute id="normal_module" unit="mm">1.0</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">13.5</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">-30.0</attribute>
+      <attribute id="face_width" unit="mm">11.0</attribute>
+      <attribute id="number_of_teeth" unit="none">67</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>156.5</c>
+          <c>47.02148907341676</c>
+          <c>-24.45362069957225</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="36" name="RW5 [36]" type="shaft">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>128.5</c>
+          <c>50.33350037591513</c>
+          <c>32.45007497243242</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="37" name="Stirnradstufe [37]" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">57.0</attribute>
+      <attribute id="din_3964_center_distance_tolerance_field" unit="none">7</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">3.3310739238719993</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+    </component>
+    <component id="38" name="Stirnrad pos=3 [38]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="din_3967_deviation_tolerance_series" unit="none">c25</attribute>
+      <attribute id="normal_module" unit="mm">1.25</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">26.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">-10.0</attribute>
+      <attribute id="face_width" unit="mm">23.0</attribute>
+      <attribute id="number_of_teeth" unit="none">13</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>175.0</c>
+          <c>47.02148907341676</c>
+          <c>-24.45362069957225</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="140" name="Zahnraddaten [140]" type="stage_gear_data"/>
+    <component id="141" name="Zahnraddaten [141]" type="stage_gear_data"/>
+    <component id="49" name="Lager 6302-J [49]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.35000000000000003</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">negative</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6302</attribute>
+      <attribute id="width" unit="mm">13.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">15.0</attribute>
+      <attribute id="outer_diameter" unit="mm">42.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">11.4</attribute>
+      <attribute id="static_capacity" unit="kN">5.4</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">13.5</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">13.5</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>142.0</c>
+          <c>50.33350037591513</c>
+          <c>32.45007497243242</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="50" name="Lager NUP204E [50]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">3.9</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.2</attribute>
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">NUP204-E-XL-TVP2</attribute>
+      <attribute id="width" unit="mm">14.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">20.0</attribute>
+      <attribute id="outer_diameter" unit="mm">47.0</attribute>
+      <attribute id="manufacturer" unit="none">INA</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.92</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.6</attribute>
+      <attribute id="dynamic_capacity" unit="kN">32.5</attribute>
+      <attribute id="static_capacity" unit="kN">24.7</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">66.0</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">66.0</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.0</attribute>
+      <attribute id="bearing_type" unit="none">radial_roller_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>194.5</c>
+          <c>50.33350037591513</c>
+          <c>32.45007497243242</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="51" name="Lager 6303-J [51]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.44</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">positive</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6303-C</attribute>
+      <attribute id="width" unit="mm">14.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">17.0</attribute>
+      <attribute id="outer_diameter" unit="mm">47.0</attribute>
+      <attribute id="manufacturer" unit="none">INA</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">15.0</attribute>
+      <attribute id="static_capacity" unit="kN">6.5</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">135.0</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">135.0</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>263.5</c>
+          <c>50.33350037591513</c>
+          <c>32.45007497243242</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="52" name="Stirnrad pos=4 [52]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="din_3967_deviation_tolerance_series" unit="none">c25</attribute>
+      <attribute id="normal_module" unit="mm">1.25</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">41.5</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">10.0</attribute>
+      <attribute id="face_width" unit="mm">15.0</attribute>
+      <attribute id="number_of_teeth" unit="none">76</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>177.5</c>
+          <c>50.33350037591513</c>
+          <c>32.45007497243242</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="54" name="ABW [54]" type="shaft">
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>182.7</c>
+          <c>-19.008575782311063</c>
+          <c>-1.026431327759056</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="55" name="Stirnradstufe [55]" type="cylindrical_stage">
+      <attribute id="center_distance" unit="mm">77.0</attribute>
+      <attribute id="din_3964_center_distance_tolerance_field" unit="none">7</attribute>
+      <attribute id="rotating_angle_around_neg_u_axis" unit="°">-115.77001197095069</attribute>
+      <attribute id="flag_designation_addendum_modification" unit="none">entry_of_addendum_modification_coefficient</attribute>
+    </component>
+    <component id="56" name="Stirnrad pos=5 [56]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="din_3967_deviation_tolerance_series" unit="none">c25</attribute>
+      <attribute id="normal_module" unit="mm">1.5</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">78.0</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">10.0</attribute>
+      <attribute id="face_width" unit="mm">41.0</attribute>
+      <attribute id="number_of_teeth" unit="none">14</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>227.0</c>
+          <c>50.33350037591513</c>
+          <c>32.45007497243242</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="66" name="Lager 6207-J [66]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">0.92</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">no_direction</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6207</attribute>
+      <attribute id="width" unit="mm">17.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">35.0</attribute>
+      <attribute id="outer_diameter" unit="mm">72.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">25.5</attribute>
+      <attribute id="static_capacity" unit="kN">15.3</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">16.799999999999997</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">16.799999999999997</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>199.5</c>
+          <c>-19.008575782311063</c>
+          <c>-1.026431327759056</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="67" name="Lager 6308-Z-J [67]" type="rolling_bearing_with_catalog_geometry">
+      <attribute id="contamination_factor_according_to_din_26281" unit="none">0.5</attribute>
+      <attribute id="fatigue_limit_load" unit="kN">1.6400000000000001</attribute>
+      <attribute id="catalogue_value_e" unit="none">0.0</attribute>
+      <attribute id="axial_force_absorption" unit="none">both_directions</attribute>
+      <attribute id="number_of_bearing_rows" unit="none">1</attribute>
+      <attribute id="name" unit="none">6308-2Z</attribute>
+      <attribute id="width" unit="mm">23.0</attribute>
+      <attribute id="bending_stiffness" unit="N mm / rad">0.0</attribute>
+      <attribute id="inner_diameter" unit="mm">40.0</attribute>
+      <attribute id="outer_diameter" unit="mm">90.0</attribute>
+      <attribute id="manufacturer" unit="none">FAG</attribute>
+      <attribute id="radial_stiffness" unit="N / m">9.999999999999999E22</attribute>
+      <attribute id="radial_factor_x_1" unit="none">1.0</attribute>
+      <attribute id="radial_factor_x_2" unit="none">0.56</attribute>
+      <attribute id="axial_factor_y_1" unit="none">0.0</attribute>
+      <attribute id="axial_factor_y_2" unit="none">0.0</attribute>
+      <attribute id="dynamic_capacity" unit="kN">42.5</attribute>
+      <attribute id="static_capacity" unit="kN">25.0</attribute>
+      <attribute id="misalignment_in_v_direction" unit="mum">0.0</attribute>
+      <attribute id="misalignment_in_w_direction" unit="mum">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_inner_side" unit="mm">119.5</attribute>
+      <attribute id="distance_between_bearing_rows" unit="mm">0.0</attribute>
+      <attribute id="axial_stiffness" unit="N / m">0.0</attribute>
+      <attribute id="u_coordinate_on_shaft_outer_side" unit="mm">119.5</attribute>
+      <attribute id="axial_factor_y_0" unit="none">0.5</attribute>
+      <attribute id="bearing_type" unit="none">radial_grooved_ball_bearing</attribute>
+      <attribute id="speed_outer_ring" unit="1 / min">0.0</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>302.2</c>
+          <c>-19.008575782311063</c>
+          <c>-1.026431327759056</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+      <attribute id="radial_backlash" unit="mum">0.0</attribute>
+    </component>
+    <component id="68" name="Last Wellenende A [68]" type="external_load">
+      <attribute id="u_coordinate_on_shaft" unit="mm">185.0</attribute>
+      <attribute id="transmits_torque" unit="none">true</attribute>
+    </component>
+    <component id="69" name="Stirnrad pos=6 [69]" type="cylindrical_gear">
+      <attribute id="chamfer_at_tooth_end" unit="mm">0.0</attribute>
+      <attribute id="din_3967_deviation_tolerance_series" unit="none">c25</attribute>
+      <attribute id="normal_module" unit="mm">1.5</attribute>
+      <attribute id="u_coordinate_on_shaft" unit="mm">26.299999999999997</attribute>
+      <attribute id="helix_angle_reference_diameter" unit="°">-10.0</attribute>
+      <attribute id="face_width" unit="mm">36.0</attribute>
+      <attribute id="number_of_teeth" unit="none">87</attribute>
+      <attribute id="support_vector" unit="mm">
+        <array>
+          <c>227.0</c>
+          <c>-19.008575782311063</c>
+          <c>-1.026431327759056</c>
+        </array>
+      </attribute>
+      <attribute id="u_axis_vector" unit="mm">
+        <array>
+          <c>1.0</c>
+          <c>0.0</c>
+          <c>0.0</c>
+        </array>
+      </attribute>
+      <attribute id="w_axis_vector" unit="mm">
+        <array>
+          <c>0.0</c>
+          <c>0.0</c>
+          <c>1.0</c>
+        </array>
+      </attribute>
+      <attribute id="reference_component_for_position" unit="none">1</attribute>
+    </component>
+    <component id="382" name="section [382]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">19.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">19.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">40.0</attribute>
+    </component>
+    <component id="383" name="section [383]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">40.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">22.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">22.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">11.5</attribute>
+    </component>
+    <component id="384" name="section [384]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">51.5</attribute>
+      <attribute id="outer_diameter_end" unit="mm">25.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">25.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">2.299999999999997</attribute>
+    </component>
+    <component id="385" name="section [385]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">53.8</attribute>
+      <attribute id="outer_diameter_end" unit="mm">23.9</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">23.9</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">1.2999999999999972</attribute>
+    </component>
+    <component id="386" name="section [386]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">55.099999999999994</attribute>
+      <attribute id="outer_diameter_end" unit="mm">25.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">25.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">18.900000000000006</attribute>
+    </component>
+    <component id="387" name="section [387]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">74.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">30.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">30.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">30.299999999999997</attribute>
+    </component>
+    <component id="388" name="section [388]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">104.3</attribute>
+      <attribute id="outer_diameter_end" unit="mm">25.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">25.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">15.200000000000003</attribute>
+    </component>
+    <component id="389" name="section [389]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">119.5</attribute>
+      <attribute id="outer_diameter_end" unit="mm">22.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">22.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">22.5</attribute>
+    </component>
+    <component id="390" name="section [390]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">142.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">14.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">14.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">4.0</attribute>
+    </component>
+    <component id="391" name="section [391]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">146.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">10.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">10.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">15.900000000000006</attribute>
+    </component>
+    <component id="392" name="section [392]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">161.9</attribute>
+      <attribute id="outer_diameter_end" unit="mm">9.6</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">9.6</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">1.0999999999999943</attribute>
+    </component>
+    <component id="393" name="section [393]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">163.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">10.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">10.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">1.5</attribute>
+    </component>
+    <component id="394" name="section [394]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">14.8</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">14.8</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">2.5</attribute>
+    </component>
+    <component id="395" name="section [395]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">2.5</attribute>
+      <attribute id="outer_diameter_end" unit="mm">15.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">15.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">10.0</attribute>
+    </component>
+    <component id="396" name="section [396]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">12.5</attribute>
+      <attribute id="outer_diameter_end" unit="mm">16.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">16.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">13.5</attribute>
+    </component>
+    <component id="397" name="section [397]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">26.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">14.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">14.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">23.0</attribute>
+    </component>
+    <component id="398" name="section [398]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">49.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">15.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">15.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">10.5</attribute>
+    </component>
+    <component id="399" name="section [399]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">14.6</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">14.6</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">7.0</attribute>
+    </component>
+    <component id="400" name="section [400]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">7.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">15.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">15.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">14.0</attribute>
+    </component>
+    <component id="401" name="section [401]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">21.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">20.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">20.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">52.0</attribute>
+    </component>
+    <component id="402" name="section [402]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">73.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">25.91</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">25.91</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">5.0</attribute>
+    </component>
+    <component id="403" name="section [403]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">78.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">18.403</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">18.403</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">41.0</attribute>
+    </component>
+    <component id="404" name="section [404]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">119.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">25.91</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">25.91</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">9.0</attribute>
+    </component>
+    <component id="405" name="section [405]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">128.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">17.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">17.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">12.0</attribute>
+    </component>
+    <component id="406" name="section [406]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">140.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">16.8</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">16.8</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">3.0</attribute>
+    </component>
+    <component id="407" name="section [407]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">35.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">35.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">4.0</attribute>
+    </component>
+    <component id="408" name="section [408]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">4.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">33.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">33.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">1.5999999999999996</attribute>
+    </component>
+    <component id="409" name="section [409]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">5.6</attribute>
+      <attribute id="outer_diameter_end" unit="mm">35.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">35.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">20.4</attribute>
+    </component>
+    <component id="410" name="section [410]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">26.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">40.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">40.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">39.0</attribute>
+    </component>
+    <component id="411" name="section [411]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">65.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">39.5</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">39.5</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">44.0</attribute>
+    </component>
+    <component id="412" name="section [412]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">109.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">40.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">40.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">22.0</attribute>
+    </component>
+    <component id="413" name="section [413]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">131.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">47.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">47.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">19.0</attribute>
+    </component>
+    <component id="414" name="section [414]" type="shaft_section">
+      <attribute id="u_coordinate_on_shaft" unit="mm">150.0</attribute>
+      <attribute id="outer_diameter_end" unit="mm">35.0</attribute>
+      <attribute id="inner_diameter_end" unit="mm">0.0</attribute>
+      <attribute id="outer_diameter_begin" unit="mm">35.0</attribute>
+      <attribute id="inner_diameter_begin" unit="mm">0.0</attribute>
+      <attribute id="length" unit="mm">70.0</attribute>
+    </component>
+    <component id="361" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.1</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.581</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="362" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.1</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.581</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="363" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.1</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.5131000000000001</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="364" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.1</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.5131000000000001</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="365" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.108</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.521</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="366" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.108</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.521</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="367" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.108</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">-0.09400000000000003</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="368" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.108</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">-0.09400000000000003</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="369" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.114</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.536</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="370" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.114</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">0.536</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="371" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.114</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">-0.48150000000000004</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="372" name="" type="flank_geometry">
+      <attribute id="normal_pressure_angle" unit="°">20.0</attribute>
+      <attribute id="machining_allowance" unit="mm">0.114</attribute>
+      <attribute id="machining_allowance_tolerance" unit="mm">0.0</attribute>
+      <attribute id="grinding_allowance" unit="mm">0.0</attribute>
+      <attribute id="addendum_modification_coefficient" unit="none">-0.48150000000000004</attribute>
+      <attribute id="tooth_tip_chamfer" unit="mm">0.0</attribute>
+    </component>
+    <component id="373" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="374" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="375" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="376" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="377" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="378" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">no_direction</attribute>
+    </component>
+    <component id="379" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="380" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+    <component id="381" name="" type="rolling_bearing_row">
+      <attribute id="pressure_angle" unit="°">0.0</attribute>
+      <attribute id="axial_force_absorption_of_row" unit="none">both_directions</attribute>
+    </component>
+  </components>
+</model>

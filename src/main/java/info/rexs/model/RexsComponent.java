@@ -21,8 +21,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import info.rexs.db.constants.AttributeId;
-import info.rexs.db.constants.ComponentType;
+import info.rexs.db.constants.RexsAttributeId;
+import info.rexs.db.constants.RexsComponentType;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 import lombok.EqualsAndHashCode;
@@ -43,7 +43,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	private Integer id;
 
 	/** The type of the component. */
-	private ComponentType type;
+	private RexsComponentType type;
 
 	/** An internal index with all attributes of the component for quick access. */
 	private Map<String, RexsAttribute> attributes;
@@ -57,7 +57,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public RexsComponent(Component rawComponent) {
 		this.rawComponent = rawComponent;
 		this.id = rawComponent.getId();
-		this.type = ComponentType.findById(rawComponent.getType());
+		this.type = RexsComponentType.findById(rawComponent.getType());
 		this.attributes = rawComponent.getAttribute().stream().collect(Collectors.toMap(Attribute::getId, RexsAttribute::new));
 	}
 
@@ -82,9 +82,9 @@ public class RexsComponent implements Comparable<RexsComponent> {
 
 	/**
 	 * @return
-	 * 				The type of the component as {@link ComponentType}.
+	 * 				The type of the component as {@link RexsComponentType}.
 	 */
-	public ComponentType getType() {
+	public RexsComponentType getType() {
 		return type;
 	}
 
@@ -108,12 +108,12 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Checks on the ID of an attribute whether the component contains a corresponding attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the attribute as {@link AttributeId}.
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
 	 *
 	 * @return
 	 * 				{@code true} if the component contains the attribute, otherwise {@code false}.
 	 */
-	public boolean hasAttribute(AttributeId attributeId) {
+	public boolean hasAttribute(RexsAttributeId attributeId) {
 		return hasAttribute(attributeId.getId());
 	}
 
@@ -134,12 +134,12 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Returns the attribute of the component for an attribute ID.
 	 *
 	 * @param attributeId
-	 * 				The ID of the attribute as {@link AttributeId}.
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
 	 *
 	 * @return
 	 * 				The attribute as {@link RexsAttribute} or {@code null} if the component does not contain a corresponding attribute.
 	 */
-	public RexsAttribute getAttribute(AttributeId attributeId) {
+	public RexsAttribute getAttribute(RexsAttributeId attributeId) {
 		return getAttribute(attributeId.getId());
 	}
 
@@ -179,7 +179,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		rawComponent.getAttribute().add(newAttribute.getRawAttribute());
 	}
 
-	private RexsAttribute createAndAddAttribute(AttributeId attributeId) {
+	private RexsAttribute createAndAddAttribute(RexsAttributeId attributeId) {
 		RexsAttribute attribute = new RexsAttribute(attributeId);
 		addAttribute(attribute);
 		return attribute;
@@ -191,11 +191,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param value
 	 * 				The value of the new attribute as {@link String}.
 	 */
-	public void addAttribute(AttributeId attributeId, String value) {
+	public void addAttribute(RexsAttributeId attributeId, String value) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setStringValue(value);
 	}
@@ -206,11 +206,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param value
 	 * 				The value of the new attribute as {@link Boolean}.
 	 */
-	public void addAttribute(AttributeId attributeId, Boolean value) {
+	public void addAttribute(RexsAttributeId attributeId, Boolean value) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setBooleanValue(value);
 	}
@@ -221,11 +221,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param value
 	 * 				The value of the new attribute as {@link Integer}.
 	 */
-	public void addAttribute(AttributeId attributeId, Integer value) {
+	public void addAttribute(RexsAttributeId attributeId, Integer value) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setIntegerValue(value);
 	}
@@ -236,11 +236,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param value
 	 * 				The value of the new attribute as {@link Double}.
 	 */
-	public void addAttribute(AttributeId attributeId, Double value) {
+	public void addAttribute(RexsAttributeId attributeId, Double value) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleValue(value);
 	}
@@ -251,11 +251,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param arrayValues
 	 * 				The value of the new attribute as {@link String[]}.
 	 */
-	public void addAttribute(AttributeId attributeId, String[] arrayValues) {
+	public void addAttribute(RexsAttributeId attributeId, String[] arrayValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setStringArrayValue(arrayValues);
 	}
@@ -266,11 +266,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param arrayValues
 	 * 				The value of the new attribute as {@link Boolean[]}.
 	 */
-	public void addAttribute(AttributeId attributeId, Boolean[] arrayValues) {
+	public void addAttribute(RexsAttributeId attributeId, Boolean[] arrayValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setBooleanArrayValue(arrayValues);
 	}
@@ -281,11 +281,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param arrayValues
 	 * 				The value of the new attribute as {@link Integer[]}.
 	 */
-	public void addAttribute(AttributeId attributeId, Integer[] arrayValues) {
+	public void addAttribute(RexsAttributeId attributeId, Integer[] arrayValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setIntegerArrayValue(arrayValues);
 	}
@@ -296,11 +296,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param arrayValues
 	 * 				The value of the new attribute as {@link Double[]}.
 	 */
-	public void addAttribute(AttributeId attributeId, Double[] arrayValues) {
+	public void addAttribute(RexsAttributeId attributeId, Double[] arrayValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleArrayValue(arrayValues);
 	}
@@ -311,11 +311,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param matrixValues
 	 * 				The value of the new attribute as {@link String[][]}.
 	 */
-	public void addAttribute(AttributeId attributeId, String[][] matrixValues) {
+	public void addAttribute(RexsAttributeId attributeId, String[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setStringMatrixValue(matrixValues);
 	}
@@ -326,11 +326,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param matrixValues
 	 * 				The value of the new attribute as {@link Boolean[][]}.
 	 */
-	public void addAttribute(AttributeId attributeId, Boolean[][] matrixValues) {
+	public void addAttribute(RexsAttributeId attributeId, Boolean[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setBooleanMatrixValue(matrixValues);
 	}
@@ -341,11 +341,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param matrixValues
 	 * 				The value of the new attribute as {@link Integer[][]}.
 	 */
-	public void addAttribute(AttributeId attributeId, Integer[][] matrixValues) {
+	public void addAttribute(RexsAttributeId attributeId, Integer[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setIntegerMatrixValue(matrixValues);
 	}
@@ -356,11 +356,11 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
 	 *
 	 * @param attributeId
-	 * 				The ID of the new attribute as {@link AttributeId}.
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param matrixValues
 	 * 				The value of the new attribute as {@link Double[][]}.
 	 */
-	public void addAttribute(AttributeId attributeId, Double[][] matrixValues) {
+	public void addAttribute(RexsAttributeId attributeId, Double[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleMatrixValue(matrixValues);
 	}
@@ -390,9 +390,9 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Deletes the attribute of the component for an attribute ID.
 	 *
 	 * @param attributeId
-	 * 				The ID of the attribute as {@link AttributeId}.
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
 	 */
-	public void deleteAttribute(AttributeId attributeId) {
+	public void deleteAttribute(RexsAttributeId attributeId) {
 		if (hasAttribute(attributeId)) {
 			RexsAttribute attribute = getAttribute(attributeId);
 			attributes.remove(attributeId.getId());

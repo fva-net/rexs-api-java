@@ -22,7 +22,7 @@
 
 	<groupId>com.github.fva-gmbh.rexs-api</groupId>
 	<artifactId>rexs-api</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>REXS-API</name>
@@ -208,6 +208,22 @@
 							<extension>true</extension>
 							<removeOldOutput>true</removeOldOutput>
 							<generateDirectory>${project.build.directory}/generated-sources/rexs-file</generateDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>schema-generate-rexs-changelog</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<schemaDirectory>src/main/resources/schema</schemaDirectory>
+							<schemaIncludes>
+								<include>rexs-changelog.xsd</include>
+							</schemaIncludes>
+							<extension>true</extension>
+							<removeOldOutput>true</removeOldOutput>
+							<generateDirectory>${project.build.directory}/generated-sources/rexs-changelog</generateDirectory>
 						</configuration>
 					</execution>
 				</executions>

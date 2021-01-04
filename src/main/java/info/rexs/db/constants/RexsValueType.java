@@ -22,7 +22,7 @@ package info.rexs.db.constants;
  *
  * @author FVA GmbH
  */
-public enum ValueType {
+public enum RexsValueType {
 
 	BOOLEAN("boolean"),
 	BOOLEAN_ARRAY("boolean_array", BOOLEAN),
@@ -44,14 +44,14 @@ public enum ValueType {
 	private final String key;
 
 	/** The base type associated with the data type. */
-	private final ValueType basicType;
+	private final RexsValueType basicType;
 
-	private ValueType(String key, ValueType basicType) {
+	private RexsValueType(String key, RexsValueType basicType) {
 		this.key = key;
 		this.basicType = basicType;
 	}
 
-	private ValueType(String key) {
+	private RexsValueType(String key) {
 		this(key, null);
 	}
 
@@ -67,10 +67,33 @@ public enum ValueType {
 	 * @return
 	 * 				The base type associated with the data type.
 	 */
-	public ValueType getBasicType() {
+	public RexsValueType getBasicType() {
 		if (basicType == null)
 			return this;
 		return basicType;
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param checkValueTypes
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean isOneOf(RexsValueType ... checkValueTypes)
+	{
+		if (checkValueTypes == null)
+			return false;
+
+		for (RexsValueType checkValueType : checkValueTypes)
+		{
+			if (this == checkValueType)
+				return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -80,13 +103,13 @@ public enum ValueType {
 	 * 				The actual key of the value type to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found value type as {@link ValueType}, or {@code null} if the key could not be found.
+	 * 				The found value type as {@link RexsValueType}, or {@code null} if the key could not be found.
 	 */
-	public static ValueType findByKey(String key) {
+	public static RexsValueType findByKey(String key) {
 		if (key == null)
 			return null;
 
-		for (ValueType valueType : values()) {
+		for (RexsValueType valueType : values()) {
 			if (key.equals(valueType.getKey()))
 				return valueType;
 		}

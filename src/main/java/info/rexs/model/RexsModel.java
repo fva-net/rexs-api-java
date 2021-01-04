@@ -22,7 +22,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -32,10 +31,10 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
 
-import info.rexs.db.constants.ComponentType;
-import info.rexs.db.constants.RelationRole;
-import info.rexs.db.constants.RelationType;
-import info.rexs.db.constants.Version;
+import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsRelationRole;
+import info.rexs.db.constants.RexsRelationType;
+import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.jaxb.Accumulation;
 import info.rexs.model.jaxb.Component;
 import info.rexs.model.jaxb.LoadSpectrum;
@@ -67,13 +66,13 @@ public class RexsModel {
 	private Map<Integer, RexsComponent> components;
 
 	/** An internal index with all components of the component types in the model for quick access. */
-	private Map<ComponentType, List<RexsComponent>> mapTypeToComponentId;
+	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponentId;
 
 	/** An internal index with all relations of the component in the model for quick access. */
 	private Map<Integer, List<RexsRelation>> mapMainCompToRelation;
 
 	/** An internal index with all relations of the relation types in the model for quick access. */
-	private Map<RelationType, List<RexsRelation>> mapTypeToRelation;
+	private Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation;
 
 	/**
 	 * Constructs a new {@link RexsModel} from scratch.
@@ -105,7 +104,7 @@ public class RexsModel {
 
 		this.relations = new ArrayList<>();
 		this.mapMainCompToRelation = new HashMap<>(rawRelations.size());
-		this.mapTypeToRelation = new EnumMap<>(RelationType.class);
+		this.mapTypeToRelation = new HashMap<>();
 
 		for (Relation rawRelation : rawRelations) {
 			RexsRelation relation = new RexsRelation(rawRelation);
@@ -131,7 +130,7 @@ public class RexsModel {
 			RexsComponent component = new RexsComponent(rawComponent);
 			this.components.put(rawComponent.getId(), component);
 
-			ComponentType componentType = ComponentType.findById(rawComponent.getType());
+			RexsComponentType componentType = RexsComponentType.findById(rawComponent.getType());
 			List<RexsComponent> componentsOfType = this.mapTypeToComponentId.get(componentType);
 			if (componentsOfType==null)
 				componentsOfType = new ArrayList<>();
@@ -148,7 +147,7 @@ public class RexsModel {
 		Model newRawModel = objectFactory.createModel();
 
 		// set xml headers
-		newRawModel.setVersion(Version.getLatest().getName());
+		newRawModel.setVersion(RexsVersion.getLatest().getName());
 		newRawModel.setDate(getISO8601Date());
 		newRawModel.setApplicationId(applicationId);
 		newRawModel.setApplicationVersion(applicationVersion);
@@ -231,7 +230,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public List<RexsRelation> getRelationsOfType(RelationType type) {
+	public List<RexsRelation> getRelationsOfType(RexsRelationType type) {
 		return mapTypeToRelation.getOrDefault(type, Collections.emptyList());
 	}
 
@@ -244,7 +243,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public List<RexsComponent> getComponentsOfType(ComponentType componentType) {
+	public List<RexsComponent> getComponentsOfType(RexsComponentType componentType) {
 		return mapTypeToComponentId.getOrDefault(componentType, Collections.emptyList());
 	}
 
@@ -258,10 +257,10 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public int getOrderOfAssemblyRelationOf(Integer compId) {
-		List<RexsRelation> orderedAssemblyRelations = getRelationsOfType(RelationType.ORDERED_ASSEMBLY);
+		List<RexsRelation> orderedAssemblyRelations = getRelationsOfType(RexsRelationType.ordered_assembly);
 		for (RexsRelation relation : orderedAssemblyRelations) {
 			if (relation.hasComponent(compId)
-					&& relation.findRoleByComponentId(compId) == RelationRole.PART)
+					&& relation.findRoleByComponentId(compId).equals(RexsRelationRole.part))
 				return relation.getOrder();
 		}
 
@@ -278,10 +277,10 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public int getOrderOfReferenceRelationOf(Integer compId) {
-		List<RexsRelation> orderedReferenceRelations = getRelationsOfType(RelationType.ORDERED_REFERENCE);
+		List<RexsRelation> orderedReferenceRelations = getRelationsOfType(RexsRelationType.ordered_reference);
 		for (RexsRelation relation : orderedReferenceRelations) {
 			if (relation.hasComponent(compId)
-					&& relation.findRoleByComponentId(compId) == RelationRole.REFERENCED)
+					&& relation.findRoleByComponentId(compId).equals(RexsRelationRole.referenced))
 				return relation.getOrder();
 		}
 
@@ -299,7 +298,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public RexsRelation findFirstRelation(Integer compId, RelationRole role) {
+	public RexsRelation findFirstRelation(Integer compId, RexsRelationRole role) {
 		for (RexsRelation relaltion : relations) {
 			if (relaltion.hasComponent(compId)
 					&& role == relaltion.findRoleByComponentId(compId))
@@ -319,7 +318,7 @@ public class RexsModel {
 	 */
 	public RexsRelation getStageRelationFromStageId(Integer stageId) {
 		for (RexsRelation relation : getRelationsOfMainComp(stageId)) {
-			if (relation.getType() == RelationType.STAGE)
+			if (relation.getType().equals(RexsRelationType.stage))
 				return relation;
 		}
 		return null;
@@ -336,7 +335,7 @@ public class RexsModel {
 	 */
 	public RexsComponent getGear1OfStage(Integer stageId) {
 		RexsRelation stageRel = getStageRelationFromStageId(stageId);
-		return getComponent(stageRel.findComponentIdByRole(RelationRole.GEAR_1));
+		return getComponent(stageRel.findComponentIdByRole(RexsRelationRole.gear_1));
 	}
 
 	/**
@@ -350,7 +349,7 @@ public class RexsModel {
 	 */
 	public RexsComponent getGear2OfStage(Integer stageId) {
 		RexsRelation stageRel = getStageRelationFromStageId(stageId);
-		return getComponent(stageRel.findComponentIdByRole(RelationRole.GEAR_2));
+		return getComponent(stageRel.findComponentIdByRole(RexsRelationRole.gear_2));
 	}
 
 //	/**
@@ -373,7 +372,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public List<RexsComponent> getSubComponentsWithType(Integer mainCompId, ComponentType type) {
+	public List<RexsComponent> getSubComponentsWithType(Integer mainCompId, RexsComponentType type) {
 		RexsComponent mainComp = getComponent(mainCompId);
 		if (mainComp.getType().equals(type))
 			return Arrays.asList(mainComp);
@@ -394,7 +393,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public List<RexsComponent> getChildrenWithType(Integer mainCompId, ComponentType type) {
+	public List<RexsComponent> getChildrenWithType(Integer mainCompId, RexsComponentType type) {
 		Set<RexsComponent> childrenWithType = new HashSet<>();
 		for (RexsRelation relation : getRelationsOfMainComp(mainCompId)) {
 			for (Integer subCompId : relation.getSubComponentIds()) {
@@ -403,7 +402,7 @@ public class RexsModel {
 					childrenWithType.add(subComp);
 			}
 		}
-		if (type == ComponentType.stage_gear_data)
+		if (type == RexsComponentType.stage_gear_data)
 			childrenWithType.addAll(getAssociatedStageGearDataComponents(mainCompId));
 		return childrenWithType.stream().sorted().collect(Collectors.toList());
 	}
@@ -419,7 +418,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	private List<RexsComponent> getGrandChildrenWithType(Integer mainCompId, ComponentType type) {
+	private List<RexsComponent> getGrandChildrenWithType(Integer mainCompId, RexsComponentType type) {
 		Set<RexsComponent> grandChildrenWithType = new HashSet<>();
 		for (RexsRelation relation : getRelationsOfMainComp(mainCompId)) {
 			for (Integer subCompId : relation.getSubComponentIds()) {
@@ -440,9 +439,9 @@ public class RexsModel {
 	 */
 	public Set<RexsComponent> getAssociatedStageGearDataComponents(Integer compId) {
 		Set<RexsComponent> stageGearDataComps = new HashSet<>();
-		for (RexsRelation relation : getRelationsOfType(RelationType.STAGE_GEAR_DATA)) {
+		for (RexsRelation relation : getRelationsOfType(RexsRelationType.stage_gear_data)) {
 			if (relation.hasComponent(compId)) {
-				Integer stageGearDataId = relation.findComponentIdByRole(RelationRole.STAGE_GEAR_DATA);
+				Integer stageGearDataId = relation.findComponentIdByRole(RexsRelationRole.stage_gear_data);
 				RexsComponent stageGearData = getComponent(stageGearDataId);
 				stageGearDataComps.add(stageGearData);
 			}
@@ -460,9 +459,9 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getStageFromStageGearData(Integer stageGearDataId) {
-		for (RexsRelation relation : getRelationsOfType(RelationType.STAGE_GEAR_DATA)) {
+		for (RexsRelation relation : getRelationsOfType(RexsRelationType.stage_gear_data)) {
 			if (relation.hasComponent(stageGearDataId)) {
-				Integer stageId = relation.findComponentIdByRole(RelationRole.STAGE);
+				Integer stageId = relation.findComponentIdByRole(RexsRelationRole.stage);
 				return getComponent(stageId);
 			}
 		}
@@ -479,9 +478,9 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getGearFromStageGearData(RexsComponent stageGearData) {
-		for (RexsRelation relation : getRelationsOfType(RelationType.STAGE_GEAR_DATA)) {
+		for (RexsRelation relation : getRelationsOfType(RexsRelationType.stage_gear_data)) {
 			if (relation.hasComponent(stageGearData.getId())) {
-				Integer gearId = relation.findComponentIdByRole(RelationRole.GEAR);
+				Integer gearId = relation.findComponentIdByRole(RexsRelationRole.gear);
 				return getComponent(gearId);
 			}
 		}
@@ -500,9 +499,9 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getStageGearData(Integer stageId, Integer gearId) {
-		for (RexsRelation relation : getRelationsOfType(RelationType.STAGE_GEAR_DATA)) {
+		for (RexsRelation relation : getRelationsOfType(RexsRelationType.stage_gear_data)) {
 			if (relation.hasComponent(stageId) && relation.hasComponent(gearId)) {
-				Integer stageGearDataId = relation.findComponentIdByRole(RelationRole.STAGE_GEAR_DATA);
+				Integer stageGearDataId = relation.findComponentIdByRole(RexsRelationRole.stage_gear_data);
 				return getComponent(stageGearDataId);
 			}
 		}
@@ -521,11 +520,11 @@ public class RexsModel {
 	public List<RexsComponent> getFlankGeometriesOfStage(Integer stageId) {
 		List<RexsComponent> compList = new ArrayList<>();
 		RexsRelation stageRel = getStageRelationFromStageId(stageId);
-		Integer gear1Id = stageRel.findComponentIdByRole(RelationRole.GEAR_1);
-		Integer gear2Id = stageRel.findComponentIdByRole(RelationRole.GEAR_2);
+		Integer gear1Id = stageRel.findComponentIdByRole(RexsRelationRole.gear_1);
+		Integer gear2Id = stageRel.findComponentIdByRole(RexsRelationRole.gear_2);
 
-		compList.addAll(getChildrenWithType(gear1Id, ComponentType.flank_geometry));
-		compList.addAll(getChildrenWithType(gear2Id, ComponentType.flank_geometry));
+		compList.addAll(getChildrenWithType(gear1Id, RexsComponentType.flank_geometry));
+		compList.addAll(getChildrenWithType(gear2Id, RexsComponentType.flank_geometry));
 		return compList;
 	}
 
@@ -546,8 +545,8 @@ public class RexsModel {
 	public RexsComponent getFlankGeometry(Integer gearId, String flank) {
 		RexsComponent flankGeometry = null;
 		for (RexsRelation relation : getRelationsOfMainComp(gearId)) {
-			if (relation.getType() == RelationType.FLANK) {
-				RelationRole role = RelationRole.valueOf(flank);
+			if (relation.getType().equals(RexsRelationType.flank)) {
+				RexsRelationRole role = RexsRelationRole.findByKey(flank);
 				Integer flankId = relation.findComponentIdByRole(role);
 				flankGeometry = getComponent(flankId);
 				break;
@@ -563,7 +562,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getGearCasing() {
-		List<RexsComponent> listOfCasings = getComponentsOfType(ComponentType.gear_casing);
+		List<RexsComponent> listOfCasings = getComponentsOfType(RexsComponentType.gear_casing);
 		return listOfCasings.get(0); // TODO es darf genau ein Gehäuse geben
 	}
 
@@ -574,7 +573,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getGearUnit() {
-		List<RexsComponent> listOfGearUnits = getComponentsOfType(ComponentType.gear_unit);
+		List<RexsComponent> listOfGearUnits = getComponentsOfType(RexsComponentType.gear_unit);
 		return listOfGearUnits.get(0); // TODO es darf genau eine Getriebeinheit geben
 	}
 
@@ -588,7 +587,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getMaterial(RexsComponent componentWithMaterial) {
-		List<RexsComponent> materials = getSubComponentsWithType(componentWithMaterial.getId(), ComponentType.material);
+		List<RexsComponent> materials = getSubComponentsWithType(componentWithMaterial.getId(), RexsComponentType.material);
 		return materials.get(0);
 	}
 
@@ -602,7 +601,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getLubricant(RexsComponent componentWithLubricant) {
-		List<RexsComponent> lubricants = getSubComponentsWithType(componentWithLubricant.getId(), ComponentType.lubricant);
+		List<RexsComponent> lubricants = getSubComponentsWithType(componentWithLubricant.getId(), RexsComponentType.lubricant);
 		return lubricants.get(0);
 	}
 
@@ -617,7 +616,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public RexsComponent createComponent(ComponentType type, String name) {
+	public RexsComponent createComponent(RexsComponentType type, String name) {
 		Integer id = getNextFreeComponentId();
 
 		Component component = objectFactory.createComponent();
@@ -656,11 +655,11 @@ public class RexsModel {
 		if (!componentsExists(relComp, firstPart, secondPart))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.COUPLING);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.coupling);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(relComp), RelationRole.ASSEMBLY));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(firstPart), RelationRole.SIDE_1));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(secondPart), RelationRole.SIDE_2));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(relComp), RexsRelationRole.assembly));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(firstPart), RexsRelationRole.side_1));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(secondPart), RexsRelationRole.side_2));
 
 		addRelation(rexsRelation);
 		return true;
@@ -683,11 +682,11 @@ public class RexsModel {
 		if (!componentsExists(relComp, innerPart, outerPart))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.SIDE);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.side);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(relComp), RelationRole.ASSEMBLY));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(innerPart), RelationRole.INNER_PART));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(outerPart), RelationRole.OUTER_PART));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(relComp), RexsRelationRole.assembly));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(innerPart), RexsRelationRole.inner_part));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(outerPart), RexsRelationRole.outer_part));
 
 		addRelation(rexsRelation);
 		return true;
@@ -708,10 +707,10 @@ public class RexsModel {
 		if (!componentsExists(side1, side2))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.CONNECTION);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.connection);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(side1), RelationRole.SIDE_1));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(side2), RelationRole.SIDE_2));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(side1), RexsRelationRole.side_1));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(side2), RexsRelationRole.side_2));
 
 		addRelation(rexsRelation);
 		return true;
@@ -734,11 +733,11 @@ public class RexsModel {
 		if (!componentsExists(stage, gear1, gear2))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.STAGE);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.stage);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stage), RelationRole.STAGE));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear1), RelationRole.GEAR_1));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear2), RelationRole.GEAR_2));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stage), RexsRelationRole.stage));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear1), RexsRelationRole.gear_1));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear2), RexsRelationRole.gear_2));
 
 		addRelation(rexsRelation);
 		return true;
@@ -761,11 +760,11 @@ public class RexsModel {
 		if (!componentsExists(stage, gear, stageGearData))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.STAGE_GEAR_DATA);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.stage_gear_data);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stage), RelationRole.STAGE));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear), RelationRole.GEAR));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stageGearData), RelationRole.STAGE_GEAR_DATA));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stage), RexsRelationRole.stage));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear), RexsRelationRole.gear));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stageGearData), RexsRelationRole.stage_gear_data));
 
 		addRelation(rexsRelation);
 		return true;
@@ -786,10 +785,10 @@ public class RexsModel {
 		if (!componentsExists(mainComp, partComp))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.ASSEMBLY);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.assembly);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RelationRole.ASSEMBLY));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(partComp), RelationRole.PART));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.assembly));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(partComp), RexsRelationRole.part));
 
 		addRelation(rexsRelation);
 		return true;
@@ -810,10 +809,10 @@ public class RexsModel {
 		if (!componentsExists(mainComp, referenced))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.REFERENCE);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.reference);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RelationRole.ORIGIN));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(referenced), RelationRole.REFERENCED));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.origin));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(referenced), RexsRelationRole.referenced));
 
 		addRelation(rexsRelation);
 		return true;
@@ -836,11 +835,11 @@ public class RexsModel {
 		if (!componentsExists(mainComp, referenced))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.ORDERED_REFERENCE);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.ordered_reference);
 		rexsRelation.setOrder(order);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RelationRole.ORIGIN));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(referenced), RelationRole.REFERENCED));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.origin));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(referenced), RexsRelationRole.referenced));
 
 		addRelation(rexsRelation);
 		return true;
@@ -863,11 +862,11 @@ public class RexsModel {
 		if (!componentsExists(gear, flank1, flank2))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.FLANK);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.flank);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear), RelationRole.GEAR));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank1), RelationRole.LEFT));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank2), RelationRole.RIGHT));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear), RexsRelationRole.gear));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank1), RexsRelationRole.left));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank2), RexsRelationRole.right));
 
 		addRelation(rexsRelation);
 		return true;
@@ -890,24 +889,24 @@ public class RexsModel {
 		if (!componentsExists(mainComp, partComp))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RelationType.ORDERED_ASSEMBLY);
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.ordered_assembly);
 		rexsRelation.setOrder(order);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RelationRole.ASSEMBLY));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(partComp), RelationRole.PART));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.assembly));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(partComp), RexsRelationRole.part));
 
 		addRelation(rexsRelation);
 		return true;
 	}
 
-	private Relation createRexsRelationWithType(RelationType type) {
+	private Relation createRexsRelationWithType(RexsRelationType type) {
 		Relation rexsRelation = objectFactory.createRelation();
 		rexsRelation.setId(getNextFreeRelationId());
 		rexsRelation.setType(type.getKey());
 		return rexsRelation;
 	}
 
-	private Ref createRexsRefWithType(RexsRelationData data, RelationRole role) {
+	private Ref createRexsRefWithType(RexsRelationData data, RexsRelationRole role) {
 		Ref ref = objectFactory.createRef();
 		ref.setId(data.getId());
 		ref.setRole(role.getKey());
@@ -959,8 +958,8 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public boolean isPlanetPin(RexsComponent rexsComponent) {
-		for (RexsRelation planetPinRel : getRelationsOfType(RelationType.PLANET_PIN)) {
-			Integer shaftId = planetPinRel.findComponentIdByRole(RelationRole.SHAFT);
+		for (RexsRelation planetPinRel : getRelationsOfType(RexsRelationType.planet_pin)) {
+			Integer shaftId = planetPinRel.findComponentIdByRole(RexsRelationRole.shaft);
 			if (rexsComponent.getId().equals(shaftId))
 				return true;
 		}
@@ -977,8 +976,8 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public boolean isPlanetShaft(RexsComponent rexsComponent) {
-		for (RexsRelation planetShaftRel : getRelationsOfType(RelationType.PLANET_SHAFT)) {
-			Integer shaftId = planetShaftRel.findComponentIdByRole(RelationRole.SHAFT);
+		for (RexsRelation planetShaftRel : getRelationsOfType(RexsRelationType.planet_shaft)) {
+			Integer shaftId = planetShaftRel.findComponentIdByRole(RexsRelationRole.shaft);
 			if (rexsComponent.getId().equals(shaftId))
 				return true;
 		}
@@ -996,36 +995,36 @@ public class RexsModel {
 	 */
 	public boolean isPartOfPlanetaryStage(RexsComponent rexsComponent) {
 		Integer componentId = rexsComponent.getId();
-		ComponentType componentType = rexsComponent.getType();
+		RexsComponentType componentType = rexsComponent.getType();
 
-		if (ComponentType.cylindrical_stage.getId().equals(componentType.getId())
-				|| ComponentType.shaft.getId().equals(componentType.getId())) {
-			for (RexsComponent planetaryStage : getComponentsOfType(ComponentType.planetary_stage)) {
+		if (RexsComponentType.cylindrical_stage.getId().equals(componentType.getId())
+				|| RexsComponentType.shaft.getId().equals(componentType.getId())) {
+			for (RexsComponent planetaryStage : getComponentsOfType(RexsComponentType.planetary_stage)) {
 				for (RexsRelation relation : getRelationsOfMainComp(planetaryStage.getId())) {
-					if (componentId.equals(relation.findComponentIdByRole(RelationRole.PART)))
+					if (componentId.equals(relation.findComponentIdByRole(RexsRelationRole.part)))
 						return true;
 				}
 			}
 			return false;
 
-		} else if (ComponentType.cylindrical_gear.getId().equals(componentType.getId())
-				|| ComponentType.ring_gear.getId().equals(componentType.getId())) {
+		} else if (RexsComponentType.cylindrical_gear.getId().equals(componentType.getId())
+				|| RexsComponentType.ring_gear.getId().equals(componentType.getId())) {
 			for (RexsComponent stage : getStagesOfGear(rexsComponent)) {
 				if (isPartOfPlanetaryStage(stage))
 					return true;
 			}
 			return false;
 
-		} else if (ComponentType.side_plate.getId().equals(componentType.getId())
-				|| ComponentType.planet_carrier.getId().equals(componentType.getId())) {
+		} else if (RexsComponentType.side_plate.getId().equals(componentType.getId())
+				|| RexsComponentType.planet_carrier.getId().equals(componentType.getId())) {
 			return true;
 
-		} else if (ComponentType.concept_bearing.getId().equals(componentType.getId())
-				|| ComponentType.coupling.getId().equals(componentType.getId())) {
+		} else if (RexsComponentType.concept_bearing.getId().equals(componentType.getId())
+				|| RexsComponentType.coupling.getId().equals(componentType.getId())) {
 			for (RexsRelation relation : getRelationsOfMainComp(rexsComponent.getId())) {
-				if (relation.getType()==RelationType.SIDE) {
-					RexsComponent sideComp1 = getComponent(relation.findComponentIdByRole(RelationRole.SIDE_1));
-					RexsComponent sideComp2 = getComponent(relation.findComponentIdByRole(RelationRole.SIDE_2));
+				if (relation.getType()==RexsRelationType.side) {
+					RexsComponent sideComp1 = getComponent(relation.findComponentIdByRole(RexsRelationRole.side_1));
+					RexsComponent sideComp2 = getComponent(relation.findComponentIdByRole(RexsRelationRole.side_2));
 					if (isPartOfPlanetaryStage(sideComp1) && isPartOfPlanetaryStage(sideComp2))
 						return true;
 				} else {
@@ -1046,14 +1045,14 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public List<RexsComponent> getStagesOfGear(RexsComponent gear) {
-		ComponentType gearType = gear.getType();
-		ComponentType stageType = null;
+		RexsComponentType gearType = gear.getType();
+		RexsComponentType stageType = null;
 
-		if (ComponentType.cylindrical_gear.getId().equals(gearType.getId())
-				|| ComponentType.ring_gear.getId().equals(gearType.getId())) {
-			stageType = ComponentType.cylindrical_stage;
-		} else if (ComponentType.bevel_gear.getId().equals(gearType.getId())) {
-			stageType = ComponentType.bevel_stage;
+		if (RexsComponentType.cylindrical_gear.getId().equals(gearType.getId())
+				|| RexsComponentType.ring_gear.getId().equals(gearType.getId())) {
+			stageType = RexsComponentType.cylindrical_stage;
+		} else if (RexsComponentType.bevel_gear.getId().equals(gearType.getId())) {
+			stageType = RexsComponentType.bevel_stage;
 		}
 
 		if (stageType == null)
@@ -1078,12 +1077,12 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public RexsComponent getParent(Integer subCompId, ComponentType typeOfParent) {
+	public RexsComponent getParent(Integer subCompId, RexsComponentType typeOfParent) {
 		RexsComponent parent = null;
 		for (RexsComponent potentialParent : getComponentsOfType(typeOfParent)) {
 			for (RexsRelation relation : getRelationsOfMainComp(potentialParent.getId())) {
-				if (relation.getType() == RelationType.ASSEMBLY
-						&& subCompId.equals(relation.findComponentIdByRole(RelationRole.PART))) {
+				if (relation.getType().equals(RexsRelationType.assembly)
+						&& subCompId.equals(relation.findComponentIdByRole(RexsRelationRole.part))) {
 					if (parent == null)
 						parent = potentialParent;
 					else
@@ -1105,7 +1104,7 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public boolean hasParentOfType(Integer subCompId, ComponentType typeOfParent) {
+	public boolean hasParentOfType(Integer subCompId, RexsComponentType typeOfParent) {
 		return getParent(subCompId, typeOfParent) != null;
 	}
 
@@ -1137,11 +1136,11 @@ public class RexsModel {
 		int highestOrder = 0;
 		RexsComponent finishingTool = null;
 		for (RexsRelation relation : relationsOfGear) {
-			if (relation.getType() == RelationType.ORDERED_REFERENCE) {
+			if (relation.getType() == RexsRelationType.ordered_reference) {
 				int order = relation.getOrder();
 				if (order >= highestOrder) {
 					highestOrder = order;
-					finishingTool = getComponent(relation.findComponentIdByRole(RelationRole.REFERENCED));
+					finishingTool = getComponent(relation.findComponentIdByRole(RexsRelationRole.referenced));
 				}
 			}
 		}
@@ -1158,7 +1157,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getShaftOfGear(RexsComponent gear) {
-		return getParent(gear.getId(), ComponentType.shaft);
+		return getParent(gear.getId(), RexsComponentType.shaft);
 	}
 
 	/**

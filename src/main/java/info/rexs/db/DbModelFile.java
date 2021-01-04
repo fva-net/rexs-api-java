@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import info.rexs.db.constants.Version;
+import info.rexs.db.constants.RexsVersion;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -28,7 +28,7 @@ import lombok.EqualsAndHashCode;
  * <p>
  * It contains constants for all official REXS versions.
  * <p>
- * Since REXS is freely expandable, you can also add your own models using the methods {@link #create(Version, Locale)} and {@link #create(Version, Locale, DbModelFileResolver)}.
+ * Since REXS is freely expandable, you can also add your own models using the methods {@link #create(RexsVersion, Locale)} and {@link #create(RexsVersion, Locale, DbModelFileResolver)}.
  *
  * @author FVA GmbH
  */
@@ -42,26 +42,32 @@ public class DbModelFile {
 	private static Set<DbModelFile> allDbModelFiles = new HashSet<>();
 
 	/** REXS 1.0 (english) */
-	public static final DbModelFile V1_0_ENGLISH = create(Version.V1_0, Locale.ENGLISH);
+	public static final DbModelFile V1_0_ENGLISH = create(RexsVersion.V1_0, Locale.ENGLISH);
 
 	/** REXS 1.0 (german) */
-	public static final DbModelFile V1_0_GERMAN = create(Version.V1_0, Locale.GERMAN);
+	public static final DbModelFile V1_0_GERMAN = create(RexsVersion.V1_0, Locale.GERMAN);
 
 	/** REXS 1.1 (english) */
-	public static final DbModelFile V1_1_ENGLISH = create(Version.V1_1, Locale.ENGLISH);
+	public static final DbModelFile V1_1_ENGLISH = create(RexsVersion.V1_1, Locale.ENGLISH);
 
 	/** REXS 1.1 (german) */
-	public static final DbModelFile V1_1_GERMAN = create(Version.V1_1, Locale.GERMAN);
+	public static final DbModelFile V1_1_GERMAN = create(RexsVersion.V1_1, Locale.GERMAN);
 
 	/** REXS 1.2 (english) */
-	public static final DbModelFile V1_2_ENGLISH = create(Version.V1_2, Locale.ENGLISH);
+	public static final DbModelFile V1_2_ENGLISH = create(RexsVersion.V1_2, Locale.ENGLISH);
 
 	/** REXS 1.2 (german) */
-	public static final DbModelFile V1_2_GERMAN = create(Version.V1_2, Locale.GERMAN);
+	public static final DbModelFile V1_2_GERMAN = create(RexsVersion.V1_2, Locale.GERMAN);
 
-	/** The {@link Version} of the REXS database model file. */
+	/** REXS 1.3 (english) */
+	public static final DbModelFile V1_3_ENGLISH = create(RexsVersion.V1_3, Locale.ENGLISH);
+
+	/** REXS 1.3 (german) */
+	public static final DbModelFile V1_3_GERMAN = create(RexsVersion.V1_3, Locale.GERMAN);
+
+	/** The {@link RexsVersion} of the REXS database model file. */
 	@EqualsAndHashCode.Include
-	private final Version version;
+	private final RexsVersion version;
 
 	/** The language key for terms from the REXS database. */
 	@EqualsAndHashCode.Include
@@ -70,7 +76,7 @@ public class DbModelFile {
 	/** The {@link DbModelFileResolver} for the REXS database model file. */
 	private final DbModelFileResolver fileResolver;
 
-	private DbModelFile(Version version, String language, DbModelFileResolver fileResolver) {
+	private DbModelFile(RexsVersion version, String language, DbModelFileResolver fileResolver) {
 		if (version == null)
 			throw new IllegalArgumentException("version cannot be empty");
 		this.version = version;
@@ -80,9 +86,9 @@ public class DbModelFile {
 
 	/**
 	 * @return
-	 * 				The {@link Version} of the REXS database model file.
+	 * 				The {@link RexsVersion} of the REXS database model file.
 	 */
-	public Version getVersion() {
+	public RexsVersion getVersion() {
 		return version;
 	}
 
@@ -108,7 +114,7 @@ public class DbModelFile {
 	 * Creates a new REXS database model file and adds it to the internal index.
 	 *
 	 * @param version
-	 * 				The {@link Version} of the REXS database model file.
+	 * 				The {@link RexsVersion} of the REXS database model file.
 	 * @param locale
 	 * 				The {@link Locale} for terms from the REXS database.
 	 * @param fileResolver
@@ -117,7 +123,7 @@ public class DbModelFile {
 	 * @return
 	 * 				The newly created REXS database model file as {@link DbModelFile}.
 	 */
-	public static DbModelFile create(Version version, Locale locale, DbModelFileResolver fileResolver) {
+	public static DbModelFile create(RexsVersion version, Locale locale, DbModelFileResolver fileResolver) {
 		if (fileResolver == null)
 			fileResolver = DEFAULT_FILE_RESOLVER;
 		DbModelFile dbModelFile = new DbModelFile(version, getLanguageFromLocale(locale), fileResolver);
@@ -129,14 +135,14 @@ public class DbModelFile {
 	 * Creates a new REXS database model file and adds it to the internal index.
 	 *
 	 * @param version
-	 * 				The {@link Version} of the REXS database model file.
+	 * 				The {@link RexsVersion} of the REXS database model file.
 	 * @param locale
 	 * 				The {@link Locale} for terms from the REXS database.
 	 *
 	 * @return
 	 * 				The newly created REXS database model file as {@link DbModelFile}.
 	 */
-	public static DbModelFile create(Version version, Locale locale) {
+	public static DbModelFile create(RexsVersion version, Locale locale) {
 		return create(version, locale, null);
 	}
 
@@ -144,14 +150,14 @@ public class DbModelFile {
 	 * Returns the REXS database model file for a version and locale from the internally stored index of all REXS database model files.
 	 *
 	 * @param version
-	 * 				The {@link Version} of the REXS database model file.
+	 * 				The {@link RexsVersion} of the REXS database model file.
 	 * @param locale
 	 * 				The {@link Locale} of the REXS database model file.
 	 *
 	 * @return
 	 * 				The found {@link DbModelFile}, or {@code null} if the REXS database model file could not be found.
 	 */
-	public static DbModelFile findByVersionAndLocale(Version version, Locale locale) {
+	public static DbModelFile findByVersionAndLocale(RexsVersion version, Locale locale) {
 		if (version == null)
 			return null;
 

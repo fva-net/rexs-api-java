@@ -20,8 +20,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import info.rexs.db.constants.AttributeId;
-import info.rexs.db.constants.UnitId;
+import info.rexs.db.constants.RexsAttributeId;
+import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.jaxb.Array;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Matrix;
@@ -39,7 +39,7 @@ public class RexsAttribute {
 	private Attribute rawAttribute;
 
 	/** The ID of the attribute. */
-	private AttributeId attributeId;
+	private RexsAttributeId attributeId;
 
 	/**
 	 * Constructs a new {@link RexsAttribute} for the given {@link Attribute}.
@@ -49,9 +49,9 @@ public class RexsAttribute {
 	 */
 	public RexsAttribute(Attribute rawAttribute) {
 		this.rawAttribute = rawAttribute;
-		this.attributeId = AttributeId.findById(rawAttribute.getId());
+		this.attributeId = RexsAttributeId.findById(rawAttribute.getId());
 		Objects.requireNonNull(attributeId, "attribute id cannot be empty");
-		UnitId unitId = UnitId.findById(rawAttribute.getUnit());
+		RexsUnitId unitId = RexsUnitId.findById(rawAttribute.getUnit());
 		Objects.requireNonNull(unitId, "unit cannot be empty");
 		if (unitId != attributeId.getUnit())
 			throw new IllegalArgumentException(String.format("incompatible units (%s <-> %s)", attributeId.getUnit().getId(), unitId.getId()));
@@ -63,7 +63,7 @@ public class RexsAttribute {
 	 * @param attributeId
 	 * 				The ID of the attribute.
 	 */
-	public RexsAttribute(AttributeId attributeId) {
+	public RexsAttribute(RexsAttributeId attributeId) {
 		this.attributeId = attributeId;
 		this.rawAttribute = new Attribute();
 		this.rawAttribute.setId(attributeId.getId());
@@ -72,17 +72,17 @@ public class RexsAttribute {
 
 	/**
 	 * @return
-	 * 				The ID of the attribute as a {@link AttributeId}.
+	 * 				The ID of the attribute as a {@link RexsAttributeId}.
 	 */
-	public AttributeId getAttributeId() {
+	public RexsAttributeId getAttributeId() {
 		return attributeId;
 	}
 
 	/**
 	 * @return
-	 * 				The unit of the attribute as {@link UnitId}.
+	 * 				The unit of the attribute as {@link RexsUnitId}.
 	 */
-	public UnitId getUnit() {
+	public RexsUnitId getUnit() {
 		return attributeId.getUnit();
 	}
 
@@ -195,7 +195,7 @@ public class RexsAttribute {
 	 * Returns the floating point value of the attribute.
 	 *
 	 * @param unit
-	 * 				The unit of the attribute as {@link UnitId}.
+	 * 				The unit of the attribute as {@link RexsUnitId}.
 	 *
 	 * @return
 	 * 				The value of the attribute as {@link Double}.
@@ -203,7 +203,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no double value or the unit does not match the unit of the attribute.
 	 */
-	public double getDoubleValue(UnitId unit) throws RexsModelAccessException {
+	public double getDoubleValue(RexsUnitId unit) throws RexsModelAccessException {
 		String valueString = readStringValue();
 		Double value = null;
 		if (valueString != null && !valueString.isEmpty()) {
@@ -291,7 +291,7 @@ public class RexsAttribute {
 	 * Returns the floating point array value of the attribute.
 	 *
 	 * @param unit
-	 * 				The unit of the attribute as {@link UnitId}.
+	 * 				The unit of the attribute as {@link RexsUnitId}.
 	 *
 	 * @return
 	 * 				The value of the attribute as {@link Double[]}.
@@ -299,7 +299,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no double array value or the unit does not match the unit of the attribute.
 	 */
-	public Double[] getDoubleArrayValue(UnitId unit) throws RexsModelAccessException {
+	public Double[] getDoubleArrayValue(RexsUnitId unit) throws RexsModelAccessException {
 		List<String> valueString = readStringArrayValue();
 		Double[] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -380,7 +380,7 @@ public class RexsAttribute {
 	 * Returns the floating point matrix value of the attribute.
 	 *
 	 * @param unit
-	 * 				The unit of the attribute as {@link UnitId}.
+	 * 				The unit of the attribute as {@link RexsUnitId}.
 	 *
 	 * @return
 	 * 				The value of the attribute as {@link Double[][]}.
@@ -388,7 +388,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no double matrix value or the unit does not match the unit of the attribute.
 	 */
-	public Double[][] getDoubleMatrixValue(UnitId unit) throws RexsModelAccessException {
+	public Double[][] getDoubleMatrixValue(RexsUnitId unit) throws RexsModelAccessException {
 		List<List<String>> valueString = readStringMatrixValue();
 		Double[][] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -563,7 +563,7 @@ public class RexsAttribute {
 		return doubleMatrix;
 	}
 
-	private void checkUnit(UnitId unitToCheck) throws RexsModelAccessException {
+	private void checkUnit(RexsUnitId unitToCheck) throws RexsModelAccessException {
 		if (attributeId.getUnit() != unitToCheck)
 			throw new RexsModelAccessException(String.format("incompatible units (%s <-> %s)", attributeId.getUnit().getId(), unitToCheck.getId()));
 	}

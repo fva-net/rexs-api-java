@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -32,19 +33,10 @@ import lombok.EqualsAndHashCode;
  * @author FVA GmbH
  */
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Version {
+public class RexsVersion implements RexsStandardVersions {
 
 	/** An internal index with all created versions (REXS standard and own) for quick access. */
-	private static Set<Version> allVerions = new HashSet<>();
-
-	/** 1.0 */
-	public static final Version V1_0 = create("1.0", "0.90", "0.10", "1.00");
-
-	/** 1.1 */
-	public static final Version V1_1 = create("1.1", "1.10", "1.1-Beta");
-
-	/** 1.2 */
-	public static final Version V1_2 = create("1.2");
+	private static Set<RexsVersion> allVerions = new HashSet<>();
 
 	/** The version name. */
 	@EqualsAndHashCode.Include
@@ -53,7 +45,7 @@ public class Version {
 	/** Alternative version names that can also be assigned to an official version (e.g. a beta version name). */
 	private final Set<String> alternativeNames;
 
-	private Version(String name, Set<String> alternativeNames) {
+	private RexsVersion(String name, Set<String> alternativeNames) {
 		if (name == null || name.isEmpty())
 			throw new IllegalArgumentException("name cannot be empty");
 		this.name = name;
@@ -62,10 +54,10 @@ public class Version {
 
 	/**
 	 * @return
-	 * 				The latest official REXS {@link Version}.
+	 * 				The latest official REXS {@link RexsVersion}.
 	 */
-	public static Version getLatest() {
-		return V1_2;
+	public static RexsVersion getLatest() {
+		return V1_3;
 	}
 
 	/**
@@ -77,6 +69,29 @@ public class Version {
 	}
 
 	/**
+	 * TODO Document me!
+	 *
+	 * @param checkVersions
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean isOneOf(RexsVersion ... checkVersions)
+	{
+		if (checkVersions == null)
+			return false;
+
+		for (RexsVersion checkVersion : checkVersions)
+		{
+			if (this.equals(checkVersion))
+				return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Creates a new version and adds it to the internal index.
 	 *
 	 * @param name
@@ -85,14 +100,14 @@ public class Version {
 	 * 				Optional alternative version names that can also be assigned to the version (e.g. a beta version name).
 	 *
 	 * @return
-	 * 				The newly created version as {@link Version}.
+	 * 				The newly created version as {@link RexsVersion}.
 	 */
-	public static Version create(String name, String... alternativeNames) {
+	public static RexsVersion create(String name, String... alternativeNames) {
 		Set<String> alternativeNamesSet = null;
 		if (alternativeNames != null && alternativeNames.length > 0)
 			alternativeNamesSet = Arrays.stream(alternativeNames).collect(Collectors.toSet());
 
-		Version version = new Version(name, alternativeNamesSet);
+		RexsVersion version = new RexsVersion(name, alternativeNamesSet);
 		allVerions.add(version);
 		return version;
 	}
@@ -106,13 +121,14 @@ public class Version {
 	 * 				The name of the version to be found as a {@link String}.
 	 *
 	 * @return
-	 * 				The found {@link Version}, or {@code null} if the version could not be found.
+	 * 				The found {@link RexsVersion}, or {@code null} if the version could not be found.
 	 */
-	public static Version findByName(String name) {
+	public static RexsVersion findByName(String name) {
 		if (name == null)
 			return null;
+		RexsStandardVersions.init();
 
-		for (Version version : allVerions) {
+		for (RexsVersion version : allVerions) {
 			if (name.equals(version.getName())
 					|| (version.alternativeNames != null && version.alternativeNames.contains(name)))
 				return version;

@@ -58,4 +58,3 @@ To use these projects in an IDE you will need the [project Lombok](https://proje
 * Complete unit tests
 * Complete the Javadoc
 * Publish the project to Maven Central Repository
-* Implement updating of REXS files

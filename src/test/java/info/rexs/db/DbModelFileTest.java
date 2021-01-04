@@ -23,7 +23,7 @@ import java.util.Locale;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.Version;
+import info.rexs.db.constants.RexsVersion;
 
 public class DbModelFileTest {
 
@@ -38,28 +38,28 @@ public class DbModelFileTest {
 
 	@Test
 	public void create_givenNullLocaleConvertsToEnglish() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.create(Version.V1_0, null);
+		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, null);
 
 		assertThat(dbModelFile.getLanguage()).isEqualTo(Locale.ENGLISH.getLanguage());
 	}
 
 	@Test
 	public void create_givenUnknownLocaleConvertsToDefault() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.create(Version.V1_0, Locale.CHINESE);
+		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, Locale.CHINESE);
 
 		assertThat(dbModelFile.getLanguage()).isEqualTo(Locale.ENGLISH.getLanguage());
 	}
 
 	@Test
 	public void create_givenKnownLocaleIsTaken() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.create(Version.V1_0, Locale.GERMAN);
+		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, Locale.GERMAN);
 
 		assertThat(dbModelFile.getLanguage()).isEqualTo(Locale.GERMAN.getLanguage());
 	}
 
 	@Test
 	public void create_givenNullFileResolverConvertsToDefault() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.create(Version.V1_0, Locale.GERMAN, null);
+		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, Locale.GERMAN, null);
 
 		try (InputStream input = dbModelFile.openInputStream()) {
 			assertThat(input).isNotNull();
@@ -75,7 +75,7 @@ public class DbModelFileTest {
 			}
 		};
 
-		DbModelFile dbModelFile = DbModelFile.create(Version.V1_0, Locale.GERMAN, newDbModelFileResolver);
+		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, Locale.GERMAN, newDbModelFileResolver);
 		try (InputStream input = dbModelFile.openInputStream()) {
 			assertThat(input).isNotNull();
 		}
@@ -88,25 +88,25 @@ public class DbModelFileTest {
 
 	@Test
 	public void findByVersionAndLocale_givenNullLocaleConvertsToDefault() {
-		assertThat(DbModelFile.findByVersionAndLocale(Version.V1_1, null).getLanguage()).isEqualTo(Locale.ENGLISH.getLanguage());
+		assertThat(DbModelFile.findByVersionAndLocale(RexsVersion.V1_1, null).getLanguage()).isEqualTo(Locale.ENGLISH.getLanguage());
 	}
 
 	@Test
 	public void findByVersionAndLocale_givenUnknownVersionReturnsNull() {
-		assertThat(DbModelFile.findByVersionAndLocale(Version.create("m.n"), Locale.GERMAN)).isNull();
+		assertThat(DbModelFile.findByVersionAndLocale(RexsVersion.create("m.n"), Locale.GERMAN)).isNull();
 	}
 
 	@Test
 	public void findByVersionAndLocale_returnsRequestedDbModelFile() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.findByVersionAndLocale(Version.V1_2, Locale.GERMAN);
+		DbModelFile dbModelFile = DbModelFile.findByVersionAndLocale(RexsVersion.V1_2, Locale.GERMAN);
 		assertThat(dbModelFile).isNotNull();
-		assertThat(dbModelFile.getVersion()).isEqualTo(Version.V1_2);
+		assertThat(dbModelFile.getVersion()).isEqualTo(RexsVersion.V1_2);
 		assertThat(dbModelFile.getLanguage()).isEqualTo(Locale.GERMAN.getLanguage());
 	}
 
 	@Test
 	public void findByVersionAndLocale_returnsNewlyCreatedDbModelFile() throws Exception {
-		Version newVersion = Version.create("n.o");
+		RexsVersion newVersion = RexsVersion.create("n.o");
 		DbModelFile.create(newVersion, Locale.GERMAN);
 		DbModelFile newDbModelFile = DbModelFile.findByVersionAndLocale(newVersion, Locale.GERMAN);
 		assertThat(newDbModelFile).isNotNull();
@@ -118,7 +118,7 @@ public class DbModelFileTest {
 	public void equals_equalObjects() {
 		assertThat(DbModelFile.V1_0_GERMAN.equals(DbModelFile.V1_0_GERMAN)).isTrue();
 
-		Version newVersion = Version.create("o.p");
+		RexsVersion newVersion = RexsVersion.create("o.p");
 		assertThat(DbModelFile.create(newVersion, Locale.ENGLISH)).isEqualTo(DbModelFile.create(newVersion, Locale.ENGLISH));
 	}
 
@@ -127,8 +127,8 @@ public class DbModelFileTest {
 		assertThat(DbModelFile.V1_1_ENGLISH).isNotEqualTo(DbModelFile.V1_1_GERMAN);
 		assertThat(DbModelFile.V1_1_ENGLISH).isNotEqualTo("test");
 
-		Version newVersion1 = Version.create("p.q");
-		Version newVersion2 = Version.create("q.r");
+		RexsVersion newVersion1 = RexsVersion.create("p.q");
+		RexsVersion newVersion2 = RexsVersion.create("q.r");
 		assertThat(DbModelFile.create(newVersion1, Locale.ENGLISH)).isNotEqualTo(DbModelFile.create(newVersion1, Locale.GERMAN));
 		assertThat(DbModelFile.create(newVersion1, Locale.ENGLISH)).isNotEqualTo(DbModelFile.create(newVersion2, Locale.ENGLISH));
 	}

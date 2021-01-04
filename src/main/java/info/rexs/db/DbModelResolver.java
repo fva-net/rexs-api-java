@@ -23,7 +23,7 @@ import java.util.Map;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import info.rexs.db.constants.Version;
+import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.jaxb.RexsModel;
 
 /**
@@ -55,12 +55,12 @@ public class DbModelResolver {
 	 * Determines the REXS database model for a version.
 	 *
 	 * @param version
-	 * 				The {@link Version} of the REXS database model.
+	 * 				The {@link RexsVersion} of the REXS database model.
 	 *
 	 * @return
 	 * 				The found {@link RexsModel}, or {@code null} if the REXS database model could not be found.
 	 */
-	public RexsModel resolve(Version version) {
+	public RexsModel resolve(RexsVersion version) {
 		return resolve(version, null);
 	}
 
@@ -68,14 +68,14 @@ public class DbModelResolver {
 	 * Determines the REXS database model for a version and locale.
 	 *
 	 * @param version
-	 * 				The {@link Version} of the REXS database model.
+	 * 				The {@link RexsVersion} of the REXS database model.
 	 * @param locale
 	 * 				The {@link Locale} of the REXS database model.
 	 *
 	 * @return
 	 * 				The found {@link RexsModel}, or {@code null} if the REXS database model could not be found.
 	 */
-	public RexsModel resolve(Version version, Locale locale) {
+	public RexsModel resolve(RexsVersion version, Locale locale) {
 		DbModelFile dbModelFile = DbModelFile.findByVersionAndLocale(version, locale);
 		if (dbModelFile == null)
 			return null;
