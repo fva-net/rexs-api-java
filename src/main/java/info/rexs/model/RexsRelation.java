@@ -172,6 +172,10 @@ public class RexsRelation {
 		else if (RexsRelationType.connection.equals(type))
 			return findComponentIdByRole(RexsRelationRole.side_1);
 
+		else if (RexsRelationType.manufacturing_step.equals(type)) {
+			return findComponentIdByRole(RexsRelationRole.workpiece);
+		}
+
 		return null;
 	}
 
@@ -217,6 +221,9 @@ public class RexsRelation {
 				|| RexsRelationType.planet_pin.equals(type)
 				|| RexsRelationType.planet_carrier_shaft.equals(type)) {
 			subComponentIds.add(findComponentIdByRole(RexsRelationRole.shaft));
+		} else if (RexsRelationType.manufacturing_step.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsRelationRole.tool));
+			subComponentIds.add(findComponentIdByRole(RexsRelationRole.manufacturing_settings));
 		}
 
 		return subComponentIds;

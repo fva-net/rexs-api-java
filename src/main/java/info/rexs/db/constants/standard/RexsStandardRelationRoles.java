@@ -84,7 +84,7 @@ public interface RexsStandardRelationRoles {
 	public static final RexsRelationRole tool = RexsRelationRole.create("tool");
 
 	/** TODO Document me! */
-	public static final RexsRelationRole manufacturing_step = RexsRelationRole.create("manufacturing_step");
+	public static final RexsRelationRole manufacturing_settings = RexsRelationRole.create("manufacturing_settings");
 
 	public static void init() {}
 }

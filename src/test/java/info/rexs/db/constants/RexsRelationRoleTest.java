@@ -74,7 +74,7 @@ public class RexsRelationRoleTest {
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(RexsRelationRole.manufacturing_step.equals(RexsRelationRole.manufacturing_step)).isTrue();
+		assertThat(RexsRelationRole.manufacturing_settings.equals(RexsRelationRole.manufacturing_settings)).isTrue();
 		assertThat(RexsRelationRole.create("test1")).isEqualTo(RexsRelationRole.create("test1"));
 	}
 
