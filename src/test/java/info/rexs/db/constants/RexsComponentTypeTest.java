@@ -53,8 +53,8 @@ public class RexsComponentTypeTest {
 	}
 
 	@Test
-	public void findById_givenUnknownIdReturnsNull() {
-		assertThat(RexsComponentType.findById("foo_bar")).isNull();
+	public void findById_givenUnknownIdReturnsUnknown() {
+		assertThat(RexsComponentType.findById("foo_bar")).isEqualTo(RexsComponentType.UNKNOWN);
 	}
 
 	@Test

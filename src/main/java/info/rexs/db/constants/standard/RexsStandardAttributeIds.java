@@ -3348,5 +3348,7 @@ public interface RexsStandardAttributeIds {
 	/** Zone factor (VDI 2736 2014) (Versions: 1.3) */
 	public static final RexsAttributeId zone_factor_vdi_2736_2014 = RexsAttributeId.create("zone_factor_vdi_2736_2014", RexsUnitId.none);
 
+	public static final RexsAttributeId UNKNOWN = RexsAttributeId.create("unknown", RexsUnitId.none);
+
 	public static void init() {}
 }

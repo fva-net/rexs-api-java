@@ -99,12 +99,12 @@ public class RexsComponentType implements RexsStandardComponentTypes {
 	 * 				The actual ID of the component type to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found component type as {@link RexsComponentType}, or {@code null} if the ID could not be found.
+	 * 				The found component type as {@link RexsComponentType}, or {@code RexsStandardComponentTypes.UNKNOWN} if the ID could not be found.
 	 */
 	public static RexsComponentType findById(String id) {
 		if (id == null)
 			return null;
 		RexsStandardComponentTypes.init();
-		return allComponentTypes.getOrDefault(id, null);
+		return allComponentTypes.getOrDefault(id, RexsStandardComponentTypes.UNKNOWN);
 	}
 }
