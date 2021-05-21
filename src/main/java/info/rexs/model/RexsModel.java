@@ -74,6 +74,8 @@ public class RexsModel {
 	/** An internal index with all relations of the relation types in the model for quick access. */
 	private Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation;
 
+	private RexsVersion version;
+
 	/**
 	 * Constructs a new {@link RexsModel} from scratch.
 	 *
@@ -102,6 +104,7 @@ public class RexsModel {
 		List<Component> rawComponents = rawModel.getComponents().getComponent();
 		List<Relation> rawRelations = rawModel.getRelations().getRelation();
 
+		this.version = RexsVersion.findByName(rawModel.getVersion());
 		this.relations = new ArrayList<>();
 		this.mapMainCompToRelation = new HashMap<>(rawRelations.size());
 		this.mapTypeToRelation = new HashMap<>();
@@ -141,6 +144,10 @@ public class RexsModel {
 		this.loadSpectrums = new ArrayList<>();
 		for (LoadSpectrum rawSpectrum : rawModel.getLoadSpectrum())
 			this.loadSpectrums.add(new RexsLoadSpectrum(rawSpectrum));
+	}
+	
+	public RexsVersion getVersion() {
+		return version; 
 	}
 
 	private Model createEmptyRexsModel(String applicationId, String applicationVersion) {
@@ -523,8 +530,11 @@ public class RexsModel {
 		Integer gear1Id = stageRel.findComponentIdByRole(RexsRelationRole.gear_1);
 		Integer gear2Id = stageRel.findComponentIdByRole(RexsRelationRole.gear_2);
 
-		compList.addAll(getChildrenWithType(gear1Id, RexsComponentType.flank_geometry));
-		compList.addAll(getChildrenWithType(gear2Id, RexsComponentType.flank_geometry));
+		compList.add(getFlankGeometry(gear1Id, RexsRelationRole.left.getKey()));
+		compList.add(getFlankGeometry(gear1Id, RexsRelationRole.right.getKey()));
+		compList.add(getFlankGeometry(gear2Id, RexsRelationRole.left.getKey()));
+		compList.add(getFlankGeometry(gear2Id, RexsRelationRole.right.getKey()));
+		
 		return compList;
 	}
 
