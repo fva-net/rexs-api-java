@@ -29,8 +29,8 @@ public class UpgradeResolverTest {
 
 	@Test
 	public void register_newUpgraderIsRegistered() throws Exception {
-		RexsVersion newFromVersion = RexsVersion.create("x.y");
-		RexsVersion newToVersion = RexsVersion.create("y.z");
+		RexsVersion newFromVersion = RexsVersion.create("x.y", 1);
+		RexsVersion newToVersion = RexsVersion.create("y.z", 1);
 		ModelUpgrader newModelUpgrader = new ModelUpgrader() {
 			@Override
 			public void upgrade(Model rexsModel) throws RexsUpgradeException {}
@@ -53,7 +53,7 @@ public class UpgradeResolverTest {
 		assertThat(UpgradeResolver.getInstance().resolve(RexsVersion.V1_2, RexsVersion.V1_0)).isEmpty();
 		assertThat(UpgradeResolver.getInstance().resolve(RexsVersion.V1_1, RexsVersion.V1_0)).isEmpty();
 
-		RexsVersion newFromVersion = RexsVersion.create("0.0.1");
+		RexsVersion newFromVersion = RexsVersion.create("0.0.1", 1);
 		assertThat(UpgradeResolver.getInstance().resolve(newFromVersion, RexsVersion.getLatest())).isEmpty();
 	}
 

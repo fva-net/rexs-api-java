@@ -93,7 +93,7 @@ public class DbModelFileTest {
 
 	@Test
 	public void findByVersionAndLocale_givenUnknownVersionReturnsNull() {
-		assertThat(DbModelFile.findByVersionAndLocale(RexsVersion.create("m.n"), Locale.GERMAN)).isNull();
+		assertThat(DbModelFile.findByVersionAndLocale(RexsVersion.create("m.n", 10000), Locale.GERMAN)).isNull();
 	}
 
 	@Test
@@ -106,7 +106,7 @@ public class DbModelFileTest {
 
 	@Test
 	public void findByVersionAndLocale_returnsNewlyCreatedDbModelFile() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("n.o");
+		RexsVersion newVersion = RexsVersion.create("n.o", 11000);
 		DbModelFile.create(newVersion, Locale.GERMAN);
 		DbModelFile newDbModelFile = DbModelFile.findByVersionAndLocale(newVersion, Locale.GERMAN);
 		assertThat(newDbModelFile).isNotNull();
@@ -118,7 +118,7 @@ public class DbModelFileTest {
 	public void equals_equalObjects() {
 		assertThat(DbModelFile.V1_0_GERMAN.equals(DbModelFile.V1_0_GERMAN)).isTrue();
 
-		RexsVersion newVersion = RexsVersion.create("o.p");
+		RexsVersion newVersion = RexsVersion.create("o.p", 12000);
 		assertThat(DbModelFile.create(newVersion, Locale.ENGLISH)).isEqualTo(DbModelFile.create(newVersion, Locale.ENGLISH));
 	}
 
@@ -127,8 +127,8 @@ public class DbModelFileTest {
 		assertThat(DbModelFile.V1_1_ENGLISH).isNotEqualTo(DbModelFile.V1_1_GERMAN);
 		assertThat(DbModelFile.V1_1_ENGLISH).isNotEqualTo("test");
 
-		RexsVersion newVersion1 = RexsVersion.create("p.q");
-		RexsVersion newVersion2 = RexsVersion.create("q.r");
+		RexsVersion newVersion1 = RexsVersion.create("p.q", 13000);
+		RexsVersion newVersion2 = RexsVersion.create("q.r", 14000);
 		assertThat(DbModelFile.create(newVersion1, Locale.ENGLISH)).isNotEqualTo(DbModelFile.create(newVersion1, Locale.GERMAN));
 		assertThat(DbModelFile.create(newVersion1, Locale.ENGLISH)).isNotEqualTo(DbModelFile.create(newVersion2, Locale.ENGLISH));
 	}

@@ -32,7 +32,7 @@ public class RexsVersionTest {
 	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				RexsVersion.create(null);
+				RexsVersion.create(null, 1);
 			})
 			.withMessage("name cannot be empty");
 	}
@@ -41,21 +41,21 @@ public class RexsVersionTest {
 	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				RexsVersion.create("");
+				RexsVersion.create("", 1);
 			})
 			.withMessage("name cannot be empty");
 	}
 
 	@Test
 	public void create_givenNullAlternativeNamesDoesNotCrash() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("a.b", (String[])null);
-		assertThat(newVersion.getName()).isEqualTo("a.b");
+		RexsVersion newVersion = RexsVersion.create("a.b", 1, (String[])null);
+		assertThat(newVersion.getName()).isEqualTo("a.b", 1);
 	}
 
 	@Test
 	public void create_newVersionHasName() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("a.b");
-		assertThat(newVersion.getName()).isEqualTo("a.b");
+		RexsVersion newVersion = RexsVersion.create("a.b", 1);
+		assertThat(newVersion.getName()).isEqualTo("a.b", 1);
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class RexsVersionTest {
 
 	@Test
 	public void findByName_returnsNewlyCreatedVersion() throws Exception {
-		RexsVersion.create("b.c");
+		RexsVersion.create("b.c", 1);
 		RexsVersion newVersion = RexsVersion.findByName("b.c");
 		assertThat(newVersion).isNotNull();
 		assertThat(newVersion.getName()).isEqualTo("b.c");
@@ -85,7 +85,7 @@ public class RexsVersionTest {
 
 	@Test
 	public void findByName_returnsNewlyCreatedVersionByAlternativeVersionName() throws Exception {
-		RexsVersion.create("c.d", "d.e", "e.f");
+		RexsVersion.create("c.d", 1, "d.e", "e.f");
 
 		RexsVersion newVersionByName = RexsVersion.findByName("c.d");
 		assertThat(newVersionByName).isNotNull();

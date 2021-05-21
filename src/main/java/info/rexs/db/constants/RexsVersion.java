@@ -16,6 +16,7 @@
 package info.rexs.db.constants;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,12 +29,12 @@ import lombok.EqualsAndHashCode;
  * <p>
  * It contains constants for all official REXS versions.
  * <p>
- * Since REXS is freely expandable, you can also add your own versions using the {@link #create(String, String...)} method.
+ * Since REXS is freely expandable, you can also add your own versions using the {@link #create(String, int, String...)} method.
  *
  * @author FVA GmbH
  */
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class RexsVersion implements RexsStandardVersions {
+public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion> {
 
 	/** An internal index with all created versions (REXS standard and own) for quick access. */
 	private static Set<RexsVersion> allVerions = new HashSet<>();
@@ -42,13 +43,17 @@ public class RexsVersion implements RexsStandardVersions {
 	@EqualsAndHashCode.Include
 	private final String name;
 
+	/** TODO Document me! */
+	private final int order;
+
 	/** Alternative version names that can also be assigned to an official version (e.g. a beta version name). */
 	private final Set<String> alternativeNames;
 
-	private RexsVersion(String name, Set<String> alternativeNames) {
+	private RexsVersion(String name, int order, Set<String> alternativeNames) {
 		if (name == null || name.isEmpty())
 			throw new IllegalArgumentException("name cannot be empty");
 		this.name = name;
+		this.order = order;
 		this.alternativeNames = alternativeNames;
 	}
 
@@ -66,6 +71,14 @@ public class RexsVersion implements RexsStandardVersions {
 	 */
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * @return
+	 * 				The version order as a {@code int}.
+	 */
+	public int getOrder() {
+		return order;
 	}
 
 	/**
@@ -96,18 +109,20 @@ public class RexsVersion implements RexsStandardVersions {
 	 *
 	 * @param name
 	 * 				The version name as a {@link String}.
+	 * @param order
+	 * 				The version order as a {@code int}.
 	 * @param alternativeNames
 	 * 				Optional alternative version names that can also be assigned to the version (e.g. a beta version name).
 	 *
 	 * @return
 	 * 				The newly created version as {@link RexsVersion}.
 	 */
-	public static RexsVersion create(String name, String... alternativeNames) {
+	public static RexsVersion create(String name, int order, String... alternativeNames) {
 		Set<String> alternativeNamesSet = null;
 		if (alternativeNames != null && alternativeNames.length > 0)
 			alternativeNamesSet = Arrays.stream(alternativeNames).collect(Collectors.toSet());
 
-		RexsVersion version = new RexsVersion(name, alternativeNamesSet);
+		RexsVersion version = new RexsVersion(name, order, alternativeNamesSet);
 		allVerions.add(version);
 		return version;
 	}
@@ -135,5 +150,26 @@ public class RexsVersion implements RexsStandardVersions {
 		}
 
 		return null;
+	}
+
+	public boolean isLess(RexsVersion version) {
+		return this.compareTo(version) < 0;
+	}
+
+	public boolean isLessOrEqual(RexsVersion version) {
+		return this.compareTo(version) <= 0;
+	}
+
+	public boolean isEqual(RexsVersion version) {
+		return this.compareTo(version) == 0;
+	}
+
+	public boolean isGreater(RexsVersion version) {
+		return this.compareTo(version) > 0;
+	}
+
+	@Override
+	public int compareTo(RexsVersion other) {
+		return Comparator.comparing(RexsVersion::getOrder).compare(this, other);
 	}
 }

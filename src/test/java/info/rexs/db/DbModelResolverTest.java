@@ -41,7 +41,7 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_unknownDbModelFileReturnsNull() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("r.s");
+		RexsVersion newVersion = RexsVersion.create("r.s", 10000);
 		assertThat(DbModelResolver.getInstance().resolve(newVersion, Locale.getDefault())).isNull();
 
 		assertThat(DbModelResolver.getInstance().resolve(null)).isNull();
@@ -49,7 +49,7 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_invalidDbModelFileResolverThrowsIllegalStateException() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("s.t");
+		RexsVersion newVersion = RexsVersion.create("s.t", 11000);
 		DbModelFile.create(newVersion, Locale.GERMAN, new DbModelFileResolver() {
 			@Override
 			public InputStream openInputStream(DbModelFile dbModelFile) {
