@@ -399,4 +399,17 @@ public class RexsComponentTest {
 		assertThat(rexsComponent1).isNotEqualTo(rexsComponent2);
 		assertThat(rexsComponent1).isNotEqualTo("1");
 	}
+
+	@Test
+	public void isOfType_checkAgainstSeveralTypes() {
+		Component rawComponent1 = new Component();
+		rawComponent1.setId(1);
+		rawComponent1.setType(RexsComponentType.cylindrical_gear.getId());
+		RexsComponent rexsComponent1 = new RexsComponent(rawComponent1);
+
+		assertThat(rexsComponent1.isOfType(RexsComponentType.cylindrical_gear)).isTrue();
+		assertThat(rexsComponent1.isOfType(RexsComponentType.cylindrical_gear, RexsComponentType.ring_gear)).isTrue();
+		assertThat(rexsComponent1.isOfType(RexsComponentType.ring_gear)).isFalse();
+		assertThat(rexsComponent1.isOfType(RexsComponentType.bevel_gear, RexsComponentType.ring_gear)).isFalse();
+	}
 }

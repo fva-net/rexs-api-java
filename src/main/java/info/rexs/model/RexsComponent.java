@@ -399,4 +399,17 @@ public class RexsComponent implements Comparable<RexsComponent> {
 			rawComponent.getAttribute().remove(attribute.getRawAttribute());
 		}
 	}
+
+	/**
+	 * Returns whether the component is of a given list of types
+	 *
+	 * @param rexsComponentTypes
+	 * 				an array containing the allowed types
+	 *
+	 * @return
+	 * 				whether the component type is in the list of types
+	 */
+	public boolean isOfType(RexsComponentType... rexsComponentTypes) {
+		return this.type.isOneOf(rexsComponentTypes);
+	}
 }
