@@ -137,9 +137,13 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The ID of the attribute as {@link RexsAttributeId}.
 	 *
 	 * @return
-	 * 				The attribute as {@link RexsAttribute} or {@code null} if the component does not contain a corresponding attribute.
+	 * 				The attribute as {@link RexsAttribute} or {@code null} if the component
+	 * 				does not contain a corresponding attribute.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute is not defined on the component.
 	 */
-	public RexsAttribute getAttribute(RexsAttributeId attributeId) {
+	public RexsAttribute getAttribute(RexsAttributeId attributeId) throws RexsModelAccessException {
 		return getAttribute(attributeId.getId());
 	}
 
@@ -150,10 +154,17 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The ID of the attribute as {@link String}.
 	 *
 	 * @return
-	 * 				The attribute as {@link RexsAttribute} or {@code null} if the component does not contain a corresponding attribute.
+	 * 				The attribute as {@link RexsAttribute} or {@code null} if the component
+	 * 				does not contain a corresponding attribute.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute is not defined on the component.
 	 */
-	public RexsAttribute getAttribute(String attributeId) {
-		return attributes.get(attributeId);
+	public RexsAttribute getAttribute(String attributeId) throws RexsModelAccessException {
+		RexsAttribute rexsAttribute = attributes.get(attributeId);
+		if (rexsAttribute == null)
+			throw new RexsModelAccessException("attribute '" + attributeId + "' not found!");
+		return rexsAttribute;
 	}
 
 	/**
@@ -394,7 +405,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 */
 	public void deleteAttribute(RexsAttributeId attributeId) {
 		if (hasAttribute(attributeId)) {
-			RexsAttribute attribute = getAttribute(attributeId);
+            RexsAttribute attribute = attributes.get(attributeId.getId());
 			attributes.remove(attributeId.getId());
 			rawComponent.getAttribute().remove(attribute.getRawAttribute());
 		}

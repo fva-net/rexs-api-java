@@ -16,6 +16,7 @@
 package info.rexs.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.Test;
 
@@ -95,8 +96,9 @@ public class RexsComponentTest {
 		rawComponent.setType(RexsComponentType.coupling.getId());
 
 		RexsComponent rexsComponent = new RexsComponent(rawComponent);
-
-		assertThat(rexsComponent.getAttribute(RexsAttributeId.account_for_gravity)).isNull();
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
+			rexsComponent.getAttribute(RexsAttributeId.account_for_gravity);
+		}).withMessage("attribute 'account_for_gravity' not found!");
 	}
 
 	@Test
