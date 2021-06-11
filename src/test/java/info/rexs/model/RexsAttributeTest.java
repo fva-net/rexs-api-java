@@ -17,7 +17,6 @@ package info.rexs.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.Test;
 
@@ -38,8 +37,8 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void rawAttributeConstructor_incompatibleUnitsThrowsIllegalArgumentException() throws Exception {
-		assertThatIllegalArgumentException().isThrownBy(() -> {
+	public void rawAttributeConstructor_incompatibleUnitsThrowsRexsModelAccessException() throws Exception {
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			Attribute rawAttribute = new Attribute();
 			rawAttribute.setId(RexsAttributeId.overrolling_frequency_rolling_element.getId());
 			rawAttribute.setUnit(RexsUnitId.degree.getId());

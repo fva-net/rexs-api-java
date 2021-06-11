@@ -20,7 +20,7 @@ package info.rexs.model;
  *
  * @author FVA GmbH
  */
-public class RexsModelAccessException extends Exception {
+public class RexsModelAccessException extends RuntimeException {
 
 	/** Serial Version UID for interoperability */
 	private static final long serialVersionUID = -4659241657963203171L;
