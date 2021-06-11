@@ -53,8 +53,7 @@ public class RexsAttribute {
 		Objects.requireNonNull(attributeId, "attribute id cannot be empty");
 		RexsUnitId unitId = RexsUnitId.findById(rawAttribute.getUnit());
 		Objects.requireNonNull(unitId, "unit cannot be empty");
-		if (unitId != attributeId.getUnit())
-			throw new IllegalArgumentException(String.format("incompatible units (%s <-> %s)", attributeId.getUnit().getId(), unitId.getId()));
+		checkUnit(unitId);
 	}
 
 	/**
@@ -135,7 +134,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no string value.
 	 */
-	public String getStringValue() throws RexsModelAccessException {
+	public String getStringValue() {
 		String value = readStringValue();
 
 		if (value == null)
@@ -153,7 +152,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no boolean value.
 	 */
-	public boolean getBooleanValue() throws RexsModelAccessException {
+	public boolean getBooleanValue() {
 		String valueString = readStringValue();
 		Boolean value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -174,7 +173,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no integer value.
 	 */
-	public int getIntegerValue() throws RexsModelAccessException {
+	public int getIntegerValue() {
 		String valueString = readStringValue();
 		Integer value = null;
 		if (valueString != null && !valueString.isEmpty()) {
@@ -203,7 +202,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no double value or the unit does not match the unit of the attribute.
 	 */
-	public double getDoubleValue(RexsUnitId unit) throws RexsModelAccessException {
+	public double getDoubleValue(RexsUnitId unit) {
 		String valueString = readStringValue();
 		Double value = null;
 		if (valueString != null && !valueString.isEmpty()) {
@@ -233,7 +232,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no string array value.
 	 */
-	public String[] getStringArrayValue() throws RexsModelAccessException {
+	public String[] getStringArrayValue() {
 		List<String> valueString = readStringArrayValue();
 		String [] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -254,7 +253,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no boolean array value.
 	 */
-	public Boolean[] getBooleanArrayValue() throws RexsModelAccessException {
+	public Boolean[] getBooleanArrayValue() {
 		List<String> valueString = readStringArrayValue();
 		Boolean[] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -275,7 +274,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no integer array value.
 	 */
-	public Integer[] getIntegerArrayValue() throws RexsModelAccessException {
+	public Integer[] getIntegerArrayValue() {
 		List<String> valueString = readStringArrayValue();
 		Integer[] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -299,7 +298,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no double array value or the unit does not match the unit of the attribute.
 	 */
-	public Double[] getDoubleArrayValue(RexsUnitId unit) throws RexsModelAccessException {
+	public Double[] getDoubleArrayValue(RexsUnitId unit) {
 		List<String> valueString = readStringArrayValue();
 		Double[] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -322,7 +321,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no string matrix value.
 	 */
-	public String[][] getStringMatrixValue() throws RexsModelAccessException {
+	public String[][] getStringMatrixValue() {
 		List<List<String>> valueString = readStringMatrixValue();
 		String[][] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -343,7 +342,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no boolean matrix value.
 	 */
-	public Boolean[][] getBooleanMatrixValue() throws RexsModelAccessException {
+	public Boolean[][] getBooleanMatrixValue() {
 		List<List<String>> valueString = readStringMatrixValue();
 		Boolean[][] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -364,7 +363,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no integer matrix value.
 	 */
-	public Integer[][] getIntegerMatrixValue() throws RexsModelAccessException {
+	public Integer[][] getIntegerMatrixValue() {
 		List<List<String>> valueString = readStringMatrixValue();
 		Integer[][] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -388,7 +387,7 @@ public class RexsAttribute {
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no double matrix value or the unit does not match the unit of the attribute.
 	 */
-	public Double[][] getDoubleMatrixValue(RexsUnitId unit) throws RexsModelAccessException {
+	public Double[][] getDoubleMatrixValue(RexsUnitId unit) {
 		List<List<String>> valueString = readStringMatrixValue();
 		Double[][] value = null;
 		if (valueString != null && !valueString.isEmpty())
@@ -462,7 +461,7 @@ public class RexsAttribute {
 		return booleanArray;
 	}
 
-	private Integer[] convertStringListToIntegerArray(List<String> stringList) throws RexsModelAccessException {
+	private Integer[] convertStringListToIntegerArray(List<String> stringList) {
 		Integer[] integerArray = new Integer[stringList.size()];
 
 		for (int i = 0; i < stringList.size(); i++) {
@@ -478,7 +477,7 @@ public class RexsAttribute {
 		return integerArray;
 	}
 
-	private Double[] convertStringListToDoubleArray(List<String> stringList) throws RexsModelAccessException {
+	private Double[] convertStringListToDoubleArray(List<String> stringList) {
 		Double[] doubleArray = new Double[stringList.size()];
 
 		for (int i = 0; i < stringList.size(); i++) {
@@ -523,7 +522,7 @@ public class RexsAttribute {
 		return booleanMatrix;
 	}
 
-	private Integer[][] convertStringMatrixToIntegerMatrix(List<List<String>> stringMatrix) throws RexsModelAccessException {
+	private Integer[][] convertStringMatrixToIntegerMatrix(List<List<String>> stringMatrix) {
 		Integer[][] doubleMatrix = new Integer[stringMatrix.size()][stringMatrix.get(0).size()];
 
 		for (int i = 0; i < stringMatrix.size(); i++) {
@@ -542,7 +541,7 @@ public class RexsAttribute {
 		return doubleMatrix;
 	}
 
-	private Double[][] convertStringMatrixToDoubleMatrix(List<List<String>> stringMatrix) throws RexsModelAccessException {
+	private Double[][] convertStringMatrixToDoubleMatrix(List<List<String>> stringMatrix) {
 		Double[][] doubleMatrix = new Double[stringMatrix.size()][stringMatrix.get(0).size()];
 
 		for (int i = 0; i < stringMatrix.size(); i++) {
@@ -563,9 +562,10 @@ public class RexsAttribute {
 		return doubleMatrix;
 	}
 
-	private void checkUnit(RexsUnitId unitToCheck) throws RexsModelAccessException {
-		if (attributeId.getUnit() != unitToCheck)
-			throw new RexsModelAccessException(String.format("incompatible units (%s <-> %s)", attributeId.getUnit().getId(), unitToCheck.getId()));
+	private void checkUnit(RexsUnitId unitToCheck) {
+		if (attributeId.getUnit() != unitToCheck && attributeId.getUnit() != RexsUnitId.UNKNOWN)
+			throw new RexsModelAccessException(String.format("incompatible units (%s <-> %s) on %s attribute",
+					attributeId.getUnit().getId(), unitToCheck.getId(), attributeId.getId()));
 	}
 
 	/**
