@@ -128,7 +128,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringValue();
 		})
-		.withMessage("string value cannot be null");
+				.withMessageStartingWith("string value cannot be null for attribute");
 	}
 
 	@Test
@@ -145,7 +145,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanValue();
 		})
-		.withMessage("boolean value cannot be null");
+				.withMessageStartingWith("boolean value cannot be null for attribute");
 	}
 
 	@Test
@@ -165,7 +165,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerValue();
 		})
-		.withMessage("integer value cannot be null");
+		.withMessageStartingWith("integer value cannot be null for attribute");
 	}
 
 	@Test
@@ -182,7 +182,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleValue(RexsUnitId.hertz);
 		})
-		.withMessage("double value cannot be null");
+		.withMessageStartingWith("double value cannot be null for attribute");
 	}
 
 	@Test
@@ -209,7 +209,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringArrayValue();
 		})
-		.withMessage("string array value cannot be null");
+		.withMessageStartingWith("string array value cannot be null for attribute");
 	}
 
 	@Test
@@ -226,7 +226,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanArrayValue();
 		})
-		.withMessage("boolean array value cannot be null");
+		.withMessageStartingWith("boolean array value cannot be null for attribute");
 	}
 
 	@Test
@@ -243,7 +243,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerArrayValue();
 		})
-		.withMessage("integer array value cannot be null");
+		.withMessageStartingWith("integer array value cannot be null for attribute");
 	}
 
 	@Test
@@ -260,7 +260,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleArrayValue(RexsUnitId.hertz);
 		})
-		.withMessage("double array value cannot be null");
+		.withMessageStartingWith("double array value cannot be null for attribute");
 	}
 
 	@Test
@@ -287,7 +287,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringMatrixValue();
 		})
-		.withMessage("string matrix value cannot be null");
+		.withMessageStartingWith("string matrix value cannot be null for attribute");
 	}
 
 	@Test
@@ -304,7 +304,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanMatrixValue();
 		})
-		.withMessage("boolean matrix value cannot be null");
+		.withMessageStartingWith("boolean matrix value cannot be null for attribute");
 	}
 
 	@Test
@@ -321,7 +321,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerMatrixValue();
 		})
-		.withMessage("integer matrix value cannot be null");
+		.withMessageStartingWith("integer matrix value cannot be null for attribute");
 	}
 
 	@Test
@@ -338,7 +338,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleMatrixValue(RexsUnitId.hertz);
 		})
-		.withMessage("double matrix value cannot be null");
+		.withMessageStartingWith("double matrix value cannot be null for attribute");
 	}
 
 	@Test

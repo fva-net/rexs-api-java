@@ -138,7 +138,8 @@ public class RexsAttribute {
 		String value = readStringValue();
 
 		if (value == null)
-			throw new RexsModelAccessException("string value cannot be null");
+			throw new RexsModelAccessException(
+					"string value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -159,7 +160,8 @@ public class RexsAttribute {
 			value = Boolean.valueOf(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("boolean value cannot be null");
+			throw new RexsModelAccessException(
+					"boolean value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -180,12 +182,15 @@ public class RexsAttribute {
 			try {
 				value = Integer.parseInt(valueString);
 			} catch (NumberFormatException ex) {
-				throw new RexsModelAccessException("cannot read integer value " + valueString, ex);
+				throw new RexsModelAccessException(
+						"cannot read integer value " + valueString + " from attribute " + this.getAttributeId().getId(),
+						ex);
 			}
 		}
 
 		if (value == null)
-			throw new RexsModelAccessException("integer value cannot be null");
+			throw new RexsModelAccessException(
+					"integer value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -211,12 +216,15 @@ public class RexsAttribute {
 				if (Double.isNaN(value))
 					value = null;
 			} catch (NumberFormatException ex) {
-				throw new RexsModelAccessException("cannot read double value " + valueString, ex);
+				throw new RexsModelAccessException(
+						"cannot read double value " + valueString + " from attribute " + this.getAttributeId().getId(),
+						ex);
 			}
 		}
 
 		if (value == null)
-			throw new RexsModelAccessException("double value cannot be null");
+			throw new RexsModelAccessException(
+					"double value cannot be null for attribute " + this.getAttributeId().getId());
 
 		checkUnit(unit);
 
@@ -239,7 +247,8 @@ public class RexsAttribute {
 			value = convertStringListToStringArray(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("string array value cannot be null");
+			throw new RexsModelAccessException(
+					"string array value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -260,7 +269,8 @@ public class RexsAttribute {
 			value = convertStringListToBooleanArray(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("boolean array value cannot be null");
+			throw new RexsModelAccessException(
+					"boolean array value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -281,7 +291,8 @@ public class RexsAttribute {
 			value = convertStringListToIntegerArray(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("integer array value cannot be null");
+			throw new RexsModelAccessException(
+					"integer array value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -305,7 +316,8 @@ public class RexsAttribute {
 			value = convertStringListToDoubleArray(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("double array value cannot be null");
+			throw new RexsModelAccessException(
+					"double array value cannot be null for attribute " + this.getAttributeId().getId());
 
 		checkUnit(unit);
 
@@ -328,7 +340,8 @@ public class RexsAttribute {
 			value = convertStringMatrixToStringMatrix(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("string matrix value cannot be null");
+			throw new RexsModelAccessException(
+					"string matrix value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -349,7 +362,8 @@ public class RexsAttribute {
 			value = convertStringMatrixToBooleanMatrix(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("boolean matrix value cannot be null");
+			throw new RexsModelAccessException(
+					"boolean matrix value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -370,7 +384,8 @@ public class RexsAttribute {
 			value = convertStringMatrixToIntegerMatrix(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("integer matrix value cannot be null");
+			throw new RexsModelAccessException(
+					"integer matrix value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -394,7 +409,8 @@ public class RexsAttribute {
 			value = convertStringMatrixToDoubleMatrix(valueString);
 
 		if (value == null)
-			throw new RexsModelAccessException("double matrix value cannot be null");
+			throw new RexsModelAccessException(
+					"double matrix value cannot be null for attribute " + this.getAttributeId().getId());
 
 		checkUnit(unit);
 
@@ -470,7 +486,8 @@ public class RexsAttribute {
 				try {
 					integerArray[i] = Integer.parseInt(stringValue);
 				} catch (NumberFormatException ex) {
-					throw new RexsModelAccessException("cannot read integer value " + stringValue, ex);
+					throw new RexsModelAccessException("cannot read integer value " + stringValue + " from attribute "
+							+ this.getAttributeId().getId(), ex);
 				}
 			}
 		}
@@ -488,7 +505,8 @@ public class RexsAttribute {
 					if (Double.isNaN(doubleArray[i]))
 						doubleArray[i] = null;
 				} catch (NumberFormatException ex) {
-					throw new RexsModelAccessException("cannot read double value " + stringValue, ex);
+					throw new RexsModelAccessException("cannot read double value " + stringValue + " from attribute "
+							+ this.getAttributeId().getId(), ex);
 				}
 			}
 		}
@@ -533,7 +551,8 @@ public class RexsAttribute {
 					try {
 						doubleMatrix[i][j] = Integer.parseInt(stringValue);
 					} catch (NumberFormatException ex) {
-						throw new RexsModelAccessException("cannot read integer value " + stringValue, ex);
+						throw new RexsModelAccessException("cannot read integer value " + stringValue
+								+ " from attribute " + this.getAttributeId().getId(), ex);
 					}
 				}
 			}
@@ -554,7 +573,8 @@ public class RexsAttribute {
 						if (Double.isNaN(doubleMatrix[i][j]))
 							doubleMatrix[i][j] = null;
 					} catch (NumberFormatException ex) {
-						throw new RexsModelAccessException("cannot read double value " + stringValue, ex);
+						throw new RexsModelAccessException("cannot read double value " + stringValue
+								+ " from attribute " + this.getAttributeId().getId(), ex);
 					}
 				}
 			}
