@@ -15,15 +15,30 @@
  ******************************************************************************/
 package info.rexs.model;
 
+import lombok.Getter;
+
 /**
  * Thrown to indicate that there is illegal access to the REXS model.
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsModelAccessException extends RuntimeException {
 
 	/** Serial Version UID for interoperability */
 	private static final long serialVersionUID = -4659241657963203171L;
+
+	/** TODO Dcoument me! */
+	public static final int DEFAULT_COMPONENT_ID_EMPTY = 0;
+
+	/** TODO Dcoument me! */
+	public static final String DEFAULT_COMPONENT_NAME_EMPTY = "";
+
+	/** TODO Document me! */
+	private final int componentId;
+
+	/** TODO Document me! */
+	private final String componentName;
 
 	/**
 	 * Constructs a new {@link RexsModelAccessException} with the specified detail message.
@@ -33,6 +48,8 @@ public class RexsModelAccessException extends RuntimeException {
 	 */
 	public RexsModelAccessException(String message) {
 		super(message);
+		this.componentId = DEFAULT_COMPONENT_ID_EMPTY;
+		this.componentName = DEFAULT_COMPONENT_NAME_EMPTY;
 	}
 
 	/**
@@ -45,5 +62,38 @@ public class RexsModelAccessException extends RuntimeException {
 	 */
 	public RexsModelAccessException(String message, Throwable cause) {
 		super(message, cause);
+		this.componentId = DEFAULT_COMPONENT_ID_EMPTY;
+		this.componentName = DEFAULT_COMPONENT_NAME_EMPTY;
+	}
+
+	/**
+	 * Constructs a new {@link RexsModelAccessException} for a given component with the specified detail message.
+	 *
+	 * @param rexsComponent
+	 * 				The {@link RexsComponent} which caused the exception.
+	 * @param message
+	 * 				The detail message.
+	 */
+	public RexsModelAccessException(RexsComponent rexsComponent, String message) {
+		super(message);
+		this.componentId = rexsComponent.getId();
+		this.componentName = rexsComponent.getName();
+	}
+
+	/**
+	 * Constructs a new {@link RexsModelAccessException} for a given component with the specified detail message and
+	 * cause.
+	 *
+	 * @param rexsComponent
+	 *            the {@link RexsComponent} which caused the exception
+	 * @param message
+	 *            The detail message.
+	 * @param cause
+	 *            The cause.
+	 */
+	public RexsModelAccessException(RexsComponent rexsComponent, String message, Throwable cause) {
+		super(message, cause);
+		this.componentId = rexsComponent.getId();
+		this.componentName = rexsComponent.getName();
 	}
 }

@@ -163,7 +163,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public RexsAttribute getAttribute(String attributeId) {
 		RexsAttribute rexsAttribute = attributes.get(attributeId);
 		if (rexsAttribute == null)
-			throw new RexsModelAccessException("attribute '" + attributeId + "' not found!");
+			throw new RexsModelAccessException(this, "attribute '" + attributeId + "' not found!");
 		return rexsAttribute;
 	}
 

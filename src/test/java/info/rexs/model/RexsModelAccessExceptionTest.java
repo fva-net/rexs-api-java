@@ -21,6 +21,8 @@ import java.util.UUID;
 
 import org.junit.Test;
 
+import info.rexs.model.jaxb.Component;
+
 public class RexsModelAccessExceptionTest {
 
 	@Test
@@ -29,6 +31,8 @@ public class RexsModelAccessExceptionTest {
 		RexsModelAccessException ex = new RexsModelAccessException(message);
 
 		assertThat(ex.getMessage()).isEqualTo(message);
+		assertThat(ex.getComponentId()).isEqualTo(RexsModelAccessException.DEFAULT_COMPONENT_ID_EMPTY);
+		assertThat(ex.getComponentName()).isEqualTo(RexsModelAccessException.DEFAULT_COMPONENT_NAME_EMPTY);
 	}
 
 	@Test
@@ -38,5 +42,36 @@ public class RexsModelAccessExceptionTest {
 
 		assertThat(ex.getMessage()).isEqualTo("bar");
 		assertThat(ex.getCause()).isEqualTo(cause);
+		assertThat(ex.getComponentId()).isEqualTo(RexsModelAccessException.DEFAULT_COMPONENT_ID_EMPTY);
+		assertThat(ex.getComponentName()).isEqualTo(RexsModelAccessException.DEFAULT_COMPONENT_NAME_EMPTY);
+	}
+
+	@Test
+	public void componentAndmessageConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+		Component rawComponent = new Component();
+		rawComponent.setId(15);
+		rawComponent.setName("SampleComponent");
+		RexsComponent component = new RexsComponent(rawComponent);
+		String message = UUID.randomUUID().toString();
+		RexsModelAccessException ex = new RexsModelAccessException(component, message);
+
+		assertThat(ex.getMessage()).isEqualTo(message);
+		assertThat(ex.getComponentId()).isEqualTo(15);
+		assertThat(ex.getComponentName()).isEqualTo("SampleComponent");
+	}
+
+	@Test
+	public void componentAndmessageAndCauseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+		Component rawComponent = new Component();
+		rawComponent.setId(15);
+		rawComponent.setName("SampleComponent");
+		RexsComponent component = new RexsComponent(rawComponent);
+		Exception cause = new Exception("foo");
+		RexsModelAccessException ex = new RexsModelAccessException(component, "bar", cause);
+
+		assertThat(ex.getMessage()).isEqualTo("bar");
+		assertThat(ex.getCause()).isEqualTo(cause);
+		assertThat(ex.getComponentId()).isEqualTo(15);
+		assertThat(ex.getComponentName()).isEqualTo("SampleComponent");
 	}
 }
