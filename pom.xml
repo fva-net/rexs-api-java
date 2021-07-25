@@ -187,7 +187,7 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<schemaDirectory>src/main/resources/schema</schemaDirectory>
+							<schemaDirectory>src/main/resources/info/rexs/schema</schemaDirectory>
 							<schemaIncludes>
 								<include>rexs-dbmodel.xsd</include>
 							</schemaIncludes>
@@ -203,7 +203,7 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<schemaDirectory>src/main/resources/schema</schemaDirectory>
+							<schemaDirectory>src/main/resources/info/rexs/schema</schemaDirectory>
 							<schemaIncludes>
 								<include>rexs-file.xsd</include>
 							</schemaIncludes>
@@ -219,7 +219,7 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<schemaDirectory>src/main/resources/schema</schemaDirectory>
+							<schemaDirectory>src/main/resources/info/rexs/schema</schemaDirectory>
 							<schemaIncludes>
 								<include>rexs-changelog.xsd</include>
 							</schemaIncludes>
