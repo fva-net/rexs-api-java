@@ -116,11 +116,11 @@ public class RexsAttribute {
 		if (array != null)
 			return hasValue(array);
 
-		if (value instanceof Matrix) {
-			Matrix matrixValue = (Matrix)value;
-			if (matrixValue.getR() == null || matrixValue.getR().isEmpty())
+		Matrix matrix = readMatrixElement();
+		if (matrix != null) {
+			if (matrix.getR() == null || matrix.getR().isEmpty())
 				return false;
-			List<String> matrixValueColumns = matrixValue.getR().get(0).getC();
+			List<String> matrixValueColumns = matrix.getR().get(0).getC();
 			return !matrixValueColumns.isEmpty() && matrixValueColumns.get(0) != null;
 		}
 
@@ -596,19 +596,28 @@ public class RexsAttribute {
 	}
 
 	private List<List<String>> readStringMatrixValue() {
-		List<Object> valueContent = rawAttribute.getContent();
-		if (valueContent == null || valueContent.isEmpty())
+		Matrix matrix = readMatrixElement();
+		if (matrix == null)
 			return Collections.emptyList();
 
 		List<List<String>> matrixValue = new ArrayList<>();
-		Object value = valueContent.get(0);
-		if (value instanceof Matrix) {
-			Matrix matrix = (Matrix)value;
-			for (R row : matrix.getR()) {
-				matrixValue.add(row.getC());
-			}
+		for (R row : matrix.getR()) {
+			matrixValue.add(row.getC());
 		}
 		return matrixValue;
+	}
+
+	private Matrix readMatrixElement() {
+		List<Object> valueContent = rawAttribute.getContent();
+		if (valueContent == null || valueContent.isEmpty())
+			return null;
+
+		return valueContent
+				.stream()
+				.filter(Matrix.class::isInstance)
+				.map(Matrix.class::cast)
+				.findFirst()
+				.orElse(null);
 	}
 
 	private String[] convertStringListToStringArray(List<String> stringList) {
