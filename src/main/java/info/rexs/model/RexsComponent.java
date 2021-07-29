@@ -430,7 +430,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * @param attributeId
 	 * 				The ID of the new attribute as {@link RexsAttributeId}.
 	 * @param arrayOfIntegerArrayValues
-	 * 				The value of the new attribute as {@link List<Integer[]>}.
+	 * 				The value of the new attribute as {@link List}.
 	 */
 	public void addAttribute(RexsAttributeId attributeId, List<Integer[]> arrayOfIntegerArrayValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);

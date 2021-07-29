@@ -573,7 +573,7 @@ public class RexsAttribute {
 	 * Returns the array of integer arrays value of the attribute.
 	 *
 	 * @return
-	 * 				The value of the attribute as {@link Integer[][]}.
+	 * 				The value of the attribute as {@link List}.
 	 *
 	 * @throws RexsModelAccessException
 	 * 				If the attribute has no array of integer array value.
@@ -1127,7 +1127,7 @@ public class RexsAttribute {
 	 * Sets the array of integer arrays value of the attribute.
 	 *
 	 * @param value
-	 * 				The value of the attribute as {@link List<Integer[]>}.
+	 * 				The value of the attribute as {@link List}.
 	 */
 	public void setArrayOfIntegerArraysValue(List<Integer[]> value) {
 		if (value == null || value.isEmpty())
