@@ -37,6 +37,8 @@ public enum RexsValueType {
 	FLOATING_POINT_ARRAY("floating_point_array", FLOATING_POINT),
 	FLOATING_POINT_MATRIX("floating_point_matrix", FLOATING_POINT),
 	ENUM("enum"),
+	ENUM_ARRAY("enum_array", ENUM),
+	ARRAY_OF_INTEGER_ARRAYS("array_of_integer_arrays", INTEGER),
 	REFERENCE_COMPONENT("reference_component"),
 	FILE_REFERENCE("file_reference");
 

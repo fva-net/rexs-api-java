@@ -107,8 +107,9 @@
 	<xsd:element name="attribute">
 		<xsd:complexType mixed="true">
 			<xsd:sequence>
-				<xsd:element ref="array" minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="matrix" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="array"           minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="matrix"          minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="array_of_arrays" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 			<xsd:attribute name="id"   type="xsd:string" use="required"/>
 			<xsd:attribute name="unit" type="xsd:string" use="optional"/>
@@ -151,6 +152,14 @@
 	<xsd:simpleType name="c">
 		<xsd:restriction base="xsd:string"/>
 	</xsd:simpleType>
+
+	<xsd:element name="array_of_arrays">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="array" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 
 	<xsd:element name="load_spectrum">
 		<xsd:complexType>

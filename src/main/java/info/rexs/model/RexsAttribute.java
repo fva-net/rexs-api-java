@@ -25,6 +25,7 @@ import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.jaxb.Array;
 import info.rexs.model.jaxb.ArrayCodeType;
+import info.rexs.model.jaxb.ArrayOfArrays;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.C;
 import info.rexs.model.jaxb.Matrix;
@@ -124,6 +125,10 @@ public class RexsAttribute {
 			return !matrixValueColumns.isEmpty() && matrixValueColumns.get(0) != null;
 		}
 
+		ArrayOfArrays arrayOfArrays = readArrayOfArraysElement();
+		if (arrayOfArrays != null)
+			return hasValue(arrayOfArrays);
+
 		return false;
 	}
 
@@ -149,6 +154,15 @@ public class RexsAttribute {
 			.filter(Objects::nonNull)
 			.map(String::trim)
 			.anyMatch(value -> !value.isEmpty());
+	}
+
+	private boolean hasValue(ArrayOfArrays arrayOfArrays) {
+		if (arrayOfArrays.getArray().isEmpty())
+			return false;
+
+		return arrayOfArrays.getArray()
+			.stream()
+			.anyMatch(this::hasValue);
 	}
 
 	/**
@@ -275,6 +289,28 @@ public class RexsAttribute {
 		if (value == null)
 			throw new RexsModelAccessException(
 					"string array value cannot be null for attribute " + this.getAttributeId().getId());
+
+		return value;
+	}
+
+	/**
+	 * Returns the enum array value of the attribute.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link String[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no enum array value.
+	 */
+	public String[] getEnumArrayValue() {
+		List<String> valueString = readStringArrayValue();
+		String [] value = null;
+		if (valueString != null && !valueString.isEmpty())
+			value = convertStringListToStringArray(valueString);
+
+		if (value == null)
+			throw new RexsModelAccessException(
+					"enum array value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
 	}
@@ -533,6 +569,50 @@ public class RexsAttribute {
 		return value;
 	}
 
+	/**
+	 * Returns the array of integer arrays value of the attribute.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Integer[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no array of integer array value.
+	 */
+	public List<Integer[]> getArrayOfIntegerArraysValue() {
+		List<Integer[]> value = new ArrayList<>();
+
+		ArrayOfArrays arrayOfArrays = readArrayOfArraysElement();
+		if (arrayOfArrays != null) {
+
+			for (Array array : arrayOfArrays.getArray()) {
+				Integer[] arrayValue = null;
+
+				ArrayCodeType arrayCode = readArrayCodeType(array);
+				if (arrayCode == null) {
+					List<String> valueString = readStringArrayValue(array);
+					if (valueString != null && !valueString.isEmpty())
+						arrayValue = convertStringListToIntegerArrayBoxed(valueString);
+
+				} else if (arrayCode == ArrayCodeType.INT_32) {
+					String base64 = readArrayBase64Value(array);
+					arrayValue = Base64Utils.decodeInt32ArrayBoxed(base64);
+				}
+
+				if (arrayValue == null)
+					throw new RexsModelAccessException(
+							"integer array value in array of integer arrays cannot be null for attribute " + this.getAttributeId().getId());
+
+				value.add(arrayValue);
+			}
+		}
+
+		if (value.isEmpty())
+			throw new RexsModelAccessException(
+					"array of integer arrays value cannot be null for attribute " + this.getAttributeId().getId());
+
+		return value;
+	}
+
 	private String readStringValue() {
 		List<Object> valueContent = rawAttribute.getContent();
 		if (valueContent == null || valueContent.isEmpty())
@@ -546,6 +626,10 @@ public class RexsAttribute {
 
 	private List<String> readStringArrayValue() {
 		Array array = readArrayElement();
+		return readStringArrayValue(array);
+	}
+
+	private List<String> readStringArrayValue(Array array) {
 		if (array != null)
 			return array.getContent()
 					.stream()
@@ -572,6 +656,10 @@ public class RexsAttribute {
 
 	private ArrayCodeType readArrayCodeType() {
 		Array array = readArrayElement();
+		return readArrayCodeType(array);
+	}
+
+	private ArrayCodeType readArrayCodeType(Array array) {
 		if (array != null)
 			return array.getCode();
 
@@ -580,6 +668,10 @@ public class RexsAttribute {
 
 	private String readArrayBase64Value() {
 		Array array = readArrayElement();
+		return readArrayBase64Value(array);
+	}
+
+	private String readArrayBase64Value(Array array) {
 		if (array != null) {
 			return array.getContent()
 					.stream()
@@ -616,6 +708,19 @@ public class RexsAttribute {
 				.stream()
 				.filter(Matrix.class::isInstance)
 				.map(Matrix.class::cast)
+				.findFirst()
+				.orElse(null);
+	}
+
+	private ArrayOfArrays readArrayOfArraysElement() {
+		List<Object> valueContent = rawAttribute.getContent();
+		if (valueContent == null || valueContent.isEmpty())
+			return null;
+
+		return valueContent
+				.stream()
+				.filter(ArrayOfArrays.class::isInstance)
+				.map(ArrayOfArrays.class::cast)
 				.findFirst()
 				.orElse(null);
 	}
@@ -882,6 +987,16 @@ public class RexsAttribute {
 	}
 
 	/**
+	 * Sets the enum array value of the attribute.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link String[]}.
+	 */
+	public void setEnumArrayValue(String[] value) {
+		setArrayValue(value);
+	}
+
+	/**
 	 * Sets the bolean array value of the attribute.
 	 *
 	 * @param value
@@ -1006,5 +1121,34 @@ public class RexsAttribute {
 	 */
 	public void setDoubleMatrixValue(Double[][] value) {
 		setMatrixValue(value);
+	}
+
+	/**
+	 * Sets the array of integer arrays value of the attribute.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link List<Integer[]>}.
+	 */
+	public void setArrayOfIntegerArraysValue(List<Integer[]> value) {
+		if (value == null || value.isEmpty())
+			return;
+
+		ObjectFactory objectFactory = new ObjectFactory();
+		ArrayOfArrays arrayOfArrays = objectFactory.createArrayOfArrays();
+		for (Integer[] arrayValue : value) {
+			Array array = objectFactory.createArray();
+			for (int i = 0; i < arrayValue.length; i++) {
+				C c = objectFactory.createC();
+				if (arrayValue[i] == null)
+					c.setValue("");
+				else
+					c.setValue(String.valueOf(arrayValue[i]));
+				array.getContent().add(c);
+			}
+			arrayOfArrays.getArray().add(array);
+		}
+
+		rawAttribute.getContent().clear();
+		rawAttribute.getContent().add(arrayOfArrays);
 	}
 }

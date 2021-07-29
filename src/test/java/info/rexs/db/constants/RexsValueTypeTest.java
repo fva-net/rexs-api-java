@@ -61,6 +61,7 @@ public class RexsValueTypeTest {
 		assertThat(RexsValueType.FLOATING_POINT_MATRIX.getBasicType()).isEqualTo(RexsValueType.FLOATING_POINT);
 
 		assertThat(RexsValueType.ENUM.getBasicType()).isEqualTo(RexsValueType.ENUM);
+		assertThat(RexsValueType.ENUM_ARRAY.getBasicType()).isEqualTo(RexsValueType.ENUM);
 
 		assertThat(RexsValueType.REFERENCE_COMPONENT.getBasicType()).isEqualTo(RexsValueType.REFERENCE_COMPONENT);
 

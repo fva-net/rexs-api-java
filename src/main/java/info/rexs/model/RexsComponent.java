@@ -18,6 +18,7 @@ package info.rexs.model;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -419,6 +420,21 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public void addAttribute(RexsAttributeId attributeId, Double[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleMatrixValue(matrixValues);
+	}
+
+	/**
+	 * Creates a new attribute with a array of integer arrays value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param arrayOfIntegerArrayValues
+	 * 				The value of the new attribute as {@link List<Integer[]>}.
+	 */
+	public void addAttribute(RexsAttributeId attributeId, List<Integer[]> arrayOfIntegerArrayValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setArrayOfIntegerArraysValue(arrayOfIntegerArrayValues);
 	}
 
 	/**
