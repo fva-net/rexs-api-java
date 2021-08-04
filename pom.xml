@@ -20,7 +20,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fva-gmbh.rexs-api</groupId>
+	<groupId>de.fva-service.rexs-api</groupId>
 	<artifactId>rexs-api</artifactId>
 	<version>0.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
