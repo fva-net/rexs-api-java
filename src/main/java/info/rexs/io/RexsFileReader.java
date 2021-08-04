@@ -17,9 +17,16 @@ package info.rexs.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributes;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -75,15 +82,28 @@ public class RexsFileReader {
 	 *
 	 * @throws FileNotFoundException
 	 * 				If the REXS input file does not exist.
+	 * @throws IOException
+	 * 				In case of an IO error while reading the REXS input file.
 	 * @throws JAXBException
 	 * 				If any unexpected errors occur while unmarshalling the REXS input file.
 	 */
-	public Model readRawModel() throws FileNotFoundException, JAXBException {
+	public Model readRawModel() throws FileNotFoundException, IOException, JAXBException {
 		if (!Files.exists(pathToRexsInputFile))
 			throw new FileNotFoundException("rexs file " + pathToRexsInputFile + " does not exist");
 
 		JAXBContext context = JAXBContext.newInstance(Model.class);
 		Unmarshaller unmarshaller = context.createUnmarshaller();
+
+		if (isRexsZipFile(pathToRexsInputFile)) {
+			Path pathToRexsFile = null;
+			try {
+				pathToRexsFile = extractRexsFileFromZip(pathToRexsInputFile);
+				return (Model)unmarshaller.unmarshal(pathToRexsFile.toFile());
+			} finally {
+				Files.deleteIfExists(pathToRexsFile);
+			}
+		}
+
 		return (Model)unmarshaller.unmarshal(pathToRexsInputFile.toFile());
 	}
 
@@ -94,11 +114,47 @@ public class RexsFileReader {
 	 *
 	 * @throws FileNotFoundException
 	 * 				If the REXS input file does not exist.
+	 * @throws IOException
+	 * 				In case of an IO error while reading the REXS input file.
 	 * @throws JAXBException
 	 * 				If any unexpected errors occur while unmarshalling the REXS input file.
 	 */
-	public RexsModel read() throws FileNotFoundException, JAXBException {
+	public RexsModel read() throws FileNotFoundException, IOException, JAXBException {
 		Model rawModel = readRawModel();
 		return new RexsModel(rawModel);
+	}
+
+	public static boolean isRexsZipFile(Path pathToRexsFile) {
+		return Files.exists(pathToRexsFile)
+				&& (pathToRexsFile.endsWith(".zip") || pathToRexsFile.endsWith(".rexsz"));
+	}
+
+	public static Path extractRexsFileFromZip(Path pathToRexszFile) throws IOException
+	{
+		Path pathToRexsFile = Files.createTempFile("rexs-file", ".rexs");
+
+		try(FileSystem fs = FileSystems.newFileSystem(pathToRexszFile, null)) {
+			final Path root = fs.getPath("/");
+			Files.walkFileTree(root, new SimpleFileVisitor<Path>() {
+				@Override
+				public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+					if (dir.toString().equals(root.toString()))
+						return FileVisitResult.CONTINUE;
+					// ignore directory - rexs file has to be located in the root directory of the zip archive
+					return FileVisitResult.SKIP_SUBTREE;
+				}
+
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+					if (file.toString().endsWith(".rexs")) {
+						Files.copy(file, pathToRexsFile, StandardCopyOption.REPLACE_EXISTING);
+						return FileVisitResult.TERMINATE;
+					}
+					return FileVisitResult.CONTINUE;
+				}
+			});
+		}
+
+		return pathToRexsFile;
 	}
 }
