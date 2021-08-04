@@ -16,6 +16,7 @@
 package info.rexs.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -24,10 +25,10 @@ import java.util.stream.Collectors;
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.jaxb.Array;
-import info.rexs.model.jaxb.ArrayCodeType;
 import info.rexs.model.jaxb.ArrayOfArrays;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.C;
+import info.rexs.model.jaxb.CodeType;
 import info.rexs.model.jaxb.Matrix;
 import info.rexs.model.jaxb.ObjectFactory;
 import info.rexs.model.jaxb.R;
@@ -118,12 +119,8 @@ public class RexsAttribute {
 			return hasValue(array);
 
 		Matrix matrix = readMatrixElement();
-		if (matrix != null) {
-			if (matrix.getR() == null || matrix.getR().isEmpty())
-				return false;
-			List<String> matrixValueColumns = matrix.getR().get(0).getC();
-			return !matrixValueColumns.isEmpty() && matrixValueColumns.get(0) != null;
-		}
+		if (matrix != null)
+			return hasValue(matrix);
 
 		ArrayOfArrays arrayOfArrays = readArrayOfArraysElement();
 		if (arrayOfArrays != null)
@@ -148,6 +145,30 @@ public class RexsAttribute {
 			return true;
 
 		return array.getContent()
+			.stream()
+			.filter(String.class::isInstance)
+			.map(String.class::cast)
+			.filter(Objects::nonNull)
+			.map(String::trim)
+			.anyMatch(value -> !value.isEmpty());
+	}
+
+	private boolean hasValue(Matrix matrix) {
+		if (matrix.getContent().isEmpty())
+			return false;
+
+		boolean hasCValue = matrix.getContent()
+			.stream()
+			.filter(R.class::isInstance)
+			.map(R.class::cast)
+			.flatMap(row -> row.getC().stream())
+			.filter(Objects::nonNull)
+			.anyMatch(value -> !value.isEmpty());
+
+		if (hasCValue)
+			return true;
+
+		return matrix.getContent()
 			.stream()
 			.filter(String.class::isInstance)
 			.map(String.class::cast)
@@ -349,13 +370,13 @@ public class RexsAttribute {
 	public Integer[] getIntegerArrayValue() {
 		Integer[] value = null;
 
-		ArrayCodeType arrayCode = readArrayCodeType();
+		CodeType arrayCode = readArrayCodeType();
 		if (arrayCode == null) {
 			List<String> valueString = readStringArrayValue();
 			if (valueString != null && !valueString.isEmpty())
 				value = convertStringListToIntegerArrayBoxed(valueString);
 
-		} else if (arrayCode == ArrayCodeType.INT_32) {
+		} else if (arrayCode == CodeType.INT_32) {
 			String base64 = readArrayBase64Value();
 			value = Base64Utils.decodeInt32ArrayBoxed(base64);
 		}
@@ -379,13 +400,13 @@ public class RexsAttribute {
 	public int[] getIntegerArrayValueUnboxed() {
 		int[] value = null;
 
-		ArrayCodeType arrayCode = readArrayCodeType();
+		CodeType arrayCode = readArrayCodeType();
 		if (arrayCode == null) {
 			List<String> valueString = readStringArrayValue();
 			if (valueString != null && !valueString.isEmpty())
 				value = convertStringListToIntegerArrayUnboxed(valueString);
 
-		} else if (arrayCode == ArrayCodeType.INT_32) {
+		} else if (arrayCode == CodeType.INT_32) {
 			String base64 = readArrayBase64Value();
 			value = Base64Utils.decodeInt32Array(base64);
 		}
@@ -412,17 +433,17 @@ public class RexsAttribute {
 	public Double[] getDoubleArrayValue(RexsUnitId unit) {
 		Double[] value = null;
 
-		ArrayCodeType arrayCode = readArrayCodeType();
+		CodeType arrayCode = readArrayCodeType();
 		if (arrayCode == null) {
 			List<String> valueString = readStringArrayValue();
 			if (valueString != null && !valueString.isEmpty())
 				value = convertStringListToDoubleArrayBoxed(valueString);
 
-		} else if (arrayCode == ArrayCodeType.FLOAT_32) {
+		} else if (arrayCode == CodeType.FLOAT_32) {
 			String base64 = readArrayBase64Value();
 			value = Base64Utils.decodeFloat32ArrayBoxed(base64);
 
-		} else if (arrayCode == ArrayCodeType.FLOAT_64) {
+		} else if (arrayCode == CodeType.FLOAT_64) {
 			String base64 = readArrayBase64Value();
 			value = Base64Utils.decodeFloat64ArrayBoxed(base64);
 		}
@@ -451,18 +472,18 @@ public class RexsAttribute {
 	public double[] getDoubleArrayValueUnboxed(RexsUnitId unit) {
 		double[] value = null;
 
-		ArrayCodeType arrayCode = readArrayCodeType();
+		CodeType arrayCode = readArrayCodeType();
 		if (arrayCode == null) {
 			List<String> valueString = readStringArrayValue();
 			if (valueString != null && !valueString.isEmpty())
 				value = convertStringListToDoubleArrayUnboxed(valueString);
 
-		} else if (arrayCode == ArrayCodeType.FLOAT_32) {
+		} else if (arrayCode == CodeType.FLOAT_32) {
 			String base64 = readArrayBase64Value();
 			float[] floatArray = Base64Utils.decodeFloat32Array(base64);
 			value = convertFloatArrayToDoubleArray(floatArray);
 
-		} else if (arrayCode == ArrayCodeType.FLOAT_64) {
+		} else if (arrayCode == CodeType.FLOAT_64) {
 			String base64 = readArrayBase64Value();
 			value = Base64Utils.decodeFloat64Array(base64);
 		}
@@ -530,10 +551,68 @@ public class RexsAttribute {
 	 * 				If the attribute has no integer matrix value.
 	 */
 	public Integer[][] getIntegerMatrixValue() {
-		List<List<String>> valueString = readStringMatrixValue();
 		Integer[][] value = null;
-		if (valueString != null && !valueString.isEmpty())
-			value = convertStringMatrixToIntegerMatrix(valueString);
+
+		CodeType matrixCode = readMatrixCodeType();
+		if (matrixCode == null) {
+			List<List<String>> valueString = readStringMatrixValue();
+			if (valueString != null && !valueString.isEmpty())
+				value = convertStringMatrixToIntegerMatrixBoxed(valueString);
+
+		} else if (matrixCode == CodeType.INT_32) {
+			int rows = readMatrixRows();
+			if (rows < 0)
+				throw new RexsModelAccessException(
+						"integer matrix with base64 value requires number of rows for attribute " + this.getAttributeId().getId());
+
+			int cols = readMatrixCols();
+			if (cols < 0)
+				throw new RexsModelAccessException(
+						"integer matrix with base64 value requires number of columns for attribute " + this.getAttributeId().getId());
+
+			String base64 = readMatrixBase64Value();
+			value = Base64Utils.decodeInt32MatrixBoxed(base64, rows, cols);
+		}
+
+		if (value == null)
+			throw new RexsModelAccessException(
+					"integer matrix value cannot be null for attribute " + this.getAttributeId().getId());
+
+		return value;
+	}
+
+	/**
+	 * Returns the integer matrix value of the attribute.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link int[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no integer matrix value.
+	 */
+	public int[][] getIntegerMatrixValueUnboxed() {
+		int[][] value = null;
+
+		CodeType matrixCode = readMatrixCodeType();
+		if (matrixCode == null) {
+			List<List<String>> valueString = readStringMatrixValue();
+			if (valueString != null && !valueString.isEmpty())
+				value = convertStringMatrixToIntegerMatrixUnboxed(valueString);
+
+		} else if (matrixCode == CodeType.INT_32) {
+			int rows = readMatrixRows();
+			if (rows < 0)
+				throw new RexsModelAccessException(
+						"integer matrix with base64 value requires number of rows for attribute " + this.getAttributeId().getId());
+
+			int cols = readMatrixCols();
+			if (cols < 0)
+				throw new RexsModelAccessException(
+						"integer matrix with base64 value requires number of columns for attribute " + this.getAttributeId().getId());
+
+			String base64 = readMatrixBase64Value();
+			value = Base64Utils.decodeInt32Matrix(base64, rows, cols);
+		}
 
 		if (value == null)
 			throw new RexsModelAccessException(
@@ -555,10 +634,86 @@ public class RexsAttribute {
 	 * 				If the attribute has no double matrix value or the unit does not match the unit of the attribute.
 	 */
 	public Double[][] getDoubleMatrixValue(RexsUnitId unit) {
-		List<List<String>> valueString = readStringMatrixValue();
 		Double[][] value = null;
-		if (valueString != null && !valueString.isEmpty())
-			value = convertStringMatrixToDoubleMatrix(valueString);
+
+		CodeType matrixCode = readMatrixCodeType();
+		if (matrixCode == null) {
+			List<List<String>> valueString = readStringMatrixValue();
+			if (valueString != null && !valueString.isEmpty())
+				value = convertStringMatrixToDoubleMatrixBoxed(valueString);
+
+		} else {
+			int rows = readMatrixRows();
+			if (rows < 0)
+				throw new RexsModelAccessException(
+						"double matrix with base64 value requires number of rows for attribute " + this.getAttributeId().getId());
+
+			int cols = readMatrixCols();
+			if (cols < 0)
+				throw new RexsModelAccessException(
+						"double matrix with base64 value requires number of columns for attribute " + this.getAttributeId().getId());
+
+			if (matrixCode == CodeType.FLOAT_32) {
+				String base64 = readMatrixBase64Value();
+				value = Base64Utils.decodeFloat32MatrixBoxed(base64, rows, cols);
+
+			} else if (matrixCode == CodeType.FLOAT_64) {
+				String base64 = readMatrixBase64Value();
+				value = Base64Utils.decodeFloat64MatrixBoxed(base64, rows, cols);
+			}
+		}
+
+		if (value == null)
+			throw new RexsModelAccessException(
+					"double matrix value cannot be null for attribute " + this.getAttributeId().getId());
+
+		checkUnit(unit);
+
+		return value;
+	}
+
+	/**
+	 * Returns the floating point matrix value of the attribute.
+	 *
+	 * @param unit
+	 * 				The unit of the attribute as {@link RexsUnitId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link double[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no double matrix value or the unit does not match the unit of the attribute.
+	 */
+	public double[][] getDoubleMatrixValueUnboxed(RexsUnitId unit) {
+		double[][] value = null;
+
+		CodeType matrixCode = readMatrixCodeType();
+		if (matrixCode == null) {
+			List<List<String>> valueString = readStringMatrixValue();
+			if (valueString != null && !valueString.isEmpty())
+				value = convertStringMatrixToDoubleMatrixUnboxed(valueString);
+
+		} else {
+			int rows = readMatrixRows();
+			if (rows < 0)
+				throw new RexsModelAccessException(
+						"double matrix with base64 value requires number of rows for attribute " + this.getAttributeId().getId());
+
+			int cols = readMatrixCols();
+			if (cols < 0)
+				throw new RexsModelAccessException(
+						"double matrix with base64 value requires number of columns for attribute " + this.getAttributeId().getId());
+
+			if (matrixCode == CodeType.FLOAT_32) {
+				String base64 = readMatrixBase64Value();
+				float[][] floatMatrix = Base64Utils.decodeFloat32Matrix(base64, rows, cols);
+				value = convertFloatMatrixToDoubleMatrix(floatMatrix);
+
+			} else if (matrixCode == CodeType.FLOAT_64) {
+				String base64 = readMatrixBase64Value();
+				value = Base64Utils.decodeFloat64Matrix(base64, rows, cols);
+			}
+		}
 
 		if (value == null)
 			throw new RexsModelAccessException(
@@ -587,13 +742,13 @@ public class RexsAttribute {
 			for (Array array : arrayOfArrays.getArray()) {
 				Integer[] arrayValue = null;
 
-				ArrayCodeType arrayCode = readArrayCodeType(array);
+				CodeType arrayCode = readArrayCodeType(array);
 				if (arrayCode == null) {
 					List<String> valueString = readStringArrayValue(array);
 					if (valueString != null && !valueString.isEmpty())
 						arrayValue = convertStringListToIntegerArrayBoxed(valueString);
 
-				} else if (arrayCode == ArrayCodeType.INT_32) {
+				} else if (arrayCode == CodeType.INT_32) {
 					String base64 = readArrayBase64Value(array);
 					arrayValue = Base64Utils.decodeInt32ArrayBoxed(base64);
 				}
@@ -654,12 +809,12 @@ public class RexsAttribute {
 				.orElse(null);
 	}
 
-	private ArrayCodeType readArrayCodeType() {
+	private CodeType readArrayCodeType() {
 		Array array = readArrayElement();
 		return readArrayCodeType(array);
 	}
 
-	private ArrayCodeType readArrayCodeType(Array array) {
+	private CodeType readArrayCodeType(Array array) {
 		if (array != null)
 			return array.getCode();
 
@@ -689,14 +844,15 @@ public class RexsAttribute {
 
 	private List<List<String>> readStringMatrixValue() {
 		Matrix matrix = readMatrixElement();
-		if (matrix == null)
-			return Collections.emptyList();
+		if (matrix != null)
+			return matrix.getContent()
+					.stream()
+					.filter(R.class::isInstance)
+					.map(R.class::cast)
+					.map(R::getC)
+					.collect(Collectors.toList());
 
-		List<List<String>> matrixValue = new ArrayList<>();
-		for (R row : matrix.getR()) {
-			matrixValue.add(row.getC());
-		}
-		return matrixValue;
+		return Collections.emptyList();
 	}
 
 	private Matrix readMatrixElement() {
@@ -710,6 +866,47 @@ public class RexsAttribute {
 				.map(Matrix.class::cast)
 				.findFirst()
 				.orElse(null);
+	}
+
+	private CodeType readMatrixCodeType() {
+		Matrix matrix = readMatrixElement();
+		if (matrix != null)
+			return matrix.getCode();
+
+		return null;
+	}
+
+	private int readMatrixRows() {
+		Matrix matrix = readMatrixElement();
+		if (matrix != null && matrix.getRows() != null)
+			return matrix.getRows();
+
+		return -1;
+	}
+
+	private int readMatrixCols() {
+		Matrix matrix = readMatrixElement();
+		if (matrix != null && matrix.getColumns() != null)
+			return matrix.getColumns();
+
+		return -1;
+	}
+
+	private String readMatrixBase64Value() {
+		Matrix matrix = readMatrixElement();
+		if (matrix != null) {
+			return matrix.getContent()
+					.stream()
+					.filter(String.class::isInstance)
+					.map(String.class::cast)
+					.filter(Objects::nonNull)
+					.map(String::trim)
+					.filter(val -> !val.isEmpty())
+					.findFirst()
+					.orElse(null);
+		}
+
+		return null;
 	}
 
 	private ArrayOfArrays readArrayOfArraysElement() {
@@ -855,8 +1052,8 @@ public class RexsAttribute {
 		return booleanMatrix;
 	}
 
-	private Integer[][] convertStringMatrixToIntegerMatrix(List<List<String>> stringMatrix) {
-		Integer[][] doubleMatrix = new Integer[stringMatrix.size()][stringMatrix.get(0).size()];
+	private Integer[][] convertStringMatrixToIntegerMatrixBoxed(List<List<String>> stringMatrix) {
+		Integer[][] integerMatrix = new Integer[stringMatrix.size()][stringMatrix.get(0).size()];
 
 		for (int i = 0; i < stringMatrix.size(); i++) {
 			List<String> stringArray = stringMatrix.get(i);
@@ -864,7 +1061,7 @@ public class RexsAttribute {
 				String stringValue = stringArray.get(j);
 				if (!stringValue.isEmpty()) {
 					try {
-						doubleMatrix[i][j] = Integer.parseInt(stringValue);
+						integerMatrix[i][j] = Integer.parseInt(stringValue);
 					} catch (NumberFormatException ex) {
 						throw new RexsModelAccessException("cannot read integer value " + stringValue
 								+ " from attribute " + this.getAttributeId().getId(), ex);
@@ -872,10 +1069,30 @@ public class RexsAttribute {
 				}
 			}
 		}
-		return doubleMatrix;
+		return integerMatrix;
 	}
 
-	private Double[][] convertStringMatrixToDoubleMatrix(List<List<String>> stringMatrix) {
+	private int[][] convertStringMatrixToIntegerMatrixUnboxed(List<List<String>> stringMatrix) {
+		int[][] integerMatrix = new int[stringMatrix.size()][stringMatrix.get(0).size()];
+
+		for (int i = 0; i < stringMatrix.size(); i++) {
+			List<String> stringArray = stringMatrix.get(i);
+			for (int j = 0; j < stringArray.size(); j++) {
+				String stringValue = stringArray.get(j);
+				if (!stringValue.isEmpty()) {
+					try {
+						integerMatrix[i][j] = Integer.parseInt(stringValue);
+					} catch (NumberFormatException ex) {
+						throw new RexsModelAccessException("cannot read integer value " + stringValue
+								+ " from attribute " + this.getAttributeId().getId(), ex);
+					}
+				}
+			}
+		}
+		return integerMatrix;
+	}
+
+	private Double[][] convertStringMatrixToDoubleMatrixBoxed(List<List<String>> stringMatrix) {
 		Double[][] doubleMatrix = new Double[stringMatrix.size()][stringMatrix.get(0).size()];
 
 		for (int i = 0; i < stringMatrix.size(); i++) {
@@ -895,6 +1112,46 @@ public class RexsAttribute {
 			}
 		}
 		return doubleMatrix;
+	}
+
+	private double[][] convertStringMatrixToDoubleMatrixUnboxed(List<List<String>> stringMatrix) {
+		double[][] doubleMatrix = new double[stringMatrix.size()][stringMatrix.get(0).size()];
+
+		for (int i = 0; i < stringMatrix.size(); i++) {
+			List<String> stringArray = stringMatrix.get(i);
+			for (int j = 0; j < stringArray.size(); j++) {
+				String stringValue = stringArray.get(j);
+				if (!stringValue.isEmpty()) {
+					try {
+						double parsedDouble = Double.parseDouble(stringValue);
+						if (!Double.isNaN(parsedDouble))
+							doubleMatrix[i][j] = parsedDouble;
+					} catch (NumberFormatException ex) {
+						throw new RexsModelAccessException("cannot read double value " + stringValue
+								+ " from attribute " + this.getAttributeId().getId(), ex);
+					}
+				}
+			}
+		}
+		return doubleMatrix;
+	}
+
+	private double[][] convertFloatMatrixToDoubleMatrix(float[][] input) {
+		if (input == null)
+			return null;
+
+		int colLength = Arrays.stream(input)
+				.mapToInt(col -> col.length)
+				.max()
+				.orElse(0);
+
+		double[][] output = new double[input.length][colLength];
+		for (int i = 0; i < input.length; i++) {
+			for (int j = 0; j < input[i].length; j++) {
+				output[i][j] = input[i][j];
+			}
+		}
+		return output;
 	}
 
 	private void checkUnit(RexsUnitId unitToCheck) {
@@ -963,7 +1220,7 @@ public class RexsAttribute {
 		rawAttribute.getContent().add(array);
 	}
 
-	private void setArrayValueBase64(String base64Value, ArrayCodeType codeType) {
+	private void setArrayValueBase64(String base64Value, CodeType codeType) {
 		if (base64Value == null)
 			return;
 
@@ -1024,7 +1281,7 @@ public class RexsAttribute {
 	 */
 	public void setIntegerArrayValue(int[] value) {
 		String base64Value = Base64Utils.encodeInt32Array(value);
-		setArrayValueBase64(base64Value, ArrayCodeType.INT_32);
+		setArrayValueBase64(base64Value, CodeType.INT_32);
 	}
 
 	/**
@@ -1045,7 +1302,7 @@ public class RexsAttribute {
 	 */
 	public void setDoubleArrayValue(float[] value) {
 		String base64Value = Base64Utils.encodeFloat32Array(value);
-		setArrayValueBase64(base64Value, ArrayCodeType.FLOAT_32);
+		setArrayValueBase64(base64Value, CodeType.FLOAT_32);
 	}
 
 	/**
@@ -1056,7 +1313,7 @@ public class RexsAttribute {
 	 */
 	public void setDoubleArrayValue(double[] value) {
 		String base64Value = Base64Utils.encodeFloat64Array(value);
-		setArrayValueBase64(base64Value, ArrayCodeType.FLOAT_64);
+		setArrayValueBase64(base64Value, CodeType.FLOAT_64);
 	}
 
 	private void setMatrixValue(Object[][] value) {
@@ -1076,8 +1333,23 @@ public class RexsAttribute {
 						row.getC().add(String.valueOf(value[i][j]));
 				}
 			}
-			matrix.getR().add(row);
+			matrix.getContent().add(row);
 		}
+
+		rawAttribute.getContent().clear();
+		rawAttribute.getContent().add(matrix);
+	}
+
+	private void setMatrixValueBase64(String base64Value, CodeType codeType, int rows, int cols) {
+		if (base64Value == null)
+			return;
+
+		ObjectFactory objectFactory = new ObjectFactory();
+		Matrix matrix = objectFactory.createMatrix();
+		matrix.setCode(codeType);
+		matrix.setRows(rows);
+		matrix.setColumns(cols);
+		matrix.getContent().add(base64Value);
 
 		rawAttribute.getContent().clear();
 		rawAttribute.getContent().add(matrix);
@@ -1114,6 +1386,19 @@ public class RexsAttribute {
 	}
 
 	/**
+	 * Sets the integer matrix value of the attribute.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link int[][]}.
+	 */
+	public void setIntegerMatrixValue(int[][] value) {
+		int rows = value.length;
+		int cols = Arrays.stream(value).mapToInt(col -> col.length).max().orElse(0);
+		String base64Value = Base64Utils.encodeInt32Matrix(value);
+		setMatrixValueBase64(base64Value, CodeType.INT_32, rows, cols);
+	}
+
+	/**
 	 * Sets the floating point matrix value of the attribute.
 	 *
 	 * @param value
@@ -1121,6 +1406,32 @@ public class RexsAttribute {
 	 */
 	public void setDoubleMatrixValue(Double[][] value) {
 		setMatrixValue(value);
+	}
+
+	/**
+	 * Sets the floating point matrix value of the attribute.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link float[][]}.
+	 */
+	public void setDoubleMatrixValue(float[][] value) {
+		int rows = value.length;
+		int cols = Arrays.stream(value).mapToInt(col -> col.length).max().orElse(0);
+		String base64Value = Base64Utils.encodeFloat32Matrix(value);
+		setMatrixValueBase64(base64Value, CodeType.FLOAT_32, rows, cols);
+	}
+
+	/**
+	 * Sets the floating point matrix value of the attribute.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link double[][]}.
+	 */
+	public void setDoubleMatrixValue(double[][] value) {
+		int rows = value.length;
+		int cols = Arrays.stream(value).mapToInt(col -> col.length).max().orElse(0);
+		String base64Value = Base64Utils.encodeFloat64Matrix(value);
+		setMatrixValueBase64(base64Value, CodeType.FLOAT_64, rows, cols);
 	}
 
 	/**

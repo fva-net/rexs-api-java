@@ -408,6 +408,21 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	}
 
 	/**
+	 * Creates a new attribute with a integer matrix value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param matrixValues
+	 * 				The value of the new attribute as {@link int[][]}.
+	 */
+	public void addAttribute(RexsAttributeId attributeId, int[][] matrixValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setIntegerMatrixValue(matrixValues);
+	}
+
+	/**
 	 * Creates a new attribute with a floating point matrix value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
@@ -418,6 +433,36 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The value of the new attribute as {@link Double[][]}.
 	 */
 	public void addAttribute(RexsAttributeId attributeId, Double[][] matrixValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setDoubleMatrixValue(matrixValues);
+	}
+
+	/**
+	 * Creates a new attribute with a floating point matrix value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param matrixValues
+	 * 				The value of the new attribute as {@link float[][]}.
+	 */
+	public void addAttribute(RexsAttributeId attributeId, float[][] matrixValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setDoubleMatrixValue(matrixValues);
+	}
+
+	/**
+	 * Creates a new attribute with a floating point matrix value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param matrixValues
+	 * 				The value of the new attribute as {@link double[][]}.
+	 */
+	public void addAttribute(RexsAttributeId attributeId, double[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleMatrixValue(matrixValues);
 	}
@@ -466,7 +511,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 */
 	public void deleteAttribute(RexsAttributeId attributeId) {
 		if (hasAttribute(attributeId)) {
-            RexsAttribute attribute = attributes.get(attributeId.getId());
+			RexsAttribute attribute = attributes.get(attributeId.getId());
 			attributes.remove(attributeId.getId());
 			rawComponent.getAttribute().remove(attribute.getRawAttribute());
 		}

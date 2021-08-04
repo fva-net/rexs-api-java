@@ -121,15 +121,18 @@
 			<xsd:sequence>
 				<xsd:element ref="c" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="code" type="arrayCodeType" use="optional"/>
+			<xsd:attribute name="code" type="codeType" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
 
 	<xsd:element name="matrix">
-		<xsd:complexType>
+		<xsd:complexType mixed="true">
 			<xsd:sequence>
-				<xsd:element ref="r" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="r" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:attribute name="code"    type="codeType"    use="optional"/>
+			<xsd:attribute name="rows"    type="xsd:integer" use="optional"/>
+			<xsd:attribute name="columns" type="xsd:integer" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -192,7 +195,7 @@
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:simpleType name="arrayCodeType">
+	<xsd:simpleType name="codeType">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="int32"/>
 			<xsd:enumeration value="float64"/>
