@@ -102,6 +102,6 @@ public class RexsUnitId implements RexsStandardUnitIds {
 		if (id == null)
 			return null;
 		RexsStandardUnitIds.init();
-		return allUnitIds.getOrDefault(id, null);
+		return allUnitIds.getOrDefault(id, RexsStandardUnitIds.UNKNOWN);
 	}
 }
