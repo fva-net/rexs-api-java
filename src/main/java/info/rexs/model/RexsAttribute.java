@@ -33,6 +33,7 @@ import info.rexs.model.jaxb.Matrix;
 import info.rexs.model.jaxb.ObjectFactory;
 import info.rexs.model.jaxb.R;
 import info.rexs.model.util.Base64Utils;
+import info.rexs.model.util.JavaDatatypeUtils;
 
 /**
  * This class represents an attribute of a REXS model.
@@ -1280,6 +1281,16 @@ public class RexsAttribute {
 	 * 				The value of the attribute as {@link int[]}.
 	 */
 	public void setIntegerArrayValue(int[] value) {
+		setArrayValue(JavaDatatypeUtils.boxIntArray(value));
+	}
+
+	/**
+	 * Sets the integer array value of the attribute with Base64 encoding.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link int[]}.
+	 */
+	public void setIntegerArrayValueBase64(int[] value) {
 		String base64Value = Base64Utils.encodeInt32Array(value);
 		setArrayValueBase64(base64Value, CodeType.INT_32);
 	}
@@ -1298,20 +1309,40 @@ public class RexsAttribute {
 	 * Sets the floating point array value of the attribute.
 	 *
 	 * @param value
-	 * 				The value of the attribute as {@link float[]}.
+	 * 				The value of the attribute as {@link double[]}.
 	 */
-	public void setDoubleArrayValue(float[] value) {
-		String base64Value = Base64Utils.encodeFloat32Array(value);
-		setArrayValueBase64(base64Value, CodeType.FLOAT_32);
+	public void setDoubleArrayValue(double[] value) {
+		setArrayValue(JavaDatatypeUtils.boxDoubleArray(value));
 	}
 
 	/**
 	 * Sets the floating point array value of the attribute.
 	 *
 	 * @param value
+	 * 				The value of the attribute as {@link float[]}.
+	 */
+	public void setDoubleArrayValue(float[] value) {
+		setArrayValue(JavaDatatypeUtils.boxFloatArray(value));
+	}
+
+	/**
+	 * Sets the floating point array value of the attribute with Base64 encoding.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link float[]}.
+	 */
+	public void setDoubleArrayValueBase64(float[] value) {
+		String base64Value = Base64Utils.encodeFloat32Array(value);
+		setArrayValueBase64(base64Value, CodeType.FLOAT_32);
+	}
+
+	/**
+	 * Sets the floating point array value of the attribute with Base64 encoding.
+	 *
+	 * @param value
 	 * 				The value of the attribute as {@link double[]}.
 	 */
-	public void setDoubleArrayValue(double[] value) {
+	public void setDoubleArrayValueBase64(double[] value) {
 		String base64Value = Base64Utils.encodeFloat64Array(value);
 		setArrayValueBase64(base64Value, CodeType.FLOAT_64);
 	}
@@ -1392,6 +1423,16 @@ public class RexsAttribute {
 	 * 				The value of the attribute as {@link int[][]}.
 	 */
 	public void setIntegerMatrixValue(int[][] value) {
+		setMatrixValue(JavaDatatypeUtils.boxIntMatrix(value));
+	}
+
+	/**
+	 * Sets the integer matrix value of the attribute with Base64 encoding.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link int[][]}.
+	 */
+	public void setIntegerMatrixValueBase64(int[][] value) {
 		int rows = value.length;
 		int cols = Arrays.stream(value).mapToInt(col -> col.length).max().orElse(0);
 		String base64Value = Base64Utils.encodeInt32Matrix(value);
@@ -1412,9 +1453,29 @@ public class RexsAttribute {
 	 * Sets the floating point matrix value of the attribute.
 	 *
 	 * @param value
+	 * 				The value of the attribute as {@link double[][]}.
+	 */
+	public void setDoubleMatrixValue(double[][] value) {
+		setMatrixValue(JavaDatatypeUtils.boxDoubleMatrix(value));
+	}
+
+	/**
+	 * Sets the floating point matrix value of the attribute.
+	 *
+	 * @param value
 	 * 				The value of the attribute as {@link float[][]}.
 	 */
 	public void setDoubleMatrixValue(float[][] value) {
+		setMatrixValue(JavaDatatypeUtils.boxFloatMatrix(value));
+	}
+
+	/**
+	 * Sets the floating point matrix value of the attribute with Base64 encoding.
+	 *
+	 * @param value
+	 * 				The value of the attribute as {@link float[][]}.
+	 */
+	public void setDoubleMatrixValueBase64(float[][] value) {
 		int rows = value.length;
 		int cols = Arrays.stream(value).mapToInt(col -> col.length).max().orElse(0);
 		String base64Value = Base64Utils.encodeFloat32Matrix(value);
@@ -1422,12 +1483,12 @@ public class RexsAttribute {
 	}
 
 	/**
-	 * Sets the floating point matrix value of the attribute.
+	 * Sets the floating point matrix value of the attribute with Base64 encoding.
 	 *
 	 * @param value
 	 * 				The value of the attribute as {@link double[][]}.
 	 */
-	public void setDoubleMatrixValue(double[][] value) {
+	public void setDoubleMatrixValueBase64(double[][] value) {
 		int rows = value.length;
 		int cols = Arrays.stream(value).mapToInt(col -> col.length).max().orElse(0);
 		String base64Value = Base64Utils.encodeFloat64Matrix(value);

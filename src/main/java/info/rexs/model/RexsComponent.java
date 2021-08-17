@@ -318,6 +318,21 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	}
 
 	/**
+	 * Creates a new attribute with a Base64 encoded integer array value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param arrayValues
+	 * 				The value of the new attribute as {@link int[]}.
+	 */
+	public void addAttributeBase64(RexsAttributeId attributeId, int[] arrayValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setIntegerArrayValueBase64(arrayValues);
+	}
+
+	/**
 	 * Creates a new attribute with a floating point array value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
@@ -360,6 +375,36 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public void addAttribute(RexsAttributeId attributeId, double[] arrayValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleArrayValue(arrayValues);
+	}
+
+	/**
+	 * Creates a new attribute with a Base64 encoded floating point array value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param arrayValues
+	 * 				The value of the new attribute as {@link float[]}.
+	 */
+	public void addAttributeBase64(RexsAttributeId attributeId, float[] arrayValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setDoubleArrayValueBase64(arrayValues);
+	}
+
+	/**
+	 * Creates a new attribute with a Base64 encoded floating point array value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param arrayValues
+	 * 				The value of the new attribute as {@link double[]}.
+	 */
+	public void addAttributeBase64(RexsAttributeId attributeId, double[] arrayValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setDoubleArrayValueBase64(arrayValues);
 	}
 
 	/**
@@ -423,6 +468,21 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	}
 
 	/**
+	 * Creates a new attribute with a Base64 encoded integer matrix value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param matrixValues
+	 * 				The value of the new attribute as {@link int[][]}.
+	 */
+	public void addAttributeBase64(RexsAttributeId attributeId, int[][] matrixValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setIntegerMatrixValueBase64(matrixValues);
+	}
+
+	/**
 	 * Creates a new attribute with a floating point matrix value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
@@ -465,6 +525,36 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public void addAttribute(RexsAttributeId attributeId, double[][] matrixValues) {
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleMatrixValue(matrixValues);
+	}
+
+	/**
+	 * Creates a new attribute with a Base64 encoded floating point matrix value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param matrixValues
+	 * 				The value of the new attribute as {@link float[][]}.
+	 */
+	public void addAttributeBase64(RexsAttributeId attributeId, float[][] matrixValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setDoubleMatrixValueBase64(matrixValues);
+	}
+
+	/**
+	 * Creates a new attribute with a Base64 encoded floating point matrix value and adds it to the component.
+	 * <p>
+	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the new attribute as {@link RexsAttributeId}.
+	 * @param matrixValues
+	 * 				The value of the new attribute as {@link double[][]}.
+	 */
+	public void addAttributeBase64(RexsAttributeId attributeId, double[][] matrixValues) {
+		RexsAttribute attribute = createAndAddAttribute(attributeId);
+		attribute.setDoubleMatrixValueBase64(matrixValues);
 	}
 
 	/**
