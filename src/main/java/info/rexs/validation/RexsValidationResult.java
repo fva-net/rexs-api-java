@@ -20,77 +20,208 @@ import java.util.List;
 
 import lombok.Getter;
 
+/**
+ * TODO Document me!
+ *
+ * @author FVA GmbH
+ */
 @Getter
 public class RexsValidationResult {
 
+	/** TODO Document me! */
 	private List<RexsValidationResultMessage> warnings = new ArrayList<>();
+
+	/** TODO Document me! */
 	private List<RexsValidationResultMessage> errors = new ArrayList<>();
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
 	public boolean isValid()
 	{
 		return errors == null || errors.isEmpty();
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
 	public void addError(RexsValidationResultMessageKey key)
 	{
 		errors.add(new RexsValidationResultMessage(key));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public void addError(RexsValidationResultMessageKey key, List<String> additionalMessages)
 	{
 		errors.add(new RexsValidationResultMessage(key, null, null, additionalMessages));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType)
 	{
 		errors.add(new RexsValidationResultMessage(key, componentType, null, null));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType, List<String> additionalMessages)
 	{
 		errors.add(new RexsValidationResultMessage(key, componentType, null, additionalMessages));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param attributeId
+	 * 				TODO Document me!
+	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType, String attributeId)
 	{
 		errors.add(new RexsValidationResultMessage(key, componentType, attributeId, null));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param attributeId
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages)
 	{
 		errors.add(new RexsValidationResultMessage(key, componentType, attributeId, additionalMessages));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 */
 	public void addWarning(RexsValidationResultMessageKey key)
 	{
 		warnings.add(new RexsValidationResultMessage(key));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public void addWarning(RexsValidationResultMessageKey key, List<String> additionalMessages)
 	{
 		warnings.add(new RexsValidationResultMessage(key, null, null, additionalMessages));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType)
 	{
 		warnings.add(new RexsValidationResultMessage(key, componentType, null, null));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType, List<String> additionalMessages)
 	{
 		warnings.add(new RexsValidationResultMessage(key, componentType, null, additionalMessages));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param attributeId
+	 * 				TODO Document me!
+	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType, String attributeId)
 	{
 		warnings.add(new RexsValidationResultMessage(key, componentType, attributeId, null));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param attributeId
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages)
 	{
 		warnings.add(new RexsValidationResultMessage(key, componentType, attributeId, additionalMessages));
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param validationResult
+	 * 				TODO Document me!
+	 */
 	public void add(RexsValidationResult validationResult) {
 		errors.addAll(validationResult.getErrors());
 		warnings.addAll(validationResult.getWarnings());

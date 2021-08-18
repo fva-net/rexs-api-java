@@ -15,21 +15,14 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.jaxb.Component;
-import lombok.RequiredArgsConstructor;
 
 /**
  * TODO Document me!
  *
  * @author FVA GmbH
  */
-@RequiredArgsConstructor
-public class RexsStandardComponentValidator extends DefaultRexsComponentValidator {
-
-	private final RexsVersion rexsVersion;
+public interface IRexsComponentValidator {
 
 	/**
 	 * TODO Document me!
@@ -40,22 +33,7 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 	 * @return
 	 * 				TODO Document me!
 	 */
-	@Override
-	public RexsValidationResult validate(Component rexsComponent) {
-
-		RexsValidationResult validationResult = super.validate(rexsComponent);
-
-		if (rexsVersion == null)
-			return validationResult;
-
-		String componentType = rexsComponent.getType();
-		RexsComponentType rexsComponentType = DbModelRegistry.getInstance().getComponentType(rexsVersion, componentType);
-
-		if (rexsComponentType.isOneOf(RexsComponentType.UNKNOWN))
-			validationResult.addError(RexsValidationResultMessageKey.COMPONENT_TYPE_UNKNOWN, componentType);
-
-		return validationResult;
-	}
+	public RexsValidationResult validate(Component rexsComponent);
 
 	/**
 	 * TODO Document me!
@@ -63,8 +41,5 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 	 * @return
 	 * 				TODO Document me!
 	 */
-	@Override
-	public IRexsAttributeValidator createAttributeValidator() {
-		return new RexsStandardAttributeValidator(rexsVersion);
-	}
+	public IRexsAttributeValidator createAttributeValidator();
 }

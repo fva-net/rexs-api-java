@@ -15,17 +15,48 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.constants.RexsVersion;
+import java.io.File;
+import java.nio.file.Path;
 
 /**
  * TODO Document me!
  *
  * @author FVA GmbH
  */
-public class RexsStandardFileValidator extends DefaultRexsFileValidator {
+public interface IRexsFileValidator {
 
-	private RexsVersion rexsVersion = null;
+	/**
+	 * TODO Document me!
+	 *
+	 * @param pathToRexsFile
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public RexsValidationResult validate(Path pathToRexsFile);
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param rexsFile
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public RexsValidationResult validate(File rexsFile);
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param pathToRexsFile
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public RexsValidationResult validate(String pathToRexsFile);
 
 	/**
 	 * TODO Document me!
@@ -36,22 +67,7 @@ public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	@Override
-	public RexsValidationResult validateVersion(String version) {
-
-		RexsValidationResult validationResult = super.validateVersion(version);
-
-		if (version == null
-				|| version.isEmpty())
-			return validationResult;
-
-		rexsVersion = DbModelRegistry.getInstance().getVersion(version);
-
-		if (rexsVersion == null)
-			validationResult.addError(RexsValidationResultMessageKey.MODEL_VERSION_UNKNOWN);
-
-		return validationResult;
-	}
+	public RexsValidationResult validateVersion(String version);
 
 	/**
 	 * TODO Document me!
@@ -59,8 +75,5 @@ public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	@Override
-	public IRexsComponentValidator createComponentValidator() {
-		return new RexsStandardComponentValidator(rexsVersion);
-	}
+	public IRexsComponentValidator createComponentValidator();
 }

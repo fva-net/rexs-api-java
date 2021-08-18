@@ -17,25 +17,35 @@ package info.rexs.validation;
 
 import lombok.Getter;
 
+/**
+ * TODO Document me!
+ *
+ * @author FVA GmbH
+ */
 @Getter
 public enum RexsValidationResultMessageKey {
 
-	EMPTY_FILE("TODO"),
-	XML_SCHEMA("TODO"),
+	EMPTY_FILE("The file is empty."),
+	XML_SCHEMA("The XML schema for REXS files is violated."),
 
-	MODEL_VERSION_EMPTY("TODO"),
-	MODEL_VERSION_UNKNOWN("TODO"),
-	MODEL_COMPONENTS_EMPTY("TODO"),
+	MODEL_VERSION_EMPTY("The version is empty."),
+	MODEL_VERSION_UNKNOWN("The version is unknown."),
+	MODEL_COMPONENTS_EMPTY("The model has no components."),
 
-	COMPONENT_TYPE_UNKNOWN("TODO"),
-	COMPONENT_ATTRIBUTES_EMPTY("TODO"),
-	COMPONENT_ATTRIBUTE_MULTIPLE("TODO"),
+	COMPONENT_TYPE_UNKNOWN("The component type is unknown."),
+	COMPONENT_ATTRIBUTES_EMPTY("The component has no attributes."),
+	COMPONENT_ATTRIBUTE_MULTIPLE("The attribute was specified multiple times within the component."),
 
-	ATTRIBUTE_ID_UNKNOWN("TODO"),
-	ATTRIBUTE_COMPONENT_MAPPING_UNKNOWN("TODO"),
+	ATTRIBUTE_ID_UNKNOWN("The attribute id is unknown."),
+	ATTRIBUTE_MULTIPLE_VALUES("The attribute has multiple values."),
+	ATTRIBUTE_COMPONENT_MAPPING_UNKNOWN("The assignment between component and attribute is incorrect."),
+	ATTRIBUTE_UNIT_MAPPING_UNKNOWN("The assignment between attribute and unit is incorrect."),
+
+	UNIT_UNKNOWN("The unit is unknown."),
 
 	INTERNAL_ERROR("An unexpected error occurred. Contact support if necessary.");
 
+	/** TODO Document me! */
 	private String defaultMessage;
 
 	private RexsValidationResultMessageKey(String defaultMessage) {

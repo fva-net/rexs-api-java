@@ -40,8 +40,23 @@ import info.rexs.model.jaxb.Model;
 import info.rexs.schema.RexsSchema;
 import lombok.Getter;
 
-public class DefaultRexsFileValidator {
+/**
+ * TODO Document me!
+ *
+ * @author FVA GmbH
+ */
+public class DefaultRexsFileValidator implements IRexsFileValidator {
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param pathToRexsFile
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
 	public RexsValidationResult validate(Path pathToRexsFile) {
 
 		RexsValidationResult validationResult = validateFilesize(pathToRexsFile);
@@ -59,10 +74,30 @@ public class DefaultRexsFileValidator {
 		return validateContent(pathToRexsFile);
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param rexsFile
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
 	public RexsValidationResult validate(File rexsFile) {
 		return validate(rexsFile.toPath());
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param pathToRexsFile
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
 	public RexsValidationResult validate(String pathToRexsFile) {
 		return validate(Paths.get(pathToRexsFile));
 	}
@@ -184,7 +219,7 @@ public class DefaultRexsFileValidator {
 			return validationResult;
 		}
 
-		DefaultRexsComponentValidator componentValidator = createComponentValidator();
+		IRexsComponentValidator componentValidator = createComponentValidator();
 		for (Component rexsComponent : rexsModel.getComponents().getComponent()) {
 			validationResult.add(componentValidator.validate(rexsComponent));
 		}
@@ -192,7 +227,17 @@ public class DefaultRexsFileValidator {
 		return validationResult;
 	}
 
-	protected RexsValidationResult validateVersion(String version) {
+	/**
+	 * TODO Document me!
+	 *
+	 * @param version
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
+	public RexsValidationResult validateVersion(String version) {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
 
@@ -203,7 +248,14 @@ public class DefaultRexsFileValidator {
 		return validationResult;
 	}
 
-	protected DefaultRexsComponentValidator createComponentValidator() {
+	/**
+	 * TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
+	public IRexsComponentValidator createComponentValidator() {
 		return new DefaultRexsComponentValidator();
 	}
 }

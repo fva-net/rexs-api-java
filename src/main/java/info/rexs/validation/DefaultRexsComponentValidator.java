@@ -21,8 +21,23 @@ import java.util.Set;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 
-public class DefaultRexsComponentValidator {
+/**
+ * TODO Document me!
+ *
+ * @author FVA GmbH
+ */
+public class DefaultRexsComponentValidator implements IRexsComponentValidator {
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param rexsComponent
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
 	public RexsValidationResult validate(Component rexsComponent) {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
@@ -31,11 +46,11 @@ public class DefaultRexsComponentValidator {
 
 		if (rexsComponent.getAttribute() == null
 				|| rexsComponent.getAttribute().isEmpty()) {
-			validationResult.addWarning(RexsValidationResultMessageKey.MODEL_COMPONENTS_EMPTY, componentType);
+			validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTES_EMPTY, componentType);
 			return validationResult;
 
 		} else {
-			DefaultRexsAttributeValidator attributeValidator = createAttributeValidator();
+			IRexsAttributeValidator attributeValidator = createAttributeValidator();
 
 			Set<String> existingAttributeIds = new HashSet<>();
 			Set<String> existingAttributeIdsReported = new HashSet<>();
@@ -56,7 +71,14 @@ public class DefaultRexsComponentValidator {
 		return validationResult;
 	}
 
-	protected DefaultRexsAttributeValidator createAttributeValidator() {
+	/**
+	 * TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	@Override
+	public IRexsAttributeValidator createAttributeValidator() {
 		return new DefaultRexsAttributeValidator();
 	}
 }

@@ -15,9 +15,6 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 
@@ -26,7 +23,7 @@ import info.rexs.model.jaxb.Component;
  *
  * @author FVA GmbH
  */
-public class DefaultRexsAttributeValidator implements IRexsAttributeValidator {
+public interface IRexsAttributeValidator {
 
 	/**
 	 * TODO Document me!
@@ -39,39 +36,5 @@ public class DefaultRexsAttributeValidator implements IRexsAttributeValidator {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	@Override
-	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent) {
-
-		RexsValidationResult validationResult = new RexsValidationResult();
-
-		String componentType = rexsComponent.getType();
-		String attributeId = rexsAttribute.getId();
-
-		List<Object> attributeValues = detectAttributeValues(rexsAttribute);
-		if (attributeValues.size() > 1)
-			validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_MULTIPLE_VALUES, componentType, attributeId);
-
-		return validationResult;
-	}
-
-	private List<Object> detectAttributeValues(Attribute rexsAttribute) {
-
-		List<Object> values = new ArrayList<>();
-
-		for (Object value : rexsAttribute.getContent()) {
-
-			if (value instanceof String) {
-				String strValue = ((String)value).trim();
-				if (strValue.isEmpty())
-					continue;
-
-				values.add(strValue);
-
-			} else {
-				values.add(value);
-			}
-		}
-
-		return values;
-	}
+	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent);
 }

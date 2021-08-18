@@ -19,21 +19,48 @@ import java.util.List;
 
 import lombok.Getter;
 
+/**
+ * TODO Document me!
+ *
+ * @author FVA GmbH
+ */
 @Getter
 public class RexsValidationResultMessage {
 
+	/** TODO Document me! */
 	private final RexsValidationResultMessageKey key;
 
+	/** TODO Document me! */
 	private final String componentType;
 
+	/** TODO Document me! */
 	private final String attributeId;
 
+	/** TODO Document me! */
 	private final List<String> additionalMessages;
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 */
 	public RexsValidationResultMessage(RexsValidationResultMessageKey key) {
 		this(key, null, null, null);
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param key
+	 * 				TODO Document me!
+	 * @param componentType
+	 * 				TODO Document me!
+	 * @param attributeId
+	 * 				TODO Document me!
+	 * @param additionalMessages
+	 * 				TODO Document me!
+	 */
 	public RexsValidationResultMessage(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages) {
 		this.key = key;
 		this.componentType = componentType;
