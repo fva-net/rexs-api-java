@@ -27,6 +27,7 @@ import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.jaxb.Attribute;
+import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.ComponentAttributeMapping;
 import info.rexs.db.jaxb.EnumValue;
 import info.rexs.db.jaxb.RexsModel;
@@ -43,6 +44,8 @@ public class DbModelRegistry {
 
 	private static DbModelRegistry instance = null;
 
+	private Map<String, RexsVersion> versions = new HashMap<>();
+	private Map<RexsVersion, Map<String, RexsComponentType>> componentMap = new HashMap<>();
 	private Map<RexsVersion, Map<String, RexsUnitId>> attributeUnits = new HashMap<>();
 	private Map<RexsVersion, Map<String, RexsValueType>> attributeTypes = new HashMap<>();
 	private Map<RexsVersion, Map<String, Attribute>> attributeMap = new HashMap<>();
@@ -82,13 +85,23 @@ public class DbModelRegistry {
 		if (rexsModel == null)
 			throw new IllegalStateException(String.format("rexs db model for version %s and language %s not found", version.getName(), locale));
 		registerRexsModel(version, rexsModel);
+		versions.put(version.getName(), version);
 	}
 
 	private void registerRexsModel(RexsVersion version, RexsModel rexsModel) {
+		generateComponentMap(version, rexsModel);
 		generateAttributeMap(version, rexsModel);
 		generateAttributeTypeMap(version, rexsModel);
 		generateAttributeUnitMap(version, rexsModel);
 		generateAttributeComponentMappings(version, rexsModel);
+	}
+
+	private void generateComponentMap(RexsVersion version, RexsModel rexsModel) {
+		Map<String, RexsComponentType> mapOfVersion = componentMap.computeIfAbsent(version, k -> new HashMap<>());
+		for (Component component : rexsModel.getComponents().getComponent()) {
+			RexsComponentType componentType = RexsComponentType.findById(component.getComponentId());
+			mapOfVersion.put(component.getComponentId(), componentType);
+		}
 	}
 
 	/**
@@ -271,5 +284,21 @@ public class DbModelRegistry {
 		if (map != null && (map.containsKey(rexsComponentType)) )
 			return map.get(rexsComponentType);
 		throw new IllegalArgumentException(String.format("Rexs component type %s is not registered in RexsVersion %s", rexsComponentType, version.getName()));
+	}
+
+	public RexsVersion getVersion(String version) {
+		return versions.get(version);
+	}
+
+	public RexsComponentType getComponentType(RexsVersion version, String componentType) {
+		Map<String, RexsComponentType> map = componentMap.get(version);
+		if (map != null && map.containsKey(componentType))
+			return map.get(componentType);
+		return RexsComponentType.UNKNOWN;
+	}
+
+	public boolean hasAttributeWithId(RexsVersion version, String attributeId) {
+		Map<String, Attribute> map = attributeMap.get(version);
+		return map != null && map.containsKey(attributeId);
 	}
 }
