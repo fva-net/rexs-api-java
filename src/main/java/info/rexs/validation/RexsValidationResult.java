@@ -21,24 +21,24 @@ import java.util.List;
 import lombok.Getter;
 
 /**
- * TODO Document me!
+ * This class represents the result of a REXS validation.
  *
  * @author FVA GmbH
  */
 @Getter
 public class RexsValidationResult {
 
-	/** TODO Document me! */
+	/** A list containing all warning messages. */
 	private List<RexsValidationResultMessage> warnings = new ArrayList<>();
 
-	/** TODO Document me! */
+	/** A list containing all error messages. */
 	private List<RexsValidationResultMessage> errors = new ArrayList<>();
 
 	/**
-	 * TODO Document me!
+	 * Returns the status of the validation.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				{@code true} if the validation is valid, otherwise {@code false}.
 	 */
 	public boolean isValid()
 	{
@@ -46,13 +46,10 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an error to the validation result.
 	 *
 	 * @param key
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 */
 	public void addError(RexsValidationResultMessageKey key)
 	{
@@ -60,12 +57,12 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an error to the validation result containing additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public void addError(RexsValidationResultMessageKey key, List<String> additionalMessages)
 	{
@@ -73,12 +70,12 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an error to the validation result containing the related component type.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType)
 	{
@@ -86,14 +83,14 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an error to the validation result containing the related component type and additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType, List<String> additionalMessages)
 	{
@@ -101,14 +98,14 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an error to the validation result containing the related component type and the related attribute id.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param attributeId
-	 * 				TODO Document me!
+	 * 				The related attribute id as {@link String}.
 	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType, String attributeId)
 	{
@@ -116,16 +113,16 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an error to the validation result containing the related component type, the related attribute id and additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param attributeId
-	 * 				TODO Document me!
+	 * 				The related attribute id as {@link String}.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public void addError(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages)
 	{
@@ -133,10 +130,10 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an warning to the validation result.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key)
 	{
@@ -144,12 +141,12 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an warning to the validation result containing additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key, List<String> additionalMessages)
 	{
@@ -157,12 +154,12 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an warning to the validation result containing the related component type.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType)
 	{
@@ -170,14 +167,14 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an warning to the validation result containing the related component type and additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType, List<String> additionalMessages)
 	{
@@ -185,14 +182,14 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an warning to the validation result containing the related component type and the related attribute id.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param attributeId
-	 * 				TODO Document me!
+	 * 				The related attribute id as {@link String}.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType, String attributeId)
 	{
@@ -200,16 +197,16 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Add an warning to the validation result containing the related component type, the related attribute id and additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param attributeId
-	 * 				TODO Document me!
+	 * 				The related attribute id as {@link String}.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages)
 	{
@@ -217,10 +214,10 @@ public class RexsValidationResult {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Adds all the errors and warning of another validation result.
 	 *
 	 * @param validationResult
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResult} from which the messages are taken.
 	 */
 	public void add(RexsValidationResult validationResult) {
 		errors.addAll(validationResult.getErrors());

@@ -28,7 +28,8 @@ import info.rexs.model.jaxb.Component;
 import lombok.RequiredArgsConstructor;
 
 /**
- * TODO Document me!
+ * This implementation of {@link IRexsAttributeValidator} validates the basic structure of a REXS attribute
+ * and includes the specification of official REXS versions.
  *
  * @author FVA GmbH
  */
@@ -38,15 +39,7 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 	private final RexsVersion rexsVersion;
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param rexsAttribute
-	 * 				TODO Document me!
-	 * @param rexsComponent
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent) {

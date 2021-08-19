@@ -18,7 +18,7 @@ package info.rexs.validation;
 import lombok.Getter;
 
 /**
- * TODO Document me!
+ * This class represents the key of a result message for a REXS validation.
  *
  * @author FVA GmbH
  */
@@ -45,7 +45,7 @@ public enum RexsValidationResultMessageKey {
 
 	INTERNAL_ERROR("An unexpected error occurred. Contact support if necessary.");
 
-	/** TODO Document me! */
+	/** The default message of the message key. */
 	private String defaultMessage;
 
 	private RexsValidationResultMessageKey(String defaultMessage) {

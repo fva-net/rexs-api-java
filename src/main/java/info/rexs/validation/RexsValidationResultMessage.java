@@ -20,46 +20,47 @@ import java.util.List;
 import lombok.Getter;
 
 /**
- * TODO Document me!
+ * This class represents the result message of a REXS validation.
  *
  * @author FVA GmbH
  */
 @Getter
 public class RexsValidationResultMessage {
 
-	/** TODO Document me! */
+	/** The key of the message. */
 	private final RexsValidationResultMessageKey key;
 
-	/** TODO Document me! */
+	/** The related component type. */
 	private final String componentType;
 
-	/** TODO Document me! */
+	/** The related attribute id. */
 	private final String attributeId;
 
-	/** TODO Document me! */
+	/** A list of additional messages. */
 	private final List<String> additionalMessages;
 
 	/**
-	 * TODO Document me!
+	 * Constructs a new {@link RexsValidationResultMessage} for the given message key.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the message.
 	 */
 	public RexsValidationResultMessage(RexsValidationResultMessageKey key) {
 		this(key, null, null, null);
 	}
 
 	/**
-	 * TODO Document me!
+	 * Constructs a new {@link RexsValidationResultMessage} for the given message key,
+	 * the related component type, the related attribute id and additional messages.
 	 *
 	 * @param key
-	 * 				TODO Document me!
+	 * 				The {@link RexsValidationResultMessageKey} describing the message.
 	 * @param componentType
-	 * 				TODO Document me!
+	 * 				The related component type as {@link String}.
 	 * @param attributeId
-	 * 				TODO Document me!
+	 * 				The related attribute id as {@link String}.
 	 * @param additionalMessages
-	 * 				TODO Document me!
+	 * 				Additional messages as a {@link List} of {@link String}.
 	 */
 	public RexsValidationResultMessage(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages) {
 		this.key = key;

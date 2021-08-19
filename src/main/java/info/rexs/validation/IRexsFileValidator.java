@@ -19,61 +19,61 @@ import java.io.File;
 import java.nio.file.Path;
 
 /**
- * TODO Document me!
+ * This interface represents the validator of a REXS file.
  *
  * @author FVA GmbH
  */
 public interface IRexsFileValidator {
 
 	/**
-	 * TODO Document me!
+	 * Validates a REXS file for the given {@link Path} to the REXS file and returns the validation result.
 	 *
 	 * @param pathToRexsFile
-	 * 				TODO Document me!
+	 * 				The {@link Path} to the REXS file.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
 	public RexsValidationResult validate(Path pathToRexsFile);
 
 	/**
-	 * TODO Document me!
+	 * Validates a REXS file for the given REXS {@link File} and returns the validation result.
 	 *
 	 * @param rexsFile
-	 * 				TODO Document me!
+	 * 				The REXS {@link File}.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
 	public RexsValidationResult validate(File rexsFile);
 
 	/**
-	 * TODO Document me!
+	 * Validates a REXS file for the given path to the REXS file as {@link String} and returns the validation result.
 	 *
 	 * @param pathToRexsFile
-	 * 				TODO Document me!
+	 * 				The path to the REXS file as {@link String}.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
 	public RexsValidationResult validate(String pathToRexsFile);
 
 	/**
-	 * TODO Document me!
+	 * Validates a REXS version and returns the validation result.
 	 *
 	 * @param version
-	 * 				TODO Document me!
+	 * 				The REXS version to validate.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
 	public RexsValidationResult validateVersion(String version);
 
 	/**
-	 * TODO Document me!
+	 * Creates a new validator for the components of the REXS file.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The component validator as {@link IRexsComponentValidator}.
 	 */
 	public IRexsComponentValidator createComponentValidator();
 }

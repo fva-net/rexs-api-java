@@ -41,20 +41,16 @@ import info.rexs.schema.RexsSchema;
 import lombok.Getter;
 
 /**
- * TODO Document me!
+ * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file.
+ * <p>
+ * Official REXS versions are not taken into account.
  *
  * @author FVA GmbH
  */
 public class DefaultRexsFileValidator implements IRexsFileValidator {
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param pathToRexsFile
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validate(Path pathToRexsFile) {
@@ -75,13 +71,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	}
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param rexsFile
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validate(File rexsFile) {
@@ -89,13 +79,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	}
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param pathToRexsFile
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validate(String pathToRexsFile) {
@@ -228,13 +212,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	}
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param version
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validateVersion(String version) {
@@ -249,10 +227,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	}
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public IRexsComponentValidator createComponentValidator() {

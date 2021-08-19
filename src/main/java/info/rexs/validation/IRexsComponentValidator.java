@@ -18,28 +18,28 @@ package info.rexs.validation;
 import info.rexs.model.jaxb.Component;
 
 /**
- * TODO Document me!
+ * This interface represents the validator of a REXS component.
  *
  * @author FVA GmbH
  */
 public interface IRexsComponentValidator {
 
 	/**
-	 * TODO Document me!
+	 * Validates a REXS component and returns the validation result.
 	 *
 	 * @param rexsComponent
-	 * 				TODO Document me!
+	 * 				The REXS component to validate.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
 	public RexsValidationResult validate(Component rexsComponent);
 
 	/**
-	 * TODO Document me!
+	 * Creates a new validator for the attributes of the component.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The attribute validator as {@link IRexsAttributeValidator}.
 	 */
 	public IRexsAttributeValidator createAttributeValidator();
 }

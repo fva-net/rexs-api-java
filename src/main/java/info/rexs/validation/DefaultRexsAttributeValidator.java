@@ -22,22 +22,16 @@ import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 
 /**
- * TODO Document me!
+ * This implementation of {@link IRexsAttributeValidator} validates the basic structure of a REXS attribute.
+ * <p>
+ * Official REXS versions are not taken into account.
  *
  * @author FVA GmbH
  */
 public class DefaultRexsAttributeValidator implements IRexsAttributeValidator {
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param rexsAttribute
-	 * 				TODO Document me!
-	 * @param rexsComponent
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent) {

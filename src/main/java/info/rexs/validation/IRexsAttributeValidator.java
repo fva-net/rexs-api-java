@@ -19,22 +19,22 @@ import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 
 /**
- * TODO Document me!
+ * This interface represents the validator of a REXS attribute.
  *
  * @author FVA GmbH
  */
 public interface IRexsAttributeValidator {
 
 	/**
-	 * TODO Document me!
+	 * Validates a REXS attribute and returns the validation result.
 	 *
 	 * @param rexsAttribute
-	 * 				TODO Document me!
+	 * 				The REXS attribute to validate.
 	 * @param rexsComponent
-	 * 				TODO Document me!
+	 * 				The REXS component in which the attribute was specified.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
 	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent);
 }

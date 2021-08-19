@@ -19,7 +19,8 @@ import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsVersion;
 
 /**
- * TODO Document me!
+ * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file
+ * and includes the specification of official REXS versions.
  *
  * @author FVA GmbH
  */
@@ -28,13 +29,7 @@ public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 	private RexsVersion rexsVersion = null;
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param version
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsValidationResult validateVersion(String version) {
@@ -54,10 +49,7 @@ public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 	}
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
+	 * {@inheritDoc}
 	 */
 	@Override
 	public IRexsComponentValidator createComponentValidator() {
