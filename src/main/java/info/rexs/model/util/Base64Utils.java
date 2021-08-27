@@ -20,9 +20,7 @@ import java.nio.ByteOrder;
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.Arrays;
 import java.util.Base64;
-import java.util.stream.IntStream;
 
 public class Base64Utils {
 
@@ -43,7 +41,7 @@ public class Base64Utils {
 		if (isEmpty(base64Encoded))
 			return null;
 		int[] intArray = decodeInt32Array(base64Encoded);
-		return boxIntArray(intArray);
+		return JavaDatatypeUtils.boxIntArray(intArray);
 	}
 
 	public static String encodeFloat32Array(float[] array) {
@@ -61,7 +59,7 @@ public class Base64Utils {
 		if (isEmpty(base64Encoded))
 			return null;
 		float[] floatArray = decodeFloat32Array(base64Encoded);
-		return boxFloatArray(floatArray);
+		return JavaDatatypeUtils.boxFloatArray(floatArray);
 	}
 
 	public static String encodeFloat64Array(double[] array) {
@@ -79,7 +77,7 @@ public class Base64Utils {
 		if (isEmpty(base64Encoded))
 			return null;
 		double[] doubleArray = decodeFloat64Array(base64Encoded);
-		return boxDoubleArray(doubleArray);
+		return JavaDatatypeUtils.boxDoubleArray(doubleArray);
 	}
 
 	private static byte[] intToByteArray(int[] array) {
@@ -121,18 +119,6 @@ public class Base64Utils {
 		return array;
 	}
 
-	private static Integer[] boxIntArray(int[] array) {
-		return Arrays.stream(array).boxed().toArray(Integer[]::new);
-	}
-
-	private static Double[] boxFloatArray(float[] array) {
-		return IntStream.range(0, array.length).mapToDouble(i -> array[i]).boxed().toArray(Double[]::new);
-	}
-
-	private static Double[] boxDoubleArray(double[] array) {
-		return Arrays.stream(array).boxed().toArray(Double[]::new);
-	}
-
 	public static String encodeInt32Matrix(int[][] matrix) {
 		int[] array = flatIntMatrix(matrix);
 		return encodeInt32Array(array);
@@ -149,7 +135,7 @@ public class Base64Utils {
 		if (isEmpty(base64Encoded))
 			return null;
 		int[][] intMatrix = decodeInt32Matrix(base64Encoded, rows, cols);
-		return boxIntMatrix(intMatrix);
+		return JavaDatatypeUtils.boxIntMatrix(intMatrix);
 	}
 
 	public static String encodeFloat32Matrix(float[][] matrix) {
@@ -168,7 +154,7 @@ public class Base64Utils {
 		if (isEmpty(base64Encoded))
 			return null;
 		float[][] floatMatrix = decodeFloat32Matrix(base64Encoded, rows, cols);
-		return boxFloatMatrix(floatMatrix);
+		return JavaDatatypeUtils.boxFloatMatrix(floatMatrix);
 	}
 
 	public static String encodeFloat64Matrix(double[][] matrix) {
@@ -187,7 +173,7 @@ public class Base64Utils {
 		if (isEmpty(base64Encoded))
 			return null;
 		double[][] doubleMatrix = decodeFloat64Matrix(base64Encoded, rows, cols);
-		return boxDoubleMatrix(doubleMatrix);
+		return JavaDatatypeUtils.boxDoubleMatrix(doubleMatrix);
 	}
 
 	private static int[] flatIntMatrix(int[][] matrix) {
@@ -266,42 +252,6 @@ public class Base64Utils {
 			matrix[rowIndex][colIndex] = array[i];
 		}
 		return matrix;
-	}
-
-	private static Integer[][] boxIntMatrix(int[][] matrix) {
-		int colLength = 0;
-		for (int i = 0; i < matrix.length; i++)
-			colLength += matrix[i].length;
-
-		Integer[][] boxedMatrix = new Integer[matrix.length][colLength];
-		for (int i = 0; i < matrix.length; i++)
-			boxedMatrix[i] = boxIntArray(matrix[i]);
-
-		return boxedMatrix;
-	}
-
-	private static Double[][] boxFloatMatrix(float[][] matrix) {
-		int colLength = 0;
-		for (int i = 0; i < matrix.length; i++)
-			colLength += matrix[i].length;
-
-		Double[][] boxedMatrix = new Double[matrix.length][colLength];
-		for (int i = 0; i < matrix.length; i++)
-			boxedMatrix[i] = boxFloatArray(matrix[i]);
-
-		return boxedMatrix;
-	}
-
-	private static Double[][] boxDoubleMatrix(double[][] matrix) {
-		int colLength = 0;
-		for (int i = 0; i < matrix.length; i++)
-			colLength += matrix[i].length;
-
-		Double[][] boxedMatrix = new Double[matrix.length][colLength];
-		for (int i = 0; i < matrix.length; i++)
-			boxedMatrix[i] = boxDoubleArray(matrix[i]);
-
-		return boxedMatrix;
 	}
 
 	private static boolean isEmpty(String value) {
