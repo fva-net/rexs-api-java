@@ -34,7 +34,7 @@ public class RexsLoadSpectrum {
 	private Integer id;
 
 	/** An internal index with all load cases of the load spectrum for quick access. */
-	private Map<Integer, RexsSubModel> loadCases = new HashMap<>();
+	protected Map<Integer, RexsSubModel> loadCases = new HashMap<>();
 
 	/** The sub-model for accumulated values of this load spectrum. */
 	private RexsSubModel accumulation;
@@ -45,12 +45,12 @@ public class RexsLoadSpectrum {
 	 * @param rawLoadSpectrum
 	 * 				The representation of a load spectrum in the JAXB model.
 	 */
-	public RexsLoadSpectrum(LoadSpectrum rawLoadSpectrum) {
+	protected RexsLoadSpectrum(LoadSpectrum rawLoadSpectrum) {
 		this.id = rawLoadSpectrum.getId();
 		for (LoadCase rawLoadCase : rawLoadSpectrum.getLoadCase()) {
-			loadCases.put(rawLoadCase.getId(), new RexsSubModel(rawLoadCase));
+			loadCases.put(rawLoadCase.getId(), RexsModelObjectFactory.getInstance().createRexsSubModel(rawLoadCase));
 		}
-		this.accumulation = new RexsSubModel(rawLoadSpectrum.getAccumulation());
+		this.accumulation = RexsModelObjectFactory.getInstance().createRexsSubModel(rawLoadSpectrum.getAccumulation());
 	}
 
 	/**

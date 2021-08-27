@@ -32,7 +32,7 @@ import lombok.EqualsAndHashCode;
 public class RexsSubModel implements Comparable<RexsSubModel> {
 
 	/** An internal index with all components of the sub-model for quick access. */
-	private Map<Integer, RexsComponent> components = new HashMap<>();
+	protected Map<Integer, RexsComponent> components = new HashMap<>();
 
 	/** The numeric ID of the sub-model within the REXS model. */
 	@EqualsAndHashCode.Include
@@ -48,7 +48,7 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @param id
 	 * 				The numeric ID of the sub-model within the REXS model.
 	 */
-	public RexsSubModel(Integer id) {
+	protected RexsSubModel(Integer id) {
 		this.id = id;
 	}
 
@@ -58,10 +58,10 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @param rawLoadCase
 	 * 				The representation of a load case in the JAXB model.
 	 */
-	public RexsSubModel(LoadCase rawLoadCase) {
+	protected RexsSubModel(LoadCase rawLoadCase) {
 		this(rawLoadCase.getId());
 		for (Component rawComponent : rawLoadCase.getComponent())
-			components.put(rawComponent.getId(), new RexsComponent(rawComponent));
+			components.put(rawComponent.getId(), RexsModelObjectFactory.getInstance().createRexsComponent(rawComponent));
 	}
 
 	/**
@@ -70,13 +70,13 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @param rawAccumulation
 	 * 				The representation of a accumulation in the JAXB model.
 	 */
-	public RexsSubModel(Accumulation rawAccumulation) {
+	protected RexsSubModel(Accumulation rawAccumulation) {
 		this((Integer)null);
 		this.isAccumulation = true;
 		if (rawAccumulation == null)
 			return;
 		for (Component rawComponent : rawAccumulation.getComponent())
-			components.put(rawComponent.getId(), new RexsComponent(rawComponent));
+			components.put(rawComponent.getId(), RexsModelObjectFactory.getInstance().createRexsComponent(rawComponent));
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @param newId
 	 * 				The new numeric ID of the component within the REXS model.
 	 */
-	protected void changeComponentId(Integer oldId, Integer newId) {
+	public void changeComponentId(Integer oldId, Integer newId) {
 		if (hasComponent(oldId)) {
 			RexsComponent component = getComponent(oldId);
 			component.changeComponentId(newId);

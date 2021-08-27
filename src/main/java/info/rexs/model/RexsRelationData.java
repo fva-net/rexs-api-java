@@ -36,7 +36,7 @@ public class RexsRelationData {
 	 * @param hint
 	 * 				TODO Document me!
 	 */
-	public RexsRelationData(Integer id, String hint) {
+	protected RexsRelationData(Integer id, String hint) {
 		this.id = id;
 		this.hint = hint;
 	}

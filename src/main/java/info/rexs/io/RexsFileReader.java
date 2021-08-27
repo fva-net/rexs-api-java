@@ -33,6 +33,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import info.rexs.model.RexsModel;
+import info.rexs.model.RexsModelObjectFactory;
 import info.rexs.model.jaxb.Model;
 
 /**
@@ -121,7 +122,7 @@ public class RexsFileReader {
 	 */
 	public RexsModel read() throws FileNotFoundException, IOException, JAXBException {
 		Model rawModel = readRawModel();
-		return new RexsModel(rawModel);
+		return RexsModelObjectFactory.getInstance().createRexsModel(rawModel);
 	}
 
 	public static boolean isRexsZipFile(Path pathToRexsFile) {

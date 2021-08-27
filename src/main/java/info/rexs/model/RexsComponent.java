@@ -55,11 +55,12 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * @param rawComponent
 	 * 				The representation of this component in the JAXB model.
 	 */
-	public RexsComponent(Component rawComponent) {
+	protected RexsComponent(Component rawComponent) {
 		this.rawComponent = rawComponent;
 		this.id = rawComponent.getId();
 		this.type = RexsComponentType.findById(rawComponent.getType());
-		this.attributes = rawComponent.getAttribute().stream().collect(Collectors.toMap(Attribute::getId, RexsAttribute::new));
+		this.attributes = rawComponent.getAttribute().stream()
+				.collect(Collectors.toMap(Attribute::getId, rawAttribute -> RexsModelObjectFactory.getInstance().createRexsAttribute(rawAttribute)));
 	}
 
 	/**
@@ -192,7 +193,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	}
 
 	private RexsAttribute createAndAddAttribute(RexsAttributeId attributeId) {
-		RexsAttribute attribute = new RexsAttribute(attributeId);
+		RexsAttribute attribute = RexsModelObjectFactory.getInstance().createRexsAttribute(attributeId);
 		addAttribute(attribute);
 		return attribute;
 	}
@@ -580,7 +581,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * @param newId
 	 * 				The new numeric ID of the component within the REXS model.
 	 */
-	protected void changeComponentId(Integer newId) {
+	public void changeComponentId(Integer newId) {
 		id = newId;
 		rawComponent.setId(newId);
 	}

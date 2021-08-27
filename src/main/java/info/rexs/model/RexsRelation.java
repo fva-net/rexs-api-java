@@ -44,7 +44,7 @@ public class RexsRelation {
 	 * @param rawRelation
 	 * 				The representation of this relation in the JAXB model.
 	 */
-	public RexsRelation(Relation rawRelation) {
+	protected RexsRelation(Relation rawRelation) {
 		this.rawRelation = rawRelation;
 		for (Ref ref : rawRelation.getRef()) {
 			componentIds.add(ref.getId());
@@ -172,9 +172,8 @@ public class RexsRelation {
 		else if (RexsRelationType.connection.equals(type))
 			return findComponentIdByRole(RexsRelationRole.side_1);
 
-		else if (RexsRelationType.manufacturing_step.equals(type)) {
+		else if (RexsRelationType.manufacturing_step.equals(type))
 			return findComponentIdByRole(RexsRelationRole.workpiece);
-		}
 
 		return null;
 	}
@@ -239,7 +238,7 @@ public class RexsRelation {
 	 * @param newId
 	 * 				The new numeric ID of the component within the REXS model.
 	 */
-	protected void changeComponentId(Integer oldId, Integer newId) {
+	public void changeComponentId(Integer oldId, Integer newId) {
 		componentIds.remove(oldId);
 		componentIds.add(newId);
 		for (Ref ref : rawRelation.getRef()) {

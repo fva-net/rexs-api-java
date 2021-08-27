@@ -54,7 +54,7 @@ public class RexsAttribute {
 	 * @param rawAttribute
 	 * 				The representation of this attribute in the JAXB model.
 	 */
-	public RexsAttribute(Attribute rawAttribute) {
+	protected RexsAttribute(Attribute rawAttribute) {
 		this.rawAttribute = rawAttribute;
 		this.attributeId = RexsAttributeId.findById(rawAttribute.getId());
 		Objects.requireNonNull(attributeId, "attribute id cannot be empty");
@@ -69,7 +69,7 @@ public class RexsAttribute {
 	 * @param attributeId
 	 * 				The ID of the attribute.
 	 */
-	public RexsAttribute(RexsAttributeId attributeId) {
+	protected RexsAttribute(RexsAttributeId attributeId) {
 		this.attributeId = attributeId;
 		this.rawAttribute = new Attribute();
 		this.rawAttribute.setId(attributeId.getId());

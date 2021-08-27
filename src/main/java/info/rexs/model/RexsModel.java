@@ -51,16 +51,16 @@ import info.rexs.model.jaxb.Relation;
 public class RexsModel {
 
 	/** Factory class to create new instances for the JAXB model. */
-	private ObjectFactory objectFactory = new ObjectFactory();
+	protected ObjectFactory objectFactory = new ObjectFactory();
 
 	/** The representation of this model in the JAXB model. */
-	private Model rawModel;
+	protected Model rawModel;
 
 	/** All relations of the model as a {@link List} of {@link RexsRelation}. */
-	private List<RexsRelation> relations;
+	protected List<RexsRelation> relations;
 
 	/** All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}. */
-	private List<RexsLoadSpectrum> loadSpectrums;
+	protected List<RexsLoadSpectrum> loadSpectrums;
 
 	/** An internal index with all components of the model for quick access. */
 	private Map<Integer, RexsComponent> components;
@@ -84,7 +84,7 @@ public class RexsModel {
 	 * @param applicationVersion
 	 * 				Version of the application.
 	 */
-	public RexsModel(String applicationId, String applicationVersion) {
+	protected RexsModel(String applicationId, String applicationVersion) {
 		this.rawModel = createEmptyRexsModel(applicationId, applicationVersion);
 		initialize();
 	}
@@ -95,12 +95,12 @@ public class RexsModel {
 	 * @param model
 	 * 				The representation of this model in the JAXB model.
 	 */
-	public RexsModel(Model model) {
+	protected RexsModel(Model model) {
 		this.rawModel = model;
 		initialize();
 	}
 
-	private void initialize() {
+	protected void initialize() {
 		List<Component> rawComponents = rawModel.getComponents().getComponent();
 		List<Relation> rawRelations = rawModel.getRelations().getRelation();
 
@@ -110,7 +110,7 @@ public class RexsModel {
 		this.mapTypeToRelation = new HashMap<>();
 
 		for (Relation rawRelation : rawRelations) {
-			RexsRelation relation = new RexsRelation(rawRelation);
+			RexsRelation relation = RexsModelObjectFactory.getInstance().createRexsRelation(rawRelation);
 			this.relations.add(relation);
 
 			List<RexsRelation> relationsOfComp = this.mapMainCompToRelation.get(relation.getMainComponentId());
@@ -130,7 +130,7 @@ public class RexsModel {
 		this.mapTypeToComponentId = new HashMap<>();
 
 		for (Component rawComponent : rawComponents) {
-			RexsComponent component = new RexsComponent(rawComponent);
+			RexsComponent component = RexsModelObjectFactory.getInstance().createRexsComponent(rawComponent);
 			this.components.put(rawComponent.getId(), component);
 
 			RexsComponentType componentType = RexsComponentType.findById(rawComponent.getType());
@@ -143,11 +143,11 @@ public class RexsModel {
 
 		this.loadSpectrums = new ArrayList<>();
 		for (LoadSpectrum rawSpectrum : rawModel.getLoadSpectrum())
-			this.loadSpectrums.add(new RexsLoadSpectrum(rawSpectrum));
+			this.loadSpectrums.add(RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(rawSpectrum));
 	}
-	
+
 	public RexsVersion getVersion() {
-		return version; 
+		return version;
 	}
 
 	private Model createEmptyRexsModel(String applicationId, String applicationVersion) {
@@ -308,7 +308,7 @@ public class RexsModel {
 	public RexsRelation findFirstRelation(Integer compId, RexsRelationRole role) {
 		for (RexsRelation relaltion : relations) {
 			if (relaltion.hasComponent(compId)
-					&& role == relaltion.findRoleByComponentId(compId))
+					&& role.equals(relaltion.findRoleByComponentId(compId)))
 				return relaltion;
 		}
 		return null;
@@ -534,7 +534,7 @@ public class RexsModel {
 		compList.add(getFlankGeometry(gear1Id, RexsRelationRole.right.getKey()));
 		compList.add(getFlankGeometry(gear2Id, RexsRelationRole.left.getKey()));
 		compList.add(getFlankGeometry(gear2Id, RexsRelationRole.right.getKey()));
-		
+
 		return compList;
 	}
 
@@ -634,7 +634,7 @@ public class RexsModel {
 		component.setType(type.getId());
 		component.setName(name);
 
-		RexsComponent rexsComponent = new RexsComponent(component);
+		RexsComponent rexsComponent = RexsModelObjectFactory.getInstance().createRexsComponent(component);
 
 		components.put(id, rexsComponent);
 		rawModel.getComponents().getComponent().add(component);
@@ -925,11 +925,11 @@ public class RexsModel {
 	}
 
 	private RexsRelationData toRelationData(RexsComponent rexsComponent) {
-		return new RexsRelationData(rexsComponent.getId(), rexsComponent.getType().getId());
+		return RexsModelObjectFactory.getInstance().createRexsRelationData(rexsComponent.getId(), rexsComponent.getType().getId());
 	}
 
 	private void addRelation(Relation relation) {
-		RexsRelation rexsRelation =  new RexsRelation(relation);
+		RexsRelation rexsRelation = RexsModelObjectFactory.getInstance().createRexsRelation(relation);
 
 		relations.add(rexsRelation);
 		rawModel.getRelations().getRelation().add(relation);
@@ -947,7 +947,7 @@ public class RexsModel {
 		mapMainCompToRelation.put(rexsRelation.getMainComponentId(), relationsForMainComp);
 	}
 
-	private boolean componentsExists(RexsComponent ... rexsComponents) {
+	protected boolean componentsExists(RexsComponent ... rexsComponents) {
 		if (rexsComponents == null)
 			return false;
 
@@ -1194,7 +1194,7 @@ public class RexsModel {
 	public RexsSubModel getAccumulation() {
 		if (loadSpectrums.isEmpty()) {
 			Accumulation empty = null;
-			return new RexsSubModel(empty);
+			return RexsModelObjectFactory.getInstance().createRexsSubModel(empty);
 		}
 		return loadSpectrums.get(0).getAccumulation();
 	}
