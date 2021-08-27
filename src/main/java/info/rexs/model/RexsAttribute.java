@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsValueType;
 import info.rexs.model.jaxb.Array;
 import info.rexs.model.jaxb.ArrayOfArrays;
 import info.rexs.model.jaxb.Attribute;
@@ -767,6 +768,63 @@ public class RexsAttribute {
 					"array of integer arrays value cannot be null for attribute " + this.getAttributeId().getId());
 
 		return value;
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param type
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public Object getValue(RexsValueType type) {
+
+		switch (type) {
+
+			case BOOLEAN:
+				return getBooleanValue();
+			case BOOLEAN_ARRAY:
+				return getBooleanArrayValue();
+			case BOOLEAN_MATRIX:
+				return getBooleanMatrixValue();
+
+			case STRING:
+				return getStringValue();
+			case STRING_ARRAY:
+				return getStringArrayValue();
+			case STRING_MATRIX:
+				return getStringMatrixValue();
+
+			case INTEGER:
+				return getIntegerValue();
+			case INTEGER_ARRAY:
+				return getIntegerArrayValue();
+			case INTEGER_MATRIX:
+				return getIntegerMatrixValue();
+			case ARRAY_OF_INTEGER_ARRAYS:
+				return getArrayOfIntegerArraysValue();
+
+			case FLOATING_POINT:
+				return getDoubleValue(getUnit());
+			case FLOATING_POINT_ARRAY:
+				return getDoubleArrayValue(getUnit());
+			case FLOATING_POINT_MATRIX:
+				return getDoubleMatrixValue(getUnit());
+
+			case ENUM:
+				return getStringValue();
+			case ENUM_ARRAY:
+				return getStringArrayValue();
+
+			case REFERENCE_COMPONENT:
+			case FILE_REFERENCE:
+				return getStringValue();
+
+			default:
+				return getStringValue();
+		}
 	}
 
 	private String readStringValue() {

@@ -30,6 +30,9 @@ import info.rexs.model.jaxb.LoadSpectrum;
  */
 public class RexsLoadSpectrum {
 
+	/** The representation of this load spectrum in the JAXB model. */
+	private LoadSpectrum rawLoadSpectrum;
+
 	/** The numeric ID of the load spectrum within the REXS model. */
 	private Integer id;
 
@@ -46,6 +49,7 @@ public class RexsLoadSpectrum {
 	 * 				The representation of a load spectrum in the JAXB model.
 	 */
 	protected RexsLoadSpectrum(LoadSpectrum rawLoadSpectrum) {
+		this.rawLoadSpectrum = rawLoadSpectrum;
 		this.id = rawLoadSpectrum.getId();
 		for (LoadCase rawLoadCase : rawLoadSpectrum.getLoadCase()) {
 			loadCases.put(rawLoadCase.getId(), RexsModelObjectFactory.getInstance().createRexsSubModel(rawLoadCase));
@@ -59,6 +63,14 @@ public class RexsLoadSpectrum {
 	 */
 	public Integer getId() {
 		return id;
+	}
+
+	/**
+	 * @return
+	 * 				The representation of this load spectrum in the JAXB model.
+	 */
+	public LoadSpectrum getRawLoadSpectrum() {
+		return rawLoadSpectrum;
 	}
 
 	/**

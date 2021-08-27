@@ -571,20 +571,11 @@ public class RexsModel {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public RexsComponent getGearCasing() {
-		List<RexsComponent> listOfCasings = getComponentsOfType(RexsComponentType.gear_casing);
-		return listOfCasings.get(0); // TODO es darf genau ein Gehäuse geben
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
 	public RexsComponent getGearUnit() {
 		List<RexsComponent> listOfGearUnits = getComponentsOfType(RexsComponentType.gear_unit);
-		return listOfGearUnits.get(0); // TODO es darf genau eine Getriebeinheit geben
+		if (listOfGearUnits.size() != 1)
+			throw new RexsModelAccessException("there has to be exactly one gear_unit component in the model!");
+		return listOfGearUnits.get(0);
 	}
 
 	/**
@@ -598,6 +589,8 @@ public class RexsModel {
 	 */
 	public RexsComponent getMaterial(RexsComponent componentWithMaterial) {
 		List<RexsComponent> materials = getSubComponentsWithType(componentWithMaterial.getId(), RexsComponentType.material);
+		if (materials == null || materials.isEmpty())
+			return null;
 		return materials.get(0);
 	}
 
@@ -612,6 +605,8 @@ public class RexsModel {
 	 */
 	public RexsComponent getLubricant(RexsComponent componentWithLubricant) {
 		List<RexsComponent> lubricants = getSubComponentsWithType(componentWithLubricant.getId(), RexsComponentType.lubricant);
+		if (lubricants == null || lubricants.isEmpty())
+			return null;
 		return lubricants.get(0);
 	}
 
@@ -620,14 +615,17 @@ public class RexsModel {
 	 *
 	 * @param type
 	 * 				TODO Document me!
+	 * @param id
+	 * 				TODO Document me!
 	 * @param name
 	 * 				TODO Document me!
 	 *
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public RexsComponent createComponent(RexsComponentType type, String name) {
-		Integer id = getNextFreeComponentId();
+	public RexsComponent createComponent(RexsComponentType type, Integer id, String name) {
+		if (components.containsKey(id))
+			throw new RexsModelAccessException("component with id " + id + " already exists");
 
 		Component component = objectFactory.createComponent();
 		component.setId(id);
@@ -646,6 +644,22 @@ public class RexsModel {
 		mapTypeToComponentId.put(type, componentsForType);
 
 		return rexsComponent;
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param type
+	 * 				TODO Document me!
+	 * @param name
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public RexsComponent createComponent(RexsComponentType type, String name) {
+		Integer id = getNextFreeComponentId();
+		return createComponent(type, id, name);
 	}
 
 	/**
@@ -909,6 +923,34 @@ public class RexsModel {
 		return true;
 	}
 
+	/**
+	 * TODO Document me!
+	 *
+	 * @param flank
+	 * 				TODO Document me!
+	 * @param tool
+	 * 				TODO Document me!
+	 * @param manufacturingStep
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean addManufacturingStepRelation(RexsComponent flank, RexsComponent tool, RexsComponent manufacturingStep, int order) {
+		if (!componentsExists(flank, tool, manufacturingStep))
+			return false;
+
+		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.manufacturing_step);
+		rexsRelation.setOrder(order);
+
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank), RexsRelationRole.workpiece));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(tool), RexsRelationRole.tool));
+		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(manufacturingStep), RexsRelationRole.manufacturing_settings));
+
+		addRelation(rexsRelation);
+		return true;
+	}
+
 	private Relation createRexsRelationWithType(RexsRelationType type) {
 		Relation rexsRelation = objectFactory.createRelation();
 		rexsRelation.setId(getNextFreeRelationId());
@@ -1030,7 +1072,9 @@ public class RexsModel {
 			return true;
 
 		} else if (RexsComponentType.concept_bearing.getId().equals(componentType.getId())
-				|| RexsComponentType.coupling.getId().equals(componentType.getId())) {
+				|| RexsComponentType.coupling.getId().equals(componentType.getId())
+				|| RexsComponentType.rolling_bearing_with_catalog_geometry.getId().equals(componentType.getId())
+				|| RexsComponentType.rolling_bearing_with_detailed_geometry.getId().equals(componentType.getId())) {
 			for (RexsRelation relation : getRelationsOfMainComp(rexsComponent.getId())) {
 				if (relation.getType()==RexsRelationType.side) {
 					RexsComponent sideComp1 = getComponent(relation.findComponentIdByRole(RexsRelationRole.side_1));
@@ -1231,6 +1275,16 @@ public class RexsModel {
 			}
 			loadSpectrum.getAccumulation().changeComponentId(oldId, newId);
 		}
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param component
+	 * 				TODO Document me!
+	 */
+	public void changeComponentId(RexsComponent component) {
+		changeComponentId(component, getNextFreeComponentId());
 	}
 
 	/**

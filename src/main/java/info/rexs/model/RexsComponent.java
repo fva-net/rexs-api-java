@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
 
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsValueType;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
 import lombok.EqualsAndHashCode;
@@ -167,6 +169,410 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		if (rexsAttribute == null)
 			throw new RexsModelAccessException(this, "attribute '" + attributeId + "' not found!");
 		return rexsAttribute;
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public Attribute getRawAttribute(RexsAttributeId attributeId) {
+		return getRawAttribute(attributeId.getId());
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link String}.
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public Attribute getRawAttribute(String attributeId) {
+		RexsAttribute rexsAttribute = getAttribute(attributeId);
+		if (rexsAttribute == null)
+			throw new RexsModelAccessException(this, "attribute '" + attributeId + "' not found!");
+		return rexsAttribute.getRawAttribute();
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public RexsUnitId getUnit(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getUnit();
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean hasValue(RexsAttributeId attributeId) {
+		return hasValue(attributeId.getId());
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link String}.
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean hasValue(String attributeId) {
+		if (!hasAttribute(attributeId))
+			return false;
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.hasValue();
+	}
+
+	/**
+	 * TODO Document me!
+	 *
+	 * @param attributeId
+	 * 				TODO Document me!
+	 * @param type
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public Object getValue(RexsAttributeId attributeId, RexsValueType type) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getValue(type);
+	}
+
+	/**
+	 * Returns the string value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link String}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no string value.
+	 */
+	public String getStringValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getStringValue();
+	}
+
+	/**
+	 * Returns the boolean value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link boolean}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no boolean value.
+	 */
+	public boolean getBooleanValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getBooleanValue();
+	}
+
+	/**
+	 * Returns the integer value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Integer}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no integer value.
+	 */
+	public int getIntegerValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getIntegerValue();
+	}
+
+	/**
+	 * Returns the floating point value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 * @param unit
+	 * 				The unit of the attribute as {@link RexsUnitId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Double}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no double value or the unit does not match the unit of the attribute.
+	 */
+	public double getDoubleValue(RexsAttributeId attributeId, RexsUnitId unit) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getDoubleValue(unit);
+	}
+
+	/**
+	 * Returns the string array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link String[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no string array value.
+	 */
+	public String[] getStringArrayValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getStringArrayValue();
+	}
+
+	/**
+	 * Returns the enum array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link String[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no enum array value.
+	 */
+	public String[] getEnumArrayValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getEnumArrayValue();
+	}
+
+	/**
+	 * Returns the boolean array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Boolean[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no boolean array value.
+	 */
+	public Boolean[] getBooleanArrayValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getBooleanArrayValue();
+	}
+
+	/**
+	 * Returns the integer array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Integer[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no integer array value.
+	 */
+	public Integer[] getIntegerArrayValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getIntegerArrayValue();
+	}
+
+	/**
+	 * Returns the integer array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link int[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no integer array value.
+	 */
+	public int[] getIntegerArrayValueUnboxed(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getIntegerArrayValueUnboxed();
+	}
+
+	/**
+	 * Returns the floating point array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 * @param unit
+	 * 				The unit of the attribute as {@link RexsUnitId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Double[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no double array value or the unit does not match the unit of the attribute.
+	 */
+	public Double[] getDoubleArrayValue(RexsAttributeId attributeId, RexsUnitId unit) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getDoubleArrayValue(unit);
+	}
+
+	/**
+	 * Returns the floating point array value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 * @param unit
+	 * 				The unit of the attribute as {@link RexsUnitId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link double[]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no double array value or the unit does not match the unit of the attribute.
+	 */
+	public double[] getDoubleArrayValueUnboxed(RexsAttributeId attributeId, RexsUnitId unit) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getDoubleArrayValueUnboxed(unit);
+	}
+
+	/**
+	 * Returns the string matrix value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link String[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no string matrix value.
+	 */
+	public String[][] getStringMatrixValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getStringMatrixValue();
+	}
+
+	/**
+	 * Returns the boolean matrix value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Boolean[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no boolean matrix value.
+	 */
+	public Boolean[][] getBooleanMatrixValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getBooleanMatrixValue();
+	}
+
+	/**
+	 * Returns the integer matrix value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Integer[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no integer matrix value.
+	 */
+	public Integer[][] getIntegerMatrixValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getIntegerMatrixValue();
+	}
+
+	/**
+	 * Returns the integer matrix value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link int[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no integer matrix value.
+	 */
+	public int[][] getIntegerMatrixValueUnboxed(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getIntegerMatrixValueUnboxed();
+	}
+
+	/**
+	 * Returns the floating point matrix value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 * @param unit
+	 * 				The unit of the attribute as {@link RexsUnitId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link Double[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no double matrix value or the unit does not match the unit of the attribute.
+	 */
+	public Double[][] getDoubleMatrixValue(RexsAttributeId attributeId, RexsUnitId unit) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getDoubleMatrixValue(unit);
+	}
+
+	/**
+	 * Returns the floating point matrix value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 * @param unit
+	 * 				The unit of the attribute as {@link RexsUnitId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link double[][]}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no double matrix value or the unit does not match the unit of the attribute.
+	 */
+	public double[][] getDoubleMatrixValueUnboxed(RexsAttributeId attributeId, RexsUnitId unit) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getDoubleMatrixValueUnboxed(unit);
+	}
+
+	/**
+	 * Returns the array of integer arrays value of the attribute.
+	 *
+	 * @param attributeId
+	 * 				The ID of the attribute as {@link RexsAttributeId}.
+	 *
+	 * @return
+	 * 				The value of the attribute as {@link List}.
+	 *
+	 * @throws RexsModelAccessException
+	 * 				If the attribute has no array of integer array value.
+	 */
+	public List<Integer[]> getArrayOfIntegerArraysValue(RexsAttributeId attributeId) {
+		RexsAttribute attribute = getAttribute(attributeId);
+		return attribute.getArrayOfIntegerArraysValue();
 	}
 
 	/**
