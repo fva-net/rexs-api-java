@@ -82,7 +82,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId ambient_temperature_vdi_2736_2014 = RexsAttributeId.create("ambient_temperature_vdi_2736_2014", RexsUnitId.degree_celsius);
 
 	/** Angle of blade sequence (Versions: 1.3) */
-	public static final RexsAttributeId angle_of_blade_sequence = RexsAttributeId.create("angle_of_blade_sequence", RexsUnitId.degree);
+	public static final RexsAttributeId angle_of_blade_sequence = RexsAttributeId.create("angle_of_blade_sequence", RexsUnitId.deg);
 
 	/** Relative tilting of the inner ring around the v-axis compared to the outer ring. (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId angular_deflection_in_v = RexsAttributeId.create("angular_deflection_in_v", RexsUnitId.radian);
@@ -91,16 +91,16 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId angular_deflection_in_w = RexsAttributeId.create("angular_deflection_in_w", RexsUnitId.radian);
 
 	/** Angular offset of the mounting position of the outer ring around the v-axis (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId angular_misalignment_around_v_axis = RexsAttributeId.create("angular_misalignment_around_v_axis", RexsUnitId.degree);
+	public static final RexsAttributeId angular_misalignment_around_v_axis = RexsAttributeId.create("angular_misalignment_around_v_axis", RexsUnitId.deg);
 
 	/** Angular offset of the mounting position of the outer ring around the w-axis (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId angular_misalignment_around_w_axis = RexsAttributeId.create("angular_misalignment_around_w_axis", RexsUnitId.degree);
+	public static final RexsAttributeId angular_misalignment_around_w_axis = RexsAttributeId.create("angular_misalignment_around_w_axis", RexsUnitId.deg);
 
 	/** Angular motion coefficients (Versions: 1.3) */
 	public static final RexsAttributeId angular_motion_coefficients = RexsAttributeId.create("angular_motion_coefficients", RexsUnitId.none);
 
 	/** Angular position around u axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId angular_position_around_u = RexsAttributeId.create("angular_position_around_u", RexsUnitId.degree);
+	public static final RexsAttributeId angular_position_around_u = RexsAttributeId.create("angular_position_around_u", RexsUnitId.deg);
 
 	/** Angular velocity (Versions: 1.3) */
 	public static final RexsAttributeId angular_velocity = RexsAttributeId.create("angular_velocity", RexsUnitId.radian_per_s);
@@ -265,7 +265,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId blade_point_radius = RexsAttributeId.create("blade_point_radius", RexsUnitId.mm);
 
 	/** Blade pressure angle (Versions: 1.3) */
-	public static final RexsAttributeId blade_pressure_angle = RexsAttributeId.create("blade_pressure_angle", RexsUnitId.degree);
+	public static final RexsAttributeId blade_pressure_angle = RexsAttributeId.create("blade_pressure_angle", RexsUnitId.deg);
 
 	/** Blade profile height (Versions: 1.3) */
 	public static final RexsAttributeId blade_profile_height = RexsAttributeId.create("blade_profile_height", RexsUnitId.mm);
@@ -310,16 +310,16 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId center_distance_tolerance_field_din_3964_1980 = RexsAttributeId.create("center_distance_tolerance_field_din_3964_1980", RexsUnitId.none);
 
 	/** Center roll position (Versions: 1.3) */
-	public static final RexsAttributeId center_roll_position = RexsAttributeId.create("center_roll_position", RexsUnitId.degree);
+	public static final RexsAttributeId center_roll_position = RexsAttributeId.create("center_roll_position", RexsUnitId.deg);
 
 	/** Central film thickness at the calculation points (AGMA 925 A03) (Versions: 1.3) */
 	public static final RexsAttributeId central_film_thickness_at_calculation_points_agma_925_a03 = RexsAttributeId.create("central_film_thickness_at_calculation_points_agma_925_a03", RexsUnitId.mum);
 
 	/** Chamfer angle (Versions: 1.0, 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId chamfer_angle = RexsAttributeId.create("chamfer_angle", RexsUnitId.degree);
+	public static final RexsAttributeId chamfer_angle = RexsAttributeId.create("chamfer_angle", RexsUnitId.deg);
 
 	/** Chamfer ange (Versions: 1.3) */
-	public static final RexsAttributeId chamfer_angle_worm_wheel = RexsAttributeId.create("chamfer_angle_worm_wheel", RexsUnitId.degree);
+	public static final RexsAttributeId chamfer_angle_worm_wheel = RexsAttributeId.create("chamfer_angle_worm_wheel", RexsUnitId.deg);
 
 	/** Chamfer at end of tooth (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId chamfer_at_tooth_end = RexsAttributeId.create("chamfer_at_tooth_end", RexsUnitId.mm);
@@ -436,10 +436,10 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId cutter_radius = RexsAttributeId.create("cutter_radius", RexsUnitId.mm);
 
 	/** Cutter swivel (Versions: 1.3) */
-	public static final RexsAttributeId cutter_swivel = RexsAttributeId.create("cutter_swivel", RexsUnitId.degree);
+	public static final RexsAttributeId cutter_swivel = RexsAttributeId.create("cutter_swivel", RexsUnitId.deg);
 
 	/** Cutter tilt (Versions: 1.3) */
-	public static final RexsAttributeId cutter_tilt = RexsAttributeId.create("cutter_tilt", RexsUnitId.degree);
+	public static final RexsAttributeId cutter_tilt = RexsAttributeId.create("cutter_tilt", RexsUnitId.deg);
 
 	/** Orientation datum face (Versions: 1.2, 1.3) */
 	public static final RexsAttributeId datum_face_orientation = RexsAttributeId.create("datum_face_orientation", RexsUnitId.none);
@@ -595,7 +595,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId deviation_of_offset = RexsAttributeId.create("deviation_of_offset", RexsUnitId.mm);
 
 	/** Deviation of shaft angle (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId deviation_of_shaft_angle = RexsAttributeId.create("deviation_of_shaft_angle", RexsUnitId.degree);
+	public static final RexsAttributeId deviation_of_shaft_angle = RexsAttributeId.create("deviation_of_shaft_angle", RexsUnitId.deg);
 
 	/** Figure number for contamination coefficient in DIN 26281 (Versions: 1.0) */
 	public static final RexsAttributeId diagram_number_in_din_26281 = RexsAttributeId.create("diagram_number_in_din_26281", RexsUnitId.none);
@@ -748,10 +748,10 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId effective_face_width_worm_wheel = RexsAttributeId.create("effective_face_width_worm_wheel", RexsUnitId.mm);
 
 	/** Effective pressure angle on coast side (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId effective_pressure_angle_coast = RexsAttributeId.create("effective_pressure_angle_coast", RexsUnitId.degree);
+	public static final RexsAttributeId effective_pressure_angle_coast = RexsAttributeId.create("effective_pressure_angle_coast", RexsUnitId.deg);
 
 	/** Effective pressure angle on drive side (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId effective_pressure_angle_drive = RexsAttributeId.create("effective_pressure_angle_drive", RexsUnitId.degree);
+	public static final RexsAttributeId effective_pressure_angle_drive = RexsAttributeId.create("effective_pressure_angle_drive", RexsUnitId.deg);
 
 	/** Elastic modulus (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId elastic_modulus = RexsAttributeId.create("elastic_modulus", RexsUnitId.newton_per_mm2);
@@ -814,7 +814,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId equivalent_radius_of_curvature_at_pitch_point_under_test_conditions_plewe_1980 = RexsAttributeId.create("equivalent_radius_of_curvature_at_pitch_point_under_test_conditions_plewe_1980", RexsUnitId.mm);
 
 	/** Face angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId face_angle = RexsAttributeId.create("face_angle", RexsUnitId.degree);
+	public static final RexsAttributeId face_angle = RexsAttributeId.create("face_angle", RexsUnitId.deg);
 
 	/** Face apex beyond crossing point (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId face_apex_beyond_crossing_point = RexsAttributeId.create("face_apex_beyond_crossing_point", RexsUnitId.mm);
@@ -1018,10 +1018,10 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId generated_center_distance = RexsAttributeId.create("generated_center_distance", RexsUnitId.mm);
 
 	/** Generated pressure angle on coast side (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId generated_pressure_angle_coast = RexsAttributeId.create("generated_pressure_angle_coast", RexsUnitId.degree);
+	public static final RexsAttributeId generated_pressure_angle_coast = RexsAttributeId.create("generated_pressure_angle_coast", RexsUnitId.deg);
 
 	/** Generated pressure angle on drive side (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId generated_pressure_angle_drive = RexsAttributeId.create("generated_pressure_angle_drive", RexsUnitId.degree);
+	public static final RexsAttributeId generated_pressure_angle_drive = RexsAttributeId.create("generated_pressure_angle_drive", RexsUnitId.deg);
 
 	/** Geometrical size factor bending (Versions: 1.3) */
 	public static final RexsAttributeId geometrical_size_factor_bending_din_743_2012 = RexsAttributeId.create("geometrical_size_factor_bending_din_743_2012", RexsUnitId.none);
@@ -1084,13 +1084,13 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId helical_motion_coefficients = RexsAttributeId.create("helical_motion_coefficients", RexsUnitId.none);
 
 	/** Helix angle at the base circle (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId helix_angle_base_circle = RexsAttributeId.create("helix_angle_base_circle", RexsUnitId.degree);
+	public static final RexsAttributeId helix_angle_base_circle = RexsAttributeId.create("helix_angle_base_circle", RexsUnitId.deg);
 
 	/** Helix angle factor (VDI 2736 2014) (Versions: 1.3) */
 	public static final RexsAttributeId helix_angle_factor_vdi_2736_2014 = RexsAttributeId.create("helix_angle_factor_vdi_2736_2014", RexsUnitId.none);
 
 	/** Helix angle at reference circle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId helix_angle_reference_diameter = RexsAttributeId.create("helix_angle_reference_diameter", RexsUnitId.degree);
+	public static final RexsAttributeId helix_angle_reference_diameter = RexsAttributeId.create("helix_angle_reference_diameter", RexsUnitId.deg);
 
 	/** Amount of helix crowning at datum face (Versions: 1.2, 1.3) */
 	public static final RexsAttributeId helix_crowning_amount_datum_face = RexsAttributeId.create("helix_crowning_amount_datum_face", RexsUnitId.mm);
@@ -1132,7 +1132,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId hypoid_offset = RexsAttributeId.create("hypoid_offset", RexsUnitId.mm);
 
 	/** Offset of inclination angle (Versions: 1.3) */
-	public static final RexsAttributeId inclination_angle_offset = RexsAttributeId.create("inclination_angle_offset", RexsUnitId.degree);
+	public static final RexsAttributeId inclination_angle_offset = RexsAttributeId.create("inclination_angle_offset", RexsUnitId.deg);
 
 	/** Increase factor yield strength bending (Versions: 1.3) */
 	public static final RexsAttributeId increase_factor_yield_strength_bending_din_743_2012 = RexsAttributeId.create("increase_factor_yield_strength_bending_din_743_2012", RexsUnitId.none);
@@ -1165,7 +1165,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId inner_pitch_diameter = RexsAttributeId.create("inner_pitch_diameter", RexsUnitId.mm);
 
 	/** Offset of intersection angle (Versions: 1.3) */
-	public static final RexsAttributeId intersection_angle_offset = RexsAttributeId.create("intersection_angle_offset", RexsUnitId.degree);
+	public static final RexsAttributeId intersection_angle_offset = RexsAttributeId.create("intersection_angle_offset", RexsUnitId.deg);
 
 	/** Modification is additive (Versions: 1.2, 1.3) */
 	public static final RexsAttributeId is_additive_modification = RexsAttributeId.create("is_additive_modification", RexsUnitId.none);
@@ -1195,7 +1195,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId lead = RexsAttributeId.create("lead", RexsUnitId.mm);
 
 	/** Reference lead angle (Versions: 1.3) */
-	public static final RexsAttributeId lead_angle_worm_gear = RexsAttributeId.create("lead_angle_worm_gear", RexsUnitId.degree);
+	public static final RexsAttributeId lead_angle_worm_gear = RexsAttributeId.create("lead_angle_worm_gear", RexsUnitId.deg);
 
 	/** Lead (DIN 3975 2017) (Versions: 1.2) */
 	public static final RexsAttributeId lead_din_3975_2017 = RexsAttributeId.create("lead_din_3975_2017", RexsUnitId.mm);
@@ -1249,7 +1249,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId linear_wear_coefficient_under_test_conditions_plewe_1980 = RexsAttributeId.create("linear_wear_coefficient_under_test_conditions_plewe_1980", RexsUnitId.mm);
 
 	/** Load angle at tip (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId load_angle_at_tip = RexsAttributeId.create("load_angle_at_tip", RexsUnitId.degree);
+	public static final RexsAttributeId load_angle_at_tip = RexsAttributeId.create("load_angle_at_tip", RexsUnitId.deg);
 
 	/** Load carrying face width (Versions: 1.3) */
 	public static final RexsAttributeId load_carrying_face_width_vdi_2736_2014 = RexsAttributeId.create("load_carrying_face_width_vdi_2736_2014", RexsUnitId.mm);
@@ -1342,13 +1342,13 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId lubrication_type_vdi_2736_2014 = RexsAttributeId.create("lubrication_type_vdi_2736_2014", RexsUnitId.none);
 
 	/** Lyra angle (Versions: 1.3) */
-	public static final RexsAttributeId lyra_angle = RexsAttributeId.create("lyra_angle", RexsUnitId.degree);
+	public static final RexsAttributeId lyra_angle = RexsAttributeId.create("lyra_angle", RexsUnitId.deg);
 
 	/** Machine center to crossing point (Versions: 1.3) */
 	public static final RexsAttributeId machine_center_to_crossing_point = RexsAttributeId.create("machine_center_to_crossing_point", RexsUnitId.mm);
 
 	/** Machine root angle (Versions: 1.3) */
-	public static final RexsAttributeId machine_root_angle = RexsAttributeId.create("machine_root_angle", RexsUnitId.degree);
+	public static final RexsAttributeId machine_root_angle = RexsAttributeId.create("machine_root_angle", RexsUnitId.deg);
 
 	/** Machining allowance (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId machining_allowance = RexsAttributeId.create("machining_allowance", RexsUnitId.mm);
@@ -1576,7 +1576,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId mean_specific_sliding_under_test_conditions_plewe_1980 = RexsAttributeId.create("mean_specific_sliding_under_test_conditions_plewe_1980", RexsUnitId.none);
 
 	/** Mean spiral angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId mean_spiral_angle = RexsAttributeId.create("mean_spiral_angle", RexsUnitId.degree);
+	public static final RexsAttributeId mean_spiral_angle = RexsAttributeId.create("mean_spiral_angle", RexsUnitId.deg);
 
 	/** Mean stress bending (Versions: 1.3) */
 	public static final RexsAttributeId mean_stress_bending_din_743_2012 = RexsAttributeId.create("mean_stress_bending_din_743_2012", RexsUnitId.newton_per_mm2);
@@ -1735,10 +1735,10 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId name = RexsAttributeId.create("name", RexsUnitId.none);
 
 	/** Nominal design pressure angle on coast side (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId nominal_design_pressure_angle_coast = RexsAttributeId.create("nominal_design_pressure_angle_coast", RexsUnitId.degree);
+	public static final RexsAttributeId nominal_design_pressure_angle_coast = RexsAttributeId.create("nominal_design_pressure_angle_coast", RexsUnitId.deg);
 
 	/** Nominal design pressure angle on drive side (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId nominal_design_pressure_angle_drive = RexsAttributeId.create("nominal_design_pressure_angle_drive", RexsUnitId.degree);
+	public static final RexsAttributeId nominal_design_pressure_angle_drive = RexsAttributeId.create("nominal_design_pressure_angle_drive", RexsUnitId.deg);
 
 	/** Nominal rating life (L_10) DIN ISO 281 (Versions: 1.0) */
 	public static final RexsAttributeId nominal_rating_life_rotations_din_iso_281 = RexsAttributeId.create("nominal_rating_life_rotations_din_iso_281", RexsUnitId.none);
@@ -1786,7 +1786,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId normal_pitch_din_3975_2017 = RexsAttributeId.create("normal_pitch_din_3975_2017", RexsUnitId.mm);
 
 	/** Normal pressure angle (Versions: 1.0, 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId normal_pressure_angle = RexsAttributeId.create("normal_pressure_angle", RexsUnitId.degree);
+	public static final RexsAttributeId normal_pressure_angle = RexsAttributeId.create("normal_pressure_angle", RexsUnitId.deg);
 
 	/** Normal relative radius of curvature of calculation points (AGMA 925 A03) (Versions: 1.3) */
 	public static final RexsAttributeId normal_relative_radius_of_curvature_of_calculation_points_agma_925_a03 = RexsAttributeId.create("normal_relative_radius_of_curvature_of_calculation_points_agma_925_a03", RexsUnitId.mm);
@@ -1870,7 +1870,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId operating_axial_bearing_clearance = RexsAttributeId.create("operating_axial_bearing_clearance", RexsUnitId.mum);
 
 	/** Operating helix angle (AGMA 925 A03) (Versions: 1.3) */
-	public static final RexsAttributeId operating_helix_angle_agma_925_a03 = RexsAttributeId.create("operating_helix_angle_agma_925_a03", RexsUnitId.degree);
+	public static final RexsAttributeId operating_helix_angle_agma_925_a03 = RexsAttributeId.create("operating_helix_angle_agma_925_a03", RexsUnitId.deg);
 
 	/** Operating point stiffness dF_u / d_u (Versions: 1.0) */
 	public static final RexsAttributeId operating_point_stiffness_dF_u_d_u = RexsAttributeId.create("operating_point_stiffness_dF_u_d_u", RexsUnitId.newton_per_m);
@@ -2023,13 +2023,13 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId operating_point_stiffness_m_w_rot_w = RexsAttributeId.create("operating_point_stiffness_m_w_rot_w", RexsUnitId.newton_mm_per_rad);
 
 	/** Operating pressure angle (Versions: 1.3) */
-	public static final RexsAttributeId operating_pressure_angle = RexsAttributeId.create("operating_pressure_angle", RexsUnitId.degree);
+	public static final RexsAttributeId operating_pressure_angle = RexsAttributeId.create("operating_pressure_angle", RexsUnitId.deg);
 
 	/** Operating pressure angle in the normal section (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId operating_pressure_angle_in_the_normal_section = RexsAttributeId.create("operating_pressure_angle_in_the_normal_section", RexsUnitId.degree);
+	public static final RexsAttributeId operating_pressure_angle_in_the_normal_section = RexsAttributeId.create("operating_pressure_angle_in_the_normal_section", RexsUnitId.deg);
 
 	/** Operating pressure angle in the transverse section (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId operating_pressure_angle_in_the_transverse_section = RexsAttributeId.create("operating_pressure_angle_in_the_transverse_section", RexsUnitId.degree);
+	public static final RexsAttributeId operating_pressure_angle_in_the_transverse_section = RexsAttributeId.create("operating_pressure_angle_in_the_transverse_section", RexsUnitId.deg);
 
 	/** Operating radial bearing clearance (Versions: 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId operating_radial_bearing_clearance = RexsAttributeId.create("operating_radial_bearing_clearance", RexsUnitId.mum);
@@ -2179,7 +2179,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId pin_tolerance_class = RexsAttributeId.create("pin_tolerance_class", RexsUnitId.none);
 
 	/** Pitch angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId pitch_angle = RexsAttributeId.create("pitch_angle", RexsUnitId.degree);
+	public static final RexsAttributeId pitch_angle = RexsAttributeId.create("pitch_angle", RexsUnitId.deg);
 
 	/** Pitch apex beyond crossing point (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId pitch_apex_beyond_crossing_point = RexsAttributeId.create("pitch_apex_beyond_crossing_point", RexsUnitId.mm);
@@ -2230,19 +2230,19 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId preload_force = RexsAttributeId.create("preload_force", RexsUnitId.newton);
 
 	/** Contact angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId pressure_angle = RexsAttributeId.create("pressure_angle", RexsUnitId.degree);
+	public static final RexsAttributeId pressure_angle = RexsAttributeId.create("pressure_angle", RexsUnitId.deg);
 
 	/** Pressure angle correction (Versions: 1.3) */
-	public static final RexsAttributeId pressure_angle_correction = RexsAttributeId.create("pressure_angle_correction", RexsUnitId.degree);
+	public static final RexsAttributeId pressure_angle_correction = RexsAttributeId.create("pressure_angle_correction", RexsUnitId.deg);
 
 	/** Pressure angle (DIN 3975 2017) (Versions: 1.2) */
-	public static final RexsAttributeId pressure_angle_din_3975_2017 = RexsAttributeId.create("pressure_angle_din_3975_2017", RexsUnitId.degree);
+	public static final RexsAttributeId pressure_angle_din_3975_2017 = RexsAttributeId.create("pressure_angle_din_3975_2017", RexsUnitId.deg);
 
 	/** Pressure angle in the transverse section (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId pressure_angle_in_the_transverse_section = RexsAttributeId.create("pressure_angle_in_the_transverse_section", RexsUnitId.degree);
+	public static final RexsAttributeId pressure_angle_in_the_transverse_section = RexsAttributeId.create("pressure_angle_in_the_transverse_section", RexsUnitId.deg);
 
 	/** Pressure angle (Versions: 1.3) */
-	public static final RexsAttributeId pressure_angle_worm_gear = RexsAttributeId.create("pressure_angle_worm_gear", RexsUnitId.degree);
+	public static final RexsAttributeId pressure_angle_worm_gear = RexsAttributeId.create("pressure_angle_worm_gear", RexsUnitId.deg);
 
 	/** Pressure factor (Versions: 1.3) */
 	public static final RexsAttributeId pressure_factor_din_3996_2019 = RexsAttributeId.create("pressure_factor_din_3996_2019", RexsUnitId.none);
@@ -2308,10 +2308,10 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId protuberance_amount_factor = RexsAttributeId.create("protuberance_amount_factor", RexsUnitId.none);
 
 	/** Protuberance angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId protuberance_angle = RexsAttributeId.create("protuberance_angle", RexsUnitId.degree);
+	public static final RexsAttributeId protuberance_angle = RexsAttributeId.create("protuberance_angle", RexsUnitId.deg);
 
 	/** Protuberance angle (Versions: 1.3) */
-	public static final RexsAttributeId protuberance_angle_bevel_gear_tool = RexsAttributeId.create("protuberance_angle_bevel_gear_tool", RexsUnitId.degree);
+	public static final RexsAttributeId protuberance_angle_bevel_gear_tool = RexsAttributeId.create("protuberance_angle_bevel_gear_tool", RexsUnitId.deg);
 
 	/** Protuberance height (Versions: 1.0, 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId protuberance_height = RexsAttributeId.create("protuberance_height", RexsUnitId.mm);
@@ -2389,7 +2389,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId radius_of_curvature_at_point_e_plewe_1980 = RexsAttributeId.create("radius_of_curvature_at_point_e_plewe_1980", RexsUnitId.mm);
 
 	/** Rakeface inclination angle (Versions: 1.3) */
-	public static final RexsAttributeId rakeface_inclination_angle = RexsAttributeId.create("rakeface_inclination_angle", RexsUnitId.degree);
+	public static final RexsAttributeId rakeface_inclination_angle = RexsAttributeId.create("rakeface_inclination_angle", RexsUnitId.deg);
 
 	/** Ratio of roll (Versions: 1.3) */
 	public static final RexsAttributeId ratio_of_roll = RexsAttributeId.create("ratio_of_roll", RexsUnitId.none);
@@ -2419,7 +2419,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId reference_diameter_worm_gear = RexsAttributeId.create("reference_diameter_worm_gear", RexsUnitId.mm);
 
 	/** Reference lead angle (DIN 3975 2017) (Versions: 1.2) */
-	public static final RexsAttributeId reference_lead_angle_din_3975_2017 = RexsAttributeId.create("reference_lead_angle_din_3975_2017", RexsUnitId.degree);
+	public static final RexsAttributeId reference_lead_angle_din_3975_2017 = RexsAttributeId.create("reference_lead_angle_din_3975_2017", RexsUnitId.deg);
 
 	/** Thermal reference speed (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId reference_speed = RexsAttributeId.create("reference_speed", RexsUnitId.none);
@@ -2482,7 +2482,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId roll_angles_of_calculation_points_agma_925_a03 = RexsAttributeId.create("roll_angles_of_calculation_points_agma_925_a03", RexsUnitId.radian);
 
 	/** Roller angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId roller_angle = RexsAttributeId.create("roller_angle", RexsUnitId.degree);
+	public static final RexsAttributeId roller_angle = RexsAttributeId.create("roller_angle", RexsUnitId.deg);
 
 	/** Roller crowning radius (Versions: 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId roller_crowning_radius = RexsAttributeId.create("roller_crowning_radius", RexsUnitId.mm);
@@ -2527,7 +2527,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId rolling_tangential_velocity_of_calculation_points_agma_925_a03 = RexsAttributeId.create("rolling_tangential_velocity_of_calculation_points_agma_925_a03", RexsUnitId.m_per_second);
 
 	/** Root angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId root_angle = RexsAttributeId.create("root_angle", RexsUnitId.degree);
+	public static final RexsAttributeId root_angle = RexsAttributeId.create("root_angle", RexsUnitId.deg);
 
 	/** Root apex beyond crossing point (Versions: 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId root_apex_beyond_crossing_point = RexsAttributeId.create("root_apex_beyond_crossing_point", RexsUnitId.mm);
@@ -2584,10 +2584,10 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId root_undercut = RexsAttributeId.create("root_undercut", RexsUnitId.mm);
 
 	/** Shaft angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId rotating_angle_around_neg_u_axis = RexsAttributeId.create("rotating_angle_around_neg_u_axis", RexsUnitId.degree);
+	public static final RexsAttributeId rotating_angle_around_neg_u_axis = RexsAttributeId.create("rotating_angle_around_neg_u_axis", RexsUnitId.deg);
 
 	/** Rotating angle around u-axis (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId rotating_angle_around_pos_u_axis = RexsAttributeId.create("rotating_angle_around_pos_u_axis", RexsUnitId.degree);
+	public static final RexsAttributeId rotating_angle_around_pos_u_axis = RexsAttributeId.create("rotating_angle_around_pos_u_axis", RexsUnitId.deg);
 
 	/** Rotational speed with sign (Versions: 1.0, 1.0, 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId rotational_speed = RexsAttributeId.create("rotational_speed", RexsUnitId.rotation_per_min);
@@ -2638,7 +2638,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId semi_width_of_the_rectangular_contact_band_of_calculation_points_agma_925_a03 = RexsAttributeId.create("semi_width_of_the_rectangular_contact_band_of_calculation_points_agma_925_a03", RexsUnitId.mm);
 
 	/** Shaft angle (Versions: 1.0, 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId shaft_angle = RexsAttributeId.create("shaft_angle", RexsUnitId.degree);
+	public static final RexsAttributeId shaft_angle = RexsAttributeId.create("shaft_angle", RexsUnitId.deg);
 
 	/** Inner shaft diameter for the operating clearance calculation (Versions: 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId shaft_inner_diameter = RexsAttributeId.create("shaft_inner_diameter", RexsUnitId.mm);
@@ -2668,7 +2668,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId shear_stress_tooth_root_din_3996_2019 = RexsAttributeId.create("shear_stress_tooth_root_din_3996_2019", RexsUnitId.newton_per_mm2);
 
 	/** Side rake angle (Versions: 1.3) */
-	public static final RexsAttributeId side_rake_angle = RexsAttributeId.create("side_rake_angle", RexsUnitId.degree);
+	public static final RexsAttributeId side_rake_angle = RexsAttributeId.create("side_rake_angle", RexsUnitId.deg);
 
 	/** Maximum length of inner ring contact (Versions: 1.1, 1.2, 1.3) */
 	public static final RexsAttributeId significant_contact_length_inner_ring = RexsAttributeId.create("significant_contact_length_inner_ring", RexsUnitId.mm);
@@ -2785,7 +2785,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId stress_correction_factor_strength_vdi_2736_2014 = RexsAttributeId.create("stress_correction_factor_strength_vdi_2736_2014", RexsUnitId.none);
 
 	/** Circumferential angle of struts of planet carrier (Versions: 1.2, 1.3) */
-	public static final RexsAttributeId strut_circumferential_angle = RexsAttributeId.create("strut_circumferential_angle", RexsUnitId.degree);
+	public static final RexsAttributeId strut_circumferential_angle = RexsAttributeId.create("strut_circumferential_angle", RexsUnitId.deg);
 
 	/** Inner diameter of struts of planet carrier (Versions: 1.2, 1.3) */
 	public static final RexsAttributeId strut_inner_diameter = RexsAttributeId.create("strut_inner_diameter", RexsUnitId.mm);
@@ -2905,28 +2905,28 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId tilt_motion_coefficients = RexsAttributeId.create("tilt_motion_coefficients", RexsUnitId.none);
 
 	/** Tilting of inner side around u axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_inner_side_u = RexsAttributeId.create("tilting_inner_side_u", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_inner_side_u = RexsAttributeId.create("tilting_inner_side_u", RexsUnitId.deg);
 
 	/** Tilting of inner side around v axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_inner_side_v = RexsAttributeId.create("tilting_inner_side_v", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_inner_side_v = RexsAttributeId.create("tilting_inner_side_v", RexsUnitId.deg);
 
 	/** Tilting of inner side around w axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_inner_side_w = RexsAttributeId.create("tilting_inner_side_w", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_inner_side_w = RexsAttributeId.create("tilting_inner_side_w", RexsUnitId.deg);
 
 	/** Tilting of outer side around u axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_outer_side_u = RexsAttributeId.create("tilting_outer_side_u", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_outer_side_u = RexsAttributeId.create("tilting_outer_side_u", RexsUnitId.deg);
 
 	/** Tilting around v axis of outer side (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_outer_side_v = RexsAttributeId.create("tilting_outer_side_v", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_outer_side_v = RexsAttributeId.create("tilting_outer_side_v", RexsUnitId.deg);
 
 	/** Tilting around w axis of outer side (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_outer_side_w = RexsAttributeId.create("tilting_outer_side_w", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_outer_side_w = RexsAttributeId.create("tilting_outer_side_w", RexsUnitId.deg);
 
 	/** Tilting around v axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_v = RexsAttributeId.create("tilting_v", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_v = RexsAttributeId.create("tilting_v", RexsUnitId.deg);
 
 	/** Tilting around w axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId tilting_w = RexsAttributeId.create("tilting_w", RexsUnitId.degree);
+	public static final RexsAttributeId tilting_w = RexsAttributeId.create("tilting_w", RexsUnitId.deg);
 
 	/** Tip clearance (Versions: 1.2, 1.3) */
 	public static final RexsAttributeId tip_clearance = RexsAttributeId.create("tip_clearance", RexsUnitId.mm);
@@ -2953,7 +2953,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId tip_radius_factor = RexsAttributeId.create("tip_radius_factor", RexsUnitId.none);
 
 	/** Tip relief angle (Versions: 1.3) */
-	public static final RexsAttributeId tip_relief_angle_bevel_gear_tool = RexsAttributeId.create("tip_relief_angle_bevel_gear_tool", RexsUnitId.degree);
+	public static final RexsAttributeId tip_relief_angle_bevel_gear_tool = RexsAttributeId.create("tip_relief_angle_bevel_gear_tool", RexsUnitId.deg);
 
 	/** Diameter at start of tip relief (reference diameter) (Versions: 1.2, 1.3) */
 	public static final RexsAttributeId tip_relief_datum_diameter = RexsAttributeId.create("tip_relief_datum_diameter", RexsUnitId.mm);
@@ -3103,7 +3103,7 @@ public interface RexsStandardAttributeIds {
 	public static final RexsAttributeId torsion_torque_upper_value_din_743_2012 = RexsAttributeId.create("torsion_torque_upper_value_din_743_2012", RexsUnitId.newton_m);
 
 	/** Torsion around the u-axis (Versions: 1.1, 1.2, 1.3) */
-	public static final RexsAttributeId torsion_u = RexsAttributeId.create("torsion_u", RexsUnitId.degree);
+	public static final RexsAttributeId torsion_u = RexsAttributeId.create("torsion_u", RexsUnitId.deg);
 
 	/** Torsional yield strength (Versions: 1.3) */
 	public static final RexsAttributeId torsional_yield_stress_din_743_2012 = RexsAttributeId.create("torsional_yield_stress_din_743_2012", RexsUnitId.newton_per_mm2);

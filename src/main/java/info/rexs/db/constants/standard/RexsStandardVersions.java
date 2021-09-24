@@ -36,5 +36,8 @@ public interface RexsStandardVersions {
 	/** 1.3 */
 	public static final RexsVersion V1_3 = RexsVersion.create("1.3", 1300);
 
+	/** 1.4 */
+	public static final RexsVersion V1_4 = RexsVersion.create("1.4", 1400);
+
 	public static void init() {}
 }

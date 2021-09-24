@@ -29,8 +29,17 @@ public interface RexsStandardUnitIds {
 	/** dB */
 	public static final RexsUnitId db = RexsUnitId.create("dB");
 
-	/** ° */
+	/**
+	 * °
+	 * @deprecated
+	 * This unit was only used in REXS versions 1.0 to 1.3.
+	 * <p>From REXS version 1.4 use {@link #deg} instead.
+	 */
+	@Deprecated
 	public static final RexsUnitId degree = RexsUnitId.create("\u00B0");
+
+	/** deg */
+	public static final RexsUnitId deg = RexsUnitId.create("deg");
 
 	/** C */
 	public static final RexsUnitId degree_celsius = RexsUnitId.create("C");

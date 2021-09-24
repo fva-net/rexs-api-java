@@ -32,8 +32,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsModelObjectFactory;
+import info.rexs.model.jaxb.Attribute;
+import info.rexs.model.jaxb.Component;
 import info.rexs.model.jaxb.Model;
 
 /**
@@ -99,13 +102,15 @@ public class RexsFileReader {
 			Path pathToRexsFile = null;
 			try {
 				pathToRexsFile = extractRexsFileFromZip(pathToRexsInputFile);
-				return (Model)unmarshaller.unmarshal(pathToRexsFile.toFile());
+				Model rawModel = (Model)unmarshaller.unmarshal(pathToRexsFile.toFile());
+				return convertDegreeUnits(rawModel);
 			} finally {
 				Files.deleteIfExists(pathToRexsFile);
 			}
 		}
 
-		return (Model)unmarshaller.unmarshal(pathToRexsInputFile.toFile());
+		Model rawModel = (Model)unmarshaller.unmarshal(pathToRexsInputFile.toFile());
+		return convertDegreeUnits(rawModel);
 	}
 
 	/**
@@ -157,5 +162,19 @@ public class RexsFileReader {
 		}
 
 		return pathToRexsFile;
+	}
+
+	private Model convertDegreeUnits(Model model) {
+		if (model.getComponents() == null || model.getComponents().getComponent().isEmpty())
+			return model;
+
+		for (Component component : model.getComponents().getComponent()) {
+			for (Attribute attribute : component.getAttribute()) {
+				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId()))
+					attribute.setUnit(RexsUnitId.deg.getId());
+			}
+		}
+
+		return model;
 	}
 }

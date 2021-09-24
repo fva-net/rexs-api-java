@@ -25,7 +25,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.RexsModel;
+import info.rexs.model.jaxb.Attribute;
+import info.rexs.model.jaxb.Component;
 import info.rexs.model.jaxb.Model;
 
 /**
@@ -89,7 +93,7 @@ public class RexsFileWriter {
 		JAXBContext context = JAXBContext.newInstance(Model.class);
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		marshaller.marshal(rawModel, pathToRexsOutputFile.toFile());
+		marshaller.marshal(convertDegreeUnits(rawModel), pathToRexsOutputFile.toFile());
 	}
 
 	/**
@@ -105,5 +109,27 @@ public class RexsFileWriter {
 	 */
 	public void write(RexsModel model) throws IOException, JAXBException {
 		writeRawModel(model.getRawModel());
+	}
+
+	private Model convertDegreeUnits(Model model) {
+		if (model.getComponents() == null || model.getComponents().getComponent().isEmpty())
+			return model;
+
+		String versionName = model.getVersion();
+		RexsVersion version = RexsVersion.findByName(versionName);
+		if (version == null)
+			return model;
+
+		RexsUnitId searchUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.deg : RexsUnitId.degree;
+		RexsUnitId replaceUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.degree : RexsUnitId.deg;
+
+		for (Component component : model.getComponents().getComponent()) {
+			for (Attribute attribute : component.getAttribute()) {
+				if (attribute.getUnit() != null && attribute.getUnit().equals(searchUnit.getId()))
+					attribute.setUnit(replaceUnit.getId());
+			}
+		}
+
+		return model;
 	}
 }
