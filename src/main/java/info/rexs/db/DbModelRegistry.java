@@ -144,7 +144,10 @@ public class DbModelRegistry {
 		Map<BigInteger, String> unitMap = new HashMap<>();
 		if (rexsModel.getUnits() != null) {
 			for (Unit unit : rexsModel.getUnits().getUnit()) {
-				unitMap.put(unit.getId(), unit.getName());
+				if (RexsUnitId.degree.getId().equals(unit.getName()))
+					unitMap.put(unit.getId(), RexsUnitId.deg.getId());
+				else
+					unitMap.put(unit.getId(), unit.getName());
 			}
 		}
 		if (rexsModel.getAttributes() != null) {
