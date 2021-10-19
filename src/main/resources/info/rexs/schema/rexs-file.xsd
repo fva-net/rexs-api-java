@@ -40,6 +40,7 @@
 			<xsd:attribute name="applicationId"      type="xsd:string" use="required"/>
 			<xsd:attribute name="applicationVersion" type="xsd:string" use="required"/>
 			<xsd:attribute name="date"               type="xsd:string" use="required"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 		<xsd:key          name="relationId">
 			<xsd:selector xpath="./relations/relation"/>
@@ -72,6 +73,7 @@
 			<xsd:sequence>
 				<xsd:element ref="relation" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -83,6 +85,7 @@
 			<xsd:attribute name="id"    type="xsd:integer"            use="required"/>
 			<xsd:attribute name="type"  type="xsd:string"             use="required"/>
 			<xsd:attribute name="order" type="xsd:nonNegativeInteger" use="optional"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -91,6 +94,7 @@
 			<xsd:attribute name="id"   type="xsd:integer" use="required"/>
 			<xsd:attribute name="role" type="xsd:string"  use="required"/>
 			<xsd:attribute name="hint" type="xsd:string"  use="optional"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -99,6 +103,7 @@
 			<xsd:sequence>
 				<xsd:element ref="component" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -110,6 +115,7 @@
 			<xsd:attribute name="id"   type="xsd:integer" use="required"/>
 			<xsd:attribute name="type" type="xsd:string"  use="required"/>
 			<xsd:attribute name="name" type="xsd:string"  use="optional"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -122,6 +128,7 @@
 			</xsd:sequence>
 			<xsd:attribute name="id"   type="xsd:string" use="required"/>
 			<xsd:attribute name="unit" type="xsd:string" use="optional"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -131,6 +138,7 @@
 				<xsd:element ref="c" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="code" type="codeType" use="optional"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -142,6 +150,7 @@
 			<xsd:attribute name="code"    type="codeType"    use="optional"/>
 			<xsd:attribute name="rows"    type="xsd:integer" use="optional"/>
 			<xsd:attribute name="columns" type="xsd:integer" use="optional"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -170,6 +179,7 @@
 			<xsd:sequence>
 				<xsd:element ref="array" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -180,6 +190,7 @@
 				<xsd:element ref="accumulation" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:integer" use="required"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 		<xsd:key          name="loadCaseId">
 			<xsd:selector xpath="./load_case"/>
@@ -193,6 +204,7 @@
 				<xsd:element ref="component" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:integer" use="required"/>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -201,6 +213,7 @@
 			<xsd:sequence>
 				<xsd:element ref="component" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
