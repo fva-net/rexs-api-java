@@ -65,6 +65,12 @@ public class DbModelFile {
 	/** REXS 1.3 (german) */
 	public static final DbModelFile V1_3_GERMAN = create(RexsVersion.V1_3, Locale.GERMAN);
 
+	/** REXS DEV (english) */
+	public static final DbModelFile V_DEV_ENGLISH = create(RexsVersion.V_DEV, Locale.ENGLISH);
+
+	/** REXS DEV (german) */
+	public static final DbModelFile V_DEV_GERMAN = create(RexsVersion.V_DEV, Locale.GERMAN);
+
 	/** The {@link RexsVersion} of the REXS database model file. */
 	@EqualsAndHashCode.Include
 	private final RexsVersion version;

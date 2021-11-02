@@ -20,14 +20,11 @@ import info.rexs.db.constants.RexsUnitId;
 /**
  * This class represents a REXS unit.
  * <p>
- * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3).
+ * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3, 1.4).
  *
  * @author FVA GmbH
  */
 public interface RexsStandardUnitIds {
-
-	/** dB */
-	public static final RexsUnitId db = RexsUnitId.create("dB");
 
 	/**
 	 * °
@@ -37,6 +34,9 @@ public interface RexsStandardUnitIds {
 	 */
 	@Deprecated
 	public static final RexsUnitId degree = RexsUnitId.create("\u00B0");
+
+	/** dB */
+	public static final RexsUnitId db = RexsUnitId.create("dB");
 
 	/** deg */
 	public static final RexsUnitId deg = RexsUnitId.create("deg");
