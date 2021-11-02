@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexsChangelog fromVersion="1.3" toVersion="1.4">
+    <componentChanges>
+        <componentChange type="ADD" id="fkm_evaluation_point"/>
+        <componentChange type="ADD" id="feather_key_connection"/>
+        <componentChange type="ADD" id="sn_curve"/>
+        <componentChange type="ADD" id="point_list"/>
+        <componentChange type="ADD" id="element_list"/>
+        <componentChange type="ADD" id="gear_root_data_set"/>
+        <componentChange type="ADD" id="gear_flank_data_set"/>
+        <componentChange type="ADD" id="meshing_contact_gear_data_set"/>
+        <componentChange type="ADD" id="meshing_contact_stage_data_set"/>
+        <componentChange type="ADD" id="joint_section"/>
+        <componentChange type="ADD" id="cylindrical_interference_fit"/>
+        <componentChange type="ADD" id="tapered_interference_fit"/>
+        <componentChange type="ADD" id="notch_effect_shaft_hub_connection"/>
+        <componentChange type="ADD" id="fem_data_set"/>
+        <componentChange type="ADD" id="involute_spline_connection"/>
+        <componentChange type="ADD" id="involute_spline_gear_shaft"/>
+        <componentChange type="ADD" id="involute_spline_gear_hub"/>
+        <componentChange type="ADD" id="involute_spline_stage_gear_data"/>
+        <componentChange type="ADD" id="involute_spline_gear_flank"/>
+    </componentChanges>
+    <attributeChanges>
+        <attributeChange type="ADD" id="cross_sectional_shape_circular_ring_inner_diameter_fkm_2012" numericId="16623"/>
+        <attributeChange type="ADD" id="cross_sectional_shape_circular_ring_outer_diameter_fkm_2012" numericId="16624"/>
+        <attributeChange type="ADD" id="cross_sectional_shape_fkm_2012" numericId="16622"/>
+        <attributeChange type="ADD" id="effective_diameter_fkm_2012" numericId="16630"/>
+        <attributeChange type="ADD" id="maximum_nominal_static_normal_stress_due_to_bending_torque_around_v_direction_fkm_2012" numericId="16611"/>
+        <attributeChange type="ADD" id="maximum_nominal_static_normal_stress_due_to_bending_torque_around_w_direction_fkm_2012" numericId="16612"/>
+        <attributeChange type="ADD" id="maximum_nominal_static_normal_stress_due_to_tension_compression_force_in_u_direction_fkm_2012" numericId="16610"/>
+        <attributeChange type="ADD" id="maximum_nominal_static_shear_stress_due_to_shear_force_in_v_direction_fkm_2012" numericId="16613"/>
+        <attributeChange type="ADD" id="maximum_nominal_static_shear_stress_due_to_shear_force_in_w_direction_fkm_2012" numericId="16614"/>
+        <attributeChange type="ADD" id="maximum_nominal_static_shear_stress_due_to_torsion_torque_around_u_direction_fkm_2012" numericId="16615"/>
+        <attributeChange type="ADD" id="nominal_cyclic_global_normal_stress_gradient_fkm_2012" numericId="16633"/>
+        <attributeChange type="ADD" id="nominal_cyclic_global_shear_stress_gradient_fkm_2012" numericId="16843"/>
+        <attributeChange type="ADD" id="cyclic_highly_loaded_area_fkm_2012" numericId="16844"/>
+        <attributeChange type="ADD" id="nominal_cyclic_local_normal_stress_gradient_fkm_2012" numericId="16634"/>
+        <attributeChange type="ADD" id="nominal_cyclic_local_shear_stress_gradient_fkm_2012" numericId="16635"/>
+        <attributeChange type="ADD" id="cyclic_miner_variant_fkm_2012" numericId="16864"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_stress_maxima_due_to_bending_torques_around_v_direction_fkm_2012" numericId="16850"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_stress_maxima_due_to_bending_torques_around_w_direction_fkm_2012" numericId="16851"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_stress_maxima_due_to_tension_compression_forces_in_u_direction_fkm_2012" numericId="16849"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_stress_ratio_due_to_bending_torque_around_v_direction_fkm_2012" numericId="16856"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_stress_ratio_due_to_bending_torque_around_w_direction_fkm_2012" numericId="16857"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_stress_ratio_due_to_tension_compression_forces_in_u_direction_fkm_2012" numericId="16855"/>
+        <attributeChange type="ADD" id="cyclic_number_of_cycles_in_load_spectrum_steps_fkm_2012" numericId="16847"/>
+        <attributeChange type="ADD" id="cyclic_number_of_steps_in_load_spectrum_fkm_2012" numericId="16846"/>
+        <attributeChange type="ADD" id="cyclic_overloading_type_fkm_2012" numericId="16863"/>
+        <attributeChange type="ADD" id="cyclic_regular_inspections_fkm_2012" numericId="16862"/>
+        <attributeChange type="ADD" id="cyclic_required_number_of_cycles_fkm_2012" numericId="16848"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_stress_maxima_due_to_shear_forces_in_v_direction_fkm_2012" numericId="16853"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_stress_maxima_due_to_shear_forces_in_w_direction_fkm_2012" numericId="16852"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_stress_maxima_due_to_torsion_torques_around_u_direction_fkm_2012" numericId="16854"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_stress_ratio_due_to_shear_force_in_v_direction_fkm_2012" numericId="16859"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_stress_ratio_due_to_shear_force_in_w_direction_fkm_2012" numericId="16858"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_stress_ratio_due_to_torsion_torque_around_u_direction_fkm_2012" numericId="16860"/>
+        <attributeChange type="ADD" id="cyclic_use_equivalent_mean_stress_fkm_2012" numericId="16861"/>
+        <attributeChange type="ADD" id="cyclic_use_stielers_support_concept_fkm_2012" numericId="16636"/>
+        <attributeChange type="ADD" id="load_safety_factor_fkm_2012" numericId="16629"/>
+        <attributeChange type="ADD" id="nominal_normal_stress_concentration_factor_due_to_bending_torque_around_v_direction_fkm_2012" numericId="16617"/>
+        <attributeChange type="ADD" id="nominal_normal_stress_concentration_factor_due_to_bending_torque_around_w_direction_fkm_2012" numericId="16618"/>
+        <attributeChange type="ADD" id="nominal_normal_stress_concentration_factor_due_to_tension_compression_force_in_u_direction_fkm_2012" numericId="16616"/>
+        <attributeChange type="ADD" id="nominal_shear_stress_concentration_factor_due_to_shear_force_in_v_direction_fkm_2012" numericId="16619"/>
+        <attributeChange type="ADD" id="nominal_shear_stress_concentration_factor_due_to_shear_force_in_w_direction_fkm_2012" numericId="16620"/>
+        <attributeChange type="ADD" id="nominal_shear_stress_concentration_factor_due_to_torsion_torque_around_u_direction_fkm_2012" numericId="16621"/>
+        <attributeChange type="ADD" id="surface_treatment_factor_fkm_2012" numericId="16845"/>
+        <attributeChange type="ADD" id="temperature_under_static_load_fkm_2012" numericId="16631"/>
+        <attributeChange type="ADD" id="time_of_operation_at_temperature_under_static_load_fkm_2012" numericId="16632"/>
+        <attributeChange type="ADD" id="effective_diameter_norm_yield_strength_fkm_2012" numericId="16892"/>
+        <attributeChange type="ADD" id="effective_diameter_norm_tensile_strength_fkm_2012" numericId="16893"/>
+        <attributeChange type="ADD" id="constant_a_d_of_effective_diameter_norm_tensile_strength_fkm_2012" numericId="16894"/>
+        <attributeChange type="ADD" id="constant_a_d_of_effective_diameter_norm_yield_strength_fkm_2012" numericId="16895"/>
+        <attributeChange type="ADD" id="material_bending_fatigue_strength_fkm_2012" numericId="16896"/>
+        <attributeChange type="ADD" id="material_tensile_fatigue_strength_fkm_2012" numericId="16897"/>
+        <attributeChange type="ADD" id="material_torsion_fatigue_strength_fkm_2012" numericId="16898"/>
+        <attributeChange type="ADD" id="material_constant_a_g_for_stieler_support_concept_fkm_2012" numericId="16956"/>
+        <attributeChange type="ADD" id="material_constant_b_g_for_stieler_support_concept_fkm_2012" numericId="16957"/>
+        <attributeChange type="ADD" id="material_type_fkm_2012" numericId="16292"/>
+        <attributeChange type="ADD" id="material_shear_fatigue_strength_fkm_2012" numericId="16296"/>
+        <attributeChange type="ADD" id="temperature_coefficient_a_tt_for_tensile_strength_fkm_2012" numericId="16297"/>
+        <attributeChange type="ADD" id="temperature_coefficient_a_tt_for_yield_strength_fkm_2012" numericId="16300"/>
+        <attributeChange type="ADD" id="temperature_coefficient_b_tt_for_tensile_strength_fkm_2012" numericId="16298"/>
+        <attributeChange type="ADD" id="temperature_coefficient_b_tt_for_yield_strength_fkm_2012" numericId="16301"/>
+        <attributeChange type="ADD" id="temperature_coefficient_c_tt_for_tensile_strength_fkm_2012" numericId="16299"/>
+        <attributeChange type="ADD" id="temperature_coefficient_c_tt_for_yield_strength_fkm_2012" numericId="16302"/>
+        <attributeChange type="ADD" id="temperature_constant_c_for_tensile_strength_fkm_2012" numericId="16303"/>
+        <attributeChange type="ADD" id="temperature_constant_c_for_yield_strength_fkm_2012" numericId="16304"/>
+        <attributeChange type="ADD" id="is_material_austenitic_steel_fkm_2012" numericId="16972"/>
+        <attributeChange type="ADD" id="is_material_hardable_fkm_2012" numericId="16974"/>
+        <attributeChange type="ADD" id="elongation_at_fracture_fkm_2012" numericId="16293"/>
+        <attributeChange type="ADD" id="is_polished_fkm_2012" numericId="17200"/>
+        <attributeChange type="ADD" id="material_hardening_method_fkm_2012" numericId="17201"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_notch_factor_due_to_bending_torque_around_v_direction_fkm_2012" numericId="17174"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_notch_factor_due_to_bending_torque_around_w_direction_fkm_2012" numericId="17175"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_notch_factor_due_to_tension_compression_force_in_u_direction_fkm_2012" numericId="17176"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_notch_factor_of_probe_due_to_bending_torque_around_v_direction_fkm_2012" numericId="17180"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_notch_factor_of_probe_due_to_bending_torque_around_w_direction_fkm_2012" numericId="17181"/>
+        <attributeChange type="ADD" id="nominal_cyclic_normal_notch_factor_of_probe_due_to_tension_compression_force_in_u_direction_fkm_2012" numericId="17182"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_notch_factor_due_to_shear_force_in_v_direction_fkm_2012" numericId="17177"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_notch_factor_due_to_shear_force_in_w_direction_fkm_2012" numericId="17178"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_notch_factor_due_to_torsion_torque_around_u_direction_fkm_2012" numericId="17179"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_notch_factor_of_probe_due_to_shear_force_in_v_direction_fkm_2012" numericId="17183"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_notch_factor_of_probe_due_to_shear_force_in_w_direction_fkm_2012" numericId="17184"/>
+        <attributeChange type="ADD" id="nominal_cyclic_shear_notch_factor_of_probe_due_to_torsion_torque_around_u_direction_fkm_2012" numericId="17185"/>
+        <attributeChange type="ADD" id="consequence_of_failure_fkm_2012" numericId="17198"/>
+        <attributeChange type="ADD" id="static_occurence_probability_of_stress_combination_fkm_2012" numericId="17203"/>
+        <attributeChange type="ADD" id="partial_cast_safety_consideration_fkm_2012" numericId="17199"/>
+        <attributeChange type="ADD" id="notch_diameter_of_probe_fkm_2012" numericId="17186"/>
+        <attributeChange type="ADD" id="notch_radius_of_probe_fkm_2012" numericId="17187"/>
+        <attributeChange type="ADD" id="fatigue_strength_factor_compression" numericId="16294"/>
+        <attributeChange type="ADD" id="fatigue_strength_factor_shear" numericId="16295"/>
+        <attributeChange type="ADD" id="surface_roughness" numericId="1390"/>
+        <attributeChange type="ADD" id="is_material_austenitic_and_solution_annealed_fkm_2012" numericId="17301"/>
+        <attributeChange type="ADD" id="nominal_static_is_tension_bending_fkm_2012" numericId="17334"/>
+        <attributeChange type="ADD" id="static_is_component_rolled_and_transversal_loaded_fkm_2012" numericId="17335"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_bending_torque_around_v_direction_fkm_2012" numericId="17336"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_bending_torque_around_w_direction_fkm_2012" numericId="17337"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_tension_compression_force_in_u_direction_fkm_2012" numericId="17338"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_shear_force_in_v_direction_fkm_2012" numericId="17339"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_shear_force_in_w_direction_fkm_2012" numericId="17340"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_torsion_torque_around_u_direction_fkm_2012" numericId="17341"/>
+        <attributeChange type="ADD" id="nominal_static_degree_of_utilization_of_all_loads_combined_fkm_2012" numericId="17342"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_bending_torque_around_v_direction_fkm_2012" numericId="17343"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_bending_torque_around_w_direction_fkm_2012" numericId="17344"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_tension_compression_force_in_u_direction_fkm_2012" numericId="17345"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_shear_force_in_v_direction_fkm_2012" numericId="17346"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_shear_force_in_w_direction_fkm_2012" numericId="17347"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_torsion_torque_around_u_direction_fkm_2012" numericId="17348"/>
+        <attributeChange type="ADD" id="nominal_cyclic_degree_of_utilization_of_all_loads_combined_fkm_2012" numericId="17349"/>
+        <attributeChange type="ADD" id="tensile_strength_of_component_fkm_2012" numericId="17350"/>
+        <attributeChange type="ADD" id="yield_strength_of_component_fkm_2012" numericId="17351"/>
+        <attributeChange type="ADD" id="nominal_static_plastic_support_factor_due_to_torsion_torque_around_u_direction_fkm_2012" numericId="17521"/>
+        <attributeChange type="ADD" id="nominal_static_plastic_support_factor_due_to_bending_torque_around_v_direction_fkm_2012" numericId="17522"/>
+        <attributeChange type="ADD" id="nominal_static_plastic_support_factor_due_to_bending_torque_around_w_direction_fkm_2012" numericId="17523"/>
+        <attributeChange type="ADD" id="is_loading_proportional_fkm_2012" numericId="17600"/>
+        <attributeChange type="ADD" id="consideration_of_ep_additives_iso_281_2007" numericId="21030"/>
+        <attributeChange type="ADD" id="shear_stress_tooth_root_without_wear_din_3996_2019" numericId="18309"/>
+        <attributeChange type="ADD" id="safety_factor_root_without_wear_din_3996_2019" numericId="18310"/>
+        <attributeChange type="ADD" id="mean_tooth_root_thickness_without_wear_din_3996_2019" numericId="18311"/>
+        <attributeChange type="ADD" id="flank_surface_ltca" numericId="18312"/>
+        <attributeChange type="ADD" id="speed_factor_pitting_iso_10300_2014" numericId="15355"/>
+        <attributeChange type="ADD" id="roughness_factor_pitting_iso_10300_2014" numericId="15356"/>
+        <attributeChange type="ADD" id="lubricant_factor_pitting_iso_10300_2014" numericId="15357"/>
+        <attributeChange type="ADD" id="size_factor_pitting_iso_10300_2014" numericId="15358"/>
+        <attributeChange type="ADD" id="life_factor_pitting_iso_10300_2014" numericId="15360"/>
+        <attributeChange type="ADD" id="nominal_contact_stress_iso_10300_2014" numericId="15362"/>
+        <attributeChange type="ADD" id="contact_stress_iso_10300_2014" numericId="15363"/>
+        <attributeChange type="ADD" id="allowable_stress_number_for_contact_stress_iso_10300_2014" numericId="15364"/>
+        <attributeChange type="ADD" id="permissible_contact_stress_iso_10300_2014" numericId="15365"/>
+        <attributeChange type="ADD" id="safety_factor_pitting_iso_10300_2014" numericId="15366"/>
+        <attributeChange type="ADD" id="bevel_spiral_angle_factor_tooth_root_iso_10300_2014" numericId="15367"/>
+        <attributeChange type="ADD" id="relativ_surface_factor_tooth_root_iso_10300_2014" numericId="15368"/>
+        <attributeChange type="ADD" id="form_factor_tooth_root_iso_10300_2014" numericId="15369"/>
+        <attributeChange type="ADD" id="stress_correction_factor_tooth_root_iso_10300_2014" numericId="15370"/>
+        <attributeChange type="ADD" id="size_factor_tooth_root_iso_10300_2014" numericId="15372"/>
+        <attributeChange type="ADD" id="life_factor_tooth_root_iso_10300_2014" numericId="15373"/>
+        <attributeChange type="ADD" id="local_tooth_root_stress_iso_10300_2014" numericId="15375"/>
+        <attributeChange type="ADD" id="tooth_root_stress_iso_10300_2014" numericId="15376"/>
+        <attributeChange type="ADD" id="allowable_stress_number_bending_iso_10300_2014" numericId="15377"/>
+        <attributeChange type="ADD" id="permissible_tooth_root_stress_iso_10300_2014" numericId="15378"/>
+        <attributeChange type="ADD" id="safety_factor_tooth_root_iso_10300_2014" numericId="15379"/>
+        <attributeChange type="ADD" id="application_factor_iso_10300_2014" numericId="15728"/>
+        <attributeChange type="ADD" id="dynamic_factor_iso_10300_2014" numericId="15729"/>
+        <attributeChange type="ADD" id="mounting_factor_iso_10300_2014" numericId="15731"/>
+        <attributeChange type="ADD" id="longitudinal_load_factor_pitting_iso_10300_2014" numericId="15736"/>
+        <attributeChange type="ADD" id="transverse_load_factor_pitting_iso_10300_2014" numericId="15737"/>
+        <attributeChange type="ADD" id="elasticity_factor_pitting_iso_10300_2014" numericId="15738"/>
+        <attributeChange type="ADD" id="hypoid_factor_pitting_iso_10300_2014" numericId="15739"/>
+        <attributeChange type="ADD" id="bevel_gear_factor_pitting_iso_10300_2014" numericId="15740"/>
+        <attributeChange type="ADD" id="mid_zone_factor_pitting_iso_10300_2014" numericId="15741"/>
+        <attributeChange type="ADD" id="load_sharing_factor_pitting_iso_10300_2014" numericId="15742"/>
+        <attributeChange type="ADD" id="work_hardening_factor_pitting_iso_10300_2014" numericId="15743"/>
+        <attributeChange type="ADD" id="longitudinal_load_factor_tooth_root_iso_10300_2014" numericId="15744"/>
+        <attributeChange type="ADD" id="transverse_load_factor_tooth_root_iso_10300_2014" numericId="15745"/>
+        <attributeChange type="ADD" id="load_sharing_factor_tooth_root_iso_10300_2014" numericId="15746"/>
+        <attributeChange type="ADD" id="contact_ratio_factor_tooth_root_iso_10300_2014" numericId="15747"/>
+        <attributeChange type="ADD" id="lengthwise_curvature_factor_tooth_root_iso_10300_2014" numericId="18320"/>
+        <attributeChange type="ADD" id="pitting_resistance_geometry_factor_iso_10300_2014" numericId="18321"/>
+        <attributeChange type="ADD" id="contact_stress_adjustment_factor_iso_10300_2014" numericId="18322"/>
+        <attributeChange type="ADD" id="face_width_factor_iso_10300_2014" numericId="18323"/>
+        <attributeChange type="ADD" id="stress_correction_factor_of_test_gear_iso_10300_2014" numericId="18324"/>
+        <attributeChange type="ADD" id="transverse_radius_of_curvature_at_point_a" numericId="18326"/>
+        <attributeChange type="ADD" id="transverse_radius_of_curvature_at_point_b" numericId="18329"/>
+        <attributeChange type="ADD" id="transverse_radius_of_curvature_at_point_c" numericId="18330"/>
+        <attributeChange type="ADD" id="transverse_radius_of_curvature_at_point_d" numericId="18331"/>
+        <attributeChange type="ADD" id="transverse_radius_of_curvature_at_point_e" numericId="18332"/>
+        <attributeChange type="ADD" id="normal_radius_of_curvature_at_point_a" numericId="18333"/>
+        <attributeChange type="ADD" id="normal_radius_of_curvature_at_point_b" numericId="18334"/>
+        <attributeChange type="ADD" id="normal_radius_of_curvature_at_point_c" numericId="18335"/>
+        <attributeChange type="ADD" id="normal_radius_of_curvature_at_point_d" numericId="18336"/>
+        <attributeChange type="ADD" id="normal_radius_of_curvature_at_point_e" numericId="18337"/>
+        <attributeChange type="ADD" id="number_of_keys" numericId="3973"/>
+        <attributeChange type="ADD" id="type_of_feather_key_connection_din_6885" numericId="4022"/>
+        <attributeChange type="ADD" id="shape_of_feather_key_din_6885" numericId="4023"/>
+        <attributeChange type="ADD" id="transverse_radius_of_relative_curvature_at_point_a" numericId="18338"/>
+        <attributeChange type="ADD" id="transverse_radius_of_relative_curvature_at_point_b" numericId="18339"/>
+        <attributeChange type="ADD" id="transverse_radius_of_relative_curvature_at_point_c" numericId="18340"/>
+        <attributeChange type="ADD" id="transverse_radius_of_relative_curvature_at_point_d" numericId="18341"/>
+        <attributeChange type="ADD" id="transverse_radius_of_relative_curvature_at_point_e" numericId="18342"/>
+        <attributeChange type="ADD" id="calculation_method_din_6892_2012" numericId="4020"/>
+        <attributeChange type="ADD" id="normal_radius_of_relative_curvature_at_point_a" numericId="18343"/>
+        <attributeChange type="ADD" id="normal_radius_of_relative_curvature_at_point_b" numericId="18344"/>
+        <attributeChange type="ADD" id="length_of_feather_key" numericId="3995"/>
+        <attributeChange type="ADD" id="normal_radius_of_relative_curvature_at_point_c" numericId="18345"/>
+        <attributeChange type="ADD" id="normal_radius_of_relative_curvature_at_point_d" numericId="18346"/>
+        <attributeChange type="ADD" id="normal_radius_of_relative_curvature_at_point_e" numericId="18347"/>
+        <attributeChange type="ADD" id="supporting_length_of_shaft_keyway" numericId="11109"/>
+        <attributeChange type="ADD" id="supporting_length_of_hub_keyway" numericId="11110"/>
+        <attributeChange type="ADD" id="supporting_length_of_feather_key" numericId="4005"/>
+        <attributeChange type="ADD" id="width_of_feather_key" numericId="3992"/>
+        <attributeChange type="ADD" id="height_of_feather_key" numericId="3993"/>
+        <attributeChange type="ADD" id="depth_of_shaft_keyway" numericId="4011"/>
+        <attributeChange type="ADD" id="depth_of_hub_keyway" numericId="3990"/>
+        <attributeChange type="ADD" id="length_of_key_chamfer" numericId="4948"/>
+        <attributeChange type="ADD" id="edge_radius_or_chamfer_feather_key" numericId="3994"/>
+        <attributeChange type="ADD" id="keyway_base_radius" numericId="4032"/>
+        <attributeChange type="ADD" id="edge_radius_or_chamfer_shaft_keyway" numericId="4010"/>
+        <attributeChange type="ADD" id="edge_radius_or_chamfer_hub_keyway" numericId="3989"/>
+        <attributeChange type="ADD" id="equivalent_outer_diameter_hub_din_6892_2012" numericId="18348"/>
+        <attributeChange type="ADD" id="small_outer_diameter_shouldered_hub_din_6892_2012" numericId="3974"/>
+        <attributeChange type="ADD" id="large_outer_diameter_shouldered_hub_din_6892_2012" numericId="3982"/>
+        <attributeChange type="ADD" id="supporting_width_large_diameter_hub" numericId="3978"/>
+        <attributeChange type="ADD" id="axial_distance_between_load_input_and_output_din_6892_2012" numericId="3975"/>
+        <attributeChange type="ADD" id="application_factor_din_6892_2012" numericId="3970"/>
+        <attributeChange type="ADD" id="nominal_torsional_torque_din_6892_2012" numericId="3991"/>
+        <attributeChange type="ADD" id="equivalent_torsional_torque_din_6892_2012" numericId="8709"/>
+        <attributeChange type="ADD" id="peak_torque_din_6892_2012" numericId="4028"/>
+        <attributeChange type="ADD" id="number_of_load_peaks_din_6892_2012" numericId="3972"/>
+        <attributeChange type="ADD" id="maximum_torsional_torque_reverse_direction_din_6892_2012" numericId="4000"/>
+        <attributeChange type="ADD" id="number_of_load_direction_changes_din_6892_2012" numericId="3971"/>
+        <attributeChange type="ADD" id="material_type_din_6892_2012" numericId="3966"/>
+        <attributeChange type="ADD" id="equivalent_circumferential_force_din_6892_2012" numericId="11449"/>
+        <attributeChange type="ADD" id="maximum_circumferential_force_din_6892_2012" numericId="11450"/>
+        <attributeChange type="ADD" id="load_distribution_factor_din_6892_2012" numericId="11137"/>
+        <attributeChange type="ADD" id="load_bearing_factor_for_equivalent_load_din_6892_2012" numericId="11141"/>
+        <attributeChange type="ADD" id="load_bearing_factor_for_maximum_load_din_6892_2012" numericId="11142"/>
+        <attributeChange type="ADD" id="friction_connection_factor_at_equivalent_load_din_6892_2012" numericId="11139"/>
+        <attributeChange type="ADD" id="friction_connection_factor_at_maximum_load_din_6892_2012" numericId="11140"/>
+        <attributeChange type="ADD" id="local_static_stress_tensor_fkm_2012" numericId="18349"/>
+        <attributeChange type="ADD" id="local_static_limit_load_factor_fkm_2012" numericId="18350"/>
+        <attributeChange type="ADD" id="local_static_limit_load_factor_mode_fkm_2012" numericId="18351"/>
+        <attributeChange type="ADD" id="local_cyclic_stress_gradient_evaluation_points_distance_fkm_2012" numericId="18352"/>
+        <attributeChange type="ADD" id="local_cyclic_load_spectrum_stress_tensor_fkm_2012" numericId="18354"/>
+        <attributeChange type="ADD" id="local_cyclic_stress_ratios_fkm_2012" numericId="18355"/>
+        <attributeChange type="ADD" id="torque_acting_on_shaft_u" numericId="18356"/>
+        <attributeChange type="ADD" id="permissible_stress_within_static_range" numericId="13488"/>
+        <attributeChange type="ADD" id="number_load_cycles_point_between_static_and_limited_life" numericId="13489"/>
+        <attributeChange type="ADD" id="permissible_stress_point_between_static_and_limited_life" numericId="13490"/>
+        <attributeChange type="ADD" id="number_load_cycles_point_within_limited_life" numericId="13491"/>
+        <attributeChange type="ADD" id="permissible_stress_point_within_limited_life" numericId="13492"/>
+        <attributeChange type="ADD" id="number_load_cycles_point_between_limited_life_and_long_life" numericId="13493"/>
+        <attributeChange type="ADD" id="permissible_stress_point_between_limited_life_and_long_life" numericId="13494"/>
+        <attributeChange type="ADD" id="number_load_cycles_point_within_long_life" numericId="13495"/>
+        <attributeChange type="ADD" id="permissible_stress_point_within_long_life" numericId="13496"/>
+        <attributeChange type="ADD" id="inclination_exponent_in_limited_life" numericId="3156"/>
+        <attributeChange type="ADD" id="inclination_exponent_in_long_life" numericId="16598"/>
+        <attributeChange type="ADD" id="probability_of_survival" numericId="3158"/>
+        <attributeChange type="ADD" id="standard_deviation_permissible_stress_point_between_limited_life_and_long_life" numericId="3157"/>
+        <attributeChange type="ADD" id="sn_curve_application" numericId="21031"/>
+        <attributeChange type="ADD" id="extrapolate_slope_long_life_beyond_long_life" numericId="13478"/>
+        <attributeChange type="ADD" id="number_load_cycles_point_within_static_range" numericId="21032"/>
+        <attributeChange type="ADD" id="point_coordinates" numericId="21033"/>
+        <attributeChange type="ADD" id="point_ids" numericId="21034"/>
+        <attributeChange type="ADD" id="element_structure" numericId="21035"/>
+        <attributeChange type="ADD" id="element_ids" numericId="21037"/>
+        <attributeChange type="ADD" id="element_types" numericId="21036"/>
+        <attributeChange type="ADD" id="set_ids" numericId="21038"/>
+        <attributeChange type="ADD" id="kind_of_point_list" numericId="21042"/>
+        <attributeChange type="ADD" id="local_tooth_root_stress" numericId="14103"/>
+        <attributeChange type="ADD" id="local_safety_factor_bending_stress_fva_411" numericId="14149"/>
+        <attributeChange type="ADD" id="local_safety_factor_pitting_fva_411" numericId="14106"/>
+        <attributeChange type="ADD" id="local_safety_factor_micro_pitting_fva_516" numericId="11797"/>
+        <attributeChange type="ADD" id="local_sum_of_damage_pitting_fva_411" numericId="11834"/>
+        <attributeChange type="ADD" id="topographical_deviation_normals" numericId="21039"/>
+        <attributeChange type="ADD" id="local_safety_factor_scuffing_fva_519" numericId="14102"/>
+        <attributeChange type="ADD" id="local_hertzian_contact_stress" numericId="10533"/>
+        <attributeChange type="ADD" id="local_normal_line_load" numericId="10534"/>
+        <attributeChange type="ADD" id="local_coefficient_of_friction" numericId="14105"/>
+        <attributeChange type="ADD" id="local_contact_distance" numericId="14111"/>
+        <attributeChange type="ADD" id="local_flash_temperature_blok_1937" numericId="14119"/>
+        <attributeChange type="ADD" id="local_relative_lubricant_filmthickness" numericId="15016"/>
+        <attributeChange type="ADD" id="local_load_free_backlash" numericId="11780"/>
+        <attributeChange type="ADD" id="local_backlash_under_load" numericId="21040"/>
+        <attributeChange type="ADD" id="ease_off" numericId="21041"/>
+        <attributeChange type="ADD" id="local_sliding_velocity" numericId="14112"/>
+        <attributeChange type="ADD" id="topographical_deviation_amounts_point_list" numericId="21043"/>
+        <attributeChange type="ADD" id="inner_diameter_shaft_din_7190_2017" numericId="18461"/>
+        <attributeChange type="ADD" id="joint_diameter_din_7190_2017" numericId="18462"/>
+        <attributeChange type="ADD" id="outer_diameter_hub_din_7190_2017" numericId="1686"/>
+        <attributeChange type="ADD" id="length_of_joint_section_din_7190_2017" numericId="1689"/>
+        <attributeChange type="ADD" id="notch_calculation_position" numericId="16305"/>
+        <attributeChange type="ADD" id="local_cyclic_stress_tensor_on_component_surface_for_stress_gradient_fkm_2012" numericId="18471"/>
+        <attributeChange type="ADD" id="local_cyclic_stress_tensor_inside_component_for_stress_gradient_fkm_2012" numericId="18472"/>
+        <attributeChange type="ADD" id="maximum_actual_reference_tooth_thickness_din_5480_2006" numericId="17598"/>
+        <attributeChange type="ADD" id="maximum_actual_space_width_din_5480_2006" numericId="17594"/>
+        <attributeChange type="ADD" id="maximum_effective_tooth_thickness_din_5480_2006" numericId="17597"/>
+        <attributeChange type="ADD" id="maximum_root_circle_diameter_din_5480_2006" numericId="17636"/>
+        <attributeChange type="ADD" id="maximum_tip_circle_diameter_din_5480_2006" numericId="17632"/>
+        <attributeChange type="ADD" id="maximum_tip_clearance_din_5480_2006" numericId="17642"/>
+        <attributeChange type="ADD" id="minimum_actual_reference_space_width_din_5480_2006" numericId="17595"/>
+        <attributeChange type="ADD" id="minimum_actual_tooth_thickness_din_5480_2006" numericId="17599"/>
+        <attributeChange type="ADD" id="minimum_effective_space_width_din_5480_2006" numericId="17596"/>
+        <attributeChange type="ADD" id="minimum_root_circle_diameter_din_5480_2006" numericId="17635"/>
+        <attributeChange type="ADD" id="minimum_tip_circle_diameter_din_5480_2006" numericId="17631"/>
+        <attributeChange type="ADD" id="minimum_tip_clearance_din_5480_2006" numericId="17641"/>
+        <attributeChange type="ADD" id="reference_diameter_din_5480_2006" numericId="17404"/>
+        <attributeChange type="ADD" id="tolerance_and_deviation_series_din_5480_2006" numericId="17359"/>
+        <attributeChange type="ADD" id="tolerance_field_tip_diameter_din_5480_2006" numericId="17418"/>
+        <attributeChange type="ADD" id="tolerance_field_root_diameter_din_5480_2006" numericId="17419"/>
+        <attributeChange type="ADD" id="total_pitch_deviation_din_5480_2006" numericId="17546"/>
+        <attributeChange type="ADD" id="normal_space_width_din_5480_2006" numericId="17640"/>
+        <attributeChange type="ADD" id="utilized_addendum_reference_profile" numericId="18577"/>
+        <attributeChange type="ADD" id="utilized_addendum_coefficient_reference_profile" numericId="3054"/>
+        <attributeChange type="ADD" id="runout_tolerance" numericId="16725"/>
+        <attributeChange type="ADD" id="permissible_equivalent_surface_pressure_din_6892_2012" numericId="11124"/>
+        <attributeChange type="ADD" id="permissible_equivalent_surface_pressure_key_din_6892_2012" numericId="11125"/>
+        <attributeChange type="ADD" id="permissible_equivalent_surface_pressure_shaft_din_6892_2012" numericId="11123"/>
+        <attributeChange type="ADD" id="permissible_maximum_surface_pressure_hub_din_6892_2012" numericId="11127"/>
+        <attributeChange type="ADD" id="permissible_maximum_surface_pressure_key_din_6892_2012" numericId="11128"/>
+        <attributeChange type="ADD" id="permissible_maximum_surface_pressure_shaft_din_6892_2012" numericId="11126"/>
+        <attributeChange type="ADD" id="equivalent_surface_pressure_hub_din_6892_2012" numericId="11118"/>
+        <attributeChange type="ADD" id="equivalent_surface_pressure_key_din_6892_2012" numericId="11119"/>
+        <attributeChange type="ADD" id="equivalent_surface_pressure_shaft_din6892_2012" numericId="11117"/>
+        <attributeChange type="ADD" id="maximum_surface_pressure_hub_din_6892_2012" numericId="11121"/>
+        <attributeChange type="ADD" id="maximum_surface_pressure_key_din_6892_2012" numericId="11122"/>
+        <attributeChange type="ADD" id="maximum_surface_pressure_shaft_din_6892_2012" numericId="11120"/>
+        <attributeChange type="ADD" id="hub_safety_plastic_deformation_equivalent_torque_din_6892_2012" numericId="8712"/>
+        <attributeChange type="ADD" id="hub_safety_plastic_deformation_maximum_torque_din_6892_2012" numericId="8715"/>
+        <attributeChange type="ADD" id="key_safety_plastic_deformation_equivalent_torque_din_6892_2012" numericId="8713"/>
+        <attributeChange type="ADD" id="key_safety_plastic_deformation_maximum_torque_din_6892_2012" numericId="8716"/>
+        <attributeChange type="ADD" id="shaft_safety_plastic_deformation_equivalent_torque_din_6892_2012" numericId="8711"/>
+        <attributeChange type="ADD" id="shaft_safety_plastic_deformation_maximum_torque_din_6892_2012" numericId="8714"/>
+        <attributeChange type="ADD" id="safety_against_beginning_plasticity_hub_din_7190_2017" numericId="6484"/>
+        <attributeChange type="ADD" id="safety_against_beginning_plasticity_hub_mises_din_7190_2017" numericId="6485"/>
+        <attributeChange type="ADD" id="safety_against_beginning_plasticity_shaft_din_7190_2017" numericId="6410"/>
+        <attributeChange type="ADD" id="safety_against_beginning_plasticity_shaft_mises_din_7190_2017" numericId="6411"/>
+        <attributeChange type="ADD" id="safety_against_full_plasticity_hub_din_7190_2017" numericId="6486"/>
+        <attributeChange type="ADD" id="safety_against_full_plasticity_shaft_din_7190_2017" numericId="6412"/>
+        <attributeChange type="ADD" id="safety_against_sliding_din_7190_2017" numericId="6487"/>
+        <attributeChange type="ADD" id="transmittable_axial_force_din_7190_2017" numericId="6451"/>
+        <attributeChange type="ADD" id="transmittable_torque_din_7190_2017" numericId="6465"/>
+        <attributeChange type="ADD" id="joint_section_pressure_din_7190_2017" numericId="6466"/>
+        <attributeChange type="ADD" id="interference" numericId="16912"/>
+        <attributeChange type="ADD" id="roughness_depth_joining_surface_inner_part" numericId="1703"/>
+        <attributeChange type="ADD" id="roughness_depth_joining_surface_outer_part" numericId="1704"/>
+        <attributeChange type="ADD" id="smoothing_factor_din_7190_2017" numericId="1725"/>
+        <attributeChange type="ADD" id="coefficient_adhesion_slipping_force_circumferential_direction" numericId="1718"/>
+        <attributeChange type="ADD" id="coefficient_adhesion_slipping_force_longitudinal_direction" numericId="1719"/>
+        <attributeChange type="ADD" id="consider_operating_temperature_din_7190_2017" numericId="1841"/>
+        <attributeChange type="ADD" id="consider_centrifugal_force_din_7190_2017" numericId="11349"/>
+        <attributeChange type="ADD" id="fitting_distance_din_7190_2017" numericId="1919"/>
+        <attributeChange type="ADD" id="utilization_of_yield_strength_din_7190_2017" numericId="1917"/>
+        <attributeChange type="ADD" id="cone_ratio_tapered_interference_fit" numericId="1922"/>
+        <attributeChange type="ADD" id="cone_angle_error_tapered_interference_fit" numericId="1923"/>
+        <attributeChange type="ADD" id="maximum_cone_diameter_joint_tapered_interference_fit" numericId="1921"/>
+        <attributeChange type="ADD" id="surface_treatment_category_din_743_2012" numericId="5753"/>
+        <attributeChange type="ADD" id="material_type_din_743_2012" numericId="2911"/>
+        <attributeChange type="ADD" id="type_of_centering_din_5480_2006" numericId="17081"/>
+        <attributeChange type="ADD" id="curvature_factor_iso_10300_2021" numericId="21044"/>
+        <attributeChange type="ADD" id="load_sharing_factor_iso_10300_2021" numericId="21045"/>
+        <attributeChange type="ADD" id="load_dependent_power_losses_iso_10300_2021" numericId="21046"/>
+        <attributeChange type="ADD" id="lubrication_factor_iso_10300_2021" numericId="21047"/>
+        <attributeChange type="ADD" id="lubricant_factor_iso_10300_2021" numericId="21048"/>
+        <attributeChange type="ADD" id="running_in_factor_iso_10300_2021" numericId="21049"/>
+        <attributeChange type="ADD" id="driving_direction_factor_iso_10300_2021" numericId="21050"/>
+        <attributeChange type="ADD" id="relative_material_structure_factor_iso_10300_2021" numericId="21051"/>
+        <attributeChange type="ADD" id="temperature_factor_iso_10300_2021" numericId="21052"/>
+        <attributeChange type="ADD" id="tip_relief_factor_iso_10300_2021" numericId="21053"/>
+        <attributeChange type="ADD" id="local_safety_factor_scuffing_iso_10300_2021" numericId="21054"/>
+        <attributeChange type="ADD" id="minimum_safety_factor_scuffing_iso_10300_2021" numericId="21055"/>
+        <attributeChange type="ADD" id="sliding_velocity_iso_10300_2021" numericId="21056"/>
+        <attributeChange type="ADD" id="sliding_velocity_tooth_lengthwise_direction_iso_10300_2021" numericId="21057"/>
+        <attributeChange type="ADD" id="sliding_velocity_profile_direction_iso_10300_2021" numericId="21058"/>
+        <attributeChange type="ADD" id="sum_of_velocities_iso_10300_2021" numericId="21059"/>
+        <attributeChange type="ADD" id="sum_of_velocities_profile_direction_iso_10300_2021" numericId="21060"/>
+        <attributeChange type="ADD" id="sum_of_velocities_lengthwise_direction_iso_10300_2021" numericId="21061"/>
+        <attributeChange type="ADD" id="sum_of_velocities_vertical_to_contact_line_iso_10300_2021" numericId="21062"/>
+        <attributeChange type="ADD" id="surface_velocity_vertical_to_contact_line_iso_10300_2021" numericId="21063"/>
+        <attributeChange type="ADD" id="local_surface_velocity_profile_direction_iso_10300_2021" numericId="21064"/>
+        <attributeChange type="ADD" id="surface_velocity_lengthwise_direction_iso_10300_2021" numericId="21065"/>
+        <attributeChange type="ADD" id="local_surface_velocity_iso_10300_2021" numericId="21066"/>
+        <attributeChange type="ADD" id="local_contact_temperature_iso_10300_2021" numericId="21067"/>
+        <attributeChange type="ADD" id="flash_temperature_iso_10300_2021" numericId="21068"/>
+        <attributeChange type="ADD" id="bulk_temperature_iso_10300_2021" numericId="21069"/>
+        <attributeChange type="ADD" id="limit_temperature_standard_scuffing_test_iso_10300_2021" numericId="21070"/>
+        <attributeChange type="ADD" id="permissible_scuffing_temperature_iso_10300_2021" numericId="21071"/>
+        <attributeChange type="ADD" id="direction_of_rotation_factor_iso_10300_2021" numericId="21072"/>
+        <attributeChange type="ADD" id="contact_stress_iso_10300_2021" numericId="21073"/>
+        <attributeChange type="ADD" id="modified_contact_stress_iso_10300_2021" numericId="21074"/>
+        <attributeChange type="ADD" id="contact_exposure_time_iso_10300_2021" numericId="21075"/>
+        <attributeChange type="ADD" id="minimum_safety_factor_bending_stress_iso_10300_2014" numericId="21076"/>
+        <attributeChange type="ADD" id="minimum_safety_factor_contact_stress_iso_10300_2014" numericId="21077"/>
+        <attributeChange type="ADD" id="tooth_form_factor_iso_10300_2014" numericId="21078"/>
+        <attributeChange type="ADD" id="stress_concentration_and_correction_factor_iso_10300_2014" numericId="21079"/>
+        <attributeChange type="ADD" id="inertia_factor_bending_iso_10300_2014" numericId="21080"/>
+        <attributeChange type="ADD" id="root_stress_adjustment_factor_iso_10300_2014" numericId="21081"/>
+        <attributeChange type="ADD" id="bending_strength_geometry_factor_iso_10300_2014" numericId="21082"/>
+        <attributeChange type="ADD" id="centre_distance_virtual_cylindrical_gear_iso_10300_2014" numericId="21083"/>
+        <attributeChange type="ADD" id="effective_face_width_iso_10300_2014" numericId="21084"/>
+        <attributeChange type="ADD" id="face_width_virtual_cylindrical_gear_iso_10300_2014" numericId="21085"/>
+        <attributeChange type="ADD" id="effective_face_width_virtual_cylindrical_gear_iso_10300_2014" numericId="21086"/>
+        <attributeChange type="ADD" id="reference_diameter_virtual_cylindrical_gear_iso_10300_2014" numericId="21087"/>
+        <attributeChange type="ADD" id="tip_diameter_virtual_cylindrical_gear_iso_10300_2014" numericId="21088"/>
+        <attributeChange type="ADD" id="tip_diameter_normal_section_virtual_cylindrical_gear_iso_10300_2014" numericId="21089"/>
+        <attributeChange type="ADD" id="base_diameter_virtual_cylindrical_gear_iso_10300_2014" numericId="21090"/>
+        <attributeChange type="ADD" id="base_diameter_normal_section_virtual_cylindrical_gear_iso_10300_2014" numericId="21091"/>
+        <attributeChange type="ADD" id="root_diameter_virtual_cylindrical_gear_iso_10300_2014" numericId="21092"/>
+        <attributeChange type="ADD" id="reference_diameter_normal_section_virtual_cylindrical_gear_iso_10300_2014" numericId="21093"/>
+        <attributeChange type="ADD" id="exponent_distribution_load_peaks_along_lines_of_contact_iso_10300_2014" numericId="21094"/>
+        <attributeChange type="ADD" id="distance_centre_zone_of_action_to_contact_line_iso_10300_2014" numericId="21095"/>
+        <attributeChange type="ADD" id="maximum_distance_middle_contact_line_iso_10300_2014" numericId="21096"/>
+        <attributeChange type="ADD" id="maximum_distance_middle_contact_line_right_side_iso_10300_2014" numericId="21097"/>
+        <attributeChange type="ADD" id="maximum_distance_middle_contact_line_left_side_iso_10300_2014" numericId="21098"/>
+        <attributeChange type="ADD" id="local_cyclic_safety_factor_of_all_loads_combined_fkm_2012" numericId="18692"/>
+        <attributeChange type="ADD" id="local_cyclic_safety_factor_in_third_principle_stress_direction_fkm_2012" numericId="18691"/>
+        <attributeChange type="ADD" id="local_cyclic_safety_factor_in_second_principle_stress_direction_fkm_2012" numericId="18690"/>
+        <attributeChange type="ADD" id="local_cyclic_safety_factor_in_first_principle_stress_direction_fkm_2012" numericId="18689"/>
+        <attributeChange type="ADD" id="local_static_safety_factor_of_hydrostatic_stress_fkm_2012" numericId="18688"/>
+        <attributeChange type="ADD" id="local_static_safety_factor_of_all_loads_combined_fkm_2012" numericId="18687"/>
+        <attributeChange type="ADD" id="static_is_cast_material_and_bending_loaded_fkm_2012" numericId="18693"/>
+        <attributeChange type="ADD" id="coefficient_adhesion_during_joining_longitudinal_direction" numericId="1925"/>
+        <attributeChange type="ADD" id="joining_clearance_din_7190_2017" numericId="1709"/>
+        <attributeChange type="ADD" id="permissible_joining_temperature_hub_din_7190_2017" numericId="5267"/>
+        <attributeChange type="ADD" id="width_of_hub_din_6892_2012" numericId="3980"/>
+        <attributeChange type="ADD" id="width_small_outer_diameter_shouldered_hub_din_6892_2012" numericId="3976"/>
+        <attributeChange type="ADD" id="width_large_outer_diameter_shouldered_hub_din_6892_2012" numericId="3977"/>
+        <attributeChange type="ADD" id="beginning_of_feather_key_supporting_length" numericId="17759"/>
+        <attributeChange type="ADD" id="local_static_degree_of_utilization_of_all_loads_combined_fkm_2012" numericId="18694"/>
+        <attributeChange type="ADD" id="local_static_degree_of_utilization_of_hydrostatic_stress_fkm_2012" numericId="18695"/>
+        <attributeChange type="ADD" id="local_cyclic_degree_of_utilization_in_first_principle_stress_direction_fkm_2012" numericId="18696"/>
+        <attributeChange type="ADD" id="local_cyclic_degree_of_utilization_in_second_principle_stress_direction_fkm_2012" numericId="18697"/>
+        <attributeChange type="ADD" id="local_cyclic_degree_of_utilization_in_third_principle_stress_direction_fkm_2012" numericId="18698"/>
+        <attributeChange type="ADD" id="local_cyclic_degree_of_utilization_of_all_loads_combined_fkm_2012" numericId="18699"/>
+        <attributeChange type="EDIT" id="shaft_angle" numericId="182">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="rotating_angle_around_pos_u_axis" numericId="183">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="generated_pressure_angle_drive" numericId="184">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="generated_pressure_angle_coast" numericId="185">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="mean_spiral_angle" numericId="345">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pitch_angle" numericId="351">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="face_angle" numericId="352">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_angle" numericId="353">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="roller_angle" numericId="468">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pressure_angle" numericId="489">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+                <changedValue key="name" lang="en" oldValue="Contact angle" newValue="Pressure angle"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(-180;180)"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_misalignment_around_v_axis" numericId="12499">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_misalignment_around_w_axis" numericId="12500">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="u_coordinate_on_shaft_inner_side" numericId="545">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="helix_angle_reference_diameter" numericId="796">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="rotating_angle_around_neg_u_axis" numericId="997">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="u_coordinate_on_shaft_outer_side" numericId="2369">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_expansion_coefficient_plus" numericId="2913">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_expansion_coefficient_minus" numericId="2914">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="viscosity_at_40_degree_celsius" numericId="3023">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="ν_40"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="viscosity_at_100_degree_celsius" numericId="3024">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="ν_100"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="protuberance_angle" numericId="3065">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="chamfer_angle" numericId="3070">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_viscosity" numericId="9217">
+            <changedValues>
+                <changedValue key="symbol" oldValue="" newValue="ν"/>
+                <changedValue key="name" lang="de" oldValue="Betriebsviskosität" newValue="Kinematische Viskosität des Schmierstoffs bei Betriebstemperatur"/>
+                <changedValue key="name" lang="en" oldValue="Operating viscosity" newValue="Kinematic viscosity of the lubricant at operating temperature"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_design_pressure_angle_drive" numericId="9242">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_design_pressure_angle_coast" numericId="9243">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="effective_pressure_angle_drive" numericId="9244">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="effective_pressure_angle_coast" numericId="9245">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_inner_side_u" numericId="10190">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_inner_side_v" numericId="10408">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_inner_side_w" numericId="10409">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_outer_side_u" numericId="10191">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_outer_side_v" numericId="14010">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_outer_side_w" numericId="10411">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="torsion_u" numericId="10212">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="load_distribution_along_face_width" numericId="5914">
+            <changedValues>
+                <changedValue key="unit" oldValue="N" newValue="N / mm"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="force_acting_on_shaft_u" numericId="10249">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="force_acting_on_shaft_v" numericId="14000">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="force_acting_on_shaft_w" numericId="14001">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="torque_acting_on_shaft_v" numericId="14002">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="torque_acting_on_shaft_w" numericId="14003">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_v" numericId="10208">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tilting_w" numericId="10209">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="deviation_of_shaft_angle" numericId="10442">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_pressure_angle_in_the_transverse_section" numericId="4195">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pressure_angle_in_the_transverse_section" numericId="4194">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="helix_angle_base_circle" numericId="5305">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="load_angle_at_tip" numericId="4284">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="mesh_stiffness_for_load_distribution_along_face_width" numericId="14038">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="total_contact_ratio" numericId="992">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_helix_angle_agma_925_a03" numericId="12900">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_pressure_angle_in_the_normal_section" numericId="12901">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angular_position_around_u" numericId="9274">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_depth" numericId="9295">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_datum_diameter" numericId="9296">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_datum_length" numericId="9297">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_evaluation_reference_length" numericId="9299">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="specify_tangential_transition" numericId="14514">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Tangentialen Übergang vorgeben" newValue="Tangentialen Übergangsbereich vorgeben"/>
+                <changedValue key="name" lang="en" oldValue="Specify tangential transition" newValue="Specify tangential transition area"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_diameter_where_tangential_transition_starts" numericId="14515">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang beginnt" newValue="Durchmesser an dem der tangentiale Übergangsbereich einer linearen Kopfrücknahme beginnt"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition starts" newValue="Diameter where tangential transition area of linear tip relief starts"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_diameter_where_tangential_transition_ends" numericId="14516">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang endet" newValue="Durchmesser an dem der tangentiale Übergangsberich einer linearen Kopfrücknahme endet"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition ends" newValue="Diameter where tangential transition area of linear tip relief ends"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_length_of_tangential_transition_start" numericId="14517">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen  Übergang" newValue="Länge des Beginns des tangentialen Übergangsbereich der linearen Kopfrücknahme"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition start" newValue="Length of tangential transition area start of linear tip relief"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_length_of_tangential_transition_end" numericId="14518">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergang" newValue="Länge des Endes des tangentialen Übergangsbereich der linearen Kopfrücknahme"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition end" newValue="Length of tangential transition area end of linear tip relief"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_depth" numericId="14519">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_datum_diameter" numericId="14520">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_datum_length" numericId="14521">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_evaluation_reference_length" numericId="14523">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_diameter_where_tangential_transition_starts" numericId="14524">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang beginnt" newValue="Durchmesser an dem der tangentiale Übergangsbereich beginnt"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition starts" newValue="Diameter where tangential transition area starts"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_diameter_where_tangential_transition_ends" numericId="14525">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang endet" newValue="Durchmesser an dem der tangentiale Übergangsbereich endet"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition ends" newValue="Diameter where tangential transition area ends"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_length_of_tangential_transition_start" numericId="14526">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen  Übergang" newValue="Länge des Beginns des tangentialen  Übergangsbereich"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition start" newValue="Length of tangential transition area start"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_relief_length_of_tangential_transition_end" numericId="14527">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergang" newValue="Länge des Endes des tangentialen Übergangsbereich"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition end" newValue="Length of tangential transition area end"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_length_datum_face" numericId="14554">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_depth_datum_face" numericId="14555">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_evaluation_reference_datum_face" numericId="14556">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_datum_face_length_of_tangential_transition_start" numericId="14557">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen Übergangs" newValue="Länge des Beginns des tangentialen Übergangsbereich"/>
+                <changedValue key="name" lang="en" oldValue="Length of start of tangential transition" newValue="Length of start of tangential transition area"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_datum_face_length_of_tangential_transition_end" numericId="14558">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergangs" newValue="Länge des Endes des tangentialen Übergangsbereich"/>
+                <changedValue key="name" lang="en" oldValue="Length of end of tangential transition" newValue="Length of end of tangential transition area"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_length_non_datum_face" numericId="14559">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_depth_non_datum_face" numericId="14560">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_evaluation_reference_non_datum_face" numericId="14561">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_non_datum_face_length_of_tangential_transition_start" numericId="14562">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen Übergangs" newValue="Länge des Beginns des tangentialen Übergangsbereich"/>
+                <changedValue key="name" lang="en" oldValue="Length of start of tangential transition" newValue="Length of start of tangential transition area"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="end_relief_non_datum_face_length_of_tangential_transition_end" numericId="14563">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergangs" newValue="Länge des Endes des tangentialen Übergangsbereich"/>
+                <changedValue key="name" lang="en" oldValue="Length of end of tangential transition" newValue="Length of end of tangential transition area"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pressure_angle_worm_gear" numericId="1797">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="lead_angle_worm_gear" numericId="1798">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="strut_circumferential_angle" numericId="14576">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="mean_tooth_root_thickness_din_3996_2019" numericId="16546">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="mean_tooth_root_thickness_din_3996_2019" newValue="mean_tooth_root_thickness_with_wear_din_3996_2019"/>
+                <changedValue key="symbol" oldValue="s_f" newValue="s_f,v"/>
+                <changedValue key="name" lang="de" oldValue="mittlere Zahnfußdickensehne (DIN 3996 2019)" newValue="mittlere Zahnfußdickensehne (DIN 3996 2019) mit Verschleiß"/>
+                <changedValue key="name" lang="en" oldValue="Mean tooth root thickness (DIN 3996 2019)" newValue="Mean tooth root thickness (DIN 3996 2019) with wear"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="shear_stress_tooth_root_din_3996_2019" numericId="16552">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="shear_stress_tooth_root_din_3996_2019" newValue="shear_stress_tooth_root_with_wear_din_3996_2019"/>
+                <changedValue key="symbol" oldValue="τ_F" newValue="τ_F,v"/>
+                <changedValue key="name" lang="de" oldValue="Schub-Nennspannung am Zahnfuß (DIN 3996 2019)" newValue="Schub-Nennspannung am Zahnfuß (DIN 3996 2019) mit Verschleiß"/>
+                <changedValue key="name" lang="en" oldValue="Shear stress at tooth root (DIN 3996 2019)" newValue="Shear stress at tooth root (DIN 3996 2019) with wear"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="safety_factor_root_din_3996_2019" numericId="16553">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="safety_factor_root_din_3996_2019" newValue="safety_factor_root_with_wear_din_3996_2019"/>
+                <changedValue key="symbol" oldValue="S_F" newValue="S_F,v"/>
+                <changedValue key="name" lang="de" oldValue="Zahnbruchsicherheit (DIN 3996 2019)" newValue="Zahnbruchsicherheit (DIN 3996 2019) mit Verschleiß"/>
+                <changedValue key="name" lang="en" oldValue="Safety factor root (DIN 3996 2019)" newValue="Safety factor root (DIN 3996 2019) with wear"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_tip_relief_diameter_where_tangential_transition_starts" numericId="14595">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang  der dreiecksförmigen Kopfrücknahme beginnt" newValue="Durchmesser an dem der tangentiale Übergangsbereich der dreiecksförmigen Kopfrücknahme beginnt"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition of triangular tip relief starts" newValue="Diameter where tangential transition area of triangular tip relief starts"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_tip_relief_diameter_where_tangential_transition_ends" numericId="14596">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang der dreiecksförmigen Kopfrücknahme endet" newValue="Durchmesser an dem der tangentiale Übergangsbereich der dreiecksförmigen Kopfrücknahme endet"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition of triangular tip relief ends" newValue="Diameter where tangential transition area of triangular tip relief ends"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_tip_relief_length_of_tangential_transition_start" numericId="14597">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen Übergang der dreiecksförmigen Kopfrücknahme" newValue="Länge des Beginns des tangentialen Übergangsbereich der dreiecksförmigen Kopfrücknahme"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition of triangular tip relief start" newValue="Length of tangential transition area of triangular tip relief start"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_tip_relief_length_of_tangential_transition_end" numericId="14598">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergang der dreiecksförmigen Kopfrücknahme" newValue="Länge des Endes des tangentialen Übergangsbereich der dreiecksförmigen Kopfrücknahme"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition of triangular tip relief end" newValue="Length of tangential transition area of triangular tip relief end"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_root_relief_diameter_where_tangential_transition_starts" numericId="21005">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang der dreiecksförmigen Fußrücknahme beginnt" newValue="Durchmesser an dem der tangentiale Übergangsbereich der dreiecksförmigen Fußrücknahme beginnt"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition of triangular root relief starts" newValue="Diameter where tangential transition area of triangular root relief starts"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_root_relief_diameter_where_tangential_transition_ends" numericId="21006">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang der dreiecksförmigen Fußrücknahme endez" newValue="Durchmesser an dem der tangentiale Übergangsbereich der dreiecksförmigen Fußrücknahme endez"/>
+                <changedValue key="name" lang="en" oldValue="Diameter where tangential transition of triangular root relief ends" newValue="Diameter where tangential transition area of triangular root relief ends"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_root_relief_length_of_tangential_transition_start" numericId="21007">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen  Übergang der dreieckförmigen Fußrücknahme" newValue="Länge des Beginns des tangentialen Übergangsbereich der dreieckförmigen Fußrücknahme"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition of triangular root relief start" newValue="Length of tangential transition area of triangular root relief start"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="triangular_root_relief_length_of_tangential_transition_end" numericId="21008">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergang der dreieckförmigen Fußrücknahme" newValue="Länge des Endes des tangentialen Übergangsbereich der dreieckförmigen Fußrücknahme"/>
+                <changedValue key="name" lang="en" oldValue="Length of tangential transition of triangular  root relief end" newValue="Length of tangential transition area of triangular root relief end"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="operating_pressure_angle" numericId="21021">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="intersection_angle_offset" numericId="2807">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="inclination_angle_offset" numericId="2808">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="chamfer_angle_worm_wheel" numericId="2798">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="pressure_angle_correction" numericId="3103">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="lyra_angle" numericId="3114">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="cutter_tilt" numericId="17800">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="cutter_swivel" numericId="17801">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="machine_root_angle" numericId="17804">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="center_roll_position" numericId="17807">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="angle_of_blade_sequence" numericId="17818">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="side_rake_angle" numericId="17820">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="rakeface_inclination_angle" numericId="17821">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="blade_pressure_angle" numericId="17825">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="protuberance_angle_bevel_gear_tool" numericId="17830">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tip_relief_angle_bevel_gear_tool" numericId="17834">
+            <changedValues>
+                <changedValue key="unit" oldValue="°" newValue="deg"/>
+            </changedValues>
+        </attributeChange>
+    </attributeChanges>
+    <mappingChanges>
+        <mappingChange type="ADD" componentId="bevel_stage" attributeId="temperature_lubricant" attributeNumericId="6"/>
+        <mappingChange type="ADD" componentId="worm_stage" attributeId="temperature_lubricant" attributeNumericId="6"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="number_of_teeth" attributeNumericId="347"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="u_coordinate_on_shaft" attributeNumericId="348"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="u_coordinate_on_shaft" attributeNumericId="348"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="casing_bore_tolerance_class" attributeNumericId="463"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="shaft_tolerance_class" attributeNumericId="478"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="bending_stiffness" attributeNumericId="488"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="bending_stiffness" attributeNumericId="488"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="bending_stiffness" attributeNumericId="488"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="radial_stiffness" attributeNumericId="508"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="radial_stiffness" attributeNumericId="508"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="radial_stiffness" attributeNumericId="508"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="joint_section" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="diametral_measurement" attributeNumericId="738"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="diametral_measurement" attributeNumericId="738"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="chamfer_at_tooth_end" attributeNumericId="742"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="chamfer_at_tooth_end" attributeNumericId="742"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="height_over_chordal_tooth_thickness" attributeNumericId="752"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="height_over_chordal_tooth_thickness" attributeNumericId="752"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="addendum_coefficient_basic_profile" attributeNumericId="755"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="tip_diameter" attributeNumericId="756"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="tip_diameter" attributeNumericId="756"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="diameter_of_measuring_ball_or_pin" attributeNumericId="771"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="diameter_of_measuring_ball_or_pin" attributeNumericId="771"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="number_of_teeth_for_span_measurement" attributeNumericId="772"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="number_of_teeth_for_span_measurement" attributeNumericId="772"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="upper_backlash_allowance_referenced_to_span" attributeNumericId="776"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="upper_backlash_allowance_referenced_to_span" attributeNumericId="776"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="lower_backlash_allowance_referenced_to_span" attributeNumericId="777"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="lower_backlash_allowance_referenced_to_span" attributeNumericId="777"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="normal_module" attributeNumericId="781"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="addendum_modification_coefficient" attributeNumericId="784"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="tooth_tip_chamfer" attributeNumericId="785"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="helix_angle_reference_diameter" attributeNumericId="796"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="helix_angle_reference_diameter" attributeNumericId="796"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="face_width" attributeNumericId="808"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="face_width" attributeNumericId="808"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="normal_chordal_tooth_thickness" attributeNumericId="809"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="normal_chordal_tooth_thickness" attributeNumericId="809"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="span_measurement" attributeNumericId="810"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="span_measurement" attributeNumericId="810"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="related_tip_thickness" attributeNumericId="971"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="related_tip_thickness" attributeNumericId="971"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="normal_pressure_angle" attributeNumericId="1015"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="axial_stiffness" attributeNumericId="2088"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="axial_stiffness" attributeNumericId="2088"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="axial_stiffness" attributeNumericId="2088"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="u_coordinate_on_shaft_outer_side" attributeNumericId="2369"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="u_coordinate_on_shaft_outer_side" attributeNumericId="2369"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="u_coordinate_on_shaft_outer_side" attributeNumericId="2369"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="rotational_speed" attributeNumericId="9203"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="is_driving_gear" attributeNumericId="9205"/>
+        <mappingChange type="ADD" componentId="bevel_stage" attributeId="operating_viscosity" attributeNumericId="9217"/>
+        <mappingChange type="ADD" componentId="cylindrical_stage" attributeId="operating_viscosity" attributeNumericId="9217"/>
+        <mappingChange type="ADD" componentId="gear_casing" attributeId="operating_viscosity" attributeNumericId="9217"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="operating_viscosity" attributeNumericId="9217"/>
+        <mappingChange type="ADD" componentId="worm_stage" attributeId="operating_viscosity" attributeNumericId="9217"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="displacement_inner_side_u" attributeNumericId="10170"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="displacement_inner_side_u" attributeNumericId="10170"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="displacement_inner_side_u" attributeNumericId="10170"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="displacement_inner_side_v" attributeNumericId="10403"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="displacement_inner_side_v" attributeNumericId="10403"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="displacement_inner_side_v" attributeNumericId="10403"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="displacement_inner_side_w" attributeNumericId="10404"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="displacement_inner_side_w" attributeNumericId="10404"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="displacement_inner_side_w" attributeNumericId="10404"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="force_acting_on_inner_component_u" attributeNumericId="10412"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="force_acting_on_inner_component_u" attributeNumericId="10412"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="force_acting_on_inner_component_u" attributeNumericId="10412"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="force_acting_on_inner_component_v" attributeNumericId="10413"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="force_acting_on_inner_component_v" attributeNumericId="10413"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="force_acting_on_inner_component_v" attributeNumericId="10413"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="force_acting_on_inner_component_w" attributeNumericId="10414"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="force_acting_on_inner_component_w" attributeNumericId="10414"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="force_acting_on_inner_component_w" attributeNumericId="10414"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="torque_acting_on_inner_component_u" attributeNumericId="10192"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="torque_acting_on_inner_component_u" attributeNumericId="10192"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="torque_acting_on_inner_component_u" attributeNumericId="10192"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="torque_acting_on_inner_component_v" attributeNumericId="10186"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="torque_acting_on_inner_component_v" attributeNumericId="10186"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="torque_acting_on_inner_component_v" attributeNumericId="10186"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="torque_acting_on_inner_component_w" attributeNumericId="10187"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="torque_acting_on_inner_component_w" attributeNumericId="10187"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="torque_acting_on_inner_component_w" attributeNumericId="10187"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="tilting_inner_side_u" attributeNumericId="10190"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="tilting_inner_side_u" attributeNumericId="10190"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="tilting_inner_side_u" attributeNumericId="10190"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="tilting_inner_side_v" attributeNumericId="10408"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="tilting_inner_side_v" attributeNumericId="10408"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="tilting_inner_side_v" attributeNumericId="10408"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="tilting_inner_side_w" attributeNumericId="10409"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="tilting_inner_side_w" attributeNumericId="10409"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="tilting_inner_side_w" attributeNumericId="10409"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="displacement_outer_side_u" attributeNumericId="10405"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="displacement_outer_side_u" attributeNumericId="10405"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="displacement_outer_side_u" attributeNumericId="10405"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="displacement_outer_side_v" attributeNumericId="10406"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="displacement_outer_side_v" attributeNumericId="10406"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="displacement_outer_side_v" attributeNumericId="10406"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="displacement_outer_side_w" attributeNumericId="10407"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="displacement_outer_side_w" attributeNumericId="10407"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="displacement_outer_side_w" attributeNumericId="10407"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="force_acting_on_outer_component_u" attributeNumericId="10415"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="force_acting_on_outer_component_u" attributeNumericId="10415"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="force_acting_on_outer_component_u" attributeNumericId="10415"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="force_acting_on_outer_component_v" attributeNumericId="10416"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="force_acting_on_outer_component_v" attributeNumericId="10416"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="force_acting_on_outer_component_v" attributeNumericId="10416"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="force_acting_on_outer_component_w" attributeNumericId="10185"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="force_acting_on_outer_component_w" attributeNumericId="10185"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="force_acting_on_outer_component_w" attributeNumericId="10185"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="torque_acting_on_outer_component_u" attributeNumericId="10193"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="torque_acting_on_outer_component_u" attributeNumericId="10193"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="torque_acting_on_outer_component_u" attributeNumericId="10193"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="torque_acting_on_outer_component_v" attributeNumericId="10188"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="torque_acting_on_outer_component_v" attributeNumericId="10188"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="torque_acting_on_outer_component_v" attributeNumericId="10188"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="torque_acting_on_outer_component_w" attributeNumericId="10189"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="torque_acting_on_outer_component_w" attributeNumericId="10189"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="torque_acting_on_outer_component_w" attributeNumericId="10189"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="tilting_outer_side_u" attributeNumericId="10191"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="tilting_outer_side_u" attributeNumericId="10191"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="tilting_outer_side_u" attributeNumericId="10191"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="tilting_outer_side_v" attributeNumericId="14010"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="tilting_outer_side_v" attributeNumericId="14010"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="tilting_outer_side_v" attributeNumericId="14010"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="tilting_outer_side_w" attributeNumericId="10411"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="tilting_outer_side_w" attributeNumericId="10411"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="tilting_outer_side_w" attributeNumericId="10411"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="rotational_stiffness" attributeNumericId="8945"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="rotational_stiffness" attributeNumericId="8945"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="rotational_stiffness" attributeNumericId="8945"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="force_acting_on_shaft_u" attributeNumericId="10249"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="force_acting_on_shaft_u" attributeNumericId="10249"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="force_acting_on_shaft_u" attributeNumericId="10249"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="force_acting_on_shaft_u" attributeNumericId="10249"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="force_acting_on_shaft_v" attributeNumericId="14000"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="force_acting_on_shaft_v" attributeNumericId="14000"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="force_acting_on_shaft_v" attributeNumericId="14000"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="force_acting_on_shaft_v" attributeNumericId="14000"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="torque_acting_on_shaft_v" attributeNumericId="14002"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="torque_acting_on_shaft_v" attributeNumericId="14002"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="torque_acting_on_shaft_v" attributeNumericId="14002"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="torque_acting_on_shaft_v" attributeNumericId="14002"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="torque_acting_on_shaft_v" attributeNumericId="14002"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="torque_acting_on_shaft_v" attributeNumericId="14002"/>
+        <mappingChange type="ADD" componentId="cylindrical_gear" attributeId="torque_acting_on_shaft_w" attributeNumericId="14003"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="torque_acting_on_shaft_w" attributeNumericId="14003"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="torque_acting_on_shaft_w" attributeNumericId="14003"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="torque_acting_on_shaft_w" attributeNumericId="14003"/>
+        <mappingChange type="ADD" componentId="worm_gear" attributeId="torque_acting_on_shaft_w" attributeNumericId="14003"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="torque_acting_on_shaft_w" attributeNumericId="14003"/>
+        <mappingChange type="ADD" componentId="cylindrical_stage" attributeId="number_of_nodes_in_mesh_width_for_loaddistribution" attributeNumericId="3734"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="radial_contact_ratio" attributeNumericId="990"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="overlap_contact_ratio" attributeNumericId="991"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="power_for_rotational_speed" attributeNumericId="14045"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="power_for_rolling_rotational_speed" attributeNumericId="14044"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="rolling_rotational_speed" attributeNumericId="14041"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="rolling_rotational_speed" attributeNumericId="14041"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="tangential_velocity_at_reference_circle" attributeNumericId="10660"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="pressure_angle_in_the_transverse_section" attributeNumericId="4194"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="helix_angle_base_circle" attributeNumericId="5305"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="helix_angle_base_circle" attributeNumericId="5305"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="reference_circle_diameter" attributeNumericId="4206"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="reference_circle_diameter" attributeNumericId="4206"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="base_circle_diameter" attributeNumericId="4207"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="base_circle_diameter" attributeNumericId="4207"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="averaged_peak_to_valley_height_flank" attributeNumericId="816"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="averaged_peak_to_valley_height_flank" attributeNumericId="816"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="loaded_tooth_flank" attributeNumericId="14011"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="usable_root_circle_diameter" attributeNumericId="12861"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="usable_addendum_circle_diameter" attributeNumericId="12862"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="torque" attributeNumericId="12827"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="common_face_width" attributeNumericId="4199"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="transverse_circular_pitch_on_reference_circle" attributeNumericId="988"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="transverse_circular_pitch_on_reference_circle" attributeNumericId="988"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="transverse_base_pitch" attributeNumericId="4202"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="transverse_base_pitch" attributeNumericId="4202"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="total_contact_ratio" attributeNumericId="992"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="angular_velocity" attributeNumericId="10006"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="angular_velocity" attributeNumericId="10006"/>
+        <mappingChange type="ADD" componentId="ring_gear" attributeId="angular_velocity" attributeNumericId="10006"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="single_pitch_deviation" attributeNumericId="10012"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="single_pitch_deviation" attributeNumericId="10012"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="normal_base_pitch" attributeNumericId="4203"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="bulk_temperature" attributeNumericId="4350"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="bulk_temperature" attributeNumericId="4350"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="mean_operating_temperature" attributeNumericId="9284"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="mean_operating_temperature" attributeNumericId="9284"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="addendum_modification" attributeNumericId="4198"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="transverse_module" attributeNumericId="4197"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="transverse_module" attributeNumericId="4197"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="normal_circular_pitch" attributeNumericId="15124"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="normal_circular_pitch" attributeNumericId="15124"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="root_diameter" attributeNumericId="746"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="root_diameter" attributeNumericId="746"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="tooth_depth" attributeNumericId="4214"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="tooth_depth" attributeNumericId="4214"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="addendum_basic_profile" attributeNumericId="4216"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="addendum_basic_profile" attributeNumericId="4216"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="tooth_thickness_at_pitch_diameter" attributeNumericId="4224"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="tooth_thickness_at_pitch_diameter" attributeNumericId="4224"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="normal_tooth_thickness_at_pitch_diameter" attributeNumericId="4227"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="normal_tooth_thickness_at_pitch_diameter" attributeNumericId="4227"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="normal_space_width_at_pitch_diameter" attributeNumericId="4228"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="normal_space_width_at_pitch_diameter" attributeNumericId="4228"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="tip_form_diameter" attributeNumericId="4208"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="tip_form_diameter" attributeNumericId="4208"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="working_depth" attributeNumericId="4215"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="working_depth_coefficient" attributeNumericId="4204"/>
+        <mappingChange type="ADD" componentId="involute_spline_stage_gear_data" attributeId="tip_clearance" attributeNumericId="12884"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="root_form_diameter" attributeNumericId="4210"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="root_form_diameter" attributeNumericId="4210"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="maximum_transverse_backlash" attributeNumericId="15113"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="minimum_transverse_backlash" attributeNumericId="15112"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="maximum_normal_backlash" attributeNumericId="15110"/>
+        <mappingChange type="ADD" componentId="involute_spline_connection" attributeId="minimum_normal_backlash" attributeNumericId="15111"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="chordal_tooth_thickness_upper_deviation" attributeNumericId="4237"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="chordal_tooth_thickness_upper_deviation" attributeNumericId="4237"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="chordal_tooth_thickness_lower_deviation" attributeNumericId="4238"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="chordal_tooth_thickness_lower_deviation" attributeNumericId="4238"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="measuring_diameter_at_upper_backlash_allowance" attributeNumericId="4239"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="measuring_diameter_at_upper_backlash_allowance" attributeNumericId="4239"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="chordal_transverse_tooth_thickness_upper_deviation" attributeNumericId="4225"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="chordal_transverse_tooth_thickness_upper_deviation" attributeNumericId="4225"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="chordal_transverse_tooth_thickness_lower_deviation" attributeNumericId="4226"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="chordal_transverse_tooth_thickness_lower_deviation" attributeNumericId="4226"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="measuring_diameter_for_span" attributeNumericId="4245"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="measuring_diameter_for_span" attributeNumericId="4245"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="normal_tip_thickness" attributeNumericId="4229"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="normal_tip_thickness" attributeNumericId="4229"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="minimum_thickness_by_tip_chamfer_relief" attributeNumericId="8633"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="minimum_thickness_by_tip_chamfer_relief" attributeNumericId="8633"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="chordal_height" attributeNumericId="4236"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="chordal_height" attributeNumericId="4236"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="size_over_balls" attributeNumericId="4246"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="size_over_balls" attributeNumericId="4246"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="measuring_diameter_ball_flank" attributeNumericId="4247"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="measuring_diameter_ball_flank" attributeNumericId="4247"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="size_over_pins" attributeNumericId="4248"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="size_over_pins" attributeNumericId="4248"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="root_undercut" attributeNumericId="4212"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="root_undercut" attributeNumericId="4212"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="measuring_diameter_at_undercut" attributeNumericId="12848"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="upper_backlash_allowance_balls_or_pins" attributeNumericId="4250"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="upper_backlash_allowance_balls_or_pins" attributeNumericId="4250"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="lower_backlash_allowance_balls_or_pins" attributeNumericId="4251"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="lower_backlash_allowance_balls_or_pins" attributeNumericId="4251"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="facewidth_usable_start" attributeNumericId="14546"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="facewidth_usable_end" attributeNumericId="14547"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="averaged_peak_to_valley_height_root" attributeNumericId="817"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="averaged_peak_to_valley_height_root" attributeNumericId="817"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="arithmetic_average_roughness_flank" attributeNumericId="814"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="arithmetic_average_roughness_flank" attributeNumericId="814"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="arithmetic_average_roughness_root" attributeNumericId="815"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="arithmetic_average_roughness_root" attributeNumericId="815"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="coordinates_of_topographical_deviation" attributeNumericId="14565"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_flank" attributeId="diameters_of_topographical_deviation" attributeNumericId="14566"/>
+        <mappingChange type="ADD" componentId="worm_stage_gear_data" attributeId="tooth_thickness_loss_din_3996_2019" attributeNumericId="16562"/>
+        <mappingChange type="ADD" componentId="worm_gear_manufacturing_settings" attributeId="pressure_angle_correction" attributeNumericId="3103"/>
+        <mappingChange type="ADD" componentId="worm_gear_manufacturing_settings" attributeId="center_distance_correction" attributeNumericId="3102"/>
+        <mappingChange type="ADD" componentId="worm_gear_manufacturing_settings" attributeId="hobbing_procedure" attributeNumericId="3104"/>
+        <mappingChange type="ADD" componentId="worm_gear_manufacturing_settings" attributeId="lyra_angle" attributeNumericId="3114"/>
+        <mappingChange type="ADD" componentId="cylindrical_interference_fit" attributeId="display_color" attributeNumericId="21026"/>
+        <mappingChange type="ADD" componentId="feather_key_connection" attributeId="display_color" attributeNumericId="21026"/>
+        <mappingChange type="ADD" componentId="tapered_interference_fit" attributeId="display_color" attributeNumericId="21026"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="mass_of_component" attributeNumericId="17689"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="mass_of_component" attributeNumericId="17689"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="safety_factor_cracking_din_743_2012" attributeNumericId="8708"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="safety_factor_fatigue_fracture_din_743_2012" attributeNumericId="5492"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="safety_factor_plastic_deformation_din_743_2012" attributeNumericId="5493"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="axial_force_maximum_din_743_2012" attributeNumericId="11282"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="axial_force_stress_ratio_din_743_2012" attributeNumericId="11294"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="axial_force_upper_value_din_743_2012" attributeNumericId="11291"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="bending_torque_maximum_din_743_2012" attributeNumericId="11283"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="bending_torque_stress_ratio_din_743_2012" attributeNumericId="11295"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="bending_torque_upper_value_din_743_2012" attributeNumericId="11292"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="torsion_torque_maximum_din_743_2012" attributeNumericId="11284"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="torsion_torque_stress_ratio_din_743_2012" attributeNumericId="11296"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="torsion_torque_upper_value_din_743_2012" attributeNumericId="11293"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="maximum_stress_tension_compression_din_743_2012" attributeNumericId="5741"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="maximum_stress_bending_din_743_2012" attributeNumericId="5742"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="maximum_stress_torsion_din_743_2012" attributeNumericId="5143"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="mean_stress_tension_compression_din_743_2012" attributeNumericId="5735"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="mean_stress_bending_din_743_2012" attributeNumericId="5736"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="mean_stress_torsion_din_743_2012" attributeNumericId="5737"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="stress_amplitude_tension_compression_din_743_2012" attributeNumericId="5738"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="stress_amplitude_bending_din_743_2012" attributeNumericId="5739"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="stress_amplitude_torsion_din_743_2012" attributeNumericId="5740"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="alternating_tensile_strength_din_743_2012" attributeNumericId="11321"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="alternating_bending_strength_din_743_2012" attributeNumericId="11322"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="alternating_torsion_strength_din_743_2012" attributeNumericId="11323"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="fatigue_tensile_strength_din_743_2012" attributeNumericId="11309"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="fatigue_bending_strength_din_743_2012" attributeNumericId="11310"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="fatigue_torsion_strength_din_743_2012" attributeNumericId="11311"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="tensile_yield_stress_din_743_2012" attributeNumericId="11185"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="bending_yield_stress_din_743_2012" attributeNumericId="11186"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="torsional_yield_stress_din_743_2012" attributeNumericId="11187"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="technological_size_factor_tensile_strength_din_743_2012" attributeNumericId="5709"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="technological_size_factor_yield_strength_din_743_2012" attributeNumericId="5710"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="geometrical_size_factor_tension_compression_din_743_2012" attributeNumericId="5711"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="geometrical_size_factor_bending_din_743_2012" attributeNumericId="5712"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="geometrical_size_factor_torsion_din_743_2012" attributeNumericId="5713"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="combined_influence_factor_tension_compression_din_743_2012" attributeNumericId="5722"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="combined_influence_factor_bending_din_743_2012" attributeNumericId="5723"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="combined_influence_factor_torsion_din_743_2012" attributeNumericId="5724"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="static_supporting_effect_tension_compression_din_743_2012" attributeNumericId="5728"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="static_supporting_effect_bending_din_743_2012" attributeNumericId="5729"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="static_supporting_effect_torsion_din_743_2012" attributeNumericId="5730"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="increase_factor_yield_strength_tension_compression_din_743_2012" attributeNumericId="5725"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="increase_factor_yield_strength_bending_din_743_2012" attributeNumericId="5726"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="increase_factor_yield_strength_torsion_din_743_2012" attributeNumericId="5727"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="notch_factor_tension_compression_din_743_2012" attributeNumericId="5706"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="notch_factor_bending_din_743_2012" attributeNumericId="5707"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="notch_factor_torsion_din_743_2012" attributeNumericId="5708"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="form_factor_tension_compression_din_743_2012" attributeNumericId="5694"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="form_factor_bending_din_743_2012" attributeNumericId="5695"/>
+        <mappingChange type="ADD" componentId="notch_effect_shaft_hub_connection" attributeId="form_factor_torsion_din_743_2012" attributeNumericId="5696"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_hub" attributeId="gde_file" attributeNumericId="17655"/>
+        <mappingChange type="ADD" componentId="involute_spline_gear_shaft" attributeId="gde_file" attributeNumericId="17655"/>
+        <mappingChange type="DELETE" componentId="cylindrical_stage_gear_data" attributeId="tooth_thickness_loss_din_3996_2019" attributeNumericId="16562"/>
+        <mappingChange type="DELETE" componentId="worm_grinding_disc_tool" attributeId="pressure_angle_correction" attributeNumericId="3103"/>
+        <mappingChange type="DELETE" componentId="worm_grinding_disc_tool" attributeId="center_distance_correction" attributeNumericId="3102"/>
+        <mappingChange type="DELETE" componentId="worm_wheel_hob_tool" attributeId="center_distance_correction" attributeNumericId="3102"/>
+        <mappingChange type="DELETE" componentId="worm_wheel_hob_tool" attributeId="hobbing_procedure" attributeNumericId="3104"/>
+        <mappingChange type="DELETE" componentId="worm_wheel_hob_tool" attributeId="lyra_angle" attributeNumericId="3114"/>
+    </mappingChanges>
+</rexsChangelog>

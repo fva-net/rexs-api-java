@@ -49,6 +49,9 @@ public class ChangelogFile {
 	/** REXS Changelog 1.2 to 1.3 */
 	public static final ChangelogFile V1_2_TO_V1_3 = create(RexsVersion.V1_2, RexsVersion.V1_3);
 
+	/** REXS Changelog 1.3 to 1.4 */
+	public static final ChangelogFile V1_3_TO_V1_4 = create(RexsVersion.V1_3, RexsVersion.V1_4);
+
 	/** The from {@link RexsVersion} of the REXS database changelog file. */
 	@EqualsAndHashCode.Include
 	private final RexsVersion fromVersion;

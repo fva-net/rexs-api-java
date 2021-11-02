@@ -23,7 +23,7 @@ import info.rexs.db.constants.standard.RexsStandardUnitIds;
 /**
  * This class represents a REXS unit.
  * <p>
- * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3).
+ * It contains constants for all units of official REXS versions.
  * <p>
  * Since REXS is freely expandable, you can also add your own units using the {@link #create(String)} method.
  *

@@ -58,6 +58,7 @@ public class DbModelRegistry {
 			registerRexsVersion(RexsVersion.V1_1);
 			registerRexsVersion(RexsVersion.V1_2);
 			registerRexsVersion(RexsVersion.V1_3);
+			registerRexsVersion(RexsVersion.V1_4);
 		} catch (Exception ex) {
 			throw new RuntimeException("error while registering rexs model:", ex);
 		}

@@ -24,7 +24,7 @@ import lombok.EqualsAndHashCode;
 /**
  * This class represents a REXS relation role.
  * <p>
- * It contains constants for all relation roles of official REXS versions (1.0, 1.1, 1.2, 1.3).
+ * It contains constants for all relation roles of official REXS versions.
  * <p>
  * Since REXS is freely expandable, you can also add your own relation roles using the {@link #create(String)} method.
  *
