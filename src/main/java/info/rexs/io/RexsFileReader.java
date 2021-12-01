@@ -16,6 +16,7 @@
 package info.rexs.io;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileSystem;
@@ -31,6 +32,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import org.xml.sax.InputSource;
 
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.RexsModel;
@@ -95,22 +98,27 @@ public class RexsFileReader {
 		if (!Files.exists(pathToRexsInputFile))
 			throw new FileNotFoundException("rexs file " + pathToRexsInputFile + " does not exist");
 
-		JAXBContext context = JAXBContext.newInstance(Model.class);
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-
 		if (isRexsZipFile(pathToRexsInputFile)) {
 			Path pathToRexsFile = null;
 			try {
 				pathToRexsFile = extractRexsFileFromZip(pathToRexsInputFile);
-				Model rawModel = (Model)unmarshaller.unmarshal(pathToRexsFile.toFile());
-				return convertDegreeUnits(rawModel);
+				return readRawModelFromFile(pathToRexsFile);
 			} finally {
 				Files.deleteIfExists(pathToRexsFile);
 			}
 		}
 
-		Model rawModel = (Model)unmarshaller.unmarshal(pathToRexsInputFile.toFile());
-		return convertDegreeUnits(rawModel);
+		return readRawModelFromFile(pathToRexsInputFile);
+	}
+
+	private Model readRawModelFromFile(Path pathToRexsFile) throws IOException, JAXBException
+	{
+		try (FileInputStream input = new FileInputStream(pathToRexsFile.toFile())) {
+			JAXBContext context = JAXBContext.newInstance(Model.class);
+			Unmarshaller unmarshaller = context.createUnmarshaller();
+			Model rawModel = (Model)unmarshaller.unmarshal(new InputSource(input));
+			return convertDegreeUnits(rawModel);
+		}
 	}
 
 	/**
