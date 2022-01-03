@@ -9,7 +9,7 @@ updates:
 
   - package-ecosystem: "maven"
     directory: "/"
-    target-branch: "develop"
+    target-branch: "master"
     schedule:
       interval: "daily"
       time: "01:00"
@@ -18,7 +18,7 @@ updates:
 
   - package-ecosystem: "github-actions"
     directory: "/"
-    target-branch: "develop"
+    target-branch: "master"
     schedule:
       interval: "daily"
       time: "01:00"

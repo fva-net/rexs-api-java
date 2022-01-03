@@ -3,7 +3,7 @@ name: Release distribution
 on:
   push:
     branches:
-      - develop
+      - master
   release:
     types:
       - created
