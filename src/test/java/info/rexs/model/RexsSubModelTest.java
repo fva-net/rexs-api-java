@@ -20,9 +20,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 import info.rexs.db.constants.RexsComponentType;
-import info.rexs.model.jaxb.Accumulation;
-import info.rexs.model.jaxb.Component;
-import info.rexs.model.jaxb.LoadCase;
 
 public class RexsSubModelTest {
 
@@ -36,14 +33,10 @@ public class RexsSubModelTest {
 
 	@Test
 	public void loadCaseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(1);
+		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
 
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.getId()).isEqualTo(41);
 		assertThat(rexsSubModel.hasComponent(1)).isTrue();
@@ -52,13 +45,10 @@ public class RexsSubModelTest {
 
 	@Test
 	public void accumulationConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(1);
+		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
 
-		Accumulation rawAccumulation = new Accumulation();
-		rawAccumulation.getComponent().add(rawComponent);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(rawAccumulation);
+		RexsSubModel rexsSubModel = new RexsSubModel();
+		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.getId()).isNull();
 		assertThat(rexsSubModel.hasComponent(1)).isTrue();
@@ -67,7 +57,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void accumulationConstructor_nullParameterDoesNotCrash() throws Exception {
-		RexsSubModel rexsSubModel = new RexsSubModel((Accumulation)null);
+		RexsSubModel rexsSubModel = new RexsSubModel();
 
 		assertThat(rexsSubModel.getId()).isNull();
 		assertThat(rexsSubModel.hasComponent(1)).isFalse();
@@ -76,81 +66,55 @@ public class RexsSubModelTest {
 
 	@Test
 	public void hasComponent_componentNotInSubModelReturnsFalse() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(1);
+		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
 
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.hasComponent(2)).isFalse();
 	}
 
 	@Test
 	public void hasComponent_componentInSubModelReturnsTrue() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(1);
+		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
 
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.hasComponent(1)).isTrue();
 	}
 
 	@Test
 	public void getComponent_componentNotInSubModelReturnsNull() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(1);
+		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
 
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.getComponent(2)).isNull();
 	}
 
 	@Test
 	public void getComponent_componentInSubModelReturnsComponent() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(1);
-		rawComponent.setType(RexsComponentType.cylindrical_gear.getId());
+		RexsComponent rexsComponent1 = new RexsComponent(1, RexsComponentType.cylindrical_gear, "Foo");
 
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent1);
 
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
-
-		RexsComponent rexsComponent = rexsSubModel.getComponent(1);
-		assertThat(rexsComponent).isNotNull();
-		assertThat(rexsComponent.getId()).isEqualTo(1);
-		assertThat(rexsComponent.getType()).isEqualTo(RexsComponentType.cylindrical_gear);
-		assertThat(rexsComponent.getRawComponent()).isEqualTo(rawComponent);
+		RexsComponent rexsComponent2 = rexsSubModel.getComponent(1);
+		assertThat(rexsComponent2).isNotNull();
+		assertThat(rexsComponent2.getId()).isEqualTo(1);
+		assertThat(rexsComponent2.getType()).isEqualTo(RexsComponentType.cylindrical_gear);
 	}
 
 	@Test
 	public void changeComponentId_nonExistingComponentIdIgnoresMethodCall() throws Exception {
-		Component rawComponent1 = new Component();
-		rawComponent1.setId(1);
-		rawComponent1.setType(RexsComponentType.cylindrical_gear.getId());
+		RexsComponent rexsComponent1 = new RexsComponent(1, RexsComponentType.cylindrical_gear, "Foo");
+		RexsComponent rexsComponent2 = new RexsComponent(2, RexsComponentType.bevel_gear, "Bar");
 
-		Component rawComponent2 = new Component();
-		rawComponent2.setId(2);
-		rawComponent2.setType(RexsComponentType.bevel_gear.getId());
-
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent1);
-		loadCase.getComponent().add(rawComponent2);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent1);
+		rexsSubModel.addComponent(rexsComponent2);
 		rexsSubModel.changeComponentId(3, 4);
 
 		assertThat(rexsSubModel.hasComponent(1)).isTrue();
@@ -161,20 +125,12 @@ public class RexsSubModelTest {
 
 	@Test
 	public void changeComponentId_changesIdOfComponent() throws Exception {
-		Component rawComponent1 = new Component();
-		rawComponent1.setId(1);
-		rawComponent1.setType(RexsComponentType.cylindrical_gear.getId());
+		RexsComponent rexsComponent1 = new RexsComponent(1, RexsComponentType.cylindrical_gear, "Foo");
+		RexsComponent rexsComponent2 = new RexsComponent(2, RexsComponentType.bevel_gear, "Bar");
 
-		Component rawComponent2 = new Component();
-		rawComponent2.setId(2);
-		rawComponent2.setType(RexsComponentType.bevel_gear.getId());
-
-		LoadCase loadCase = new LoadCase();
-		loadCase.setId(41);
-		loadCase.getComponent().add(rawComponent1);
-		loadCase.getComponent().add(rawComponent2);
-
-		RexsSubModel rexsSubModel = new RexsSubModel(loadCase);
+		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		rexsSubModel.addComponent(rexsComponent1);
+		rexsSubModel.addComponent(rexsComponent2);
 		rexsSubModel.changeComponentId(2, 3);
 
 		assertThat(rexsSubModel.hasComponent(1)).isTrue();
@@ -184,7 +140,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void compareTo_accumulationIsAlwaysGreaterThanAnyOtherLoadCase() throws Exception {
-		RexsSubModel rexsSubModelAccumulation = new RexsSubModel((Accumulation)null);
+		RexsSubModel rexsSubModelAccumulation = new RexsSubModel();
 		RexsSubModel rexsSubModelLoadCase1 = new RexsSubModel(1);
 		RexsSubModel rexsSubModelLoadCase24 = new RexsSubModel(24);
 
@@ -208,8 +164,8 @@ public class RexsSubModelTest {
 
 	@Test
 	public void equals_equalObjects() {
-		RexsSubModel rexsSubModelAccumulation1 = new RexsSubModel((Accumulation)null);
-		RexsSubModel rexsSubModelAccumulation2 = new RexsSubModel((Accumulation)null);
+		RexsSubModel rexsSubModelAccumulation1 = new RexsSubModel();
+		RexsSubModel rexsSubModelAccumulation2 = new RexsSubModel();
 		RexsSubModel rexsSubModelLoadCase1 = new RexsSubModel(1);
 		RexsSubModel rexsSubModelLoadCase2 = new RexsSubModel(1);
 
@@ -222,7 +178,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void equals_notEqualObjects() {
-		RexsSubModel rexsSubModelAccumulation = new RexsSubModel((Accumulation)null);
+		RexsSubModel rexsSubModelAccumulation = new RexsSubModel();
 		RexsSubModel rexsSubModelLoadCase1 = new RexsSubModel(1);
 		RexsSubModel rexsSubModelLoadCase24 = new RexsSubModel(24);
 

@@ -13,17 +13,21 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package info.rexs.model;
+package info.rexs.model.util;
 
-public class RexsLoadSpectrumTest {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
-	// TODO Constructor
+public class DateUtils {
 
-	// TODO getId()
+	private DateUtils() {}
 
-	// TODO getLoadCases()
-
-	// TODO getLoadCase(Integer loadCaseId)
-
-	// TODO getAccumulation()
+	public static String getISO8601Date() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+		TimeZone tz = TimeZone.getDefault();
+		df.setTimeZone(tz);
+		return df.format(new Date());
+	}
 }

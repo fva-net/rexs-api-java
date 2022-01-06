@@ -35,8 +35,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 import info.rexs.io.RexsFileReader;
-import info.rexs.model.jaxb.Component;
-import info.rexs.model.jaxb.Model;
+import info.rexs.io.RexsIoFormat;
+import info.rexs.io.zip.RexsZipFileReader;
+import info.rexs.model.RexsComponent;
+import info.rexs.model.RexsModel;
 import info.rexs.schema.RexsSchema;
 import lombok.Getter;
 
@@ -59,7 +61,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		if (!validationResult.isValid())
 			return validationResult;
 
-		if (RexsFileReader.isRexsZipFile(pathToRexsFile)) {
+		if (pathToRexsFile.getFileName().toString().toLowerCase().endsWith("." + RexsIoFormat.ZIP.getEnding())) {
 			return validateRexszFile(pathToRexsFile);
 		}
 
@@ -105,7 +107,8 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 
 		Path pathToRexsFile = null;
 		try {
-			pathToRexsFile = RexsFileReader.extractRexsFileFromZip(pathToRexszFile);
+			RexsZipFileReader reader = new RexsZipFileReader(pathToRexszFile);
+			pathToRexsFile = reader.extractRexsFileFromZip();
 			return validate(pathToRexsFile);
 
 		} catch (IOException ex) {
@@ -185,26 +188,25 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		RexsValidationResult validationResult = new RexsValidationResult();
 
 		RexsFileReader reader = new RexsFileReader(pathToRexsFile);
-		Model rexsModel = null;
+		RexsModel rexsModel = null;
 
 		try {
-			rexsModel = reader.readRawModel();
+			rexsModel = reader.read();
 
 		} catch (Exception ex) {
 			validationResult.addError(RexsValidationResultMessageKey.INTERNAL_ERROR);
 		}
 
-		validationResult.add(validateVersion(rexsModel.getVersion()));
+		validationResult.add(validateVersion(rexsModel.getOriginVersion()));
 
 		if (rexsModel.getComponents() == null
-				|| rexsModel.getComponents().getComponent() == null
-				|| rexsModel.getComponents().getComponent().isEmpty()) {
+				|| rexsModel.getComponents().isEmpty()) {
 			validationResult.addError(RexsValidationResultMessageKey.MODEL_COMPONENTS_EMPTY);
 			return validationResult;
 		}
 
 		IRexsComponentValidator componentValidator = createComponentValidator();
-		for (Component rexsComponent : rexsModel.getComponents().getComponent()) {
+		for (RexsComponent rexsComponent : rexsModel.getComponents()) {
 			validationResult.add(componentValidator.validate(rexsComponent));
 		}
 

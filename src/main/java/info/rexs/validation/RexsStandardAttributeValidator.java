@@ -22,9 +22,8 @@ import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
+import info.rexs.model.RexsAttribute;
+import info.rexs.model.RexsComponent;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -42,16 +41,16 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent) {
+	public RexsValidationResult validate(RexsAttribute rexsAttribute, RexsComponent rexsComponent) {
 
 		RexsValidationResult validationResult = super.validate(rexsAttribute, rexsComponent);
 
 		if (rexsVersion == null)
 			return validationResult;
 
-		String componentType = rexsComponent.getType();
+		String componentType = rexsComponent.getOriginType();
 		RexsComponentType rexsComponentType = DbModelRegistry.getInstance().getComponentType(rexsVersion, componentType);
-		String attributeId = rexsAttribute.getId();
+		String attributeId = rexsAttribute.getOriginAttributeId();
 		boolean attributeKnown = true;
 
 		if (!DbModelRegistry.getInstance().hasAttributeWithId(rexsVersion, attributeId)) {
@@ -62,7 +61,7 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 		else if (!DbModelRegistry.getInstance().componentAttributeMappingExists(attributeId, rexsComponentType, rexsVersion))
 			validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_COMPONENT_MAPPING_UNKNOWN, componentType, attributeId);
 
-		validationResult.add(validateUnit(rexsAttribute.getUnit(), componentType, attributeId, attributeKnown));
+		validationResult.add(validateUnit(rexsAttribute.getOriginUnit(), componentType, attributeId, attributeKnown));
 
 		return validationResult;
 	}
@@ -77,7 +76,7 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 
 		RexsUnitId unitId = RexsUnitId.findById(unit);
 		if (unitId == null
-				|| unitId.isOneOf(RexsStandardUnitIds.UNKNOWN))
+				|| unitId.isOneOf(RexsUnitId.UNKNOWN))
 			validationResult.addError(RexsValidationResultMessageKey.UNIT_UNKNOWN, componentType, attributeId);
 
 		if (unitId != null && attributeKnown) {

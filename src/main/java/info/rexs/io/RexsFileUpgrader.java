@@ -16,12 +16,11 @@
 package info.rexs.io;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.xml.bind.JAXBException;
-
+import info.rexs.io.xml.RexsXmlFileReader;
+import info.rexs.io.xml.RexsXmlFileWriter;
 import info.rexs.model.jaxb.Model;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.RexsUpgrader;
@@ -81,19 +80,17 @@ public class RexsFileUpgrader {
 	 *
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.
-	 * @throws JAXBException
-	 * 				If any unexpected errors occur while unmarshalling the REXS input file or marshalling of the REXS output file.
-	 * @throws IOException
+	 * @throws RexsIoException
 	 * 				If the REXS input file does not exist or if the REXS output file is not writable.
 	 */
-	public void upgrade() throws RexsUpgradeException, JAXBException, IOException {
-		RexsFileReader rexsFileReader = new RexsFileReader(pathToRexsInputFile);
+	public void upgrade() throws RexsUpgradeException, RexsIoException {
+		RexsXmlFileReader rexsFileReader = new RexsXmlFileReader(pathToRexsInputFile);
 		Model rexsModel = rexsFileReader.readRawModel();
 
 		RexsUpgrader rexsUpgrader = new RexsUpgrader(rexsModel);
 		rexsUpgrader.upgrade();
 
-		RexsFileWriter rexsFileWriter = new RexsFileWriter(pathToRexsOutputFile);
+		RexsXmlFileWriter rexsFileWriter = new RexsXmlFileWriter(pathToRexsOutputFile);
 		rexsFileWriter.writeRawModel(rexsModel);
 	}
 }

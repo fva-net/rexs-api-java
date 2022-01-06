@@ -20,18 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import info.rexs.model.jaxb.LoadCase;
-import info.rexs.model.jaxb.LoadSpectrum;
-
 /**
  * This class represents a load spectrum of a REXS model.
  *
  * @author FVA GmbH
  */
 public class RexsLoadSpectrum {
-
-	/** The representation of this load spectrum in the JAXB model. */
-	private LoadSpectrum rawLoadSpectrum;
 
 	/** The numeric ID of the load spectrum within the REXS model. */
 	private Integer id;
@@ -40,21 +34,16 @@ public class RexsLoadSpectrum {
 	protected Map<Integer, RexsSubModel> loadCases = new HashMap<>();
 
 	/** The sub-model for accumulated values of this load spectrum. */
-	private RexsSubModel accumulation;
+	private RexsSubModel accumulation = new RexsSubModel();
 
 	/**
-	 * Constructs a new {@link RexsLoadSpectrum} for the given {@link LoadSpectrum}.
+	 * Constructs a new {@link RexsLoadSpectrum} for the given properties.
 	 *
-	 * @param rawLoadSpectrum
-	 * 				The representation of a load spectrum in the JAXB model.
+	 * @param id
+	 * 				The ID of the load spectrum as an {@link Integer}.
 	 */
-	protected RexsLoadSpectrum(LoadSpectrum rawLoadSpectrum) {
-		this.rawLoadSpectrum = rawLoadSpectrum;
-		this.id = rawLoadSpectrum.getId();
-		for (LoadCase rawLoadCase : rawLoadSpectrum.getLoadCase()) {
-			loadCases.put(rawLoadCase.getId(), RexsModelObjectFactory.getInstance().createRexsSubModel(rawLoadCase));
-		}
-		this.accumulation = RexsModelObjectFactory.getInstance().createRexsSubModel(rawLoadSpectrum.getAccumulation());
+	protected RexsLoadSpectrum(Integer id) {
+		this.id = id;
 	}
 
 	/**
@@ -63,14 +52,6 @@ public class RexsLoadSpectrum {
 	 */
 	public Integer getId() {
 		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The representation of this load spectrum in the JAXB model.
-	 */
-	public LoadSpectrum getRawLoadSpectrum() {
-		return rawLoadSpectrum;
 	}
 
 	/**
@@ -95,10 +76,30 @@ public class RexsLoadSpectrum {
 	}
 
 	/**
+	 * Adds a load case to the load spectrum.
+	 *
+	 * @param loadCase
+	 * 				The additional load case as a {@link RexsSubModel}.
+	 */
+	public void addLoadCase(RexsSubModel loadCase) {
+		this.loadCases.put(loadCase.getId(), loadCase);
+	}
+
+	/**
 	 * @return
 	 * 				The sub-model for accumulated values of this load spectrum.
 	 */
 	public RexsSubModel getAccumulation() {
 		return accumulation;
+	}
+
+	/**
+	 * Sets the accumulation of the load spectrum.
+	 *
+	 * @param accumulation
+	 * 				The new accumulation as a {@link RexsSubModel}.
+	 */
+	public void setAccumulation(RexsSubModel accumulation) {
+		this.accumulation = accumulation;
 	}
 }

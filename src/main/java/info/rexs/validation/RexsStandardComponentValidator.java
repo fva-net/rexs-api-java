@@ -18,8 +18,7 @@ package info.rexs.validation;
 import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.model.jaxb.Component;
+import info.rexs.model.RexsComponent;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -37,17 +36,17 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RexsValidationResult validate(Component rexsComponent) {
+	public RexsValidationResult validate(RexsComponent rexsComponent) {
 
 		RexsValidationResult validationResult = super.validate(rexsComponent);
 
 		if (rexsVersion == null)
 			return validationResult;
 
-		String componentType = rexsComponent.getType();
+		String componentType = rexsComponent.getOriginType();
 		RexsComponentType rexsComponentType = DbModelRegistry.getInstance().getComponentType(rexsVersion, componentType);
 
-		if (rexsComponentType.isOneOf(RexsStandardComponentTypes.UNKNOWN))
+		if (rexsComponentType.isOneOf(RexsComponentType.UNKNOWN))
 			validationResult.addError(RexsValidationResultMessageKey.COMPONENT_TYPE_UNKNOWN, componentType);
 
 		return validationResult;

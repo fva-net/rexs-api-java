@@ -48,8 +48,8 @@ public class RexsComponentTypeTest {
 	}
 
 	@Test
-	public void findById_givenNullReturnsNull() {
-		assertThat(RexsComponentType.findById(null)).isNull();
+	public void findById_givenNullReturnsUnknown() {
+		assertThat(RexsComponentType.findById(null)).isEqualTo(RexsComponentType.UNKNOWN);
 	}
 
 	@Test

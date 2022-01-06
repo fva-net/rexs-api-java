@@ -58,8 +58,8 @@ public class RexsAttributeIdTest {
 	}
 
 	@Test
-	public void findById_givenNullReturnsNull() {
-		assertThat(RexsAttributeId.findById(null)).isNull();
+	public void findById_givenNullReturnsUnknown() {
+		assertThat(RexsAttributeId.findById(null)).isEqualTo(RexsAttributeId.UNKNOWN);
 	}
 
 	@Test
@@ -94,6 +94,6 @@ public class RexsAttributeIdTest {
 		assertThat(RexsAttributeId.length).isNotEqualTo(RexsAttributeId.width);
 		assertThat(RexsAttributeId.length).isNotEqualTo("length");
 		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test3", RexsUnitId.kg));
-		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test2", RexsUnitId.degree));
+		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test2", RexsUnitId.deg));
 	}
 }

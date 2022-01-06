@@ -71,7 +71,7 @@ public class RexsUpgrader {
 	 */
 	public void upgrade(RexsVersion toVersion) throws RexsUpgradeException {
 		RexsVersion fromVersion = RexsVersion.findByName(rexsModel.getVersion());
-		if (fromVersion == null)
+		if (fromVersion == null || fromVersion.equals(RexsVersion.UNKNOWN))
 			throw new RexsUpgradeException(String.format("unknown version %s", rexsModel.getVersion()));
 
 		List<ModelUpgrader> upgraders = UpgradeResolver.getInstance().resolve(fromVersion, toVersion);

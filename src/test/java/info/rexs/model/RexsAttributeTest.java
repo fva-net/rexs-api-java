@@ -22,30 +22,8 @@ import org.junit.Test;
 
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsUnitId;
-import info.rexs.model.jaxb.Attribute;
 
 public class RexsAttributeTest {
-
-	@Test
-	public void rawAttributeConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		Attribute rawAttribute = new Attribute();
-		rawAttribute.setId(RexsAttributeId.overrolling_frequency_rolling_element.getId());
-		rawAttribute.setUnit(RexsUnitId.hertz.getId());
-		RexsAttribute rexsAttribute = new RexsAttribute(rawAttribute);
-
-		assertThat(rexsAttribute.getRawAttribute()).isEqualTo(rawAttribute);
-	}
-
-	@Test
-	public void rawAttributeConstructor_incompatibleUnitsThrowsRexsModelAccessException() throws Exception {
-		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
-			Attribute rawAttribute = new Attribute();
-			rawAttribute.setId(RexsAttributeId.overrolling_frequency_rolling_element.getId());
-			rawAttribute.setUnit(RexsUnitId.degree.getId());
-			new RexsAttribute(rawAttribute);
-		})
-		.withMessageStartingWith("incompatible units");
-	}
 
 	@Test
 	public void attributeIdConstructor_getterMatchesValuePassedToConstructor() throws Exception {
@@ -56,12 +34,11 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void attributeIdConstructor_rawAttributeIdCreated() throws Exception {
+	public void attributeIdConstructor_originIdCreated() throws Exception {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 
-		assertThat(rexsAttribute.getRawAttribute()).isNotNull();
-		assertThat(rexsAttribute.getRawAttribute().getId()).isEqualTo(RexsAttributeId.overrolling_frequency_rolling_element.getId());
-		assertThat(rexsAttribute.getRawAttribute().getUnit()).isEqualTo(RexsUnitId.hertz.getId());
+		assertThat(rexsAttribute.getOriginAttributeId()).isNotNull();
+		assertThat(rexsAttribute.getOriginAttributeId()).isEqualTo(RexsAttributeId.overrolling_frequency_rolling_element.getId());
 	}
 
 	@Test
@@ -110,7 +87,7 @@ public class RexsAttributeTest {
 		rexsAttribute.setStringMatrixValue(new String[][] {});
 		assertThat(rexsAttribute.hasValue()).isFalse();
 
-		rexsAttribute.setStringMatrixValue(new String[][] {{}});
+		rexsAttribute.setStringMatrixValue(new String[][] {});
 		assertThat(rexsAttribute.hasValue()).isFalse();
 	}
 
@@ -128,7 +105,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringValue();
 		})
-				.withMessageStartingWith("string value cannot be null for attribute");
+				.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -145,7 +122,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanValue();
 		})
-				.withMessageStartingWith("boolean value cannot be null for attribute");
+				.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -165,7 +142,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerValue();
 		})
-		.withMessageStartingWith("integer value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -182,7 +159,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleValue(RexsUnitId.hertz);
 		})
-		.withMessageStartingWith("double value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -209,7 +186,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringArrayValue();
 		})
-		.withMessageStartingWith("string array value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -226,7 +203,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanArrayValue();
 		})
-		.withMessageStartingWith("boolean array value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -243,7 +220,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerArrayValue();
 		})
-		.withMessageStartingWith("integer array value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -260,7 +237,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleArrayValue(RexsUnitId.hertz);
 		})
-		.withMessageStartingWith("double array value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -287,7 +264,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringMatrixValue();
 		})
-		.withMessageStartingWith("string matrix value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -304,7 +281,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanMatrixValue();
 		})
-		.withMessageStartingWith("boolean matrix value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -321,7 +298,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerMatrixValue();
 		})
-		.withMessageStartingWith("integer matrix value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -338,7 +315,7 @@ public class RexsAttributeTest {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleMatrixValue(RexsUnitId.hertz);
 		})
-		.withMessageStartingWith("double matrix value cannot be null for attribute");
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -360,13 +337,16 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringArrayValue_nullValueIgnoresMethodCall() throws Exception {
+	public void setStringArrayValue_nullValueDeletesPreviousValue() throws Exception {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringArrayValue(new String[] {"foo", "bar"});
 
 		rexsAttribute.setStringArrayValue(null);
 
-		assertThat(rexsAttribute.getStringArrayValue()).isEqualTo(new String[] {"foo", "bar"});
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
+			rexsAttribute.getStringArrayValue();
+		})
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test
@@ -378,13 +358,16 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringMatrixValue_nullValueIgnoresMethodCall() throws Exception {
+	public void setStringMatrixValue_nullValueDeletesPreviousValue() throws Exception {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsAttributeId.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringMatrixValue(new String[][] {{"foo"}, {"bar"}});
 
 		rexsAttribute.setStringMatrixValue(null);
 
-		assertThat(rexsAttribute.getStringMatrixValue()).isEqualTo(new String[][] {{"foo"}, {"bar"}});
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
+			rexsAttribute.getStringMatrixValue();
+		})
+		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
 	@Test

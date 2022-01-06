@@ -16,11 +16,10 @@
 package info.rexs.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import info.rexs.model.jaxb.Accumulation;
-import info.rexs.model.jaxb.Component;
-import info.rexs.model.jaxb.LoadCase;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -43,40 +42,33 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	private boolean isAccumulation = false;
 
 	/**
-	 * Constructs a new {@link RexsSubModel} from scratch.
+	 * Constructs a new {@link RexsSubModel} for the given properties.
+	 *
+	 * @param id
+	 * 				The numeric ID of the sub-model within the REXS model.
+	 * @param isAccumulation
+	 * 				Flag whether it is an accumulation.
+	 */
+	protected RexsSubModel(Integer id, boolean isAccumulation) {
+		this.id = id;
+		this.isAccumulation = isAccumulation;
+	}
+
+	/**
+	 * Constructs a new {@link RexsSubModel} for a load case.
 	 *
 	 * @param id
 	 * 				The numeric ID of the sub-model within the REXS model.
 	 */
 	protected RexsSubModel(Integer id) {
-		this.id = id;
+		this(id, false);
 	}
 
 	/**
-	 * Constructs a new {@link RexsSubModel} for the given {@link LoadCase}.
-	 *
-	 * @param rawLoadCase
-	 * 				The representation of a load case in the JAXB model.
+	 * Constructs a new {@link RexsSubModel} for an accumilation.
 	 */
-	protected RexsSubModel(LoadCase rawLoadCase) {
-		this(rawLoadCase.getId());
-		for (Component rawComponent : rawLoadCase.getComponent())
-			components.put(rawComponent.getId(), RexsModelObjectFactory.getInstance().createRexsComponent(rawComponent));
-	}
-
-	/**
-	 * Constructs a new {@link RexsSubModel} for the given {@link Accumulation}.
-	 *
-	 * @param rawAccumulation
-	 * 				The representation of a accumulation in the JAXB model.
-	 */
-	protected RexsSubModel(Accumulation rawAccumulation) {
-		this((Integer)null);
-		this.isAccumulation = true;
-		if (rawAccumulation == null)
-			return;
-		for (Component rawComponent : rawAccumulation.getComponent())
-			components.put(rawComponent.getId(), RexsModelObjectFactory.getInstance().createRexsComponent(rawComponent));
+	protected RexsSubModel() {
+		this((Integer)null, true);
 	}
 
 	/**
@@ -93,6 +85,24 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 */
 	public boolean isAccumulation() {
 		return isAccumulation;
+	}
+
+	/**
+	 * @return
+	 * 				All components of the sub-model as a {@link List} of {@link RexsComponent}.
+	 */
+	public List<RexsComponent> getComponents() {
+		return components.values().stream().collect(Collectors.toList());
+	}
+
+	/**
+	 * Adds a component to the sub-model.
+	 *
+	 * @param component
+	 * 				The additional component as a {@link RexsComponent}.
+	 */
+	public void addComponent(RexsComponent component) {
+		this.components.put(component.getId(), component);
 	}
 
 	/**

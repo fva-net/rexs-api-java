@@ -16,10 +16,8 @@
 package info.rexs.io;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,40 +36,6 @@ public class RexsFileWriterTest {
 		Path rexsFilePath = Paths.get("src/test/resources").resolve("FVA_Planetary_stage_-_Minus_gearing_1.1.rexs");
 		RexsFileReader reader = new RexsFileReader(rexsFilePath);
 		aRexsModelToWrite = reader.read();
-	}
-
-	@Test
-	public void writeRawModel_nonExistingFileIsCreated() throws Exception {
-		Path nonExistingFilePath = Paths.get("target").resolve("non-existing-file-" + System.currentTimeMillis() + ".rexs");
-		RexsFileWriter writer = new RexsFileWriter(nonExistingFilePath);
-		writer.writeRawModel(aRexsModelToWrite.getRawModel());
-
-		assertThat(nonExistingFilePath).exists();
-		assertThat(Files.size(nonExistingFilePath)).isGreaterThan(0l);
-	}
-
-	@Test
-	public void writeRawModel_nonWritableFileThrowsIOException() throws Exception {
-		Path nonWritableFilePath = Paths.get("target").resolve("non-writable-file-" + System.currentTimeMillis() + ".rexs");
-		Files.createFile(nonWritableFilePath);
-		nonWritableFilePath.toFile().setWritable(false);
-
-		assertThatExceptionOfType(IOException.class).isThrownBy(() -> {
-			RexsFileWriter writer = new RexsFileWriter(nonWritableFilePath);
-			writer.writeRawModel(aRexsModelToWrite.getRawModel());
-		})
-		.withMessageEndingWith("is not writable");
-	}
-
-	@Test
-	public void writeRawModel_writesExistingRexsFile() throws Exception {
-		Path existingFilePath = Paths.get("target").resolve("existing-file-" + System.currentTimeMillis() + ".rexs");
-		Files.createFile(existingFilePath);
-		RexsFileWriter writer = new RexsFileWriter(existingFilePath);
-		writer.writeRawModel(aRexsModelToWrite.getRawModel());
-
-		assertThat(existingFilePath).exists();
-		assertThat(Files.size(existingFilePath)).isGreaterThan(0l);
 	}
 
 	@Test

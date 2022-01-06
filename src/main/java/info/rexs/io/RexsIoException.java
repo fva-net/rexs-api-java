@@ -13,29 +13,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package info.rexs.model;
+package info.rexs.io;
 
-public class RexsRelationTest {
+public class RexsIoException extends Exception {
 
-	// TODO Constructor
+	public RexsIoException(String message) {
+		super(message);
+	}
 
-	// TODO getRawRelation()
-
-	// TODO getType()
-
-	// TODO getId()
-
-	// TODO getOrder()
-
-	// TODO hasComponent(Integer componentId)
-
-	// TODO findComponentIdByRole(RelationRole role)
-
-	// TODO getRoleOfComponent(Integer componentId)
-
-	// TODO getSubComponentIds()
-
-	// TODO getMainComponentId()
-
-	// TODO changeComponentId(Integer oldId, Integer newId)
+	public RexsIoException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

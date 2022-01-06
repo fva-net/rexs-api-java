@@ -99,12 +99,12 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 	 * 				The actual key of the relation type to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found relation type as {@link RexsRelationType}, or {@code null} if the key could not be found.
+	 * 				The found relation type as {@link RexsRelationType}, or {@code RexsRelationType.UNKNOWN} if the key could not be found.
 	 */
 	public static RexsRelationType findByKey(String key) {
 		if (key == null)
-			return null;
+			return UNKNOWN;
 		RexsStandardRelationTypes.init();
-		return allRelationTypes.getOrDefault(key, null);
+		return allRelationTypes.getOrDefault(key, UNKNOWN);
 	}
 }

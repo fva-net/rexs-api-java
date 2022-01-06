@@ -22,8 +22,6 @@ import java.util.Set;
 
 import info.rexs.db.constants.RexsRelationRole;
 import info.rexs.db.constants.RexsRelationType;
-import info.rexs.model.jaxb.Ref;
-import info.rexs.model.jaxb.Relation;
 
 /**
  * This class represents a relation of a REXS model.
@@ -32,39 +30,56 @@ import info.rexs.model.jaxb.Relation;
  */
 public class RexsRelation {
 
-	/** The representation of this relation in the JAXB model. */
-	private Relation rawRelation;
+	/** The numeric ID of the relation. */
+	private Integer id;
+
+	/** The type of the relation. */
+	private RexsRelationType type;
+
+	/** The origin type of the relation. */
+	private String originType;
+
+	/** Optional order for sorting in the case of several relations. */
+	private Integer order;
+
+	/** All relation references of the relation. */
+	private List<RexsRelationRef> refs = new ArrayList<>();
 
 	/** A set with all component IDs of this relation. */
 	private Set<Integer> componentIds = new HashSet<>();
 
 	/**
-	 * Constructs a new {@link RexsRelation} for the given {@link Relation}.
+	 * Constructs a new {@link RexsRelation} for the given properties.
 	 *
-	 * @param rawRelation
-	 * 				The representation of this relation in the JAXB model.
+	 * @param id
+	 * 				The ID of the relation as a {@link Integer}.
+	 * @param type
+	 * 				The type of the relation as a {@link String}.
+	 * @param order
+	 * 				The order of the relation as a {@link Integer}.
 	 */
-	protected RexsRelation(Relation rawRelation) {
-		this.rawRelation = rawRelation;
-		for (Ref ref : rawRelation.getRef()) {
-			componentIds.add(ref.getId());
-		}
+	protected RexsRelation(Integer id, String type, Integer order) {
+		this.id = id;
+		this.type = RexsRelationType.findByKey(type);
+		this.originType = type;
+		this.order = order;
 	}
 
 	/**
-	 * @return
-	 * 				The representation of this relation in the JAXB model.
+	 * Constructs a new {@link RexsRelation} for the given properties.
+	 *
+	 * @param id
+	 * 				The ID of the relation as a {@link Integer}.
+	 * @param type
+	 * 				The type of the relation as a {@link RexsRelationType}.
+	 * @param order
+	 * 				The order of the relation as a {@link Integer}.
 	 */
-	public Relation getRawRelation() {
-		return rawRelation;
-	}
-
-	/**
-	 * @return
-	 * 				The type of the relation as {@link RexsRelationType}.
-	 */
-	public RexsRelationType getType() {
-		return RexsRelationType.findByKey(rawRelation.getType());
+	protected RexsRelation(Integer id, RexsRelationType type, Integer order) {
+		this.id = id;
+		this.type = type;
+		this.originType = type.getKey();
+		this.order = order;
 	}
 
 	/**
@@ -72,7 +87,23 @@ public class RexsRelation {
 	 * 				The ID of the relation as {@link Integer}.
 	 */
 	public Integer getId() {
-		return rawRelation.getId();
+		return id;
+	}
+
+	/**
+	 * @return
+	 * 				The type of the relation as {@link RexsRelationType}.
+	 */
+	public RexsRelationType getType() {
+		return type;
+	}
+
+	/**
+	 * @return
+	 * 				The origin type of the relation as a {@link String}.
+	 */
+	public String getOriginType() {
+		return originType;
 	}
 
 	/**
@@ -80,10 +111,38 @@ public class RexsRelation {
 	 * 				The order of the relation as {@link Integer}.
 	 */
 	public Integer getOrder() {
-		Integer order = rawRelation.getOrder();
 		if (order == null)
-			order = 1;
+			order = -1;
 		return order;
+	}
+
+	/**
+	 * Sets the order of the relation.
+	 *
+	 * @param order
+	 * 				The order of the relation as a {@link Integer}.
+	 */
+	public void setOrder(Integer order) {
+		this.order = order;
+	}
+
+	/**
+	 * @return
+	 * 				All relation references of the relation as a {@link List} of {@link RexsRelationRef}.
+	 */
+	public List<RexsRelationRef> getRefs() {
+		return refs;
+	}
+
+	/**
+	 * Adds a relation reference to the relation.
+	 *
+	 * @param ref
+	 * 				The additional relation reference as a {@link RexsRelationRef}.
+	 */
+	public void addRef(RexsRelationRef ref) {
+		this.refs.add(ref);
+		this.componentIds.add(ref.getId());
 	}
 
 	/**
@@ -109,8 +168,8 @@ public class RexsRelation {
 	 * 				The found component ID as {@link Integer}, or {@code null} if the component could not be found.
 	 */
 	public Integer findComponentIdByRole(RexsRelationRole role) {
-		for (Ref ref : rawRelation.getRef()) {
-			if (ref.getRole().equals(role.getKey()))
+		for (RexsRelationRef ref : refs) {
+			if (ref.getRole().equals(role))
 				return ref.getId();
 		}
 
@@ -128,10 +187,19 @@ public class RexsRelation {
 	 */
 	public RexsRelationRole findRoleByComponentId(Integer componentId) {
 		if (hasComponent(componentId)) {
-			for (Ref ref : rawRelation.getRef()) {
+			for (RexsRelationRef ref : refs) {
 				if (ref.getId().equals(componentId))
-					return RexsRelationRole.findByKey(ref.getRole());
+					return ref.getRole();
 			}
+		}
+
+		return null;
+	}
+
+	public RexsRelationRef findRefByRole(RexsRelationRole role) {
+		for (RexsRelationRef ref : refs) {
+			if (ref.getRole().equals(role))
+				return ref;
 		}
 
 		return null;
@@ -241,7 +309,7 @@ public class RexsRelation {
 	public void changeComponentId(Integer oldId, Integer newId) {
 		componentIds.remove(oldId);
 		componentIds.add(newId);
-		for (Ref ref : rawRelation.getRef()) {
+		for (RexsRelationRef ref : refs) {
 			if (ref.getId().equals(oldId))
 				ref.setId(newId);
 		}

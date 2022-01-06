@@ -15,33 +15,21 @@
  ******************************************************************************/
 package info.rexs.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
 import java.util.Set;
-import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsRelationRole;
 import info.rexs.db.constants.RexsRelationType;
 import info.rexs.db.constants.RexsVersion;
-import info.rexs.model.jaxb.Accumulation;
-import info.rexs.model.jaxb.Component;
-import info.rexs.model.jaxb.LoadSpectrum;
-import info.rexs.model.jaxb.Model;
-import info.rexs.model.jaxb.ObjectFactory;
-import info.rexs.model.jaxb.Ref;
-import info.rexs.model.jaxb.Relation;
 
 /**
  * This class represents a REXS model.
@@ -50,143 +38,134 @@ import info.rexs.model.jaxb.Relation;
  */
 public class RexsModel {
 
-	/** Factory class to create new instances for the JAXB model. */
-	protected ObjectFactory objectFactory = new ObjectFactory();
+	/** The version of the REXS model. */
+	private RexsVersion version;
 
-	/** The representation of this model in the JAXB model. */
-	protected Model rawModel;
+	/** The origin version of the REXS model */
+	private String originVersion;
+
+	/** Name of the application that created the REXS model, e.g. "FVA Workbench". */
+	private String applicationId;
+
+	/** Version of the application. */
+	private String applicationVersion;
 
 	/** All relations of the model as a {@link List} of {@link RexsRelation}. */
-	protected List<RexsRelation> relations;
+	protected List<RexsRelation> relations = new ArrayList<>();
 
 	/** All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}. */
-	protected List<RexsLoadSpectrum> loadSpectrums;
+	protected List<RexsLoadSpectrum> loadSpectrums = new ArrayList<>();
 
 	/** An internal index with all components of the model for quick access. */
-	private Map<Integer, RexsComponent> components;
+	private Map<Integer, RexsComponent> components = new HashMap<>();
 
 	/** An internal index with all components of the component types in the model for quick access. */
-	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponentId;
+	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponentId = new HashMap<>();
 
 	/** An internal index with all relations of the component in the model for quick access. */
-	private Map<Integer, List<RexsRelation>> mapMainCompToRelation;
+	private Map<Integer, List<RexsRelation>> mapMainCompToRelation = new HashMap<>();
 
 	/** An internal index with all relations of the relation types in the model for quick access. */
-	private Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation;
-
-	private RexsVersion version;
+	private Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation = new HashMap<>();
 
 	/**
 	 * Constructs a new {@link RexsModel} from scratch.
 	 *
+	 * @param version
+	 * 				The version of the REXS model as a{@link String}.
 	 * @param applicationId
 	 * 				Name of the application that created the REXS model, e.g. "FVA Workbench".
 	 * @param applicationVersion
 	 * 				Version of the application.
 	 */
-	protected RexsModel(String applicationId, String applicationVersion) {
-		this.rawModel = createEmptyRexsModel(applicationId, applicationVersion);
-		initialize();
+	protected RexsModel(String version, String applicationId, String applicationVersion) {
+		this.version = RexsVersion.findByName(version);
+		this.originVersion = version;
+		this.applicationId = applicationId;
+		this.applicationVersion = applicationVersion;
 	}
 
 	/**
-	 * Constructs a new {@link RexsModel} for the given {@link Model}.
+	 * Constructs a new {@link RexsModel} for the given properties.
 	 *
-	 * @param model
-	 * 				The representation of this model in the JAXB model.
+	 * @param version
+	 * 				The version of the REXS model as a{@link RexsVersion}.
+	 * @param applicationId
+	 * 				Name of the application that created the REXS model, e.g. "FVA Workbench".
+	 * @param applicationVersion
+	 * 				Version of the application.
 	 */
-	protected RexsModel(Model model) {
-		this.rawModel = model;
-		initialize();
-	}
-
-	protected void initialize() {
-		List<Component> rawComponents = rawModel.getComponents().getComponent();
-		List<Relation> rawRelations = rawModel.getRelations().getRelation();
-
-		this.version = RexsVersion.findByName(rawModel.getVersion());
-		this.relations = new ArrayList<>();
-		this.mapMainCompToRelation = new HashMap<>(rawRelations.size());
-		this.mapTypeToRelation = new HashMap<>();
-
-		for (Relation rawRelation : rawRelations) {
-			RexsRelation relation = RexsModelObjectFactory.getInstance().createRexsRelation(rawRelation);
-			this.relations.add(relation);
-
-			List<RexsRelation> relationsOfComp = this.mapMainCompToRelation.get(relation.getMainComponentId());
-			if (relationsOfComp == null)
-				relationsOfComp = new ArrayList<>();
-			relationsOfComp.add(relation);
-			this.mapMainCompToRelation.put(relation.getMainComponentId(), relationsOfComp);
-
-			List<RexsRelation> relationsOfType = mapTypeToRelation.get(relation.getType());
-			if (relationsOfType==null)
-				relationsOfType = new ArrayList<>();
-			relationsOfType.add(relation);
-			this.mapTypeToRelation.put(relation.getType(), relationsOfType);
-		}
-
-		this.components = new HashMap<>(rawComponents.size());
-		this.mapTypeToComponentId = new HashMap<>();
-
-		for (Component rawComponent : rawComponents) {
-			RexsComponent component = RexsModelObjectFactory.getInstance().createRexsComponent(rawComponent);
-			this.components.put(rawComponent.getId(), component);
-
-			RexsComponentType componentType = RexsComponentType.findById(rawComponent.getType());
-			List<RexsComponent> componentsOfType = this.mapTypeToComponentId.get(componentType);
-			if (componentsOfType==null)
-				componentsOfType = new ArrayList<>();
-			componentsOfType.add(component);
-			this.mapTypeToComponentId.put(componentType, componentsOfType);
-		}
-
-		this.loadSpectrums = new ArrayList<>();
-		for (LoadSpectrum rawSpectrum : rawModel.getLoadSpectrum())
-			this.loadSpectrums.add(RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(rawSpectrum));
-	}
-
-	public RexsVersion getVersion() {
-		return version;
-	}
-
-	private Model createEmptyRexsModel(String applicationId, String applicationVersion) {
-		Model newRawModel = objectFactory.createModel();
-
-		// set xml headers
-		newRawModel.setVersion(RexsVersion.getLatest().getName());
-		newRawModel.setDate(getISO8601Date());
-		newRawModel.setApplicationId(applicationId);
-		newRawModel.setApplicationVersion(applicationVersion);
-
-		// leere Listen für Komponenten und Relationen anlegen
-		newRawModel.setComponents(objectFactory.createComponents());
-		newRawModel.setRelations(objectFactory.createRelations());
-
-		return newRawModel;
-	}
-
-	private String getISO8601Date() {
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
-		TimeZone tz = TimeZone.getDefault();
-		df.setTimeZone(tz);
-		return df.format(new Date());
+	protected RexsModel(RexsVersion version, String applicationId, String applicationVersion) {
+		this.version = version;
+		this.originVersion = version.getName();
+		this.applicationId = applicationId;
+		this.applicationVersion = applicationVersion;
 	}
 
 	/**
 	 * @return
-	 * 				The representation of this model in the JAXB model.
+	 * 				The version of the REXS model as a {@link RexsVersion}.
 	 */
-	public Model getRawModel() {
-		return rawModel;
+	public RexsVersion getVersion() {
+		return version;
+	}
+
+	/**
+	 * @return
+	 * 				The origin version of the REXS model as a {@link String}.
+	 */
+	public String getOriginVersion() {
+		return originVersion;
+	}
+
+	/**
+	 * @return
+	 * 				The name of the application that created the REXS model as a {@link String}.
+	 */
+	public String getApplicationId() {
+		return applicationId;
+	}
+
+	/**
+	 * @return
+	 * 				The version of the application as a {@link String}.
+	 */
+	public String getApplicationVersion() {
+		return applicationVersion;
 	}
 
 	/**
 	 * @return
 	 * 				All components of the model as a {@link List} of {@link RexsComponent}.
 	 */
-	public Collection<RexsComponent> getComponents() {
+	public List<RexsComponent> getComponents() {
 		return components.values().stream().collect(Collectors.toList());
+	}
+
+	/**
+	 * @return
+	 * 				All relations of the model as a {@link List} of {@link RexsRelation}.
+	 */
+	public List<RexsRelation> getRelations() {
+		return relations;
+	}
+
+	/**
+	 * @return
+	 * 				All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}.
+	 */
+	public List<RexsLoadSpectrum> getLoadSpectrums() {
+		return loadSpectrums;
+	}
+
+	/**
+	 * Adds a load spectrum to the REXS model.
+	 *
+	 * @param loadSpectrum
+	 * 				The additional load spectrum as a {@link RexsLoadSpectrum}.
+	 */
+	public void addLoadSpectrum(RexsLoadSpectrum loadSpectrum) {
+		this.loadSpectrums.add(loadSpectrum);
 	}
 
 	/**
@@ -627,23 +606,27 @@ public class RexsModel {
 		if (components.containsKey(id))
 			throw new RexsModelAccessException("component with id " + id + " already exists");
 
-		Component component = objectFactory.createComponent();
-		component.setId(id);
-		component.setType(type.getId());
-		component.setName(name);
+		RexsComponent rexsComponent = RexsModelObjectFactory.getInstance().createRexsComponent(id, type, name);
 
-		RexsComponent rexsComponent = RexsModelObjectFactory.getInstance().createRexsComponent(component);
-
-		components.put(id, rexsComponent);
-		rawModel.getComponents().getComponent().add(component);
-
-		List<RexsComponent> componentsForType =
-				mapTypeToComponentId.containsKey(type) ?
-						mapTypeToComponentId.get(type) : new ArrayList<>();
-		componentsForType.add(rexsComponent);
-		mapTypeToComponentId.put(type, componentsForType);
+		addComponent(rexsComponent);
 
 		return rexsComponent;
+	}
+
+	/**
+	 * Adds a component to the REXS model.
+	 *
+	 * @param component
+	 * 				The additional component as a {@link RexsComponent}.
+	 */
+	public void addComponent(RexsComponent component) {
+		components.put(component.getId(), component);
+
+		List<RexsComponent> componentsForType =
+				mapTypeToComponentId.containsKey(component.getType()) ?
+						mapTypeToComponentId.get(component.getType()) : new ArrayList<>();
+		componentsForType.add(component);
+		mapTypeToComponentId.put(component.getType(), componentsForType);
 	}
 
 	/**
@@ -679,13 +662,13 @@ public class RexsModel {
 		if (!componentsExists(relComp, firstPart, secondPart))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.coupling);
+		RexsRelation relation = createRelation(RexsRelationType.coupling, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(relComp), RexsRelationRole.assembly));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(firstPart), RexsRelationRole.side_1));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(secondPart), RexsRelationRole.side_2));
+		relation.addRef(createRelationRef(relComp, RexsRelationRole.assembly));
+		relation.addRef(createRelationRef(firstPart, RexsRelationRole.side_1));
+		relation.addRef(createRelationRef(secondPart, RexsRelationRole.side_2));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -706,13 +689,13 @@ public class RexsModel {
 		if (!componentsExists(relComp, innerPart, outerPart))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.side);
+		RexsRelation relation = createRelation(RexsRelationType.side, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(relComp), RexsRelationRole.assembly));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(innerPart), RexsRelationRole.inner_part));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(outerPart), RexsRelationRole.outer_part));
+		relation.addRef(createRelationRef(relComp, RexsRelationRole.assembly));
+		relation.addRef(createRelationRef(innerPart, RexsRelationRole.inner_part));
+		relation.addRef(createRelationRef(outerPart, RexsRelationRole.outer_part));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -731,12 +714,12 @@ public class RexsModel {
 		if (!componentsExists(side1, side2))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.connection);
+		RexsRelation relation = createRelation(RexsRelationType.connection, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(side1), RexsRelationRole.side_1));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(side2), RexsRelationRole.side_2));
+		relation.addRef(createRelationRef(side1, RexsRelationRole.side_1));
+		relation.addRef(createRelationRef(side2, RexsRelationRole.side_2));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -757,13 +740,13 @@ public class RexsModel {
 		if (!componentsExists(stage, gear1, gear2))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.stage);
+		RexsRelation relation = createRelation(RexsRelationType.stage, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stage), RexsRelationRole.stage));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear1), RexsRelationRole.gear_1));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear2), RexsRelationRole.gear_2));
+		relation.addRef(createRelationRef(stage, RexsRelationRole.stage));
+		relation.addRef(createRelationRef(gear1, RexsRelationRole.gear_1));
+		relation.addRef(createRelationRef(gear2, RexsRelationRole.gear_2));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -784,13 +767,13 @@ public class RexsModel {
 		if (!componentsExists(stage, gear, stageGearData))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.stage_gear_data);
+		RexsRelation relation = createRelation(RexsRelationType.stage_gear_data, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stage), RexsRelationRole.stage));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear), RexsRelationRole.gear));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(stageGearData), RexsRelationRole.stage_gear_data));
+		relation.addRef(createRelationRef(stage, RexsRelationRole.stage));
+		relation.addRef(createRelationRef(gear, RexsRelationRole.gear));
+		relation.addRef(createRelationRef(stageGearData, RexsRelationRole.stage_gear_data));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -809,12 +792,12 @@ public class RexsModel {
 		if (!componentsExists(mainComp, partComp))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.assembly);
+		RexsRelation relation = createRelation(RexsRelationType.assembly, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.assembly));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(partComp), RexsRelationRole.part));
+		relation.addRef(createRelationRef(mainComp, RexsRelationRole.assembly));
+		relation.addRef(createRelationRef(partComp, RexsRelationRole.part));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -833,12 +816,12 @@ public class RexsModel {
 		if (!componentsExists(mainComp, referenced))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.reference);
+		RexsRelation relation = createRelation(RexsRelationType.reference, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.origin));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(referenced), RexsRelationRole.referenced));
+		relation.addRef(createRelationRef(mainComp, RexsRelationRole.origin));
+		relation.addRef(createRelationRef(referenced, RexsRelationRole.referenced));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -859,13 +842,12 @@ public class RexsModel {
 		if (!componentsExists(mainComp, referenced))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.ordered_reference);
-		rexsRelation.setOrder(order);
+		RexsRelation relation = createRelation(RexsRelationType.ordered_reference, order);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.origin));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(referenced), RexsRelationRole.referenced));
+		relation.addRef(createRelationRef(mainComp, RexsRelationRole.origin));
+		relation.addRef(createRelationRef(referenced, RexsRelationRole.referenced));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -886,13 +868,13 @@ public class RexsModel {
 		if (!componentsExists(gear, flank1, flank2))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.flank);
+		RexsRelation relation = createRelation(RexsRelationType.flank, null);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(gear), RexsRelationRole.gear));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank1), RexsRelationRole.left));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank2), RexsRelationRole.right));
+		relation.addRef(createRelationRef(gear, RexsRelationRole.gear));
+		relation.addRef(createRelationRef(flank1, RexsRelationRole.left));
+		relation.addRef(createRelationRef(flank2, RexsRelationRole.right));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -913,13 +895,12 @@ public class RexsModel {
 		if (!componentsExists(mainComp, partComp))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.ordered_assembly);
-		rexsRelation.setOrder(order);
+		RexsRelation relation = createRelation(RexsRelationType.ordered_assembly, order);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(mainComp), RexsRelationRole.assembly));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(partComp), RexsRelationRole.part));
+		relation.addRef(createRelationRef(mainComp, RexsRelationRole.assembly));
+		relation.addRef(createRelationRef(partComp, RexsRelationRole.part));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
@@ -940,53 +921,39 @@ public class RexsModel {
 		if (!componentsExists(flank, tool, manufacturingStep))
 			return false;
 
-		Relation rexsRelation = createRexsRelationWithType(RexsRelationType.manufacturing_step);
-		rexsRelation.setOrder(order);
+		RexsRelation relation = createRelation(RexsRelationType.manufacturing_step, order);
 
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(flank), RexsRelationRole.workpiece));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(tool), RexsRelationRole.tool));
-		rexsRelation.getRef().add(createRexsRefWithType(toRelationData(manufacturingStep), RexsRelationRole.manufacturing_settings));
+		relation.addRef(createRelationRef(flank, RexsRelationRole.workpiece));
+		relation.addRef(createRelationRef(tool, RexsRelationRole.tool));
+		relation.addRef(createRelationRef(manufacturingStep, RexsRelationRole.manufacturing_settings));
 
-		addRelation(rexsRelation);
+		addRelation(relation);
 		return true;
 	}
 
-	private Relation createRexsRelationWithType(RexsRelationType type) {
-		Relation rexsRelation = objectFactory.createRelation();
-		rexsRelation.setId(getNextFreeRelationId());
-		rexsRelation.setType(type.getKey());
-		return rexsRelation;
+	private RexsRelation createRelation(RexsRelationType type, Integer order) {
+		Integer id = getNextFreeRelationId();
+		return RexsModelObjectFactory.getInstance().createRexsRelation(id, type, order);
 	}
 
-	private Ref createRexsRefWithType(RexsRelationData data, RexsRelationRole role) {
-		Ref ref = objectFactory.createRef();
-		ref.setId(data.getId());
-		ref.setRole(role.getKey());
-		ref.setHint(data.getHint());
-		return ref;
+	private RexsRelationRef createRelationRef(RexsComponent component, RexsRelationRole role) {
+		return RexsModelObjectFactory.getInstance().createRexsRelationRef(component.getId(), role, component.getType().getId());
 	}
 
-	private RexsRelationData toRelationData(RexsComponent rexsComponent) {
-		return RexsModelObjectFactory.getInstance().createRexsRelationData(rexsComponent.getId(), rexsComponent.getType().getId());
-	}
-
-	private void addRelation(Relation relation) {
-		RexsRelation rexsRelation = RexsModelObjectFactory.getInstance().createRexsRelation(relation);
-
-		relations.add(rexsRelation);
-		rawModel.getRelations().getRelation().add(relation);
+	public void addRelation(RexsRelation relation) {
+		relations.add(relation);
 
 		List<RexsRelation> relationsForType =
-				mapTypeToRelation.containsKey(rexsRelation.getType()) ?
-						mapTypeToRelation.get(rexsRelation.getType()) : new ArrayList<>();
-		relationsForType.add(rexsRelation);
-		mapTypeToRelation.put(rexsRelation.getType(), relationsForType);
+				mapTypeToRelation.containsKey(relation.getType()) ?
+						mapTypeToRelation.get(relation.getType()) : new ArrayList<>();
+		relationsForType.add(relation);
+		mapTypeToRelation.put(relation.getType(), relationsForType);
 
 		List<RexsRelation> relationsForMainComp =
-				mapMainCompToRelation.containsKey(rexsRelation.getMainComponentId()) ?
-						mapMainCompToRelation.get(rexsRelation.getMainComponentId()) : new ArrayList<>();
-		relationsForMainComp.add(rexsRelation);
-		mapMainCompToRelation.put(rexsRelation.getMainComponentId(), relationsForMainComp);
+				mapMainCompToRelation.containsKey(relation.getMainComponentId()) ?
+						mapMainCompToRelation.get(relation.getMainComponentId()) : new ArrayList<>();
+		relationsForMainComp.add(relation);
+		mapMainCompToRelation.put(relation.getMainComponentId(), relationsForMainComp);
 	}
 
 	protected boolean componentsExists(RexsComponent ... rexsComponents) {
@@ -1105,8 +1072,17 @@ public class RexsModel {
 		if (RexsComponentType.cylindrical_gear.getId().equals(gearType.getId())
 				|| RexsComponentType.ring_gear.getId().equals(gearType.getId())) {
 			stageType = RexsComponentType.cylindrical_stage;
+
 		} else if (RexsComponentType.bevel_gear.getId().equals(gearType.getId())) {
 			stageType = RexsComponentType.bevel_stage;
+
+		} else if (RexsComponentType.worm_gear.getId().equals(gearType.getId())
+				|| RexsComponentType.worm_wheel.getId().equals(gearType.getId())) {
+			stageType = RexsComponentType.worm_stage;
+
+		} else if (RexsComponentType.involute_spline_gear_shaft.getId().equals(gearType.getId())
+				|| RexsComponentType.involute_spline_gear_hub.getId().equals(gearType.getId())) {
+			stageType = RexsComponentType.involute_spline_connection;
 		}
 
 		if (stageType == null)
@@ -1236,10 +1212,9 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsSubModel getAccumulation() {
-		if (loadSpectrums.isEmpty()) {
-			Accumulation empty = null;
-			return RexsModelObjectFactory.getInstance().createRexsSubModel(empty);
-		}
+		if (loadSpectrums.isEmpty())
+			return RexsModelObjectFactory.getInstance().createRexsSubModel();
+
 		return loadSpectrums.get(0).getAccumulation();
 	}
 
@@ -1302,5 +1277,23 @@ public class RexsModel {
 				masterComp.addAttribute(attribute);
 			}
 		}
+	}
+
+	public void removeRelation(RexsRelation relation) {
+		relations.remove(relation);
+		mapMainCompToRelation.remove(relation.getMainComponentId(), relation);
+		mapTypeToRelation.get(relation.getType()).remove(relation);
+	}
+
+	public void removeComponent(RexsComponent component) {
+		List<RexsRelation> relationsOfComponent = relations.stream().filter(r -> r.hasComponent(component.getId())).collect(Collectors.toList());
+		for (RexsRelation relation : relationsOfComponent)
+			removeRelation(relation);
+
+		components.remove(component.getId());
+
+		List<RexsComponent> compsOfType = mapTypeToComponentId.get(component.getType());
+		compsOfType.remove(component);
+		mapTypeToComponentId.put(component.getType(), compsOfType);
 	}
 }

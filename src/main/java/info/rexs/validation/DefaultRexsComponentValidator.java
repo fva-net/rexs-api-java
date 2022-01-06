@@ -18,8 +18,8 @@ package info.rexs.validation;
 import java.util.HashSet;
 import java.util.Set;
 
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
+import info.rexs.model.RexsAttribute;
+import info.rexs.model.RexsComponent;
 
 /**
  * This implementation of {@link IRexsComponentValidator} validates the basic structure of a REXS component.
@@ -34,14 +34,14 @@ public class DefaultRexsComponentValidator implements IRexsComponentValidator {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RexsValidationResult validate(Component rexsComponent) {
+	public RexsValidationResult validate(RexsComponent rexsComponent) {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
 
-		String componentType = rexsComponent.getType();
+		String componentType = rexsComponent.getOriginType();
 
-		if (rexsComponent.getAttribute() == null
-				|| rexsComponent.getAttribute().isEmpty()) {
+		if (rexsComponent.getAttributes() == null
+				|| rexsComponent.getAttributes().isEmpty()) {
 			validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTES_EMPTY, componentType);
 			return validationResult;
 
@@ -51,10 +51,10 @@ public class DefaultRexsComponentValidator implements IRexsComponentValidator {
 			Set<String> existingAttributeIds = new HashSet<>();
 			Set<String> existingAttributeIdsReported = new HashSet<>();
 
-			for (Attribute rexsAttribute : rexsComponent.getAttribute()) {
+			for (RexsAttribute rexsAttribute : rexsComponent.getAttributes()) {
 				validationResult.add(attributeValidator.validate(rexsAttribute, rexsComponent));
 
-				String attributeId = rexsAttribute.getId();
+				String attributeId = rexsAttribute.getOriginAttributeId();
 				if (existingAttributeIds.contains(attributeId)
 						&& !existingAttributeIdsReported.contains(attributeId)) {
 					validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTE_MULTIPLE, componentType, attributeId);

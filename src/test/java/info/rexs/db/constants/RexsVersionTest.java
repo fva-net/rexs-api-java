@@ -59,13 +59,13 @@ public class RexsVersionTest {
 	}
 
 	@Test
-	public void findByName_givenNullReturnsNull() {
-		assertThat(RexsVersion.findByName(null)).isNull();
+	public void findByName_givenNullReturnsUnknown() {
+		assertThat(RexsVersion.findByName(null)).isEqualTo(RexsVersion.UNKNOWN);
 	}
 
 	@Test
-	public void findByName_givenUnknownNameReturnsNull() {
-		assertThat(RexsVersion.findByName("foo.bar")).isNull();
+	public void findByName_givenUnknownNameReturnsUnknown() {
+		assertThat(RexsVersion.findByName("foo.bar")).isEqualTo(RexsVersion.UNKNOWN);
 	}
 
 	@Test

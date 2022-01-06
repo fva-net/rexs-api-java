@@ -16,20 +16,9 @@
 package info.rexs.io;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.RexsModel;
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
 import info.rexs.model.jaxb.Model;
 
 /**
@@ -37,10 +26,7 @@ import info.rexs.model.jaxb.Model;
  *
  * @author FVA GmbH
  */
-public class RexsFileWriter {
-
-	/** The {@link Path} to the REXS output file. */
-	private final Path pathToRexsOutputFile;
+public class RexsFileWriter extends AbstractRexsFileWriter {
 
 	/**
 	 * Constructs a new {@link RexsFileWriter} for the given {@link Path} to the REXS output file.
@@ -49,7 +35,7 @@ public class RexsFileWriter {
 	 * 				The {@link Path} to the REXS output file.
 	 */
 	public RexsFileWriter(Path pathToRexsOutputFile) {
-		this.pathToRexsOutputFile = pathToRexsOutputFile;
+		super(pathToRexsOutputFile);
 	}
 
 	/**
@@ -59,7 +45,7 @@ public class RexsFileWriter {
 	 * 				The REXS output {@link File}.
 	 */
 	public RexsFileWriter(File rexsOutputFile) {
-		this(rexsOutputFile.toPath());
+		super(rexsOutputFile);
 	}
 
 	/**
@@ -69,67 +55,21 @@ public class RexsFileWriter {
 	 * 				The path to the REXS output file as {@link String}.
 	 */
 	public RexsFileWriter(String rexsOutputFilePath) {
-		this(Paths.get(rexsOutputFilePath));
+		super(rexsOutputFilePath);
 	}
 
 	/**
-	 * Writes the REXS raw model {@link Model} to the output file.
-	 *
-	 * @param rawModel
-	 * 				The REXS base model {@link Model}.
-	 *
-	 * @throws IOException
-	 * 				If the REXS output file is not writable.
-	 * @throws JAXBException
-	 * 				If any unexpected problem occurs during the marshalling of the REXS output file.
+	 * {@inheritDoc}
 	 */
-	public void writeRawModel(Model rawModel) throws IOException, JAXBException {
-		if(!Files.exists(pathToRexsOutputFile))
-			Files.createFile(pathToRexsOutputFile);
+	@Override
+	public void write(RexsModel model) throws RexsIoException {
+		validateOutputFile();
 
-		if(!Files.isWritable(pathToRexsOutputFile))
-			throw new IOException("file " + pathToRexsOutputFile + " is not writable");
+		RexsIoFormat format = RexsIoFormat.findFormatByFilename(pathToRexsOutputFile.getFileName().toString());
+		if (format == null)
+			throw new RexsIoException("rexs file " + pathToRexsOutputFile + " has unknown filename ending");
 
-		JAXBContext context = JAXBContext.newInstance(Model.class);
-		Marshaller marshaller = context.createMarshaller();
-		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		marshaller.marshal(convertDegreeUnits(rawModel), pathToRexsOutputFile.toFile());
-	}
-
-	/**
-	 * Writes the REXS base model {@link RexsModel} to the output file.
-	 *
-	 * @param model
-	 * 				The REXS base model {@link RexsModel}.
-	 *
-	 * @throws IOException
-	 * 				If the REXS output file is not writable.
-	 * @throws JAXBException
-	 * 				If any unexpected problem occurs during the marshalling of the REXS output file.
-	 */
-	public void write(RexsModel model) throws IOException, JAXBException {
-		writeRawModel(model.getRawModel());
-	}
-
-	private Model convertDegreeUnits(Model model) {
-		if (model.getComponents() == null || model.getComponents().getComponent().isEmpty())
-			return model;
-
-		String versionName = model.getVersion();
-		RexsVersion version = RexsVersion.findByName(versionName);
-		if (version == null)
-			return model;
-
-		RexsUnitId searchUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.deg : RexsUnitId.degree;
-		RexsUnitId replaceUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.degree : RexsUnitId.deg;
-
-		for (Component component : model.getComponents().getComponent()) {
-			for (Attribute attribute : component.getAttribute()) {
-				if (attribute.getUnit() != null && attribute.getUnit().equals(searchUnit.getId()))
-					attribute.setUnit(replaceUnit.getId());
-			}
-		}
-
-		return model;
+		AbstractRexsFileWriter writer = format.createNewFileWriter(pathToRexsOutputFile);
+		writer.write(model);
 	}
 }
