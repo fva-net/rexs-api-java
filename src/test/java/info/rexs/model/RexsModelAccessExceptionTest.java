@@ -21,7 +21,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import info.rexs.model.jaxb.Component;
+import info.rexs.db.constants.RexsComponentType;
 
 public class RexsModelAccessExceptionTest {
 
@@ -48,10 +48,10 @@ public class RexsModelAccessExceptionTest {
 
 	@Test
 	public void componentAndmessageConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(15);
-		rawComponent.setName("SampleComponent");
-		RexsComponent component = new RexsComponent(rawComponent);
+		Integer id = 15;
+		RexsComponentType type = RexsComponentType.UNKNOWN;
+		String name = "SampleComponent";
+		RexsComponent component = new RexsComponent(id, type, name);
 		String message = UUID.randomUUID().toString();
 		RexsModelAccessException ex = new RexsModelAccessException(component, message);
 
@@ -62,10 +62,10 @@ public class RexsModelAccessExceptionTest {
 
 	@Test
 	public void componentAndmessageAndCauseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		Component rawComponent = new Component();
-		rawComponent.setId(15);
-		rawComponent.setName("SampleComponent");
-		RexsComponent component = new RexsComponent(rawComponent);
+		Integer id = 15;
+		RexsComponentType type = RexsComponentType.UNKNOWN;
+		String name = "SampleComponent";
+		RexsComponent component = new RexsComponent(id, type, name);
 		Exception cause = new Exception("foo");
 		RexsModelAccessException ex = new RexsModelAccessException(component, "bar", cause);
 

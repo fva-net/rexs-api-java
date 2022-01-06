@@ -15,8 +15,8 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
+import info.rexs.model.RexsAttribute;
+import info.rexs.model.RexsComponent;
 
 /**
  * This interface represents the validator of a REXS attribute.
@@ -36,5 +36,5 @@ public interface IRexsAttributeValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(Attribute rexsAttribute, Component rexsComponent);
+	public RexsValidationResult validate(RexsAttribute rexsAttribute, RexsComponent rexsComponent);
 }

@@ -62,7 +62,7 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 	 * 				The latest official REXS {@link RexsVersion}.
 	 */
 	public static RexsVersion getLatest() {
-		return V1_3;
+		return V1_4;
 	}
 
 	/**
@@ -136,11 +136,11 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 	 * 				The name of the version to be found as a {@link String}.
 	 *
 	 * @return
-	 * 				The found {@link RexsVersion}, or {@code null} if the version could not be found.
+	 * 				The found {@link RexsVersion}, or {@code RexsVersion.UNKNOWN} if the version could not be found.
 	 */
 	public static RexsVersion findByName(String name) {
 		if (name == null)
-			return null;
+			return UNKNOWN;
 		RexsStandardVersions.init();
 
 		for (RexsVersion version : allVerions) {
@@ -149,7 +149,7 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 				return version;
 		}
 
-		return null;
+		return UNKNOWN;
 	}
 
 	public boolean isLess(RexsVersion version) {

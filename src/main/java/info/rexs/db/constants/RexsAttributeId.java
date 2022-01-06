@@ -116,12 +116,12 @@ public class RexsAttributeId implements RexsStandardAttributeIds {
 	 * 				The actual attribute ID to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found attribute ID as {@link RexsAttributeId}, or {@code RexsStandardAttributeIds.UNKNOWN} if the ID could not be found.
+	 * 				The found attribute ID as {@link RexsAttributeId}, or {@code RexsAttributeId.UNKNOWN} if the ID could not be found.
 	 */
 	public static RexsAttributeId findById(String id) {
 		if (id == null)
-			return null;
+			return UNKNOWN;
 		RexsStandardAttributeIds.init();
-		return allAttributeIds.getOrDefault(id, RexsStandardAttributeIds.UNKNOWN);
+		return allAttributeIds.getOrDefault(id, UNKNOWN);
 	}
 }

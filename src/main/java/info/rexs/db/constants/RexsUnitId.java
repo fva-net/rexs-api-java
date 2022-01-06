@@ -96,12 +96,12 @@ public class RexsUnitId implements RexsStandardUnitIds {
 	 * 				The actual unit ID to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found unit ID as {@link RexsUnitId}, or {@code null} if the ID could not be found.
+	 * 				The found unit ID as {@link RexsUnitId}, or {@code RexsUnitId.UNKNOWN} if the ID could not be found.
 	 */
 	public static RexsUnitId findById(String id) {
 		if (id == null)
-			return null;
+			return UNKNOWN;
 		RexsStandardUnitIds.init();
-		return allUnitIds.getOrDefault(id, RexsStandardUnitIds.UNKNOWN);
+		return allUnitIds.getOrDefault(id, UNKNOWN);
 	}
 }

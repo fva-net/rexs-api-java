@@ -296,6 +296,7 @@ public interface RexsStandardComponentTypes {
 	/** 0° grinding disk tool (Versions: 1.0, 1.1, 1.2, 1.3, 1.4) */
 	public static final RexsComponentType zero_degree_grinding_disk_tool = RexsComponentType.create("zero_degree_grinding_disk_tool");
 
+	/** Constant for an unknown component type. */
 	public static final RexsComponentType UNKNOWN = RexsComponentType.create("unknown");
 
 	public static void init() {}

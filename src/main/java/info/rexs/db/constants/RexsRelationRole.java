@@ -99,12 +99,12 @@ public class RexsRelationRole implements RexsStandardRelationRoles {
 	 * 				The actual key of the relation role to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found relation role as {@link RexsRelationRole}, or {@code null} if the key could not be found.
+	 * 				The found relation role as {@link RexsRelationRole}, or {@code RexsRelationRole.UNKNOWN} if the key could not be found.
 	 */
 	public static RexsRelationRole findByKey(String key) {
 		if (key == null)
-			return null;
+			return UNKNOWN;
 		RexsStandardRelationRoles.init();
-		return allRelationRoles.getOrDefault(key, null);
+		return allRelationRoles.getOrDefault(key, UNKNOWN);
 	}
 }

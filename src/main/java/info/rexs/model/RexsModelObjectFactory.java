@@ -16,13 +16,10 @@
 package info.rexs.model;
 
 import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.model.jaxb.Accumulation;
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
-import info.rexs.model.jaxb.LoadCase;
-import info.rexs.model.jaxb.LoadSpectrum;
-import info.rexs.model.jaxb.Model;
-import info.rexs.model.jaxb.Relation;
+import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsRelationRole;
+import info.rexs.db.constants.RexsRelationType;
+import info.rexs.db.constants.RexsVersion;
 
 /**
  * TODO Document me!
@@ -54,136 +51,241 @@ public class RexsModelObjectFactory {
 	}
 
 	/**
-	 * TODO Document me!
+	 * Creates a new {@link RexsModel} for the given properties.
 	 *
+	 * @param version
+	 * 				The version of the REXS model as a{@link String}.
 	 * @param applicationId
-	 * 				TODO Document me!
+	 * 				Name of the application that created the REXS model, e.g. "FVA Workbench".
 	 * @param applicationVersion
-	 * 				TODO Document me!
+	 * 				Version of the application.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The created model.
 	 */
-	public RexsModel createRexsModel(String applicationId, String applicationVersion) {
-		return new RexsModel(applicationId, applicationVersion);
+	public RexsModel createRexsModel(String version, String applicationId, String applicationVersion) {
+		return new RexsModel(version, applicationId, applicationVersion);
 	}
 
 	/**
-	 * TODO Document me!
+	 * Creates a new {@link RexsModel} for the given properties.
 	 *
-	 * @param rawModel
-	 * 				TODO Document me!
+	 * @param version
+	 * 				The version of the REXS model as a{@link RexsVersion}.
+	 * @param applicationId
+	 * 				Name of the application that created the REXS model, e.g. "FVA Workbench".
+	 * @param applicationVersion
+	 * 				Version of the application.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The created model.
 	 */
-	public RexsModel createRexsModel(Model rawModel) {
-		return new RexsModel(rawModel);
+	public RexsModel createRexsModel(RexsVersion version, String applicationId, String applicationVersion) {
+		return new RexsModel(version, applicationId, applicationVersion);
 	}
 
 	/**
-	 * TODO Document me!
-	 *
-	 * @param rawComponent
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public RexsComponent createRexsComponent(Component rawComponent) {
-		return new RexsComponent(rawComponent);
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param rawAttribute
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public RexsAttribute createRexsAttribute(Attribute rawAttribute) {
-		return new RexsAttribute(rawAttribute);
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param attributeId
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public RexsAttribute createRexsAttribute(RexsAttributeId attributeId) {
-		return new RexsAttribute(attributeId);
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param rawRelation
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public RexsRelation createRexsRelation(Relation rawRelation) {
-		return new RexsRelation(rawRelation);
-	}
-
-	/**
-	 * TODO Document me!
+	 * Creates a new {@link RexsComponent} for the given properties.
 	 *
 	 * @param id
-	 * 				TODO Document me!
+	 * 				The numeric ID of the component as an {@link Integer}.
+	 * @param type
+	 * 				The type of the component as a {@link String}.
+	 * @param name
+	 * 				The name of the component as a {@link String}.
+	 *
+	 * @return
+	 * 				The created component.
+	 */
+	public RexsComponent createRexsComponent(Integer id, String type, String name) {
+		return new RexsComponent(id, type, name);
+	}
+
+	/**
+	 * Creates a new {@link RexsComponent} for the given properties.
+	 *
+	 * @param id
+	 * 				The numeric ID of the component as an {@link Integer}.
+	 * @param type
+	 * 				The type of the component as a {@link RexsComponentType}.
+	 * @param name
+	 * 				The name of the component as a {@link String}.
+	 *
+	 * @return
+	 * 				The created component.
+	 */
+	public RexsComponent createRexsComponent(Integer id, RexsComponentType type, String name) {
+		return new RexsComponent(id, type, name);
+	}
+
+	/**
+	 * Creates a new {@link RexsAttribute} for the given properties.
+	 *
+	 * @param id
+	 * 				The ID of the attribute as a {@link String}.
+	 * @param unit
+	 * 				The unit of the attribute as a {@link String}.
+	 *
+	 * @return
+	 * 				The created attribute.
+	 */
+	public RexsAttribute createRexsAttribute(String id, String unit) {
+		return new RexsAttribute(id, unit);
+	}
+
+	/**
+	 * Creates a new {@link RexsAttribute} for the given properties.
+	 *
+	 * @param id
+	 * 				The ID of the attribute as a {@link String}.
+	 *
+	 * @return
+	 * 				The created attribute.
+	 */
+	public RexsAttribute createRexsAttribute(String id) {
+		return new RexsAttribute(id);
+	}
+
+	/**
+	 * Creates a new {@link RexsAttribute} from scratch.
+	 *
+	 * @param id
+	 * 				The ID of the attribute.
+	 *
+	 * @return
+	 * 				The created attribute.
+	 */
+	public RexsAttribute createRexsAttribute(RexsAttributeId id) {
+		return new RexsAttribute(id);
+	}
+
+	/**
+	 * Creates a new {@link RexsRelation} for the given properties.
+	 *
+	 * @param id
+	 * 				The ID of the relation as a {@link Integer}.
+	 * @param type
+	 * 				The type of the relation as a {@link String}.
+	 * @param order
+	 * 				The order of the relation as a {@link Integer}.
+	 *
+	 * @return
+	 * 				The created relation.
+	 */
+	public RexsRelation createRexsRelation(Integer id, String type, Integer order) {
+		return new RexsRelation(id, type, order);
+	}
+
+	/**
+	 * Creates a new {@link RexsRelation} for the given properties.
+	 *
+	 * @param id
+	 * 				The ID of the relation as a {@link Integer}.
+	 * @param type
+	 * 				The type of the relation as a {@link RexsRelationType}.
+	 * @param order
+	 * 				The order of the relation as a {@link Integer}.
+	 *
+	 * @return
+	 * 				The created relation.
+	 */
+	public RexsRelation createRexsRelation(Integer id, RexsRelationType type, Integer order) {
+		return new RexsRelation(id, type, order);
+	}
+
+	/**
+	 * Creates a new {@link RexsRelationRef} for the given properties.
+	 *
+	 * @param id
+	 * 				The ID of the relation reference as a {@link Integer}.
+	 * @param role
+	 * 				The role of the relation reference as a {@link String}.
 	 * @param hint
-	 * 				TODO Document me!
+	 * 				The hint of the relation reference as a {@link String}.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The created relation reference.
 	 */
-	public RexsRelationData createRexsRelationData(Integer id, String hint) {
-		return new RexsRelationData(id, hint);
+	public RexsRelationRef createRexsRelationRef(Integer id, String role, String hint) {
+		return new RexsRelationRef(id, role, hint);
 	}
 
 	/**
-	 * TODO Document me!
+	 * Creates a new {@link RexsRelationRef} for the given properties.
 	 *
-	 * @param rawLoadSpectrum
-	 * 				TODO Document me!
+	 * @param id
+	 * 				The ID of the relation reference as a {@link Integer}.
+	 * @param role
+	 * 				The role of the relation reference as a {@link RexsRelationRole}.
+	 * @param hint
+	 * 				The hint of the relation reference as a {@link String}.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The created relation reference.
 	 */
-	public RexsLoadSpectrum createRexsLoadSpectrum(LoadSpectrum rawLoadSpectrum) {
-		return new RexsLoadSpectrum(rawLoadSpectrum);
+	public RexsRelationRef createRexsRelationRef(Integer id, RexsRelationRole role, String hint) {
+		return new RexsRelationRef(id, role, hint);
 	}
 
 	/**
-	 * TODO Document me!
+	 * Creates a new {@link RexsLoadSpectrum} for the given properties.
 	 *
-	 * @param rawLoadCase
-	 * 				TODO Document me!
+	 * @param id
+	 * 				The ID of the load spectrum as an {@link Integer}.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The created load spectrum.
 	 */
-	public RexsSubModel createRexsSubModel(LoadCase rawLoadCase) {
-		return new RexsSubModel(rawLoadCase);
+	public RexsLoadSpectrum createRexsLoadSpectrum(Integer id) {
+		return new RexsLoadSpectrum(id);
 	}
 
 	/**
-	 * TODO Document me!
+	 * Creates a new {@link RexsSubModel} for the given properties.
 	 *
-	 * @param rawAccumulation
-	 * 				TODO Document me!
+	 * @param id
+	 * 				The numeric ID of the sub-model within the REXS model.
+	 * @param isAccumulation
+	 * 				Flag whether it is an accumulation.
 	 *
 	 * @return
-	 * 				TODO Document me!
+	 * 				The created sub-model.
 	 */
-	public RexsSubModel createRexsSubModel(Accumulation rawAccumulation) {
-		return new RexsSubModel(rawAccumulation);
+	public RexsSubModel createRexsSubModel(Integer id, boolean isAccumulation) {
+		return new RexsSubModel(id, isAccumulation);
+	}
+
+	/**
+	 * Creates a new {@link RexsSubModel} for a load case.
+	 *
+	 * @param id
+	 * 				The numeric ID of the sub-model within the REXS model.
+	 *
+	 * @return
+	 * 				The created sub-model.
+	 */
+	public RexsSubModel createRexsSubModel(Integer id) {
+		return new RexsSubModel(id);
+	}
+
+	/**
+	 * Creates a new {@link RexsSubModel} for an accumilation.
+	 *
+	 * @return
+	 * 				The created sub-model.
+	 */
+	public RexsSubModel createRexsSubModel() {
+		return new RexsSubModel();
+	}
+
+	public RexsAttribute copyAttribute(RexsAttribute attribute) {
+		RexsAttribute copy = attribute.getOriginUnit() != null ?
+			createRexsAttribute(attribute.getOriginAttributeId(), attribute.getOriginUnit())
+			: createRexsAttribute(attribute.getOriginAttributeId());
+
+		if (attribute.hasValue())
+			copy.setRawValue(attribute.getRawValue().copy());
+
+		return copy;
 	}
 }

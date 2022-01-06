@@ -206,7 +206,7 @@ public interface RexsStandardUnitIds {
 	/** 1e-6 mm^3 / (N m) */
 	public static final RexsUnitId wear_coefficient_vdi2736 = RexsUnitId.create("1e-6 mm^3 / (N m)");
 
-	/** unknown */
+	/** Constant for an unknown unit. */
 	public static final RexsUnitId UNKNOWN = RexsUnitId.create("unknown");
 
 	public static void init() {}

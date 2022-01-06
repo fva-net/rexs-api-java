@@ -13,47 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package info.rexs.model;
+package info.rexs.model.value;
 
-/**
- * TODO Document me!
- *
- * @author FVA GmbH
- */
-public class RexsRelationData {
-
-	/** TODO Document me! */
-	private Integer id;
-
-	/** TODO Document me! */
-	private String hint;
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param id
-	 * 				TODO Document me!
-	 * @param hint
-	 * 				TODO Document me!
-	 */
-	protected RexsRelationData(Integer id, String hint) {
-		this.id = id;
-		this.hint = hint;
-	}
-
-	/**
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public String getHint() {
-		return hint;
-	}
+public enum Base64Type {
+	INT_32,
+	FLOAT_32,
+	FLOAT_64;
 }

@@ -19,11 +19,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class RexsRelationDataTest {
+import info.rexs.db.constants.RexsRelationRole;
+
+public class RexsRelationRefTest {
 
 	@Test
 	public void integerStringConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		RexsRelationData rexsRelationData = new RexsRelationData(42, "foo bar");
+		RexsRelationRef rexsRelationData = new RexsRelationRef(42, RexsRelationRole.UNKNOWN, "foo bar");
 
 		assertThat(rexsRelationData.getId()).isEqualTo(42);
 		assertThat(rexsRelationData.getHint()).isEqualTo("foo bar");

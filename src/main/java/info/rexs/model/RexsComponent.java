@@ -17,17 +17,14 @@ package info.rexs.model;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -38,9 +35,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsComponent implements Comparable<RexsComponent> {
 
-	/** The representation of this component in the JAXB model. */
-	private Component rawComponent;
-
 	/** The numeric ID of the component within the REXS model. */
 	@EqualsAndHashCode.Include
 	private Integer id;
@@ -48,21 +42,47 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	/** The type of the component. */
 	private RexsComponentType type;
 
+	/** The origin type of the component */
+	private String originType;
+
+	/** The name of the component */
+	private String name;
+
 	/** An internal index with all attributes of the component for quick access. */
-	private Map<String, RexsAttribute> attributes;
+	private Map<String, RexsAttribute> attributes = new HashMap<>();
 
 	/**
-	 * Constructs a new {@link RexsComponent} for the given {@link Component}.
+	 * Constructs a new {@link RexsComponent} for the given properties.
 	 *
-	 * @param rawComponent
-	 * 				The representation of this component in the JAXB model.
+	 * @param id
+	 * 				The numeric ID of the component as an {@link Integer}.
+	 * @param type
+	 * 				The type of the component as a {@link String}.
+	 * @param name
+	 * 				The name of the component as a {@link String}.
 	 */
-	protected RexsComponent(Component rawComponent) {
-		this.rawComponent = rawComponent;
-		this.id = rawComponent.getId();
-		this.type = RexsComponentType.findById(rawComponent.getType());
-		this.attributes = rawComponent.getAttribute().stream()
-				.collect(Collectors.toMap(Attribute::getId, rawAttribute -> RexsModelObjectFactory.getInstance().createRexsAttribute(rawAttribute)));
+	protected RexsComponent(Integer id, String type, String name) {
+		this.id = id;
+		this.type = RexsComponentType.findById(type);
+		this.originType = type;
+		this.name = name;
+	}
+
+	/**
+	 * Constructs a new {@link RexsComponent} for the given properties.
+	 *
+	 * @param id
+	 * 				The numeric ID of the component as an {@link Integer}.
+	 * @param type
+	 * 				The type of the component as a {@link RexsComponentType}.
+	 * @param name
+	 * 				The name of the component as a {@link String}.
+	 */
+	protected RexsComponent(Integer id, RexsComponentType type, String name) {
+		this.id = id;
+		this.type = type;
+		this.originType = type.getId();
+		this.name = name;
 	}
 
 	/**
@@ -75,17 +95,6 @@ public class RexsComponent implements Comparable<RexsComponent> {
 
 	/**
 	 * @return
-	 * 				The name of the component within the REXS model.
-	 */
-	public String getName() {
-		String name = rawComponent.getName();
-		if (name == null)
-			name = "";
-		return name;
-	}
-
-	/**
-	 * @return
 	 * 				The type of the component as {@link RexsComponentType}.
 	 */
 	public RexsComponentType getType() {
@@ -94,10 +103,24 @@ public class RexsComponent implements Comparable<RexsComponent> {
 
 	/**
 	 * @return
-	 * 				The representation of this component in the JAXB model.
+	 * 				The orign type of the component as a {@link String}.
 	 */
-	public Component getRawComponent() {
-		return rawComponent;
+	public String getOriginType() {
+		return originType;
+	}
+
+	/**
+	 * @return
+	 * 				The name of the component within the REXS model.
+	 */
+	public String getName() {
+		if (name == null)
+			name = "";
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -106,6 +129,10 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 */
 	public Collection<RexsAttribute> getAttributes() {
 		return Collections.unmodifiableCollection(attributes.values());
+	}
+
+	public void removeAttribute(RexsAttributeId attributeId) {
+		attributes.remove(attributeId.getId());
 	}
 
 	/**
@@ -169,35 +196,6 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		if (rexsAttribute == null)
 			throw new RexsModelAccessException(this, "attribute '" + attributeId + "' not found!");
 		return rexsAttribute;
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param attributeId
-	 * 				The ID of the attribute as {@link RexsAttributeId}.
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public Attribute getRawAttribute(RexsAttributeId attributeId) {
-		return getRawAttribute(attributeId.getId());
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param attributeId
-	 * 				The ID of the attribute as {@link String}.
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public Attribute getRawAttribute(String attributeId) {
-		RexsAttribute rexsAttribute = getAttribute(attributeId);
-		if (rexsAttribute == null)
-			throw new RexsModelAccessException(this, "attribute '" + attributeId + "' not found!");
-		return rexsAttribute.getRawAttribute();
 	}
 
 	/**
@@ -584,18 +582,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The new attribute as {@link RexsAttribute}.
 	 */
 	public void addAttribute(RexsAttribute newAttribute) {
-		if (attributes.containsKey(newAttribute.getAttributeId().getId())) {
-			Iterator<Attribute> iterator = rawComponent.getAttribute().iterator();
-			while(iterator.hasNext()) {
-				Attribute attribute = iterator.next();
-				if (attribute.getId().equals(newAttribute.getAttributeId().getId())) {
-					iterator.remove();
-					break;
-				}
-			}
-		}
 		attributes.put(newAttribute.getAttributeId().getId(), newAttribute);
-		rawComponent.getAttribute().add(newAttribute.getRawAttribute());
 	}
 
 	private RexsAttribute createAndAddAttribute(RexsAttributeId attributeId) {
@@ -988,8 +975,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The new numeric ID of the component within the REXS model.
 	 */
 	public void changeComponentId(Integer newId) {
-		id = newId;
-		rawComponent.setId(newId);
+		this.id = newId;
 	}
 
 	/**
@@ -1008,9 +994,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 */
 	public void deleteAttribute(RexsAttributeId attributeId) {
 		if (hasAttribute(attributeId)) {
-			RexsAttribute attribute = attributes.get(attributeId.getId());
 			attributes.remove(attributeId.getId());
-			rawComponent.getAttribute().remove(attribute.getRawAttribute());
 		}
 	}
 

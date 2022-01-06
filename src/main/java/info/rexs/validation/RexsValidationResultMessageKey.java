@@ -37,7 +37,6 @@ public enum RexsValidationResultMessageKey {
 	COMPONENT_ATTRIBUTE_MULTIPLE("The attribute was specified multiple times within the component."),
 
 	ATTRIBUTE_ID_UNKNOWN("The attribute id is unknown."),
-	ATTRIBUTE_MULTIPLE_VALUES("The attribute has multiple values."),
 	ATTRIBUTE_COMPONENT_MAPPING_UNKNOWN("The assignment between component and attribute is incorrect."),
 	ATTRIBUTE_UNIT_MAPPING_UNKNOWN("The assignment between attribute and unit is incorrect."),
 

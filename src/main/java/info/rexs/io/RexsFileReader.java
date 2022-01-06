@@ -16,30 +16,9 @@
 package info.rexs.io;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.attribute.BasicFileAttributes;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
-import org.xml.sax.InputSource;
-
-import info.rexs.db.constants.RexsUnitId;
 import info.rexs.model.RexsModel;
-import info.rexs.model.RexsModelObjectFactory;
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
 import info.rexs.model.jaxb.Model;
 
 /**
@@ -47,10 +26,7 @@ import info.rexs.model.jaxb.Model;
  *
  * @author FVA GmbH
  */
-public class RexsFileReader {
-
-	/** The {@link Path} to the REXS input file. */
-	private final Path pathToRexsInputFile;
+public class RexsFileReader extends AbstractRexsFileReader {
 
 	/**
 	 * Constructs a new {@link RexsFileReader} for the given {@link Path} to the REXS input file.
@@ -59,7 +35,7 @@ public class RexsFileReader {
 	 * 				The {@link Path} to the REXS input file.
 	 */
 	public RexsFileReader(Path pathToRexsInputFile) {
-		this.pathToRexsInputFile = pathToRexsInputFile;
+		super(pathToRexsInputFile);
 	}
 
 	/**
@@ -69,7 +45,7 @@ public class RexsFileReader {
 	 * 				The REXS input {@link File}.
 	 */
 	public RexsFileReader(File rexsInputFile) {
-		this(rexsInputFile.toPath());
+		super(rexsInputFile);
 	}
 
 	/**
@@ -79,110 +55,21 @@ public class RexsFileReader {
 	 * 				The path to the REXS input file as {@link String}.
 	 */
 	public RexsFileReader(String rexsInputFilePath) {
-		this(Paths.get(rexsInputFilePath));
+		super(rexsInputFilePath);
 	}
 
 	/**
-	 * Reads the REXS input file into the raw model {@link Model}.
-	 *
-	 * @return The newly created {@link Model}.
-	 *
-	 * @throws FileNotFoundException
-	 * 				If the REXS input file does not exist.
-	 * @throws IOException
-	 * 				In case of an IO error while reading the REXS input file.
-	 * @throws JAXBException
-	 * 				If any unexpected errors occur while unmarshalling the REXS input file.
+	 * {@inheritDoc}
 	 */
-	public Model readRawModel() throws FileNotFoundException, IOException, JAXBException {
-		if (!Files.exists(pathToRexsInputFile))
-			throw new FileNotFoundException("rexs file " + pathToRexsInputFile + " does not exist");
+	@Override
+	public RexsModel read() throws RexsIoException {
+		validateInputFile();
 
-		if (isRexsZipFile(pathToRexsInputFile)) {
-			Path pathToRexsFile = null;
-			try {
-				pathToRexsFile = extractRexsFileFromZip(pathToRexsInputFile);
-				return readRawModelFromFile(pathToRexsFile);
-			} finally {
-				Files.deleteIfExists(pathToRexsFile);
-			}
-		}
+		RexsIoFormat format = RexsIoFormat.findFormatByFilename(pathToRexsInputFile.getFileName().toString());
+		if (format == null)
+			throw new RexsIoException("rexs file " + pathToRexsInputFile + " has unknown filename ending");
 
-		return readRawModelFromFile(pathToRexsInputFile);
-	}
-
-	private Model readRawModelFromFile(Path pathToRexsFile) throws IOException, JAXBException
-	{
-		try (FileInputStream input = new FileInputStream(pathToRexsFile.toFile())) {
-			JAXBContext context = JAXBContext.newInstance(Model.class);
-			Unmarshaller unmarshaller = context.createUnmarshaller();
-			Model rawModel = (Model)unmarshaller.unmarshal(new InputSource(input));
-			return convertDegreeUnits(rawModel);
-		}
-	}
-
-	/**
-	 * Reads the REXS input file into the base model {@link RexsModel}.
-	 *
-	 * @return The newly created {@link RexsModel}.
-	 *
-	 * @throws FileNotFoundException
-	 * 				If the REXS input file does not exist.
-	 * @throws IOException
-	 * 				In case of an IO error while reading the REXS input file.
-	 * @throws JAXBException
-	 * 				If any unexpected errors occur while unmarshalling the REXS input file.
-	 */
-	public RexsModel read() throws FileNotFoundException, IOException, JAXBException {
-		Model rawModel = readRawModel();
-		return RexsModelObjectFactory.getInstance().createRexsModel(rawModel);
-	}
-
-	public static boolean isRexsZipFile(Path pathToRexsFile) {
-		return Files.exists(pathToRexsFile)
-				&& (pathToRexsFile.endsWith(".zip") || pathToRexsFile.endsWith(".rexsz"));
-	}
-
-	public static Path extractRexsFileFromZip(Path pathToRexszFile) throws IOException
-	{
-		Path pathToRexsFile = Files.createTempFile("rexs-file", ".rexs");
-
-		try(FileSystem fs = FileSystems.newFileSystem(pathToRexszFile, null)) {
-			final Path root = fs.getPath("/");
-			Files.walkFileTree(root, new SimpleFileVisitor<Path>() {
-				@Override
-				public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-					if (dir.toString().equals(root.toString()))
-						return FileVisitResult.CONTINUE;
-					// ignore directory - rexs file has to be located in the root directory of the zip archive
-					return FileVisitResult.SKIP_SUBTREE;
-				}
-
-				@Override
-				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-					if (file.toString().endsWith(".rexs")) {
-						Files.copy(file, pathToRexsFile, StandardCopyOption.REPLACE_EXISTING);
-						return FileVisitResult.TERMINATE;
-					}
-					return FileVisitResult.CONTINUE;
-				}
-			});
-		}
-
-		return pathToRexsFile;
-	}
-
-	private Model convertDegreeUnits(Model model) {
-		if (model.getComponents() == null || model.getComponents().getComponent().isEmpty())
-			return model;
-
-		for (Component component : model.getComponents().getComponent()) {
-			for (Attribute attribute : component.getAttribute()) {
-				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId()))
-					attribute.setUnit(RexsUnitId.deg.getId());
-			}
-		}
-
-		return model;
+		AbstractRexsFileReader reader = format.createNewFileReader(pathToRexsInputFile);
+		return reader.read();
 	}
 }
