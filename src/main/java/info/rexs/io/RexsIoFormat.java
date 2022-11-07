@@ -29,7 +29,19 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum RexsIoFormat {
 
-	JSON("json") {
+	JSON("rexsj") {
+		@Override
+		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
+			return new RexsJsonFileWriter(pathToRexsOutputFile);
+		}
+
+		@Override
+		public AbstractRexsFileReader createNewFileReader(Path pathToRexsInputFile) {
+			return new RexsJsonFileReader(pathToRexsInputFile);
+		}
+	},
+
+	REXS_JSON("rexs.json") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsJsonFileWriter(pathToRexsOutputFile);

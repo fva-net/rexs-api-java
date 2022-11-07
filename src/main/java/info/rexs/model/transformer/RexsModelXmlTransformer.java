@@ -190,9 +190,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		} else {
 			componentXml.setType(component.getType().getId());
 		}
-
-		if (component.getName() != null && !component.getName().isEmpty())
-			componentXml.setName(component.getName());
+		componentXml.setName(component.getName());
 
 		componentXml.getAttribute().addAll(createAttributesXml(component.getAttributes()));
 
@@ -478,7 +476,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Object value = valueContent.get(0);
 		if (value instanceof String)
-			return new RexsAttributeValueScalar((String)value);
+			return new RexsAttributeValueScalar(((String)value).trim());
 
 		Array arrayXml = readArrayElement(attributeXml);
 		if (arrayXml != null)

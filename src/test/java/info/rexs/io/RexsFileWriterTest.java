@@ -61,8 +61,38 @@ public class RexsFileWriterTest {
 	}
 
 	@Test
-	public void write_writesRexsFileWithString() throws Exception {
-		String rexsTargetFileStringPath = "target/rexs-file-string-" + System.currentTimeMillis() + ".rexs";
+	public void write_writesRexsFileJson() throws Exception {
+		Path rexsTargetFilePath = Paths.get("target").resolve("rexs-path-file-" + System.currentTimeMillis() + ".rexsj");
+		RexsFileWriter writer = new RexsFileWriter(rexsTargetFilePath);
+		writer.write(aRexsModelToWrite);
+
+		RexsFileReader reader = new RexsFileReader(rexsTargetFilePath);
+		assertThat(rexsTargetFilePath).exists();
+		RexsModel writtenRexsModel = reader.read();
+
+		assertThat(writtenRexsModel.getComponents().size()).isEqualTo(aRexsModelToWrite.getComponents().size());
+		assertThat(writtenRexsModel.getRelations().size()).isEqualTo(aRexsModelToWrite.getRelations().size());
+		assertThat(writtenRexsModel.getLoadSpectrums().isEmpty()).isEqualTo(aRexsModelToWrite.getLoadSpectrums().isEmpty());
+	}
+
+	@Test
+	public void write_writesRexsFileJson2() throws Exception {
+		Path rexsTargetFilePath = Paths.get("target").resolve("rexs-path-file-" + System.currentTimeMillis() + ".rexs.json");
+		RexsFileWriter writer = new RexsFileWriter(rexsTargetFilePath);
+		writer.write(aRexsModelToWrite);
+
+		RexsFileReader reader = new RexsFileReader(rexsTargetFilePath);
+		assertThat(rexsTargetFilePath).exists();
+		RexsModel writtenRexsModel = reader.read();
+
+		assertThat(writtenRexsModel.getComponents().size()).isEqualTo(aRexsModelToWrite.getComponents().size());
+		assertThat(writtenRexsModel.getRelations().size()).isEqualTo(aRexsModelToWrite.getRelations().size());
+		assertThat(writtenRexsModel.getLoadSpectrums().isEmpty()).isEqualTo(aRexsModelToWrite.getLoadSpectrums().isEmpty());
+	}
+
+	@Test
+	public void write_writesRexsFileWithFileJson() throws Exception {
+		String rexsTargetFileStringPath = "target/rexs-file-string-" + System.currentTimeMillis() + ".rexsj";
 		RexsFileWriter writer = new RexsFileWriter(rexsTargetFileStringPath);
 		writer.write(aRexsModelToWrite);
 

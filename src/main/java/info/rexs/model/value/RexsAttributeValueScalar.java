@@ -65,6 +65,8 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 				throw new RexsModelAccessException("cannot read integer value " + value, ex);
 			}
 		}
+		if (val == null)
+			throw new RexsModelAccessException("int value cannot be null");
 
 		return val;
 	}
@@ -81,6 +83,8 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 				throw new RexsModelAccessException("cannot read double value " + value, ex);
 			}
 		}
+		if (val == null)
+			throw new RexsModelAccessException("double value cannot be null");
 
 		return val;
 	}

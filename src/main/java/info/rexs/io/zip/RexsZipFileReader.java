@@ -100,7 +100,7 @@ public class RexsZipFileReader extends AbstractRexsFileReader {
 	}
 
 	private Path extractRexsFileFromZip(Path pathToRexszFile) throws IOException {
-		try(FileSystem fs = FileSystems.newFileSystem(pathToRexszFile, null)) {
+		try(FileSystem fs = FileSystems.newFileSystem(pathToRexszFile, (ClassLoader)null)) {
 			final Path root = fs.getPath("/");
 			RexsZipFileVisitor fileVisitor = new RexsZipFileVisitor(root);
 			Files.walkFileTree(root, fileVisitor);

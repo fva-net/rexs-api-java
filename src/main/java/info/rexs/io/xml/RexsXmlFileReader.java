@@ -21,8 +21,10 @@ import java.nio.file.Path;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
-import org.xml.sax.InputSource;
+import javax.xml.stream.StreamFilter;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.stream.StreamSource;
 
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.io.AbstractRexsFileReader;
@@ -75,8 +77,22 @@ public class RexsXmlFileReader extends AbstractRexsFileReader {
 
 		try (FileInputStream input = new FileInputStream(pathToRexsInputFile.toFile())) {
 			JAXBContext context = JAXBContext.newInstance(Model.class);
+
+			XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
+			XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(new StreamSource(input));
+			xmlStreamReader = xmlInputFactory.createFilteredReader(xmlStreamReader, new StreamFilter() {
+
+				@Override
+				public boolean accept(XMLStreamReader reader) {
+					if(reader.getEventType() == XMLStreamReader.CHARACTERS) {
+						return reader.getText().trim().length() > 0;
+					}
+					return true;
+				}
+			});
+
 			Unmarshaller unmarshaller = context.createUnmarshaller();
-			Model rawModel = (Model)unmarshaller.unmarshal(new InputSource(input));
+			Model rawModel = (Model)unmarshaller.unmarshal(xmlStreamReader);
 			return convertDegreeUnits(rawModel);
 
 		} catch (Exception ex) {
