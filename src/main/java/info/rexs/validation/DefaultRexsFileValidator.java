@@ -195,6 +195,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 
 		} catch (Exception ex) {
 			validationResult.addError(RexsValidationResultMessageKey.INTERNAL_ERROR);
+			return validationResult;
 		}
 
 		validationResult.add(validateVersion(rexsModel.getOriginVersion()));

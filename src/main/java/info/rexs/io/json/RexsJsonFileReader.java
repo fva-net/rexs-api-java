@@ -15,12 +15,19 @@
  ******************************************************************************/
 package info.rexs.io.json;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.nio.file.Path;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.RexsIoException;
+import info.rexs.io.json.jsonmodel.JSONModel;
 import info.rexs.model.RexsModel;
+import info.rexs.model.transformer.RexsModelJsonTransformer;
 
 public class RexsJsonFileReader extends AbstractRexsFileReader {
 
@@ -54,19 +61,31 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 		super(rexsInputFilePath);
 	}
 
+	public JSONModel readRawModel() throws RexsIoException {
+		validateInputFile();
+		try (FileReader input = new FileReader(pathToRexsInputFile.toFile())) {
+			BufferedReader reader = new BufferedReader(input);
+			String text = reader.lines()
+								.collect(Collectors.joining(System.lineSeparator()));
+			ObjectMapper mapper = new ObjectMapper();
+
+			return mapper.readerFor(JSONModel.class).readValue(text);
+		} catch (Exception ex) {
+			throw new RexsIoException("error reading rexs model from xml file", ex);
+		}
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public RexsModel read() throws RexsIoException {
 		validateInputFile();
-
-		try {
-			// TODO: Implementieren!
-			return null;
-
+		try  {
+			JSONModel jsonModel = readRawModel();
+			return new RexsModelJsonTransformer().transform(jsonModel);
 		} catch (Exception ex) {
-			throw new RexsIoException("error on reading rexs model from json file", ex);
+			throw new RexsIoException("error reading rexs model from json file", ex);
 		}
 	}
 }
