@@ -464,15 +464,6 @@
         <attributeChange type="DELETE" id="base_circle_diameter_din_3975_2017" numericId="16538"/>
         <attributeChange type="DELETE" id="axial_pitch_din_3975_2017" numericId="16539"/>
         <attributeChange type="DELETE" id="normal_pitch_din_3975_2017" numericId="16541"/>
-        <attributeChange type="EDIT" id="u_coordinate_on_shaft" numericId="348">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="remaining_protuberance" numericId="376">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="machining_allowance" numericId="735">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="addendum_coefficient_basic_profile" numericId="755">
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="h_aP*"/>
@@ -481,24 +472,13 @@
         <attributeChange type="EDIT" id="helix_angle_reference_diameter" numericId="796">
             <changedValues>
                 <changedValue key="range" oldValue="(0;90)" newValue="(-90;90)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue="-90"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="face_width" numericId="808">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
             <changedValues>
                 <changedValue key="symbol" oldValue="α" newValue="α_n"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="basic_strength_root" numericId="2919">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="endurance_limit_flank" numericId="2922">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="endurance_limit_root" numericId="2927">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="load_duration" numericId="9258">
             <changedValues>
@@ -514,19 +494,12 @@
                 <changedValue key="name" lang="en" oldValue="Load duration fraction" newValue="Time share of the total operating time"/>
             </changedValues>
         </attributeChange>
-        <attributeChange type="EDIT" id="face_load_factor_flank" numericId="12390">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="helix_angle_base_circle" numericId="5305">
             <changedValues>
                 <changedValue key="range" oldValue="[0;90)" newValue="(-90;90)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue="-90"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="generated_addendum_modification_coefficient" numericId="2406">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="axial_pitch" numericId="4201">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="relative_machining_allowance" numericId="3060">
             <changedValues>
@@ -535,24 +508,6 @@
                 <changedValue key="name" lang="de" oldValue="Bearbeitungszugabe im Werkzeug (modulbezogen)" newValue="Bearbeitungszugabe im Werkzeug nach DIN 3972 (modulbezogen)"/>
                 <changedValue key="name" lang="en" oldValue="Machining allowance of the tool (relative to the normal module)" newValue="Machining allowance of the tool according to DIN 3972 (relative to the normal module)"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="topographical_modification_amounts" numericId="14536">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="coordinates_of_topographical_modification" numericId="14537">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="diameters_of_topographical_modification" numericId="14538">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="length_of_topographical_modification" numericId="14539">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="type_of_interpolation_topographical_modification" numericId="14540">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="helix_evaluation_reference" numericId="14542">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="reference_diameter_din_3975_2017" numericId="2779">
             <changedValues>
@@ -581,6 +536,8 @@
                 <changedValue key="name" lang="de" oldValue="Steigungswinkel am Mittenkreis (DIN 3975 2017)" newValue="Steigungswinkel am Mittenkreis"/>
                 <changedValue key="name" lang="en" oldValue="Reference lead angle (DIN 3975 2017)" newValue="Reference lead angle"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="(-90;90)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue="-90"/>
+                <changedValue key="rangeMax" oldValue="" newValue="90"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="tip_diameter_din_3975_2017" numericId="2780">

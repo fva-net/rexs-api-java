@@ -135,6 +135,10 @@
 			<xsd:enumeration value="unit"/>
 			<xsd:enumeration value="symbol"/>
 			<xsd:enumeration value="range"/>
+			<xsd:enumeration value="rangeMin"/>
+			<xsd:enumeration value="rangeMinIntervalOpen"/>
+			<xsd:enumeration value="rangeMax"/>
+			<xsd:enumeration value="rangeMaxIntervalOpen"/>
 			<xsd:enumeration value="enumvalues"/>
 			<!-- EnumValue -->
 			<xsd:enumeration value="value"/>

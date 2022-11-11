@@ -172,11 +172,13 @@
         <attributeChange type="EDIT" id="generated_pressure_angle_drive" numericId="184">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="generated_pressure_angle_coast" numericId="185">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="face_angle" numericId="352">
@@ -197,21 +199,35 @@
         <attributeChange type="EDIT" id="pitch_apex_beyond_crossing_point" numericId="361">
             <changedValues>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="face_apex_beyond_crossing_point" numericId="362">
             <changedValues>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="root_apex_beyond_crossing_point" numericId="363">
             <changedValues>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="bevel_cone_orientation" numericId="373">
             <changedValues>
                 <changedValue key="valuetype" oldValue="integer" newValue="enum"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue=""/>
+                <changedValue key="rangeMaxIntervalOpen" oldValue="true" newValue=""/>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="ADD" value="negative"/>
+                        <enumValueChange type="ADD" value="positive"/>
+                    </enumValueChanges>
+                </changedValue>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="tool_edge_radius" numericId="375">
@@ -223,6 +239,7 @@
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="s_pr"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="mean_transverse_circular_thickness" numericId="380">
@@ -243,6 +260,10 @@
                 <changedValue key="name" lang="de" oldValue="Verschmutzungsbeiwert" newValue="Verschmutzungsbeiwert nach ISO 281 2007"/>
                 <changedValue key="name" lang="en" oldValue="Contamination coefficient" newValue="Contamination coefficient according to ISO 281 2007"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;1]"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMax" oldValue="" newValue="1"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+                <changedValue key="rangeMaxIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="boring_tolerance_class" numericId="463">
@@ -255,11 +276,13 @@
         <attributeChange type="EDIT" id="fatigue_limit_load" numericId="464">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="catalogue_value_e" numericId="466">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="diagram_number_in_din_26281" numericId="467">
@@ -267,6 +290,38 @@
                 <changedValue key="attributeId" oldValue="diagram_number_in_din_26281" newValue="diagram_number_in_iso_281_2007"/>
                 <changedValue key="name" lang="de" oldValue="ec-Bildnummer nach Din 26281" newValue="Bildnummer für Verunreinigungsbeiwert e_C in ISO 281 2007"/>
                 <changedValue key="name" lang="en" oldValue="Figure number for contamination coefficient in DIN 26281" newValue="Figure number for contamination coefficient e_C in ISO 281 2007"/>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="DELETE" value="11"/>
+                        <enumValueChange type="DELETE" value="12"/>
+                        <enumValueChange type="DELETE" value="13"/>
+                        <enumValueChange type="DELETE" value="14"/>
+                        <enumValueChange type="DELETE" value="15"/>
+                        <enumValueChange type="DELETE" value="16"/>
+                        <enumValueChange type="DELETE" value="17"/>
+                        <enumValueChange type="DELETE" value="18"/>
+                        <enumValueChange type="DELETE" value="5"/>
+                        <enumValueChange type="DELETE" value="6"/>
+                        <enumValueChange type="DELETE" value="7"/>
+                        <enumValueChange type="DELETE" value="8"/>
+                        <enumValueChange type="DELETE" value="9"/>
+                        <enumValueChange type="DELETE" value="10"/>
+                        <enumValueChange type="ADD" value="oil_without_filter_iso4406_19_16"/>
+                        <enumValueChange type="ADD" value="oil_without_filter_iso4406_17_14"/>
+                        <enumValueChange type="ADD" value="grease_high_cleanliness"/>
+                        <enumValueChange type="ADD" value="oil_with_filter_iso4406_15_12"/>
+                        <enumValueChange type="ADD" value="grease_very_severe_contamination"/>
+                        <enumValueChange type="ADD" value="oil_with_filter_iso4406_13_10"/>
+                        <enumValueChange type="ADD" value="grease_normal_cleanliness"/>
+                        <enumValueChange type="ADD" value="oil_with_filter_iso4406_19_16"/>
+                        <enumValueChange type="ADD" value="oil_without_filter_iso4406_15_12"/>
+                        <enumValueChange type="ADD" value="oil_with_filter_iso4406_17_14"/>
+                        <enumValueChange type="ADD" value="oil_without_filter_iso4406_13_10"/>
+                        <enumValueChange type="ADD" value="grease_severe_contamination"/>
+                        <enumValueChange type="ADD" value="grease_slight_to_typical_contamination"/>
+                        <enumValueChange type="ADD" value="oil_without_filter_iso4406_21_18"/>
+                    </enumValueChanges>
+                </changedValue>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="roller_angle" numericId="468">
@@ -275,6 +330,9 @@
                 <changedValue key="name" lang="de" oldValue="Halber Kegelwinkel der Rolle" newValue="Rollenwinkel"/>
                 <changedValue key="name" lang="en" oldValue="Half of the cone angle of roller" newValue="Roller angle"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;90)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMax" oldValue="" newValue="90"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_force_absorption" numericId="470">
@@ -313,6 +371,7 @@
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="e"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="pin_tolerance_class" numericId="478">
@@ -324,6 +383,7 @@
         <attributeChange type="EDIT" id="number_of_bearing_rows" numericId="479">
             <changedValues>
                 <changedValue key="range" oldValue="[0;∞)" newValue="[1;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue="1"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="number_of_rolling_elements" numericId="480">
@@ -387,24 +447,32 @@
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Radialloadfactor X1 for F_a/F_r &lt;=  e" newValue="Radial load factor X1 for F_a/F_r &lt;=  e"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="radial_factor_x_2" numericId="516">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Radialloadfactor X2 for F_a/F_r &gt;  e" newValue="Radial load factor X2 for F_a/F_r &gt;  e"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_factor_y_1" numericId="517">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Axialloadfactor Y1 for F_a/F_r &lt;= e" newValue="Axial load factor Y1 for F_a/F_r &lt;= e"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_factor_y_2" numericId="518">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Axialloadfactor Y2 for F_a/F_r &gt; e" newValue="Axial load factor Y2 for F_a/F_r &gt; e"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="dynamic_capacity" numericId="519">
@@ -414,6 +482,7 @@
                 <changedValue key="name" lang="de" oldValue="Dynamische Tragzahl" newValue="Radiale dynamische Tragzahl"/>
                 <changedValue key="name" lang="en" oldValue="Dynamic load rating" newValue="Radial dynamic load rating"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="static_capacity" numericId="520">
@@ -423,6 +492,7 @@
                 <changedValue key="name" lang="de" oldValue="Statische Tragzahl" newValue="Radiale statische Tragzahl"/>
                 <changedValue key="name" lang="en" oldValue="Static load rating" newValue="Radial static load rating"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="misalignment_in_v_direction" numericId="521">
@@ -494,6 +564,7 @@
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Surface roughness of shaft R_z" newValue="Surface roughness of shaft"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="minimum_bore_diameter" numericId="557">
@@ -516,6 +587,7 @@
                 <changedValue key="name" lang="de" oldValue="Rautiefe der Bohrung" newValue="Rautiefe der Gehäusebohrung"/>
                 <changedValue key="name" lang="en" oldValue="Surface roughness of bore R_z" newValue="Surface roughness of casing bore"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="maximum_bearing_bore_diameter" numericId="563">
@@ -548,6 +620,8 @@
                 <changedValue key="name" lang="de" oldValue="Minimale Lagerluft" newValue="Minimale radiale Lagerluft (vor Einbau)"/>
                 <changedValue key="name" lang="en" oldValue="Minimum bearing clearance" newValue="Minimum radial bearing clearance (before mounting)"/>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="maximum_bearing_clearance" numericId="570">
@@ -556,11 +630,13 @@
                 <changedValue key="name" lang="de" oldValue="Maximale Lagerluft" newValue="Maximale radiale Lagerluft (vor Einbau)"/>
                 <changedValue key="name" lang="en" oldValue="Maximum bearing play" newValue="Maximum radial bearing clearance (before mounting)"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="length" numericId="606">
             <changedValues>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="torque_around_v_axis" numericId="609">
@@ -624,6 +700,7 @@
                 <changedValue key="symbol" oldValue="" newValue="β"/>
                 <changedValue key="name" lang="de" oldValue="Schrägungswinkel" newValue="Schrägungswinkel am Teilkreis"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="(0;90)"/>
+                <changedValue key="rangeMax" oldValue="" newValue="90"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="face_width" numericId="808">
@@ -639,6 +716,7 @@
         <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="upper_center_distance_allowance" numericId="1045">
@@ -662,7 +740,18 @@
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="position_of_rolling_elements" numericId="2160">
-            <changedValues/>
+            <changedValues>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="DELETE" value="symmetric_position"/>
+                        <enumValueChange type="DELETE" value="apex_position"/>
+                        <enumValueChange type="ADD" value="rolling_element_in_load_direction"/>
+                        <enumValueChange type="ADD" value="load_direction_between_two_rolling_elements"/>
+                        <enumValueChange type="ADD" value="one_rolling_element_on_v_axis"/>
+                        <enumValueChange type="ADD" value="v_axis_between_two_rolling_elements"/>
+                    </enumValueChanges>
+                </changedValue>
+            </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="maximum_allowable_pressure" numericId="2162">
             <changedValues>
@@ -682,17 +771,22 @@
                 <changedValue key="name" lang="de" oldValue="Maßgebender Wellendurchmesser" newValue="Welleninnendurchmesser für die Betriebsspielberechnung"/>
                 <changedValue key="name" lang="en" oldValue="Nominal inner diameter of shaft" newValue="Inner shaft diameter for the operating clearance calculation"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="number_of_gears" numericId="2408">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Anzahl Gänge" newValue="Anzahl der Schaltstellungen"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[1;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue="1"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="gear_shift_index" numericId="2409">
             <changedValues>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[1;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue="1"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="nominal_rating_life_rotations_din_iso_281" numericId="2625">
@@ -714,6 +808,21 @@
         <attributeChange type="EDIT" id="axial_factor_y_0" numericId="2881">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bearing_type" numericId="3278">
+            <changedValues>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="DELETE" value="radial_self-aligning_ball_bearing"/>
+                        <enumValueChange type="ADD" value="radial_self_aligning_ball_bearing"/>
+                        <enumValueChange type="ADD" value="crossed_roller_bearing"/>
+                        <enumValueChange type="ADD" value="axial_tapered_roller_bearing"/>
+                        <enumValueChange type="ADD" value="axial_four_point_contact_ball_bearing"/>
+                    </enumValueChanges>
+                </changedValue>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="speed_outer_ring" numericId="3290">
@@ -725,6 +834,7 @@
         <attributeChange type="EDIT" id="start_up_time" numericId="5405">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="acceleration_factor_according_fva_341" numericId="5406">
@@ -735,6 +845,7 @@
         <attributeChange type="EDIT" id="surface_hardness_vickers" numericId="5767">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="speed_inner_ring" numericId="5988">
@@ -742,6 +853,7 @@
                 <changedValue key="name" lang="de" oldValue="Drehzahl des Lagerinnenrings" newValue="Drehzahl des Innenrings"/>
                 <changedValue key="name" lang="en" oldValue="Speed inner ring" newValue="Rotational speed inner ring"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="nominal_reference_rating_life_rotations_din_26281" numericId="6117">
@@ -750,6 +862,8 @@
                 <changedValue key="name" lang="de" oldValue="Nominelle Referenz-Lebensdauer (L_10r) DIN 26281" newValue="Nominelle Referenz-Lebensdauer DIN 26281"/>
                 <changedValue key="name" lang="en" oldValue="Nominal reference rating life (L_10r) DIN 26281" newValue="Nominal reference rating life DIN 26281"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="modified_reference_rating_life_rotations_din_26281" numericId="6120">
@@ -778,6 +892,7 @@
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Thermally permissible rotational speed limit" newValue="Limiting speed"/>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_u" numericId="8718">
@@ -786,6 +901,8 @@
                 <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_u" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_u"/>
                 <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_u" newValue="Operating point stiffness ∂F_u / ∂d_u"/>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="operating_point_stiffness_dF_v_d_v" numericId="8719">
@@ -822,17 +939,22 @@
                 <changedValue key="name" lang="de" oldValue="Nominelle Referenz-Lebensdauer (L_10rh) DIN 26281" newValue="Nominelle Referenz-Lebensdauer DIN 26281"/>
                 <changedValue key="name" lang="en" oldValue="Nominal reference rating life (L_10rh) DIN 26281" newValue="Nominal reference rating life DIN 26281"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="torque_around_u_axis" numericId="9201">
             <changedValues>
                 <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="pitch_diameter" numericId="9206">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Pitch diameter" newValue="Pitch circle diameter"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="reference_speed" numericId="9208">
@@ -840,6 +962,7 @@
                 <changedValue key="name" lang="de" oldValue="Bezugsdrehzahl" newValue="Thermische Bezugsdrehzahl"/>
                 <changedValue key="name" lang="en" oldValue="Reference speed" newValue="Thermal reference speed"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_backlash" numericId="9209">
@@ -861,6 +984,8 @@
         <attributeChange type="EDIT" id="operating_viscosity" numericId="9217">
             <changedValues>
                 <changedValue key="range" oldValue="[-273.15;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="-273.15" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_v" numericId="9218">
@@ -869,6 +994,7 @@
                 <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_v" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_v"/>
                 <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_v" newValue="Operating point stiffness ∂F_u / ∂d_v"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0" newValue=""/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_w" numericId="9219">
@@ -1014,18 +1140,21 @@
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Innenring" newValue="Überrollfrequenz Innenring"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="overrolling_frequency_outer_ring" numericId="9240">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Aussenring" newValue="Überrollfrequenz Aussenring"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="overrolling_frequency_rolling_element" numericId="9241">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Waelzkoerper" newValue="Überrollfrequenz Waelzkoerper"/>
                 <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="viscosity_ratio_din_26281" numericId="9252">

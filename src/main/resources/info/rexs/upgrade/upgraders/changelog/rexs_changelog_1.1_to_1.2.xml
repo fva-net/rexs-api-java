@@ -253,16 +253,8 @@
         <attributeChange type="EDIT" id="core_hardness_vickers" numericId="2896">
             <changedValues>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="yield_strength" numericId="2907">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="thermal_expansion_coefficient_plus" numericId="2913">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="thermal_expansion_coefficient_minus" numericId="2914">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="thermal_conductivity" numericId="2916">
             <changedValues>
@@ -273,15 +265,6 @@
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="R_m"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="fatigue_limit_compression_tension" numericId="2943">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="fatigue_limit_bending" numericId="2944">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="fatigue_limit_torsion" numericId="2945">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="thermal_capacity" numericId="3020">
             <changedValues>

@@ -482,6 +482,8 @@
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
                 <changedValue key="name" lang="en" oldValue="Contact angle" newValue="Pressure angle"/>
                 <changedValue key="range" oldValue="(-∞;∞)" newValue="(-180;180)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="-180"/>
+                <changedValue key="rangeMax" oldValue="" newValue="180"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="angular_misalignment_around_v_axis" numericId="12499">
@@ -493,9 +495,6 @@
             <changedValues>
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="u_coordinate_on_shaft_inner_side" numericId="545">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="helix_angle_reference_diameter" numericId="796">
             <changedValues>
@@ -511,15 +510,6 @@
             <changedValues>
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="u_coordinate_on_shaft_outer_side" numericId="2369">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="thermal_expansion_coefficient_plus" numericId="2913">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="thermal_expansion_coefficient_minus" numericId="2914">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="viscosity_at_40_degree_celsius" numericId="3023">
             <changedValues>
@@ -608,21 +598,6 @@
                 <changedValue key="unit" oldValue="N" newValue="N / mm"/>
             </changedValues>
         </attributeChange>
-        <attributeChange type="EDIT" id="force_acting_on_shaft_u" numericId="10249">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="force_acting_on_shaft_v" numericId="14000">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="force_acting_on_shaft_w" numericId="14001">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="torque_acting_on_shaft_v" numericId="14002">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="torque_acting_on_shaft_w" numericId="14003">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="tilting_v" numericId="10208">
             <changedValues>
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
@@ -658,12 +633,6 @@
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
             </changedValues>
         </attributeChange>
-        <attributeChange type="EDIT" id="mesh_stiffness_for_load_distribution_along_face_width" numericId="14038">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="total_contact_ratio" numericId="992">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="operating_helix_angle_agma_925_a03" numericId="12900">
             <changedValues>
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
@@ -678,18 +647,6 @@
             <changedValues>
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="tip_relief_depth" numericId="9295">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="tip_relief_datum_diameter" numericId="9296">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="tip_relief_datum_length" numericId="9297">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="tip_relief_evaluation_reference_length" numericId="9299">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="specify_tangential_transition" numericId="14514">
             <changedValues>
@@ -721,18 +678,6 @@
                 <changedValue key="name" lang="en" oldValue="Length of tangential transition end" newValue="Length of tangential transition area end of linear tip relief"/>
             </changedValues>
         </attributeChange>
-        <attributeChange type="EDIT" id="root_relief_depth" numericId="14519">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="root_relief_datum_diameter" numericId="14520">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="root_relief_datum_length" numericId="14521">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="root_relief_evaluation_reference_length" numericId="14523">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="root_relief_diameter_where_tangential_transition_starts" numericId="14524">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Durchmesser an dem der tangentiale Übergang beginnt" newValue="Durchmesser an dem der tangentiale Übergangsbereich beginnt"/>
@@ -757,15 +702,6 @@
                 <changedValue key="name" lang="en" oldValue="Length of tangential transition end" newValue="Length of tangential transition area end"/>
             </changedValues>
         </attributeChange>
-        <attributeChange type="EDIT" id="end_relief_length_datum_face" numericId="14554">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="end_relief_depth_datum_face" numericId="14555">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="end_relief_evaluation_reference_datum_face" numericId="14556">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="end_relief_datum_face_length_of_tangential_transition_start" numericId="14557">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Länge des Beginns des tangentialen Übergangs" newValue="Länge des Beginns des tangentialen Übergangsbereich"/>
@@ -777,15 +713,6 @@
                 <changedValue key="name" lang="de" oldValue="Länge des Endes des tangentialen Übergangs" newValue="Länge des Endes des tangentialen Übergangsbereich"/>
                 <changedValue key="name" lang="en" oldValue="Length of end of tangential transition" newValue="Length of end of tangential transition area"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="end_relief_length_non_datum_face" numericId="14559">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="end_relief_depth_non_datum_face" numericId="14560">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="end_relief_evaluation_reference_non_datum_face" numericId="14561">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="end_relief_non_datum_face_length_of_tangential_transition_start" numericId="14562">
             <changedValues>
