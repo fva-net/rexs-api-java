@@ -36,7 +36,6 @@
 			</xsd:sequence>
 			<xsd:attribute name="version" type="xsd:string" use="required"/>
 			<xsd:attribute name="status" type="versionStatusType" use="required"/>
-			<xsd:attribute name="language" type="xsd:string" use="required"/>
 			<xsd:attribute name="createdDate" type="xsd:string" use="required"/>
 			<xsd:attribute name="provider" type="xsd:string" use="optional"/>
 		</xsd:complexType>
@@ -107,7 +106,8 @@
 	<xsd:element name="component">
 		<xsd:complexType>
 			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
-			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
+			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
 			<xsd:attribute name="databaseId" type="xsd:integer" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -122,7 +122,8 @@
 			<xsd:attribute name="valueType" type="xsd:integer" use="required"/>
 			<xsd:attribute name="unit" type="xsd:integer" use="required"/>
 			<xsd:attribute name="symbol" type="xsd:string" use="optional"/>
-			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
+			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
 			<xsd:attribute name="rangeMin" type="xsd:decimal" use="optional"/>
 			<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean" use="optional"/>
 			<xsd:attribute name="rangeMax" type="xsd:decimal" use="optional"/>
@@ -134,7 +135,8 @@
 	<xsd:element name="enumValue">
 		<xsd:complexType>
 			<xsd:attribute name="value" type="xsd:string" use="required"/>
-			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
+			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 

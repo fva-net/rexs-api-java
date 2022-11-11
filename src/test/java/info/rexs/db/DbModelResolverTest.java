@@ -19,9 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,7 +40,7 @@ public class DbModelResolverTest {
 	@Test
 	public void resolve_unknownDbModelFileReturnsNull() throws Exception {
 		RexsVersion newVersion = RexsVersion.create("r.s", 10000);
-		assertThat(DbModelResolver.getInstance().resolve(newVersion, Locale.getDefault())).isNull();
+		assertThat(DbModelResolver.getInstance().resolve(newVersion)).isNull();
 
 		assertThat(DbModelResolver.getInstance().resolve(null)).isNull();
 	}
@@ -50,7 +48,7 @@ public class DbModelResolverTest {
 	@Test
 	public void resolve_invalidDbModelFileResolverThrowsIllegalStateException() throws Exception {
 		RexsVersion newVersion = RexsVersion.create("s.t", 11000);
-		DbModelFile.create(newVersion, Locale.GERMAN, new DbModelFileResolver() {
+		DbModelFile.create(newVersion, new DbModelFileResolver() {
 			@Override
 			public InputStream openInputStream(DbModelFile dbModelFile) {
 				return null;
@@ -59,15 +57,15 @@ public class DbModelResolverTest {
 
 		assertThatIllegalStateException()
 			.isThrownBy(() -> {
-				DbModelResolver.getInstance().resolve(newVersion, Locale.GERMAN);
+				DbModelResolver.getInstance().resolve(newVersion);
 			})
 			.withMessageStartingWith("could not load rexs db model for version");
 	}
 
 	@Test
 	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
-		RexsModel rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest(), Locale.ENGLISH);
-		RexsModel rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest(), Locale.ENGLISH);
+		RexsModel rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsModel rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
 
 		assertThat(rexsModel1).isSameAs(rexsModel2);
 	}
@@ -76,50 +74,23 @@ public class DbModelResolverTest {
 	public void resolve_everyRexsStandardVersionHasDbModel() throws Exception {
 		List<RexsVersion> rexsStandardVersions = Stream.of(RexsVersion.V1_0, RexsVersion.V1_1, RexsVersion.V1_2).collect(Collectors.toList());
 		for (RexsVersion version : rexsStandardVersions) {
-			RexsModel rexsModelEn = DbModelResolver.getInstance().resolve(version, Locale.ENGLISH);
-			assertThat(rexsModelEn.getVersion()).isEqualTo(version.getName());
+			RexsModel rexsModel = DbModelResolver.getInstance().resolve(version);
+			assertThat(rexsModel.getVersion()).isEqualTo(version.getName());
 
-			RexsModel rexsModelDe = DbModelResolver.getInstance().resolve(version, Locale.GERMAN);
-			assertThat(rexsModelDe.getVersion()).isEqualTo(version.getName());
-
-			assertThat(rexsModelEn.getUnits().getUnit().size()).isEqualTo(rexsModelDe.getUnits().getUnit().size());
-			List<String> ids = new ArrayList<>();
-			for (Unit unit : rexsModelEn.getUnits().getUnit()) {
+			for (Unit unit : rexsModel.getUnits().getUnit()) {
 				assertThat(RexsUnitId.findById(unit.getName())).isNotNull();
-				ids.add(unit.getName());
-			}
-			for (Unit unit : rexsModelDe.getUnits().getUnit()) {
-				assertThat(ids).contains(unit.getName());
 			}
 
-			assertThat(rexsModelEn.getValueTypes().getValueType().size()).isEqualTo(rexsModelEn.getValueTypes().getValueType().size());
-			ids.clear();
-			for (ValueType valueType : rexsModelEn.getValueTypes().getValueType()) {
+			for (ValueType valueType : rexsModel.getValueTypes().getValueType()) {
 				assertThat(info.rexs.db.constants.RexsValueType.findByKey(valueType.getName())).isNotNull();
-				ids.add(valueType.getName());
-			}
-			for (ValueType valueType : rexsModelDe.getValueTypes().getValueType()) {
-				assertThat(ids).contains(valueType.getName());
 			}
 
-			assertThat(rexsModelEn.getComponents().getComponent().size()).isEqualTo(rexsModelDe.getComponents().getComponent().size());
-			ids.clear();
-			for (Component component : rexsModelEn.getComponents().getComponent()) {
+			for (Component component : rexsModel.getComponents().getComponent()) {
 				assertThat(RexsComponentType.findById(component.getComponentId())).isNotNull();
-				ids.add(component.getComponentId());
-			}
-			for (Component component : rexsModelDe.getComponents().getComponent()) {
-				assertThat(ids).contains(component.getComponentId());
 			}
 
-			assertThat(rexsModelEn.getAttributes().getAttribute().size()).isEqualTo(rexsModelDe.getAttributes().getAttribute().size());
-			ids.clear();
-			for (Attribute attribute : rexsModelEn.getAttributes().getAttribute()) {
+			for (Attribute attribute : rexsModel.getAttributes().getAttribute()) {
 				assertThat(RexsAttributeId.findById(attribute.getAttributeId())).isNotNull();
-				ids.add(attribute.getAttributeId());
-			}
-			for (Attribute attrbute : rexsModelDe.getAttributes().getAttribute()) {
-				assertThat(ids).contains(attrbute.getAttributeId());
 			}
 		}
 	}

@@ -61,22 +61,7 @@ public class DbModelResolver {
 	 * 				The found {@link RexsModel}, or {@code null} if the REXS database model could not be found.
 	 */
 	public RexsModel resolve(RexsVersion version) {
-		return resolve(version, null);
-	}
-
-	/**
-	 * Determines the REXS database model for a version and locale.
-	 *
-	 * @param version
-	 * 				The {@link RexsVersion} of the REXS database model.
-	 * @param locale
-	 * 				The {@link Locale} of the REXS database model.
-	 *
-	 * @return
-	 * 				The found {@link RexsModel}, or {@code null} if the REXS database model could not be found.
-	 */
-	public RexsModel resolve(RexsVersion version, Locale locale) {
-		DbModelFile dbModelFile = DbModelFile.findByVersionAndLocale(version, locale);
+		DbModelFile dbModelFile = DbModelFile.findByVersion(version);
 		if (dbModelFile == null)
 			return null;
 
@@ -90,7 +75,7 @@ public class DbModelResolver {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			dbModel = (RexsModel)unmarshaller.unmarshal(input);
 		} catch (Exception ex) {
-			throw new IllegalStateException(String.format("could not load rexs db model for version %s and language %s", dbModelFile.getVersion(), dbModelFile.getLanguage()), ex);
+			throw new IllegalStateException(String.format("could not load rexs db model for version %s", dbModelFile.getVersion()), ex);
 		}
 
 		dbModelFileCache.put(dbModelFile, dbModel);

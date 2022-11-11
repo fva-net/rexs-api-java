@@ -78,13 +78,9 @@ public class DbModelRegistry {
 	}
 
 	public void registerRexsVersion(RexsVersion version) {
-		registerRexsVersion(version, Locale.getDefault());
-	}
-
-	public void registerRexsVersion(RexsVersion version, Locale locale) {
-		RexsModel rexsModel = DbModelResolver.getInstance().resolve(version, locale);
+		RexsModel rexsModel = DbModelResolver.getInstance().resolve(version);
 		if (rexsModel == null)
-			throw new IllegalStateException(String.format("rexs db model for version %s and language %s not found", version.getName(), locale));
+			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getName()));
 		registerRexsModel(version, rexsModel);
 		versions.put(version.getName(), version);
 	}
@@ -194,7 +190,10 @@ public class DbModelRegistry {
 	public String getAttributeName(String attributeId, RexsVersion version) {
 		if (!attributeMap.get(version).containsKey(attributeId))
 			return attributeId;
-		return attributeMap.get(version).get(attributeId).getName();
+		Attribute attribute = attributeMap.get(version).get(attributeId);
+		if (getLanguageDefaultLocale().equals("de"))
+			return attribute.getNameDe();
+		return attribute.getNameEn();
 	}
 
 	/**
@@ -220,7 +219,9 @@ public class DbModelRegistry {
 		Attribute attribute = attributeMap.get(version).get(attributeId);
 		for (EnumValue enumValue : attribute.getEnumValues().getEnumValue()) {
 			if (enumValue.getValue().equals(value)) {
-				return enumValue.getName();
+				if (getLanguageDefaultLocale().equals("de"))
+					return enumValue.getNameDe();
+				return enumValue.getNameEn();
 			}
 		}
 		return value;
@@ -304,5 +305,12 @@ public class DbModelRegistry {
 	public boolean hasAttributeWithId(RexsVersion version, String attributeId) {
 		Map<String, Attribute> map = attributeMap.get(version);
 		return map != null && map.containsKey(attributeId);
+	}
+
+	private static String getLanguageDefaultLocale() {
+		Locale locale = Locale.getDefault();
+		if (!locale.getLanguage().equalsIgnoreCase("en") && !locale.getLanguage().equalsIgnoreCase("de"))
+			return Locale.ENGLISH.getLanguage();
+		return locale.getLanguage();
 	}
 }

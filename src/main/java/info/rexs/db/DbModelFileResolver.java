@@ -36,7 +36,7 @@ public class DbModelFileResolver {
 	 * 				The {@link InputStream} of the file.
 	 */
 	public InputStream openInputStream(DbModelFile dbModelFile) {
-		String dbModelFilename = String.format("rexs_model_%s_%s.xml", dbModelFile.getVersion().getName(), dbModelFile.getLanguage());
+		String dbModelFilename = String.format("rexs_model_%s.xml", dbModelFile.getVersion().getName());
 		return dbModelFile.getClass().getResourceAsStream(dbModelFilename);
 	}
 }
