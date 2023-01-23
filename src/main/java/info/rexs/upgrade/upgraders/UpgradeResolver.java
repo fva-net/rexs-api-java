@@ -47,6 +47,7 @@ public class UpgradeResolver {
 		register(RexsVersion.V1_1, RexsVersion.V1_2, new ModelChangelogUpgrader(ChangelogFile.V1_1_TO_V1_2));
 		register(RexsVersion.V1_2, RexsVersion.V1_3, new ModelChangelogUpgrader(ChangelogFile.V1_2_TO_V1_3));
 		register(RexsVersion.V1_3, RexsVersion.V1_4, new ModelChangelogUpgrader(ChangelogFile.V1_3_TO_V1_4));
+		register(RexsVersion.V1_4, RexsVersion.V1_5, new ModelChangelogUpgrader(ChangelogFile.V1_4_TO_V1_5));
 	}
 
 	/**

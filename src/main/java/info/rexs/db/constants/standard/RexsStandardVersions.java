@@ -39,6 +39,9 @@ public interface RexsStandardVersions {
 	/** 1.4 */
 	public static final RexsVersion V1_4 = RexsVersion.create("1.4", 1400);
 
+	/** 1.5 */
+	public static final RexsVersion V1_5 = RexsVersion.create("1.5", 1500);
+
 	/** Constant for an unknown version. */
 	public static final RexsVersion UNKNOWN = RexsVersion.create("unknown", -1);
 

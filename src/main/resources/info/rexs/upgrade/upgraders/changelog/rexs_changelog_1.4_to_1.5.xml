@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexsChangelog fromVersion="1.4" toVersion="1.5">
+    <attributeChanges>
+        <attributeChange type="ADD" id="deformation_behaviour" numericId="16659"/>
+        <attributeChange type="ADD" id="part_number" numericId="21100"/>
+        <attributeChange type="ADD" id="sequence_number" numericId="21101"/>
+        <attributeChange type="ADD" id="version" numericId="21102"/>
+        <attributeChange type="ADD" id="modification_date" numericId="21103"/>
+        <attributeChange type="ADD" id="radial_clearance" numericId="21120"/>
+        <attributeChange type="ADD" id="axial_clearance" numericId="21121"/>
+        <attributeChange type="ADD" id="custom_zf_endurable_tooth_root_stress_limit_for_load_independent_stress_influence_dr14028_2020" numericId="19230"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_reference_diameter" numericId="19236"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_tip_diameter" numericId="19238"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_base_diameter" numericId="19239"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_root_diameter" numericId="19240"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_active_tip_diameter" numericId="19243"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_active_root_diameter" numericId="19244"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_tip_form_diameter" numericId="19241"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_root_form_diameter" numericId="19242"/>
+        <attributeChange type="ADD" id="tooth_thickness_half_angle_at_pitch_diameter" numericId="19245"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_root_diameter" numericId="19246"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_root_diameter" numericId="19247"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_root_form_diameter" numericId="19248"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_root_form_diameter" numericId="19249"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_tip_form_diameter" numericId="19250"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_tip_form_diameter" numericId="19251"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_tip_diameter" numericId="19252"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_tip_diameter" numericId="19253"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_active_root_diameter" numericId="19254"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_active_root_diameter" numericId="19255"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_active_tip_diameter" numericId="19256"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_active_tip_diameter" numericId="19257"/>
+        <attributeChange type="ADD" id="revision_number" numericId="21104"/>
+        <attributeChange type="ADD" id="rotational_meshing_position" numericId="14128"/>
+        <attributeChange type="ADD" id="meshing_stiffness_characteristic" numericId="19307"/>
+        <attributeChange type="ADD" id="data_source" numericId="21109"/>
+        <attributeChange type="ADD" id="referenced_component_id" numericId="21110"/>
+        <attributeChange type="ADD" id="normal_tooth_thickness_at_pitch_diameter" numericId="19322"/>
+        <attributeChange type="ADD" id="transverse_tooth_thickness_at_pitch_diameter" numericId="19321"/>
+        <attributeChange type="ADD" id="minimum_tip_diameter" numericId="21122"/>
+        <attributeChange type="ADD" id="maximum_tip_diameter" numericId="21123"/>
+        <attributeChange type="ADD" id="model_name" numericId="1"/>
+        <attributeChange type="ADD" id="customer" numericId="17360"/>
+        <attributeChange type="DELETE" id="probability_of_survival" numericId="3158"/>
+        <attributeChange type="EDIT" id="survival_probablity" numericId="469">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="survival_probablity" newValue="survival_probability"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="axial_force_absorption" numericId="470">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bending_stiffness" numericId="488">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_stiffness" numericId="508">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="preload_force" numericId="510">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="preload_distance" numericId="511">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="shaft_surface_roughness" numericId="556">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_z" newValue="Rz"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="bore_surface_roughness" numericId="559">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_z" newValue="Rz"/>
+                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="reference_speed" numericId="9208">
+            <changedValues>
+                <changedValue key="unit" oldValue="none" newValue="1 / min"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="radial_force_absorption" numericId="2098">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="arithmentic_mean_roughness_at_filter_cutoff_of_wavelength_agma_925_a03" numericId="13046">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_ax" newValue="Ra_x"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="arithmetic_average_of_root_mean_square_roughness_of_pinion_and_gear_agma_925_a03" numericId="12954">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_q_xavg" newValue="Rq_xavg"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="root_mean_square_roughness_at_filter_cutoff_of_wavelength_agma_925_a03" numericId="13048">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_qx" newValue="Rq_x"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="tooth_thickness_at_pitch_diameter" numericId="4224">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="tooth_thickness_at_pitch_diameter" newValue="transverse_tooth_thickness_at_reference_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Stirnzahndicke" newValue="Stirnzahndicke am Teilkreis"/>
+                <changedValue key="name" lang="en" oldValue="Transverse tooth thickness" newValue="Transverse tooth thickness at reference diameter"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="normal_tooth_thickness_at_pitch_diameter" numericId="4227">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="normal_tooth_thickness_at_pitch_diameter" newValue="normal_tooth_thickness_at_reference_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Normalzahndicke" newValue="Normalzahndicke am Teilkreis"/>
+                <changedValue key="name" lang="en" oldValue="Normal tooth thickness" newValue="Normal tooth thickness at reference diameter"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="normal_space_width_at_pitch_diameter" numericId="4228">
+            <changedValues>
+                <changedValue key="attributeId" oldValue="normal_space_width_at_pitch_diameter" newValue="normal_space_width_at_reference_diameter"/>
+                <changedValue key="name" lang="de" oldValue="Zahnlückenweite (Normalschnitt)" newValue="Zahnlückenweite (Normalschnitt) am Teilkreis"/>
+                <changedValue key="name" lang="en" oldValue="Normal space width" newValue="Normal space width at reference diameter"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="arithmetic_average_roughness_flank" numericId="814">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_aH" newValue="Ra_H"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="arithmetic_average_roughness_root" numericId="815">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_aF" newValue="Ra_F"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="surface_roughness" numericId="1390">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_z" newValue="Rz"/>
+                <changedValue key="name" lang="de" oldValue="Oberflächenrauheit R_z" newValue="Oberflächenrauheit Rz"/>
+                <changedValue key="name" lang="en" oldValue="Surface roughness R_z" newValue="Surface roughness Rz"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="element_types" numericId="21036">
+            <changedValues>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="ADD" value="pyramid14"/>
+                        <enumValueChange type="ADD" value="prism18"/>
+                    </enumValueChanges>
+                </changedValue>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="roughness_depth_joining_surface_inner_part" numericId="1703">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_zI" newValue="Rz_I"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="roughness_depth_joining_surface_outer_part" numericId="1704">
+            <changedValues>
+                <changedValue key="symbol" oldValue="R_zA" newValue="Rz_A"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="material_type_din_743_2012" numericId="2911">
+            <changedValues>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="DELETE" value=""/>
+                    </enumValueChanges>
+                </changedValue>
+            </changedValues>
+        </attributeChange>
+    </attributeChanges>
+    <mappingChanges>
+        <mappingChange type="ADD" componentId="sn_curve" attributeId="survival_probability" attributeNumericId="469"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="axial_force_absorption" attributeNumericId="470"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="axial_force_absorption" attributeNumericId="470"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="preload_force" attributeNumericId="510"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="preload_force" attributeNumericId="510"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="preload_distance" attributeNumericId="511"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="preload_distance" attributeNumericId="511"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="misalignment_in_v_direction" attributeNumericId="12497"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="misalignment_in_v_direction" attributeNumericId="12497"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="misalignment_in_w_direction" attributeNumericId="12498"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="misalignment_in_w_direction" attributeNumericId="12498"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="angular_misalignment_around_v_axis" attributeNumericId="12499"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="angular_misalignment_around_v_axis" attributeNumericId="12499"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="angular_misalignment_around_w_axis" attributeNumericId="12500"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="angular_misalignment_around_w_axis" attributeNumericId="12500"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="radial_deflection_in_v" attributeNumericId="525"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="radial_deflection_in_v" attributeNumericId="525"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="radial_deflection_in_w" attributeNumericId="526"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="radial_deflection_in_w" attributeNumericId="526"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="axial_deflection" attributeNumericId="527"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="axial_deflection" attributeNumericId="527"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="axial_force" attributeNumericId="528"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="axial_force" attributeNumericId="528"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="radial_force_in_v" attributeNumericId="529"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="radial_force_in_v" attributeNumericId="529"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="radial_force_in_w" attributeNumericId="530"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="radial_force_in_w" attributeNumericId="530"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="torque_around_the_v_axis" attributeNumericId="535"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="torque_around_the_v_axis" attributeNumericId="535"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="torque_around_the_w_axis" attributeNumericId="536"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="torque_around_the_w_axis" attributeNumericId="536"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="angular_deflection_in_w" attributeNumericId="541"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="angular_deflection_in_w" attributeNumericId="541"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="angular_deflection_in_v" attributeNumericId="542"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="angular_deflection_in_v" attributeNumericId="542"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="helix_angle_reference_diameter" attributeNumericId="796"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_u_d_u" attributeNumericId="8718"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_u_d_u" attributeNumericId="8718"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_v_d_v" attributeNumericId="8719"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_v_d_v" attributeNumericId="8719"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_w_d_w" attributeNumericId="8720"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_w_d_w" attributeNumericId="8720"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_v_rot_v" attributeNumericId="8721"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_m_v_rot_v" attributeNumericId="8721"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_w_rot_w" attributeNumericId="8722"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_u_d_v" attributeNumericId="9218"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_u_d_v" attributeNumericId="9218"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_u_d_w" attributeNumericId="9219"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_u_d_w" attributeNumericId="9219"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_u_rot_v" attributeNumericId="9220"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_u_rot_v" attributeNumericId="9220"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_u_rot_w" attributeNumericId="9221"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_u_rot_w" attributeNumericId="9221"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_v_d_u" attributeNumericId="9222"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_v_d_u" attributeNumericId="9222"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_v_d_w" attributeNumericId="9223"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_v_d_w" attributeNumericId="9223"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_v_rot_v" attributeNumericId="9224"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_v_rot_v" attributeNumericId="9224"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_v_rot_w" attributeNumericId="9225"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_v_rot_w" attributeNumericId="9225"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_w_d_u" attributeNumericId="9226"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_w_d_u" attributeNumericId="9226"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_w_d_v" attributeNumericId="9227"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_w_d_v" attributeNumericId="9227"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_w_rot_v" attributeNumericId="9228"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_w_rot_v" attributeNumericId="9228"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_f_w_rot_w" attributeNumericId="9229"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_f_w_rot_w" attributeNumericId="9229"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_v_d_u" attributeNumericId="9230"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_m_v_d_u" attributeNumericId="9230"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_v_d_v" attributeNumericId="9231"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_m_v_d_v" attributeNumericId="9231"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_v_d_w" attributeNumericId="9232"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_m_v_d_w" attributeNumericId="9232"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_v_rot_w" attributeNumericId="9233"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="operating_point_stiffness_m_v_rot_w" attributeNumericId="9233"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_w_d_u" attributeNumericId="9234"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_w_d_v" attributeNumericId="9235"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_w_d_w" attributeNumericId="9236"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="operating_point_stiffness_m_w_rot_v" attributeNumericId="9237"/>
+        <mappingChange type="ADD" componentId="coupling" attributeId="radial_force_absorption" attributeNumericId="2098"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="radial_force_absorption" attributeNumericId="2098"/>
+        <mappingChange type="ADD" componentId="worm_wheel" attributeId="transverse_module" attributeNumericId="4197"/>
+        <mappingChange type="ADD" componentId="switchable_coupling" attributeId="mass_of_component" attributeNumericId="17689"/>
+        <mappingChange type="DELETE" componentId="worm_wheel" attributeId="lead_angle_worm_gear" attributeNumericId="1798"/>
+    </mappingChanges>
+</rexsChangelog>

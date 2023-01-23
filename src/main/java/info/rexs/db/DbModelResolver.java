@@ -17,7 +17,6 @@ package info.rexs.db;
 
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
