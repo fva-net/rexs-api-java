@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -17,7 +17,10 @@ package info.rexs.io.xml;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -98,10 +101,12 @@ public class RexsXmlFileWriter extends AbstractRexsFileWriter {
 	}
 
 	private void writeRawModel(Model rawModel, Path pathToFile) throws IOException, JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Model.class);
-		Marshaller marshaller = context.createMarshaller();
-		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		marshaller.marshal(convertDegreeUnits(rawModel), pathToFile.toFile());
+		try (OutputStream output = Files.newOutputStream(pathToFile, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+			JAXBContext context = JAXBContext.newInstance(Model.class);
+			Marshaller marshaller = context.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+			marshaller.marshal(convertDegreeUnits(rawModel), output);
+		}
 	}
 
 	private Model convertDegreeUnits(Model model) {

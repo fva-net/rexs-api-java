@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -15,17 +15,19 @@
  ******************************************************************************/
 package info.rexs.io.zip;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import info.rexs.io.AbstractRexsFileReader;
+import info.rexs.io.ByteArrayResource;
+import info.rexs.io.Resource;
 import info.rexs.io.RexsFileReader;
 import info.rexs.io.RexsIoException;
+import info.rexs.io.RexsIoFormat;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
 
@@ -35,6 +37,16 @@ import info.rexs.model.jaxb.Model;
  * @author FVA GmbH
  */
 public class RexsZipFileReader extends AbstractRexsFileReader {
+
+	/**
+	 * Constructs a new {@link RexsZipFileReader} for the given {@link Resource} to the REXS input file.
+	 *
+	 * @param rexsInputFileResource
+	 * 				The {@link Resource} to the REXS input file.
+	 */
+	public RexsZipFileReader(Resource rexsInputFileResource) {
+		super(rexsInputFileResource);
+	}
 
 	/**
 	 * Constructs a new {@link RexsZipFileReader} for the given {@link Path} to the REXS input file.
@@ -73,43 +85,38 @@ public class RexsZipFileReader extends AbstractRexsFileReader {
 	public RexsModel read() throws RexsIoException {
 		validateInputFile();
 
-		Path pathToRexsFile = null;
+		Resource rexsFileInZipResource = null;
 		try {
-			pathToRexsFile = extractRexsFileFromZip(pathToRexsInputFile);
-			if (pathToRexsFile == null) {
-				throw new RexsIoException("unable to locate rexs file in rexs zip archive " + pathToRexsInputFile);
+			rexsFileInZipResource = extractRexsFileFromZip();
+			if (rexsFileInZipResource == null) {
+				throw new RexsIoException("unable to locate rexs file in rexs zip archive " + rexsInputFileResource.getFilename());
 			}
 
-			RexsFileReader reader = new RexsFileReader(pathToRexsFile);
+			RexsFileReader reader = new RexsFileReader(rexsFileInZipResource);
 			return reader.read();
 
 		} catch (IOException ex) {
 			throw new RexsIoException("error on reading rexs model from zip file", ex);
-
-		} finally {
-			try {
-				Files.deleteIfExists(pathToRexsFile);
-			} catch (IOException ex) {
-				// Nothing to do
-			}
 		}
 	}
 
-	public Path extractRexsFileFromZip() throws IOException {
-		return extractRexsFileFromZip(pathToRexsInputFile);
-	}
+	public Resource extractRexsFileFromZip() throws IOException {
+		try (ZipInputStream input = new ZipInputStream(rexsInputFileResource.openInputStream())) {
+			ZipEntry entry;
+			while((entry = input.getNextEntry()) != null) {
+				RexsIoFormat format = RexsIoFormat.findFormatByFilename(entry.getName());
+				if (format == null)
+					continue;
 
-	private Path extractRexsFileFromZip(Path pathToRexszFile) throws IOException {
-		try(FileSystem fs = FileSystems.newFileSystem(pathToRexszFile, (ClassLoader)null)) {
-			final Path root = fs.getPath("/");
-			RexsZipFileVisitor fileVisitor = new RexsZipFileVisitor(root);
-			Files.walkFileTree(root, fileVisitor);
-			Path foundRexsFile = fileVisitor.getFoundRexsFile();
+				byte[] buffer = new byte[2048];
+				try (ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+					int len;
+					while ((len = input.read(buffer)) > 0) {
+						output.write(buffer, 0, len);
+					}
 
-			if (foundRexsFile != null) {
-				Path pathToRexsFile = Files.createTempFile("rexs-file", foundRexsFile.getFileName().toString());
-				Files.copy(foundRexsFile, pathToRexsFile, StandardCopyOption.REPLACE_EXISTING);
-				return pathToRexsFile;
+					return new ByteArrayResource(output.toByteArray(), entry.getName());
+				}
 			}
 		}
 

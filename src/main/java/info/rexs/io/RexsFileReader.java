@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -27,6 +27,16 @@ import info.rexs.model.jaxb.Model;
  * @author FVA GmbH
  */
 public class RexsFileReader extends AbstractRexsFileReader {
+
+	/**
+	 * Constructs a new {@link RexsFileReader} for the given {@link Resource} to the REXS input file.
+	 *
+	 * @param rexsInputFileResource
+	 * 				The {@link Resource} to the REXS input file.
+	 */
+	public RexsFileReader(Resource rexsInputFileResource) {
+		super(rexsInputFileResource);
+	}
 
 	/**
 	 * Constructs a new {@link RexsFileReader} for the given {@link Path} to the REXS input file.
@@ -65,11 +75,11 @@ public class RexsFileReader extends AbstractRexsFileReader {
 	public RexsModel read() throws RexsIoException {
 		validateInputFile();
 
-		RexsIoFormat format = RexsIoFormat.findFormatByFilename(pathToRexsInputFile.getFileName().toString());
+		RexsIoFormat format = RexsIoFormat.findFormatByFilename(rexsInputFileResource.getFilename());
 		if (format == null)
-			throw new RexsIoException("rexs file " + pathToRexsInputFile + " has unknown filename ending");
+			throw new RexsIoException("rexs file " + rexsInputFileResource.getFilename() + " has unknown filename ending");
 
-		AbstractRexsFileReader reader = format.createNewFileReader(pathToRexsInputFile);
+		AbstractRexsFileReader reader = format.createNewFileReader(rexsInputFileResource);
 		return reader.read();
 	}
 }

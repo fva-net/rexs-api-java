@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -17,19 +17,32 @@ package info.rexs.io.json;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import info.rexs.io.AbstractRexsFileReader;
+import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;
 import info.rexs.io.json.jsonmodel.JSONModel;
 import info.rexs.model.RexsModel;
 import info.rexs.model.transformer.RexsModelJsonTransformer;
 
 public class RexsJsonFileReader extends AbstractRexsFileReader {
+
+	/**
+	 * Constructs a new {@link RexsJsonFileReader} for the given {@link Resource} to the REXS input file.
+	 *
+	 * @param rexsInputFileResource
+	 * 				The {@link Resource} to the REXS input file.
+	 */
+	public RexsJsonFileReader(Resource rexsInputFileResource) {
+		super(rexsInputFileResource);
+	}
 
 	/**
 	 * Constructs a new {@link RexsJsonFileReader} for the given {@link Path} to the REXS input file.
@@ -63,15 +76,16 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 
 	public JSONModel readRawModel() throws RexsIoException {
 		validateInputFile();
-		try (FileReader input = new FileReader(pathToRexsInputFile.toFile())) {
-			BufferedReader reader = new BufferedReader(input);
+
+		try (InputStream input = rexsInputFileResource.openInputStream()) {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));
 			String text = reader.lines()
 								.collect(Collectors.joining(System.lineSeparator()));
 			ObjectMapper mapper = new ObjectMapper();
 
 			return mapper.readerFor(JSONModel.class).readValue(text);
 		} catch (Exception ex) {
-			throw new RexsIoException("error reading rexs model from xml file", ex);
+			throw new RexsIoException("error reading rexs model from json file", ex);
 		}
 	}
 
@@ -81,7 +95,8 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 	@Override
 	public RexsModel read() throws RexsIoException {
 		validateInputFile();
-		try  {
+
+		try {
 			JSONModel jsonModel = readRawModel();
 			return new RexsModelJsonTransformer().transform(jsonModel);
 		} catch (Exception ex) {

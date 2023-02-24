@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -18,12 +18,25 @@ package info.rexs.validation;
 import java.io.File;
 import java.nio.file.Path;
 
+import info.rexs.io.Resource;
+
 /**
  * This interface represents the validator of a REXS file.
  *
  * @author FVA GmbH
  */
 public interface IRexsFileValidator {
+
+	/**
+	 * Validates a REXS file for the given {@link Resource} to the REXS file and returns the validation result.
+	 *
+	 * @param rexsFileResource
+	 * 				The {@link Resource} to the REXS file.
+	 *
+	 * @return
+	 * 				The validation result as {@link RexsValidationResult}.
+	 */
+	public RexsValidationResult validate(Resource rexsFileResource);
 
 	/**
 	 * Validates a REXS file for the given {@link Path} to the REXS file and returns the validation result.
