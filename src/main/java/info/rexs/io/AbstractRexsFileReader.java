@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -16,7 +16,6 @@
 package info.rexs.io;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,8 +23,18 @@ import info.rexs.model.RexsModel;
 
 public abstract class AbstractRexsFileReader {
 
-	/** The {@link Path} to the REXS input file. */
-	protected final Path pathToRexsInputFile;
+	/** The {@link Resource} to the REXS input file. */
+	protected final Resource rexsInputFileResource;
+
+	/**
+	 * Constructs a new {@link AbstractRexsFileReader} for the given {@link Resource} to the REXS input file.
+	 *
+	 * @param rexsInputFileResource
+	 * 				The {@link Resource} to the REXS input file.
+	 */
+	protected AbstractRexsFileReader(Resource rexsInputFileResource) {
+		this.rexsInputFileResource = rexsInputFileResource;
+	}
 
 	/**
 	 * Constructs a new {@link AbstractRexsFileReader} for the given {@link Path} to the REXS input file.
@@ -33,8 +42,8 @@ public abstract class AbstractRexsFileReader {
 	 * @param pathToRexsInputFile
 	 * 				The {@link Path} to the REXS input file.
 	 */
-	public AbstractRexsFileReader(Path pathToRexsInputFile) {
-		this.pathToRexsInputFile = pathToRexsInputFile;
+	protected AbstractRexsFileReader(Path pathToRexsInputFile) {
+		this(new FileResource(pathToRexsInputFile));
 	}
 
 	/**
@@ -43,7 +52,7 @@ public abstract class AbstractRexsFileReader {
 	 * @param rexsInputFile
 	 * 				The REXS input {@link File}.
 	 */
-	public AbstractRexsFileReader(File rexsInputFile) {
+	protected AbstractRexsFileReader(File rexsInputFile) {
 		this(rexsInputFile.toPath());
 	}
 
@@ -53,13 +62,13 @@ public abstract class AbstractRexsFileReader {
 	 * @param rexsInputFilePath
 	 * 				The path to the REXS input file as {@link String}.
 	 */
-	public AbstractRexsFileReader(String rexsInputFilePath) {
+	protected AbstractRexsFileReader(String rexsInputFilePath) {
 		this(Paths.get(rexsInputFilePath));
 	}
 
 	protected void validateInputFile() throws RexsIoException {
-		if (!Files.exists(pathToRexsInputFile))
-			throw new RexsIoException("rexs file " + pathToRexsInputFile + " does not exist");
+		if (!rexsInputFileResource.exists())
+			throw new RexsIoException("rexs file " + rexsInputFileResource.getFilename() + " does not exist");
 	}
 
 	public abstract RexsModel read() throws RexsIoException;

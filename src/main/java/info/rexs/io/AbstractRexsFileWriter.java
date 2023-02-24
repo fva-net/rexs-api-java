@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -34,7 +34,7 @@ public abstract class AbstractRexsFileWriter {
 	 * @param pathToRexsOutputFile
 	 * 				The {@link Path} to the REXS output file.
 	 */
-	public AbstractRexsFileWriter(Path pathToRexsOutputFile) {
+	protected AbstractRexsFileWriter(Path pathToRexsOutputFile) {
 		this.pathToRexsOutputFile = pathToRexsOutputFile;
 	}
 
@@ -44,7 +44,7 @@ public abstract class AbstractRexsFileWriter {
 	 * @param rexsOutputFile
 	 * 				The REXS output {@link File}.
 	 */
-	public AbstractRexsFileWriter(File rexsOutputFile) {
+	protected AbstractRexsFileWriter(File rexsOutputFile) {
 		this(rexsOutputFile.toPath());
 	}
 
@@ -54,7 +54,7 @@ public abstract class AbstractRexsFileWriter {
 	 * @param rexsOutputFilePath
 	 * 				The path to the REXS output file as {@link String}.
 	 */
-	public AbstractRexsFileWriter(String rexsOutputFilePath) {
+	protected AbstractRexsFileWriter(String rexsOutputFilePath) {
 		this(Paths.get(rexsOutputFilePath));
 	}
 

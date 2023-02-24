@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -16,7 +16,7 @@
 package info.rexs.io.xml;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Path;
 
 import javax.xml.bind.JAXBContext;
@@ -28,6 +28,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.io.AbstractRexsFileReader;
+import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Attribute;
@@ -41,6 +42,16 @@ import info.rexs.model.transformer.RexsModelXmlTransformer;
  * @author FVA GmbH
  */
 public class RexsXmlFileReader extends AbstractRexsFileReader {
+
+	/**
+	 * Constructs a new {@link RexsXmlFileReader} for the given {@link Resource} to the REXS input file.
+	 *
+	 * @param rexsInputFileResource
+	 * 				The {@link Resource} to the REXS input file.
+	 */
+	public RexsXmlFileReader(Resource rexsInputFileResource) {
+		super(rexsInputFileResource);
+	}
 
 	/**
 	 * Constructs a new {@link RexsXmlFileReader} for the given {@link Path} to the REXS input file.
@@ -75,7 +86,7 @@ public class RexsXmlFileReader extends AbstractRexsFileReader {
 	public Model readRawModel() throws RexsIoException {
 		validateInputFile();
 
-		try (FileInputStream input = new FileInputStream(pathToRexsInputFile.toFile())) {
+		try (InputStream input = rexsInputFileResource.openInputStream()) {
 			JAXBContext context = JAXBContext.newInstance(Model.class);
 
 			XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();

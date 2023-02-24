@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -18,7 +18,6 @@ package info.rexs.validation;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -34,6 +33,8 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import info.rexs.io.FileResource;
+import info.rexs.io.Resource;
 import info.rexs.io.RexsFileReader;
 import info.rexs.io.RexsIoFormat;
 import info.rexs.io.zip.RexsZipFileReader;
@@ -55,21 +56,31 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RexsValidationResult validate(Path pathToRexsFile) {
+	public RexsValidationResult validate(Resource rexsFileResource) {
 
-		RexsValidationResult validationResult = validateFilesize(pathToRexsFile);
+		RexsValidationResult validationResult = validateFilesize(rexsFileResource);
 		if (!validationResult.isValid())
 			return validationResult;
 
-		if (pathToRexsFile.getFileName().toString().toLowerCase().endsWith("." + RexsIoFormat.ZIP.getEnding())) {
-			return validateRexszFile(pathToRexsFile);
+		if (RexsIoFormat.ZIP.hasEnding(rexsFileResource.getFilename())) {
+			return validateRexszFile(rexsFileResource);
 		}
 
-		validationResult = validateSchema(pathToRexsFile);
-		if (!validationResult.isValid())
-			return validationResult;
+		if (RexsIoFormat.XML.hasEnding(rexsFileResource.getFilename())) {
+			validationResult = validateSchema(rexsFileResource);
+			if (!validationResult.isValid())
+				return validationResult;
+		}
 
-		return validateContent(pathToRexsFile);
+		return validateContent(rexsFileResource);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public RexsValidationResult validate(Path pathToRexsFile) {
+		return validate(new FileResource(pathToRexsFile));
 	}
 
 	/**
@@ -88,12 +99,12 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		return validate(Paths.get(pathToRexsFile));
 	}
 
-	private RexsValidationResult validateFilesize(Path pathToRexsFile) {
+	private RexsValidationResult validateFilesize(Resource rexsFileResource) {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
 
 		try {
-			if (Files.size(pathToRexsFile) < 1)
+			if (rexsFileResource.getContentLength() < 1)
 				validationResult.addError(RexsValidationResultMessageKey.EMPTY_FILE);
 
 		} catch (IOException ex) {
@@ -103,39 +114,35 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		return validationResult;
 	}
 
-	private RexsValidationResult validateRexszFile(Path pathToRexszFile) {
+	private RexsValidationResult validateRexszFile(Resource rexszFileResource) {
 
-		Path pathToRexsFile = null;
+		Resource rexsFileInZipResource = null;
 		try {
-			RexsZipFileReader reader = new RexsZipFileReader(pathToRexszFile);
-			pathToRexsFile = reader.extractRexsFileFromZip();
-			return validate(pathToRexsFile);
+			RexsZipFileReader reader = new RexsZipFileReader(rexszFileResource);
+			rexsFileInZipResource = reader.extractRexsFileFromZip();
+			return validate(rexsFileInZipResource);
 
 		} catch (IOException ex) {
 			RexsValidationResult validationResult = new RexsValidationResult();
 			validationResult.addError(RexsValidationResultMessageKey.INTERNAL_ERROR);
 			return validationResult;
-
-		} finally {
-			try {
-				Files.deleteIfExists(pathToRexsFile);
-			} catch (IOException ex) {
-				// Nothing to do
-			}
 		}
 	}
 
-	private RexsValidationResult validateSchema(Path pathToRexsFile) {
+	private RexsValidationResult validateSchema(Resource rexsFileResource) {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
 		SchemaValidationErrorHandler errorHandler = new SchemaValidationErrorHandler();
 
-		try (InputStream schemaInput = RexsSchema.FILE.openInputStream()) {
+		try (
+			InputStream schemaInput = RexsSchema.FILE.openInputStream();
+			InputStream rexsFileInput = rexsFileResource.openInputStream();) {
+
 			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			Schema schema = schemaFactory.newSchema(new StreamSource(schemaInput));
 			Validator validator = schema.newValidator();
 			validator.setErrorHandler(errorHandler);
-			validator.validate(new StreamSource(pathToRexsFile.toFile()));
+			validator.validate(new StreamSource(rexsFileInput));
 
 		} catch (IOException | SAXException ex) {
 			validationResult.addError(RexsValidationResultMessageKey.INTERNAL_ERROR);
@@ -183,11 +190,11 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		}
 	}
 
-	private RexsValidationResult validateContent(Path pathToRexsFile) {
+	private RexsValidationResult validateContent(Resource rexsFileResource) {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
 
-		RexsFileReader reader = new RexsFileReader(pathToRexsFile);
+		RexsFileReader reader = new RexsFileReader(rexsFileResource);
 		RexsModel rexsModel = null;
 
 		try {

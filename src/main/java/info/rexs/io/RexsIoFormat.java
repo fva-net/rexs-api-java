@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -22,63 +22,69 @@ import info.rexs.io.json.RexsJsonFileWriter;
 import info.rexs.io.xml.RexsXmlFileReader;
 import info.rexs.io.xml.RexsXmlFileWriter;
 import info.rexs.io.zip.RexsZipFileReader;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import info.rexs.io.zip.RexsZipFileWriter;
 
-@RequiredArgsConstructor
-@Getter
 public enum RexsIoFormat {
 
-	JSON("rexsj") {
+	JSON("rexsj", "rexs.json") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsJsonFileWriter(pathToRexsOutputFile);
 		}
 
 		@Override
-		public AbstractRexsFileReader createNewFileReader(Path pathToRexsInputFile) {
-			return new RexsJsonFileReader(pathToRexsInputFile);
+		public AbstractRexsFileReader createNewFileReader(Resource rexsInputFileResource) {
+			return new RexsJsonFileReader(rexsInputFileResource);
 		}
 	},
 
-	REXS_JSON("rexs.json") {
-		@Override
-		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
-			return new RexsJsonFileWriter(pathToRexsOutputFile);
-		}
-
-		@Override
-		public AbstractRexsFileReader createNewFileReader(Path pathToRexsInputFile) {
-			return new RexsJsonFileReader(pathToRexsInputFile);
-		}
-	},
-
-	XML("rexs") {
+	XML("rexs", "xml") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsXmlFileWriter(pathToRexsOutputFile);
 		}
 
 		@Override
-		public AbstractRexsFileReader createNewFileReader(Path pathToRexsInputFile) {
-			return new RexsXmlFileReader(pathToRexsInputFile);
+		public AbstractRexsFileReader createNewFileReader(Resource rexsInputFileResource) {
+			return new RexsXmlFileReader(rexsInputFileResource);
 		}
 	},
 
-	ZIP("rexsz") {
+	ZIP("rexsz", "zip") {
 		@Override
-		public AbstractRexsFileReader createNewFileReader(Path pathToRexsInputFile) {
-			return new RexsZipFileReader(pathToRexsInputFile);
+		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
+			return new RexsZipFileWriter(pathToRexsOutputFile);
+		}
+
+		@Override
+		public AbstractRexsFileReader createNewFileReader(Resource rexsInputFileResource) {
+			return new RexsZipFileReader(rexsInputFileResource);
 		}
 	};
 
-	private final String ending;
+	private RexsIoFormat(String... endings) {
+		this.endings = endings;
+	}
+
+	private final String[] endings;
+
+	public boolean hasEnding(String filename) {
+		if (filename == null)
+			return false;
+
+		for (String ending : endings) {
+			if (filename.toLowerCase().endsWith(ending))
+				return true;
+		}
+
+		return false;
+	}
 
 	public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 		throw new RuntimeException("writer not implemented for format");
 	}
 
-	public AbstractRexsFileReader createNewFileReader(Path pathToRexsInputFile) {
+	public AbstractRexsFileReader createNewFileReader(Resource rexsInputFileResource) {
 		throw new RuntimeException("reader not implemented for format");
 	}
 
@@ -87,7 +93,7 @@ public enum RexsIoFormat {
 			return null;
 
 		for (RexsIoFormat format : values()) {
-			if (filename.toLowerCase().endsWith(format.getEnding()))
+			if (format.hasEnding(filename))
 				return format;
 		}
 
