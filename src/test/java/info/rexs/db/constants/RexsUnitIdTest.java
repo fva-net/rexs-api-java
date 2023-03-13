@@ -71,4 +71,24 @@ public class RexsUnitIdTest {
 		assertThat(newUnitId).isNotNull();
 		assertThat(newUnitId.getId()).isEqualTo("bar");
 	}
+
+	@Test
+	public void isEquivalent_nullSafety() throws Exception {
+		assertThat(RexsUnitId.hour.isEquivalent(null)).isFalse();
+	}
+
+	@Test
+	public void isEquivalent_equivalentUnitsReturnTrue() throws Exception {
+		assertThat(RexsUnitId.mega_pascal.isEquivalent(RexsUnitId.newton_per_mm2)).isTrue();
+		assertThat(RexsUnitId.newton_per_mm2.isEquivalent(RexsUnitId.mega_pascal)).isTrue();
+
+		assertThat(RexsUnitId.rotation_per_second.isEquivalent(RexsUnitId.hertz)).isTrue();
+		assertThat(RexsUnitId.hertz.isEquivalent(RexsUnitId.rotation_per_second)).isTrue();
+	}
+
+	@Test
+	public void isEquivalent_nonEquivalentUnitsReturnFalse() throws Exception {
+		assertThat(RexsUnitId.hour.isEquivalent(RexsUnitId.degree_celsius)).isFalse();
+		assertThat(RexsUnitId.degree_celsius.isEquivalent(RexsUnitId.hour)).isFalse();
+	}
 }

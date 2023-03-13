@@ -15,6 +15,10 @@
  ******************************************************************************/
 package info.rexs.db.constants.standard;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import info.rexs.db.constants.RexsUnitId;
 
 /**
@@ -208,6 +212,12 @@ public interface RexsStandardUnitIds {
 
 	/** Constant for an unknown unit. */
 	public static final RexsUnitId UNKNOWN = RexsUnitId.create("unknown");
+
+	/** A set of equivalent units. */
+	public static Set<Set<RexsUnitId>> EQUIVALENT_UNITS = new HashSet<>(Arrays.asList(
+		new HashSet<>(Arrays.asList(mega_pascal, newton_per_mm2)),
+		new HashSet<>(Arrays.asList(rotation_per_second, hertz))
+	));
 
 	public static void init() {}
 }

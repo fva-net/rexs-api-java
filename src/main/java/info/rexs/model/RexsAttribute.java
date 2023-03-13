@@ -501,7 +501,9 @@ public class RexsAttribute {
 	}
 
 	private void checkUnit(RexsUnitId unitToCheck) {
-		if (attributeId.getUnit() != unitToCheck && attributeId.getUnit() != RexsUnitId.UNKNOWN)
+		if (attributeId.getUnit() != unitToCheck
+				&& attributeId.getUnit() != RexsUnitId.UNKNOWN
+				&& !attributeId.getUnit().isEquivalent(unitToCheck))
 			throw new RexsModelAccessException(String.format("incompatible units (%s <-> %s) on %s attribute",
 					attributeId.getUnit().getId(), unitToCheck.getId(), attributeId.getId()));
 	}

@@ -15,8 +15,11 @@
  ******************************************************************************/
 package info.rexs.db.constants;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import info.rexs.db.constants.standard.RexsStandardUnitIds;
 
@@ -103,5 +106,24 @@ public class RexsUnitId implements RexsStandardUnitIds {
 			return UNKNOWN;
 		RexsStandardUnitIds.init();
 		return allUnitIds.getOrDefault(id, UNKNOWN);
+	}
+
+	/**
+	 * Checks if the unit is equivalent to another {@link RexsUnitId}.
+	 *
+	 * @param unit
+	 * 				The {@link RexsUnitId} to check for.
+	 *
+	 * @return
+	 * 				{@code true} if the two {@link RexsUnitId}s are equivalent to each other, otherwise {@code false}.
+	 */
+	public boolean isEquivalent(RexsUnitId unit) {
+		if (unit == null)
+			return false;
+		for (Set<RexsUnitId> equivalentUnit : EQUIVALENT_UNITS) {
+			if (equivalentUnit.contains(this) && equivalentUnit.contains(unit))
+				return true;
+		}
+		return false;
 	}
 }
