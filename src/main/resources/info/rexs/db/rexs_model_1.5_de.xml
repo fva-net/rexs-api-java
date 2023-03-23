@@ -61,7 +61,6 @@
         <unit id="3" name="°"/>
     </units>
     <valueTypes>
-        <valueType id="18" name="array_of_arrays"/>
         <valueType id="13" name="array_of_integer_arrays"/>
         <valueType id="2" name="boolean"/>
         <valueType id="7" name="boolean_array"/>
