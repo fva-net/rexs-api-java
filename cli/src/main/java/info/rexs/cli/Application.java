@@ -1,25 +1,27 @@
 package info.rexs.cli;
 
-import java.util.Locale;
-
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 
 import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
-import com.beust.jcommander.internal.Console;
+
+import info.rexs.cli.convert.ConvertCommandServiceImpl;
+import info.rexs.cli.convert.ConvertOptions;
+import info.rexs.cli.global.GlobalOptions;
+import info.rexs.cli.global.VersionOptionServiceImpl;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
 	private static final String PROGAM_NAME = "java -jar rexs-api.jar";
+	private static final String COMMAND_CONVERT = "convert";
 
-	@Autowired private MessageSource messageSource;
+	@Autowired private VersionOptionServiceImpl versionOptionService;
+	@Autowired private ConvertCommandServiceImpl convertCommandService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -29,21 +31,26 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) {
 
 		var globalOptions = new GlobalOptions();
+		var convertOptions = new ConvertOptions();
 
 		var jcommander = JCommander.newBuilder()
 			.addObject(globalOptions)
 			.programName(PROGAM_NAME)
+			.addCommand(COMMAND_CONVERT, convertOptions)
 			.build();
 
 		try
 		{
 			jcommander.parse(args);
 
-			if (globalOptions.version)
-				printVersionInfo(jcommander.getConsole());
+			if (globalOptions.isVersion())
+				versionOptionService.printVersionInfo(jcommander.getConsole());
 
-			if (globalOptions.help || args == null || args.length < 1)
+			if (globalOptions.isHelp() || args == null || args.length < 1)
 				jcommander.usage();
+
+			if (StringUtils.equals(jcommander.getParsedCommand(), COMMAND_CONVERT))
+				convertCommandService.convert(jcommander.getConsole(), convertOptions);
 		}
 		catch (ParameterException ex)
 		{
@@ -51,27 +58,5 @@ public class Application implements CommandLineRunner {
 			jcommander.getConsole().println("\n");
 			jcommander.usage();
 		}
-	}
-
-	static class GlobalOptions {
-
-		@Parameter(names = {"--help", "-help", "-h", "-?"}, description = "Prints the usage of the application")
-		public boolean help = false;
-
-		@Parameter(names = {"--version", "-version"}, description = "Prints the version of the application")
-		public boolean version = false;
-	}
-
-	private void printVersionInfo(Console console) {
-		Locale currentLocale = LocaleContextHolder.getLocale();
-
-		String name = messageSource.getMessage("application.name", null, currentLocale);
-		String version = messageSource.getMessage("application.version", null, currentLocale);
-		String vendor = messageSource.getMessage("application.vendor", null, currentLocale);
-		String revision = messageSource.getMessage("application.revision", null, currentLocale);
-		String buildDate = messageSource.getMessage("application.buildDate", null, currentLocale);
-
-		String versionText = messageSource.getMessage("version.text", new String[] {name, version, vendor, revision, buildDate}, currentLocale);
-		console.println(versionText);
 	}
 }
