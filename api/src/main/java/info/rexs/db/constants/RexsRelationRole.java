@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import info.rexs.db.constants.standard.RexsStandardRelationRoles;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents a REXS relation role.
@@ -30,14 +29,12 @@ import lombok.EqualsAndHashCode;
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsRelationRole implements RexsStandardRelationRoles {
 
 	/** An internal index with all created relation roles (REXS standard and own) for quick access. */
 	private static Map<String, RexsRelationRole> allRelationRoles = new HashMap<>();
 
 	/** The actual key of the relation role as a {@link String}. */
-	@EqualsAndHashCode.Include
 	private final String key;
 
 	private RexsRelationRole(String key) {
@@ -99,12 +96,41 @@ public class RexsRelationRole implements RexsStandardRelationRoles {
 	 * 				The actual key of the relation role to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found relation role as {@link RexsRelationRole}, or {@code RexsRelationRole.UNKNOWN} if the key could not be found.
+	 * 				The found relation role as {@link RexsRelationRole}, or {@code null} if the key could not be found.
 	 */
 	public static RexsRelationRole findByKey(String key) {
 		if (key == null)
-			return UNKNOWN;
+			return null;
 		RexsStandardRelationRoles.init();
-		return allRelationRoles.getOrDefault(key, UNKNOWN);
+		return allRelationRoles.getOrDefault(key, null);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsRelationRole)) {
+			return false;
+		}
+		RexsRelationRole other = (RexsRelationRole)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_key = getKey();
+		Object other_key = other.getKey();
+		return this_key == null ? other_key == null : this_key.equals(other_key);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsRelationRole;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _key = getKey();
+		result = result * 59 + (_key == null ? 43 : _key.hashCode());
+		return result;
 	}
 }

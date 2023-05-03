@@ -25,18 +25,15 @@ import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents an component of a REXS model.
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsComponent implements Comparable<RexsComponent> {
 
 	/** The numeric ID of the component within the REXS model. */
-	@EqualsAndHashCode.Include
 	private Integer id;
 
 	/** The type of the component. */
@@ -85,6 +82,18 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		this.name = name;
 	}
 
+	/** Copy constructor */
+	public RexsComponent(RexsComponent component) {
+		this.id = component.id;
+		this.type = component.type;
+		this.originType = component.originType;
+		this.name = component.name;
+		for (RexsAttribute attribute: component.getAttributes()) {
+			RexsAttribute newAttribute = new RexsAttribute(attribute);
+			this.addAttribute(newAttribute);
+		}
+	}
+
 	/**
 	 * @return
 	 * 				The numeric ID of the component within the REXS model.
@@ -92,7 +101,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public Integer getId() {
 		return id;
 	}
-
+	
 	/**
 	 * @return
 	 * 				The type of the component as {@link RexsComponentType}.
@@ -595,6 +604,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Creates a new attribute with a string value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 * If the value is null no attribute is added.
 	 *
 	 * @param attributeId
 	 * 				The ID of the new attribute as {@link RexsAttributeId}.
@@ -602,6 +612,8 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The value of the new attribute as {@link String}.
 	 */
 	public void addAttribute(RexsAttributeId attributeId, String value) {
+		if (value==null)
+			return;
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setStringValue(value);
 	}
@@ -610,6 +622,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Creates a new attribute with a boolean value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 * If the value is null no attribute is added.
 	 *
 	 * @param attributeId
 	 * 				The ID of the new attribute as {@link RexsAttributeId}.
@@ -617,6 +630,8 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The value of the new attribute as {@link Boolean}.
 	 */
 	public void addAttribute(RexsAttributeId attributeId, Boolean value) {
+		if (value==null)
+			return;
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setBooleanValue(value);
 	}
@@ -625,6 +640,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Creates a new attribute with a integer value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 * If the value is null no attribute is added.
 	 *
 	 * @param attributeId
 	 * 				The ID of the new attribute as {@link RexsAttributeId}.
@@ -632,6 +648,8 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The value of the new attribute as {@link Integer}.
 	 */
 	public void addAttribute(RexsAttributeId attributeId, Integer value) {
+		if (value==null)
+			return;
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setIntegerValue(value);
 	}
@@ -640,6 +658,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * Creates a new attribute with a floating point value and adds it to the component.
 	 * <p>
 	 * If the component already has an attribute with the attribute ID, then the existing attribute is replaced by the new attribute.
+	 * If the value is null no attribute is added.
 	 *
 	 * @param attributeId
 	 * 				The ID of the new attribute as {@link RexsAttributeId}.
@@ -647,6 +666,8 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * 				The value of the new attribute as {@link Double}.
 	 */
 	public void addAttribute(RexsAttributeId attributeId, Double value) {
+		if (value==null)
+			return;
 		RexsAttribute attribute = createAndAddAttribute(attributeId);
 		attribute.setDoubleValue(value);
 	}
@@ -1009,5 +1030,50 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 */
 	public boolean isOfType(RexsComponentType... rexsComponentTypes) {
 		return this.type.isOneOf(rexsComponentTypes);
+	}
+	
+	@Override
+    public String toString() {
+    	if (name!=null)
+    		return name+" - "+id;
+    	return String.valueOf(id);
+    }
+
+	public void setId(Integer newCompId) {
+		if(newCompId != null)
+			this.id = newCompId;		
+	}
+	
+	public void setType(RexsComponentType newType) {
+		this.type = newType;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsComponent)) {
+			return false;
+		}
+		RexsComponent other = (RexsComponent)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_id = getId();
+		Object other_id = other.getId();
+		return this_id == null ? other_id == null : this_id.equals(other_id);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsComponent;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _id = getId();
+		result = result * 59 + (_id == null ? 43 : _id.hashCode());
+		return result;
 	}
 }

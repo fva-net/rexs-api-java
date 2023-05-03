@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -31,8 +33,11 @@ import info.rexs.db.constants.RexsVersion;
 import info.rexs.io.AbstractRexsFileWriter;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
+import info.rexs.model.jaxb.Accumulation;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
+import info.rexs.model.jaxb.LoadCase;
+import info.rexs.model.jaxb.LoadSpectrum;
 import info.rexs.model.jaxb.Model;
 import info.rexs.model.transformer.RexsModelXmlTransformer;
 
@@ -120,8 +125,18 @@ public class RexsXmlFileWriter extends AbstractRexsFileWriter {
 
 		RexsUnitId searchUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.deg : RexsUnitId.degree;
 		RexsUnitId replaceUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.degree : RexsUnitId.deg;
+		
+		List<Component> allComponents = new ArrayList<>();
+		allComponents.addAll(model.getComponents().getComponent());
+		for (LoadSpectrum spectrum : model.getLoadSpectrum()) {
+			for (LoadCase loadCase : spectrum.getLoadCase())
+				allComponents.addAll(loadCase.getComponent());
+			Accumulation accumulation = spectrum.getAccumulation();
+			if (accumulation!=null)
+				allComponents.addAll(accumulation.getComponent());
+		}
 
-		for (Component component : model.getComponents().getComponent()) {
+		for (Component component : allComponents) {
 			for (Attribute attribute : component.getAttribute()) {
 				if (attribute.getUnit() != null && attribute.getUnit().equals(searchUnit.getId()))
 					attribute.setUnit(replaceUnit.getId());

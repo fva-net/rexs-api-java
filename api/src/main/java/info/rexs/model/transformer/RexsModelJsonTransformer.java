@@ -3,42 +3,47 @@ package info.rexs.model.transformer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
+import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsRelationType;
 import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsValueType;
 import info.rexs.db.constants.RexsVersion;
-import info.rexs.io.json.jsonmodel.Accumulation;
-import info.rexs.io.json.jsonmodel.Component;
-import info.rexs.io.json.jsonmodel.FloatingPointArrayCoded;
-import info.rexs.io.json.jsonmodel.FloatingPointMatrixCoded;
-import info.rexs.io.json.jsonmodel.JSONModel;
-import info.rexs.io.json.jsonmodel.LoadCase;
-import info.rexs.io.json.jsonmodel.LoadSpectrum;
-import info.rexs.io.json.jsonmodel.Model;
-import info.rexs.io.json.jsonmodel.Ref;
-import info.rexs.io.json.jsonmodel.Relation;
-import info.rexs.io.json.jsonmodel.attributes.ArrayOfIntegerArraysAttribute;
-import info.rexs.io.json.jsonmodel.attributes.Attribute;
-import info.rexs.io.json.jsonmodel.attributes.BooleanArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.BooleanAttribute;
-import info.rexs.io.json.jsonmodel.attributes.BooleanMatrixAttribute;
-import info.rexs.io.json.jsonmodel.attributes.EnumAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointArrayCodedAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointMatrixAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointMatrixCodedAttribute;
-import info.rexs.io.json.jsonmodel.attributes.IntegerArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.IntegerAttribute;
-import info.rexs.io.json.jsonmodel.attributes.IntegerMatrixAttribute;
-import info.rexs.io.json.jsonmodel.attributes.StringArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.StringAttribute;
-import info.rexs.io.json.jsonmodel.attributes.StringMatrixAttribute;
+import info.rexs.io.json.model.Accumulation;
+import info.rexs.io.json.model.Component;
+import info.rexs.io.json.model.FloatingPointArrayCoded;
+import info.rexs.io.json.model.FloatingPointMatrixCoded;
+import info.rexs.io.json.model.JSONModel;
+import info.rexs.io.json.model.LoadCase;
+import info.rexs.io.json.model.LoadSpectrum;
+import info.rexs.io.json.model.Model;
+import info.rexs.io.json.model.Ref;
+import info.rexs.io.json.model.Relation;
+import info.rexs.io.json.model.attributes.ArrayOfIntegerArraysAttribute;
+import info.rexs.io.json.model.attributes.Attribute;
+import info.rexs.io.json.model.attributes.BooleanArrayAttribute;
+import info.rexs.io.json.model.attributes.BooleanAttribute;
+import info.rexs.io.json.model.attributes.BooleanMatrixAttribute;
+import info.rexs.io.json.model.attributes.EnumArrayAttribute;
+import info.rexs.io.json.model.attributes.EnumAttribute;
+import info.rexs.io.json.model.attributes.FileReferenceAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointArrayAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointArrayCodedAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointMatrixAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointMatrixCodedAttribute;
+import info.rexs.io.json.model.attributes.DateTimeAttribute;
+import info.rexs.io.json.model.attributes.IntegerArrayAttribute;
+import info.rexs.io.json.model.attributes.IntegerAttribute;
+import info.rexs.io.json.model.attributes.IntegerMatrixAttribute;
+import info.rexs.io.json.model.attributes.ReferenceComponentAttribute;
+import info.rexs.io.json.model.attributes.StringArrayAttribute;
+import info.rexs.io.json.model.attributes.StringAttribute;
+import info.rexs.io.json.model.attributes.StringMatrixAttribute;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsLoadSpectrum;
@@ -48,11 +53,8 @@ import info.rexs.model.RexsModelObjectFactory;
 import info.rexs.model.RexsRelation;
 import info.rexs.model.RexsRelationRef;
 import info.rexs.model.RexsSubModel;
-import info.rexs.model.jaxb.CodeType;
 import info.rexs.model.util.DateUtils;
 import info.rexs.model.value.AbstractRexsAttributeValue;
-import info.rexs.model.value.AbstractRexsAttributeValueArray;
-import info.rexs.model.value.AbstractRexsAttributeValueMatrix;
 import info.rexs.model.value.Base64Type;
 import info.rexs.model.value.RexsAttributeValueArray;
 import info.rexs.model.value.RexsAttributeValueArrayBase64;
@@ -61,75 +63,74 @@ import info.rexs.model.value.RexsAttributeValueMatrix;
 import info.rexs.model.value.RexsAttributeValueMatrixBase64;
 import info.rexs.model.value.RexsAttributeValueScalar;
 
+
 /**
  * This class is a {@link IRexsModelTransformer} to transform REXS models of the types {@link RexsModel} and {@link Model}.
  *
  * @author FVA GmbH
  */
-public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel> {
+public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel>{
+
+
+
+	private RexsVersion version;
 
 	@Override
 	public JSONModel transform(RexsModel model) {
-		return createModelJson(model);
+		version = model.getVersion().equals(RexsVersion.UNKNOWN) ? RexsVersion.create(model.getOriginVersion(), 0) : model.getVersion();
+		return new JSONModel().withModel(new Model()
+				.withDate(DateUtils.getISO8601Date())
+				.withApplicationId(model.getApplicationId())
+				.withApplicationVersion(model.getApplicationVersion())
+				.withVersion(version.getName())
+				.withComponents(createComponentsJson(model.getComponents()))
+				.withRelations(createRelationsJson(model.getRelations()))
+				.withLoadSpectrum(createLoadSpectrumsJson(model.getLoadSpectrums())));
 	}
 
 	@Override
-	public RexsModel transform(JSONModel model) {
-		return createModel(model);
+	public RexsModel transform(JSONModel jmodel) {
+		Model modelJson = jmodel.getModel();
+		RexsModel model = RexsModelObjectFactory.getInstance().createRexsModel(modelJson.getVersion(), modelJson.getApplicationId(), modelJson.getApplicationVersion());
+
+		if (modelJson.getRelations() != null && !modelJson.getRelations().isEmpty())
+			for (Relation relationJson : modelJson.getRelations()) {
+				model.addRelation(createRelation(relationJson));
+			}
+
+		if (modelJson.getComponents() != null && !modelJson.getComponents().isEmpty())
+			for (Component componentJson : modelJson.getComponents()) {
+				model.addComponent(createComponent(componentJson));
+			}
+
+		if (modelJson.getLoadSpectrum() != null)
+			model.addLoadSpectrum(createLoadSpectrum(modelJson.getLoadSpectrum()));
+
+		return model;
 	}
 
-	private JSONModel createModelJson(RexsModel model) {
-		return new JSONModel().withModel(new Model()
-			.withDate(DateUtils.getISO8601Date())
-			.withApplicationId(model.getApplicationId())
-			.withApplicationVersion(model.getApplicationVersion())
-			.withVersion(model.getVersion().equals(RexsVersion.UNKNOWN)?model.getOriginVersion():model.getVersion().getName())
-			.withComponents(createComponentsJson(model.getComponents()))
-			.withRelations(createRelationsJson(model.getRelations()))
-			.withLoadSpectrum(createLoadSpectrumsJson(model.getLoadSpectrums())));
-	}
 
 	private List<Relation> createRelationsJson(List<RexsRelation> relations) {
-		if (relations == null || relations.isEmpty())
-			return new ArrayList<>();
-
 		List<Relation> relationsJson = new ArrayList<>();
-
-		for (RexsRelation relation : relations) {
+		for (RexsRelation relation : relations)
 			relationsJson.add(createRelationJson(relation));
-		}
-
 		return relationsJson;
 	}
 
 	private Relation createRelationJson(RexsRelation relation) {
 		Relation relationJson = new Relation();
 		relationJson.setId(relation.getId());
-
-		if (relation.getType().equals(RexsRelationType.UNKNOWN)) {
-			relationJson.setType(relation.getOriginType());
-		} else {
-			relationJson.setType(relation.getType().getKey());
-		}
-
-		if (relation.getOrder() != null && relation.getOrder() > -1)
+		relationJson.setType(relation.getType().getKey());
+		if (relation.getOrder() != null)
 			relationJson.setOrder(relation.getOrder());
-
 		relationJson.getRefs().addAll(createRefsJson(relation.getRefs()));
-
 		return relationJson;
 	}
 
 	private List<Ref> createRefsJson(Collection<RexsRelationRef> refs) {
-		if (refs == null || refs.isEmpty())
-			return new ArrayList<>();
-
 		List<Ref> refsJson = new ArrayList<>();
-
-		for (RexsRelationRef ref : refs) {
+		for (RexsRelationRef ref : refs)
 			refsJson.add(createRefJson(ref));
-		}
-
 		return refsJson;
 	}
 
@@ -137,26 +138,15 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		Ref refJson = new Ref();
 		refJson.setId(ref.getId());
 		refJson.setHint(ref.getHint());
-
-		if (ref.getRole().equals(RexsRelationRole.UNKNOWN)) {
-			refJson.setRole(ref.getOriginRole());
-		} else {
-			refJson.setRole(ref.getRole().getKey());
-		}
-
+		refJson.setRole(ref.getRole().getKey());
 		return refJson;
 	}
 
 	private List<Component> createComponentsJson(List<RexsComponent> components) {
-		if (components == null || components.isEmpty())
-			return new ArrayList<>();
-
 		List<Component> componentsJson = new ArrayList<>();
-
-		for (RexsComponent component : components) {
+		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		for (RexsComponent component : sortedComponents)
 			componentsJson.add(createComponentJson(component));
-		}
-
 		return componentsJson;
 	}
 
@@ -179,193 +169,207 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 	}
 
 	private List<Attribute> createAttributesJson(Collection<RexsAttribute> attributes) {
-		if (attributes == null || attributes.isEmpty())
-			return new ArrayList<>();
-
 		List<Attribute> attributesJson = new ArrayList<>();
-
-		for (RexsAttribute attribute : attributes) {
-			attributesJson.add(createAttributeJson(attribute));
-		}
-
+		for (RexsAttribute attribute : attributes)
+			attributesJson.addAll(createAttributeJson(attribute));
 		return attributesJson;
 	}
 
-	private Attribute createAttributeJson(RexsAttribute attribute) {
+	/**
+	 * return List to allow for empty return
+	 */
+	private List<Attribute> createAttributeJson(RexsAttribute attribute) {
+		try {
+		DbModelRegistry registry = DbModelRegistry.getInstance();
+		String attributeId = getRexsAttrId(attribute);
+		String unit = getRexsAttrUnit(attribute);
 		AbstractRexsAttributeValue value = attribute.getRawValue();
-		if (value != null) {
-			return createAttributeContentJson(attribute,value);
+		Attribute jsonAttribute;
+		if (registry.hasAttributeWithId(version, attributeId)) {
+			RexsValueType type = registry.getAttributeType(attributeId, version);
+			switch (type) {
+			case DATE_TIME: {
+				DateTimeAttribute timeAttr = new DateTimeAttribute();
+				timeAttr.setTime(attribute.hasValue() ? attribute.getDateTimeValue().toString() : null ); 
+				jsonAttribute = timeAttr;
+				break;
+			}
+			case BOOLEAN:
+				jsonAttribute = new BooleanAttribute().withBoolean(attribute.hasValue() ? attribute.getBooleanValue() : null ); break;
+			case ENUM:
+				jsonAttribute = new EnumAttribute().withEnum(attribute.hasValue() ? attribute.getStringValue() : null ); break;
+			case FILE_REFERENCE:
+				jsonAttribute = new FileReferenceAttribute().withFileReference(attribute.hasValue() ? attribute.getStringValue() : null ); break;
+			case FLOATING_POINT:
+				jsonAttribute = new FloatingPointAttribute().withFloatingPoint(attribute.hasValue() ? attribute.getDoubleValue(attribute.getUnit()) : null ); break;
+			case INTEGER:
+				jsonAttribute = new IntegerAttribute().withInteger(attribute.hasValue() ? attribute.getIntegerValue() : null ); break;
+			case REFERENCE_COMPONENT:
+				jsonAttribute = new ReferenceComponentAttribute().withReferenceComponent(attribute.hasValue() ? attribute.getIntegerValue() : null ); break;
+			case STRING:
+				jsonAttribute = new StringAttribute().withString(attribute.hasValue() ? attribute.getStringValue() : null ); break;
+			case BOOLEAN_ARRAY:
+				jsonAttribute = new BooleanArrayAttribute().withBooleanArray(attribute.hasValue() ? Arrays.asList(attribute.getBooleanArrayValue()) : null ); break;
+			case ENUM_ARRAY:
+				jsonAttribute = new EnumArrayAttribute().withEnumArray(attribute.hasValue() ? Arrays.asList(attribute.getStringArrayValue()) : null ); break;
+			case FLOATING_POINT_ARRAY:
+				if (value instanceof RexsAttributeValueArrayBase64) {
+					RexsAttributeValueArrayBase64 valueBase64 = (RexsAttributeValueArrayBase64) value;
+					Base64Type code = valueBase64.getRawType();
+					FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
+							.withCode(code == null? null: code.toString())
+							.withValue(valueBase64.getRawValue());
+					jsonAttribute = new FloatingPointArrayCodedAttribute().withFloatingPointArrayCoded(fpac); break;
+				}
+				else
+					jsonAttribute = new FloatingPointArrayAttribute().withFloatingPointArray(attribute.hasValue() ? Arrays.asList(attribute.getDoubleArrayValue(attribute.getUnit())) : null ); break;
+			case INTEGER_ARRAY:
+				jsonAttribute = new IntegerArrayAttribute().withIntegerArray(attribute.hasValue() ? Arrays.asList(attribute.getIntegerArrayValue()) : null ); break;
+			case STRING_ARRAY:
+				jsonAttribute = new StringArrayAttribute().withStringArray(attribute.hasValue() ? Arrays.asList(attribute.getStringArrayValue()) : null ); break;
+			case BOOLEAN_MATRIX:
+				jsonAttribute = new BooleanMatrixAttribute().withBooleanMatrix(attribute.hasValue() ? (get2DArrayAsList(attribute.getBooleanMatrixValue())) : null ); break;
+			case FLOATING_POINT_MATRIX:
+				if (value instanceof RexsAttributeValueMatrixBase64) {
+					RexsAttributeValueMatrixBase64 valueBase64 = (RexsAttributeValueMatrixBase64) value;
+					Base64Type code = valueBase64.getRawType();
+					FloatingPointMatrixCoded fpac = new FloatingPointMatrixCoded()
+							.withCode(code == null? null: code.toString())
+							.withColumns(valueBase64.getRawCols())
+							.withRows(valueBase64.getRawRows())
+							.withValue(valueBase64.getRawValue());
+					jsonAttribute = new FloatingPointMatrixCodedAttribute().withFloatingPointMatrixCoded(fpac); break;
+				}
+				else
+					jsonAttribute = new FloatingPointMatrixAttribute().withFloatingPointMatrix(attribute.hasValue() ? (get2DArrayAsList(attribute.getDoubleMatrixValue(attribute.getUnit()))) : null ); break;
+			case INTEGER_MATRIX:
+				jsonAttribute = new IntegerMatrixAttribute().withIntegerMatrix(attribute.hasValue() ? (get2DArrayAsList(attribute.getIntegerMatrixValue())) : null ); break;
+			case STRING_MATRIX:
+				jsonAttribute = new StringMatrixAttribute().withStringMatrix(attribute.hasValue() ? (get2DArrayAsList(attribute.getStringMatrixValue())) : null ); break;
+			case ARRAY_OF_INTEGER_ARRAYS:
+				jsonAttribute = new ArrayOfIntegerArraysAttribute().withArrayOfIntegerArrays(attribute.hasValue() ? createListOfIntegerLists(attribute.getArrayOfIntegerArraysValue()) : null ); break;
+			default: return new ArrayList<>();
+			}
 		}
-		return null;
+		else { // unknown/ custom attribute
+			if (value==null)
+				return new ArrayList<>();
+			jsonAttribute = createAttributeJsonCustom(value, unit);			
+		}
+		return Collections.singletonList(jsonAttribute.withId(attributeId).withUnit(unit));
+		}
+		catch (Exception e) {
+			return new ArrayList<>();
+		}
 	}
 
-	private Attribute createAttributeContentJson(RexsAttribute attr, AbstractRexsAttributeValue value) {
+	private Attribute createAttributeJsonCustom(AbstractRexsAttributeValue value, String unit) {
 		if (value instanceof RexsAttributeValueScalar) {
-			RexsAttributeValueScalar valueScalar = (RexsAttributeValueScalar)value;
-			try{
-				int d = valueScalar.getValueInteger();
-				return new IntegerAttribute()
-					.withInteger(d)
-					.withId(getRightRexsAttrIdId(attr))
-					.withUnit(getRightRexsAttrUnit(attr));
-			}catch(RexsModelAccessException e){
-
+			String valueString = ((RexsAttributeValueScalar) value).getRawValue();
+			if (valueString==null || valueString.isEmpty())
+				return new StringAttribute().withString(valueString);
+			else if (valueString.equals("true") || valueString.equals("false"))
+				return new BooleanAttribute().withBoolean(Boolean.valueOf(valueString));
+			else if (!unit.equals(RexsUnitId.none.getId()))
+				return new FloatingPointAttribute().withFloatingPoint(Double.valueOf(valueString));
+			// if nothing better is known try valueOf...
+			try {
+				return new IntegerAttribute().withInteger(Integer.valueOf(valueString));
 			}
-			try{
-				double d = valueScalar.getValueDouble();
-				return new FloatingPointAttribute()
-					.withFloatingPoint(d)
-					.withId(getRightRexsAttrIdId(attr))
-					.withUnit(getRightRexsAttrUnit(attr));
-			}catch(RexsModelAccessException e){
-
+			catch (NumberFormatException e) {}
+			try {
+				return new FloatingPointAttribute().withFloatingPoint(Double.valueOf(valueString));
 			}
-
-			try{
-				boolean d = valueScalar.getValueBoolean();
-				return new BooleanAttribute()
-					.withBoolean(d)
-					.withId(getRightRexsAttrIdId(attr))
-					.withUnit(getRightRexsAttrUnit(attr));
-			}catch(RexsModelAccessException e){
-
-			}
-			return new StringAttribute()
-				.withString(valueScalar.getValueString())
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
-
-			//TODO implement enum according to context
-
+			catch (NumberFormatException e) {}
+			// if nothing else fits use string
+			return new StringAttribute().withString(valueString);
 		}
-		 if (value instanceof AbstractRexsAttributeValueArray) {
-			return createArrayFromJson(attr, (AbstractRexsAttributeValueArray)value);
+		else if (value instanceof RexsAttributeValueArray) {
+			RexsAttributeValueArray arrayValue = (RexsAttributeValueArray) value;
+			List<String> valueString = arrayValue.getRawValue();
+			if (valueString==null || valueString.isEmpty() || valueString.get(0)==null || valueString.get(0).isEmpty())
+				return new StringArrayAttribute().withStringArray(valueString);
+			else if (valueString.get(0).equals("true") || valueString.get(0).equals("false"))
+				return new BooleanArrayAttribute().withBooleanArray(valueString.stream().map(s -> Boolean.valueOf(s)).toList());
+			else if (!unit.equals(RexsUnitId.none.getId()))
+				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(s -> Double.valueOf(s)).toList());
+			// if nothing better is known try valueOf...
+			try {
+				return new IntegerArrayAttribute().withIntegerArray(valueString.stream().map(s -> Integer.valueOf(s)).toList());
+			}
+			catch (NumberFormatException e) {}
+			try {
+				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(s -> Double.valueOf(s)).toList());
+			}
+			catch (NumberFormatException e) {}
+			// if nothing else fits use string
+			return new StringArrayAttribute().withStringArray(valueString);
 		}
-		 if (value instanceof AbstractRexsAttributeValueMatrix) {
-		return createMatrixJson(attr,(AbstractRexsAttributeValueMatrix)value);
+		else if (value instanceof RexsAttributeValueArrayBase64) {
+			RexsAttributeValueArrayBase64 valueBase64 = (RexsAttributeValueArrayBase64) value;
+			Base64Type code = valueBase64.getRawType();
+			FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
+					.withCode(code == null? null: code.toString())
+					.withValue(valueBase64.getRawValue());
+			return new FloatingPointArrayCodedAttribute().withFloatingPointArrayCoded(fpac);
+		}
+		else if (value instanceof RexsAttributeValueMatrix) {
+			RexsAttributeValueMatrix matrixValue = (RexsAttributeValueMatrix) value;
+			List<List<String>> valueString = matrixValue.getRawValue();
+			if (valueString==null || valueString.isEmpty() || valueString.get(0)==null || valueString.get(0).isEmpty() || valueString.get(0).get(0)==null || valueString.get(0).get(0).isEmpty())
+				return new StringMatrixAttribute().withStringMatrix(valueString);
+			else if (valueString.get(0).get(0).equals("true") || valueString.get(0).get(0).equals("false"))
+				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(s -> Boolean.valueOf(s)).toList()).toList());
+			else if (!unit.equals(RexsUnitId.none.getId()))
+				return new FloatingPointMatrixAttribute().withFloatingPointMatrix(valueString.stream().map(list -> list.stream().map(s -> Double.valueOf(s)).toList()).toList());				
+			// if nothing better is known try valueOf...
+			try {
+				return new IntegerMatrixAttribute().withIntegerMatrix(valueString.stream().map(list -> list.stream().map(s -> Integer.valueOf(s)).toList()).toList());
+			}
+			catch (NumberFormatException e) {}
+			try {
+				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(s -> Boolean.valueOf(s)).toList()).toList());
+			}
+			catch (NumberFormatException e) {}
+			// if nothing else fits use string
+			return new StringMatrixAttribute().withStringMatrix(valueString);
+		}
+		else if (value instanceof RexsAttributeValueMatrixBase64) {
+			RexsAttributeValueMatrixBase64 valueBase64 = (RexsAttributeValueMatrixBase64) value;
+			Base64Type code = valueBase64.getRawType();
+			FloatingPointMatrixCoded fpac = new FloatingPointMatrixCoded()
+					.withCode(code == null? null: code.toString())
+					.withColumns(valueBase64.getRawCols())
+					.withRows(valueBase64.getRawRows())
+					.withValue(valueBase64.getRawValue());
+			return new FloatingPointMatrixCodedAttribute().withFloatingPointMatrixCoded(fpac);
 		}
 		else if (value instanceof RexsAttributeValueArrayOfArrays) {
-			return createArrayOfArraysJson(attr,(RexsAttributeValueArrayOfArrays)value);
+			List<Integer[]> valueString = ((RexsAttributeValueArrayOfArrays) value).getValueArrayOfIntegerArrays();
+			return new ArrayOfIntegerArraysAttribute().withArrayOfIntegerArrays(valueString.stream().map(array -> Arrays.asList(array)).toList());
 		}
-
-		return null;
+		else
+			throw new RexsModelAccessException("unkown value type: "+value);
 	}
 
-	private String getRightRexsAttrIdId(RexsAttribute attribute){
-		if (attribute.getAttributeId().equals(RexsAttributeId.UNKNOWN))
+	private List<List<Integer>> createListOfIntegerLists(List<Integer[]> listOfIntegerArraysValue) {
+		List<List<Integer>> listOfLists = new ArrayList<>();
+		for (Integer[] array : listOfIntegerArraysValue) {
+			listOfLists.add(Arrays.asList(array));
+		}
+		return listOfLists;
+	}
+
+	private String getRexsAttrId(RexsAttribute attribute){
+		if (attribute.getAttributeId().equals(RexsAttributeId.UNKNOWN)) 
 			return attribute.getOriginAttributeId();
 		return attribute.getAttributeId().getId();
 	}
 
-	private String getRightRexsAttrUnit(RexsAttribute attribute){
-		if (attribute.getUnit().equals(RexsUnitId.UNKNOWN))
+	private String getRexsAttrUnit(RexsAttribute attribute){
+		if (attribute.getUnit().equals(RexsUnitId.UNKNOWN)) 
 			return attribute.getOriginUnit();
 		return attribute.getUnit().getId();
-	}
-
-	private List<Integer> createListFromRexs(RexsAttribute attr, AbstractRexsAttributeValueArray value) {
-		try{
-			Integer[] d = value.getValueIntegerArray();
-			return Arrays.asList(d);
-		}catch(RexsModelAccessException e){
-
-		}
-		return new ArrayList<>();
-	}
-	private Attribute createArrayFromJson(RexsAttribute attr, AbstractRexsAttributeValueArray value) {
-		if (value instanceof RexsAttributeValueArray) {
-			RexsAttributeValueArray arr = (RexsAttributeValueArray)value;
-			List<String> rawValue = arr.getRawValue();
-			if (rawValue == null)
-				return null;
-
-			try{
-				Integer[] d = value.getValueIntegerArray();
-				return new IntegerArrayAttribute()
-					.withIntegerArray(Arrays.asList(d))
-					.withId(getRightRexsAttrIdId(attr))
-					.withUnit(getRightRexsAttrUnit(attr));
-			}catch(RexsModelAccessException e){
-				//TODO
-			}
-			try{
-				Double[] d = value.getValueDoubleArray();
-				return new FloatingPointArrayAttribute()
-					.withFloatingPointArray(Arrays.asList(d))
-					.withId(getRightRexsAttrIdId(attr))
-					.withUnit(getRightRexsAttrUnit(attr));
-			}catch(RexsModelAccessException e){
-				//TODO
-			}
-
-			try{
-				Boolean[] d = value.getValueBooleanArray();
-				return new BooleanArrayAttribute()
-					.withBooleanArray(Arrays.asList(d))
-					.withId(getRightRexsAttrIdId(attr))
-					.withUnit(getRightRexsAttrUnit(attr));
-			}catch(RexsModelAccessException e){
-				//TODO
-			}
-			String[] d = value.getValueStringArray();
-			return new StringArrayAttribute()
-				.withStringArray(Arrays.asList(d))
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
-
-		}
-		if (value instanceof RexsAttributeValueArrayBase64) {
-			RexsAttributeValueArrayBase64 valueBase64 = (RexsAttributeValueArrayBase64)value;
-			if (valueBase64.getRawValue() == null)
-				return null;
-			CodeType code = convertBase64Type(valueBase64.getRawType());
-			FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
-				.withCode(code == null? null: code.toString())
-				.withValue(valueBase64.getRawValue());
-			return new FloatingPointArrayCodedAttribute()
-				.withFloatingPointArrayCoded(fpac)
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
-		}
-
-		return null;
-	}
-
-	private Attribute createMatrixJson(RexsAttribute attr, AbstractRexsAttributeValueMatrix value) {
-		RexsAttributeValueMatrix matrixValue = (RexsAttributeValueMatrix)value;
-
-		try{
-			List<List<Boolean>> boolListList = get2DArrayAsList(matrixValue.getValueBooleanMatrix());
-			return new BooleanMatrixAttribute()
-				.withBooleanMatrix(boolListList)
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
-		}catch(RexsModelAccessException e){
-			//TODO
-		}
-		try{
-			List<List<Integer>> intListList = get2DArrayAsList(matrixValue.getValueIntegerMatrix());
-			return new IntegerMatrixAttribute()
-				.withIntegerMatrix(intListList)
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
-		}catch(RexsModelAccessException e){
-			//TODO
-		}
-		try{
-			List<List<Double>> intListList = get2DArrayAsList(matrixValue.getValueDoubleMatrix());
-			return new FloatingPointMatrixAttribute()
-				.withFloatingPointMatrix(intListList)
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
-		}catch(RexsModelAccessException e){
-			//TODO
-		}
-		List<List<String>> sListList = get2DArrayAsList(matrixValue.getValueStringMatrix());
-			return new StringMatrixAttribute()
-				.withStringMatrix(sListList)
-				.withId(getRightRexsAttrIdId(attr))
-				.withUnit(getRightRexsAttrUnit(attr));
 	}
 
 	private <T> List<List<T>> get2DArrayAsList(T[][] arr){
@@ -378,102 +382,39 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 
 
 
-	private CodeType convertBase64Type(Base64Type type) {
-		if (type == Base64Type.INT_32)
-			return CodeType.INT_32;
-		else if (type == Base64Type.FLOAT_32)
-			return CodeType.FLOAT_32;
-		else if (type == Base64Type.FLOAT_64)
-			return CodeType.FLOAT_64;
-		return null;
-	}
-
-	private Attribute createArrayOfArraysJson(RexsAttribute attr, RexsAttributeValueArrayOfArrays value) {
-		ArrayOfIntegerArraysAttribute arrayOfArrays = new ArrayOfIntegerArraysAttribute().withArrayOfIntegerArrays(new ArrayList<>());
-
-		List<AbstractRexsAttributeValueArray> rawValue = value.getRawValue();
-		for (AbstractRexsAttributeValueArray arrayValue : rawValue) {
-			arrayOfArrays.getArrayOfIntegerArrays().add(createListFromRexs(attr, arrayValue));
-		}
-
-		return arrayOfArrays;
-	}
-
 	private LoadSpectrum createLoadSpectrumsJson(List<RexsLoadSpectrum> loadSpectrums) {
 		if (loadSpectrums == null || loadSpectrums.isEmpty())
 			return null;
-
-		List<LoadSpectrum> loadSpectrumsJson = new ArrayList<>();
-
-		for (RexsLoadSpectrum loadSpectrum : loadSpectrums) {
-			loadSpectrumsJson.add(createLoadSpectrumJson(loadSpectrum));
-		}
-
-		return loadSpectrumsJson.isEmpty() ? null: loadSpectrumsJson.get(0);
-	}
-
-	private LoadSpectrum createLoadSpectrumJson(RexsLoadSpectrum loadSpectrum) {
+		RexsLoadSpectrum loadSpectrum = loadSpectrums.get(0);
 		LoadSpectrum loadSpectrumJson = new LoadSpectrum();
 		loadSpectrumJson.setId(loadSpectrum.getId());
-
 		loadSpectrumJson.setLoadCases(createLoadCasesJson(loadSpectrum.getLoadCases()));
 		loadSpectrumJson.setAccumulation(createAccumulationJson(loadSpectrum.getAccumulation()));
-
 		return loadSpectrumJson;
 	}
 
 	private List<LoadCase> createLoadCasesJson(Collection<RexsSubModel> loadCases) {
 		if (loadCases == null || loadCases.isEmpty())
 			return new ArrayList<>();
-
 		List<LoadCase> loadCasesJson = new ArrayList<>();
-
 		for (RexsSubModel loadCase : loadCases) {
-			loadCasesJson.add(createLoadCaseJson(loadCase));
+			LoadCase loadCaseJson = new LoadCase();
+			loadCaseJson.setId(loadCase.getId());
+			loadCaseJson.setComponents(createComponentsJson(loadCase.getComponents()));
+			loadCasesJson.add(loadCaseJson);
 		}
-
 		return loadCasesJson;
-	}
-
-	private LoadCase createLoadCaseJson(RexsSubModel loadCase) {
-		LoadCase loadCaseJson = new LoadCase();
-		loadCaseJson.setId(loadCase.getId());
-		loadCaseJson.setComponents(createComponentsJson(loadCase.getComponents()));
-		return loadCaseJson;
 	}
 
 	private Accumulation createAccumulationJson(RexsSubModel accumulation) {
 		if (accumulation == null)
 			return null;
-
 		List<RexsComponent> components = accumulation.getComponents();
 		if (components == null || components.isEmpty())
 			return null;
-
 		Accumulation accumulationJson = new Accumulation();
 		accumulationJson.setComponents(createComponentsJson(accumulation.getComponents()));
-
 		return accumulationJson;
-	}
-
-	private RexsModel createModel(JSONModel jmodel) {
-		Model modelJson = jmodel.getModel();
-		RexsModel model = RexsModelObjectFactory.getInstance().createRexsModel(modelJson.getVersion(), modelJson.getApplicationId(), modelJson.getApplicationVersion());
-
-		if (modelJson.getRelations() != null && !modelJson.getRelations().isEmpty())
-			for (Relation relationJson : modelJson.getRelations()) {
-				model.addRelation(createRelation(relationJson));
-			}
-
-		if (modelJson.getComponents() != null && !modelJson.getComponents().isEmpty())
-			for (Component componentJson : modelJson.getComponents()) {
-				model.addComponent(createComponent(componentJson));
-			}
-
-		if (modelJson.getLoadSpectrum() != null)
-			model.addLoadSpectrum(createLoadSpectrum(modelJson.getLoadSpectrum()));
-
-		return model;
 	}
 
 	private RexsRelation createRelation(Relation relationJson) {
@@ -484,7 +425,6 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 				RexsRelationRef ref = RexsModelObjectFactory.getInstance().createRexsRelationRef(refJson.getId(), refJson.getRole(), refJson.getHint());
 				relation.addRef(ref);
 			}
-
 		return relation;
 	}
 
@@ -495,7 +435,6 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			for (Attribute attributeJson : componentJson.getAttributes()) {
 				component.addAttribute(createAttribute(attributeJson));
 			}
-
 		return component;
 	}
 
@@ -509,11 +448,13 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			attribute = RexsModelObjectFactory.getInstance().createRexsAttribute(attributeJson.getId());
 
 		attribute.setRawValue(createAttributeValue(attributeJson));
-
 		return attribute;
 	}
 
 	private AbstractRexsAttributeValue createAttributeValue(Attribute attributeJson) {
+		if(attributeJson instanceof DateTimeAttribute){
+			return new RexsAttributeValueScalar(((DateTimeAttribute)attributeJson).getTime());
+		}
 		if(attributeJson instanceof StringAttribute){
 			return new RexsAttributeValueScalar(((StringAttribute)attributeJson).getString());
 		}
@@ -527,107 +468,85 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			return new RexsAttributeValueScalar(((BooleanAttribute)attributeJson).getBoolean().toString());
 		}
 		if(attributeJson instanceof EnumAttribute){
-			//TODO to implement in appropriate context
+			return new RexsAttributeValueScalar(((EnumAttribute)attributeJson).getEnum());
 		}
-		//arrays
+		if(attributeJson instanceof FileReferenceAttribute){
+			return new RexsAttributeValueScalar(((FileReferenceAttribute)attributeJson).getFileReference());
+		}
+		if(attributeJson instanceof ReferenceComponentAttribute){
+			return new RexsAttributeValueScalar(((ReferenceComponentAttribute)attributeJson).getReferenceComponent().toString());
+		}
 		if(attributeJson instanceof StringArrayAttribute){
 			return new RexsAttributeValueArray(((StringArrayAttribute)attributeJson).getStringArray());
 		}
 		if(attributeJson instanceof IntegerArrayAttribute){
-			RexsAttributeValueArray rava = new RexsAttributeValueArray();
+			RexsAttributeValueArray array = new RexsAttributeValueArray();
 			List<Integer> intList = ((IntegerArrayAttribute)attributeJson).getIntegerArray();
-			rava.setValueIntegerArray(intList.toArray(new Integer[intList.size()]));
-			return rava;
+			array.setValueIntegerArray(intList.toArray(new Integer[intList.size()]));
+			return array;
 		}
 		if(attributeJson instanceof FloatingPointArrayAttribute){
-			RexsAttributeValueArray rava = new RexsAttributeValueArray();
+			RexsAttributeValueArray array = new RexsAttributeValueArray();
 			List<Double> intList = ((FloatingPointArrayAttribute)attributeJson).getFloatingPointArray();
-			rava.setValueDoubleArray(intList.toArray(new Double[intList.size()]));
-			return rava;
-		}
-		if(attributeJson instanceof BooleanArrayAttribute){
-			RexsAttributeValueArray rava = new RexsAttributeValueArray();
-			List<Boolean> intList = ((BooleanArrayAttribute)attributeJson).getBooleanArray();
-			rava.setValueBooleanArray(intList.toArray(new Boolean[intList.size()]));
-			return rava;
-		}
-		//matrix
-		if(attributeJson instanceof StringMatrixAttribute){
-			RexsAttributeValueMatrix rava = new RexsAttributeValueMatrix();
-			List<List<String>> intList = ((StringMatrixAttribute)attributeJson).getStringMatrix();
-			String[][] stringArrArr = new String[intList.size()][intList.isEmpty()?0:intList.get(0).size()];
-			rava.setValueStringMatrix(stringArrArr);
-			return rava;
-		}
-		if(attributeJson instanceof IntegerMatrixAttribute){
-			RexsAttributeValueMatrix rava = new RexsAttributeValueMatrix();
-			List<List<Integer>> intList = ((IntegerMatrixAttribute)attributeJson).getIntegerMatrix();
-			Integer[][] integerArrArr = new Integer[intList.size()][intList.isEmpty()?0:intList.get(0).size()];
-			rava.setValueIntegerMatrix(integerArrArr);
-			return rava;
-		}
-		if(attributeJson instanceof FloatingPointMatrixAttribute){
-			RexsAttributeValueMatrix rava = new RexsAttributeValueMatrix();
-			List<List<Double>> floatList = ((FloatingPointMatrixAttribute)attributeJson).getFloatingPointMatrix();
-			Double[][] floatArrArr = new Double[floatList.size()][floatList.isEmpty()?0:floatList.get(0).size()];
-			rava.setValueDoubleMatrix(floatArrArr);
-			return rava;
-		}
-		if(attributeJson instanceof BooleanMatrixAttribute){
-			RexsAttributeValueMatrix rava = new RexsAttributeValueMatrix();
-			List<List<Boolean>> boolList = ((BooleanMatrixAttribute)attributeJson).getBooleanMatrix();
-			Boolean[][] boolArrArr = new Boolean[boolList.size()][boolList.isEmpty()?0:boolList.get(0).size()];
-			rava.setValueBooleanMatrix(boolArrArr);
-			return rava;
+			array.setValueDoubleArray(intList.toArray(new Double[intList.size()]));
+			return array;
 		}
 		if(attributeJson instanceof FloatingPointArrayCodedAttribute){
-			FloatingPointArrayCodedAttribute floatingPointArrayAttr = (FloatingPointArrayCodedAttribute)attributeJson;
-			String floatList = floatingPointArrayAttr.getFloatingPointArrayCoded().getValue();
-			Base64Type type = getBase64Type(floatingPointArrayAttr.getFloatingPointArrayCoded().getCode());
-
-			return new RexsAttributeValueArrayBase64(floatList, type);
+			FloatingPointArrayCoded arrayCoded = ((FloatingPointArrayCodedAttribute)attributeJson).getFloatingPointArrayCoded();
+			return new RexsAttributeValueArrayBase64(arrayCoded.getValue(), Base64Type.valueOf(arrayCoded.getCode()));			
+		}
+		if(attributeJson instanceof BooleanArrayAttribute){
+			RexsAttributeValueArray array = new RexsAttributeValueArray();
+			List<Boolean> intList = ((BooleanArrayAttribute)attributeJson).getBooleanArray();
+			array.setValueBooleanArray(intList.toArray(new Boolean[intList.size()]));
+			return array;
+		}
+		if(attributeJson instanceof StringMatrixAttribute){
+			List<List<String>> jsonValue = ((StringMatrixAttribute) attributeJson).getStringMatrix();
+			return new RexsAttributeValueMatrix(jsonValue);
+		}
+		if(attributeJson instanceof IntegerMatrixAttribute){
+			List<List<Integer>> jsonValue = ((IntegerMatrixAttribute) attributeJson).getIntegerMatrix();
+			List<List<String>> stringValue = new ArrayList<>();
+			for (List<Integer> list : jsonValue)
+				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+			return new RexsAttributeValueMatrix(stringValue);
 		}
 		if(attributeJson instanceof FloatingPointMatrixAttribute){
-			FloatingPointMatrixCoded matrix = ((FloatingPointMatrixCodedAttribute)attributeJson).getFloatingPointMatrixCoded();
-			String floatList = matrix.getValue();
-			Base64Type type = getBase64Type(matrix.getCode());
-			return new RexsAttributeValueMatrixBase64(floatList, type, matrix.getRows(), matrix.getColumns());
+			List<List<Double>> jsonValue = ((FloatingPointMatrixAttribute) attributeJson).getFloatingPointMatrix();
+			List<List<String>> stringValue = new ArrayList<>();
+			for (List<Double> list : jsonValue)
+				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+			return new RexsAttributeValueMatrix(stringValue);
+		}
+		if(attributeJson instanceof FloatingPointMatrixCodedAttribute){
+			FloatingPointMatrixCoded matrixCoded = ((FloatingPointMatrixCodedAttribute)attributeJson).getFloatingPointMatrixCoded();
+			return new RexsAttributeValueMatrixBase64(matrixCoded.getValue(), Base64Type.valueOf(matrixCoded.getCode()), matrixCoded.getRows(), matrixCoded.getColumns());			
+		}
+		if(attributeJson instanceof BooleanMatrixAttribute){
+			List<List<Boolean>> jsonValue = ((BooleanMatrixAttribute) attributeJson).getBooleanMatrix();
+			List<List<String>> stringValue = new ArrayList<>();
+			for (List<Boolean> list : jsonValue)
+				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+			return new RexsAttributeValueMatrix(stringValue);
+		}
+		if(attributeJson instanceof ArrayOfIntegerArraysAttribute){
+			List<List<Integer>> jsonValue = ((ArrayOfIntegerArraysAttribute) attributeJson).getArrayOfIntegerArrays();
+			List<List<String>> stringValue = new ArrayList<>();
+			for (List<Integer> list : jsonValue)
+				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+			return new RexsAttributeValueMatrix(stringValue);
 		}
 		return null;
 	}
 
-	private Base64Type getBase64Type(String baseType){
-		switch(baseType){
-			case "int32": return Base64Type.INT_32;
-			case "float32": return Base64Type.FLOAT_32;
-			case "float64": return Base64Type.FLOAT_64;
-			default: return null;
-		}
-	}
-
-	private String readArrayBase64Value(FloatingPointArrayAttribute attribute) {
-		if (attribute != null) {
-			return attribute.getFloatingPointArray()
-					.stream()
-					.filter(String.class::isInstance)
-					.map(String.class::cast)
-					.filter(Objects::nonNull)
-					.map(String::trim)
-					.filter(val -> !val.isEmpty())
-					.findFirst()
-					.orElse(null);
-		}
-		return null;
-	}
+	
 
 	private RexsLoadSpectrum createLoadSpectrum(LoadSpectrum loadSpectrumJson) {
 		RexsLoadSpectrum loadSpectrum = RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(loadSpectrumJson.getId());
-
 		if (loadSpectrumJson.getLoadCases() != null)
-			for (LoadCase loadCaseJson : loadSpectrumJson.getLoadCases()) {
+			for (LoadCase loadCaseJson : loadSpectrumJson.getLoadCases())
 				loadSpectrum.addLoadCase(createLoadCase(loadCaseJson));
-			}
-
 		if (loadSpectrumJson.getAccumulation() != null)
 			loadSpectrum.setAccumulation(createAccumulation(loadSpectrumJson.getAccumulation()));
 
@@ -636,23 +555,18 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 
 	private RexsSubModel createLoadCase(LoadCase loadCaseJson) {
 		RexsSubModel loadCase = RexsModelObjectFactory.getInstance().createRexsSubModel(loadCaseJson.getId());
-
 		if (loadCaseJson.getComponents() != null)
-			for (Component componentJson : loadCaseJson.getComponents()) {
+			for (Component componentJson : loadCaseJson.getComponents())
 				loadCase.addComponent(createComponent(componentJson));
-			}
-
 		return loadCase;
 	}
 
 	private RexsSubModel createAccumulation(Accumulation accumulationJson) {
 		RexsSubModel accumulation = RexsModelObjectFactory.getInstance().createRexsSubModel();
-
 		if (accumulationJson.getComponents() != null)
-			for (Component componentJson : accumulationJson.getComponents()) {
+			for (Component componentJson : accumulationJson.getComponents())
 				accumulation.addComponent(createComponent(componentJson));
-			}
-
 		return accumulation;
 	}
+
 }

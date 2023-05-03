@@ -21,14 +21,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import info.rexs.db.constants.RexsUnitId;
 import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;
-import info.rexs.io.json.jsonmodel.JSONModel;
+import info.rexs.io.json.model.Accumulation;
+import info.rexs.io.json.model.Component;
+import info.rexs.io.json.model.JSONModel;
+import info.rexs.io.json.model.LoadCase;
+import info.rexs.io.json.model.LoadSpectrum;
+import info.rexs.io.json.model.Model;
+import info.rexs.io.json.model.attributes.Attribute;
 import info.rexs.model.RexsModel;
 import info.rexs.model.transformer.RexsModelJsonTransformer;
 
@@ -74,15 +83,16 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 		super(rexsInputFilePath);
 	}
 
-	public JSONModel readRawModel() throws RexsIoException {
+	private JSONModel readRawModel() throws RexsIoException {
 		validateInputFile();
-
 		try (InputStream input = rexsInputFileResource.openInputStream()) {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));
 			String text = reader.lines()
-								.collect(Collectors.joining(System.lineSeparator()));
+					.collect(Collectors.joining(System.lineSeparator()));
 			ObjectMapper mapper = new ObjectMapper();
-
+			// remove BOM if provided
+			text = text.replace("\uFEFF", "");
+			
 			return mapper.readerFor(JSONModel.class).readValue(text);
 		} catch (Exception ex) {
 			throw new RexsIoException("error reading rexs model from json file", ex);
@@ -95,12 +105,35 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 	@Override
 	public RexsModel read() throws RexsIoException {
 		validateInputFile();
-
 		try {
 			JSONModel jsonModel = readRawModel();
+			convertDegreeUnits(jsonModel.getModel());
 			return new RexsModelJsonTransformer().transform(jsonModel);
 		} catch (Exception ex) {
 			throw new RexsIoException("error reading rexs model from json file", ex);
+		}
+	}
+
+	private void convertDegreeUnits(Model model) {
+		if (model.getComponents() == null || model.getComponents().isEmpty())
+			return;
+
+		List<Component> allComponents = new ArrayList<>();
+		allComponents.addAll(model.getComponents());
+		LoadSpectrum spectrum = model.getLoadSpectrum();
+		if (spectrum!=null) {
+			for (LoadCase loadCase : spectrum.getLoadCases())
+				allComponents.addAll(loadCase.getComponents());
+			Accumulation accumulation = spectrum.getAccumulation();
+			if (accumulation!=null)
+				allComponents.addAll(accumulation.getComponents());
+		}
+		for (Component component : allComponents) {
+			for (Attribute attribute : component.getAttributes()) {
+				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId())) {
+					attribute.setUnit(RexsUnitId.deg.getId());
+				}
+			}
 		}
 	}
 }

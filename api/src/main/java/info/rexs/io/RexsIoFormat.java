@@ -26,7 +26,7 @@ import info.rexs.io.zip.RexsZipFileWriter;
 
 public enum RexsIoFormat {
 
-	JSON("rexsj", "rexs.json") {
+	JSON("rexsj", "rexs.json", "json") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsJsonFileWriter(pathToRexsOutputFile);
@@ -67,6 +67,10 @@ public enum RexsIoFormat {
 	}
 
 	private final String[] endings;
+
+	public String[] getEndings() {
+		return endings;
+	}
 
 	public boolean hasEnding(String filename) {
 		if (filename == null)

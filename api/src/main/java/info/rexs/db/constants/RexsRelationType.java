@@ -15,11 +15,12 @@
  ******************************************************************************/
 package info.rexs.db.constants;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import info.rexs.db.constants.standard.RexsStandardRelationTypes;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents a REXS relation type.
@@ -30,22 +31,31 @@ import lombok.EqualsAndHashCode;
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsRelationType implements RexsStandardRelationTypes {
 
 	/** An internal index with all created relation types (REXS standard and own) for quick access. */
 	private static Map<String, RexsRelationType> allRelationTypes = new HashMap<>();
 
 	/** The actual key of the relation type as a {@link String}. */
-	@EqualsAndHashCode.Include
 	private final String key;
+	
+	private final List<RexsRelationRole> roles;
 
 	private RexsRelationType(String key) {
 		if (key == null || key.isEmpty())
 			throw new IllegalArgumentException("key cannot be empty");
 		this.key = key;
+		this.roles = Arrays.asList();
 	}
 
+	private RexsRelationType(String key, List<RexsRelationRole> roles) {
+		this.key = key;
+		this.roles = roles;
+	}
+
+	public List<RexsRelationRole> getRoles() {
+		return roles;
+	}
 	/**
 	 * @return
 	 * 				The actual key of the relation type as a {@link String}.
@@ -92,6 +102,12 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 		return relationType;
 	}
 
+	public static RexsRelationType create(String key, RexsRelationRole ... roles) {
+		RexsRelationType relationType = new RexsRelationType(key, Arrays.asList(roles));
+		allRelationTypes.put(key, relationType);
+		return relationType;
+	}
+
 	/**
 	 * Returns the relation type for a textual key from the internally stored index of all relation types.
 	 *
@@ -99,12 +115,41 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 	 * 				The actual key of the relation type to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found relation type as {@link RexsRelationType}, or {@code RexsRelationType.UNKNOWN} if the key could not be found.
+	 * 				The found relation type as {@link RexsRelationType}, or {@code null} if the key could not be found.
 	 */
 	public static RexsRelationType findByKey(String key) {
 		if (key == null)
-			return UNKNOWN;
+			return null;
 		RexsStandardRelationTypes.init();
-		return allRelationTypes.getOrDefault(key, UNKNOWN);
+		return allRelationTypes.getOrDefault(key, null);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsRelationType)) {
+			return false;
+		}
+		RexsRelationType other = (RexsRelationType)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_key = getKey();
+		Object other_key = other.getKey();
+		return this_key == null ? other_key == null : this_key.equals(other_key);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsRelationType;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _key = getKey();
+		result = result * 59 + (_key == null ? 43 : _key.hashCode());
+		return result;
 	}
 }

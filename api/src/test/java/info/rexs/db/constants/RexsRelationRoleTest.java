@@ -48,13 +48,13 @@ public class RexsRelationRoleTest {
 	}
 
 	@Test
-	public void findByKey_givenNullReturnsUnknown() {
-		assertThat(RexsRelationRole.findByKey(null)).isEqualTo(RexsRelationRole.UNKNOWN);
+	public void findByKey_givenNullReturnsNull() {
+		assertThat(RexsRelationRole.findByKey(null)).isNull();
 	}
 
 	@Test
-	public void findByKey_givenUnknownKeyReturnsUnknown() {
-		assertThat(RexsRelationRole.findByKey("foo_bar")).isEqualTo(RexsRelationRole.UNKNOWN);
+	public void findByKey_givenUnknownKeyReturnsNull() {
+		assertThat(RexsRelationRole.findByKey("foo_bar")).isNull();
 	}
 
 	@Test

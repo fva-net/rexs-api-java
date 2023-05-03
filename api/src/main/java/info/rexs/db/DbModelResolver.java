@@ -23,7 +23,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 
 import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.jaxb.RexsModel;
+import info.rexs.db.jaxb.RexsDatabaseModelFile;
 
 /**
  * This class provides the REXS database models of all available REXS versions (REXS standard and own).
@@ -36,7 +36,7 @@ public class DbModelResolver {
 	private static DbModelResolver instance = null;
 
 	/** An internal index with all created REXS database models (REXS standard and own) for quick access. */
-	private Map<DbModelFile, RexsModel> dbModelFileCache = new HashMap<>();
+	private Map<DbModelFile, RexsDatabaseModelFile> dbModelFileCache = new HashMap<>();
 
 	private DbModelResolver() {}
 
@@ -57,9 +57,9 @@ public class DbModelResolver {
 	 * 				The {@link RexsVersion} of the REXS database model.
 	 *
 	 * @return
-	 * 				The found {@link RexsModel}, or {@code null} if the REXS database model could not be found.
+	 * 				The found {@link RexsDatabaseModelFile}, or {@code null} if the REXS database model could not be found.
 	 */
-	public RexsModel resolve(RexsVersion version) {
+	public RexsDatabaseModelFile resolve(RexsVersion version) {
 		DbModelFile dbModelFile = DbModelFile.findByVersion(version);
 		if (dbModelFile == null)
 			return null;
@@ -67,12 +67,12 @@ public class DbModelResolver {
 		if (dbModelFileCache.containsKey(dbModelFile))
 			return dbModelFileCache.get(dbModelFile);
 
-		RexsModel dbModel = null;
+		RexsDatabaseModelFile dbModel = null;
 
 		try (InputStream input = dbModelFile.openInputStream()) {
-			JAXBContext context = JAXBContext.newInstance(RexsModel.class);
+			JAXBContext context = JAXBContext.newInstance(RexsDatabaseModelFile.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
-			dbModel = (RexsModel)unmarshaller.unmarshal(input);
+			dbModel = (RexsDatabaseModelFile)unmarshaller.unmarshal(input);
 		} catch (Exception ex) {
 			throw new IllegalStateException(String.format("could not load rexs db model for version %s", dbModelFile.getVersion()), ex);
 		}

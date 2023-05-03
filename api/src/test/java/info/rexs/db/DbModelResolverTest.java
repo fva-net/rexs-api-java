@@ -31,7 +31,7 @@ import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
-import info.rexs.db.jaxb.RexsModel;
+import info.rexs.db.jaxb.RexsDatabaseModelFile;
 import info.rexs.db.jaxb.Unit;
 import info.rexs.db.jaxb.ValueType;
 
@@ -64,8 +64,8 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
-		RexsModel rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
-		RexsModel rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsDatabaseModelFile rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsDatabaseModelFile rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
 
 		assertThat(rexsModel1).isSameAs(rexsModel2);
 	}
@@ -74,7 +74,7 @@ public class DbModelResolverTest {
 	public void resolve_everyRexsStandardVersionHasDbModel() throws Exception {
 		List<RexsVersion> rexsStandardVersions = Stream.of(RexsVersion.V1_0, RexsVersion.V1_1, RexsVersion.V1_2).collect(Collectors.toList());
 		for (RexsVersion version : rexsStandardVersions) {
-			RexsModel rexsModel = DbModelResolver.getInstance().resolve(version);
+			RexsDatabaseModelFile rexsModel = DbModelResolver.getInstance().resolve(version);
 			assertThat(rexsModel.getVersion()).isEqualTo(version.getName());
 
 			for (Unit unit : rexsModel.getUnits().getUnit()) {

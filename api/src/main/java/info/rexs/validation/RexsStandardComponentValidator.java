@@ -19,7 +19,6 @@ import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.RexsComponent;
-import lombok.RequiredArgsConstructor;
 
 /**
  * This implementation of {@link IRexsComponentValidator} validates the basic structure of a REXS component
@@ -27,11 +26,14 @@ import lombok.RequiredArgsConstructor;
  *
  * @author FVA GmbH
  */
-@RequiredArgsConstructor
 public class RexsStandardComponentValidator extends DefaultRexsComponentValidator {
 
 	private final RexsVersion rexsVersion;
 
+	public RexsStandardComponentValidator(RexsVersion rexsVersion) {
+		this.rexsVersion = rexsVersion;
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */

@@ -19,11 +19,11 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import info.rexs.io.xml.RexsXmlFileReader;
 import info.rexs.io.xml.RexsXmlFileWriter;
-import info.rexs.model.jaxb.Model;
+import info.rexs.model.RexsModel;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.RexsUpgrader;
+import info.rexs.upgrade.upgraders.ModelUpgraderResult;
 
 /**
  * The {@link RexsFileUpgrader} reads a REXS file, upgrades it to the latest REXS version and writes it to a file.
@@ -84,13 +84,13 @@ public class RexsFileUpgrader {
 	 * 				If the REXS input file does not exist or if the REXS output file is not writable.
 	 */
 	public void upgrade() throws RexsUpgradeException, RexsIoException {
-		RexsXmlFileReader rexsFileReader = new RexsXmlFileReader(pathToRexsInputFile);
-		Model rexsModel = rexsFileReader.readRawModel();
+		RexsFileReader rexsFileReader = new RexsFileReader(pathToRexsInputFile);
+		RexsModel rexsModel = rexsFileReader.read();
 
 		RexsUpgrader rexsUpgrader = new RexsUpgrader(rexsModel);
-		rexsUpgrader.upgrade();
+		ModelUpgraderResult result = rexsUpgrader.upgrade();
 
 		RexsXmlFileWriter rexsFileWriter = new RexsXmlFileWriter(pathToRexsOutputFile);
-		rexsFileWriter.writeRawModel(rexsModel);
+		rexsFileWriter.write(result.getModel());
 	}
 }

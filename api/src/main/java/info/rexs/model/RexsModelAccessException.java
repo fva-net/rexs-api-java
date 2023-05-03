@@ -15,14 +15,11 @@
  ******************************************************************************/
 package info.rexs.model;
 
-import lombok.Getter;
-
 /**
  * Thrown to indicate that there is illegal access to the REXS model.
  *
  * @author FVA GmbH
  */
-@Getter
 public class RexsModelAccessException extends RuntimeException {
 
 	/** Serial Version UID for interoperability */
@@ -95,5 +92,13 @@ public class RexsModelAccessException extends RuntimeException {
 		super(message, cause);
 		this.componentId = rexsComponent.getId();
 		this.componentName = rexsComponent.getName();
+	}
+
+	public int getComponentId() {
+		return componentId;
+	}
+
+	public String getComponentName() {
+		return componentName;
 	}
 }

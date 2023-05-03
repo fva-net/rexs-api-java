@@ -17,37 +17,44 @@ package info.rexs.io.json;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsVersion;
 import info.rexs.io.AbstractRexsFileWriter;
 import info.rexs.io.RexsIoException;
-import info.rexs.io.json.jsonmodel.JSONModel;
-import info.rexs.io.json.jsonmodel.Model;
-import info.rexs.io.json.jsonmodel.attributes.ArrayOfIntegerArraysAttribute;
-import info.rexs.io.json.jsonmodel.attributes.BooleanArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.BooleanAttribute;
-import info.rexs.io.json.jsonmodel.attributes.BooleanMatrixAttribute;
-import info.rexs.io.json.jsonmodel.attributes.EnumArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.EnumAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FileReferenceAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointArrayCodedAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointMatrixAttribute;
-import info.rexs.io.json.jsonmodel.attributes.FloatingPointMatrixCodedAttribute;
-import info.rexs.io.json.jsonmodel.attributes.IntegerArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.IntegerAttribute;
-import info.rexs.io.json.jsonmodel.attributes.IntegerMatrixAttribute;
-import info.rexs.io.json.jsonmodel.attributes.ReferenceComponentAttribute;
-import info.rexs.io.json.jsonmodel.attributes.StringArrayAttribute;
-import info.rexs.io.json.jsonmodel.attributes.StringAttribute;
-import info.rexs.io.json.jsonmodel.attributes.StringMatrixAttribute;
+import info.rexs.io.json.model.Accumulation;
+import info.rexs.io.json.model.Component;
+import info.rexs.io.json.model.JSONModel;
+import info.rexs.io.json.model.LoadCase;
+import info.rexs.io.json.model.LoadSpectrum;
+import info.rexs.io.json.model.Model;
+import info.rexs.io.json.model.attributes.ArrayOfIntegerArraysAttribute;
+import info.rexs.io.json.model.attributes.Attribute;
+import info.rexs.io.json.model.attributes.BooleanArrayAttribute;
+import info.rexs.io.json.model.attributes.BooleanAttribute;
+import info.rexs.io.json.model.attributes.BooleanMatrixAttribute;
+import info.rexs.io.json.model.attributes.EnumArrayAttribute;
+import info.rexs.io.json.model.attributes.EnumAttribute;
+import info.rexs.io.json.model.attributes.FileReferenceAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointArrayAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointAttribute;
+import info.rexs.io.json.model.attributes.FloatingPointMatrixAttribute;
+import info.rexs.io.json.model.attributes.DateTimeAttribute;
+import info.rexs.io.json.model.attributes.IntegerArrayAttribute;
+import info.rexs.io.json.model.attributes.IntegerAttribute;
+import info.rexs.io.json.model.attributes.IntegerMatrixAttribute;
+import info.rexs.io.json.model.attributes.ReferenceComponentAttribute;
+import info.rexs.io.json.model.attributes.StringArrayAttribute;
+import info.rexs.io.json.model.attributes.StringAttribute;
+import info.rexs.io.json.model.attributes.StringMatrixAttribute;
 import info.rexs.model.RexsModel;
 import info.rexs.model.transformer.RexsModelJsonTransformer;
 
@@ -94,52 +101,78 @@ public class RexsJsonFileWriter extends AbstractRexsFileWriter {
 	@Override
 	public void write(RexsModel model) throws RexsIoException {
 		validateOutputFile();
-		RexsModelJsonTransformer transformer = new RexsModelJsonTransformer();
-		JSONModel rawModel = transformer.transform(model);
-		writeRawModel(rawModel);
-	}
-
-	public void writeRawModel(JSONModel model) throws RexsIoException {
-		validateOutputFile();
 		String jsonString = "";
 		try {
+			RexsModelJsonTransformer transformer = new RexsModelJsonTransformer();
+			JSONModel rawModel = transformer.transform(model);
+			convertDegreeUnits(rawModel.getModel());
+			
 			ObjectMapper mapper = new ObjectMapper();
+			//mapper.disable(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES);
 			mapper.registerSubtypes(
-			BooleanAttribute.class,
-			EnumAttribute.class,
-			FloatingPointAttribute.class,
-			IntegerAttribute.class,
-			StringAttribute.class,
+					DateTimeAttribute.class,
+					BooleanAttribute.class,
+					EnumAttribute.class,
+					FloatingPointAttribute.class,
+					IntegerAttribute.class, StringAttribute.class,
+					BooleanArrayAttribute.class,
+					EnumArrayAttribute.class,
+					FloatingPointArrayAttribute.class,
+					IntegerArrayAttribute.class,
+					StringArrayAttribute.class,
+					BooleanMatrixAttribute.class,
+					FloatingPointMatrixAttribute.class,
+					IntegerMatrixAttribute.class,
+					StringMatrixAttribute.class,
+					ArrayOfIntegerArraysAttribute.class,
+					FileReferenceAttribute.class,
+					ReferenceComponentAttribute.class
+			);
 
-			BooleanArrayAttribute.class,
-			EnumArrayAttribute.class,
-			FloatingPointArrayAttribute.class,
-			IntegerArrayAttribute.class,
-			StringArrayAttribute.class,
-			FloatingPointArrayCodedAttribute.class,
 
-			BooleanMatrixAttribute.class,
-			FloatingPointMatrixAttribute.class,
-			IntegerMatrixAttribute.class,
-			StringMatrixAttribute.class,
-			FloatingPointMatrixCodedAttribute.class,
-
-			ArrayOfIntegerArraysAttribute.class,
-			FileReferenceAttribute.class,
-			ReferenceComponentAttribute.class);
 
 			jsonString = mapper
 				.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(model);
+				.writeValueAsString(rawModel);
 		} catch (Exception ex) {
 			throw new RexsIoException("error on writing rexs model to json file", ex);
 		}
-		try(BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.pathToRexsOutputFile.toString(),false), StandardCharsets.UTF_8))){
+		try(BufferedWriter writer = new BufferedWriter(new FileWriter(this.pathToRexsOutputFile.toString(), StandardCharsets.UTF_8))){
+			writer.write("\ufeff"); // add UTF8 BOM (otherwise encoding is only UTF8)
 			writer.write(jsonString);
 			writer.flush();
-		}catch(IOException e){
-			e.printStackTrace();
-			throw new RexsIoException("error on writing rexs model to json file", e);
+		}catch(IOException ex) {
+			throw new RexsIoException("error on writing rexs model to json file", ex);
+		}
+	}
+	
+	private void convertDegreeUnits(Model model) {
+		if (model.getComponents() == null || model.getComponents().isEmpty())
+			return;
+
+		String versionName = model.getVersion();
+		RexsVersion version = RexsVersion.findByName(versionName);
+		if (version == null)
+			return;
+
+		RexsUnitId searchUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.deg : RexsUnitId.degree;
+		RexsUnitId replaceUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.degree : RexsUnitId.deg;
+		
+		List<Component> allComponents = new ArrayList<>();
+		allComponents.addAll(model.getComponents());
+		LoadSpectrum spectrum = model.getLoadSpectrum();
+		if (spectrum!=null) {
+			for (LoadCase loadCase : spectrum.getLoadCases())
+				allComponents.addAll(loadCase.getComponents());
+			Accumulation accumulation = spectrum.getAccumulation();
+			if (accumulation!=null)
+				allComponents.addAll(accumulation.getComponents());
+		}
+		for (Component component : allComponents) {
+			for (Attribute attribute : component.getAttributes()) {
+				if (attribute!=null && attribute.getUnit() != null && attribute.getUnit().equals(searchUnit.getId()))
+					attribute.setUnit(replaceUnit.getId());
+			}
 		}
 	}
 }

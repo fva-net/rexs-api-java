@@ -58,8 +58,8 @@ public class RexsAttributeIdTest {
 	}
 
 	@Test
-	public void findById_givenNullReturnsUnknown() {
-		assertThat(RexsAttributeId.findById(null)).isEqualTo(RexsAttributeId.UNKNOWN);
+	public void findById_givenNullReturnsNull() {
+		assertThat(RexsAttributeId.findById(null)).isNull();
 	}
 
 	@Test

@@ -96,16 +96,25 @@ public class RexsAttributeValueMatrixBase64 extends AbstractRexsAttributeValueMa
 	public void setValueIntegerMatrix(int[][] value) {
 		this.value = Base64Utils.encodeInt32Matrix(value);
 		this.type = Base64Type.INT_32;
+		this.rows = value.length;
+		if (rows>0)
+			this.cols = value[0].length;
 	}
 
 	public void setValueDoubleMatrix(double[][] value) {
 		this.value = Base64Utils.encodeFloat64Matrix(value);
 		this.type = Base64Type.FLOAT_64;
+		this.rows = value.length;
+		if (rows>0)
+			this.cols = value[0].length;
 	}
 
 	public void setValueDoubleMatrix(float[][] value) {
 		this.value = Base64Utils.encodeFloat32Matrix(value);
 		this.type = Base64Type.FLOAT_32;
+		this.rows = value.length;
+		if (rows>0)
+			this.cols = value[0].length;
 	}
 
 	public String getRawValue() {

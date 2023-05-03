@@ -20,7 +20,7 @@ import info.rexs.db.constants.RexsRelationRole;
 /**
  * This class represents a REXS relation role.
  * <p>
- * It contains constants for all relation roles of official REXS versions (1.0, 1.1, 1.2, 1.3, 1.4).
+ * It contains constants for all relation roles of official REXS versions (1.0, 1.1, 1.2, 1.3).
  *
  * @author FVA GmbH
  */
@@ -89,5 +89,6 @@ public interface RexsStandardRelationRoles {
 	/** Constant for an unknown relation role. */
 	public static final RexsRelationRole UNKNOWN = RexsRelationRole.create("unknown");
 
+	
 	public static void init() {}
 }

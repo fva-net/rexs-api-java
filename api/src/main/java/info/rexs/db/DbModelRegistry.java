@@ -30,7 +30,7 @@ import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.ComponentAttributeMapping;
 import info.rexs.db.jaxb.EnumValue;
-import info.rexs.db.jaxb.RexsModel;
+import info.rexs.db.jaxb.RexsDatabaseModelFile;
 import info.rexs.db.jaxb.Unit;
 import info.rexs.db.jaxb.ValueType;
 
@@ -79,14 +79,14 @@ public class DbModelRegistry {
 	}
 
 	public void registerRexsVersion(RexsVersion version) {
-		RexsModel rexsModel = DbModelResolver.getInstance().resolve(version);
+		RexsDatabaseModelFile rexsModel = DbModelResolver.getInstance().resolve(version);
 		if (rexsModel == null)
 			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getName()));
 		registerRexsModel(version, rexsModel);
 		versions.put(version.getName(), version);
 	}
 
-	private void registerRexsModel(RexsVersion version, RexsModel rexsModel) {
+	private void registerRexsModel(RexsVersion version, RexsDatabaseModelFile rexsModel) {
 		generateComponentMap(version, rexsModel);
 		generateAttributeMap(version, rexsModel);
 		generateAttributeTypeMap(version, rexsModel);
@@ -94,7 +94,7 @@ public class DbModelRegistry {
 		generateAttributeComponentMappings(version, rexsModel);
 	}
 
-	private void generateComponentMap(RexsVersion version, RexsModel rexsModel) {
+	private void generateComponentMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
 		Map<String, RexsComponentType> mapOfVersion = componentMap.computeIfAbsent(version, k -> new HashMap<>());
 		for (Component component : rexsModel.getComponents().getComponent()) {
 			RexsComponentType componentType = RexsComponentType.findById(component.getComponentId());
@@ -108,7 +108,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @param rexsModel
 	 */
-	private void generateAttributeMap(RexsVersion version, RexsModel rexsModel) {
+	private void generateAttributeMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
 		Map<String, Attribute> mapofVersion = attributeMap.computeIfAbsent(version, k -> new HashMap<>());
 		for (Attribute attribute : rexsModel.getAttributes().getAttribute()) {
 			mapofVersion.put(attribute.getAttributeId(), attribute);
@@ -122,7 +122,7 @@ public class DbModelRegistry {
 	 * @param rexsModel
 	 * @param valueTypeMap
 	 */
-	private void generateAttributeTypeMap(RexsVersion version, RexsModel rexsModel) {
+	private void generateAttributeTypeMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
 		Map<String, RexsValueType> mapofVersion = attributeTypes.computeIfAbsent(version, k -> new HashMap<>());
 		Map<BigInteger, String> valueTypeMap = new HashMap<>();
 		if (rexsModel.getValueTypes() != null) {
@@ -137,7 +137,7 @@ public class DbModelRegistry {
 		}
 	}
 
-	private void generateAttributeUnitMap(RexsVersion version, RexsModel rexsModel) {
+	private void generateAttributeUnitMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
 		Map<String, RexsUnitId> mapofVersion = attributeUnits.computeIfAbsent(version, k -> new HashMap<>());
 		Map<BigInteger, String> unitMap = new HashMap<>();
 		if (rexsModel.getUnits() != null) {
@@ -236,7 +236,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @param rexsModel
 	 */
-	private void generateAttributeComponentMappings(RexsVersion version, RexsModel rexsModel) {
+	private void generateAttributeComponentMappings(RexsVersion version, RexsDatabaseModelFile rexsModel) {
 		Map<String, List<RexsComponentType>> attributeToComponentMapofVersion = attributeToComponentMap.computeIfAbsent(version, k -> new HashMap<>());
 		Map<RexsComponentType, List<String>> componentToAttributeMapofVersion = componentToAttributesMap.computeIfAbsent(version, k -> new HashMap<>());
 		if (rexsModel.getComponentAttributeMappings() != null) {

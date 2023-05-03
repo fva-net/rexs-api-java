@@ -1,27 +1,24 @@
 //
-// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
-// Siehe https://eclipse-ee4j.github.io/jaxb-ri
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2023.05.03 um 12:26:13 PM CEST
+// Generiert: 2020.08.19 um 03:16:48 PM CEST
 //
 
 
 package info.rexs.model.jaxb;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAnyAttribute;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlElementRefs;
 import jakarta.xml.bind.annotation.XmlMixed;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -40,7 +37,6 @@ import javax.xml.namespace.QName;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="unit" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;anyAttribute processContents='skip'/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -56,8 +52,8 @@ import javax.xml.namespace.QName;
 public class Attribute {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "array", type = Array.class, required = false),
         @XmlElementRef(name = "matrix", type = Matrix.class, required = false),
+        @XmlElementRef(name = "array", type = Array.class, required = false),
         @XmlElementRef(name = "array_of_arrays", type = ArrayOfArrays.class, required = false)
     })
     @XmlMixed
@@ -66,8 +62,6 @@ public class Attribute {
     protected String id;
     @XmlAttribute(name = "unit")
     protected String unit;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
      * Gets the value of the content property.
@@ -87,16 +81,15 @@ public class Attribute {
      *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Array }
-     * {@link ArrayOfArrays }
-     * {@link Matrix }
      * {@link String }
+     * {@link Array }
+     * {@link Matrix }
      *
      *
      */
     public List<Object> getContent() {
         if (content == null) {
-            content = new ArrayList<Object>();
+            content = new ArrayList<>();
         }
         return this.content;
     }
@@ -148,23 +141,4 @@ public class Attribute {
     public void setUnit(String value) {
         this.unit = value;
     }
-
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     *
-     * <p>
-     * the map is keyed by the name of the attribute and
-     * the value is the string value of the attribute.
-     *
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     *
-     *
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
-
 }

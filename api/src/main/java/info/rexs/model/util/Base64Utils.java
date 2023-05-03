@@ -22,6 +22,8 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Base64;
 
+import info.rexs.model.RexsModelAccessException;
+
 public class Base64Utils {
 
 	private Base64Utils() {}
@@ -177,15 +179,22 @@ public class Base64Utils {
 	}
 
 	private static int[] flatIntMatrix(int[][] matrix) {
+		if (matrix.length==0)
+			return new int[0]; 
 		int arrayLength = 0;
-		for (int i = 0; i < matrix.length; i++)
-			arrayLength += matrix[i].length;
+		int numRows = matrix.length;
+		int numColumns =  matrix[0].length;
+		for (int i = 0; i < numRows; i++) {
+			if (matrix[i].length!=numColumns)
+				throw new RexsModelAccessException("tried to encode non-rectangular matrix in base64");
+			arrayLength += numColumns;
+		}
 
 		int[] array = new int[arrayLength];
 		int arrayIndex = 0;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				array[arrayIndex++] = matrix[i][j];
+		for (int col = 0; col < numColumns; col++) {
+			for (int row = 0; row < numRows; row++) {
+				array[arrayIndex++] = matrix[row][col];
 			}
 		}
 
@@ -193,31 +202,48 @@ public class Base64Utils {
 	}
 
 	private static float[] flatFloatMatrix(float[][] matrix) {
+		if (matrix.length==0)
+			return new float[0]; 
 		int arrayLength = 0;
-		for (int i = 0; i < matrix.length; i++)
-			arrayLength += matrix[i].length;
+		int numRows = matrix.length;
+		int numColumns =  matrix[0].length;
+		for (int i = 0; i < numRows; i++) {
+			if (matrix[i].length!=numColumns)
+				throw new RexsModelAccessException("tried to encode non-rectangular matrix in base64");
+			arrayLength += numColumns;
+		}
 
 		float[] array = new float[arrayLength];
 		int arrayIndex = 0;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				array[arrayIndex++] = matrix[i][j];
+		for (int col = 0; col < numColumns; col++) {
+			for (int row = 0; row < numRows; row++) {
+				array[arrayIndex++] = matrix[row][col];
 			}
 		}
 
-		return array;
+		return array;		
 	}
 
+	/**
+	 * flat double[][] to array columnwise
+	 */
 	private static double[] flatDoubleMatrix(double[][] matrix) {
+		if (matrix.length==0)
+			return new double[0]; 
 		int arrayLength = 0;
-		for (int i = 0; i < matrix.length; i++)
-			arrayLength += matrix[i].length;
+		int numRows = matrix.length;
+		int numColumns =  matrix[0].length;
+		for (int i = 0; i < numRows; i++) {
+			if (matrix[i].length!=numColumns)
+				throw new RexsModelAccessException("tried to encode non-rectangular matrix in base64");
+			arrayLength += numColumns;
+		}
 
 		double[] array = new double[arrayLength];
 		int arrayIndex = 0;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				array[arrayIndex++] = matrix[i][j];
+		for (int col = 0; col < numColumns; col++) {
+			for (int row = 0; row < numRows; row++) {
+				array[arrayIndex++] = matrix[row][col];
 			}
 		}
 
@@ -227,8 +253,8 @@ public class Base64Utils {
 	private static int[][] unflatIntMatrix(int[] array, int rows, int cols) {
 		int[][] matrix = new int[rows][cols];
 		for (int i = 0; i < array.length; i++) {
-			int rowIndex = i / cols;
-			int colIndex = i % cols;
+			int rowIndex = i % rows;
+			int colIndex = i / rows;
 			matrix[rowIndex][colIndex] = array[i];
 		}
 		return matrix;
@@ -237,8 +263,8 @@ public class Base64Utils {
 	private static float[][] unflatFloatMatrix(float[] array, int rows, int cols) {
 		float[][] matrix = new float[rows][cols];
 		for (int i = 0; i < array.length; i++) {
-			int rowIndex = i / cols;
-			int colIndex = i % cols;
+			int rowIndex = i % rows; 
+			int colIndex = i / rows; 
 			matrix[rowIndex][colIndex] = array[i];
 		}
 		return matrix;
@@ -247,8 +273,8 @@ public class Base64Utils {
 	private static double[][] unflatDoubleMatrix(double[] array, int rows, int cols) {
 		double[][] matrix = new double[rows][cols];
 		for (int i = 0; i < array.length; i++) {
-			int rowIndex = i / cols;
-			int colIndex = i % cols;
+			int rowIndex = i % rows;
+			int colIndex = i / rows;
 			matrix[rowIndex][colIndex] = array[i];
 		}
 		return matrix;

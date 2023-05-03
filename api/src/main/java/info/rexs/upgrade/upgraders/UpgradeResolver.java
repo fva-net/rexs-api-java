@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.model.RexsModel;
 import info.rexs.upgrade.RexsUpgradeException;
-import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
 
 /**
  * This class provides the REXS version upgraders of all available REXS versions (REXS standard and own).
@@ -43,11 +43,45 @@ public class UpgradeResolver {
 	private Map<RexsVersion, Map<RexsVersion, ModelUpgrader>> registeredUpgraders = new HashMap<>();
 
 	private UpgradeResolver() {
-		register(RexsVersion.V1_0, RexsVersion.V1_1, new ModelChangelogUpgrader(ChangelogFile.V1_0_TO_V1_1));
-		register(RexsVersion.V1_1, RexsVersion.V1_2, new ModelChangelogUpgrader(ChangelogFile.V1_1_TO_V1_2));
-		register(RexsVersion.V1_2, RexsVersion.V1_3, new ModelChangelogUpgrader(ChangelogFile.V1_2_TO_V1_3));
-		register(RexsVersion.V1_3, RexsVersion.V1_4, new ModelChangelogUpgrader(ChangelogFile.V1_3_TO_V1_4));
-		register(RexsVersion.V1_4, RexsVersion.V1_5, new ModelChangelogUpgrader(ChangelogFile.V1_4_TO_V1_5));
+		register(RexsVersion.V1_0, RexsVersion.V1_1, new ModelUpgrader() {
+			@Override
+			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
+				ModelUpgraderV10toV11 upgrader = new ModelUpgraderV10toV11(rexsModel, strictMode);
+				return upgrader.doupgrade();
+			}
+		});
+
+		register(RexsVersion.V1_1, RexsVersion.V1_2, new ModelUpgrader() {
+			@Override
+			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
+				ModelUpgraderV11toV12 upgrader = new ModelUpgraderV11toV12(rexsModel, strictMode);
+				return upgrader.doupgrade();
+			}
+		});
+		
+		register(RexsVersion.V1_2, RexsVersion.V1_3, new ModelUpgrader() {
+			@Override
+			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
+				ModelUpgraderV12toV13 upgrader = new ModelUpgraderV12toV13(rexsModel, strictMode);
+				return upgrader.doupgrade();
+			}
+		});
+
+		register(RexsVersion.V1_3, RexsVersion.V1_4, new ModelUpgrader() {
+			@Override
+			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
+				ModelUpgraderV13toV14 upgrader = new ModelUpgraderV13toV14(rexsModel, strictMode);
+				return upgrader.doupgrade();
+			}
+		});
+		
+		register(RexsVersion.V1_4, RexsVersion.V1_5, new ModelUpgrader() {
+			@Override
+			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
+				ModelUpgraderV11toV12 upgrader = new ModelUpgraderV11toV12(rexsModel, strictMode);
+				return upgrader.doupgrade();
+			}
+		});
 	}
 
 	/**

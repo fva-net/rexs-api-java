@@ -60,7 +60,7 @@ public class RexsModel {
 	private Map<Integer, RexsComponent> components = new HashMap<>();
 
 	/** An internal index with all components of the component types in the model for quick access. */
-	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponentId = new HashMap<>();
+	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponent = new HashMap<>();
 
 	/** An internal index with all relations of the component in the model for quick access. */
 	private Map<Integer, List<RexsRelation>> mapMainCompToRelation = new HashMap<>();
@@ -78,11 +78,28 @@ public class RexsModel {
 	 * @param applicationVersion
 	 * 				Version of the application.
 	 */
-	protected RexsModel(String version, String applicationId, String applicationVersion) {
+	public RexsModel(String version, String applicationId, String applicationVersion) {
 		this.version = RexsVersion.findByName(version);
 		this.originVersion = version;
 		this.applicationId = applicationId;
 		this.applicationVersion = applicationVersion;
+	}
+	
+	/** Copy constructor. Creates a deep copy of the model */
+	public RexsModel(RexsModel model) {
+		this.version = model.getVersion();
+		this.originVersion = model.getOriginVersion();
+		this.applicationId = model.applicationId;
+		this.applicationVersion = model.applicationVersion;
+
+		for (RexsRelation relation : model.getRelations()) {
+			RexsRelation newRelation = new RexsRelation(relation);
+			this.addRelation(newRelation);
+		}
+		for (RexsComponent component: model.getComponents()) {
+			RexsComponent newComponent = new RexsComponent(component);
+			this.addComponent(newComponent);
+		}
 	}
 
 	/**
@@ -109,6 +126,10 @@ public class RexsModel {
 	public RexsVersion getVersion() {
 		return version;
 	}
+	
+	public void setVersion(RexsVersion version) {
+		this.version = version;
+	}
 
 	/**
 	 * @return
@@ -126,6 +147,10 @@ public class RexsModel {
 		return applicationId;
 	}
 
+	public void setApplicationId(String applicationId) {
+		this.applicationId = applicationId;
+	}
+	
 	/**
 	 * @return
 	 * 				The version of the application as a {@link String}.
@@ -141,6 +166,14 @@ public class RexsModel {
 	public List<RexsComponent> getComponents() {
 		return components.values().stream().collect(Collectors.toList());
 	}
+	
+	/**
+	 * @return
+	 * 				All components of the model as a {@link List} of {@link RexsComponent} sorted by component Id.
+	 */
+	public List<RexsComponent> getComponentsSorted() {
+		return components.keySet().stream().sorted().map(id -> getComponent(id)).collect(Collectors.toList());
+	}
 
 	/**
 	 * @return
@@ -149,6 +182,7 @@ public class RexsModel {
 	public List<RexsRelation> getRelations() {
 		return relations;
 	}
+
 
 	/**
 	 * @return
@@ -204,7 +238,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public List<RexsRelation> getRelationsOfMainComp(Integer mainCompId) {
-		return mapMainCompToRelation.getOrDefault(mainCompId, Collections.emptyList());
+		return mapMainCompToRelation.getOrDefault(mainCompId, new ArrayList<>());
 	}
 
 	/**
@@ -217,9 +251,16 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public List<RexsRelation> getRelationsOfType(RexsRelationType type) {
-		return mapTypeToRelation.getOrDefault(type, Collections.emptyList());
+		return mapTypeToRelation.getOrDefault(type, new ArrayList<>());
 	}
 
+	// TODO document
+	public List<RexsRelation> getRelations(RexsRelationType type, RexsRelationRole role, int component) {
+		return relations.stream()
+				.filter(rel -> rel.getType()==type && rel.findComponentIdByRole(role) == component)
+				.toList();
+	}
+	
 	/**
 	 * TODO Document me!
 	 *
@@ -230,7 +271,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public List<RexsComponent> getComponentsOfType(RexsComponentType componentType) {
-		return mapTypeToComponentId.getOrDefault(componentType, Collections.emptyList());
+		return mapTypeToComponent.getOrDefault(componentType, new ArrayList<>());
 	}
 
 	/**
@@ -494,6 +535,16 @@ public class RexsModel {
 		return null;
 	}
 
+	public RexsComponent getBearingRowWithOrder(RexsComponent bearing, int order) {
+		List<RexsComponent> subComps = getSubComponentsWithType(bearing.getId(), RexsComponentType.rolling_bearing_row);
+		for (RexsComponent row : subComps) {
+			int orderOfRow = getOrderOfAssemblyRelationOf(row.getId());
+			if (order==orderOfRow)
+				return row;
+		}
+		String message = "No bearing row with desired order found for bearing "+bearing.getName()+" with Id "+bearing.getId();
+		throw new RexsModelAccessException(message);
+	}
 	/**
 	 * TODO Document me!
 	 *
@@ -623,10 +674,10 @@ public class RexsModel {
 		components.put(component.getId(), component);
 
 		List<RexsComponent> componentsForType =
-				mapTypeToComponentId.containsKey(component.getType()) ?
-						mapTypeToComponentId.get(component.getType()) : new ArrayList<>();
+				mapTypeToComponent.containsKey(component.getType()) ?
+						mapTypeToComponent.get(component.getType()) : new ArrayList<>();
 		componentsForType.add(component);
-		mapTypeToComponentId.put(component.getType(), componentsForType);
+		mapTypeToComponent.put(component.getType(), componentsForType);
 	}
 
 	/**
@@ -943,15 +994,11 @@ public class RexsModel {
 	public void addRelation(RexsRelation relation) {
 		relations.add(relation);
 
-		List<RexsRelation> relationsForType =
-				mapTypeToRelation.containsKey(relation.getType()) ?
-						mapTypeToRelation.get(relation.getType()) : new ArrayList<>();
+		List<RexsRelation> relationsForType = mapTypeToRelation.getOrDefault(relation.getType(), new ArrayList<>());
 		relationsForType.add(relation);
 		mapTypeToRelation.put(relation.getType(), relationsForType);
 
-		List<RexsRelation> relationsForMainComp =
-				mapMainCompToRelation.containsKey(relation.getMainComponentId()) ?
-						mapMainCompToRelation.get(relation.getMainComponentId()) : new ArrayList<>();
+		List<RexsRelation> relationsForMainComp = mapMainCompToRelation.getOrDefault(relation.getMainComponentId(), new ArrayList<>());
 		relationsForMainComp.add(relation);
 		mapMainCompToRelation.put(relation.getMainComponentId(), relationsForMainComp);
 	}
@@ -1086,7 +1133,7 @@ public class RexsModel {
 		}
 
 		if (stageType == null)
-			return Collections.emptyList();
+			return new ArrayList<>();
 
 		List<RexsComponent> stages = new ArrayList<>();
 		for (RexsComponent stage : getComponentsOfType(stageType)) {
@@ -1138,7 +1185,7 @@ public class RexsModel {
 		return getParent(subCompId, typeOfParent) != null;
 	}
 
-	private Integer getNextFreeComponentId() {
+	public Integer getNextFreeComponentId() {
 		OptionalInt max = components.keySet().stream().mapToInt(Integer::intValue).max();
 		if (max.isPresent())
 			return max.getAsInt() + 1;
@@ -1240,7 +1287,7 @@ public class RexsModel {
 				relation.changeComponentId(oldId, newId);
 		}
 
-		List<RexsRelation> mainrelations = mapMainCompToRelation.get(oldId);
+		List<RexsRelation> mainrelations = mapMainCompToRelation.getOrDefault(oldId, new ArrayList<>());
 		mapMainCompToRelation.put(newId, mainrelations);
 		mapMainCompToRelation.remove(oldId);
 
@@ -1281,19 +1328,19 @@ public class RexsModel {
 
 	public void removeRelation(RexsRelation relation) {
 		relations.remove(relation);
-		mapMainCompToRelation.remove(relation.getMainComponentId(), relation);
+		mapMainCompToRelation.get(relation.getMainComponentId()).remove(relation);
 		mapTypeToRelation.get(relation.getType()).remove(relation);
 	}
 
 	public void removeComponent(RexsComponent component) {
-		List<RexsRelation> relationsOfComponent = relations.stream().filter(r -> r.hasComponent(component.getId())).collect(Collectors.toList());
+		List<RexsRelation> relationsOfComponent = relations.stream().filter(r -> r.hasComponent(component.getId())).toList();
 		for (RexsRelation relation : relationsOfComponent)
 			removeRelation(relation);
 
 		components.remove(component.getId());
 
-		List<RexsComponent> compsOfType = mapTypeToComponentId.get(component.getType());
+		List<RexsComponent> compsOfType = mapTypeToComponent.get(component.getType());
 		compsOfType.remove(component);
-		mapTypeToComponentId.put(component.getType(), compsOfType);
+		mapTypeToComponent.put(component.getType(), compsOfType);
 	}
 }

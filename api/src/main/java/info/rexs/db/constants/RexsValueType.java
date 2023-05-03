@@ -40,7 +40,8 @@ public enum RexsValueType {
 	ENUM_ARRAY("enum_array", ENUM),
 	ARRAY_OF_INTEGER_ARRAYS("array_of_integer_arrays", INTEGER),
 	REFERENCE_COMPONENT("reference_component"),
-	FILE_REFERENCE("file_reference");
+	FILE_REFERENCE("file_reference"),
+	DATE_TIME("date_time");
 
 	/** The actual key of the value type as a {@link String}. */
 	private final String key;

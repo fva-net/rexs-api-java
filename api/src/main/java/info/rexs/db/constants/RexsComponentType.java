@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents the type of a REXS component.
@@ -30,14 +29,12 @@ import lombok.EqualsAndHashCode;
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsComponentType implements RexsStandardComponentTypes {
 
 	/** An internal index with all created component types (REXS standard and own) for quick access. */
 	private static Map<String, RexsComponentType> allComponentTypes = new HashMap<>();
 
 	/** The actual ID of the component type as a {@link String}. */
-	@EqualsAndHashCode.Include
 	private final String id;
 
 	private RexsComponentType(String id) {
@@ -51,6 +48,14 @@ public class RexsComponentType implements RexsStandardComponentTypes {
 	 * 				The actual ID of the component type as a {@link String}.
 	 */
 	public String getId() {
+		return id;
+	}
+	
+	/**
+	 * @return
+	 * 				The actual ID of the component type as a {@link String}.
+	 */
+	public String toString() {
 		return id;
 	}
 
@@ -99,12 +104,41 @@ public class RexsComponentType implements RexsStandardComponentTypes {
 	 * 				The actual ID of the component type to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found component type as {@link RexsComponentType}, or {@code RexsComponentType.UNKNOWN} if the ID could not be found.
+	 * 				The found component type as {@link RexsComponentType}, or {@code RexsStandardComponentTypes.UNKNOWN} if the ID could not be found.
 	 */
 	public static RexsComponentType findById(String id) {
 		if (id == null)
-			return UNKNOWN;
+			return null;
 		RexsStandardComponentTypes.init();
-		return allComponentTypes.getOrDefault(id, UNKNOWN);
+		return allComponentTypes.getOrDefault(id, RexsStandardComponentTypes.UNKNOWN);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsComponentType)) {
+			return false;
+		}
+		RexsComponentType other = (RexsComponentType)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_id = getId();
+		Object other_id = other.getId();
+		return this_id == null ? other_id == null : this_id.equals(other_id);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsComponentType;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _id = getId();
+		result = result * 59 + (_id == null ? 43 : _id.hashCode());
+		return result;
 	}
 }

@@ -15,11 +15,16 @@
  ******************************************************************************/
 package info.rexs.upgrade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
 import info.rexs.upgrade.upgraders.ModelUpgrader;
+import info.rexs.upgrade.upgraders.ModelUpgraderResult;
+import info.rexs.upgrade.upgraders.UpgradeNotifications;
+import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
 import info.rexs.upgrade.upgraders.UpgradeResolver;
 
 /**
@@ -30,7 +35,7 @@ import info.rexs.upgrade.upgraders.UpgradeResolver;
 public class RexsUpgrader {
 
 	/** The REXS model {@link Model}. */
-	private Model rexsModel;
+	private RexsModel rexsModel;
 
 	/**
 	 * Constructs a new {@link RexsUpgrader} for the given {@link Model}.
@@ -38,7 +43,7 @@ public class RexsUpgrader {
 	 * @param rexsModel
 	 * 				The REXS model {@link Model}.
 	 */
-	public RexsUpgrader(Model rexsModel) {
+	public RexsUpgrader(RexsModel rexsModel) {
 		this.rexsModel = rexsModel;
 	}
 
@@ -46,18 +51,19 @@ public class RexsUpgrader {
 	 * @return
 	 * 				The REXS model {@link Model}.
 	 */
-	public Model getRexsModel() {
+	public RexsModel getRexsModel() {
 		return rexsModel;
 	}
 
 	/**
 	 * Upgrades the REXS model to the latest standard REXS version.
+	 * @return 
 	 *
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.
 	 */
-	public void upgrade() throws RexsUpgradeException {
-		upgrade(RexsVersion.getLatest());
+	public ModelUpgraderResult upgrade() throws RexsUpgradeException {
+		return upgrade(RexsVersion.getLatest(), false);
 	}
 
 	/**
@@ -65,20 +71,26 @@ public class RexsUpgrader {
 	 *
 	 * @param toVersion
 	 * 				The REXS {@link RexsVersion} to upgrade to.
+	 * @param strictMode Strict mode applies stricter rule to spec-conformity and may remove invalid attributes and relations and generate additional error messages.
+	 * @return 
 	 *
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.
 	 */
-	public void upgrade(RexsVersion toVersion) throws RexsUpgradeException {
-		RexsVersion fromVersion = RexsVersion.findByName(rexsModel.getVersion());
+	public ModelUpgraderResult upgrade(RexsVersion toVersion, boolean strictMode) throws RexsUpgradeException {
+		RexsVersion fromVersion = rexsModel.getVersion();
 		if (fromVersion == null || fromVersion.equals(RexsVersion.UNKNOWN))
 			throw new RexsUpgradeException(String.format("unknown version %s", rexsModel.getVersion()));
 
+		List<Notification> notifications = new ArrayList<>();
+		RexsModel currentModel = rexsModel;
 		List<ModelUpgrader> upgraders = UpgradeResolver.getInstance().resolve(fromVersion, toVersion);
 		for (ModelUpgrader upgrader : upgraders) {
-			upgrader.upgrade(rexsModel);
+			ModelUpgraderResult result = upgrader.upgrade(currentModel, strictMode);
+			currentModel = result.getModel();
+			notifications.addAll(result.getNotifications().getNotifications());
 		}
-
-		rexsModel.setVersion(toVersion.getName());
+		UpgradeNotifications notifications2 = new UpgradeNotifications(notifications);
+		return new ModelUpgraderResult(currentModel, notifications2);
 	}
 }
