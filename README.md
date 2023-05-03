@@ -1,12 +1,12 @@
-<!-- 
+<!--
   Copyright (C) 2020 FVA GmbH
-  
+
   Licensed under the Apache License, Version 2.0 (the "License"); you may not
   use this file except in compliance with the License. You may obtain a copy
   of the License at
-  
+
     http://www.apache.org/licenses/LICENSE-2.0
-  
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
   WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -22,8 +22,8 @@ ATTENTION: The current status of the REXS API is not yet fully covered by Javado
 
 ## Requirements
 
-* Java SDK 1.8
-* Maven 3.6.2 ([http://maven.apache.org](http://maven.apache.org))
+* Java 17
+* Maven 3.8.5 ([http://maven.apache.org](http://maven.apache.org))
 * (Optional) Lombok ([https://projectlombok.org/](https://projectlombok.org/)) (only if you use an IDE like Eclipse)
 
 
@@ -36,21 +36,30 @@ To use these projects in an IDE you will need the [project Lombok](https://proje
 
 1. Install Java and create a `JAVA_HOME` environment variable that points to the location of your JDK
 
-	`set PATH=C:\develop\lib\jdk1.8.0_121\bin;%PATH%`
-	
-	`set JAVA_HOME=C:\develop\lib\jdk1.8.0_121`
+	`set PATH=C:\develop\lib\jdk-17.0.2\bin;%PATH%`
+
+	`set JAVA_HOME=C:\develop\lib\jdk-17.0.2`
 
 2. Install Maven and create Maven environment variables
 
-	`set PATH=C:\develop\lib\apache-maven-3.6.2\bin;%PATH%`
-	
-	`set M2_HOME=C:\develop\lib\apache-maven-3.6.2`
-	
+	`set PATH=C:\develop\lib\apache-maven-3.8.5\bin;%PATH%`
+
+	`set M2_HOME=C:\develop\lib\apache-maven-3.8.5`
+
 	`set M2=%M2_HOME%\bin`
 
 3. Run `mvn clean package` in the root directory of the application
 
-4. Navigate to `distribution/target` where you find the `rexs-api-1.0.0.jar`
+4. Navigate to `api/target` where you find the `rexs-api-1.0.0.jar`
+
+
+## Run the Command Line Interface
+
+1. Build the package
+
+2. Navigate to `cli/target` where you find the `rexs-api-cli-1.0.0.jar`
+
+3. Run `java -jar rexs-api-cli-1.0.0.jar --help`
 
 
 ## Next steps

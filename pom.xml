@@ -21,27 +21,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.fva-service.rexs</groupId>
-	<artifactId>rexs-api</artifactId>
-	<version>0.4.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<artifactId>rexs-api-project</artifactId>
+	<version>0.5.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-	<name>REXS-API</name>
+	<name>REXS-API :: Project</name>
 	<description>The REXS API Java library contains core utility classes for the REXS interface.</description>
-	<url>https://rexs.info</url>
 
-	<scm>
-		<url>http://github.com/fva-net/rexs-api-java/tree/master</url>
-		<connection>scm:git:git://github.com/fva-net/rexs-api-java.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/fva-net/rexs-api-java.git</developerConnection>
-	</scm>
-
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/fva-net/rexs-api-java</url>
-		</repository>
-	</distributionManagement>
+	<organization>
+		<name>FVA GmbH</name>
+		<url>https://www.fva-service.de/</url>
+	</organization>
 
 	<issueManagement>
 		<system>redmine</system>
@@ -55,131 +45,81 @@
 		</license>
 	</licenses>
 
+	<modules>
+		<module>api</module>
+		<module>cli</module>
+	</modules>
+
 	<prerequisites>
-		<maven>3.6.2</maven>
+		<maven>3.8.5</maven>
 	</prerequisites>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<spring.boot.version>3.0.5</spring.boot.version>
 	</properties>
 
-	<dependencies>
+	<dependencyManagement>
+		<dependencies>
 
-		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.26</version>
-			<scope>provided</scope>
-		</dependency>
+			<!-- Spring Boot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 
-		<!-- Unit tesing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>3.24.2</version>
-			<scope>test</scope>
-		</dependency>
+			<!-- JCommander (see http://jcommander.org/) -->
+			<dependency>
+				<groupId>com.beust</groupId>
+				<artifactId>jcommander</artifactId>
+				<version>1.82</version>
+			</dependency>
 
-		<!-- JAXB (for Java 11 support) -->
-		<dependency>
-			<groupId>com.sun.activation</groupId>
-			<artifactId>javax.activation</artifactId>
-			<version>1.2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-core</artifactId>
-			<version>2.3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.3.1</version>
-		</dependency>
+			<!-- Modules -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>rexs-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-		<!-- Jackson for JSON -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.15.0</version>
-		</dependency>
-
-	</dependencies>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources/</directory>
-				<excludes>
-					<exclude>**/*.properties</exclude>
-				</excludes>
-				<filtering>false</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources/</directory>
-				<includes>
-					<include>**/*.properties</include>
-				</includes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-
 		<pluginManagement>
 			<plugins>
+
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-eclipse-plugin</artifactId>
-					<configuration>
-						<downloadSources>true</downloadSources>
-						<downloadJavadocs>true</downloadJavadocs>
-					</configuration>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>3.3.0</version>
 				</plugin>
 
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>buildnumber-maven-plugin</artifactId>
+					<version>3.0.0</version>
 					<configuration>
-						<source>${java.version}</source>
-						<target>${java.version}</target>
+						<revisionOnScmFailure>ERR</revisionOnScmFailure>
+						<timestampFormat>{0,date,yyyy-MM-dd HH:mm:ss}</timestampFormat>
+						<!-- Get the scm revision once for all modules -->
+						<getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+						<!-- Don't fail on modified local resources -->
+						<doCheck>false</doCheck>
+						<!-- Don't update SCM -->
+						<doUpdate>false</doUpdate>
+						<!-- Use short version of git revision -->
+						<shortRevisionLength>7</shortRevisionLength>
+						<!--skip>true</skip-->
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-						<archive>
-							<manifest>
-								<!-- This will add the following to the manifest file: -->
-								<!--   Implementation-Title: ${pom.name} -->
-								<!--   Implementation-Version: ${pom.version} -->
-								<!--   Implementation-Vendor-Id: ${pom.groupId} -->
-								<!--   Implementation-Vendor: ${pom.organization.name} -->
-								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							</manifest>
-						</archive>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.jvnet.jaxb2.maven2</groupId>
-					<artifactId>maven-jaxb2-plugin</artifactId>
-					<version>0.15.2</version>
 				</plugin>
 
 				<plugin>
@@ -197,87 +137,64 @@
 					</configuration>
 				</plugin>
 
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<release>${java.version}</release>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.3.0</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<!-- This will add the following to the manifest file: -->
+								<!--   Implementation-Title: ${pom.name} -->
+								<!--   Implementation-Version: ${pom.version} -->
+								<!--   Implementation-Vendor-Id: ${pom.groupId} -->
+								<!--   Implementation-Vendor: ${pom.organization.name} -->
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring.boot.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.12.1</version>
+					<configuration>
+						<skip>true</skip>
+						<skipDeploy>true</skipDeploy>
+					</configuration>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
 		<plugins>
 
 			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>schema-generate-rexs-model</id>
+						<phase>validate</phase>
 						<goals>
-							<goal>generate</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<schemaDirectory>src/main/resources/info/rexs/schema</schemaDirectory>
-							<schemaIncludes>
-								<include>rexs-dbmodel.xsd</include>
-							</schemaIncludes>
-							<extension>true</extension>
-							<removeOldOutput>true</removeOldOutput>
-							<generateDirectory>${project.build.directory}/generated-sources/rexs-dbmodel</generateDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>schema-generate-rexs-file</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<schemaDirectory>src/main/resources/info/rexs/schema</schemaDirectory>
-							<schemaIncludes>
-								<include>rexs-file.xsd</include>
-							</schemaIncludes>
-							<extension>true</extension>
-							<removeOldOutput>true</removeOldOutput>
-							<generateDirectory>${project.build.directory}/generated-sources/rexs-file</generateDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>schema-generate-rexs-changelog</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<schemaDirectory>src/main/resources/info/rexs/schema</schemaDirectory>
-							<schemaIncludes>
-								<include>rexs-changelog.xsd</include>
-							</schemaIncludes>
-							<extension>true</extension>
-							<removeOldOutput>true</removeOldOutput>
-							<generateDirectory>${project.build.directory}/generated-sources/rexs-changelog</generateDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
+							<goal>create</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -286,36 +203,18 @@
 		</plugins>
 	</build>
 
-	<profiles>
+	<scm>
+		<url>http://github.com/fva-net/rexs-api-java/tree/master</url>
+		<connection>scm:git:git://github.com/fva-net/rexs-api-java.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/fva-net/rexs-api-java.git</developerConnection>
+	</scm>
 
-		<profile>
-			<id>ci</id>
-			<build>
-				<plugins>
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/fva-net/rexs-api-java</url>
+		</repository>
+	</distributionManagement>
 
-					<!-- JaCoCo (Java Code Coverage) is an actively developed line coverage tool, that is used to measure how many lines of our code are tested. -->
-					<!-- Here we generate the coverage report, so that it can be viewed in SonarQube. -->
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.8.10</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>report</id>
-								<phase>test</phase>
-								<goals>
-									<goal>report</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>

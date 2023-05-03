@@ -1,0 +1,28 @@
+spring:
+  main:
+    banner-mode: off
+
+logging:
+  level:
+    ROOT: WARN
+    '[info.rexs.cli.Application]': INFO
+    '[info.rexs.cli]': WARN
+  pattern:
+    console:
+  file:
+    name: rexs-api-cli.log
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  level:
+    ROOT: INFO
+    '[info.rexs.cli]': DEBUG
+  file:
+    name: target/log/rexs-api-cli.log
