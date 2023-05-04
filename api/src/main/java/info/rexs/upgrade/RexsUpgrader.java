@@ -57,7 +57,7 @@ public class RexsUpgrader {
 
 	/**
 	 * Upgrades the REXS model to the latest standard REXS version.
-	 * @return 
+	 * @return
 	 *
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.
@@ -72,7 +72,7 @@ public class RexsUpgrader {
 	 * @param toVersion
 	 * 				The REXS {@link RexsVersion} to upgrade to.
 	 * @param strictMode Strict mode applies stricter rule to spec-conformity and may remove invalid attributes and relations and generate additional error messages.
-	 * @return 
+	 * @return
 	 *
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.

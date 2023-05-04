@@ -13,7 +13,7 @@
             "mainClass": "info.rexs.cli.Application",
             "projectName": "rexs-api-cli",
             "vmArgs": "-Dspring.profiles.active=dev",
-            "args": "--help --version",
+            "args": "convert -f C:/temp/test.rexs --targetVersion 1.5 --targetFile C:/temp/test.rexsj -o",
             "cwd": "${workspaceFolder}/cli"
         }
     ]

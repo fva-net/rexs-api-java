@@ -20,7 +20,7 @@ public class ConvertOptions {
 
 	@Parameter(
 		names = {"--file", "-f"},
-		description = "The REXS file to convert",
+		description = "The REXS file to convert (use slashes instead of backslashes)",
 		validateValueWith = RexsFileExistingValidator.class,
 		required = true)
 	private Path file;
@@ -34,18 +34,18 @@ public class ConvertOptions {
 
 	@Parameter(
 		names = {"--strict"},
-		description = "Use strict mode") // TODO: Add description
+		description = "Strict mode can be disabled if a model does not meet 100% of the specification")
 	private boolean strictMode = false;
 
 	@Parameter(
 		names = {"--targetFile"},
-		description = "Location of the converted REXS file",
+		description = "Location of the converted REXS file (use slashes instead of backslashes)",
 		validateValueWith = RexsFileValidator.class,
 		required = true)
-	private String targetFile;
+	private Path targetFile;
 
 	@Parameter(
 		names = {"--override", "-o"},
 		description = "Overwrite if the target file already exists")
 	private boolean overrideExistingFile = false;
-	}
+}

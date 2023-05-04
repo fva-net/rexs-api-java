@@ -58,7 +58,7 @@ public class UpgradeResolver {
 				return upgrader.doupgrade();
 			}
 		});
-		
+
 		register(RexsVersion.V1_2, RexsVersion.V1_3, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
@@ -74,11 +74,11 @@ public class UpgradeResolver {
 				return upgrader.doupgrade();
 			}
 		});
-		
+
 		register(RexsVersion.V1_4, RexsVersion.V1_5, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
-				ModelUpgraderV11toV12 upgrader = new ModelUpgraderV11toV12(rexsModel, strictMode);
+				ModelUpgraderV14toV15 upgrader = new ModelUpgraderV14toV15(rexsModel, strictMode);
 				return upgrader.doupgrade();
 			}
 		});
