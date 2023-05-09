@@ -1,12 +1,9 @@
-name: Release distribution
+name: Release
 
 on:
   push:
-    branches:
-      - master
-  release:
-    types:
-      - created
+    tags:
+      - 'v*.*.*'
 
 jobs:
   release:
@@ -25,6 +22,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
 
       - name: Cache Maven packages
         uses: actions/cache@v4.1.1
@@ -34,6 +33,8 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Publish package
-        run: mvn --batch-mode deploy
+        run: mvn -Prelease --settings settings-github.xml --batch-mode deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
