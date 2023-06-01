@@ -8,7 +8,6 @@
         <attributeChange type="ADD" id="modification_date" numericId="21103"/>
         <attributeChange type="ADD" id="radial_clearance" numericId="21120"/>
         <attributeChange type="ADD" id="axial_clearance" numericId="21121"/>
-        <attributeChange type="ADD" id="custom_zf_endurable_tooth_root_stress_limit_for_load_independent_stress_influence_dr14028_2020" numericId="19230"/>
         <attributeChange type="ADD" id="tooth_thickness_half_angle_at_reference_diameter" numericId="19236"/>
         <attributeChange type="ADD" id="tooth_thickness_half_angle_at_tip_diameter" numericId="19238"/>
         <attributeChange type="ADD" id="tooth_thickness_half_angle_at_base_diameter" numericId="19239"/>
@@ -47,32 +46,17 @@
                 <changedValue key="attributeId" oldValue="survival_probablity" newValue="survival_probability"/>
             </changedValues>
         </attributeChange>
-        <attributeChange type="EDIT" id="axial_force_absorption" numericId="470">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="bending_stiffness" numericId="488">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="radial_stiffness" numericId="508">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="preload_force" numericId="510">
-            <changedValues/>
-        </attributeChange>
-        <attributeChange type="EDIT" id="preload_distance" numericId="511">
-            <changedValues/>
-        </attributeChange>
         <attributeChange type="EDIT" id="shaft_surface_roughness" numericId="556">
             <changedValues>
                 <changedValue key="symbol" oldValue="R_z" newValue="Rz"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="bore_surface_roughness" numericId="559">
             <changedValues>
                 <changedValue key="symbol" oldValue="R_z" newValue="Rz"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -80,9 +64,6 @@
             <changedValues>
                 <changedValue key="unit" oldValue="none" newValue="1 / min"/>
             </changedValues>
-        </attributeChange>
-        <attributeChange type="EDIT" id="radial_force_absorption" numericId="2098">
-            <changedValues/>
         </attributeChange>
         <attributeChange type="EDIT" id="arithmentic_mean_roughness_at_filter_cutoff_of_wavelength_agma_925_a03" numericId="13046">
             <changedValues>
@@ -97,8 +78,8 @@
         <attributeChange type="EDIT" id="root_mean_square_roughness_at_filter_cutoff_of_wavelength_agma_925_a03" numericId="13048">
             <changedValues>
                 <changedValue key="symbol" oldValue="R_qx" newValue="Rq_x"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -114,8 +95,8 @@
                 <changedValue key="attributeId" oldValue="normal_tooth_thickness_at_pitch_diameter" newValue="normal_tooth_thickness_at_reference_diameter"/>
                 <changedValue key="name" lang="de" oldValue="Normalzahndicke" newValue="Normalzahndicke am Teilkreis"/>
                 <changedValue key="name" lang="en" oldValue="Normal tooth thickness" newValue="Normal tooth thickness at reference diameter"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="normal_space_width_at_pitch_diameter" numericId="4228">
@@ -123,8 +104,8 @@
                 <changedValue key="attributeId" oldValue="normal_space_width_at_pitch_diameter" newValue="normal_space_width_at_reference_diameter"/>
                 <changedValue key="name" lang="de" oldValue="Zahnlückenweite (Normalschnitt)" newValue="Zahnlückenweite (Normalschnitt) am Teilkreis"/>
                 <changedValue key="name" lang="en" oldValue="Normal space width" newValue="Normal space width at reference diameter"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="arithmetic_average_roughness_flank" numericId="814">
@@ -142,8 +123,8 @@
                 <changedValue key="symbol" oldValue="R_z" newValue="Rz"/>
                 <changedValue key="name" lang="de" oldValue="Oberflächenrauheit R_z" newValue="Oberflächenrauheit Rz"/>
                 <changedValue key="name" lang="en" oldValue="Surface roughness R_z" newValue="Surface roughness Rz"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -264,5 +245,6 @@
         <mappingChange type="ADD" componentId="worm_wheel" attributeId="transverse_module" attributeNumericId="4197"/>
         <mappingChange type="ADD" componentId="switchable_coupling" attributeId="mass_of_component" attributeNumericId="17689"/>
         <mappingChange type="DELETE" componentId="worm_wheel" attributeId="lead_angle_worm_gear" attributeNumericId="1798"/>
+        <mappingChange type="DELETE" componentId="sn_curve" attributeId="probability_of_survival" attributeNumericId="3158"/>
     </mappingChanges>
 </rexsChangelog>

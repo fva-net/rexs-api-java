@@ -471,8 +471,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="helix_angle_reference_diameter" numericId="796">
             <changedValues>
-                <changedValue key="range" oldValue="(0;90)" newValue="(-90;90)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue="-90"/>
+                <changedValue key="range" oldValue="(0.0;90.0)" newValue="(-90.0;90.0)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue="-90.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
@@ -496,8 +496,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="helix_angle_base_circle" numericId="5305">
             <changedValues>
-                <changedValue key="range" oldValue="[0;90)" newValue="(-90;90)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue="-90"/>
+                <changedValue key="range" oldValue="[0.0;90.0)" newValue="(-90.0;90.0)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue="-90.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -535,9 +535,9 @@
                 <changedValue key="attributeId" oldValue="reference_lead_angle_din_3975_2017" newValue="lead_angle_worm_gear"/>
                 <changedValue key="name" lang="de" oldValue="Steigungswinkel am Mittenkreis (DIN 3975 2017)" newValue="Steigungswinkel am Mittenkreis"/>
                 <changedValue key="name" lang="en" oldValue="Reference lead angle (DIN 3975 2017)" newValue="Reference lead angle"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="(-90;90)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue="-90"/>
-                <changedValue key="rangeMax" oldValue="" newValue="90"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="(-90.0;90.0)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue="-90.0"/>
+                <changedValue key="rangeMax" oldValue="" newValue="90.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="tip_diameter_din_3975_2017" numericId="2780">
@@ -705,69 +705,72 @@
         <mappingChange type="ADD" componentId="worm_stage" attributeId="material_loss_din_3996_2019" attributeNumericId="16560"/>
         <mappingChange type="ADD" componentId="worm_stage" attributeId="material_loss_limit_din_3996_2019" attributeNumericId="16561"/>
         <mappingChange type="ADD" componentId="cylindrical_stage_gear_data" attributeId="tooth_thickness_loss_din_3996_2019" attributeNumericId="16562"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="tool_edge_radius" attributeNumericId="375"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="remaining_protuberance" attributeNumericId="376"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="machining_allowance" attributeNumericId="735"/>
-        <mappingChange type="DELETE" componentId="rack_shaped_tool" attributeId="machining_allowance" attributeNumericId="735"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="machining_allowance_tolerance" attributeNumericId="736"/>
         <mappingChange type="DELETE" componentId="flank_geometry" attributeId="addendum_coefficient_basic_profile" attributeNumericId="755"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="tip_clearance_factor" attributeNumericId="759"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="grinding_allowance" attributeNumericId="774"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="addendum_modification_coefficient_after_finishing" attributeNumericId="783"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="addendum_modification" attributeNumericId="4198"/>
         <mappingChange type="DELETE" componentId="flank_geometry" attributeId="addendum_modification_coefficient" attributeNumericId="784"/>
-        <mappingChange type="DELETE" componentId="worm_gear" attributeId="addendum_modification_coefficient" attributeNumericId="784"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="tooth_tip_chamfer" attributeNumericId="785"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="addendum_modification_coefficient_after_finishing" attributeNumericId="783"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="coordinates_of_topographical_deviation" attributeNumericId="14565"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="diameters_of_topographical_deviation" attributeNumericId="14566"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="facewidth_usable_end" attributeNumericId="14547"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="facewidth_usable_start" attributeNumericId="14546"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="generated_addendum_modification_coefficient" attributeNumericId="2406"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="grinding_allowance" attributeNumericId="774"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="machining_allowance" attributeNumericId="735"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="machining_allowance_tolerance" attributeNumericId="736"/>
         <mappingChange type="DELETE" componentId="flank_geometry" attributeId="normal_pressure_angle" attributeNumericId="1015"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="pressure_angle_in_the_transverse_section" attributeNumericId="4194"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="remaining_protuberance" attributeNumericId="376"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="tool_edge_radius" attributeNumericId="375"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="tooth_tip_chamfer" attributeNumericId="785"/>
+        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="topographical_deviation_amounts" attributeNumericId="14564"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="deflection_din_3996_2019" attributeNumericId="16554"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="form_allowance" attributeNumericId="12824"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="is_driving_gear" attributeNumericId="9205"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="limiting_value_flank_loss_din_3996_2019" attributeNumericId="16558"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="loaded_tooth_flank" attributeNumericId="14011"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="material_loss_din_3996_2019" attributeNumericId="16560"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="material_loss_limit_din_3996_2019" attributeNumericId="16561"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="mean_hertzian_stress_din_3996_2019" attributeNumericId="16548"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="mean_minimum_lubricant_film_thickness_din_3996_2019" attributeNumericId="16556"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="mean_sliding_path_din_3996_2019" attributeNumericId="16550"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="measuring_diameter_at_undercut" attributeNumericId="12848"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="number_of_load_cycles" attributeNumericId="4276"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="operating_pressure_angle_in_the_normal_section" attributeNumericId="12901"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="operating_pressure_angle_in_the_transverse_section" attributeNumericId="4195"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="parameter_for_mean_minimum_lubricant_film_thickness_din_3996_2019" attributeNumericId="16557"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="parameter_mean_hertzian_stress_din_3996_2019" attributeNumericId="16549"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="parameter_mean_sliding_path_din_3996_2019" attributeNumericId="16551"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="pitch_diameter" attributeNumericId="9206"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="power_for_rolling_rotational_speed" attributeNumericId="14044"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="power_for_rotational_speed" attributeNumericId="14045"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="safety_factor_deflection_din_3996_2019" attributeNumericId="16555"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="safety_factor_pitting_din_3996_2019" attributeNumericId="16559"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="safety_factor_root_din_3996_2019" attributeNumericId="16553"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="shear_stress_tooth_root_din_3996_2019" attributeNumericId="16552"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="sliding_factor_at_tip_diameter" attributeNumericId="12856"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="sliding_velocity_at_reference_diameter_din_3996_2019" attributeNumericId="16547"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="specific_sliding_at_root_diameter" attributeNumericId="12857"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="specific_sliding_at_tip_diameter" attributeNumericId="12858"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="tip_clearance" attributeNumericId="12884"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="tip_clearance_factor" attributeNumericId="759"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="tooth_thickness_loss_din_3996_2019" attributeNumericId="16562"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="torque" attributeNumericId="12827"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="total_tooth_force_u_direction" attributeNumericId="9253"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="total_tooth_force_v_direction" attributeNumericId="9254"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="total_tooth_force_w_direction" attributeNumericId="9255"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="usable_addendum_circle_diameter" attributeNumericId="12862"/>
+        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="usable_root_circle_diameter" attributeNumericId="12861"/>
+        <mappingChange type="DELETE" componentId="rack_shaped_tool" attributeId="machining_allowance" attributeNumericId="735"/>
+        <mappingChange type="DELETE" componentId="worm_gear" attributeId="addendum_modification_coefficient" attributeNumericId="784"/>
         <mappingChange type="DELETE" componentId="cylindrical_gear" attributeId="basic_strength_root" attributeNumericId="2919"/>
         <mappingChange type="DELETE" componentId="ring_gear" attributeId="basic_strength_root" attributeNumericId="2919"/>
         <mappingChange type="DELETE" componentId="cylindrical_gear" attributeId="endurance_limit_flank" attributeNumericId="2922"/>
         <mappingChange type="DELETE" componentId="ring_gear" attributeId="endurance_limit_flank" attributeNumericId="2922"/>
         <mappingChange type="DELETE" componentId="cylindrical_gear" attributeId="endurance_limit_root" attributeNumericId="2927"/>
         <mappingChange type="DELETE" componentId="ring_gear" attributeId="endurance_limit_root" attributeNumericId="2927"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="is_driving_gear" attributeNumericId="9205"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="pitch_diameter" attributeNumericId="9206"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="total_tooth_force_u_direction" attributeNumericId="9253"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="total_tooth_force_v_direction" attributeNumericId="9254"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="total_tooth_force_w_direction" attributeNumericId="9255"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="operating_pressure_angle_in_the_transverse_section" attributeNumericId="4195"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="power_for_rotational_speed" attributeNumericId="14045"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="power_for_rolling_rotational_speed" attributeNumericId="14044"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="pressure_angle_in_the_transverse_section" attributeNumericId="4194"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="number_of_load_cycles" attributeNumericId="4276"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="loaded_tooth_flank" attributeNumericId="14011"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="generated_addendum_modification_coefficient" attributeNumericId="2406"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="usable_root_circle_diameter" attributeNumericId="12861"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="usable_addendum_circle_diameter" attributeNumericId="12862"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="torque" attributeNumericId="12827"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="operating_pressure_angle_in_the_normal_section" attributeNumericId="12901"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="addendum_modification" attributeNumericId="4198"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="tip_clearance" attributeNumericId="12884"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="form_allowance" attributeNumericId="12824"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="sliding_factor_at_tip_diameter" attributeNumericId="12856"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="specific_sliding_at_tip_diameter" attributeNumericId="12858"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="specific_sliding_at_root_diameter" attributeNumericId="12857"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="measuring_diameter_at_undercut" attributeNumericId="12848"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="facewidth_usable_start" attributeNumericId="14546"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="facewidth_usable_end" attributeNumericId="14547"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="topographical_deviation_amounts" attributeNumericId="14564"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="coordinates_of_topographical_deviation" attributeNumericId="14565"/>
-        <mappingChange type="DELETE" componentId="flank_geometry" attributeId="diameters_of_topographical_deviation" attributeNumericId="14566"/>
+        <mappingChange type="DELETE" componentId="worm_gear" attributeId="base_circle_diameter_din_3975_2017" attributeNumericId="16538"/>
+        <mappingChange type="DELETE" componentId="worm_gear" attributeId="axial_pitch_din_3975_2017" attributeNumericId="16539"/>
+        <mappingChange type="DELETE" componentId="worm_gear" attributeId="normal_pitch_din_3975_2017" attributeNumericId="16541"/>
         <mappingChange type="DELETE" componentId="worm_gear" attributeId="flank_surface_din_3996_2019" attributeNumericId="16543"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="sliding_velocity_at_reference_diameter_din_3996_2019" attributeNumericId="16547"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="mean_hertzian_stress_din_3996_2019" attributeNumericId="16548"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="parameter_mean_hertzian_stress_din_3996_2019" attributeNumericId="16549"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="mean_sliding_path_din_3996_2019" attributeNumericId="16550"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="parameter_mean_sliding_path_din_3996_2019" attributeNumericId="16551"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="shear_stress_tooth_root_din_3996_2019" attributeNumericId="16552"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="safety_factor_root_din_3996_2019" attributeNumericId="16553"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="deflection_din_3996_2019" attributeNumericId="16554"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="safety_factor_deflection_din_3996_2019" attributeNumericId="16555"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="mean_minimum_lubricant_film_thickness_din_3996_2019" attributeNumericId="16556"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="parameter_for_mean_minimum_lubricant_film_thickness_din_3996_2019" attributeNumericId="16557"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="limiting_value_flank_loss_din_3996_2019" attributeNumericId="16558"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="safety_factor_pitting_din_3996_2019" attributeNumericId="16559"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="material_loss_din_3996_2019" attributeNumericId="16560"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="material_loss_limit_din_3996_2019" attributeNumericId="16561"/>
-        <mappingChange type="DELETE" componentId="stage_gear_data" attributeId="tooth_thickness_loss_din_3996_2019" attributeNumericId="16562"/>
     </mappingChanges>
 </rexsChangelog>

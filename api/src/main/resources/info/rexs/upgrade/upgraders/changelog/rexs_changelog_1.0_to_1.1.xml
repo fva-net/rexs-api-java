@@ -171,14 +171,14 @@
         </attributeChange>
         <attributeChange type="EDIT" id="generated_pressure_angle_drive" numericId="184">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="generated_pressure_angle_coast" numericId="185">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="face_angle" numericId="352">
@@ -198,22 +198,22 @@
         </attributeChange>
         <attributeChange type="EDIT" id="pitch_apex_beyond_crossing_point" numericId="361">
             <changedValues>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="face_apex_beyond_crossing_point" numericId="362">
             <changedValues>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="root_apex_beyond_crossing_point" numericId="363">
             <changedValues>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -238,7 +238,7 @@
         <attributeChange type="EDIT" id="remaining_protuberance" numericId="376">
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="s_pr"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -259,9 +259,9 @@
                 <changedValue key="symbol" oldValue="ec" newValue="e_C"/>
                 <changedValue key="name" lang="de" oldValue="Verschmutzungsbeiwert" newValue="Verschmutzungsbeiwert nach ISO 281 2007"/>
                 <changedValue key="name" lang="en" oldValue="Contamination coefficient" newValue="Contamination coefficient according to ISO 281 2007"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;1]"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
-                <changedValue key="rangeMax" oldValue="" newValue="1"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;1.0]"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
+                <changedValue key="rangeMax" oldValue="" newValue="1.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
                 <changedValue key="rangeMaxIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
@@ -275,14 +275,14 @@
         </attributeChange>
         <attributeChange type="EDIT" id="fatigue_limit_load" numericId="464">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="catalogue_value_e" numericId="466">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="diagram_number_in_din_26281" numericId="467">
@@ -294,100 +294,100 @@
                     <enumValueChanges>
                         <enumValueChange type="EDIT" value="18">
                             <changedValues>
-                                <changedValue key="value" oldValue="18" newValue="grease_very_severe_contamination"/>
-                                <changedValue key="name" lang="de" oldValue="18" newValue="Bild A.14 — Verunreinigungsbeiwert eC für Fettschmierung — sehr starke Verunreinigung"/>
-                                <changedValue key="name" lang="en" oldValue="18" newValue="Figure A.14 — eC factor for grease lubrication — Very severe contamination"/>
+<changedValue key="value" oldValue="18" newValue="grease_very_severe_contamination"/>
+<changedValue key="name" lang="de" oldValue="18" newValue="Bild A.14 — Verunreinigungsbeiwert eC für Fettschmierung — sehr starke Verunreinigung"/>
+<changedValue key="name" lang="en" oldValue="18" newValue="Figure A.14 — eC factor for grease lubrication — Very severe contamination"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="15">
                             <changedValues>
-                                <changedValue key="value" oldValue="15" newValue="grease_normal_cleanliness"/>
-                                <changedValue key="name" lang="de" oldValue="15" newValue="Bild A.11 — Verunreinigungsbeiwert eC für Fettschmierung — normale Sauberkeit"/>
-                                <changedValue key="name" lang="en" oldValue="15" newValue="Figure A.11 — eC factor for grease lubrication — Normal cleanliness"/>
+<changedValue key="value" oldValue="15" newValue="grease_normal_cleanliness"/>
+<changedValue key="name" lang="de" oldValue="15" newValue="Bild A.11 — Verunreinigungsbeiwert eC für Fettschmierung — normale Sauberkeit"/>
+<changedValue key="name" lang="en" oldValue="15" newValue="Figure A.11 — eC factor for grease lubrication — Normal cleanliness"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="17">
                             <changedValues>
-                                <changedValue key="value" oldValue="17" newValue="grease_severe_contamination"/>
-                                <changedValue key="name" lang="de" oldValue="17" newValue="Bild A.13 — Verunreinigungsbeiwert eC für Fettschmierung — starke Verunreinigung"/>
-                                <changedValue key="name" lang="en" oldValue="17" newValue="Figure A.13 — eC factor for grease lubrication — Severe contamination"/>
+<changedValue key="value" oldValue="17" newValue="grease_severe_contamination"/>
+<changedValue key="name" lang="de" oldValue="17" newValue="Bild A.13 — Verunreinigungsbeiwert eC für Fettschmierung — starke Verunreinigung"/>
+<changedValue key="name" lang="en" oldValue="17" newValue="Figure A.13 — eC factor for grease lubrication — Severe contamination"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="16">
                             <changedValues>
-                                <changedValue key="value" oldValue="16" newValue="grease_slight_to_typical_contamination"/>
-                                <changedValue key="name" lang="de" oldValue="16" newValue="Bild A.12 — Verunreinigungsbeiwert eC für Fettschmierung — leichte bis mäßige Verunreinigung"/>
-                                <changedValue key="name" lang="en" oldValue="16" newValue="Figure A.12 — eC factor for grease lubrication — Slight to typical contamination"/>
+<changedValue key="value" oldValue="16" newValue="grease_slight_to_typical_contamination"/>
+<changedValue key="name" lang="de" oldValue="16" newValue="Bild A.12 — Verunreinigungsbeiwert eC für Fettschmierung — leichte bis mäßige Verunreinigung"/>
+<changedValue key="name" lang="en" oldValue="16" newValue="Figure A.12 — eC factor for grease lubrication — Slight to typical contamination"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="12">
                             <changedValues>
-                                <changedValue key="value" oldValue="12" newValue="oil_without_filter_iso4406_19_16"/>
-                                <changedValue key="name" lang="de" oldValue="12" newValue="Bild A.8 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/19/16 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="12" newValue="Figure A.8 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/19/16"/>
+<changedValue key="value" oldValue="12" newValue="oil_without_filter_iso4406_19_16"/>
+<changedValue key="name" lang="de" oldValue="12" newValue="Bild A.8 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/19/16 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="12" newValue="Figure A.8 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/19/16"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="11">
                             <changedValues>
-                                <changedValue key="value" oldValue="11" newValue="oil_without_filter_iso4406_17_14"/>
-                                <changedValue key="name" lang="de" oldValue="11" newValue="Bild A.7 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/17/14 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="11" newValue="Figure A.7 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/17/14"/>
+<changedValue key="value" oldValue="11" newValue="oil_without_filter_iso4406_17_14"/>
+<changedValue key="name" lang="de" oldValue="11" newValue="Bild A.7 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/17/14 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="11" newValue="Figure A.7 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/17/14"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="14">
                             <changedValues>
-                                <changedValue key="value" oldValue="14" newValue="grease_high_cleanliness"/>
-                                <changedValue key="name" lang="de" oldValue="14" newValue="Bild A.10 — Verunreinigungsbeiwert eC für Fettschmierung — hohe Sauberkeit"/>
-                                <changedValue key="name" lang="en" oldValue="14" newValue="Figure A.10 —  eC factor for grease lubrication — High cleanliness"/>
+<changedValue key="value" oldValue="14" newValue="grease_high_cleanliness"/>
+<changedValue key="name" lang="de" oldValue="14" newValue="Bild A.10 — Verunreinigungsbeiwert eC für Fettschmierung — hohe Sauberkeit"/>
+<changedValue key="name" lang="en" oldValue="14" newValue="Figure A.10 —  eC factor for grease lubrication — High cleanliness"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="6">
                             <changedValues>
-                                <changedValue key="value" oldValue="6" newValue="oil_with_filter_iso4406_15_12"/>
-                                <changedValue key="name" lang="de" oldValue="6" newValue="Bild A.2 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β12(c) = 200, Ölreinheitsklasse —/15/12 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="6" newValue="Figure A.2 — eC factor for circulating oil lubrication with on-line filters –  β12(c) = 200, ISO 4406 code —/15/12"/>
+<changedValue key="value" oldValue="6" newValue="oil_with_filter_iso4406_15_12"/>
+<changedValue key="name" lang="de" oldValue="6" newValue="Bild A.2 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β12(c) = 200, Ölreinheitsklasse —/15/12 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="6" newValue="Figure A.2 — eC factor for circulating oil lubrication with on-line filters –  β12(c) = 200, ISO 4406 code —/15/12"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="5">
                             <changedValues>
-                                <changedValue key="value" oldValue="5" newValue="oil_with_filter_iso4406_13_10"/>
-                                <changedValue key="name" lang="de" oldValue="5" newValue="Bild A.1 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β6(c) = 200, Ölreinheitsklasse —/13/10 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="5" newValue="Figure A.1 — eC factor for circulating oil lubrication with on-line filters –  β6(c) = 200, ISO 4406 code —/13/10"/>
+<changedValue key="value" oldValue="5" newValue="oil_with_filter_iso4406_13_10"/>
+<changedValue key="name" lang="de" oldValue="5" newValue="Bild A.1 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β6(c) = 200, Ölreinheitsklasse —/13/10 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="5" newValue="Figure A.1 — eC factor for circulating oil lubrication with on-line filters –  β6(c) = 200, ISO 4406 code —/13/10"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="8">
                             <changedValues>
-                                <changedValue key="value" oldValue="8" newValue="oil_with_filter_iso4406_19_16"/>
-                                <changedValue key="name" lang="de" oldValue="8" newValue="Bild A.4 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β40(c) ≥ 75, Ölreinheitsklasse —/19/16 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="8" newValue="Figure A.4 — eC factor for circulating oil lubrication with on-line filters –  β40(c) ≥ W 75, ISO 4406 code —/19/16"/>
+<changedValue key="value" oldValue="8" newValue="oil_with_filter_iso4406_19_16"/>
+<changedValue key="name" lang="de" oldValue="8" newValue="Bild A.4 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β40(c) ≥ 75, Ölreinheitsklasse —/19/16 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="8" newValue="Figure A.4 — eC factor for circulating oil lubrication with on-line filters –  β40(c) ≥ W 75, ISO 4406 code —/19/16"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="10">
                             <changedValues>
-                                <changedValue key="value" oldValue="10" newValue="oil_without_filter_iso4406_15_12"/>
-                                <changedValue key="name" lang="de" oldValue="10" newValue="Bild A.6 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/15/12 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="10" newValue="Figure A.6 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/15/12"/>
+<changedValue key="value" oldValue="10" newValue="oil_without_filter_iso4406_15_12"/>
+<changedValue key="name" lang="de" oldValue="10" newValue="Bild A.6 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/15/12 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="10" newValue="Figure A.6 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/15/12"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="7">
                             <changedValues>
-                                <changedValue key="value" oldValue="7" newValue="oil_with_filter_iso4406_17_14"/>
-                                <changedValue key="name" lang="de" oldValue="7" newValue="Bild A.3 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β25(c) ≥ 75, Ölreinheitsklasse —/17/14 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="7" newValue="Figure A.3 — eC factor for circulating oil lubrication with on-line filters –  β25(c) ≥ W 75, ISO 4406 code —/17/14"/>
+<changedValue key="value" oldValue="7" newValue="oil_with_filter_iso4406_17_14"/>
+<changedValue key="name" lang="de" oldValue="7" newValue="Bild A.3 — Verunreinigungsbeiwert eC für Ölumlaufschmierung mit Hauptstromfiltern — β25(c) ≥ 75, Ölreinheitsklasse —/17/14 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="7" newValue="Figure A.3 — eC factor for circulating oil lubrication with on-line filters –  β25(c) ≥ W 75, ISO 4406 code —/17/14"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="9">
                             <changedValues>
-                                <changedValue key="value" oldValue="9" newValue="oil_without_filter_iso4406_13_10"/>
-                                <changedValue key="name" lang="de" oldValue="9" newValue="Bild A.5 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/13/10 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="9" newValue="Figure A.5 —  eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/13/10"/>
+<changedValue key="value" oldValue="9" newValue="oil_without_filter_iso4406_13_10"/>
+<changedValue key="name" lang="de" oldValue="9" newValue="Bild A.5 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/13/10 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="9" newValue="Figure A.5 —  eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/13/10"/>
                             </changedValues>
                         </enumValueChange>
                         <enumValueChange type="EDIT" value="13">
                             <changedValues>
-                                <changedValue key="value" oldValue="13" newValue="oil_without_filter_iso4406_21_18"/>
-                                <changedValue key="name" lang="de" oldValue="13" newValue="Bild A.9 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/21/18 nach ISO 4406"/>
-                                <changedValue key="name" lang="en" oldValue="13" newValue="Figure A.9 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/21/18"/>
+<changedValue key="value" oldValue="13" newValue="oil_without_filter_iso4406_21_18"/>
+<changedValue key="name" lang="de" oldValue="13" newValue="Bild A.9 — Verunreinigungsbeiwert eC für Ölumlaufschmierung ohne Filterung oder mit Nebenstromfiltern, Ölreinheitsklasse —/21/18 nach ISO 4406"/>
+<changedValue key="name" lang="en" oldValue="13" newValue="Figure A.9 — eC factor for oil lubrication without filtration or with off-line filters – ISO 4406 code —/21/18"/>
                             </changedValues>
                         </enumValueChange>
                     </enumValueChanges>
@@ -399,9 +399,9 @@
                 <changedValue key="symbol" oldValue="ε_2" newValue="γ"/>
                 <changedValue key="name" lang="de" oldValue="Halber Kegelwinkel der Rolle" newValue="Rollenwinkel"/>
                 <changedValue key="name" lang="en" oldValue="Half of the cone angle of roller" newValue="Roller angle"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;90)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
-                <changedValue key="rangeMax" oldValue="" newValue="90"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;90.0)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
+                <changedValue key="rangeMax" oldValue="" newValue="90.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -440,8 +440,8 @@
         <attributeChange type="EDIT" id="weibull_exponent" numericId="477">
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="e"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="pin_tolerance_class" numericId="478">
@@ -452,8 +452,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="number_of_bearing_rows" numericId="479">
             <changedValues>
-                <changedValue key="range" oldValue="[0;∞)" newValue="[1;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue="1"/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="[1.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue="1.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="number_of_rolling_elements" numericId="480">
@@ -516,32 +516,32 @@
         <attributeChange type="EDIT" id="radial_factor_x_1" numericId="515">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Radialloadfactor X1 for F_a/F_r &lt;=  e" newValue="Radial load factor X1 for F_a/F_r &lt;=  e"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="radial_factor_x_2" numericId="516">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Radialloadfactor X2 for F_a/F_r &gt;  e" newValue="Radial load factor X2 for F_a/F_r &gt;  e"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_factor_y_1" numericId="517">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Axialloadfactor Y1 for F_a/F_r &lt;= e" newValue="Axial load factor Y1 for F_a/F_r &lt;= e"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_factor_y_2" numericId="518">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Axialloadfactor Y2 for F_a/F_r &gt; e" newValue="Axial load factor Y2 for F_a/F_r &gt; e"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -551,8 +551,8 @@
                 <changedValue key="symbol" oldValue="C" newValue="C_r"/>
                 <changedValue key="name" lang="de" oldValue="Dynamische Tragzahl" newValue="Radiale dynamische Tragzahl"/>
                 <changedValue key="name" lang="en" oldValue="Dynamic load rating" newValue="Radial dynamic load rating"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="static_capacity" numericId="520">
@@ -561,8 +561,8 @@
                 <changedValue key="symbol" oldValue="C_0" newValue="C_0r"/>
                 <changedValue key="name" lang="de" oldValue="Statische Tragzahl" newValue="Radiale statische Tragzahl"/>
                 <changedValue key="name" lang="en" oldValue="Static load rating" newValue="Radial static load rating"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="misalignment_in_v_direction" numericId="521">
@@ -633,8 +633,8 @@
         <attributeChange type="EDIT" id="shaft_surface_roughness" numericId="556">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Surface roughness of shaft R_z" newValue="Surface roughness of shaft"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="minimum_bore_diameter" numericId="557">
@@ -656,8 +656,8 @@
                 <changedValue key="symbol" oldValue="Rz" newValue="R_z"/>
                 <changedValue key="name" lang="de" oldValue="Rautiefe der Bohrung" newValue="Rautiefe der Gehäusebohrung"/>
                 <changedValue key="name" lang="en" oldValue="Surface roughness of bore R_z" newValue="Surface roughness of casing bore"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="maximum_bearing_bore_diameter" numericId="563">
@@ -689,8 +689,8 @@
                 <changedValue key="attributeId" oldValue="minimum_bearing_clearance" newValue="minimum_radial_bearing_clearance"/>
                 <changedValue key="name" lang="de" oldValue="Minimale Lagerluft" newValue="Minimale radiale Lagerluft (vor Einbau)"/>
                 <changedValue key="name" lang="en" oldValue="Minimum bearing clearance" newValue="Minimum radial bearing clearance (before mounting)"/>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -699,13 +699,13 @@
                 <changedValue key="attributeId" oldValue="maximum_bearing_clearance" newValue="maximum_radial_bearing_clearance"/>
                 <changedValue key="name" lang="de" oldValue="Maximale Lagerluft" newValue="Maximale radiale Lagerluft (vor Einbau)"/>
                 <changedValue key="name" lang="en" oldValue="Maximum bearing play" newValue="Maximum radial bearing clearance (before mounting)"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="length" numericId="606">
             <changedValues>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(0;∞)"/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -769,8 +769,8 @@
             <changedValues>
                 <changedValue key="symbol" oldValue="" newValue="β"/>
                 <changedValue key="name" lang="de" oldValue="Schrägungswinkel" newValue="Schrägungswinkel am Teilkreis"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="(0;90)"/>
-                <changedValue key="rangeMax" oldValue="" newValue="90"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="(0.0;90.0)"/>
+                <changedValue key="rangeMax" oldValue="" newValue="90.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="face_width" numericId="808">
@@ -785,8 +785,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="normal_pressure_angle" numericId="1015">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="upper_center_distance_allowance" numericId="1045">
@@ -850,22 +850,22 @@
                 <changedValue key="attributeId" oldValue="decisive_pin_diameter" newValue="shaft_inner_diameter"/>
                 <changedValue key="name" lang="de" oldValue="Maßgebender Wellendurchmesser" newValue="Welleninnendurchmesser für die Betriebsspielberechnung"/>
                 <changedValue key="name" lang="en" oldValue="Nominal inner diameter of shaft" newValue="Inner shaft diameter for the operating clearance calculation"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="number_of_gears" numericId="2408">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Anzahl Gänge" newValue="Anzahl der Schaltstellungen"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[1;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue="1"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[1.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue="1.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="gear_shift_index" numericId="2409">
             <changedValues>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[1;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue="1"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[1.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue="1.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -887,8 +887,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="axial_factor_y_0" numericId="2881">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -916,8 +916,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="start_up_time" numericId="5405">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="acceleration_factor_according_fva_341" numericId="5406">
@@ -927,16 +927,16 @@
         </attributeChange>
         <attributeChange type="EDIT" id="surface_hardness_vickers" numericId="5767">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="speed_inner_ring" numericId="5988">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Drehzahl des Lagerinnenrings" newValue="Drehzahl des Innenrings"/>
                 <changedValue key="name" lang="en" oldValue="Speed inner ring" newValue="Rotational speed inner ring"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="nominal_reference_rating_life_rotations_din_26281" numericId="6117">
@@ -944,8 +944,8 @@
                 <changedValue key="symbol" oldValue="" newValue="L_10r"/>
                 <changedValue key="name" lang="de" oldValue="Nominelle Referenz-Lebensdauer (L_10r) DIN 26281" newValue="Nominelle Referenz-Lebensdauer DIN 26281"/>
                 <changedValue key="name" lang="en" oldValue="Nominal reference rating life (L_10r) DIN 26281" newValue="Nominal reference rating life DIN 26281"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -974,7 +974,7 @@
         <attributeChange type="EDIT" id="limiting_speed" numericId="6163">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Thermally permissible rotational speed limit" newValue="Limiting speed"/>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(0;∞)"/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -983,8 +983,8 @@
                 <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_u" newValue="operating_point_stiffness_f_u_d_u"/>
                 <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_u" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_u"/>
                 <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_u" newValue="Operating point stiffness ∂F_u / ∂d_u"/>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -1021,31 +1021,31 @@
                 <changedValue key="symbol" oldValue="" newValue="L_10rh"/>
                 <changedValue key="name" lang="de" oldValue="Nominelle Referenz-Lebensdauer (L_10rh) DIN 26281" newValue="Nominelle Referenz-Lebensdauer DIN 26281"/>
                 <changedValue key="name" lang="en" oldValue="Nominal reference rating life (L_10rh) DIN 26281" newValue="Nominal reference rating life DIN 26281"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="torque_around_u_axis" numericId="9201">
             <changedValues>
-                <changedValue key="range" oldValue="[0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="pitch_diameter" numericId="9206">
             <changedValues>
                 <changedValue key="name" lang="en" oldValue="Pitch diameter" newValue="Pitch circle diameter"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="reference_speed" numericId="9208">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Bezugsdrehzahl" newValue="Thermische Bezugsdrehzahl"/>
                 <changedValue key="name" lang="en" oldValue="Reference speed" newValue="Thermal reference speed"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="axial_backlash" numericId="9209">
@@ -1066,8 +1066,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="operating_viscosity" numericId="9217">
             <changedValues>
-                <changedValue key="range" oldValue="[-273.15;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="-273.15" newValue="0"/>
+                <changedValue key="range" oldValue="[-273.15;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="-273.15" newValue="0.0"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
             </changedValues>
         </attributeChange>
@@ -1076,8 +1076,8 @@
                 <changedValue key="attributeId" oldValue="operating_point_stiffness_dF_u_d_v" newValue="operating_point_stiffness_f_u_d_v"/>
                 <changedValue key="name" lang="de" oldValue="Steifigkeit im Betriebspunkt dF_u / d_v" newValue="Steifigkeit im Betriebspunkt ∂F_u / ∂d_v"/>
                 <changedValue key="name" lang="en" oldValue="Operating point stiffness dF_u / d_v" newValue="Operating point stiffness ∂F_u / ∂d_v"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="(-∞;∞)"/>
-                <changedValue key="rangeMin" oldValue="0" newValue=""/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="(-∞;∞)"/>
+                <changedValue key="rangeMin" oldValue="0.0" newValue=""/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="operating_point_stiffness_dF_u_d_w" numericId="9219">
@@ -1222,21 +1222,21 @@
         <attributeChange type="EDIT" id="overrolling_frequency_inner_ring" numericId="9239">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Innenring" newValue="Überrollfrequenz Innenring"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="overrolling_frequency_outer_ring" numericId="9240">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Aussenring" newValue="Überrollfrequenz Aussenring"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="overrolling_frequency_rolling_element" numericId="9241">
             <changedValues>
                 <changedValue key="name" lang="de" oldValue="Ueberrollfrequenz Waelzkoerper" newValue="Überrollfrequenz Waelzkoerper"/>
-                <changedValue key="range" oldValue="(0;∞)" newValue="[0;∞)"/>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
                 <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
             </changedValues>
         </attributeChange>
@@ -1336,7 +1336,55 @@
         <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="overrolling_frequency_inner_ring" attributeNumericId="9239"/>
         <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="overrolling_frequency_outer_ring" attributeNumericId="9240"/>
         <mappingChange type="ADD" componentId="rolling_bearing_with_detailed_geometry" attributeId="overrolling_frequency_rolling_element" attributeNumericId="9241"/>
+        <mappingChange type="DELETE" componentId="bevel_gear" attributeId="face_width" attributeNumericId="346"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="temperature_difference" attributeNumericId="465"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="temperature_difference" attributeNumericId="465"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="inner_diameter" attributeNumericId="490"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="inner_diameter" attributeNumericId="490"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="outer_diameter" attributeNumericId="491"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="outer_diameter" attributeNumericId="491"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="rolling_bearing_file" attributeNumericId="547"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="lever_arm_of_axial_force" attributeNumericId="571"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="lever_arm_of_axial_force" attributeNumericId="571"/>
+        <mappingChange type="DELETE" componentId="shaft_section" attributeId="u_coordinate_on_shaft" attributeNumericId="596"/>
+        <mappingChange type="DELETE" componentId="external_load" attributeId="u_coordinate_on_shaft" attributeNumericId="617"/>
+        <mappingChange type="DELETE" componentId="cylindrical_gear" attributeId="u_coordinate_on_shaft" attributeNumericId="782"/>
+        <mappingChange type="DELETE" componentId="cylindrical_gear" attributeId="number_of_teeth" attributeNumericId="813"/>
         <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="position_of_rolling_elements" attributeNumericId="2160"/>
         <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="position_of_rolling_elements" attributeNumericId="2160"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="temperature_difference_bearing_environment" attributeNumericId="2171"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="temperature_difference_bearing_environment" attributeNumericId="2171"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="temperature_difference_operation_and_installation" attributeNumericId="2184"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="temperature_difference_operation_and_installation" attributeNumericId="2184"/>
+        <mappingChange type="DELETE" componentId="switchable_coupling" attributeId="u_coordinate_on_shaft_side_1" attributeNumericId="2367"/>
+        <mappingChange type="DELETE" componentId="switchable_coupling" attributeId="u_coordinate_on_shaft_side_2" attributeNumericId="2368"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="normal_pressure_angle" attributeNumericId="3050"/>
+        <mappingChange type="DELETE" componentId="rack_shaped_tool" attributeId="normal_pressure_angle" attributeNumericId="3050"/>
+        <mappingChange type="DELETE" componentId="zero_degree_grinding_disk_tool" attributeId="normal_pressure_angle" attributeNumericId="3050"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="normal_module" attributeNumericId="3051"/>
+        <mappingChange type="DELETE" componentId="rack_shaped_tool" attributeId="normal_module" attributeNumericId="3051"/>
+        <mappingChange type="DELETE" componentId="zero_degree_grinding_disk_tool" attributeId="normal_module" attributeNumericId="3051"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="addendum_coefficient_reference_profile" attributeNumericId="3079"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="addendum_reference_profile" attributeNumericId="3080"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="tip_radius_factor" attributeNumericId="3083"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="tip_radius" attributeNumericId="3084"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="tooth_tip_chamfer" attributeNumericId="3085"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="protuberance_amount" attributeNumericId="3086"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="protuberance_amount_factor" attributeNumericId="3087"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="protuberance_height_factor" attributeNumericId="3088"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="utilized_dedendum_coefficient_reference_profile" attributeNumericId="3090"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="utilized_dedendum_reference_profile" attributeNumericId="3091"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="chamfer_angle" attributeNumericId="3093"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="dedendum_coefficient_reference_profile" attributeNumericId="3094"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="dedendum_reference_profile" attributeNumericId="3095"/>
+        <mappingChange type="DELETE" componentId="cutter_wheel_tool" attributeId="protuberance_height" attributeNumericId="3098"/>
+        <mappingChange type="DELETE" componentId="bevel_stage" attributeId="geometry_refers_to" attributeNumericId="3655"/>
+        <mappingChange type="DELETE" componentId="bevel_gear" attributeId="rotational_speed" attributeNumericId="9207"/>
+        <mappingChange type="DELETE" componentId="cylindrical_gear" attributeId="rotational_speed" attributeNumericId="9207"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="all_rows_are_identical" attributeNumericId="9210"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="all_rows_are_identical" attributeNumericId="9210"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_row" attributeId="all_rolling_elements_are_identical" attributeNumericId="9211"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_catalog_geometry" attributeId="temperature_lubricant" attributeNumericId="9216"/>
+        <mappingChange type="DELETE" componentId="rolling_bearing_with_detailed_geometry" attributeId="temperature_lubricant" attributeNumericId="9216"/>
     </mappingChanges>
 </rexsChangelog>

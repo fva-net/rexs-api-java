@@ -481,9 +481,9 @@
             <changedValues>
                 <changedValue key="unit" oldValue="°" newValue="deg"/>
                 <changedValue key="name" lang="en" oldValue="Contact angle" newValue="Pressure angle"/>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(-180;180)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="-180"/>
-                <changedValue key="rangeMax" oldValue="" newValue="180"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(-180.0;180.0)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="-180.0"/>
+                <changedValue key="rangeMax" oldValue="" newValue="180.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="angular_misalignment_around_v_axis" numericId="12499">

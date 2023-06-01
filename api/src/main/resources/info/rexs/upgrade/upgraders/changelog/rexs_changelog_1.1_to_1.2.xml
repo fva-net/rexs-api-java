@@ -252,8 +252,8 @@
         </attributeChange>
         <attributeChange type="EDIT" id="core_hardness_vickers" numericId="2896">
             <changedValues>
-                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0;∞)"/>
-                <changedValue key="rangeMin" oldValue="" newValue="0"/>
+                <changedValue key="range" oldValue="(-∞;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMin" oldValue="" newValue="0.0"/>
             </changedValues>
         </attributeChange>
         <attributeChange type="EDIT" id="thermal_conductivity" numericId="2916">
@@ -346,5 +346,6 @@
         <mappingChange type="ADD" componentId="worm_wheel" attributeId="force_acting_on_shaft_w" attributeNumericId="14001"/>
         <mappingChange type="ADD" componentId="worm_stage" attributeId="nominal_tangential_force_at_reference_circle" attributeNumericId="4263"/>
         <mappingChange type="ADD" componentId="worm_stage" attributeId="gear_ratio" attributeNumericId="1064"/>
+        <mappingChange type="DELETE" componentId="bevel_gear" attributeId="mean_pitch_cone_diameter" attributeNumericId="10227"/>
     </mappingChanges>
 </rexsChangelog>
