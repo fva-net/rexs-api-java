@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 import jakarta.xml.bind.JAXBException;
-
+import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsRelationRole;
 import info.rexs.db.constants.RexsRelationType;
+import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.standard.RexsStandardAttributeIds;
 import info.rexs.db.constants.standard.RexsStandardComponentTypes;
 import info.rexs.db.constants.standard.RexsStandardRelationRoles;
@@ -69,11 +70,32 @@ public class ModelUpgraderV10toV11 {
 			upgradeBearing(newModel, bearing);
 			upgradeBearingRows(newModel, bearing);
 		}
+
+		restoreAttributeValues();
 		
 		newModel.setVersion(RexsStandardVersions.V1_1);
 		newModel.setApplicationId("REXS API Upgrader");
 		
 		return new ModelUpgraderResult(newModel, notifications);
+	}
+
+	private void restoreAttributeValues() {
+		List<RexsComponent> bevelGears = newModel.getComponentsOfType(RexsStandardComponentTypes.bevel_gear);
+		for (RexsComponent gear: bevelGears) {
+			restoreAttributeValue(gear, RexsStandardAttributeIds.face_width);
+		}
+		List<RexsComponent> gears = newModel.getComponentsOfType(RexsStandardComponentTypes.cylindrical_gear);
+		for (RexsComponent gear: gears) {
+			restoreAttributeValue(gear, RexsStandardAttributeIds.u_coordinate_on_shaft);
+		}
+		List<RexsComponent> shaftSections = newModel.getComponentsOfType(RexsStandardComponentTypes.shaft_section);
+		for (RexsComponent section: shaftSections) {
+			restoreAttributeValue(section, RexsStandardAttributeIds.u_coordinate_on_shaft);
+		}
+		List<RexsComponent> externalLoads = newModel.getComponentsOfType(RexsStandardComponentTypes.external_load);
+		for (RexsComponent load: externalLoads) {
+			restoreAttributeValue(load, RexsStandardAttributeIds.u_coordinate_on_shaft);
+		}
 	}
 
 	private void checkMissingRoles(RexsModel model) {
@@ -243,8 +265,9 @@ public class ModelUpgraderV10toV11 {
 			upgradeRollingElements(model, rowComp);
 		}
 		
-		if (bearingComp.hasAttribute(RexsAttributeId.all_rows_are_identical)) {
-			boolean rowsIdentical = bearingComp.getBooleanValue(RexsAttributeId.all_rows_are_identical);
+		RexsComponent oldBearingComp = oldModel.getComponent(bearingComp.getId());
+		if (oldBearingComp.hasAttribute(RexsAttributeId.all_rows_are_identical)) {
+			boolean rowsIdentical = oldBearingComp.getBooleanValue(RexsAttributeId.all_rows_are_identical);
 			if (rowsIdentical) {
 				notifications.add(new Notification("create instances of identical rows",
 						new UpgradeNotifications.ComponentSource(bearingComp.getId())));
@@ -266,9 +289,11 @@ public class ModelUpgraderV10toV11 {
 	}
 
 	private void upgradeRollingElements(RexsModel model, RexsComponent rowComp) {
-		if (rowComp.hasAttribute(RexsAttributeId.all_rolling_elements_are_identical)) {
-			boolean elementsIdentical = rowComp.getBooleanValue(RexsAttributeId.all_rolling_elements_are_identical);
+		RexsComponent oldRowComp = oldModel.getComponent(rowComp.getId());
+		if (oldRowComp.hasAttribute(RexsAttributeId.all_rolling_elements_are_identical)) {
+			boolean elementsIdentical = oldRowComp.getBooleanValue(RexsAttributeId.all_rolling_elements_are_identical);
 			if (elementsIdentical) {
+				// create number_of_rolling_elements-1 additional rolling elements
 				notifications.add(new Notification("create instances of identical rolling elements",
 						new UpgradeNotifications.ComponentSource(rowComp.getId())));
 				List<RexsRelation> relations = model.getRelations(RexsStandardRelationTypes.ordered_assembly, RexsStandardRelationRoles.assembly, rowComp.getId());
@@ -288,5 +313,12 @@ public class ModelUpgraderV10toV11 {
 		}
 	}
 	
+	private void restoreAttributeValue(RexsComponent comp, RexsAttributeId attrId) {
+		// the generic update deletes the attribute accidently. Make sure the attribute and its value is restored
+		RexsComponent oldComp = oldModel.getComponent(comp.getId());
+		RexsUnitId defaultUnit = DbModelRegistry.getInstance().getAttributeUnit(attrId.getId(), RexsStandardVersions.V1_1);
+		double oldValue = oldComp.getDoubleValue(attrId, defaultUnit);
+		comp.addAttribute(attrId, oldValue);
+	}
 	
 }

@@ -178,8 +178,8 @@ public class ModelChangelogUpgrader {
 							break;
 						}
 						case "valuetype": {
-							RexsValueType oldType = RexsValueType.valueOf(changedValue.getOldValue());
-							RexsValueType newType = RexsValueType.valueOf(changedValue.getNewValue());
+							RexsValueType oldType = RexsValueType.findByKey(changedValue.getOldValue());
+							RexsValueType newType = RexsValueType.findByKey(changedValue.getNewValue());
 
 							editAttributeValueType(component, attribute, oldType, newType);
 							break;
@@ -294,7 +294,8 @@ public class ModelChangelogUpgrader {
 			break;
 		}
 		case ENUM: {
-			//TODO
+			// Do nothing. Change must be handled by custom upgrade.
+			break;
 		}
 		default:
 			throw new RuntimeException("unsupported type conversion to "+newType);
