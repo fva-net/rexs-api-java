@@ -3,13 +3,14 @@ package info.rexs.upgrade.upgraders;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.xml.bind.JAXBException;
 import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsAttributeId;
+import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsRelationRole;
 import info.rexs.db.constants.RexsRelationType;
 import info.rexs.db.constants.RexsUnitId;
@@ -26,10 +27,53 @@ import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.NotificationType;
 import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
+import jakarta.xml.bind.JAXBException;
 
 public class ModelUpgraderV10toV11 {
+	
+	private static class AttributeLocation {
+		public final RexsComponentType component;
+		public final RexsAttributeId attribute;
 
+		public AttributeLocation(RexsComponentType component, RexsAttributeId attribute) {
+			this.component = component;
+			this.attribute = attribute;
+		}
+	}
+	
 	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.0_to_1.1.xml";
+	
+	/** attributes that are deleted by the changelog upgrader but are meant to live on with a different numeric id */
+	private static final List<AttributeLocation> attributesToRestore = Arrays.asList(
+			new AttributeLocation(RexsStandardComponentTypes.bevel_gear, RexsStandardAttributeIds.face_width),
+			new AttributeLocation(RexsStandardComponentTypes.bevel_gear, RexsStandardAttributeIds.rotational_speed),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.addendum_coefficient_reference_profile),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.addendum_reference_profile),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.chamfer_angle),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.dedendum_coefficient_reference_profile),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.dedendum_reference_profile),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.normal_module),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.normal_pressure_angle),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.protuberance_amount),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.protuberance_amount_factor),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.protuberance_height),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.protuberance_height_factor),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.tip_radius),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.tip_radius_factor),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.tooth_tip_chamfer),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.utilized_dedendum_coefficient_reference_profile),
+			new AttributeLocation(RexsStandardComponentTypes.cutter_wheel_tool, RexsStandardAttributeIds.utilized_dedendum_reference_profile),
+			new AttributeLocation(RexsStandardComponentTypes.cylindrical_gear, RexsStandardAttributeIds.number_of_teeth),
+			new AttributeLocation(RexsStandardComponentTypes.cylindrical_gear, RexsStandardAttributeIds.rotational_speed),
+			new AttributeLocation(RexsStandardComponentTypes.cylindrical_gear, RexsStandardAttributeIds.u_coordinate_on_shaft),
+			new AttributeLocation(RexsStandardComponentTypes.external_load, RexsStandardAttributeIds.u_coordinate_on_shaft),
+			new AttributeLocation(RexsStandardComponentTypes.rack_shaped_tool, RexsStandardAttributeIds.normal_module),
+			new AttributeLocation(RexsStandardComponentTypes.rack_shaped_tool, RexsStandardAttributeIds.normal_pressure_angle),
+			new AttributeLocation(RexsStandardComponentTypes.rolling_bearing_with_catalog_geometry, RexsStandardAttributeIds.temperature_lubricant),
+			new AttributeLocation(RexsStandardComponentTypes.rolling_bearing_with_detailed_geometry, RexsStandardAttributeIds.temperature_lubricant),
+			new AttributeLocation(RexsStandardComponentTypes.shaft_section, RexsStandardAttributeIds.u_coordinate_on_shaft),
+			new AttributeLocation(RexsStandardComponentTypes.zero_degree_grinding_disk_tool, RexsStandardAttributeIds.normal_module),
+			new AttributeLocation(RexsStandardComponentTypes.zero_degree_grinding_disk_tool, RexsStandardAttributeIds.normal_pressure_angle));
 	
 	private RexsModel newModel;
 	private final RexsModel oldModel;
@@ -77,25 +121,6 @@ public class ModelUpgraderV10toV11 {
 		newModel.setApplicationId("REXS API Upgrader");
 		
 		return new ModelUpgraderResult(newModel, notifications);
-	}
-
-	private void restoreAttributeValues() {
-		List<RexsComponent> bevelGears = newModel.getComponentsOfType(RexsStandardComponentTypes.bevel_gear);
-		for (RexsComponent gear: bevelGears) {
-			restoreAttributeValue(gear, RexsStandardAttributeIds.face_width);
-		}
-		List<RexsComponent> gears = newModel.getComponentsOfType(RexsStandardComponentTypes.cylindrical_gear);
-		for (RexsComponent gear: gears) {
-			restoreAttributeValue(gear, RexsStandardAttributeIds.u_coordinate_on_shaft);
-		}
-		List<RexsComponent> shaftSections = newModel.getComponentsOfType(RexsStandardComponentTypes.shaft_section);
-		for (RexsComponent section: shaftSections) {
-			restoreAttributeValue(section, RexsStandardAttributeIds.u_coordinate_on_shaft);
-		}
-		List<RexsComponent> externalLoads = newModel.getComponentsOfType(RexsStandardComponentTypes.external_load);
-		for (RexsComponent load: externalLoads) {
-			restoreAttributeValue(load, RexsStandardAttributeIds.u_coordinate_on_shaft);
-		}
 	}
 
 	private void checkMissingRoles(RexsModel model) {
@@ -312,13 +337,23 @@ public class ModelUpgraderV10toV11 {
 			}
 		}
 	}
+
+	private void restoreAttributeValues() {
+		for (AttributeLocation loc: attributesToRestore) {
+			List<RexsComponent> components = newModel.getComponentsOfType(loc.component);
+			for (RexsComponent component: components)
+				restoreAttributeValue(component, loc.attribute);
+		}
+	}
 	
 	private void restoreAttributeValue(RexsComponent comp, RexsAttributeId attrId) {
 		// the generic update deletes the attribute accidently. Make sure the attribute and its value is restored
 		RexsComponent oldComp = oldModel.getComponent(comp.getId());
-		RexsUnitId defaultUnit = DbModelRegistry.getInstance().getAttributeUnit(attrId.getId(), RexsStandardVersions.V1_1);
-		double oldValue = oldComp.getDoubleValue(attrId, defaultUnit);
-		comp.addAttribute(attrId, oldValue);
+		if (oldComp.hasAttribute(attrId)) {
+			RexsUnitId defaultUnit = DbModelRegistry.getInstance().getAttributeUnit(attrId.getId(), RexsStandardVersions.V1_1);
+			double oldValue = oldComp.getDoubleValue(attrId, defaultUnit);
+			comp.addAttribute(attrId, oldValue);
+		}
 	}
 	
 }
