@@ -100,6 +100,7 @@ public class ModelUpgraderV10toV11 {
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
+		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
 		
 		checkMissingRoles(newModel);
 		updateCouplingToSideRelation(newModel);
@@ -154,7 +155,7 @@ public class ModelUpgraderV10toV11 {
 					boolean roleIsPresent = relType.getRoles().stream().anyMatch(role -> role==ref.getRole());
 					if (!roleIsPresent)
 						notifications.add(new Notification(NotificationType.WARNING,
-								"extraneous role "+ref.getRole()+" in relation "+relation.getId(),
+								"extraneous role "+ref.getRole().getKey()+" in relation "+relation.getId(),
 								new UpgradeNotifications.RelationSource(relation.getId())));
 					
 				}

@@ -56,6 +56,7 @@ public class ModelUpgraderV12toV13 {
 
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
+		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
 		
 		newModel.setVersion(RexsStandardVersions.V1_3);
 		newModel.setApplicationId("REXS API Upgrader");

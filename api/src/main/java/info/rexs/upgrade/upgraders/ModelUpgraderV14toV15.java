@@ -38,6 +38,7 @@ public class ModelUpgraderV14toV15 {
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
+		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
 		
 		newModel.setVersion(RexsStandardVersions.V1_5);
 		newModel.setApplicationId("REXS API Upgrader");

@@ -2,6 +2,7 @@ package info.rexs.upgrade.upgraders;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class UpgradeNotifications {
@@ -108,6 +109,10 @@ public class UpgradeNotifications {
 		notifications.add(notification);
 	}
 
+	public void addAll(Collection<Notification> notification) {
+		notifications.addAll(notification);
+	}
+	
 	public List<Notification> getNotifications() {
 		return notifications;
 	}

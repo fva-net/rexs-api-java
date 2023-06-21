@@ -302,4 +302,8 @@ public class ModelChangelogUpgrader {
 		}		
 	}
 	
+	public UpgradeNotifications getNotifications() {
+		return notifications;
+	}
+	
 }

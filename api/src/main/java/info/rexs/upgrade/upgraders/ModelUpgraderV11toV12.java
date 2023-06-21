@@ -39,6 +39,7 @@ public class ModelUpgraderV11toV12 {
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
+		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
 		
 		newModel.setVersion(RexsStandardVersions.V1_2);
 		newModel.setApplicationId("REXS API Upgrader");

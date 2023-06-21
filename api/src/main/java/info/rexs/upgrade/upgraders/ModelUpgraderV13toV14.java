@@ -55,6 +55,7 @@ public class ModelUpgraderV13toV14 {
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
+		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
 		
 		checkDuplicateReferences(newModel);
 		setCoordinateSystemReference(newModel);
