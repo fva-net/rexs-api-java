@@ -73,8 +73,7 @@ public class ModelChangelogUpgrader {
 					deleteAttributesByComponentTypeAndAttributeId(newModel, change.getComponentId(), change.getAttributeId());
 				}
 				else 
-					notifications.add(new Notification(NotificationType.WARNING, "Outdated attribute mapping for type "+change.getComponentId(),
-						new AttributeSource(change.getAttributeId())));
+					notifyAboutOutdatedAttributeMapping(change.getComponentId(), change.getAttributeId());				
 			}
 		}
 
@@ -88,6 +87,16 @@ public class ModelChangelogUpgrader {
 
 
 	
+	private void notifyAboutOutdatedAttributeMapping(String componentType, String attributeId) {
+		List<RexsComponent> affectedComponents = newModel.getComponentsOfType(RexsComponentType.findById(componentType)).stream().
+				filter( c -> c.getAttributes().stream().anyMatch(a -> a.getAttributeId().getId().equals(attributeId))).toList();
+		for (RexsComponent component : affectedComponents) {
+			notifications.add(new Notification(NotificationType.WARNING, "Attribute is no longer available for this component type: ",
+					new ComponentSource(component.getId()), new AttributeSource(attributeId)));
+		}
+	}
+
+
 	private void editComponentsByType(String componentType, List<ChangedValue> changedValues) {
 		for (RexsComponent component : oldModel.getComponents()) {
 			if (component.getType().getId().equals(componentType)) {
@@ -111,15 +120,14 @@ public class ModelChangelogUpgrader {
 
 		for (RexsComponent componentToDelete : componentsToDelete) {
 			rexsModel.removeComponent(componentToDelete);
+			notifications.add(new Notification("removed component", new ComponentSource(componentToDelete.getId())));
 		}
 	}
 	
 	private void deleteAttributesByComponentTypeAndAttributeId(RexsModel rexsModel, String componentType, String attributeId) {
 		for (RexsComponent component : rexsModel.getComponents()) {
 			if (component.getType().getId().equals(componentType)) {
-				deleteAttributesById(component, attributeId);
-				notifications.add(new Notification("removed attribute",
-						new ComponentSource(component.getId()), new AttributeSource(attributeId)));
+				deleteAttributesById(component, attributeId);				
 			}
 		}
 	}
@@ -133,6 +141,8 @@ public class ModelChangelogUpgrader {
 
 		for (RexsAttribute attributeToDelete : attributesToDelete) {
 			component.removeAttribute(attributeToDelete.getAttributeId());
+			notifications.add(new Notification("removed attribute",
+					new ComponentSource(component.getId()), new AttributeSource(attributeId)));
 		}
 	}
 	
