@@ -22,12 +22,13 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 public class FileResource implements Resource {
 
 	private final Path filePath;
+	
+	public FileResource(Path filePath) {
+		this.filePath = filePath;
+	}
 
 	@Override
 	public InputStream openInputStream() throws IOException {
@@ -58,5 +59,4 @@ public class FileResource implements Resource {
 	public String getFilename() {
 		return this.filePath.getFileName().toString();
 	}
-
 }

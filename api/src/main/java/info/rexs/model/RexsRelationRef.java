@@ -30,9 +30,6 @@ public class RexsRelationRef {
 	/** The role of the relation reference */
 	private RexsRelationRole role;
 
-	/** The origin role of the relation reference. */
-	private String originRole;
-
 	/** Optional note for better readability of the relation reference. */
 	private String hint;
 
@@ -46,10 +43,11 @@ public class RexsRelationRef {
 	 * @param hint
 	 * 				The hint of the relation reference as a {@link String}.
 	 */
-	protected RexsRelationRef(Integer id, String role, String hint) {
+	public RexsRelationRef(Integer id, String role, String hint) {
 		this.id = id;
 		this.role = RexsRelationRole.findByKey(role);
-		this.originRole = role;
+		if (this.role==null)
+			throw new RexsModelAccessException("Invalid RexsRelationRole: "+role);
 		this.hint = hint;
 	}
 
@@ -63,11 +61,17 @@ public class RexsRelationRef {
 	 * @param hint
 	 * 				The hint of the relation reference as a {@link String}.
 	 */
-	protected RexsRelationRef(Integer id, RexsRelationRole role, String hint) {
+	public RexsRelationRef(Integer id, RexsRelationRole role, String hint) {
 		this.id = id;
 		this.role = role;
-		this.originRole = role.getKey();
 		this.hint = hint;
+	}
+
+	/** copy constructor */
+	public RexsRelationRef(RexsRelationRef reference) {
+		this.id = reference.id;
+		this.role = reference.role;
+		this.hint = reference.hint;
 	}
 
 	/**
@@ -100,13 +104,6 @@ public class RexsRelationRef {
 		this.role = role;
 	}
 
-	/**
-	 * @return
-	 * 				The origin role of the relation reference as a {@link String}.
-	 */
-	public String getOriginRole() {
-		return originRole;
-	}
 
 	/**
 	 * @return

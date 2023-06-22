@@ -31,13 +31,10 @@ import info.rexs.db.constants.RexsRelationType;
 public class RexsRelation {
 
 	/** The numeric ID of the relation. */
-	private Integer id;
+	private final Integer id;
 
 	/** The type of the relation. */
 	private RexsRelationType type;
-
-	/** The origin type of the relation. */
-	private String originType;
 
 	/** Optional order for sorting in the case of several relations. */
 	private Integer order;
@@ -61,7 +58,8 @@ public class RexsRelation {
 	protected RexsRelation(Integer id, String type, Integer order) {
 		this.id = id;
 		this.type = RexsRelationType.findByKey(type);
-		this.originType = type;
+		if (this.type==null)
+			throw new RexsModelAccessException("Invalid RexsRelationType "+type);
 		this.order = order;
 	}
 
@@ -75,11 +73,21 @@ public class RexsRelation {
 	 * @param order
 	 * 				The order of the relation as a {@link Integer}.
 	 */
-	protected RexsRelation(Integer id, RexsRelationType type, Integer order) {
+	public RexsRelation(Integer id, RexsRelationType type, Integer order) {
 		this.id = id;
 		this.type = type;
-		this.originType = type.getKey();
 		this.order = order;
+	}
+
+	/** copy constructor */
+	public RexsRelation(RexsRelation relation) {
+		this.id = relation.id;
+		this.type = relation.type;
+		this.order = relation.order;
+		for (RexsRelationRef reference: relation.getRefs()) {
+			RexsRelationRef newReference = new RexsRelationRef(reference);
+			this.addRef(newReference);
+		}
 	}
 
 	/**
@@ -98,21 +106,12 @@ public class RexsRelation {
 		return type;
 	}
 
-	/**
-	 * @return
-	 * 				The origin type of the relation as a {@link String}.
-	 */
-	public String getOriginType() {
-		return originType;
-	}
 
 	/**
 	 * @return
 	 * 				The order of the relation as {@link Integer}.
 	 */
 	public Integer getOrder() {
-		if (order == null)
-			order = -1;
 		return order;
 	}
 
@@ -313,5 +312,14 @@ public class RexsRelation {
 			if (ref.getId().equals(oldId))
 				ref.setId(newId);
 		}
+	}
+	
+	@Override
+	public String toString() {
+		String refString = refs.stream()
+				.map(ref -> ref.getRole().getKey()+": "+ref.getId())
+				.reduce((a,b) -> a+", "+b)
+				.orElse("");
+		return type.getKey()+"("+refString+")";
 	}
 }

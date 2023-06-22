@@ -19,14 +19,16 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 public class ByteArrayResource implements Resource {
 
 	private final byte[] byteArray;
 
 	private final String filename;
+	
+	public ByteArrayResource(byte[] byteArray, String filename) {
+		this.byteArray = byteArray;
+		this.filename = filename;
+	}
 
 	@Override
 	public InputStream openInputStream() throws IOException {

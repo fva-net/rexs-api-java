@@ -1,8 +1,8 @@
 //
-// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
-// Siehe https://eclipse-ee4j.github.io/jaxb-ri
-// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2023.05.03 um 12:26:12 PM CEST
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert 
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+// Generiert: 2020.08.19 um 03:16:47 PM CEST 
 //
 
 
@@ -14,8 +14,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java-Klasse für versionStatusType.
- *
+ * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>
  * <pre>
  * &lt;simpleType name="versionStatusType"&gt;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -24,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- *
+ * 
  */
 @XmlType(name = "versionStatusType")
 @XmlEnum

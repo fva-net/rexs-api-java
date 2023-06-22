@@ -1,8 +1,8 @@
 //
-// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
-// Siehe https://eclipse-ee4j.github.io/jaxb-ri
-// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2023.05.03 um 12:26:12 PM CEST
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert 
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+// Generiert: 2020.08.19 um 03:16:47 PM CEST 
 //
 
 
@@ -19,9 +19,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java-Klasse für anonymous complex type.
- *
+ * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
- *
+ * 
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
@@ -45,8 +45,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -83,11 +83,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der enumValues-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link EnumValues }
-     *
+     *     
      */
     public EnumValues getEnumValues() {
         return enumValues;
@@ -95,11 +95,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der enumValues-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link EnumValues }
-     *
+     *     
      */
     public void setEnumValues(EnumValues value) {
         this.enumValues = value;
@@ -107,11 +107,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der numericId-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public BigInteger getNumericId() {
         return numericId;
@@ -119,11 +119,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der numericId-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public void setNumericId(BigInteger value) {
         this.numericId = value;
@@ -131,11 +131,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der attributeId-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getAttributeId() {
         return attributeId;
@@ -143,11 +143,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der attributeId-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setAttributeId(String value) {
         this.attributeId = value;
@@ -155,11 +155,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der valueType-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public BigInteger getValueType() {
         return valueType;
@@ -167,11 +167,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der valueType-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public void setValueType(BigInteger value) {
         this.valueType = value;
@@ -179,11 +179,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der unit-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public BigInteger getUnit() {
         return unit;
@@ -191,11 +191,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der unit-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public void setUnit(BigInteger value) {
         this.unit = value;
@@ -203,11 +203,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der symbol-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getSymbol() {
         return symbol;
@@ -215,11 +215,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der symbol-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setSymbol(String value) {
         this.symbol = value;
@@ -227,11 +227,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der nameEn-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getNameEn() {
         return nameEn;
@@ -239,11 +239,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der nameEn-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setNameEn(String value) {
         this.nameEn = value;
@@ -251,11 +251,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der nameDe-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getNameDe() {
         return nameDe;
@@ -263,11 +263,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der nameDe-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setNameDe(String value) {
         this.nameDe = value;
@@ -275,11 +275,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der rangeMin-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *
+     *     
      */
     public BigDecimal getRangeMin() {
         return rangeMin;
@@ -287,11 +287,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der rangeMin-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *
+     *     
      */
     public void setRangeMin(BigDecimal value) {
         this.rangeMin = value;
@@ -299,11 +299,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der rangeMinIntervalOpen-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Boolean }
-     *
+     *     
      */
     public Boolean isRangeMinIntervalOpen() {
         return rangeMinIntervalOpen;
@@ -311,11 +311,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der rangeMinIntervalOpen-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *
+     *     
      */
     public void setRangeMinIntervalOpen(Boolean value) {
         this.rangeMinIntervalOpen = value;
@@ -323,11 +323,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der rangeMax-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *
+     *     
      */
     public BigDecimal getRangeMax() {
         return rangeMax;
@@ -335,11 +335,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der rangeMax-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *
+     *     
      */
     public void setRangeMax(BigDecimal value) {
         this.rangeMax = value;
@@ -347,11 +347,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der rangeMaxIntervalOpen-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Boolean }
-     *
+     *     
      */
     public Boolean isRangeMaxIntervalOpen() {
         return rangeMaxIntervalOpen;
@@ -359,11 +359,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der rangeMaxIntervalOpen-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *
+     *     
      */
     public void setRangeMaxIntervalOpen(Boolean value) {
         this.rangeMaxIntervalOpen = value;
@@ -371,11 +371,11 @@ public class Attribute {
 
     /**
      * Ruft den Wert der databaseId-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public BigInteger getDatabaseId() {
         return databaseId;
@@ -383,11 +383,11 @@ public class Attribute {
 
     /**
      * Legt den Wert der databaseId-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public void setDatabaseId(BigInteger value) {
         this.databaseId = value;

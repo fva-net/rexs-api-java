@@ -1,8 +1,8 @@
 //
-// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
-// Siehe https://eclipse-ee4j.github.io/jaxb-ri
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2023.05.03 um 12:26:13 PM CEST
+// Generiert: 2020.08.19 um 03:16:48 PM CEST
 //
 
 
@@ -10,6 +10,7 @@ package info.rexs.model.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -70,9 +71,8 @@ public class R {
      */
     public List<String> getC() {
         if (c == null) {
-            c = new ArrayList<String>();
+            c = new ArrayList<>();
         }
         return this.c;
     }
-
 }

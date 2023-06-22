@@ -20,25 +20,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import lombok.EqualsAndHashCode;
-
 /**
  * This class represents a sub-model (containing only the varied data) of a REXS model.
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsSubModel implements Comparable<RexsSubModel> {
 
 	/** An internal index with all components of the sub-model for quick access. */
 	protected Map<Integer, RexsComponent> components = new HashMap<>();
 
 	/** The numeric ID of the sub-model within the REXS model. */
-	@EqualsAndHashCode.Include
 	private Integer id;
 
 	/** Indicates whether it is a separate sub-model for accumulated values. */
-	@EqualsAndHashCode.Include
 	private boolean isAccumulation = false;
 
 	/**
@@ -165,5 +160,41 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 
 		// sort by id
 		return getId().compareTo(other.getId());
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsSubModel)) {
+			return false;
+		}
+		RexsSubModel other = (RexsSubModel)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_id = getId();
+		Object other_id = other.getId();
+		if (this_id == null ? other_id != null : !this_id.equals(other_id)) {
+			return false;
+		}
+		Object this_isAccumulation = isAccumulation();
+		Object other_isAccumulation = other.isAccumulation();
+		return this_isAccumulation == null ? other_isAccumulation == null : this_isAccumulation.equals(other_isAccumulation);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsSubModel;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _id = getId();
+		result = result * 59 + (_id == null ? 43 : _id.hashCode());
+		Object _isAccumulation = isAccumulation();
+		result = result * 59 + (_isAccumulation == null ? 43 : _isAccumulation.hashCode());
+		return result;
 	}
 }

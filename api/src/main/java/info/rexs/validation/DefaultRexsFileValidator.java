@@ -41,7 +41,6 @@ import info.rexs.io.zip.RexsZipFileReader;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.schema.RexsSchema;
-import lombok.Getter;
 
 /**
  * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file.
@@ -160,7 +159,6 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		return validationResult;
 	}
 
-	@Getter
 	private class SchemaValidationErrorHandler implements ErrorHandler {
 
 		private List<String> errorMessages = new ArrayList<>();
@@ -170,6 +168,14 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		public void error(SAXParseException ex) throws SAXException
 		{
 			errorMessages.add(createExceptionMessage(ex));
+		}
+
+		public List<String> getWarningMessages() {
+			return this.warningMessages;
+		}
+
+		public List<String> getErrorMessages() {
+			return this.errorMessages;
 		}
 
 		@Override

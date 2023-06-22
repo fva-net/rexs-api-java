@@ -15,6 +15,7 @@
  ******************************************************************************/
 package info.rexs.model;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,6 +69,11 @@ public class RexsAttribute {
 		Objects.requireNonNull(unit, "unit cannot be empty");
 		this.unit = RexsUnitId.findById(unit);
 		this.originUnit = unit;
+		
+		if (this.unit==RexsUnitId.UNKNOWN)
+			this.unit = RexsUnitId.create(originUnit);
+		if (this.attributeId==RexsAttributeId.UNKNOWN)
+			this.attributeId = RexsAttributeId.create(originAttributeId, this.unit);
 	}
 
 	/**
@@ -77,12 +83,7 @@ public class RexsAttribute {
 	 * 				The ID of the attribute as a {@link String}.
 	 */
 	protected RexsAttribute(String attributeId) {
-		Objects.requireNonNull(attributeId, "attribute id cannot be empty");
-		this.attributeId = RexsAttributeId.findById(attributeId);
-		this.originAttributeId = attributeId;
-
-		this.unit = RexsStandardUnitIds.none;
-		this.originUnit = this.unit.getId();
+		this(attributeId, RexsStandardUnitIds.none.toString());
 	}
 
 	/**
@@ -97,6 +98,13 @@ public class RexsAttribute {
 		this.originAttributeId = attributeId.getId();
 		this.unit = attributeId.getUnit();
 		this.originUnit = this.unit.getId();
+	}
+
+	/** copy constructor */
+	public RexsAttribute(RexsAttribute attribute) {
+		this(attribute.attributeId);
+		if (attribute.value != null)
+			this.setRawValue(attribute.value.copy());
 	}
 
 	/**
@@ -185,6 +193,11 @@ public class RexsAttribute {
 		return value.getValueString();
 	}
 
+	public OffsetDateTime getDateTimeValue() {
+		checkValue();
+		return value.getValueDateTime();
+	}
+	
 	/**
 	 * Returns the boolean value of the attribute.
 	 *
@@ -452,10 +465,11 @@ public class RexsAttribute {
 	 * @return
 	 * 				TODO Document me!
 	 */
-	public Object getValue(RexsValueType type) {
+	public Object getValue(RexsValueType type) throws RexsModelAccessException{
 
 		switch (type) {
-
+			case DATE_TIME:
+				return getDateTimeValue();
 			case BOOLEAN:
 				return getBooleanValue();
 			case BOOLEAN_ARRAY:
@@ -520,6 +534,11 @@ public class RexsAttribute {
 		((RexsAttributeValueScalar)this.value).setValueString(value);
 	}
 
+	public void setTimeValue(OffsetDateTime value) {
+		this.value = new RexsAttributeValueScalar();
+		((RexsAttributeValueScalar)this.value).setValueTime(value);
+	}
+	
 	/**
 	 * Sets the boolean value of the attribute.
 	 *
@@ -817,4 +836,9 @@ public class RexsAttribute {
 			this.value = new RexsAttributeValueArrayOfArrays();
 		((RexsAttributeValueArrayOfArrays)this.value).setValueArrayOfIntegerArrays(value);
 	}
+
+	public void setId(RexsAttributeId id) {
+		this.attributeId = id;
+	}
+
 }

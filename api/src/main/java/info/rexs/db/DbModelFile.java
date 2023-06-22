@@ -20,7 +20,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import info.rexs.db.constants.RexsVersion;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents a REXS database model file.
@@ -31,7 +30,6 @@ import lombok.EqualsAndHashCode;
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class DbModelFile {
 
 	/** The default {@link DbModelFileResolver} in case none is specified. */
@@ -59,7 +57,6 @@ public class DbModelFile {
 	public static final DbModelFile V1_5 = create(RexsVersion.V1_5);
 
 	/** The {@link RexsVersion} of the REXS database model file. */
-	@EqualsAndHashCode.Include
 	private final RexsVersion version;
 
 	/** The {@link DbModelFileResolver} for the REXS database model file. */
@@ -141,5 +138,34 @@ public class DbModelFile {
 		}
 
 		return null;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof DbModelFile)) {
+			return false;
+		}
+		DbModelFile other = (DbModelFile)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_version = getVersion();
+		Object other_version = other.getVersion();
+		return this_version == null ? other_version == null : this_version.equals(other_version);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof DbModelFile;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _version = getVersion();
+		result = result * 59 + (_version == null ? 43 : _version.hashCode());
+		return result;
 	}
 }

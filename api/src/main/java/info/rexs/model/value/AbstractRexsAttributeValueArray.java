@@ -35,8 +35,12 @@ public abstract class AbstractRexsAttributeValueArray extends AbstractRexsAttrib
 
 		for (int i = 0; i < stringList.size(); i++) {
 			String stringValue = stringList.get(i);
-			if (!stringValue.isEmpty())
+			if (!stringValue.isEmpty()) {
+				if(!stringValue.equals("false")&&!stringValue.equals("true")) {
+					throw new RexsModelAccessException("cannot read boolean value " + stringValue);
+				}
 				booleanArray[i] = Boolean.valueOf(stringValue);
+			}
 		}
 		return booleanArray;
 	}

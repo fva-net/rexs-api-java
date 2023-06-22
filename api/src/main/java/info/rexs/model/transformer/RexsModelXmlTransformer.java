@@ -18,14 +18,13 @@ package info.rexs.model.transformer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsRelationType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.RexsAttribute;
@@ -116,7 +115,8 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Relations relationsXml = objectFactory.createRelations();
 
-		for (RexsRelation relation : relations) {
+		List<RexsRelation> sortedRelations = relations.stream().sorted(Comparator.comparingInt(rel -> rel.getId())).toList();
+		for (RexsRelation relation : sortedRelations) {
 			relationsXml.getRelation().add(createRelationXml(relation));
 		}
 
@@ -126,31 +126,19 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 	private Relation createRelationXml(RexsRelation relation) {
 		Relation relationXml = objectFactory.createRelation();
 		relationXml.setId(relation.getId());
-
-		if (relation.getType().equals(RexsRelationType.UNKNOWN)) {
-			relationXml.setType(relation.getOriginType());
-		} else {
-			relationXml.setType(relation.getType().getKey());
-		}
-
+		relationXml.setType(relation.getType().getKey());
 		if (relation.getOrder() != null && relation.getOrder() > -1)
 			relationXml.setOrder(relation.getOrder());
-
 		relationXml.getRef().addAll(createRefsXml(relation.getRefs()));
-
 		return relationXml;
 	}
 
 	private List<Ref> createRefsXml(Collection<RexsRelationRef> refs) {
 		if (refs == null || refs.isEmpty())
 			return new ArrayList<>();
-
 		List<Ref> refsXml = new ArrayList<>();
-
-		for (RexsRelationRef ref : refs) {
+		for (RexsRelationRef ref : refs)
 			refsXml.add(createRefXml(ref));
-		}
-
 		return refsXml;
 	}
 
@@ -158,13 +146,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		Ref refXml = objectFactory.createRef();
 		refXml.setId(ref.getId());
 		refXml.setHint(ref.getHint());
-
-		if (ref.getRole().equals(RexsRelationRole.UNKNOWN)) {
-			refXml.setRole(ref.getOriginRole());
-		} else {
-			refXml.setRole(ref.getRole().getKey());
-		}
-
+		refXml.setRole(ref.getRole().getKey());
 		return refXml;
 	}
 
@@ -174,7 +156,8 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Components componentsXml = objectFactory.createComponents();
 
-		for (RexsComponent component : components) {
+		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		for (RexsComponent component : sortedComponents) {
 			componentsXml.getComponent().add(createComponentXml(component));
 		}
 
@@ -190,6 +173,8 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		} else {
 			componentXml.setType(component.getType().getId());
 		}
+
+		//if (component.getName() != null && !component.getName().isEmpty())
 		componentXml.setName(component.getName());
 
 		componentXml.getAttribute().addAll(createAttributesXml(component.getAttributes()));
@@ -203,7 +188,8 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		List<Attribute> attributesXml = new ArrayList<>();
 
-		for (RexsAttribute attribute : attributes) {
+		List<RexsAttribute> sortedAttributes = attributes.stream().sorted(Comparator.comparing(attribute -> attribute.getAttributeId().getId())).toList();
+		for (RexsAttribute attribute : sortedAttributes) {
 			attributesXml.add(createAttributeXml(attribute));
 		}
 
@@ -387,7 +373,8 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		LoadCase loadCaseXml = objectFactory.createLoadCase();
 		loadCaseXml.setId(loadCase.getId());
 
-		for (RexsComponent component : loadCase.getComponents()) {
+		List<RexsComponent> sortedComponents = loadCase.getComponents().stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		for (RexsComponent component : sortedComponents) {
 			loadCaseXml.getComponent().add(createComponentXml(component));
 		}
 
@@ -404,7 +391,8 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Accumulation accumulationXml = objectFactory.createAccumulation();
 
-		for (RexsComponent component : components) {
+		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		for (RexsComponent component : sortedComponents) {
 			accumulationXml.getComponent().add(createComponentXml(component));
 		}
 
@@ -455,7 +443,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		return component;
 	}
 
-	private RexsAttribute createAttribute(Attribute attributeXml) {
+	public RexsAttribute createAttribute(Attribute attributeXml) {
 		RexsAttribute attribute;
 
 		String unit = attributeXml.getUnit();
@@ -469,20 +457,19 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		return attribute;
 	}
 
-	private AbstractRexsAttributeValue createAttributeValue(Attribute attributeXml) {
+	public AbstractRexsAttributeValue createAttributeValue(Attribute attributeXml) {
 		List<Object> valueContent = attributeXml.getContent();
 		if (valueContent == null || valueContent.isEmpty())
 			return null;
-
 		Object value = valueContent.get(0);
 		if (value instanceof String)
-			return new RexsAttributeValueScalar(((String)value).trim());
+			return new RexsAttributeValueScalar(((String) value).trim());
 
 		Array arrayXml = readArrayElement(attributeXml);
 		if (arrayXml != null)
 			return createAttributeValue(arrayXml);
 
-		Matrix matrixXml = readMatrixElement(attributeXml);
+		Matrix matrixXml = readMatrixElement(attributeXml);//readMatrixElement(attributeXml);
 		if (matrixXml != null)
 			return createAttributeValue(matrixXml);
 
@@ -603,8 +590,9 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 	}
 
 	private CodeType readArrayCodeType(Array array) {
-		if (array != null)
+		if (array != null) {
 			return array.getCode();
+		}
 		return null;
 	}
 

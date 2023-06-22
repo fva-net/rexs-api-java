@@ -15,6 +15,7 @@
  ******************************************************************************/
 package info.rexs.model.value;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import info.rexs.model.RexsModelAccessException;
@@ -25,6 +26,10 @@ public abstract class AbstractRexsAttributeValue {
 
 	public abstract AbstractRexsAttributeValue copy();
 
+	public OffsetDateTime getValueDateTime() {
+		throw new RexsModelAccessException("attribute value is not available as ISO-8601 date-time");
+	}
+	
 	public boolean getValueBoolean() {
 		throw new RexsModelAccessException("attribute value is not available as a boolean");
 	}

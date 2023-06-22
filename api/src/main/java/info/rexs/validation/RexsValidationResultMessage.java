@@ -17,14 +17,11 @@ package info.rexs.validation;
 
 import java.util.List;
 
-import lombok.Getter;
-
 /**
  * This class represents the result message of a REXS validation.
  *
  * @author FVA GmbH
  */
-@Getter
 public class RexsValidationResultMessage {
 
 	/** The key of the message. */

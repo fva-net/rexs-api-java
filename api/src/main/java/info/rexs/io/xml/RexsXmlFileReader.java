@@ -18,6 +18,8 @@ package info.rexs.io.xml;
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
@@ -31,8 +33,11 @@ import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
+import info.rexs.model.jaxb.Accumulation;
 import info.rexs.model.jaxb.Attribute;
 import info.rexs.model.jaxb.Component;
+import info.rexs.model.jaxb.LoadCase;
+import info.rexs.model.jaxb.LoadSpectrum;
 import info.rexs.model.jaxb.Model;
 import info.rexs.model.transformer.RexsModelXmlTransformer;
 
@@ -88,7 +93,6 @@ public class RexsXmlFileReader extends AbstractRexsFileReader {
 
 		try (InputStream input = rexsInputFileResource.openInputStream()) {
 			JAXBContext context = JAXBContext.newInstance(Model.class);
-
 			XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
 			XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(new StreamSource(input));
 			xmlStreamReader = xmlInputFactory.createFilteredReader(xmlStreamReader, new StreamFilter() {
@@ -130,10 +134,20 @@ public class RexsXmlFileReader extends AbstractRexsFileReader {
 		if (model.getComponents() == null || model.getComponents().getComponent().isEmpty())
 			return model;
 
-		for (Component component : model.getComponents().getComponent()) {
+		List<Component> allComponents = new ArrayList<>();
+		allComponents.addAll(model.getComponents().getComponent());
+		for (LoadSpectrum spectrum : model.getLoadSpectrum()) {
+			for (LoadCase loadCase : spectrum.getLoadCase())
+				allComponents.addAll(loadCase.getComponent());
+			Accumulation accumulation = spectrum.getAccumulation();
+			if (accumulation!=null)
+				allComponents.addAll(accumulation.getComponent());
+		}
+		for (Component component : allComponents) {
 			for (Attribute attribute : component.getAttribute()) {
-				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId()))
+				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId())) {
 					attribute.setUnit(RexsUnitId.deg.getId());
+				}
 			}
 		}
 

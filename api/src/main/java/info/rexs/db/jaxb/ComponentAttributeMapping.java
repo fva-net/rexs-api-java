@@ -1,8 +1,8 @@
 //
-// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
-// Siehe https://eclipse-ee4j.github.io/jaxb-ri
-// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2023.05.03 um 12:26:12 PM CEST
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert 
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+// Generiert: 2020.08.19 um 03:16:47 PM CEST 
 //
 
 
@@ -18,9 +18,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java-Klasse für anonymous complex type.
- *
+ * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
- *
+ * 
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
@@ -32,8 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
@@ -49,11 +49,11 @@ public class ComponentAttributeMapping {
 
     /**
      * Ruft den Wert der componentId-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getComponentId() {
         return componentId;
@@ -61,11 +61,11 @@ public class ComponentAttributeMapping {
 
     /**
      * Legt den Wert der componentId-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setComponentId(String value) {
         this.componentId = value;
@@ -73,11 +73,11 @@ public class ComponentAttributeMapping {
 
     /**
      * Ruft den Wert der attributeId-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getAttributeId() {
         return attributeId;
@@ -85,11 +85,11 @@ public class ComponentAttributeMapping {
 
     /**
      * Legt den Wert der attributeId-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setAttributeId(String value) {
         this.attributeId = value;
@@ -97,11 +97,11 @@ public class ComponentAttributeMapping {
 
     /**
      * Ruft den Wert der attributeNumericId-Eigenschaft ab.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public BigInteger getAttributeNumericId() {
         return attributeNumericId;
@@ -109,11 +109,11 @@ public class ComponentAttributeMapping {
 
     /**
      * Legt den Wert der attributeNumericId-Eigenschaft fest.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *
+     *     
      */
     public void setAttributeNumericId(BigInteger value) {
         this.attributeNumericId = value;

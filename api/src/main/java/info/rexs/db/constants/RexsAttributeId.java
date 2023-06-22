@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents the ID of a REXS attribute.
@@ -30,18 +29,15 @@ import lombok.EqualsAndHashCode;
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class RexsAttributeId implements RexsStandardAttributeIds {
 
 	/** An internal index with all created attribute IDs (REXS standard and own) for quick access. */
 	private static Map<String, RexsAttributeId> allAttributeIds = new HashMap<>();
 
 	/** The actual attribute ID as a {@link String}. */
-	@EqualsAndHashCode.Include
 	private final String id;
 
 	/** The unit of the attribute as {@link RexsUnitId}. */
-	@EqualsAndHashCode.Include
 	private final RexsUnitId unit;
 
 	private RexsAttributeId(String id, RexsUnitId unit) {
@@ -116,12 +112,48 @@ public class RexsAttributeId implements RexsStandardAttributeIds {
 	 * 				The actual attribute ID to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found attribute ID as {@link RexsAttributeId}, or {@code RexsAttributeId.UNKNOWN} if the ID could not be found.
+	 * 				The found attribute ID as {@link RexsAttributeId}, or {@code RexsStandardAttributeIds.UNKNOWN} if the ID could not be found.
 	 */
 	public static RexsAttributeId findById(String id) {
 		if (id == null)
-			return UNKNOWN;
+			return null;
 		RexsStandardAttributeIds.init();
-		return allAttributeIds.getOrDefault(id, UNKNOWN);
+		return allAttributeIds.getOrDefault(id, RexsStandardAttributeIds.UNKNOWN);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsAttributeId)) {
+			return false;
+		}
+		RexsAttributeId other = (RexsAttributeId)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_id = getId();
+		Object other_id = other.getId();
+		if (this_id == null ? other_id != null : !this_id.equals(other_id)) {
+			return false;
+		}
+		Object this_unit = getUnit();
+		Object other_unit = other.getUnit();
+		return this_unit == null ? other_unit == null : this_unit.equals(other_unit);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsAttributeId;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _id = getId();
+		result = result * 59 + (_id == null ? 43 : _id.hashCode());
+		Object _unit = getUnit();
+		result = result * 59 + (_unit == null ? 43 : _unit.hashCode());
+		return result;
 	}
 }

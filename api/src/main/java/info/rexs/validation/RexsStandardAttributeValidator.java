@@ -24,7 +24,6 @@ import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
-import lombok.RequiredArgsConstructor;
 
 /**
  * This implementation of {@link IRexsAttributeValidator} validates the basic structure of a REXS attribute
@@ -32,11 +31,14 @@ import lombok.RequiredArgsConstructor;
  *
  * @author FVA GmbH
  */
-@RequiredArgsConstructor
 public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidator {
 
 	private final RexsVersion rexsVersion;
 
+	public RexsStandardAttributeValidator(RexsVersion rexsVersion) {
+		this.rexsVersion = rexsVersion;
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */

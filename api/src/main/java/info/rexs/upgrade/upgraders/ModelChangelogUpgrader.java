@@ -18,242 +18,292 @@ package info.rexs.upgrade.upgraders;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.rexs.model.jaxb.Attribute;
-import info.rexs.model.jaxb.Component;
-import info.rexs.model.jaxb.Model;
+import info.rexs.db.constants.RexsAttributeId;
+import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.RexsValueType;
+import info.rexs.model.RexsAttribute;
+import info.rexs.model.RexsComponent;
+import info.rexs.model.RexsModel;
+import info.rexs.model.value.RexsAttributeValueScalar;
 import info.rexs.upgrade.RexsUpgradeException;
-import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
-import info.rexs.upgrade.upgraders.changelog.ChangelogResolver;
+import info.rexs.upgrade.upgraders.UpgradeNotifications.AttributeSource;
+import info.rexs.upgrade.upgraders.UpgradeNotifications.ComponentSource;
+import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
+import info.rexs.upgrade.upgraders.UpgradeNotifications.NotificationType;
 import info.rexs.upgrade.upgraders.changelog.jaxb.AttributeChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.ChangeType;
 import info.rexs.upgrade.upgraders.changelog.jaxb.ChangedValue;
 import info.rexs.upgrade.upgraders.changelog.jaxb.ComponentChange;
+import info.rexs.upgrade.upgraders.changelog.jaxb.EnumValueChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.MappingChange;
-import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
+import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
 
-/**
- * A {@link ModelUpgrader} who uses the REXS changelog for the upgrade.
- *
- * @author FVA GmbH
- */
-public class ModelChangelogUpgrader implements ModelUpgrader {
+/** generic upgrade for changes defined in the changelog file */
+public class ModelChangelogUpgrader {
 
-	/** The changelog which should be applied. */
-	private final ChangelogFile changelogFile;
+	private final RexsModel newModel;
+	private final RexsModel oldModel;
 
-	/**
-	 * Constructs a new {@link ModelChangelogUpgrader} for the given {@link ChangelogFile}.
-	 *
-	 * @param changelogFile
-	 * 				The changelog which should be applied.
-	 */
-	public ModelChangelogUpgrader(ChangelogFile changelogFile) {
-		this.changelogFile = changelogFile;
+	private final RexsChangelogFile.RexsChangelog changelog;
+	private UpgradeNotifications notifications = new UpgradeNotifications();
+	/** remove invalid attributes in strict mode */
+	private boolean strictMode;
+	
+	public ModelChangelogUpgrader(RexsModel model, RexsChangelogFile.RexsChangelog changelog, boolean strictMode) {
+		this.oldModel = model;
+		this.newModel = new RexsModel(model);
+		this.changelog = changelog;
+		this.strictMode = strictMode;
 	}
+	
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void upgrade(Model rexsModel) throws RexsUpgradeException {
-		beforeApplyChangelog(rexsModel);
-		applyChangelog(rexsModel);
-		afterApplyChangelog(rexsModel);
-	}
+	public RexsModel applyChangelog() throws RexsUpgradeException {
+		for (ComponentChange change : changelog.componentChanges) {
+			if (change.getType() == ChangeType.DELETE)
+				deleteComponentsByType(newModel, change.getId());
 
-	/**
-	 * This method is executed before the changelog is applied.
-	 * <p>
-	 * In its standard implementation, this method does nothing. Override the method to take additional actions.
-	 *
-	 * @param rexsModel
-	 * 				The REXS {@link Model} to upgrade.
-	 *
-	 * @throws RexsUpgradeException
-	 * 				If an unexpected error occurs during the upgrade process.
-	 */
-	public void beforeApplyChangelog(Model rexsModel) throws RexsUpgradeException {}
+			if (change.getType() == ChangeType.EDIT)
+				editComponentsByType(change.getId(), change.getChangedValues().getChangedValue());
+		}
 
-	/**
-	 * This method is executed after the changelog is applied.
-	 * <p>
-	 * In its standard implementation, this method does nothing. Override the method to take additional actions.
-	 *
-	 * @param rexsModel
-	 * 				The REXS {@link Model} to upgrade.
-	 *
-	 * @throws RexsUpgradeException
-	 * 				If an unexpected error occurs during the upgrade process.
-	 */
-	public void afterApplyChangelog(Model rexsModel) throws RexsUpgradeException {}
-
-	private void applyChangelog(Model rexsModel) throws RexsUpgradeException {
-		RexsChangelog changelog = ChangelogResolver.getInstance().resolve(changelogFile);
-		if (changelog == null)
-			throw new RexsUpgradeException(String.format("unable to find rexs changelog for %s", changelogFile));
-
-		applyChangelog(rexsModel, changelog);
-	}
-
-	private void applyChangelog(Model rexsModel, RexsChangelog changelog) throws RexsUpgradeException {
-		if (changelog.getComponentChanges() != null && changelog.getComponentChanges().getComponentChange() != null) {
-			for (ComponentChange change : changelog.getComponentChanges().getComponentChange()) {
-				applyComponentChange(rexsModel, change);
+		for (MappingChange change : changelog.mappingChanges) {
+			if (change.getType() == ChangeType.DELETE) {
+				if (strictMode) {
+					deleteAttributesByComponentTypeAndAttributeId(newModel, change.getComponentId(), change.getAttributeId());
+				}
+				else 
+					notifications.add(new Notification(NotificationType.WARNING, "Outdated attribute mapping for type "+change.getComponentId(),
+						new AttributeSource(change.getAttributeId())));
 			}
 		}
 
-		if (changelog.getMappingChanges() != null && changelog.getMappingChanges().getMappingChange() != null) {
-			for (MappingChange change : changelog.getMappingChanges().getMappingChange()) {
-				applyMappingChange(rexsModel, change);
-			}
+		for (AttributeChange change : changelog.attributeChanges) {
+			if (change.getType() == ChangeType.EDIT)
+				editAttributesById(change.getId(), change.getChangedValues().getChangedValue());
 		}
+		
+		return newModel;
+	}
 
-		if (changelog.getAttributeChanges() != null && changelog.getAttributeChanges().getAttributeChange() != null) {
-			for (AttributeChange change : changelog.getAttributeChanges().getAttributeChange()) {
-				applyAttributeChange(rexsModel, change);
+
+	
+	private void editComponentsByType(String componentType, List<ChangedValue> changedValues) {
+		for (RexsComponent component : oldModel.getComponents()) {
+			if (component.getType().getId().equals(componentType)) {
+
+				for (ChangedValue changedValue : changedValues) {
+					if ("componentId".equals(changedValue.getKey())) {
+						RexsComponentType compType = RexsComponentType.findById(changedValue.getNewValue());
+						component.setType(compType);
+					}
+				}
 			}
 		}
 	}
 
-	private void applyComponentChange(Model rexsModel, ComponentChange change) {
-		if (change.getType() == ChangeType.DELETE)
-			deleteComponentsByType(rexsModel, change.getId());
-
-		if (change.getType() == ChangeType.EDIT)
-			editComponentsByType(rexsModel, change.getId(), change.getChangedValues().getChangedValue());
-
-		// ADD is not supported by the upgrader
-	}
-
-	private void applyMappingChange(Model rexsModel, MappingChange change) {
-		if (change.getType() == ChangeType.DELETE)
-			deleteAttributesByComponentTypeAndAttributeId(rexsModel, change.getComponentId(), change.getAttributeId());
-
-		// ADD is not supported by the upgrader
-	}
-
-	private void applyAttributeChange(Model rexsModel, AttributeChange change) throws RexsUpgradeException {
-		if (change.getType() == ChangeType.DELETE)
-			deleteAttributesByComponentTypeAndAttributeId(rexsModel, null, change.getId());
-
-		if (change.getType() == ChangeType.EDIT)
-			editAttributesById(rexsModel, change.getId(), change.getChangedValues().getChangedValue());
-
-		// ADD is not supported by the upgrader
-	}
-
-	private void deleteComponentsByType(Model rexsModel, String componentType) {
-		if (rexsModel.getComponents() == null || rexsModel.getComponents().getComponent() == null)
-			return;
-
-		List<Component> componentsToDelete = new ArrayList<>();
-		for (Component component : rexsModel.getComponents().getComponent()) {
-			if (component.getType() != null && component.getType().equals(componentType))
+	private void deleteComponentsByType(RexsModel rexsModel, String componentType) {
+		List<RexsComponent> componentsToDelete = new ArrayList<>();
+		for (RexsComponent component : rexsModel.getComponents()) {
+			if (component.getType().getId().equals(componentType))
 				componentsToDelete.add(component);
 		}
 
-		for (Component componentToDelete : componentsToDelete) {
-			rexsModel.getComponents().getComponent().remove(componentToDelete);
+		for (RexsComponent componentToDelete : componentsToDelete) {
+			rexsModel.removeComponent(componentToDelete);
 		}
 	}
-
-	private void deleteAttributesByComponentTypeAndAttributeId(Model rexsModel, String componentType, String attributeId) {
-		if (rexsModel.getComponents() == null || rexsModel.getComponents().getComponent() == null)
-			return;
-
-		for (Component component : rexsModel.getComponents().getComponent()) {
-			if (componentType == null || (component.getType() != null && component.getType().equals(componentType))) {
+	
+	private void deleteAttributesByComponentTypeAndAttributeId(RexsModel rexsModel, String componentType, String attributeId) {
+		for (RexsComponent component : rexsModel.getComponents()) {
+			if (component.getType().getId().equals(componentType)) {
 				deleteAttributesById(component, attributeId);
+				notifications.add(new Notification("removed attribute",
+						new ComponentSource(component.getId()), new AttributeSource(attributeId)));
 			}
 		}
 	}
-
-	private void deleteAttributesById(Component component, String attributeId) {
-		if (component.getAttribute() == null)
-			return;
-
-		List<Attribute> attributesToDelete = new ArrayList<>();
-		for (Attribute attribute : component.getAttribute()) {
-			if (attribute.getId() != null && attribute.getId().equals(attributeId))
+	
+	private void deleteAttributesById(RexsComponent component, String attributeId) {
+		List<RexsAttribute> attributesToDelete = new ArrayList<>();
+		for (RexsAttribute attribute : component.getAttributes()) {
+			if (attribute.getAttributeId().getId().equals(attributeId))
 				attributesToDelete.add(attribute);
 		}
 
-		for (Attribute attributeToDelete : attributesToDelete) {
-			component.getAttribute().remove(attributeToDelete);
+		for (RexsAttribute attributeToDelete : attributesToDelete) {
+			component.removeAttribute(attributeToDelete.getAttributeId());
 		}
 	}
+	
+	private void editAttributesById(String attributeId, List<ChangedValue> changedValues) throws RexsUpgradeException {
+		for (RexsComponent component : newModel.getComponents()) {
+			for (RexsAttribute attribute : component.getAttributes()) {
+				if (attribute.getAttributeId().getId().equals(attributeId)) {
 
-	private void editComponentsByType(Model rexsModel, String componentType, List<ChangedValue> changedValues) {
-		if (rexsModel.getComponents() == null
-				|| rexsModel.getComponents().getComponent() == null
-				|| !changedValuesContainsAnyKey(changedValues, "componentId"))
-			return;
+					for (ChangedValue changedValue : changedValues) {
+						switch(changedValue.getKey()) {
+						case "attributeId": {
+							RexsAttributeId id = RexsAttributeId.findById(changedValue.getNewValue());
+							attribute.setId(id);
+							break;
+						}
+						case "numericId": {
+							// numeric id exists only in the database
+							// do nothing
+							break;
+						}
+						case "unit": {
+							if (changedValue.getOldValue().equals("\u00B0") && changedValue.getNewValue().equals("deg")) {
+								attribute.setUnit(RexsUnitId.deg);
+							} else 
+							if (changedValue.getOldValue().equals("N") && changedValue.getNewValue().equals("N / mm")) {
+								attribute.setUnit(RexsUnitId.newton_per_mm);
+								notifications.add(new Notification(NotificationType.WARNING, "unit conversion from N to N/mm",
+										new AttributeSource(attribute.getAttributeId().getId())));
+							} else {
+								throw new RuntimeException("unsupported unit conversion");
+							}
+							RexsUnitId unit = RexsUnitId.findById(changedValue.getNewValue());
+							attribute.setUnit(unit);
+							break;
+						}
+						case "symbol": {
+							// do nothing
+							break;
+						}
+						case "name": {
+							// change translation
+							// do nothing
+							break;
+						}
+						case "valuetype": {
+							RexsValueType oldType = RexsValueType.findByKey(changedValue.getOldValue());
+							RexsValueType newType = RexsValueType.findByKey(changedValue.getNewValue());
 
-		for (Component component : rexsModel.getComponents().getComponent()) {
-			if (component.getType() != null && component.getType().equals(componentType)) {
+							editAttributeValueType(component, attribute, oldType, newType);
+							break;
+						}
+						case "range": {
+							// TODO
+							break;
+						}
+						case "rangeMin": {
+							// TODO
+							break;
+						}
+						case "rangeMax": {
+							// TODO
+							break;
+						}
+						case "rangeMinIntervalOpen": {
+							// TODO
+							break;
+						}
+						case "rangeMaxIntervalOpen": {
+							// TODO
+							break;
+						}
 
-				for (ChangedValue changedValue : changedValues) {
-
-					if ("componentId".equals(changedValue.getKey())) {
-						component.setType(changedValue.getNewValue());
+						case "enumvalues": {
+							changeEnumValue(attribute, changedValue);
+							break;
+						}
+						default: throw new RuntimeException("unknown key "+changedValue.getKey());
+						}
 					}
 				}
 			}
 		}
 	}
 
-	private void editAttributesById(Model rexsModel, String attributeId, List<ChangedValue> changedValues) throws RexsUpgradeException {
-		if (rexsModel.getComponents() == null || rexsModel.getComponents().getComponent() == null)
-			return;
 
-		for (Component component : rexsModel.getComponents().getComponent()) {
-			editAttributesById(component, attributeId, changedValues);
-		}
-	}
-
-	private void editAttributesById(Component component, String attributeId, List<ChangedValue> changedValues) throws RexsUpgradeException {
-		if (component.getAttribute() == null
-				|| !changedValuesContainsAnyKey(changedValues, "attributeId", "unit", "valuetype"))
-			return;
-
-		for (Attribute attribute : component.getAttribute()) {
-			if (attribute.getId() != null && attribute.getId().equals(attributeId)) {
-
-				for (ChangedValue changedValue : changedValues) {
-
-					if ("attributeId".equals(changedValue.getKey())) {
-						attribute.setId(changedValue.getNewValue());
-
-					} else if ("unit".equals(changedValue.getKey())) {
-						attribute.setUnit(changedValue.getNewValue());
-
-					} else if ("valuetype".equals(changedValue.getKey())) {
-						editAttributeValueType(attribute, changedValue.getOldValue(), changedValue.getNewValue());
-					}
+	private void changeEnumValue(RexsAttribute attribute, ChangedValue changedValue) {
+		for (EnumValueChange enumChange: changedValue.getEnumValueChanges().getEnumValueChange()) {
+			switch (enumChange.getType()) {
+			case ADD: {
+				// Do nothing. Change must be handled by custom upgrade.
+				break;
+			}
+			case DELETE: {
+				// Do nothing. Change must be handled by custom upgrade.
+				break;
+			}
+			case EDIT: {
+				String attrValue = attribute.getStringValue();
+				if (attrValue.equals(enumChange.getValue())) {
+					ChangedValue changedEnumValue = enumChange.getChangedValues().getChangedValue().get(0);
+					String newName = changedEnumValue.getNewValue();
+					attribute.setStringValue(newName);
 				}
+				break;
+			}
+			default:
+				throw new RuntimeException("unknown enum change type");
 			}
 		}
 	}
 
-	private void editAttributeValueType(Attribute attribute, String oldValueType, String newValueType) throws RexsUpgradeException {
-		if ("integer".equals(oldValueType) && "enum".equals(newValueType)) {
-			// Nothing to do
-		} else {
-			throw new RexsUpgradeException("upgrade from value type '" + oldValueType + "' to '" + newValueType + "' is not implemented yet");
-		}
-	}
-
-	private boolean changedValuesContainsAnyKey(List<ChangedValue> changedValues, String ... keys) {
-		for (ChangedValue changedValue : changedValues) {
-			if (changedValue.getKey() == null)
-				continue;
-
-			for (String key : keys) {
-				if (changedValue.getKey().equals(key))
-					return true;
+	private void editAttributeValueType(
+			RexsComponent component,
+			RexsAttribute attribute, 
+			RexsValueType oldType,
+			RexsValueType newType) throws RexsUpgradeException {
+		
+		String rawValue = attribute.getRawValue().getValueString();
+		switch(newType) {
+		case BOOLEAN: {
+			switch(rawValue) {
+			case "true":
+				attribute.setRawValue(new RexsAttributeValueScalar("true"));
+				break;
+			case "false":
+				attribute.setRawValue(new RexsAttributeValueScalar("false"));
+				break;
+			default:
+				if (strictMode) {
+					component.removeAttribute(attribute.getAttributeId());
+				}
+				notifications.add(new Notification(NotificationType.WARNING, "value could not be converted to boolean",
+						new AttributeSource(attribute.getAttributeId().getId())));
+			break;
 			}
 		}
-
-		return false;
+		case INTEGER: {
+			try {
+				attribute.setRawValue(new RexsAttributeValueScalar(rawValue));
+			} catch (NumberFormatException e) {
+				if (strictMode) {
+					component.removeAttribute(attribute.getAttributeId());
+				}
+				notifications.add(new Notification(NotificationType.WARNING, "value could not be converted to integer",
+						new AttributeSource(attribute.getAttributeId().getId())));
+			}
+			break;
+		}
+		case FLOATING_POINT: {
+			try {
+				attribute.setRawValue(new RexsAttributeValueScalar(rawValue));
+			} catch (NumberFormatException e) {
+				if (strictMode) {
+					component.removeAttribute(attribute.getAttributeId());
+				}
+				notifications.add(new Notification(NotificationType.WARNING, "value could not be converted to float",
+						new AttributeSource(attribute.getAttributeId().getId())));
+			}
+			break;
+		}
+		case ENUM: {
+			// Do nothing. Change must be handled by custom upgrade.
+			break;
+		}
+		default:
+			throw new RuntimeException("unsupported type conversion to "+newType);
+		}		
 	}
+	
+	public UpgradeNotifications getNotifications() {
+		return notifications;
+	}
+	
 }

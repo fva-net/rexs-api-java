@@ -15,9 +15,7 @@
  ******************************************************************************/
 package info.rexs.db.constants;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -99,11 +97,13 @@ public class RexsUnitId implements RexsStandardUnitIds {
 	 * 				The actual unit ID to be found as a {@link String}
 	 *
 	 * @return
-	 * 				The found unit ID as {@link RexsUnitId}, or {@code RexsUnitId.UNKNOWN} if the ID could not be found.
+	 * 				The found unit ID as {@link RexsUnitId}, or {@code null} if the ID could not be found.
 	 */
 	public static RexsUnitId findById(String id) {
 		if (id == null)
-			return UNKNOWN;
+			return null;
+		if (id.isEmpty())
+			return RexsUnitId.none;
 		RexsStandardUnitIds.init();
 		return allUnitIds.getOrDefault(id, UNKNOWN);
 	}

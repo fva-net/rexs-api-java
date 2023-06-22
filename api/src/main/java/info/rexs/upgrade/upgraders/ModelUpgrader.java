@@ -15,6 +15,7 @@
  ******************************************************************************/
 package info.rexs.upgrade.upgraders;
 
+import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
 import info.rexs.upgrade.RexsUpgradeException;
 
@@ -30,9 +31,10 @@ public interface ModelUpgrader {
 	 *
 	 * @param rexsModel
 	 * 				The REXS {@link Model} to upgrade.
+	 * @param strictMode strict mode removes invalid attributes and relations
 	 *
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.
 	 */
-	public void upgrade(Model rexsModel) throws RexsUpgradeException;
+	public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException;
 }

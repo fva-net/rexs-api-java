@@ -15,6 +15,9 @@
  ******************************************************************************/
 package info.rexs.model.value;
 
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+
 import info.rexs.model.RexsModelAccessException;
 
 public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
@@ -26,7 +29,7 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 	public RexsAttributeValueScalar(String value) {
 		this.value = value;
 	}
-
+	
 	@Override
 	public boolean hasValue() {
 		return value != null
@@ -39,8 +42,12 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 	}
 
 	@Override
-	public boolean getValueBoolean() {
+	public boolean getValueBoolean() throws RexsModelAccessException{
 		Boolean val = null;
+		if(!value.equals("false")&&!value.equals("true")) {
+			throw new RexsModelAccessException("boolean value cannot be "+value);
+		}
+			
 		if (value != null && !value.isEmpty())
 			val = Boolean.valueOf(value);
 
@@ -56,7 +63,7 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 	}
 
 	@Override
-	public int getValueInteger() {
+	public int getValueInteger() throws RexsModelAccessException {
 		Integer val = null;
 		if (value != null && !value.isEmpty()) {
 			try {
@@ -72,13 +79,11 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 	}
 
 	@Override
-	public double getValueDouble() {
+	public double getValueDouble() throws RexsModelAccessException {
 		Double val = null;
 		if (value != null && !value.isEmpty()) {
 			try {
 				val = Double.parseDouble(value);
-				if (Double.isNaN(val))
-					val = null;
 			} catch (NumberFormatException ex) {
 				throw new RexsModelAccessException("cannot read double value " + value, ex);
 			}
@@ -107,5 +112,13 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 
 	public String getRawValue() {
 		return value;
+	}
+
+	public void setValueTime(OffsetDateTime time) {
+		this.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(time);
+	}
+	
+	public OffsetDateTime getValueDateTime() {
+		return OffsetDateTime.parse(value, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 	}
 }

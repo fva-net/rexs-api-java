@@ -16,7 +16,6 @@
 package info.rexs.io.json;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -26,55 +25,18 @@ import java.nio.file.Paths;
 import org.junit.Before;
 import org.junit.Test;
 
-import info.rexs.io.RexsIoException;
-import info.rexs.io.json.jsonmodel.JSONModel;
+import info.rexs.io.RexsFileReader;
 import info.rexs.model.RexsModel;
 
 public class RexsJsonFileWriterTest {
 
 	private RexsModel aRexsModelToWrite;
 
-	private JSONModel aRexsModelToWriteJson;
-
 	@Before
 	public void beforeEach() throws Exception {
 		Path rexsFilePath = Paths.get("src/test/resources").resolve("FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj");
 		RexsJsonFileReader reader = new RexsJsonFileReader(rexsFilePath);
 		aRexsModelToWrite = reader.read();
-		aRexsModelToWriteJson = reader.readRawModel();
-	}
-
-	@Test
-	public void writeRawModel_nonExistingFileIsCreated() throws Exception {
-		Path nonExistingFilePath = Paths.get("target").resolve("non-existing-file-" + System.currentTimeMillis() + ".rexsj");
-		RexsJsonFileWriter writer = new RexsJsonFileWriter(nonExistingFilePath);
-		writer.write(aRexsModelToWrite);
-		assertThat(nonExistingFilePath).exists();
-		assertThat(Files.size(nonExistingFilePath)).isPositive();
-	}
-
-	@Test
-	public void writeRawModel_nonWritableFileThrowsIOException() throws Exception {
-		Path nonWritableFilePath = Paths.get("target").resolve("non-writable-file-" + System.currentTimeMillis() + ".rexsj");
-		Files.createFile(nonWritableFilePath);
-		nonWritableFilePath.toFile().setWritable(false);
-
-		assertThatExceptionOfType(RexsIoException.class).isThrownBy(() -> {
-			RexsJsonFileWriter writer = new RexsJsonFileWriter(nonWritableFilePath);
-			writer.writeRawModel(aRexsModelToWriteJson);
-		})
-		.withMessageEndingWith("is not writable");
-	}
-
-	@Test
-	public void writeRawModel_writesExistingRexsFile() throws Exception {
-		Path existingFilePath = Paths.get("target").resolve("existing-file-" + System.currentTimeMillis() + ".rexsj");
-		Files.createFile(existingFilePath);
-		RexsJsonFileWriter writer = new RexsJsonFileWriter(existingFilePath);
-		writer.writeRawModel(aRexsModelToWriteJson);
-
-		assertThat(existingFilePath).exists();
-		assertThat(Files.size(existingFilePath)).isPositive();
 	}
 
 	@Test
@@ -107,5 +69,21 @@ public class RexsJsonFileWriterTest {
 		Path rexsTargetFilePath = Paths.get(rexsTargetFileStringPath);
 		assertThat(rexsTargetFilePath).exists();
 		assertThat(Files.size(rexsTargetFilePath)).isPositive();
+	}
+
+	@Test
+	public void write_writeRexsjFileFromRexsModel() throws Exception {
+		String rexsInputFileStringPath = "src/test/resources/SEW_3-stage_cylindrical_gearbox_1.0.rexs";
+		String rexsOutputFileStringPath = "target/rexs-switch-file-" + System.currentTimeMillis() + ".rexsj";
+
+		RexsFileReader reader = new RexsFileReader(rexsInputFileStringPath);
+		RexsModel model = aRexsModelToWrite = reader.read();
+	
+		RexsJsonFileWriter writer = new RexsJsonFileWriter(rexsOutputFileStringPath);
+		writer.write(model);
+
+		Path rexsOutputFilePath = Paths.get(rexsOutputFileStringPath);
+		assertThat(rexsOutputFilePath).exists();
+		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0l);
 	}
 }

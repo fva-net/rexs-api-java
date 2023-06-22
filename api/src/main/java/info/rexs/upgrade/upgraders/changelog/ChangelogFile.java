@@ -20,7 +20,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import info.rexs.db.constants.RexsVersion;
-import lombok.EqualsAndHashCode;
 
 /**
  * This class represents a REXS database changelog file.
@@ -31,7 +30,6 @@ import lombok.EqualsAndHashCode;
  *
  * @author FVA GmbH
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ChangelogFile {
 
 	/** The default {@link ChangelogFileResolver} in case none is specified. */
@@ -56,11 +54,9 @@ public class ChangelogFile {
 	public static final ChangelogFile V1_4_TO_V1_5 = create(RexsVersion.V1_4, RexsVersion.V1_5);
 
 	/** The from {@link RexsVersion} of the REXS database changelog file. */
-	@EqualsAndHashCode.Include
 	private final RexsVersion fromVersion;
 
 	/** The to {@link RexsVersion} of the REXS database changelog file. */
-	@EqualsAndHashCode.Include
 	private final RexsVersion toVersion;
 
 	/** The {@link ChangelogFileResolver} for the REXS database changelog file. */
@@ -136,5 +132,41 @@ public class ChangelogFile {
 	 */
 	public static ChangelogFile create(RexsVersion fromVersion, RexsVersion toVersion) {
 		return create(fromVersion, toVersion, null);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof ChangelogFile)) {
+			return false;
+		}
+		ChangelogFile other = (ChangelogFile)o;
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		Object this_fromVersion = getFromVersion();
+		Object other_fromVersion = other.getFromVersion();
+		if (this_fromVersion == null ? other_fromVersion != null : !this_fromVersion.equals(other_fromVersion)) {
+			return false;
+		}
+		Object this_toVersion = getToVersion();
+		Object other_toVersion = other.getToVersion();
+		return this_toVersion == null ? other_toVersion == null : this_toVersion.equals(other_toVersion);
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof ChangelogFile;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		Object _fromVersion = getFromVersion();
+		result = result * 59 + (_fromVersion == null ? 43 : _fromVersion.hashCode());
+		Object _toVersion = getToVersion();
+		result = result * 59 + (_toVersion == null ? 43 : _toVersion.hashCode());
+		return result;
 	}
 }

@@ -48,13 +48,13 @@ public class RexsRelationTypeTest {
 	}
 
 	@Test
-	public void findByKey_givenNullReturnsUnknown() {
-		assertThat(RexsRelationType.findByKey(null)).isEqualTo(RexsRelationType.UNKNOWN);
+	public void findByKey_givenNullReturnsNull() {
+		assertThat(RexsRelationType.findByKey(null)).isNull();
 	}
 
 	@Test
-	public void findByKey_givenUnknownKeyReturnsUnknown() {
-		assertThat(RexsRelationType.findByKey("foo_bar")).isEqualTo(RexsRelationType.UNKNOWN);
+	public void findByKey_givenUnknownKeyReturnsNull() {
+		assertThat(RexsRelationType.findByKey("foo_bar")).isNull();
 	}
 
 	@Test

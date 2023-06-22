@@ -1,25 +1,22 @@
 //
-// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
-// Siehe https://eclipse-ee4j.github.io/jaxb-ri
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2023.05.03 um 12:26:13 PM CEST
+// Generiert: 2020.08.19 um 03:16:48 PM CEST
 //
 
 
 package info.rexs.model.jaxb;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAnyAttribute;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -40,7 +37,6 @@ import javax.xml.namespace.QName;
  *       &lt;attribute name="applicationId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="applicationVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;anyAttribute processContents='skip'/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -69,8 +65,6 @@ public class Model {
     protected String applicationVersion;
     @XmlAttribute(name = "date", required = true)
     protected String date;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
      * Ruft den Wert der relations-Eigenschaft ab.
@@ -144,7 +138,7 @@ public class Model {
      */
     public List<LoadSpectrum> getLoadSpectrum() {
         if (loadSpectrum == null) {
-            loadSpectrum = new ArrayList<LoadSpectrum>();
+            loadSpectrum = new ArrayList<>();
         }
         return this.loadSpectrum;
     }
@@ -245,22 +239,8 @@ public class Model {
         this.date = value;
     }
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     *
-     * <p>
-     * the map is keyed by the name of the attribute and
-     * the value is the string value of the attribute.
-     *
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     *
-     *
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
-
+	public void setLoadSpectrum(LoadSpectrum loadSpectrum) {
+		this.loadSpectrum = new ArrayList<>();
+		this.loadSpectrum.add(loadSpectrum);
+	}
 }
