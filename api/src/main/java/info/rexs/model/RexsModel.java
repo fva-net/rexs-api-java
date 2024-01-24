@@ -84,7 +84,7 @@ public class RexsModel {
 		this.applicationId = applicationId;
 		this.applicationVersion = applicationVersion;
 	}
-	
+
 	/** Copy constructor. Creates a deep copy of the model */
 	public RexsModel(RexsModel model) {
 		this.version = model.getVersion();
@@ -126,7 +126,7 @@ public class RexsModel {
 	public RexsVersion getVersion() {
 		return version;
 	}
-	
+
 	public void setVersion(RexsVersion version) {
 		this.version = version;
 	}
@@ -150,7 +150,7 @@ public class RexsModel {
 	public void setApplicationId(String applicationId) {
 		this.applicationId = applicationId;
 	}
-	
+
 	/**
 	 * @return
 	 * 				The version of the application as a {@link String}.
@@ -166,7 +166,7 @@ public class RexsModel {
 	public List<RexsComponent> getComponents() {
 		return components.values().stream().collect(Collectors.toList());
 	}
-	
+
 	/**
 	 * @return
 	 * 				All components of the model as a {@link List} of {@link RexsComponent} sorted by component Id.
@@ -260,7 +260,7 @@ public class RexsModel {
 				.filter(rel -> rel.getType()==type && rel.findComponentIdByRole(role) == component)
 				.toList();
 	}
-	
+
 	/**
 	 * TODO Document me!
 	 *
@@ -901,15 +901,13 @@ public class RexsModel {
 		addRelation(relation);
 		return true;
 	}
-	
+
 	/**
 	 * TODO Document me!
 	 *
-	 * @param mainComp
+	 * @param planetaryStage
 	 * 				TODO Document me!
-	 * @param referenced
-	 * 				TODO Document me!
-	 * @param order
+	 * @param planetPinShaft
 	 * 				TODO Document me!
 	 *
 	 * @return
@@ -1039,7 +1037,7 @@ public class RexsModel {
 		}
 		return true;
 	}
-	
+
 	public void createLoadSpectrum() {
 		if (loadSpectrums.isEmpty()) {
 			loadSpectrums.add(RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(1));
@@ -1056,7 +1054,7 @@ public class RexsModel {
 		RexsLoadSpectrum spectrum = loadSpectrums.get(0);
 		RexsSubModel loadCase = RexsModelObjectFactory.getInstance().createRexsSubModel(idOfLoadCase);
 		spectrum.addLoadCase(loadCase);
-		
+
 		return loadCase;
 	}
 
