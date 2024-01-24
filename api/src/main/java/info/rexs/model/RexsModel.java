@@ -84,7 +84,7 @@ public class RexsModel {
 		this.applicationId = applicationId;
 		this.applicationVersion = applicationVersion;
 	}
-	
+
 	/** Copy constructor. Creates a deep copy of the model */
 	public RexsModel(RexsModel model) {
 		this.version = model.getVersion();
@@ -126,7 +126,7 @@ public class RexsModel {
 	public RexsVersion getVersion() {
 		return version;
 	}
-	
+
 	public void setVersion(RexsVersion version) {
 		this.version = version;
 	}
@@ -150,7 +150,7 @@ public class RexsModel {
 	public void setApplicationId(String applicationId) {
 		this.applicationId = applicationId;
 	}
-	
+
 	/**
 	 * @return
 	 * 				The version of the application as a {@link String}.
@@ -166,7 +166,7 @@ public class RexsModel {
 	public List<RexsComponent> getComponents() {
 		return components.values().stream().collect(Collectors.toList());
 	}
-	
+
 	/**
 	 * @return
 	 * 				All components of the model as a {@link List} of {@link RexsComponent} sorted by component Id.
@@ -260,7 +260,7 @@ public class RexsModel {
 				.filter(rel -> rel.getType()==type && rel.findComponentIdByRole(role) == component)
 				.toList();
 	}
-	
+
 	/**
 	 * TODO Document me!
 	 *
@@ -905,6 +905,30 @@ public class RexsModel {
 	/**
 	 * TODO Document me!
 	 *
+	 * @param planetaryStage
+	 * 				TODO Document me!
+	 * @param planetPinShaft
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean addPlanetPinRelation(RexsComponent planetaryStage, RexsComponent planetPinShaft) {
+		if (!componentsExists(planetaryStage, planetPinShaft))
+			return false;
+
+		RexsRelation relation = createRelation(RexsRelationType.planet_pin, null);
+
+		relation.addRef(createRelationRef(planetaryStage, RexsRelationRole.planetary_stage));
+		relation.addRef(createRelationRef(planetPinShaft, RexsRelationRole.shaft));
+
+		addRelation(relation);
+		return true;
+	}
+
+	/**
+	 * TODO Document me!
+	 *
 	 * @param gear
 	 * 				TODO Document me!
 	 * @param flank1
@@ -1012,6 +1036,26 @@ public class RexsModel {
 				return false;
 		}
 		return true;
+	}
+
+	public void createLoadSpectrum() {
+		if (loadSpectrums.isEmpty()) {
+			loadSpectrums.add(RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(1));
+		} else
+			throw new RexsModelAccessException("Rexs specification allows only one load spectrum per rexs model!");
+	}
+
+	public RexsSubModel createLoadCase(int idOfLoadCase) {
+		if (loadSpectrums.isEmpty())
+			createLoadSpectrum();
+		else if (getLoadCases().stream().anyMatch(lc -> lc.getId()==idOfLoadCase))
+			throw new RexsModelAccessException("Load case with this id already exists!");
+
+		RexsLoadSpectrum spectrum = loadSpectrums.get(0);
+		RexsSubModel loadCase = RexsModelObjectFactory.getInstance().createRexsSubModel(idOfLoadCase);
+		spectrum.addLoadCase(loadCase);
+
+		return loadCase;
 	}
 
 	/**

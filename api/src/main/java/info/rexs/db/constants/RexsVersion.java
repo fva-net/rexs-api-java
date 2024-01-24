@@ -59,7 +59,7 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 	 * 				The latest official REXS {@link RexsVersion}.
 	 */
 	public static RexsVersion getLatest() {
-		return V1_5;
+		return V1_6;
 	}
 
 	/**

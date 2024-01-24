@@ -56,6 +56,9 @@ public class DbModelFile {
 	/** REXS 1.5 */
 	public static final DbModelFile V1_5 = create(RexsVersion.V1_5);
 
+	/** REXS 1.6 */
+	public static final DbModelFile V1_6 = create(RexsVersion.V1_6);
+
 	/** The {@link RexsVersion} of the REXS database model file. */
 	private final RexsVersion version;
 

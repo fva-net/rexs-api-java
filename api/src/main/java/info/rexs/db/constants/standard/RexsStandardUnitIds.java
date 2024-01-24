@@ -24,7 +24,7 @@ import info.rexs.db.constants.RexsUnitId;
 /**
  * This class represents a REXS unit.
  * <p>
- * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3, 1.4, 1.5).
+ * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6).
  *
  * @author FVA GmbH
  */
@@ -197,6 +197,12 @@ public interface RexsStandardUnitIds {
 
 	/** 1e-6 / C */
 	public static final RexsUnitId thermal_expansion_coefficient = RexsUnitId.create("1e-6 / C");
+
+	/** MRev */
+	public static final RexsUnitId unit_59 = RexsUnitId.create("MRev");
+
+	/** W / (m^2 K) */
+	public static final RexsUnitId unit_60 = RexsUnitId.create("W / (m^2 K)");
 
 	/** W */
 	public static final RexsUnitId watt = RexsUnitId.create("W");

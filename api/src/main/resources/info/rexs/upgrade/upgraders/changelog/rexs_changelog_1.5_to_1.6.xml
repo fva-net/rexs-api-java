@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rexsChangelog fromVersion="1.5" toVersion="1.6">
+    <componentChanges>
+        <componentChange type="ADD" id="radial_plain_bearing_shell"/>
+        <componentChange type="ADD" id="radial_plain_bearing_profile"/>
+        <componentChange type="ADD" id="radial_plain_bearing_hole"/>
+        <componentChange type="ADD" id="radial_plain_bearing_slot"/>
+        <componentChange type="ADD" id="radial_plain_bearing_groove"/>
+        <componentChange type="ADD" id="hydrodynamic_radial_plain_bearing"/>
+        <componentChange type="ADD" id="radial_plain_bearing_profile_data_set"/>
+        <componentChange type="ADD" id="bearing_ring"/>
+        <componentChange type="ADD" id="gear_body"/>
+        <componentChange type="ADD" id="sleeve"/>
+        <componentChange type="ADD" id="surface_contact"/>
+    </componentChanges>
+    <attributeChanges>
+        <attributeChange type="ADD" id="dynamic_equivalent_reference_bearing_load_iso_16281_2008" numericId="6142"/>
+        <attributeChange type="ADD" id="life_modification_factor_reliability_iso_281_2007" numericId="6101"/>
+        <attributeChange type="ADD" id="modified_rating_life_time_iso_281_2007" numericId="6128"/>
+        <attributeChange type="ADD" id="life_modification_factor_system_approach_effective_iso_16281_2008" numericId="21124"/>
+        <attributeChange type="ADD" id="life_modification_factor_system_approach_minimum_iso_16281_2008" numericId="21125"/>
+        <attributeChange type="ADD" id="life_modification_factor_system_approach_maximum_iso_16281_2008" numericId="21126"/>
+        <attributeChange type="ADD" id="modified_rating_life_rotations_iso_281_2007" numericId="6130"/>
+        <attributeChange type="ADD" id="reference_diameter_relative_clearance_plain_bearing" numericId="9327"/>
+        <attributeChange type="ADD" id="relative_clearance_plain_bearing" numericId="9329"/>
+        <attributeChange type="ADD" id="diameter_clearance_plain_bearing" numericId="2001"/>
+        <attributeChange type="ADD" id="profiling_plain_bearing" numericId="19368"/>
+        <attributeChange type="ADD" id="starting_angle_plain_bearing_feature" numericId="9424"/>
+        <attributeChange type="ADD" id="end_angle_plain_bearing_feature" numericId="9425"/>
+        <attributeChange type="ADD" id="angular_position_center_of_curvatue" numericId="9426"/>
+        <attributeChange type="ADD" id="lubricant_side" numericId="21127"/>
+        <attributeChange type="ADD" id="is_pressurized" numericId="21128"/>
+        <attributeChange type="ADD" id="axial_position_of_plain_bearing_feature" numericId="9308"/>
+        <attributeChange type="ADD" id="fill_ratio_plain_bearing_feature" numericId="9309"/>
+        <attributeChange type="ADD" id="mounting_angle_plain_bearing" numericId="9464"/>
+        <attributeChange type="ADD" id="relative_eccentricity_plain_bearing" numericId="6283"/>
+        <attributeChange type="ADD" id="preload_running_surface_plain_bearing" numericId="10091"/>
+        <attributeChange type="ADD" id="profile_curvature_diameter_plain_bearing" numericId="10101"/>
+        <attributeChange type="ADD" id="modifications_of_diameter_clearance_point_list" numericId="200019"/>
+        <attributeChange type="ADD" id="ambient_pressure_plain_bearing" numericId="9457"/>
+        <attributeChange type="ADD" id="feed_pressure_plain_bearing" numericId="9440"/>
+        <attributeChange type="ADD" id="lubricant_feed_temperature" numericId="1992"/>
+        <attributeChange type="ADD" id="heat_transfer_coefficient_radial_plain_bearing" numericId="9445"/>
+        <attributeChange type="ADD" id="heat_transfer_coefficient_rear_plain_bearing" numericId="9447"/>
+        <attributeChange type="ADD" id="heat_transfer_coefficient_front_plain_bearing" numericId="9446"/>
+        <attributeChange type="ADD" id="heat_transfer_coefficient_at_journal_front_plain_bearing" numericId="9448"/>
+        <attributeChange type="ADD" id="heat_transfer_coefficient_at_journal_rear_plain_bearing" numericId="9449"/>
+        <attributeChange type="ADD" id="ambient_temperature_shell_radial_plain_bearing" numericId="9450"/>
+        <attributeChange type="ADD" id="ambient_temperature_shell_rear_plain_bearing" numericId="9452"/>
+        <attributeChange type="ADD" id="ambient_temperature_shell_front_plain_bearing" numericId="9451"/>
+        <attributeChange type="ADD" id="ambient_temperature_journal_front_plain_bearing" numericId="9453"/>
+        <attributeChange type="ADD" id="ambient_temperature_journal_rear_plain_bearing" numericId="9454"/>
+        <attributeChange type="ADD" id="is_isothermal_calculation" numericId="19386"/>
+        <attributeChange type="ADD" id="point_coordinates_radius" numericId="200133"/>
+        <attributeChange type="ADD" id="point_coordinates_angle_about_u_axis" numericId="200134"/>
+        <attributeChange type="ADD" id="point_coordinates_angle_to_u_axis" numericId="200135"/>
+        <attributeChange type="ADD" id="point_coordinates_u_coord" numericId="200136"/>
+        <attributeChange type="ADD" id="level_of_detail" numericId="200185"/>
+        <attributeChange type="ADD" id="body_contour_coordinate_u" numericId="200186"/>
+        <attributeChange type="ADD" id="body_contour_coordinate_v" numericId="200213"/>
+        <attributeChange type="ADD" id="body_contour_element_radius" numericId="200214"/>
+        <attributeChange type="ADD" id="body_contour_element_type" numericId="200215"/>
+        <attributeChange type="ADD" id="bearing_ring_type" numericId="200216"/>
+        <attributeChange type="ADD" id="gear_body_rim_thickness" numericId="200217"/>
+        <attributeChange type="ADD" id="gear_body_web_thickness" numericId="200218"/>
+        <attributeChange type="ADD" id="type_of_surface_contact" numericId="200251"/>
+        <attributeChange type="ADD" id="diameter_of_cylindrical_surface_contact" numericId="200252"/>
+        <attributeChange type="ADD" id="contact_area" numericId="200253"/>
+        <attributeChange type="ADD" id="contact_force" numericId="200254"/>
+        <attributeChange type="ADD" id="preload_distance_surface_contact" numericId="200255"/>
+        <attributeChange type="EDIT" id="width" numericId="487">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Lagerbreite" newValue="Breite"/>
+                <changedValue key="name" lang="en" oldValue="Bearing width" newValue="Width"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="lubrication_type" numericId="2167">
+            <changedValues>
+                <changedValue key="enumvalues">
+                    <enumValueChanges>
+                        <enumValueChange type="ADD" value="circulating_oil"/>
+                        <enumValueChange type="ADD" value="oil_spot"/>
+                    </enumValueChanges>
+                </changedValue>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="lubricant_flow_through_bearing" numericId="2173">
+            <changedValues/>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_rating_life_rotations_iso_281_2007" numericId="2625">
+            <changedValues>
+                <changedValue key="unit" oldValue="none" newValue="MRev"/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_rating_life_time_iso_281_2007" numericId="2626">
+            <changedValues>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_conductivity" numericId="2916">
+            <changedValues>
+                <changedValue key="symbol" oldValue="λ_M" newValue="λ"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="thermal_capacity" numericId="3020">
+            <changedValues>
+                <changedValue key="symbol" oldValue="c_M" newValue="c"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_reference_rating_life_rotations_din_26281" numericId="6117">
+            <changedValues>
+                <changedValue key="unit" oldValue="none" newValue="MRev"/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="modified_reference_rating_life_rotations_din_26281" numericId="6120">
+            <changedValues>
+                <changedValue key="unit" oldValue="none" newValue="MRev"/>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="modified_reference_rating_life_time_din_26281" numericId="6126">
+            <changedValues>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="nominal_reference_rating_life_time_din_26281" numericId="9165">
+            <changedValues>
+                <changedValue key="range" oldValue="[0.0;∞)" newValue="(0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="false" newValue="true"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="reference_speed" numericId="9208">
+            <changedValues>
+                <changedValue key="symbol" oldValue="n_B" newValue="n_r"/>
+                <changedValue key="name" lang="de" oldValue="Thermische Bezugsdrehzahl" newValue="Referenzdrehzahl nach ISO 15312"/>
+                <changedValue key="name" lang="en" oldValue="Thermal reference speed" newValue="Reference speed according ISO 15312"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="u_coordinates_of_beam_nodes" numericId="8873">
+            <changedValues>
+                <changedValue key="range" oldValue="(0.0;∞)" newValue="[0.0;∞)"/>
+                <changedValue key="rangeMinIntervalOpen" oldValue="true" newValue="false"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="maximum_normal_backlash" numericId="15110">
+            <changedValues>
+                <changedValue key="symbol" oldValue="j_n,max" newValue="j_bn,max"/>
+                <changedValue key="name" lang="de" oldValue="Maximales Flankenspiel im Normalschchnitt" newValue="Maximales Flankenspiel im Normalschnitt"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="minimum_normal_backlash" numericId="15111">
+            <changedValues>
+                <changedValue key="symbol" oldValue="j_n,min" newValue="j_bn,min"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="point_coordinates" numericId="21033">
+            <changedValues>
+                <changedValue key="name" lang="de" oldValue="Koordinaten der Punkte" newValue="Punktkoordinaten - kartesisch"/>
+                <changedValue key="name" lang="en" oldValue="Point coordinates" newValue="Point coordinates - cartesian"/>
+            </changedValues>
+        </attributeChange>
+        <attributeChange type="EDIT" id="smoothing_factor_din_7190_2017" numericId="1725">
+            <changedValues/>
+        </attributeChange>
+    </attributeChanges>
+    <mappingChanges>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="width" attributeNumericId="487"/>
+        <mappingChange type="ADD" componentId="radial_plain_bearing_groove" attributeId="width" attributeNumericId="487"/>
+        <mappingChange type="ADD" componentId="radial_plain_bearing_slot" attributeId="width" attributeNumericId="487"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="bending_stiffness" attributeNumericId="488"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="radial_stiffness" attributeNumericId="508"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="misalignment_in_v_direction" attributeNumericId="12497"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="misalignment_in_w_direction" attributeNumericId="12498"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="angular_misalignment_around_v_axis" attributeNumericId="12499"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="angular_misalignment_around_w_axis" attributeNumericId="12500"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="radial_deflection_in_v" attributeNumericId="525"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="radial_deflection_in_w" attributeNumericId="526"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="radial_force_in_v" attributeNumericId="529"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="radial_force_in_w" attributeNumericId="530"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="torque_around_the_v_axis" attributeNumericId="535"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="torque_around_the_w_axis" attributeNumericId="536"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="angular_deflection_in_w" attributeNumericId="541"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="angular_deflection_in_v" attributeNumericId="542"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="u_coordinate_on_shaft_inner_side" attributeNumericId="545"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="length" attributeNumericId="606"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="length" attributeNumericId="606"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="length" attributeNumericId="606"/>
+        <mappingChange type="ADD" componentId="surface_contact" attributeId="length" attributeNumericId="606"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="lubricant_flow_through_bearing" attributeNumericId="2173"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="u_coordinate_on_shaft_outer_side" attributeNumericId="2369"/>
+        <mappingChange type="ADD" componentId="lubricant" attributeId="thermal_conductivity" attributeNumericId="2916"/>
+        <mappingChange type="ADD" componentId="lubricant" attributeId="thermal_capacity" attributeNumericId="3020"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_v_d_v" attributeNumericId="8719"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_w_d_w" attributeNumericId="8720"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_v_rot_v" attributeNumericId="8721"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_w_rot_w" attributeNumericId="8722"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="surface_contact" attributeId="support_vector" attributeNumericId="8870"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="u_axis_vector" attributeNumericId="8871"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="w_axis_vector" attributeNumericId="8872"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="surface_contact" attributeId="reference_component_for_position" attributeNumericId="8879"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_v_d_w" attributeNumericId="9223"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_v_rot_v" attributeNumericId="9224"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_v_rot_w" attributeNumericId="9225"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_w_d_v" attributeNumericId="9227"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_w_rot_v" attributeNumericId="9228"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_f_w_rot_w" attributeNumericId="9229"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_v_d_v" attributeNumericId="9231"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_v_d_w" attributeNumericId="9232"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_v_rot_w" attributeNumericId="9233"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_w_d_v" attributeNumericId="9235"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_w_d_w" attributeNumericId="9236"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="operating_point_stiffness_m_w_rot_v" attributeNumericId="9237"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="displacement_inner_side_u" attributeNumericId="10170"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="displacement_inner_side_v" attributeNumericId="10403"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="displacement_inner_side_w" attributeNumericId="10404"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="force_acting_on_inner_component_v" attributeNumericId="10413"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="force_acting_on_inner_component_w" attributeNumericId="10414"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="torque_acting_on_inner_component_v" attributeNumericId="10186"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="torque_acting_on_inner_component_w" attributeNumericId="10187"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="tilting_inner_side_v" attributeNumericId="10408"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="tilting_inner_side_w" attributeNumericId="10409"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="displacement_outer_side_u" attributeNumericId="10405"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="displacement_outer_side_v" attributeNumericId="10406"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="displacement_outer_side_w" attributeNumericId="10407"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="force_acting_on_outer_component_v" attributeNumericId="10416"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="force_acting_on_outer_component_w" attributeNumericId="10185"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="torque_acting_on_outer_component_v" attributeNumericId="10188"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="torque_acting_on_outer_component_w" attributeNumericId="10189"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="tilting_outer_side_v" attributeNumericId="14010"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="tilting_outer_side_w" attributeNumericId="10411"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="radial_plain_bearing_shell" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="surface_contact" attributeId="inner_diameter" attributeNumericId="6691"/>
+        <mappingChange type="ADD" componentId="bearing_ring" attributeId="outer_diameter" attributeNumericId="6692"/>
+        <mappingChange type="ADD" componentId="gear_body" attributeId="outer_diameter" attributeNumericId="6692"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="outer_diameter" attributeNumericId="6692"/>
+        <mappingChange type="ADD" componentId="radial_plain_bearing_shell" attributeId="outer_diameter" attributeNumericId="6692"/>
+        <mappingChange type="ADD" componentId="sleeve" attributeId="outer_diameter" attributeNumericId="6692"/>
+        <mappingChange type="ADD" componentId="surface_contact" attributeId="outer_diameter" attributeNumericId="6692"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="display_color" attributeNumericId="21026"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="mass_of_component" attributeNumericId="17689"/>
+        <mappingChange type="ADD" componentId="radial_plain_bearing_profile_data_set" attributeId="set_ids" attributeNumericId="21038"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="part_number" attributeNumericId="21100"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="sequence_number" attributeNumericId="21101"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="version" attributeNumericId="21102"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="modification_date" attributeNumericId="21103"/>
+        <mappingChange type="ADD" componentId="hydrodynamic_radial_plain_bearing" attributeId="revision_number" attributeNumericId="21104"/>
+    </mappingChanges>
+</rexsChangelog>
