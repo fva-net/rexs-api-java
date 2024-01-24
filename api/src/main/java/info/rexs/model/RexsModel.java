@@ -901,6 +901,32 @@ public class RexsModel {
 		addRelation(relation);
 		return true;
 	}
+	
+	/**
+	 * TODO Document me!
+	 *
+	 * @param mainComp
+	 * 				TODO Document me!
+	 * @param referenced
+	 * 				TODO Document me!
+	 * @param order
+	 * 				TODO Document me!
+	 *
+	 * @return
+	 * 				TODO Document me!
+	 */
+	public boolean addPlanetPinRelation(RexsComponent planetaryStage, RexsComponent planetPinShaft) {
+		if (!componentsExists(planetaryStage, planetPinShaft))
+			return false;
+
+		RexsRelation relation = createRelation(RexsRelationType.planet_pin, null);
+
+		relation.addRef(createRelationRef(planetaryStage, RexsRelationRole.planetary_stage));
+		relation.addRef(createRelationRef(planetPinShaft, RexsRelationRole.shaft));
+
+		addRelation(relation);
+		return true;
+	}
 
 	/**
 	 * TODO Document me!
@@ -1012,6 +1038,26 @@ public class RexsModel {
 				return false;
 		}
 		return true;
+	}
+	
+	public void createLoadSpectrum() {
+		if (loadSpectrums.isEmpty()) {
+			loadSpectrums.add(RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(1));
+		} else
+			throw new RexsModelAccessException("Rexs specification allows only one load spectrum per rexs model!");
+	}
+
+	public RexsSubModel createLoadCase(int idOfLoadCase) {
+		if (loadSpectrums.isEmpty())
+			createLoadSpectrum();
+		else if (getLoadCases().stream().anyMatch(lc -> lc.getId()==idOfLoadCase))
+			throw new RexsModelAccessException("Load case with this id already exists!");
+
+		RexsLoadSpectrum spectrum = loadSpectrums.get(0);
+		RexsSubModel loadCase = RexsModelObjectFactory.getInstance().createRexsSubModel(idOfLoadCase);
+		spectrum.addLoadCase(loadCase);
+		
+		return loadCase;
 	}
 
 	/**
