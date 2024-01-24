@@ -53,6 +53,9 @@ public class ChangelogFile {
 	/** REXS Changelog 1.4 to 1.5 */
 	public static final ChangelogFile V1_4_TO_V1_5 = create(RexsVersion.V1_4, RexsVersion.V1_5);
 
+	/** REXS Changelog 1.5 to 1.6 */
+	public static final ChangelogFile V1_5_TO_V1_6 = create(RexsVersion.V1_5, RexsVersion.V1_6);
+
 	/** The from {@link RexsVersion} of the REXS database changelog file. */
 	private final RexsVersion fromVersion;
 
