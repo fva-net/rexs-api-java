@@ -33,6 +33,7 @@
 				<xsd:element ref="components" maxOccurs="1" minOccurs="0"/>
 				<xsd:element ref="attributes" maxOccurs="1" minOccurs="0"/>
 				<xsd:element ref="componentAttributeMappings" maxOccurs="1" minOccurs="0"/>
+				<xsd:element ref="relations" maxOccurs="1" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="version" type="xsd:string" use="required"/>
 			<xsd:attribute name="status" type="versionStatusType" use="required"/>
@@ -90,6 +91,30 @@
 		</xsd:complexType>
 	</xsd:element>
 
+	<xsd:element name="relations">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="relation" maxOccurs="unbounded" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="roles">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="role" maxOccurs="unbounded" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="allowedCombinations">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="allowedCombination" maxOccurs="unbounded" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="unit">
 		<xsd:complexType>
 			<xsd:attribute name="id" type="xsd:integer" use="required"/>
@@ -143,6 +168,40 @@
 			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
 			<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
 			<xsd:attribute name="attributeNumericId" type="xsd:integer" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="relation">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="roles" maxOccurs="1" minOccurs="0"/>
+				<xsd:element ref="allowedCombinations" maxOccurs="1" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="numericId" type="xsd:integer" use="required"/>
+			<xsd:attribute name="relationId" type="xsd:string" use="required"/>
+			<xsd:attribute name="orderRequired" type="xsd:boolean" use="required"/>
+			<xsd:attribute name="databaseId" type="xsd:integer" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="role">
+		<xsd:complexType>
+			<xsd:attribute name="roleId" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="allowedCombination">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="allowedCombinationRole" maxOccurs="unbounded" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="allowedCombinationRole">
+		<xsd:complexType>
+			<xsd:attribute name="roleId" type="xsd:string" use="required"/>
+			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
