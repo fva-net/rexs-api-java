@@ -22,7 +22,7 @@
 
 	<groupId>de.fva-service.rexs</groupId>
 	<artifactId>rexs-api</artifactId>
-	<version>0.3.2-SNAPSHOT</version>
+	<version>0.3.2</version>
 	<packaging>jar</packaging>
 
 	<name>REXS-API</name>
