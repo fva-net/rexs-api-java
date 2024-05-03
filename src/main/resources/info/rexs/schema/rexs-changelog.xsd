@@ -18,6 +18,7 @@
 				<xsd:element ref="componentChanges" minOccurs="0" maxOccurs="1"/>
 				<xsd:element ref="attributeChanges" minOccurs="0" maxOccurs="1"/>
 				<xsd:element ref="mappingChanges"   minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="relationChanges" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 			<xsd:attribute name="fromVersion" type="xsd:string" use="required"/>
 			<xsd:attribute name="toVersion"   type="xsd:string" use="required"/>
@@ -78,6 +79,25 @@
 		</xsd:complexType>
 	</xsd:element>
 
+	<xsd:element name="relationChanges">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="relationChange" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="relationChange">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="type"      type="changeType"          use="required"/>
+			<xsd:attribute name="id"        type="xsd:string"          use="required"/>
+			<xsd:attribute name="numericId" type="xsd:positiveInteger" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="changedValues">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -90,6 +110,7 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element ref="enumValueChanges" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="roleChanges" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 			<xsd:attribute name="key"      type="xsd:string" use="required"/>
 			<xsd:attribute name="lang"     type="xsd:string" use="optional"/>
@@ -116,6 +137,24 @@
 		</xsd:complexType>
 	</xsd:element>
 
+	<xsd:element name="roleChanges">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="roleChange" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="roleChange">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="type"  type="changeType" use="required"/>
+			<xsd:attribute name="roleId" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:simpleType name="changeType">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="ADD"/>
@@ -130,7 +169,6 @@
 			<xsd:enumeration value="componentId"/>
 			<!-- Attribute -->
 			<xsd:enumeration value="attributeId"/>
-			<xsd:enumeration value="numericId"/>
 			<xsd:enumeration value="valuetype"/>
 			<xsd:enumeration value="unit"/>
 			<xsd:enumeration value="symbol"/>
@@ -142,8 +180,17 @@
 			<xsd:enumeration value="enumvalues"/>
 			<!-- EnumValue -->
 			<xsd:enumeration value="value"/>
+			<!-- Relation-->
+			<xsd:enumeration value="relationId"/>
+			<xsd:enumeration value="orderRequired"/>
+			<xsd:enumeration value="remark"/>
+			<xsd:enumeration value="roles"/>
+			<!-- Role -->
+			<xsd:enumeration value="roleId"/>
 			<!-- Component, Attribute, EnumValue -->
 			<xsd:enumeration value="name"/>
+			<!-- Attribute, Relation -->
+			<xsd:enumeration value="numericId"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 
