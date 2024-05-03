@@ -1,8 +1,8 @@
 //
-// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert
-// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Diese Datei wurde mit der Eclipse Implementation of JAXB, v2.3.7 generiert
+// Siehe https://eclipse-ee4j.github.io/jaxb-ri
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
-// Generiert: 2020.08.19 um 03:16:47 PM CEST
+// Generiert: 2024.05.06 um 08:21:36 AM CEST
 //
 
 
@@ -29,8 +29,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}valueTypes" minOccurs="0"/&gt;
  *         &lt;element ref="{}components" minOccurs="0"/&gt;
  *         &lt;element ref="{}attributes" minOccurs="0"/&gt;
- *         &lt;element ref="{}relations" minOccurs="0"/&gt;
  *         &lt;element ref="{}componentAttributeMappings" minOccurs="0"/&gt;
+ *         &lt;element ref="{}relations" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="version" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="status" use="required" type="{}versionStatusType" /&gt;
@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "relations"
 })
 @XmlRootElement(name = "rexsModel")
-public class RexsDatabaseModelFile {
+public class RexsModel {
 
     protected Units units;
     protected ValueTypes valueTypes;
