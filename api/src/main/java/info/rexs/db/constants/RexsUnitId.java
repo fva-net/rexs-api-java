@@ -41,11 +41,21 @@ public class RexsUnitId implements RexsStandardUnitIds {
 	 * The actual unit ID as a {@link String}.
      */
 	private final String id;
+	private int numericId = 0;
 
-	protected RexsUnitId(String id) {
+	private RexsUnitId(String id) {
 		if (id == null || id.isEmpty())
 			throw new IllegalArgumentException("id cannot be empty");
 		this.id = id;
+	}
+
+	private RexsUnitId(String id, int numericId) {
+		if (id == null || id.isEmpty())
+			throw new IllegalArgumentException("id cannot be empty");
+		if (numericId < 0)
+			throw new IllegalArgumentException("numericId cannot be negative");
+		this.id = id;
+		this.numericId = numericId;
 	}
 
     /**
@@ -86,6 +96,27 @@ public class RexsUnitId implements RexsStandardUnitIds {
 		return unitId;
 	}
 
+	public static RexsUnitId create(String id, int numericId) {
+		// check for zero
+		if (numericId == 0) {
+			return create(id);
+		}
+
+		// create unit ID
+		RexsUnitId unitId = new RexsUnitId(id, numericId);
+
+		// check for uniqueness of numericId
+		for (RexsUnitId unit : allUnitIds.values()) {
+			if (unit.numericId == numericId) {
+				throw new IllegalArgumentException("numericId already exists");
+			}
+		}
+
+		// add unit ID to index
+		allUnitIds.put(id, unitId);
+		return unitId;
+	}
+
 	/**
 	 * Returns the unit ID for a textual ID from the internally stored index of all unit IDs.
 	 *
@@ -102,6 +133,15 @@ public class RexsUnitId implements RexsStandardUnitIds {
 			return RexsStandardUnitIds.none;
 		RexsStandardUnitIds.init();
 		return allUnitIds.getOrDefault(id, UNKNOWN);
+	}
+
+	public static RexsUnitId findById(int numericId) {
+		for (RexsUnitId unit : allUnitIds.values()) {
+			if (unit.numericId == numericId) {
+				return unit;
+			}
+		}
+		return UNKNOWN;
 	}
 
 	/**
