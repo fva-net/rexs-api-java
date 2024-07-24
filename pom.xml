@@ -61,7 +61,7 @@
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<spring.boot.version>3.3.1</spring.boot.version>
+		<spring.boot.version>3.3.2</spring.boot.version>
 	</properties>
 
 	<dependencyManagement>
@@ -131,7 +131,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.7.0</version>
+					<version>3.8.0</version>
 					<configuration>
 						<quiet>true</quiet>
 					</configuration>
