@@ -19,12 +19,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import org.junit.Test;
 
 public class RexsUnitIdTest {
 
 	@Test
-	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				RexsUnitId.create(null);
@@ -33,19 +34,100 @@ public class RexsUnitIdTest {
 	}
 
 	@Test
-	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
+	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				RexsUnitId.create("");
 			})
 			.withMessage("id cannot be empty");
+
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					RexsUnitId.create("", 123);
+				})
+				.withMessage("id cannot be empty");
 	}
 
 	@Test
-	public void create_newUnitIdHasId() throws Exception {
+	public void create_givenNegativeNumericIdThrowsIllegalArgumentException() {
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					RexsUnitId.create("unit", -1);
+				})
+				.withMessage("numericId cannot be negative");
+	}
+
+	@Test
+	public void create_givenDuplicateNumericIdThrowsIllegalArgumentException() {
+		// Create a unit with numeric ID 123
+		RexsUnitId.create("unit1", 123);
+
+		// Attempt to create another unit with the same numeric ID (should throw an exception)
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					RexsUnitId.create("unit2", 123);
+				})
+				.withMessage("numericId already exists");
+	}
+
+	@Test
+	public void create_givenNumericIdCreatesUnitWithNumericId() {
+		RexsUnitId newUnitId = RexsUnitId.create("bar", 1234);
+		assertThat(newUnitId.getNumericId()).isEqualTo(1234);
+	}
+
+	@Test
+	public void create_givenZeroNumericIdBehavesSameAsNoNumericId() {
+		RexsUnitId unitIdWithoutNumericId = RexsUnitId.create("baz");
+		RexsUnitId unitIdWithZeroNumericId = RexsUnitId.create("baz", 0);
+		assertThat(unitIdWithZeroNumericId.getId()).isEqualTo(unitIdWithoutNumericId.getId());
+	}
+
+	@Test
+	public void isOneOf_returnsTrueForMatchingUnit() {
+		// Create some sample units
+		RexsUnitId unit1 = RexsUnitId.create("unit1");
+		RexsUnitId unit2 = RexsUnitId.create("unit2");
+		RexsUnitId unit3 = RexsUnitId.create("unit3");
+
+		// Check if unit1 is one of the specified units
+		boolean result = unit1.isOneOf(unit1, unit2, unit3);
+		assertThat(result).isTrue();
+	}
+
+	@Test
+	public void isOneOf_returnsFalseForNonMatchingUnit() {
+		// Create some sample units
+		RexsUnitId unit1 = RexsUnitId.create("unit1");
+		RexsUnitId unit2 = RexsUnitId.create("unit2");
+		RexsUnitId unit3 = RexsUnitId.create("unit3");
+
+		// Check if unit1 is one of the specified units (should return false)
+		boolean result = unit1.isOneOf(unit2, unit3);
+		assertThat(result).isFalse();
+	}
+
+	@Test
+	public void isOneOf_returnsFalseForNullArgument() {
+		// Create a sample unit
+		RexsUnitId unit = RexsUnitId.create("unit1");
+
+		// Check if unit is one of the specified units (including null)
+		boolean result = unit.isOneOf((RexsUnitId) null);
+		assertThat(result).isFalse();
+	}
+
+	@Test
+	public void create_newUnitIdHasId() {
 		RexsUnitId newUnitId = RexsUnitId.create("foo");
 		assertThat(newUnitId.getId()).isEqualTo("foo");
 	}
+
+	@Test
+	public void findById_givenEmptyIdReturnsNone() {
+		assertThat(RexsUnitId.findById("")).isEqualTo(RexsStandardUnitIds.none);
+	}
+
 
 	@Test
 	public void findById_givenNullReturnsNull() {
@@ -58,14 +140,14 @@ public class RexsUnitIdTest {
 	}
 
 	@Test
-	public void findById_returnsRexsStandardUnitId() throws Exception {
+	public void findById_returnsRexsStandardUnitId() {
 		RexsUnitId unitId = RexsUnitId.findById(RexsUnitId.hertz.getId());
 		assertThat(unitId).isNotNull();
 		assertThat(unitId.getId()).isEqualTo(RexsUnitId.hertz.getId());
 	}
 
 	@Test
-	public void findById_returnsNewlyCreatedUnitId() throws Exception {
+	public void findById_returnsNewlyCreatedUnitId() {
 		RexsUnitId.create("bar");
 		RexsUnitId newUnitId = RexsUnitId.findById("bar");
 		assertThat(newUnitId).isNotNull();
@@ -73,12 +155,34 @@ public class RexsUnitIdTest {
 	}
 
 	@Test
-	public void isEquivalent_nullSafety() throws Exception {
+	public void findById_returnsExistingUnitForValidNumericId() {
+		// Create some sample units
+		RexsUnitId unit1 = RexsUnitId.create("unit1", 12345);
+		RexsUnitId unit2 = RexsUnitId.create("unit2", 45678);
+
+		// Test finding units by numeric ID
+		RexsUnitId foundUnit1 = RexsUnitId.findById(12345);
+		RexsUnitId foundUnit2 = RexsUnitId.findById(45678);
+
+		assertThat(foundUnit1).isEqualTo(unit1);
+		assertThat(foundUnit2).isEqualTo(unit2);
+	}
+
+	@Test
+	public void findById_returnsUnknownForNonExistentNumericId() {
+		// Test non-existent numeric ID
+		RexsUnitId notFoundUnit = RexsUnitId.findById(999);
+
+		assertThat(notFoundUnit).isEqualTo(RexsUnitId.UNKNOWN);
+	}
+
+	@Test
+	public void isEquivalent_nullSafety() {
 		assertThat(RexsUnitId.hour.isEquivalent(null)).isFalse();
 	}
 
 	@Test
-	public void isEquivalent_equivalentUnitsReturnTrue() throws Exception {
+	public void isEquivalent_equivalentUnitsReturnTrue() {
 		assertThat(RexsUnitId.mega_pascal.isEquivalent(RexsUnitId.newton_per_mm2)).isTrue();
 		assertThat(RexsUnitId.newton_per_mm2.isEquivalent(RexsUnitId.mega_pascal)).isTrue();
 
@@ -87,7 +191,7 @@ public class RexsUnitIdTest {
 	}
 
 	@Test
-	public void isEquivalent_nonEquivalentUnitsReturnFalse() throws Exception {
+	public void isEquivalent_nonEquivalentUnitsReturnFalse() {
 		assertThat(RexsUnitId.hour.isEquivalent(RexsUnitId.degree_celsius)).isFalse();
 		assertThat(RexsUnitId.degree_celsius.isEquivalent(RexsUnitId.hour)).isFalse();
 	}
