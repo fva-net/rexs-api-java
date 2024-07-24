@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Set;
 
 import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import lombok.Getter;
 
 /**
  * This class represents a REXS unit.
@@ -30,12 +31,15 @@ import info.rexs.db.constants.standard.RexsStandardUnitIds;
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsUnitId implements RexsStandardUnitIds {
 
 	/** An internal index with all created units (REXS standard and own) for quick access. */
-	private static Map<String, RexsUnitId> allUnitIds = new HashMap<>();
+	private static final Map<String, RexsUnitId> allUnitIds = new HashMap<>();
 
-	/** The actual unit ID as a {@link String}. */
+	/**
+	 * The actual unit ID as a {@link String}.
+     */
 	private final String id;
 
 	protected RexsUnitId(String id) {
@@ -44,15 +48,7 @@ public class RexsUnitId implements RexsStandardUnitIds {
 		this.id = id;
 	}
 
-	/**
-	 * @return
-	 * 				The actual unit ID as a {@link String}.
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
+    /**
 	 * TODO Document me!
 	 *
 	 * @param checkUnitIds
@@ -103,7 +99,7 @@ public class RexsUnitId implements RexsStandardUnitIds {
 		if (id == null)
 			return null;
 		if (id.isEmpty())
-			return RexsUnitId.none;
+			return RexsStandardUnitIds.none;
 		RexsStandardUnitIds.init();
 		return allUnitIds.getOrDefault(id, UNKNOWN);
 	}
