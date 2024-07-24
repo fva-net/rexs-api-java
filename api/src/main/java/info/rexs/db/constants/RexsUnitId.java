@@ -58,14 +58,13 @@ public class RexsUnitId implements RexsStandardUnitIds {
 		this.numericId = numericId;
 	}
 
-    /**
-	 * TODO Document me!
+	/**
+	 * Checks if the unit is one of the specified units.
 	 *
 	 * @param checkUnitIds
-	 * 				TODO Document me!
-	 *
+	 * 				The units to check against.
 	 * @return
-	 * 				TODO Document me!
+	 * 				{@code true} if this unit is one of the specified units, otherwise {@code false}.
 	 */
 	public boolean isOneOf(RexsUnitId ... checkUnitIds)
 	{
@@ -96,6 +95,17 @@ public class RexsUnitId implements RexsStandardUnitIds {
 		return unitId;
 	}
 
+	/**
+	 * Creates a new unit ID with a numeric ID and adds it to the internal index.
+	 *
+	 * @param id
+	 * 				The actual unit ID as a {@link String}.
+	 * @param numericId
+	 * 				The numeric ID associated with the unit.
+	 * @return
+	 * 				The newly created unit ID as {@link RexsUnitId}.
+	 * @throws IllegalArgumentException if the numericId already exists.
+	 */
 	public static RexsUnitId create(String id, int numericId) {
 		// check for zero
 		if (numericId == 0) {
