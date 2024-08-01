@@ -37,10 +37,10 @@ public class RexsUnitId implements RexsStandardUnitIds {
 	/** An internal index with all created units (REXS standard and own) for quick access. */
 	private static final Map<String, RexsUnitId> allUnitIds = new HashMap<>();
 
-	/**
-	 * The actual unit ID as a {@link String}.
-     */
+	/** The actual unit ID as a {@link String}. */
 	private final String id;
+
+	/** The units unique numeric ID as a {@link int}. */
 	private int numericId = 0;
 
 	private RexsUnitId(String id) {
