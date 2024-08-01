@@ -26,7 +26,7 @@ import org.junit.Test;
 public class RexsValueTypeTest {
 
 	@Test
-	public void getKey_notNullAndNotEmpty() throws Exception {
+	public void getKey_notNullAndNotEmpty() {
 		Stream.of(RexsValueType.values()).forEach(valueType -> {
 			assertThat(valueType.getKey()).isNotNull();
 			assertThat(valueType.getKey()).isNotEmpty();
@@ -34,7 +34,7 @@ public class RexsValueTypeTest {
 	}
 
 	@Test
-	public void getKey_returnsUniqueKey() throws Exception {
+	public void getKey_returnsUniqueKey() {
 		Set<String> usedKeys = new HashSet<>();
 		Stream.of(RexsValueType.values()).forEach(valueType -> {
 			assertThat(usedKeys).doesNotContain(valueType.getKey());
@@ -43,7 +43,21 @@ public class RexsValueTypeTest {
 	}
 
 	@Test
-	public void getBasicType_assignmentsCorrect() throws Exception {
+	public void getNumericId_notZero() {
+		Stream.of(RexsValueType.values()).forEach(valueType -> assertThat(valueType.getNumericId()).isNotZero());
+	}
+
+	@Test
+	public void getNumericId_returnsUniqueValues() {
+		Set<Integer> usedIds = new HashSet<>();
+		Stream.of(RexsValueType.values()).forEach(valueType -> {
+			assertThat(usedIds).doesNotContain(valueType.getNumericId());
+			usedIds.add(valueType.getNumericId());
+		});
+	}
+
+	@Test
+	public void getBasicType_assignmentsCorrect() {
 		assertThat(RexsValueType.BOOLEAN.getBasicType()).isEqualTo(RexsValueType.BOOLEAN);
 		assertThat(RexsValueType.BOOLEAN_ARRAY.getBasicType()).isEqualTo(RexsValueType.BOOLEAN);
 		assertThat(RexsValueType.BOOLEAN_MATRIX.getBasicType()).isEqualTo(RexsValueType.BOOLEAN);
@@ -79,9 +93,48 @@ public class RexsValueTypeTest {
 	}
 
 	@Test
-	public void findByKey_returnsCorrectValueType() throws Exception {
+	public void findByKey_returnsCorrectValueType() {
 		RexsValueType valueType = RexsValueType.findByKey(RexsValueType.FLOATING_POINT_ARRAY.getKey());
 		assertThat(valueType).isNotNull();
 		assertThat(valueType).isEqualTo(RexsValueType.FLOATING_POINT_ARRAY);
+	}
+
+	@Test
+	public void findByNumericId_givenNullReturnsNull() {
+		assertThat(RexsValueType.findByNumericId(0)).isNull();
+	}
+
+	@Test
+	public void findByNumericId_givenUnknownIdReturnsNull() {
+		assertThat(RexsValueType.findByNumericId(-1)).isNull();
+	}
+
+	@Test
+	public void findByNumericId_returnsCorrectValueType() {
+		RexsValueType valueType = RexsValueType.findByNumericId(RexsValueType.FLOATING_POINT_ARRAY.getNumericId());
+		assertThat(valueType).isNotNull();
+		assertThat(valueType).isEqualTo(RexsValueType.FLOATING_POINT_ARRAY);
+	}
+
+	@Test
+	public void isOneOf_returnsTrueForMatchingTypes() {
+		assertThat(RexsValueType.INTEGER.isOneOf(RexsValueType.INTEGER, RexsValueType.INTEGER_ARRAY)).isTrue();
+		assertThat(RexsValueType.INTEGER_ARRAY.isOneOf(RexsValueType.INTEGER, RexsValueType.INTEGER_ARRAY)).isTrue();
+	}
+
+	@Test
+	public void isOneOf_returnsFalseForNonMatchingTypes() {
+		assertThat(RexsValueType.INTEGER.isOneOf(RexsValueType.FLOATING_POINT, RexsValueType.BOOLEAN)).isFalse();
+		assertThat(RexsValueType.FLOATING_POINT.isOneOf(RexsValueType.BOOLEAN_ARRAY, RexsValueType.DATE_TIME)).isFalse();
+	}
+
+	@Test
+	public void isOneOf_returnsFalseForNullArgument() {
+		assertThat(RexsValueType.STRING.isOneOf((RexsValueType[]) null)).isFalse();
+	}
+
+	@Test
+	public void isOneOf_returnsFalseForEmptyArgument() {
+		assertThat(RexsValueType.STRING.isOneOf()).isFalse();
 	}
 }
