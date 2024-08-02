@@ -28,6 +28,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.io.AbstractRexsFileWriter;
 import info.rexs.io.RexsIoException;
 import info.rexs.io.json.model.Accumulation;
@@ -106,7 +108,7 @@ public class RexsJsonFileWriter extends AbstractRexsFileWriter {
 			RexsModelJsonTransformer transformer = new RexsModelJsonTransformer();
 			JSONModel rawModel = transformer.transform(model);
 			convertDegreeUnits(rawModel.getModel());
-			
+
 			ObjectMapper mapper = new ObjectMapper();
 			//mapper.disable(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES);
 			mapper.registerSubtypes(
@@ -145,7 +147,7 @@ public class RexsJsonFileWriter extends AbstractRexsFileWriter {
 			throw new RexsIoException("error on writing rexs model to json file", ex);
 		}
 	}
-	
+
 	private void convertDegreeUnits(Model model) {
 		if (model.getComponents() == null || model.getComponents().isEmpty())
 			return;
@@ -155,9 +157,9 @@ public class RexsJsonFileWriter extends AbstractRexsFileWriter {
 		if (version == null)
 			return;
 
-		RexsUnitId searchUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.deg : RexsUnitId.degree;
-		RexsUnitId replaceUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.degree : RexsUnitId.deg;
-		
+		RexsUnitId searchUnit = version.isLess(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.deg : RexsStandardUnitIds.degree;
+		RexsUnitId replaceUnit = version.isLess(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.degree : RexsStandardUnitIds.deg;
+
 		List<Component> allComponents = new ArrayList<>();
 		allComponents.addAll(model.getComponents());
 		LoadSpectrum spectrum = model.getLoadSpectrum();

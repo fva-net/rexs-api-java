@@ -30,6 +30,8 @@ import jakarta.xml.bind.Marshaller;
 
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.io.AbstractRexsFileWriter;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
@@ -123,9 +125,9 @@ public class RexsXmlFileWriter extends AbstractRexsFileWriter {
 		if (version == null)
 			return model;
 
-		RexsUnitId searchUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.deg : RexsUnitId.degree;
-		RexsUnitId replaceUnit = version.isLess(RexsVersion.V1_4) ? RexsUnitId.degree : RexsUnitId.deg;
-		
+		RexsUnitId searchUnit = version.isLess(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.deg : RexsStandardUnitIds.degree;
+		RexsUnitId replaceUnit = version.isLess(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.degree : RexsStandardUnitIds.deg;
+
 		List<Component> allComponents = new ArrayList<>();
 		allComponents.addAll(model.getComponents().getComponent());
 		for (LoadSpectrum spectrum : model.getLoadSpectrum()) {

@@ -22,6 +22,8 @@ import java.util.Set;
 
 import info.rexs.db.constants.RexsRelationRole;
 import info.rexs.db.constants.RexsRelationType;
+import info.rexs.db.constants.standard.RexsStandardRelationRoles;
+import info.rexs.db.constants.standard.RexsStandardRelationTypes;
 
 /**
  * This class represents a relation of a REXS model.
@@ -211,36 +213,36 @@ public class RexsRelation {
 	public Integer getMainComponentId() {
 		RexsRelationType type = getType();
 
-		if (RexsRelationType.assembly.equals(type)
-				|| RexsRelationType.ordered_assembly.equals(type))
-			return findComponentIdByRole(RexsRelationRole.assembly);
+		if (RexsStandardRelationTypes.assembly.equals(type)
+				|| RexsStandardRelationTypes.ordered_assembly.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.assembly);
 
-		else if (RexsRelationType.stage.equals(type)
-				|| RexsRelationType.stage_gear_data.equals(type))
-			return findComponentIdByRole(RexsRelationRole.stage);
+		else if (RexsStandardRelationTypes.stage.equals(type)
+				|| RexsStandardRelationTypes.stage_gear_data.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.stage);
 
-		else if (RexsRelationType.flank.equals(type))
-			return findComponentIdByRole(RexsRelationRole.gear);
+		else if (RexsStandardRelationTypes.flank.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.gear);
 
-		else if (RexsRelationType.side.equals(type)
-				|| RexsRelationType.coupling.equals(type))
-			return findComponentIdByRole(RexsRelationRole.assembly);
+		else if (RexsStandardRelationTypes.side.equals(type)
+				|| RexsStandardRelationTypes.coupling.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.assembly);
 
-		else if (RexsRelationType.reference.equals(type)
-				|| RexsRelationType.ordered_reference.equals(type))
-			return findComponentIdByRole(RexsRelationRole.origin);
+		else if (RexsStandardRelationTypes.reference.equals(type)
+				|| RexsStandardRelationTypes.ordered_reference.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.origin);
 
-		else if (RexsRelationType.planet_shaft.equals(type)
-				|| RexsRelationType.central_shaft.equals(type)
-				|| RexsRelationType.planet_pin.equals(type)
-				|| RexsRelationType.planet_carrier_shaft.equals(type))
-			return findComponentIdByRole(RexsRelationRole.planetary_stage);
+		else if (RexsStandardRelationTypes.planet_shaft.equals(type)
+				|| RexsStandardRelationTypes.central_shaft.equals(type)
+				|| RexsStandardRelationTypes.planet_pin.equals(type)
+				|| RexsStandardRelationTypes.planet_carrier_shaft.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.planetary_stage);
 
-		else if (RexsRelationType.connection.equals(type))
-			return findComponentIdByRole(RexsRelationRole.side_1);
+		else if (RexsStandardRelationTypes.connection.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.side_1);
 
-		else if (RexsRelationType.manufacturing_step.equals(type))
-			return findComponentIdByRole(RexsRelationRole.workpiece);
+		else if (RexsStandardRelationTypes.manufacturing_step.equals(type))
+			return findComponentIdByRole(RexsStandardRelationRoles.workpiece);
 
 		return null;
 	}
@@ -253,43 +255,43 @@ public class RexsRelation {
 		RexsRelationType type = getType();
 		List<Integer> subComponentIds = new ArrayList<>();
 
-		if (RexsRelationType.assembly.equals(type)
-				|| RexsRelationType.ordered_assembly.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.part));
+		if (RexsStandardRelationTypes.assembly.equals(type)
+				|| RexsStandardRelationTypes.ordered_assembly.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.part));
 
-		} else if (RexsRelationType.stage.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.gear_1));
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.gear_2));
+		} else if (RexsStandardRelationTypes.stage.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.gear_1));
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.gear_2));
 
-		} else if (RexsRelationType.stage_gear_data.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.gear));
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.stage_gear_data));
+		} else if (RexsStandardRelationTypes.stage_gear_data.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.gear));
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.stage_gear_data));
 
-		} else if (RexsRelationType.flank.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.left));
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.right));
+		} else if (RexsStandardRelationTypes.flank.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.left));
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.right));
 
-		} else if (RexsRelationType.side.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.inner_part));
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.outer_part));
+		} else if (RexsStandardRelationTypes.side.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.inner_part));
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.outer_part));
 
-		} else if (RexsRelationType.coupling.equals(type)
-				|| RexsRelationType.connection.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.side_1));
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.side_2));
+		} else if (RexsStandardRelationTypes.coupling.equals(type)
+				|| RexsStandardRelationTypes.connection.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.side_1));
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.side_2));
 
-		} else if (RexsRelationType.reference.equals(type)
-				|| RexsRelationType.ordered_reference.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.referenced));
+		} else if (RexsStandardRelationTypes.reference.equals(type)
+				|| RexsStandardRelationTypes.ordered_reference.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.referenced));
 
-		} else if (RexsRelationType.planet_shaft.equals(type)
-				|| RexsRelationType.central_shaft.equals(type)
-				|| RexsRelationType.planet_pin.equals(type)
-				|| RexsRelationType.planet_carrier_shaft.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.shaft));
-		} else if (RexsRelationType.manufacturing_step.equals(type)) {
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.tool));
-			subComponentIds.add(findComponentIdByRole(RexsRelationRole.manufacturing_settings));
+		} else if (RexsStandardRelationTypes.planet_shaft.equals(type)
+				|| RexsStandardRelationTypes.central_shaft.equals(type)
+				|| RexsStandardRelationTypes.planet_pin.equals(type)
+				|| RexsStandardRelationTypes.planet_carrier_shaft.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.shaft));
+		} else if (RexsStandardRelationTypes.manufacturing_step.equals(type)) {
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.tool));
+			subComponentIds.add(findComponentIdByRole(RexsStandardRelationRoles.manufacturing_settings));
 		}
 
 		return subComponentIds;
@@ -313,7 +315,7 @@ public class RexsRelation {
 				ref.setId(newId);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		String refString = refs.stream()

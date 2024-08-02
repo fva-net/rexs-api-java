@@ -23,6 +23,7 @@ import java.io.InputStream;
 import org.junit.Test;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 
 public class DbModelFileTest {
 
@@ -37,7 +38,7 @@ public class DbModelFileTest {
 
 	@Test
 	public void create_givenNullFileResolverConvertsToDefault() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, null);
+		DbModelFile dbModelFile = DbModelFile.create(RexsStandardVersions.V1_0, null);
 
 		try (InputStream input = dbModelFile.openInputStream()) {
 			assertThat(input).isNotNull();
@@ -53,7 +54,7 @@ public class DbModelFileTest {
 			}
 		};
 
-		DbModelFile dbModelFile = DbModelFile.create(RexsVersion.V1_0, newDbModelFileResolver);
+		DbModelFile dbModelFile = DbModelFile.create(RexsStandardVersions.V1_0, newDbModelFileResolver);
 		try (InputStream input = dbModelFile.openInputStream()) {
 			assertThat(input).isNotNull();
 		}
@@ -71,9 +72,9 @@ public class DbModelFileTest {
 
 	@Test
 	public void findByVersion_returnsRequestedDbModelFile() throws Exception {
-		DbModelFile dbModelFile = DbModelFile.findByVersion(RexsVersion.V1_2);
+		DbModelFile dbModelFile = DbModelFile.findByVersion(RexsStandardVersions.V1_2);
 		assertThat(dbModelFile).isNotNull();
-		assertThat(dbModelFile.getVersion()).isEqualTo(RexsVersion.V1_2);
+		assertThat(dbModelFile.getVersion()).isEqualTo(RexsStandardVersions.V1_2);
 	}
 
 	@Test

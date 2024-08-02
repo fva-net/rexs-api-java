@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.upgrade.RexsUpgradeException;
 
@@ -43,7 +44,7 @@ public class UpgradeResolver {
 	private Map<RexsVersion, Map<RexsVersion, ModelUpgrader>> registeredUpgraders = new HashMap<>();
 
 	private UpgradeResolver() {
-		register(RexsVersion.V1_0, RexsVersion.V1_1, new ModelUpgrader() {
+		register(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
 				ModelUpgraderV10toV11 upgrader = new ModelUpgraderV10toV11(rexsModel, strictMode);
@@ -51,7 +52,7 @@ public class UpgradeResolver {
 			}
 		});
 
-		register(RexsVersion.V1_1, RexsVersion.V1_2, new ModelUpgrader() {
+		register(RexsStandardVersions.V1_1, RexsStandardVersions.V1_2, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
 				ModelUpgraderV11toV12 upgrader = new ModelUpgraderV11toV12(rexsModel, strictMode);
@@ -59,7 +60,7 @@ public class UpgradeResolver {
 			}
 		});
 
-		register(RexsVersion.V1_2, RexsVersion.V1_3, new ModelUpgrader() {
+		register(RexsStandardVersions.V1_2, RexsStandardVersions.V1_3, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
 				ModelUpgraderV12toV13 upgrader = new ModelUpgraderV12toV13(rexsModel, strictMode);
@@ -67,7 +68,7 @@ public class UpgradeResolver {
 			}
 		});
 
-		register(RexsVersion.V1_3, RexsVersion.V1_4, new ModelUpgrader() {
+		register(RexsStandardVersions.V1_3, RexsStandardVersions.V1_4, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
 				ModelUpgraderV13toV14 upgrader = new ModelUpgraderV13toV14(rexsModel, strictMode);
@@ -75,7 +76,7 @@ public class UpgradeResolver {
 			}
 		});
 
-		register(RexsVersion.V1_4, RexsVersion.V1_5, new ModelUpgrader() {
+		register(RexsStandardVersions.V1_4, RexsStandardVersions.V1_5, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
 				ModelUpgraderV14toV15 upgrader = new ModelUpgraderV14toV15(rexsModel, strictMode);
@@ -83,7 +84,7 @@ public class UpgradeResolver {
 			}
 		});
 
-		register(RexsVersion.V1_5, RexsVersion.V1_6, new ModelUpgrader() {
+		register(RexsStandardVersions.V1_5, RexsStandardVersions.V1_6, new ModelUpgrader() {
 			@Override
 			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
 				ModelUpgraderV15toV16 upgrader = new ModelUpgraderV15toV16(rexsModel, strictMode);

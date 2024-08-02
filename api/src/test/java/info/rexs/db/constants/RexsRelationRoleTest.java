@@ -21,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
+import info.rexs.db.constants.standard.RexsStandardRelationRoles;
+
 public class RexsRelationRoleTest {
 
 	@Test
@@ -59,9 +61,9 @@ public class RexsRelationRoleTest {
 
 	@Test
 	public void findByKey_returnsRexsStandardRelationRole() throws Exception {
-		RexsRelationRole relationRole = RexsRelationRole.findByKey(RexsRelationRole.inner_part.getKey());
+		RexsRelationRole relationRole = RexsRelationRole.findByKey(RexsStandardRelationRoles.inner_part.getKey());
 		assertThat(relationRole).isNotNull();
-		assertThat(relationRole.getKey()).isEqualTo(RexsRelationRole.inner_part.getKey());
+		assertThat(relationRole.getKey()).isEqualTo(RexsStandardRelationRoles.inner_part.getKey());
 	}
 
 	@Test
@@ -74,14 +76,14 @@ public class RexsRelationRoleTest {
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(RexsRelationRole.manufacturing_settings.equals(RexsRelationRole.manufacturing_settings)).isTrue();
+		assertThat(RexsStandardRelationRoles.manufacturing_settings.equals(RexsStandardRelationRoles.manufacturing_settings)).isTrue();
 		assertThat(RexsRelationRole.create("test1")).isEqualTo(RexsRelationRole.create("test1"));
 	}
 
 	@Test
 	public void equals_notEqualObjects() {
-		assertThat(RexsRelationRole.outer_part).isNotEqualTo(RexsRelationRole.inner_part);
-		assertThat(RexsRelationRole.outer_part).isNotEqualTo("outer_part");
+		assertThat(RexsStandardRelationRoles.outer_part).isNotEqualTo(RexsStandardRelationRoles.inner_part);
+		assertThat(RexsStandardRelationRoles.outer_part).isNotEqualTo("outer_part");
 		assertThat(RexsRelationRole.create("test2")).isNotEqualTo(RexsRelationRole.create("test3"));
 	}
 }

@@ -21,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
+import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+
 public class RexsComponentTypeTest {
 
 	@Test
@@ -54,14 +56,14 @@ public class RexsComponentTypeTest {
 
 	@Test
 	public void findById_givenUnknownIdReturnsUnknown() {
-		assertThat(RexsComponentType.findById("foo_bar")).isEqualTo(RexsComponentType.UNKNOWN);
+		assertThat(RexsComponentType.findById("foo_bar")).isEqualTo(RexsStandardComponentTypes.UNKNOWN);
 	}
 
 	@Test
 	public void findById_returnsRexsStandardComponentType() throws Exception {
-		RexsComponentType componentType = RexsComponentType.findById(RexsComponentType.coupling.getId());
+		RexsComponentType componentType = RexsComponentType.findById(RexsStandardComponentTypes.coupling.getId());
 		assertThat(componentType).isNotNull();
-		assertThat(componentType.getId()).isEqualTo(RexsComponentType.coupling.getId());
+		assertThat(componentType.getId()).isEqualTo(RexsStandardComponentTypes.coupling.getId());
 	}
 
 	@Test
@@ -74,14 +76,14 @@ public class RexsComponentTypeTest {
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(RexsComponentType.coupling.equals(RexsComponentType.coupling)).isTrue();
+		assertThat(RexsStandardComponentTypes.coupling.equals(RexsStandardComponentTypes.coupling)).isTrue();
 		assertThat(RexsComponentType.create("test1")).isEqualTo(RexsComponentType.create("test1"));
 	}
 
 	@Test
 	public void equals_notEqualObjects() {
-		assertThat(RexsComponentType.bevel_stage).isNotEqualTo(RexsComponentType.bevel_gear);
-		assertThat(RexsComponentType.bevel_stage).isNotEqualTo("bevel_stage");
+		assertThat(RexsStandardComponentTypes.bevel_stage).isNotEqualTo(RexsStandardComponentTypes.bevel_gear);
+		assertThat(RexsStandardComponentTypes.bevel_stage).isNotEqualTo("bevel_stage");
 		assertThat(RexsComponentType.create("test2")).isNotEqualTo(RexsComponentType.create("test3"));
 	}
 }

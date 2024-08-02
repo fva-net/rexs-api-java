@@ -8,11 +8,12 @@ import java.util.Comparator;
 import java.util.List;
 
 import info.rexs.db.DbModelRegistry;
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardAttributeIds;
+import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.io.json.model.Accumulation;
 import info.rexs.io.json.model.Component;
 import info.rexs.io.json.model.FloatingPointArrayCoded;
@@ -77,7 +78,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 
 	@Override
 	public JSONModel transform(RexsModel model) {
-		version = model.getVersion().equals(RexsVersion.UNKNOWN) ? RexsVersion.create(model.getOriginVersion(), 0) : model.getVersion();
+		version = model.getVersion().equals(RexsStandardVersions.UNKNOWN) ? RexsVersion.create(model.getOriginVersion(), 0) : model.getVersion();
 		return new JSONModel().withModel(new Model()
 				.withDate(DateUtils.getISO8601Date())
 				.withApplicationId(model.getApplicationId())
@@ -154,7 +155,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		Component componentJson = new Component();
 		componentJson.setId(component.getId());
 
-		if (component.getType().equals(RexsComponentType.UNKNOWN)) {
+		if (component.getType().equals(RexsStandardComponentTypes.UNKNOWN)) {
 			componentJson.setType(component.getOriginType());
 		} else {
 			componentJson.setType(component.getType().getId());
@@ -190,7 +191,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			switch (type) {
 			case DATE_TIME: {
 				DateTimeAttribute timeAttr = new DateTimeAttribute();
-				timeAttr.setTime(attribute.hasValue() ? attribute.getDateTimeValue().toString() : null ); 
+				timeAttr.setTime(attribute.hasValue() ? attribute.getDateTimeValue().toString() : null );
 				jsonAttribute = timeAttr;
 				break;
 			}
@@ -254,7 +255,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		else { // unknown/ custom attribute
 			if (value==null)
 				return new ArrayList<>();
-			jsonAttribute = createAttributeJsonCustom(value, unit);			
+			jsonAttribute = createAttributeJsonCustom(value, unit);
 		}
 		return Collections.singletonList(jsonAttribute.withId(attributeId).withUnit(unit));
 		}
@@ -270,7 +271,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 				return new StringAttribute().withString(valueString);
 			else if (valueString.equals("true") || valueString.equals("false"))
 				return new BooleanAttribute().withBoolean(Boolean.valueOf(valueString));
-			else if (!unit.equals(RexsUnitId.none.getId()))
+			else if (!unit.equals(RexsStandardUnitIds.none.getId()))
 				return new FloatingPointAttribute().withFloatingPoint(Double.valueOf(valueString));
 			// if nothing better is known try valueOf...
 			try {
@@ -291,7 +292,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 				return new StringArrayAttribute().withStringArray(valueString);
 			else if (valueString.get(0).equals("true") || valueString.get(0).equals("false"))
 				return new BooleanArrayAttribute().withBooleanArray(valueString.stream().map(s -> Boolean.valueOf(s)).toList());
-			else if (!unit.equals(RexsUnitId.none.getId()))
+			else if (!unit.equals(RexsStandardUnitIds.none.getId()))
 				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(s -> Double.valueOf(s)).toList());
 			// if nothing better is known try valueOf...
 			try {
@@ -320,8 +321,8 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 				return new StringMatrixAttribute().withStringMatrix(valueString);
 			else if (valueString.get(0).get(0).equals("true") || valueString.get(0).get(0).equals("false"))
 				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(s -> Boolean.valueOf(s)).toList()).toList());
-			else if (!unit.equals(RexsUnitId.none.getId()))
-				return new FloatingPointMatrixAttribute().withFloatingPointMatrix(valueString.stream().map(list -> list.stream().map(s -> Double.valueOf(s)).toList()).toList());				
+			else if (!unit.equals(RexsStandardUnitIds.none.getId()))
+				return new FloatingPointMatrixAttribute().withFloatingPointMatrix(valueString.stream().map(list -> list.stream().map(s -> Double.valueOf(s)).toList()).toList());
 			// if nothing better is known try valueOf...
 			try {
 				return new IntegerMatrixAttribute().withIntegerMatrix(valueString.stream().map(list -> list.stream().map(s -> Integer.valueOf(s)).toList()).toList());
@@ -361,13 +362,13 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 	}
 
 	private String getRexsAttrId(RexsAttribute attribute){
-		if (attribute.getAttributeId().equals(RexsAttributeId.UNKNOWN)) 
+		if (attribute.getAttributeId().equals(RexsStandardAttributeIds.UNKNOWN))
 			return attribute.getOriginAttributeId();
 		return attribute.getAttributeId().getId();
 	}
 
 	private String getRexsAttrUnit(RexsAttribute attribute){
-		if (attribute.getUnit().equals(RexsUnitId.UNKNOWN)) 
+		if (attribute.getUnit().equals(RexsStandardUnitIds.UNKNOWN))
 			return attribute.getOriginUnit();
 		return attribute.getUnit().getId();
 	}
@@ -493,7 +494,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		}
 		if(attributeJson instanceof FloatingPointArrayCodedAttribute){
 			FloatingPointArrayCoded arrayCoded = ((FloatingPointArrayCodedAttribute)attributeJson).getFloatingPointArrayCoded();
-			return new RexsAttributeValueArrayBase64(arrayCoded.getValue(), Base64Type.valueOf(arrayCoded.getCode()));			
+			return new RexsAttributeValueArrayBase64(arrayCoded.getValue(), Base64Type.valueOf(arrayCoded.getCode()));
 		}
 		if(attributeJson instanceof BooleanArrayAttribute){
 			RexsAttributeValueArray array = new RexsAttributeValueArray();
@@ -521,7 +522,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		}
 		if(attributeJson instanceof FloatingPointMatrixCodedAttribute){
 			FloatingPointMatrixCoded matrixCoded = ((FloatingPointMatrixCodedAttribute)attributeJson).getFloatingPointMatrixCoded();
-			return new RexsAttributeValueMatrixBase64(matrixCoded.getValue(), Base64Type.valueOf(matrixCoded.getCode()), matrixCoded.getRows(), matrixCoded.getColumns());			
+			return new RexsAttributeValueMatrixBase64(matrixCoded.getValue(), Base64Type.valueOf(matrixCoded.getCode()), matrixCoded.getRows(), matrixCoded.getColumns());
 		}
 		if(attributeJson instanceof BooleanMatrixAttribute){
 			List<List<Boolean>> jsonValue = ((BooleanMatrixAttribute) attributeJson).getBooleanMatrix();
@@ -540,7 +541,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		return null;
 	}
 
-	
+
 
 	private RexsLoadSpectrum createLoadSpectrum(LoadSpectrum loadSpectrumJson) {
 		RexsLoadSpectrum loadSpectrum = RexsModelObjectFactory.getInstance().createRexsLoadSpectrum(loadSpectrumJson.getId());

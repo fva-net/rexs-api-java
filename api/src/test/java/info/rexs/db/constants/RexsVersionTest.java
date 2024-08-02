@@ -21,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
+import info.rexs.db.constants.standard.RexsStandardVersions;
+
 public class RexsVersionTest {
 
 	@Test
@@ -60,19 +62,19 @@ public class RexsVersionTest {
 
 	@Test
 	public void findByName_givenNullReturnsUnknown() {
-		assertThat(RexsVersion.findByName(null)).isEqualTo(RexsVersion.UNKNOWN);
+		assertThat(RexsVersion.findByName(null)).isEqualTo(RexsStandardVersions.UNKNOWN);
 	}
 
 	@Test
 	public void findByName_givenUnknownNameReturnsUnknown() {
-		assertThat(RexsVersion.findByName("foo.bar")).isEqualTo(RexsVersion.UNKNOWN);
+		assertThat(RexsVersion.findByName("foo.bar")).isEqualTo(RexsStandardVersions.UNKNOWN);
 	}
 
 	@Test
 	public void findByName_returnsRexsStandardVersion() throws Exception {
-		RexsVersion version = RexsVersion.findByName(RexsVersion.V1_0.getName());
+		RexsVersion version = RexsVersion.findByName(RexsStandardVersions.V1_0.getName());
 		assertThat(version).isNotNull();
-		assertThat(version.getName()).isEqualTo(RexsVersion.V1_0.getName());
+		assertThat(version.getName()).isEqualTo(RexsStandardVersions.V1_0.getName());
 	}
 
 	@Test

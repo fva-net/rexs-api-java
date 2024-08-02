@@ -29,6 +29,7 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.stream.StreamSource;
 
 import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;
@@ -145,8 +146,8 @@ public class RexsXmlFileReader extends AbstractRexsFileReader {
 		}
 		for (Component component : allComponents) {
 			for (Attribute attribute : component.getAttribute()) {
-				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId())) {
-					attribute.setUnit(RexsUnitId.deg.getId());
+				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsStandardUnitIds.degree.getId())) {
+					attribute.setUnit(RexsStandardUnitIds.deg.getId());
 				}
 			}
 		}

@@ -25,7 +25,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 
@@ -38,7 +38,7 @@ public class ChangelogResolverTest {
 
 	@Test
 	public void resolve_invalidChangelogFileResolverThrowsIllegalStateException() throws Exception {
-		ChangelogFile newChangelogFile = ChangelogFile.create(RexsVersion.V1_0, RexsVersion.V1_2, new ChangelogFileResolver() {
+		ChangelogFile newChangelogFile = ChangelogFile.create(RexsStandardVersions.V1_0, RexsStandardVersions.V1_2, new ChangelogFileResolver() {
 			@Override
 			public InputStream openInputStream(ChangelogFile changelogFile) {
 				return null;

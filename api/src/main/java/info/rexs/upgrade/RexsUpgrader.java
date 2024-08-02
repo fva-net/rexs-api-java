@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
 import info.rexs.upgrade.upgraders.ModelUpgrader;
@@ -79,7 +80,7 @@ public class RexsUpgrader {
 	 */
 	public ModelUpgraderResult upgrade(RexsVersion toVersion, boolean strictMode) throws RexsUpgradeException {
 		RexsVersion fromVersion = rexsModel.getVersion();
-		if (fromVersion == null || fromVersion.equals(RexsVersion.UNKNOWN))
+		if (fromVersion == null || fromVersion.equals(RexsStandardVersions.UNKNOWN))
 			throw new RexsUpgradeException(String.format("unknown version %s", rexsModel.getVersion()));
 
 		List<Notification> notifications = new ArrayList<>();

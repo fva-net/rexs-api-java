@@ -22,6 +22,7 @@ import java.util.Objects;
 import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
+import info.rexs.db.constants.standard.RexsStandardAttributeIds;
 import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.value.AbstractRexsAttributeValue;
 import info.rexs.model.value.RexsAttributeValueArray;
@@ -69,10 +70,10 @@ public class RexsAttribute {
 		Objects.requireNonNull(unit, "unit cannot be empty");
 		this.unit = RexsUnitId.findById(unit);
 		this.originUnit = unit;
-		
-		if (this.unit==RexsUnitId.UNKNOWN)
+
+		if (this.unit==RexsStandardUnitIds.UNKNOWN)
 			this.unit = RexsUnitId.create(originUnit);
-		if (this.attributeId==RexsAttributeId.UNKNOWN)
+		if (this.attributeId==RexsStandardAttributeIds.UNKNOWN)
 			this.attributeId = RexsAttributeId.create(originAttributeId, this.unit);
 	}
 
@@ -197,7 +198,7 @@ public class RexsAttribute {
 		checkValue();
 		return value.getValueDateTime();
 	}
-	
+
 	/**
 	 * Returns the boolean value of the attribute.
 	 *
@@ -516,7 +517,7 @@ public class RexsAttribute {
 
 	private void checkUnit(RexsUnitId unitToCheck) {
 		if (attributeId.getUnit() != unitToCheck
-				&& attributeId.getUnit() != RexsUnitId.UNKNOWN
+				&& attributeId.getUnit() != RexsStandardUnitIds.UNKNOWN
 				&& !attributeId.getUnit().isEquivalent(unitToCheck))
 			throw new RexsModelAccessException(String.format("incompatible units (%s <-> %s) on %s attribute",
 					attributeId.getUnit().getId(), unitToCheck.getId(), attributeId.getId()));
@@ -538,7 +539,7 @@ public class RexsAttribute {
 		this.value = new RexsAttributeValueScalar();
 		((RexsAttributeValueScalar)this.value).setValueTime(value);
 	}
-	
+
 	/**
 	 * Sets the boolean value of the attribute.
 	 *

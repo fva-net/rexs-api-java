@@ -22,6 +22,7 @@ import java.util.UUID;
 import org.junit.Test;
 
 import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.standard.RexsStandardComponentTypes;
 
 public class RexsModelAccessExceptionTest {
 
@@ -49,7 +50,7 @@ public class RexsModelAccessExceptionTest {
 	@Test
 	public void componentAndmessageConstructor_getterMatchesValuePassedToConstructor() throws Exception {
 		Integer id = 15;
-		RexsComponentType type = RexsComponentType.UNKNOWN;
+		RexsComponentType type = RexsStandardComponentTypes.UNKNOWN;
 		String name = "SampleComponent";
 		RexsComponent component = new RexsComponent(id, type, name);
 		String message = UUID.randomUUID().toString();
@@ -63,7 +64,7 @@ public class RexsModelAccessExceptionTest {
 	@Test
 	public void componentAndmessageAndCauseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
 		Integer id = 15;
-		RexsComponentType type = RexsComponentType.UNKNOWN;
+		RexsComponentType type = RexsStandardComponentTypes.UNKNOWN;
 		String name = "SampleComponent";
 		RexsComponent component = new RexsComponent(id, type, name);
 		Exception cause = new Exception("foo");

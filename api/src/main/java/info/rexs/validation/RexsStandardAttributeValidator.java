@@ -22,6 +22,7 @@ import info.rexs.db.DbModelRegistry;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 
@@ -38,7 +39,7 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 	public RexsStandardAttributeValidator(RexsVersion rexsVersion) {
 		this.rexsVersion = rexsVersion;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -78,7 +79,7 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 
 		RexsUnitId unitId = RexsUnitId.findById(unit);
 		if (unitId == null
-				|| unitId.isOneOf(RexsUnitId.UNKNOWN))
+				|| unitId.isOneOf(RexsStandardUnitIds.UNKNOWN))
 			validationResult.addError(RexsValidationResultMessageKey.UNIT_UNKNOWN, componentType, attributeId);
 
 		if (unitId != null && attributeKnown) {

@@ -22,6 +22,7 @@ import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
@@ -49,14 +50,14 @@ public class ModelChangelogUpgrader {
 	private UpgradeNotifications notifications = new UpgradeNotifications();
 	/** remove invalid attributes in strict mode */
 	private boolean strictMode;
-	
+
 	public ModelChangelogUpgrader(RexsModel model, RexsChangelogFile.RexsChangelog changelog, boolean strictMode) {
 		this.oldModel = model;
 		this.newModel = new RexsModel(model);
 		this.changelog = changelog;
 		this.strictMode = strictMode;
 	}
-	
+
 
 	public RexsModel applyChangelog() throws RexsUpgradeException {
 		for (ComponentChange change : changelog.componentChanges) {
@@ -72,8 +73,8 @@ public class ModelChangelogUpgrader {
 				if (strictMode) {
 					deleteAttributesByComponentTypeAndAttributeId(newModel, change.getComponentId(), change.getAttributeId());
 				}
-				else 
-					notifyAboutOutdatedAttributeMapping(change.getComponentId(), change.getAttributeId());				
+				else
+					notifyAboutOutdatedAttributeMapping(change.getComponentId(), change.getAttributeId());
 			}
 		}
 
@@ -81,12 +82,12 @@ public class ModelChangelogUpgrader {
 			if (change.getType() == ChangeType.EDIT)
 				editAttributesById(change.getId(), change.getChangedValues().getChangedValue());
 		}
-		
+
 		return newModel;
 	}
 
 
-	
+
 	private void notifyAboutOutdatedAttributeMapping(String componentType, String attributeId) {
 		List<RexsComponent> affectedComponents = newModel.getComponentsOfType(RexsComponentType.findById(componentType)).stream().
 				filter( c -> c.getAttributes().stream().anyMatch(a -> a.getAttributeId().getId().equals(attributeId))).toList();
@@ -123,15 +124,15 @@ public class ModelChangelogUpgrader {
 			notifications.add(new Notification("removed component", new ComponentSource(componentToDelete.getId())));
 		}
 	}
-	
+
 	private void deleteAttributesByComponentTypeAndAttributeId(RexsModel rexsModel, String componentType, String attributeId) {
 		for (RexsComponent component : rexsModel.getComponents()) {
 			if (component.getType().getId().equals(componentType)) {
-				deleteAttributesById(component, attributeId);				
+				deleteAttributesById(component, attributeId);
 			}
 		}
 	}
-	
+
 	private void deleteAttributesById(RexsComponent component, String attributeId) {
 		List<RexsAttribute> attributesToDelete = new ArrayList<>();
 		for (RexsAttribute attribute : component.getAttributes()) {
@@ -145,7 +146,7 @@ public class ModelChangelogUpgrader {
 					new ComponentSource(component.getId()), new AttributeSource(attributeId)));
 		}
 	}
-	
+
 	private void editAttributesById(String attributeId, List<ChangedValue> changedValues) throws RexsUpgradeException {
 		for (RexsComponent component : newModel.getComponents()) {
 			for (RexsAttribute attribute : component.getAttributes()) {
@@ -165,10 +166,10 @@ public class ModelChangelogUpgrader {
 						}
 						case "unit": {
 							if (changedValue.getOldValue().equals("\u00B0") && changedValue.getNewValue().equals("deg")) {
-								attribute.setUnit(RexsUnitId.deg);
-							} else 
+								attribute.setUnit(RexsStandardUnitIds.deg);
+							} else
 							if (changedValue.getOldValue().equals("N") && changedValue.getNewValue().equals("N / mm")) {
-								attribute.setUnit(RexsUnitId.newton_per_mm);
+								attribute.setUnit(RexsStandardUnitIds.newton_per_mm);
 								notifications.add(new Notification(NotificationType.WARNING, "unit conversion from N to N/mm",
 										new AttributeSource(attribute.getAttributeId().getId())));
 							} else {
@@ -256,10 +257,10 @@ public class ModelChangelogUpgrader {
 
 	private void editAttributeValueType(
 			RexsComponent component,
-			RexsAttribute attribute, 
+			RexsAttribute attribute,
 			RexsValueType oldType,
 			RexsValueType newType) throws RexsUpgradeException {
-		
+
 		String rawValue = attribute.getRawValue().getValueString();
 		switch(newType) {
 		case BOOLEAN: {
@@ -309,11 +310,11 @@ public class ModelChangelogUpgrader {
 		}
 		default:
 			throw new RuntimeException("unsupported type conversion to "+newType);
-		}		
+		}
 	}
-	
+
 	public UpgradeNotifications getNotifications() {
 		return notifications;
 	}
-	
+
 }
