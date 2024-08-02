@@ -58,7 +58,10 @@ public interface RexsStandardVersions {
      * REXS version 1.6.
      */
     RexsVersion V1_6 = RexsVersion.create("1.6", 1600);
-
+    /**
+     * Constant for the current development version.
+     */
+    RexsVersion DEV = RexsVersion.create("DEV", 9999);
     /**
      * Constant for an unknown version.
      */
