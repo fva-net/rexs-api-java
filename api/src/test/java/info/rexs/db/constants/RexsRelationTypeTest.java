@@ -21,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
+import info.rexs.db.constants.standard.RexsStandardRelationTypes;
+
 public class RexsRelationTypeTest {
 
 	@Test
@@ -59,9 +61,9 @@ public class RexsRelationTypeTest {
 
 	@Test
 	public void findByKey_returnsRexsStandardRelationType() throws Exception {
-		RexsRelationType relationType = RexsRelationType.findByKey(RexsRelationType.central_shaft.getKey());
+		RexsRelationType relationType = RexsRelationType.findByKey(RexsStandardRelationTypes.central_shaft.getKey());
 		assertThat(relationType).isNotNull();
-		assertThat(relationType.getKey()).isEqualTo(RexsRelationType.central_shaft.getKey());
+		assertThat(relationType.getKey()).isEqualTo(RexsStandardRelationTypes.central_shaft.getKey());
 	}
 
 	@Test
@@ -74,14 +76,14 @@ public class RexsRelationTypeTest {
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(RexsRelationType.coupling.equals(RexsRelationType.coupling)).isTrue();
+		assertThat(RexsStandardRelationTypes.coupling.equals(RexsStandardRelationTypes.coupling)).isTrue();
 		assertThat(RexsRelationType.create("test1")).isEqualTo(RexsRelationType.create("test1"));
 	}
 
 	@Test
 	public void equals_notEqualObjects() {
-		assertThat(RexsRelationType.planet_carrier_shaft).isNotEqualTo(RexsRelationType.planet_shaft);
-		assertThat(RexsRelationType.planet_carrier_shaft).isNotEqualTo("planet_carrier_shaft");
+		assertThat(RexsStandardRelationTypes.planet_carrier_shaft).isNotEqualTo(RexsStandardRelationTypes.planet_shaft);
+		assertThat(RexsStandardRelationTypes.planet_carrier_shaft).isNotEqualTo("planet_carrier_shaft");
 		assertThat(RexsRelationType.create("test2")).isNotEqualTo(RexsRelationType.create("test3"));
 	}
 }

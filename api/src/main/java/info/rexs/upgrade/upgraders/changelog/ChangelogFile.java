@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 
 /**
  * This class represents a REXS database changelog file.
@@ -39,22 +40,22 @@ public class ChangelogFile {
 	private static Set<ChangelogFile> allChangelogFiles = new HashSet<>();
 
 	/** REXS Changelog 1.0 to 1.1 */
-	public static final ChangelogFile V1_0_TO_V1_1 = create(RexsVersion.V1_0, RexsVersion.V1_1);
+	public static final ChangelogFile V1_0_TO_V1_1 = create(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1);
 
 	/** REXS Changelog 1.1 to 1.2 */
-	public static final ChangelogFile V1_1_TO_V1_2 = create(RexsVersion.V1_1, RexsVersion.V1_2);
+	public static final ChangelogFile V1_1_TO_V1_2 = create(RexsStandardVersions.V1_1, RexsStandardVersions.V1_2);
 
 	/** REXS Changelog 1.2 to 1.3 */
-	public static final ChangelogFile V1_2_TO_V1_3 = create(RexsVersion.V1_2, RexsVersion.V1_3);
+	public static final ChangelogFile V1_2_TO_V1_3 = create(RexsStandardVersions.V1_2, RexsStandardVersions.V1_3);
 
 	/** REXS Changelog 1.3 to 1.4 */
-	public static final ChangelogFile V1_3_TO_V1_4 = create(RexsVersion.V1_3, RexsVersion.V1_4);
+	public static final ChangelogFile V1_3_TO_V1_4 = create(RexsStandardVersions.V1_3, RexsStandardVersions.V1_4);
 
 	/** REXS Changelog 1.4 to 1.5 */
-	public static final ChangelogFile V1_4_TO_V1_5 = create(RexsVersion.V1_4, RexsVersion.V1_5);
+	public static final ChangelogFile V1_4_TO_V1_5 = create(RexsStandardVersions.V1_4, RexsStandardVersions.V1_5);
 
 	/** REXS Changelog 1.5 to 1.6 */
-	public static final ChangelogFile V1_5_TO_V1_6 = create(RexsVersion.V1_5, RexsVersion.V1_6);
+	public static final ChangelogFile V1_5_TO_V1_6 = create(RexsStandardVersions.V1_5, RexsStandardVersions.V1_6);
 
 	/** The from {@link RexsVersion} of the REXS database changelog file. */
 	private final RexsVersion fromVersion;

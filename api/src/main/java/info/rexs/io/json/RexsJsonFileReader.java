@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import info.rexs.db.constants.RexsUnitId;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;
@@ -92,7 +92,7 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 			ObjectMapper mapper = new ObjectMapper();
 			// remove BOM if provided
 			text = text.replace("\uFEFF", "");
-			
+
 			return mapper.readerFor(JSONModel.class).readValue(text);
 		} catch (Exception ex) {
 			throw new RexsIoException("error reading rexs model from json file", ex);
@@ -130,8 +130,8 @@ public class RexsJsonFileReader extends AbstractRexsFileReader {
 		}
 		for (Component component : allComponents) {
 			for (Attribute attribute : component.getAttributes()) {
-				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsUnitId.degree.getId())) {
-					attribute.setUnit(RexsUnitId.deg.getId());
+				if (attribute.getUnit() != null && attribute.getUnit().equals(RexsStandardUnitIds.degree.getId())) {
+					attribute.setUnit(RexsStandardUnitIds.deg.getId());
 				}
 			}
 		}

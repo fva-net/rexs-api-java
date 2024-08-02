@@ -30,7 +30,7 @@ import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
 import jakarta.xml.bind.JAXBException;
 
 public class ModelUpgraderV10toV11 {
-	
+
 	private static class AttributeLocation {
 		public final RexsComponentType component;
 		public final RexsAttributeId attribute;
@@ -40,9 +40,9 @@ public class ModelUpgraderV10toV11 {
 			this.attribute = attribute;
 		}
 	}
-	
+
 	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.0_to_1.1.xml";
-	
+
 	/** attributes that are deleted by the changelog upgrader but are meant to live on with a different numeric id */
 	private static final List<AttributeLocation> attributesToRestore = Arrays.asList(
 			new AttributeLocation(RexsStandardComponentTypes.bevel_gear, RexsStandardAttributeIds.face_width),
@@ -74,19 +74,19 @@ public class ModelUpgraderV10toV11 {
 			new AttributeLocation(RexsStandardComponentTypes.shaft_section, RexsStandardAttributeIds.u_coordinate_on_shaft),
 			new AttributeLocation(RexsStandardComponentTypes.zero_degree_grinding_disk_tool, RexsStandardAttributeIds.normal_module),
 			new AttributeLocation(RexsStandardComponentTypes.zero_degree_grinding_disk_tool, RexsStandardAttributeIds.normal_pressure_angle));
-	
+
 	private RexsModel newModel;
 	private final RexsModel oldModel;
 	private final boolean strictMode;
 
 	private RexsChangelogFile.RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
-	
+
 	public ModelUpgraderV10toV11(RexsModel model, boolean strictMode) {
 		this.oldModel = model;
 		this.newModel = new RexsModel(model);
 		this.strictMode = strictMode;
-		
+
 		try (InputStream stream = this.getClass().getResourceAsStream(CHANGELOG_FILENAME)) {
 			changelog = RexsChangelogFile.load(stream);
 		} catch(IOException ex) {
@@ -96,18 +96,18 @@ public class ModelUpgraderV10toV11 {
 		}
 
 	}
-	
+
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
 		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
-		
+
 		checkMissingRoles(newModel);
 		updateCouplingToSideRelation(newModel);
 		upgradeOrder(newModel);
 
 		List<RexsComponent> rollingBearings = newModel.getComponents().stream()
-				.filter(comp -> 
+				.filter(comp ->
 				comp.getType()==RexsStandardComponentTypes.rolling_bearing_with_catalog_geometry ||
 				comp.getType()==RexsStandardComponentTypes.rolling_bearing_with_detailed_geometry)
 				.toList();
@@ -117,20 +117,20 @@ public class ModelUpgraderV10toV11 {
 		}
 
 		restoreAttributeValues();
-		
+
 		newModel.setVersion(RexsStandardVersions.V1_1);
 		newModel.setApplicationId("REXS API Upgrader");
-		
+
 		return new ModelUpgraderResult(newModel, notifications);
 	}
 
 	private void checkMissingRoles(RexsModel model) {
 		checkMissingRoles(model, RexsStandardRelationTypes.REXS_RELATIONS_1_0);
 	}
-	
+
 	private void checkMissingRoles(RexsModel model, List<RexsRelationType> relationTypes) {
 		for (RexsRelationType relType: relationTypes) {
-			List<RexsRelation> relations = new ArrayList<>(model.getRelationsOfType(relType)); 
+			List<RexsRelation> relations = new ArrayList<>(model.getRelationsOfType(relType));
 			for (RexsRelation relation: relations) {
 				boolean remove = false;
 				for (RexsRelationRole specifiedRole: relType.getRoles()) {
@@ -149,7 +149,7 @@ public class ModelUpgraderV10toV11 {
 					notifications.add(new Notification(NotificationType.WARNING,
 							"remove relation "+relation.getId(), new UpgradeNotifications.RelationSource(relation.getId())));
 				}
-				
+
 				// check for extra unspecified refs
 				for (RexsRelationRef ref: relation.getRefs()) {
 					boolean roleIsPresent = relType.getRoles().stream().anyMatch(role -> role==ref.getRole());
@@ -157,20 +157,20 @@ public class ModelUpgraderV10toV11 {
 						notifications.add(new Notification(NotificationType.WARNING,
 								"extraneous role "+ref.getRole().getKey()+" in relation "+relation.getId(),
 								new UpgradeNotifications.RelationSource(relation.getId())));
-					
+
 				}
 			}
 		}
 
 	}
-	
+
 	private void updateCouplingToSideRelation(RexsModel model) {
 		List<RexsRelation> relations = new ArrayList<>(model.getRelationsOfType(RexsStandardRelationTypes.coupling));
 		for (RexsRelation rel: relations) {
 			RexsRelationRef assemblyRef = rel.findRefByRole(RexsStandardRelationRoles.assembly);
 			RexsRelationRef side1Ref = rel.findRefByRole(RexsStandardRelationRoles.side_1);
 			RexsRelationRef side2Ref = rel.findRefByRole(RexsStandardRelationRoles.side_2);
-			
+
 			RexsComponent couplingComp = model.getComponent(assemblyRef.getId());
 			if (couplingComp.getType()==RexsStandardComponentTypes.switchable_coupling) {
 				RexsRelation newRel = new RexsRelation(rel.getId(), RexsStandardRelationTypes.side, rel.getOrder());
@@ -182,32 +182,32 @@ public class ModelUpgraderV10toV11 {
 				newRel.addRef(newInnerRef);
 				newRel.addRef(newOuterRef);
 				model.addRelation(newRel);
-				
+
 				model.removeRelation(rel);
 				notifications.add(new UpgradeNotifications.Notification("convert coupling to side relation "+rel.getId(),
 						new UpgradeNotifications.ComponentSource(couplingComp.getId()),
 						new UpgradeNotifications.RelationSource(rel.getId())));
-				
+
 			} else {
 				notifications.add(new UpgradeNotifications.Notification(
 						NotificationType.FIXME, "coupling has wrong type: "+couplingComp.getType(),
 								new UpgradeNotifications.ComponentSource(couplingComp.getId())));
 			}
-			
+
 
 		}
 
 	}
-	
+
 	private void upgradeOrder(RexsModel model) {
 		for (RexsComponent component: model.getComponents()) {
 			upgradeOrder(component, RexsStandardRelationTypes.ordered_assembly, RexsStandardRelationRoles.assembly);
 			upgradeOrder(component, RexsStandardRelationTypes.ordered_reference, RexsStandardRelationRoles.origin);
-			
+
 		}
-		
+
 	}
-	
+
 	private void upgradeOrder(RexsComponent parentComponent, RexsRelationType relType, RexsRelationRole parentRole) {
 		List<RexsRelation> sortedRelations = newModel.getRelationsOfType(relType).stream()
 				.filter(rel -> Objects.equals(rel.findComponentIdByRole(parentRole), parentComponent.getId()))
@@ -222,8 +222,8 @@ public class ModelUpgraderV10toV11 {
 	}
 
 	private void upgradeBearing(RexsModel model, RexsComponent bearingComp) {
-		if (bearingComp.hasAttribute(RexsAttributeId.bearing_type)) {
-			String type = bearingComp.getStringValue(RexsAttributeId.bearing_type);
+		if (bearingComp.hasAttribute(RexsStandardAttributeIds.bearing_type)) {
+			String type = bearingComp.getStringValue(RexsStandardAttributeIds.bearing_type);
 			switch (type) {
 			case "four_point_contact_ball_bearing": {
 				// remove all bearing rows but one
@@ -243,7 +243,7 @@ public class ModelUpgraderV10toV11 {
 						// TODO remove relations?
 					});
 				}
-				
+
 				RexsComponent firstRowComp = rowComps.get(0);
 				if (firstRowComp.hasAttribute(RexsStandardAttributeIds.axial_force_absorption_of_row)) {
 					firstRowComp.getAttribute(RexsStandardAttributeIds.axial_force_absorption_of_row).setStringValue("both_directions");
@@ -266,8 +266,8 @@ public class ModelUpgraderV10toV11 {
 			}
 		}
 	}
-	
-	
+
+
 	private void removeBearingRowElements(RexsModel model, RexsComponent rowComp) {
 		List<RexsRelation> relations = model.getRelations(RexsStandardRelationTypes.ordered_assembly, RexsStandardRelationRoles.assembly, rowComp.getId());
 		for (RexsRelation rel: relations) {
@@ -279,10 +279,10 @@ public class ModelUpgraderV10toV11 {
 			model.removeComponent(elementComp);
 			model.removeRelation(rel);
 		}
-		
+
 
 	}
-	
+
 	private void upgradeBearingRows(RexsModel model, RexsComponent bearingComp) {
 		List<RexsRelation> relations = model.getRelations(RexsStandardRelationTypes.ordered_assembly, RexsStandardRelationRoles.assembly, bearingComp.getId());
 		for (RexsRelation rel: relations) {
@@ -290,10 +290,10 @@ public class ModelUpgraderV10toV11 {
 			RexsComponent rowComp = model.getComponent(bearingRowId);
 			upgradeRollingElements(model, rowComp);
 		}
-		
+
 		RexsComponent oldBearingComp = oldModel.getComponent(bearingComp.getId());
-		if (oldBearingComp.hasAttribute(RexsAttributeId.all_rows_are_identical)) {
-			boolean rowsIdentical = oldBearingComp.getBooleanValue(RexsAttributeId.all_rows_are_identical);
+		if (oldBearingComp.hasAttribute(RexsStandardAttributeIds.all_rows_are_identical)) {
+			boolean rowsIdentical = oldBearingComp.getBooleanValue(RexsStandardAttributeIds.all_rows_are_identical);
 			if (rowsIdentical) {
 				notifications.add(new Notification("create instances of identical rows",
 						new UpgradeNotifications.ComponentSource(bearingComp.getId())));
@@ -302,7 +302,7 @@ public class ModelUpgraderV10toV11 {
 				int bearingRowId = relations.get(0).findComponentIdByRole(RexsStandardRelationRoles.part);
 				relations.get(0).setOrder(1);
 				RexsComponent rowComp = model.getComponent(bearingRowId);
-				int numRows = bearingComp.getIntegerValue(RexsAttributeId.number_of_bearing_rows);
+				int numRows = bearingComp.getIntegerValue(RexsStandardAttributeIds.number_of_bearing_rows);
 				for (int order = 1; order < numRows; order++) {
 					RexsComponent newRow = new RexsComponent(rowComp);
 					newRow.setId(model.getNextFreeComponentId());
@@ -316,8 +316,8 @@ public class ModelUpgraderV10toV11 {
 
 	private void upgradeRollingElements(RexsModel model, RexsComponent rowComp) {
 		RexsComponent oldRowComp = oldModel.getComponent(rowComp.getId());
-		if (oldRowComp.hasAttribute(RexsAttributeId.all_rolling_elements_are_identical)) {
-			boolean elementsIdentical = oldRowComp.getBooleanValue(RexsAttributeId.all_rolling_elements_are_identical);
+		if (oldRowComp.hasAttribute(RexsStandardAttributeIds.all_rolling_elements_are_identical)) {
+			boolean elementsIdentical = oldRowComp.getBooleanValue(RexsStandardAttributeIds.all_rolling_elements_are_identical);
 			if (elementsIdentical) {
 				// create number_of_rolling_elements-1 additional rolling elements
 				notifications.add(new Notification("create instances of identical rolling elements",
@@ -328,7 +328,7 @@ public class ModelUpgraderV10toV11 {
 				int elementId = relations.get(0).findComponentIdByRole(RexsStandardRelationRoles.part);
 				RexsComponent elementComp = model.getComponent(elementId);
 				relations.get(0).setOrder(1);
-				int numElements = rowComp.getIntegerValue(RexsAttributeId.number_of_rolling_elements);
+				int numElements = rowComp.getIntegerValue(RexsStandardAttributeIds.number_of_rolling_elements);
 				for (int order = 1; order < numElements; order++) {
 					RexsComponent newElement = new RexsComponent(elementComp);
 					newElement.setId(model.getNextFreeComponentId());
@@ -346,7 +346,7 @@ public class ModelUpgraderV10toV11 {
 				restoreAttributeValue(component, loc.attribute);
 		}
 	}
-	
+
 	private void restoreAttributeValue(RexsComponent comp, RexsAttributeId attrId) {
 		// the generic update deletes the attribute accidently. Make sure the attribute and its value is restored
 		RexsComponent oldComp = oldModel.getComponent(comp.getId());
@@ -356,5 +356,5 @@ public class ModelUpgraderV10toV11 {
 			comp.addAttribute(attrId, oldValue);
 		}
 	}
-	
+
 }

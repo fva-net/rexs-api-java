@@ -23,10 +23,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardAttributeIds;
+import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsLoadSpectrum;
@@ -96,7 +96,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		modelXml.setApplicationVersion(model.getApplicationVersion());
 		modelXml.setDate(DateUtils.getISO8601Date());
 
-		if (model.getVersion().equals(RexsVersion.UNKNOWN)) {
+		if (model.getVersion().equals(RexsStandardVersions.UNKNOWN)) {
 			modelXml.setVersion(model.getOriginVersion());
 		} else {
 			modelXml.setVersion(model.getVersion().getName());
@@ -168,7 +168,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		Component componentXml = objectFactory.createComponent();
 		componentXml.setId(component.getId());
 
-		if (component.getType().equals(RexsComponentType.UNKNOWN)) {
+		if (component.getType().equals(RexsStandardComponentTypes.UNKNOWN)) {
 			componentXml.setType(component.getOriginType());
 		} else {
 			componentXml.setType(component.getType().getId());
@@ -199,13 +199,13 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 	private Attribute createAttributeXml(RexsAttribute attribute) {
 		Attribute attributeXml = objectFactory.createAttribute();
 
-		if (attribute.getAttributeId().equals(RexsAttributeId.UNKNOWN)) {
+		if (attribute.getAttributeId().equals(RexsStandardAttributeIds.UNKNOWN)) {
 			attributeXml.setId(attribute.getOriginAttributeId());
 		} else {
 			attributeXml.setId(attribute.getAttributeId().getId());
 		}
 
-		if (attribute.getUnit().equals(RexsUnitId.UNKNOWN)) {
+		if (attribute.getUnit().equals(RexsStandardUnitIds.UNKNOWN)) {
 			attributeXml.setUnit(attribute.getOriginUnit());
 		} else {
 			attributeXml.setUnit(attribute.getUnit().getId());

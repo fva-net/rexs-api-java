@@ -136,14 +136,14 @@ public class RexsUnitIdTest {
 
 	@Test
 	public void findById_givenUnknownIdReturnsUnknown() {
-		assertThat(RexsUnitId.findById("foo_bar")).isEqualTo(RexsUnitId.UNKNOWN);
+		assertThat(RexsUnitId.findById("foo_bar")).isEqualTo(RexsStandardUnitIds.UNKNOWN);
 	}
 
 	@Test
 	public void findById_returnsRexsStandardUnitId() {
-		RexsUnitId unitId = RexsUnitId.findById(RexsUnitId.hertz.getId());
+		RexsUnitId unitId = RexsUnitId.findById(RexsStandardUnitIds.hertz.getId());
 		assertThat(unitId).isNotNull();
-		assertThat(unitId.getId()).isEqualTo(RexsUnitId.hertz.getId());
+		assertThat(unitId.getId()).isEqualTo(RexsStandardUnitIds.hertz.getId());
 	}
 
 	@Test
@@ -173,26 +173,26 @@ public class RexsUnitIdTest {
 		// Test non-existent numeric ID
 		RexsUnitId notFoundUnit = RexsUnitId.findById(999);
 
-		assertThat(notFoundUnit).isEqualTo(RexsUnitId.UNKNOWN);
+		assertThat(notFoundUnit).isEqualTo(RexsStandardUnitIds.UNKNOWN);
 	}
 
 	@Test
 	public void isEquivalent_nullSafety() {
-		assertThat(RexsUnitId.hour.isEquivalent(null)).isFalse();
+		assertThat(RexsStandardUnitIds.hour.isEquivalent(null)).isFalse();
 	}
 
 	@Test
 	public void isEquivalent_equivalentUnitsReturnTrue() {
-		assertThat(RexsUnitId.mega_pascal.isEquivalent(RexsUnitId.newton_per_mm2)).isTrue();
-		assertThat(RexsUnitId.newton_per_mm2.isEquivalent(RexsUnitId.mega_pascal)).isTrue();
+		assertThat(RexsStandardUnitIds.mega_pascal.isEquivalent(RexsStandardUnitIds.newton_per_mm2)).isTrue();
+		assertThat(RexsStandardUnitIds.newton_per_mm2.isEquivalent(RexsStandardUnitIds.mega_pascal)).isTrue();
 
-		assertThat(RexsUnitId.rotation_per_second.isEquivalent(RexsUnitId.hertz)).isTrue();
-		assertThat(RexsUnitId.hertz.isEquivalent(RexsUnitId.rotation_per_second)).isTrue();
+		assertThat(RexsStandardUnitIds.rotation_per_second.isEquivalent(RexsStandardUnitIds.hertz)).isTrue();
+		assertThat(RexsStandardUnitIds.hertz.isEquivalent(RexsStandardUnitIds.rotation_per_second)).isTrue();
 	}
 
 	@Test
 	public void isEquivalent_nonEquivalentUnitsReturnFalse() {
-		assertThat(RexsUnitId.hour.isEquivalent(RexsUnitId.degree_celsius)).isFalse();
-		assertThat(RexsUnitId.degree_celsius.isEquivalent(RexsUnitId.hour)).isFalse();
+		assertThat(RexsStandardUnitIds.hour.isEquivalent(RexsStandardUnitIds.degree_celsius)).isFalse();
+		assertThat(RexsStandardUnitIds.degree_celsius.isEquivalent(RexsStandardUnitIds.hour)).isFalse();
 	}
 }

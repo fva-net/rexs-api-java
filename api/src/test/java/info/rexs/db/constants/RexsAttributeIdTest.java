@@ -21,13 +21,16 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.Test;
 
+import info.rexs.db.constants.standard.RexsStandardAttributeIds;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
+
 public class RexsAttributeIdTest {
 
 	@Test
 	public void create_givenNullIdThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				RexsAttributeId.create(null, RexsUnitId.kg);
+				RexsAttributeId.create(null, RexsStandardUnitIds.kg);
 			})
 			.withMessage("id cannot be empty");
 	}
@@ -45,16 +48,16 @@ public class RexsAttributeIdTest {
 	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				RexsAttributeId.create("", RexsUnitId.kg);
+				RexsAttributeId.create("", RexsStandardUnitIds.kg);
 			})
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_newAttributeIdHasIdAndUnit() throws Exception {
-		RexsAttributeId newAttributeId = RexsAttributeId.create("foo", RexsUnitId.kg);
+		RexsAttributeId newAttributeId = RexsAttributeId.create("foo", RexsStandardUnitIds.kg);
 		assertThat(newAttributeId.getId()).isEqualTo("foo");
-		assertThat(newAttributeId.getUnit()).isEqualTo(RexsUnitId.kg);
+		assertThat(newAttributeId.getUnit()).isEqualTo(RexsStandardUnitIds.kg);
 	}
 
 	@Test
@@ -64,36 +67,36 @@ public class RexsAttributeIdTest {
 
 	@Test
 	public void findById_givenUnknownIdReturnsUnknown() {
-		assertThat(RexsAttributeId.findById("foo_bar")).isEqualTo(RexsAttributeId.UNKNOWN);
+		assertThat(RexsAttributeId.findById("foo_bar")).isEqualTo(RexsStandardAttributeIds.UNKNOWN);
 	}
 
 	@Test
 	public void findById_returnsRexsStandardAttributeId() throws Exception {
-		RexsAttributeId attributeId = RexsAttributeId.findById(RexsAttributeId.width.getId());
+		RexsAttributeId attributeId = RexsAttributeId.findById(RexsStandardAttributeIds.width.getId());
 		assertThat(attributeId).isNotNull();
-		assertThat(attributeId.getId()).isEqualTo(RexsAttributeId.width.getId());
+		assertThat(attributeId.getId()).isEqualTo(RexsStandardAttributeIds.width.getId());
 	}
 
 	@Test
 	public void findById_returnsNewlyCreatedAttributeId() throws Exception {
-		RexsAttributeId.create("bar", RexsUnitId.kg);
+		RexsAttributeId.create("bar", RexsStandardUnitIds.kg);
 		RexsAttributeId newAttributeId = RexsAttributeId.findById("bar");
 		assertThat(newAttributeId).isNotNull();
 		assertThat(newAttributeId.getId()).isEqualTo("bar");
-		assertThat(newAttributeId.getUnit()).isEqualTo(RexsUnitId.kg);
+		assertThat(newAttributeId.getUnit()).isEqualTo(RexsStandardUnitIds.kg);
 	}
 
 	@Test
 	public void equals_equalObjects() {
-		assertThat(RexsAttributeId.number_of_teeth.equals(RexsAttributeId.number_of_teeth)).isTrue();
-		assertThat(RexsAttributeId.create("test1", RexsUnitId.kg)).isEqualTo(RexsAttributeId.create("test1", RexsUnitId.kg));
+		assertThat(RexsStandardAttributeIds.number_of_teeth.equals(RexsStandardAttributeIds.number_of_teeth)).isTrue();
+		assertThat(RexsAttributeId.create("test1", RexsStandardUnitIds.kg)).isEqualTo(RexsAttributeId.create("test1", RexsStandardUnitIds.kg));
 	}
 
 	@Test
 	public void equals_notEqualObjects() {
-		assertThat(RexsAttributeId.length).isNotEqualTo(RexsAttributeId.width);
-		assertThat(RexsAttributeId.length).isNotEqualTo("length");
-		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test3", RexsUnitId.kg));
-		assertThat(RexsAttributeId.create("test2", RexsUnitId.kg)).isNotEqualTo(RexsAttributeId.create("test2", RexsUnitId.deg));
+		assertThat(RexsStandardAttributeIds.length).isNotEqualTo(RexsStandardAttributeIds.width);
+		assertThat(RexsStandardAttributeIds.length).isNotEqualTo("length");
+		assertThat(RexsAttributeId.create("test2", RexsStandardUnitIds.kg)).isNotEqualTo(RexsAttributeId.create("test3", RexsStandardUnitIds.kg));
+		assertThat(RexsAttributeId.create("test2", RexsStandardUnitIds.kg)).isNotEqualTo(RexsAttributeId.create("test2", RexsStandardUnitIds.deg));
 	}
 }

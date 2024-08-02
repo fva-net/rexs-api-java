@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.standard.RexsStandardComponentTypes;
 
 public class RexsSubModelTest {
 
@@ -33,7 +33,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void loadCaseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
+		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
@@ -45,7 +45,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void accumulationConstructor_getterMatchesValuePassedToConstructor() throws Exception {
-		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
+		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel();
 		rexsSubModel.addComponent(rexsComponent);
@@ -66,7 +66,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void hasComponent_componentNotInSubModelReturnsFalse() throws Exception {
-		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
+		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
@@ -76,7 +76,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void hasComponent_componentInSubModelReturnsTrue() throws Exception {
-		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
+		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
@@ -86,7 +86,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void getComponent_componentNotInSubModelReturnsNull() throws Exception {
-		RexsComponent rexsComponent = new RexsComponent(1, RexsComponentType.UNKNOWN, "Foo");
+		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
@@ -96,7 +96,7 @@ public class RexsSubModelTest {
 
 	@Test
 	public void getComponent_componentInSubModelReturnsComponent() throws Exception {
-		RexsComponent rexsComponent1 = new RexsComponent(1, RexsComponentType.cylindrical_gear, "Foo");
+		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent1);
@@ -104,13 +104,13 @@ public class RexsSubModelTest {
 		RexsComponent rexsComponent2 = rexsSubModel.getComponent(1);
 		assertThat(rexsComponent2).isNotNull();
 		assertThat(rexsComponent2.getId()).isEqualTo(1);
-		assertThat(rexsComponent2.getType()).isEqualTo(RexsComponentType.cylindrical_gear);
+		assertThat(rexsComponent2.getType()).isEqualTo(RexsStandardComponentTypes.cylindrical_gear);
 	}
 
 	@Test
 	public void changeComponentId_nonExistingComponentIdIgnoresMethodCall() throws Exception {
-		RexsComponent rexsComponent1 = new RexsComponent(1, RexsComponentType.cylindrical_gear, "Foo");
-		RexsComponent rexsComponent2 = new RexsComponent(2, RexsComponentType.bevel_gear, "Bar");
+		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
+		RexsComponent rexsComponent2 = new RexsComponent(2, RexsStandardComponentTypes.bevel_gear, "Bar");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent1);
@@ -125,8 +125,8 @@ public class RexsSubModelTest {
 
 	@Test
 	public void changeComponentId_changesIdOfComponent() throws Exception {
-		RexsComponent rexsComponent1 = new RexsComponent(1, RexsComponentType.cylindrical_gear, "Foo");
-		RexsComponent rexsComponent2 = new RexsComponent(2, RexsComponentType.bevel_gear, "Bar");
+		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
+		RexsComponent rexsComponent2 = new RexsComponent(2, RexsStandardComponentTypes.bevel_gear, "Bar");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent1);

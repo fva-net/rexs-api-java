@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 
 /**
  * This class represents a REXS database model file.
@@ -39,25 +40,25 @@ public class DbModelFile {
 	private static Set<DbModelFile> allDbModelFiles = new HashSet<>();
 
 	/** REXS 1.0 */
-	public static final DbModelFile V1_0 = create(RexsVersion.V1_0);
+	public static final DbModelFile V1_0 = create(RexsStandardVersions.V1_0);
 
 	/** REXS 1.1 */
-	public static final DbModelFile V1_1 = create(RexsVersion.V1_1);
+	public static final DbModelFile V1_1 = create(RexsStandardVersions.V1_1);
 
 	/** REXS 1.2 */
-	public static final DbModelFile V1_2 = create(RexsVersion.V1_2);
+	public static final DbModelFile V1_2 = create(RexsStandardVersions.V1_2);
 
 	/** REXS 1.3 */
-	public static final DbModelFile V1_3 = create(RexsVersion.V1_3);
+	public static final DbModelFile V1_3 = create(RexsStandardVersions.V1_3);
 
 	/** REXS 1.4 */
-	public static final DbModelFile V1_4 = create(RexsVersion.V1_4);
+	public static final DbModelFile V1_4 = create(RexsStandardVersions.V1_4);
 
 	/** REXS 1.5 */
-	public static final DbModelFile V1_5 = create(RexsVersion.V1_5);
+	public static final DbModelFile V1_5 = create(RexsStandardVersions.V1_5);
 
 	/** REXS 1.6 */
-	public static final DbModelFile V1_6 = create(RexsVersion.V1_6);
+	public static final DbModelFile V1_6 = create(RexsStandardVersions.V1_6);
 
 	/** The {@link RexsVersion} of the REXS database model file. */
 	private final RexsVersion version;

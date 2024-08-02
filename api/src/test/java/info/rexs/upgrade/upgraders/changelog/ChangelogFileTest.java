@@ -23,6 +23,7 @@ import java.io.InputStream;
 import org.junit.Test;
 
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 
 public class ChangelogFileTest {
 
@@ -30,20 +31,20 @@ public class ChangelogFileTest {
 	public void create_givenNullVersionThrowsIllegalArgumentException() throws Exception {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				ChangelogFile.create(null, RexsVersion.V1_1);
+				ChangelogFile.create(null, RexsStandardVersions.V1_1);
 			})
 			.withMessage("from version cannot be empty");
 
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				ChangelogFile.create(RexsVersion.V1_0, null);
+				ChangelogFile.create(RexsStandardVersions.V1_0, null);
 			})
 			.withMessage("to version cannot be empty");
 	}
 
 	@Test
 	public void create_givenNullFileResolverConvertsToDefault() throws Exception {
-		ChangelogFile changelogFile = ChangelogFile.create(RexsVersion.V1_0, RexsVersion.V1_1, null);
+		ChangelogFile changelogFile = ChangelogFile.create(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, null);
 
 		try (InputStream input = changelogFile.openInputStream()) {
 			assertThat(input).isNotNull();
@@ -59,7 +60,7 @@ public class ChangelogFileTest {
 			}
 		};
 
-		ChangelogFile changelogFile = ChangelogFile.create(RexsVersion.V1_0, RexsVersion.V1_1, newChangelogFileResolver);
+		ChangelogFile changelogFile = ChangelogFile.create(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, newChangelogFileResolver);
 		try (InputStream input = changelogFile.openInputStream()) {
 			assertThat(input).isNotNull();
 		}

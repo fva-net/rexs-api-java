@@ -26,6 +26,9 @@ import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.ComponentAttributeMapping;
@@ -54,13 +57,13 @@ public class DbModelRegistry {
 
 	private DbModelRegistry() {
 		try {
-			registerRexsVersion(RexsVersion.V1_0);
-			registerRexsVersion(RexsVersion.V1_1);
-			registerRexsVersion(RexsVersion.V1_2);
-			registerRexsVersion(RexsVersion.V1_3);
-			registerRexsVersion(RexsVersion.V1_4);
-			registerRexsVersion(RexsVersion.V1_5);
-			registerRexsVersion(RexsVersion.V1_6);
+			registerRexsVersion(RexsStandardVersions.V1_0);
+			registerRexsVersion(RexsStandardVersions.V1_1);
+			registerRexsVersion(RexsStandardVersions.V1_2);
+			registerRexsVersion(RexsStandardVersions.V1_3);
+			registerRexsVersion(RexsStandardVersions.V1_4);
+			registerRexsVersion(RexsStandardVersions.V1_5);
+			registerRexsVersion(RexsStandardVersions.V1_6);
 		} catch (Exception ex) {
 			throw new RuntimeException("error while registering rexs model:", ex);
 		}
@@ -143,8 +146,8 @@ public class DbModelRegistry {
 		Map<BigInteger, String> unitMap = new HashMap<>();
 		if (rexsModel.getUnits() != null) {
 			for (Unit unit : rexsModel.getUnits().getUnit()) {
-				if (RexsUnitId.degree.getId().equals(unit.getName()))
-					unitMap.put(unit.getId(), RexsUnitId.deg.getId());
+				if (RexsStandardUnitIds.degree.getId().equals(unit.getName()))
+					unitMap.put(unit.getId(), RexsStandardUnitIds.deg.getId());
 				else
 					unitMap.put(unit.getId(), unit.getName());
 			}
@@ -301,7 +304,7 @@ public class DbModelRegistry {
 		Map<String, RexsComponentType> map = componentMap.get(version);
 		if (map != null && map.containsKey(componentType))
 			return map.get(componentType);
-		return RexsComponentType.UNKNOWN;
+		return RexsStandardComponentTypes.UNKNOWN;
 	}
 
 	public boolean hasAttributeWithId(RexsVersion version, String attributeId) {

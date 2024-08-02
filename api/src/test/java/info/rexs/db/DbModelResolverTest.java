@@ -29,6 +29,7 @@ import info.rexs.db.constants.RexsAttributeId;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.RexsDatabaseModelFile;
@@ -72,7 +73,7 @@ public class DbModelResolverTest {
 
 	@Test
 	public void resolve_everyRexsStandardVersionHasDbModel() throws Exception {
-		List<RexsVersion> rexsStandardVersions = Stream.of(RexsVersion.V1_0, RexsVersion.V1_1, RexsVersion.V1_2).collect(Collectors.toList());
+		List<RexsVersion> rexsStandardVersions = Stream.of(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, RexsStandardVersions.V1_2).collect(Collectors.toList());
 		for (RexsVersion version : rexsStandardVersions) {
 			RexsDatabaseModelFile rexsModel = DbModelResolver.getInstance().resolve(version);
 			assertThat(rexsModel.getVersion()).isEqualTo(version.getName());

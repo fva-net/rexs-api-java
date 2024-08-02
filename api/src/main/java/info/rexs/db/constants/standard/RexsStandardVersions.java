@@ -25,28 +25,28 @@ import info.rexs.db.constants.RexsVersion;
 public interface RexsStandardVersions {
 
 	/** 1.0 */
-	public static final RexsVersion V1_0 = RexsVersion.create("1.0", 1000, "0.90", "0.10", "1.00");
+	RexsVersion V1_0 = RexsVersion.create("1.0", 1000, "0.90", "0.10", "1.00");
 
 	/** 1.1 */
-	public static final RexsVersion V1_1 = RexsVersion.create("1.1", 1100, "1.10", "1.1-Beta");
+	RexsVersion V1_1 = RexsVersion.create("1.1", 1100, "1.10", "1.1-Beta");
 
 	/** 1.2 */
-	public static final RexsVersion V1_2 = RexsVersion.create("1.2", 1200);
+	RexsVersion V1_2 = RexsVersion.create("1.2", 1200);
 
 	/** 1.3 */
-	public static final RexsVersion V1_3 = RexsVersion.create("1.3", 1300);
+	RexsVersion V1_3 = RexsVersion.create("1.3", 1300);
 
 	/** 1.4 */
-	public static final RexsVersion V1_4 = RexsVersion.create("1.4", 1400);
+	RexsVersion V1_4 = RexsVersion.create("1.4", 1400);
 
 	/** 1.5 */
-	public static final RexsVersion V1_5 = RexsVersion.create("1.5", 1500);
+	RexsVersion V1_5 = RexsVersion.create("1.5", 1500);
 
 	/** 1.6 */
-	public static final RexsVersion V1_6 = RexsVersion.create("1.6", 1600);
+	RexsVersion V1_6 = RexsVersion.create("1.6", 1600);
 
 	/** Constant for an unknown version. */
-	public static final RexsVersion UNKNOWN = RexsVersion.create("unknown", -1);
+	RexsVersion UNKNOWN = RexsVersion.create("unknown", -1);
 
 	public static void init() {}
 }

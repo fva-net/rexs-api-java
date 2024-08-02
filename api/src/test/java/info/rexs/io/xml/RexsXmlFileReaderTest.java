@@ -27,7 +27,7 @@ import java.nio.file.StandardOpenOption;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
@@ -67,7 +67,7 @@ public class RexsXmlFileReaderTest {
 		Model rawModel = reader.readRawModel();
 
 		assertThat(rawModel).isNotNull();
-		assertThat(rawModel.getVersion()).isEqualTo(RexsVersion.V1_1.getName());
+		assertThat(rawModel.getVersion()).isEqualTo(RexsStandardVersions.V1_1.getName());
 		assertThat(rawModel.getComponents().getComponent().size()).isEqualTo(97);
 		assertThat(rawModel.getRelations().getRelation().size()).isEqualTo(140);
 	}
