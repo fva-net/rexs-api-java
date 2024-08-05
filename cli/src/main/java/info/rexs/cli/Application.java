@@ -13,15 +13,20 @@ import info.rexs.cli.convert.ConvertCommandServiceImpl;
 import info.rexs.cli.convert.ConvertOptions;
 import info.rexs.cli.global.GlobalOptions;
 import info.rexs.cli.global.VersionOptionServiceImpl;
+import info.rexs.cli.validate.ValidateCommandServiceImpl;
+import info.rexs.cli.validate.ValidateOptions;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
 	private static final String PROGAM_NAME = "java -jar rexs-api.jar";
+
 	private static final String COMMAND_CONVERT = "convert";
+	private static final String COMMAND_VALIDATE = "validate";
 
 	@Autowired private VersionOptionServiceImpl versionOptionService;
 	@Autowired private ConvertCommandServiceImpl convertCommandService;
+	@Autowired private ValidateCommandServiceImpl validateCommandService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -32,11 +37,13 @@ public class Application implements CommandLineRunner {
 
 		var globalOptions = new GlobalOptions();
 		var convertOptions = new ConvertOptions();
+		var validateOptions = new ValidateOptions();
 
 		var jcommander = JCommander.newBuilder()
 			.addObject(globalOptions)
 			.programName(PROGAM_NAME)
 			.addCommand(COMMAND_CONVERT, convertOptions)
+			.addCommand(COMMAND_VALIDATE, validateOptions)
 			.build();
 
 		try
@@ -51,6 +58,9 @@ public class Application implements CommandLineRunner {
 
 			if (StringUtils.equals(jcommander.getParsedCommand(), COMMAND_CONVERT))
 				convertCommandService.convert(jcommander.getConsole(), convertOptions);
+
+			if (StringUtils.equals(jcommander.getParsedCommand(), COMMAND_VALIDATE))
+				validateCommandService.validate(jcommander.getConsole(), validateOptions);
 		}
 		catch (ParameterException ex)
 		{

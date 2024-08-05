@@ -35,15 +35,24 @@ public class RexsValidationResultMessage {
 	 * @param key
 	 * 				The {@link RexsValidationResultMessageKey} describing the message.
 	 * @param additionalMessages
-	 * 				Additional messages as a {@link Array} of {@link String}.
+	 * 				Additional messages as an array of {@link String}.
 	 */
 	public RexsValidationResultMessage(RexsValidationResultMessageKey key, String... additionalMessages) {
 		this.key = key;
 		this.additionalMessages = additionalMessages;
 	}
 
-	@Override
-	public String toString() {
-		return String.format(key.toString(), (Object[])  additionalMessages);
+	public RexsValidationResultMessageKey getKey() {
+		return key;
+	}
+
+	public String[] getAdditionalMessages() {
+		return additionalMessages;
+	}
+
+	public String getDefaultMessage() {
+		if (additionalMessages == null || additionalMessages.length < 1)
+			return key.getDefaultMessage();
+		return String.format(key.getDefaultMessage(), (Object[])additionalMessages);
 	}
 }

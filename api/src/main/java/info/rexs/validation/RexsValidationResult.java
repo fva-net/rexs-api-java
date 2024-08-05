@@ -47,7 +47,7 @@ public class RexsValidationResult {
 	 * @param key
 	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param additionalMessages
-	 * 				Additional messages as a {@link Array} of {@link String}.
+	 * 				Additional messages as an array of {@link String}.
 	 */
 	public void addError(RexsValidationResultMessageKey key, String... additionalMessages) {
 		errors.add(new RexsValidationResultMessage(key, additionalMessages));
@@ -59,7 +59,7 @@ public class RexsValidationResult {
 	 * @param key
 	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param additionalMessages
-	 * 				Additional messages as a {@link Array} of {@link String}.
+	 * 				Additional messages as an array of {@link String}.
 	 */
 	public void addWarning(RexsValidationResultMessageKey key, String... additionalMessages) {
 		warnings.add(new RexsValidationResultMessage(key, additionalMessages));

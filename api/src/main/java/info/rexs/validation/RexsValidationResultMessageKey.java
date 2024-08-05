@@ -74,8 +74,7 @@ public enum RexsValidationResultMessageKey {
 		this.defaultMessage = defaultMessage;
 	}
 
-	@Override
-	public String toString() {
+	public String getDefaultMessage() {
 		return defaultMessage;
 	}
 }
