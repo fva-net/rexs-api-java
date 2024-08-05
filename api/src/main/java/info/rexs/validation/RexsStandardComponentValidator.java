@@ -15,7 +15,10 @@
  ******************************************************************************/
 package info.rexs.validation;
 
+import java.util.Objects;
+
 import info.rexs.db.DbModelRegistry;
+import info.rexs.db.IDbModelRegistry;
 import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.constants.standard.RexsStandardComponentTypes;
@@ -29,10 +32,18 @@ import info.rexs.model.RexsComponent;
  */
 public class RexsStandardComponentValidator extends DefaultRexsComponentValidator {
 
-	private final RexsVersion rexsVersion;
+	protected final IDbModelRegistry dbModelRegistry;
+
+	protected final RexsVersion rexsVersion;
 
 	public RexsStandardComponentValidator(RexsVersion rexsVersion) {
+		this(rexsVersion, DbModelRegistry.getInstance());
+	}
+
+	public RexsStandardComponentValidator(RexsVersion rexsVersion, IDbModelRegistry dbModelRegistry) {
+		Objects.nonNull(dbModelRegistry);
 		this.rexsVersion = rexsVersion;
+		this.dbModelRegistry = dbModelRegistry;
 	}
 
 	/**
@@ -40,14 +51,13 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 	 */
 	@Override
 	public RexsValidationResult validate(RexsComponent rexsComponent) {
-
 		RexsValidationResult validationResult = super.validate(rexsComponent);
 
 		if (rexsVersion == null)
 			return validationResult;
 
 		String componentType = rexsComponent.getOriginType();
-		RexsComponentType rexsComponentType = DbModelRegistry.getInstance().getComponentType(rexsVersion, componentType);
+		RexsComponentType rexsComponentType = dbModelRegistry.getComponentType(rexsVersion, componentType);
 
 		if (rexsComponentType.isOneOf(RexsStandardComponentTypes.UNKNOWN))
 			validationResult.addError(RexsValidationResultMessageKey.COMPONENT_TYPE_UNKNOWN, componentType);
@@ -60,6 +70,8 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 	 */
 	@Override
 	public IRexsAttributeValidator createAttributeValidator() {
-		return new RexsStandardAttributeValidator(rexsVersion);
+		if (rexsVersion == null)
+			return super.createAttributeValidator();
+		return new RexsStandardAttributeValidator(rexsVersion, dbModelRegistry);
 	}
 }

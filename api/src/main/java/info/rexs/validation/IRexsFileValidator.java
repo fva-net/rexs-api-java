@@ -72,21 +72,10 @@ public interface IRexsFileValidator {
 	public RexsValidationResult validate(String pathToRexsFile);
 
 	/**
-	 * Validates a REXS version and returns the validation result.
-	 *
-	 * @param version
-	 * 				The REXS version to validate.
+	 * Creates a new validator for the model of the REXS file.
 	 *
 	 * @return
-	 * 				The validation result as {@link RexsValidationResult}.
+	 * 				The model validator as {@link IRexsModelValidator}.
 	 */
-	public RexsValidationResult validateVersion(String version);
-
-	/**
-	 * Creates a new validator for the components of the REXS file.
-	 *
-	 * @return
-	 * 				The component validator as {@link IRexsComponentValidator}.
-	 */
-	public IRexsComponentValidator createComponentValidator();
+	public IRexsModelValidator createModelValidator();
 }

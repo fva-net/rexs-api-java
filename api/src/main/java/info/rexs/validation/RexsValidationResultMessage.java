@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2024 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -15,8 +15,6 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import java.util.List;
-
 /**
  * This class represents the result message of a REXS validation.
  *
@@ -27,24 +25,8 @@ public class RexsValidationResultMessage {
 	/** The key of the message. */
 	private final RexsValidationResultMessageKey key;
 
-	/** The related component type. */
-	private final String componentType;
-
-	/** The related attribute id. */
-	private final String attributeId;
-
 	/** A list of additional messages. */
-	private final List<String> additionalMessages;
-
-	/**
-	 * Constructs a new {@link RexsValidationResultMessage} for the given message key.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the message.
-	 */
-	public RexsValidationResultMessage(RexsValidationResultMessageKey key) {
-		this(key, null, null, null);
-	}
+	private final String[] additionalMessages;
 
 	/**
 	 * Constructs a new {@link RexsValidationResultMessage} for the given message key,
@@ -52,17 +34,16 @@ public class RexsValidationResultMessage {
 	 *
 	 * @param key
 	 * 				The {@link RexsValidationResultMessageKey} describing the message.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param attributeId
-	 * 				The related attribute id as {@link String}.
 	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
+	 * 				Additional messages as a {@link Array} of {@link String}.
 	 */
-	public RexsValidationResultMessage(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages) {
+	public RexsValidationResultMessage(RexsValidationResultMessageKey key, String... additionalMessages) {
 		this.key = key;
-		this.componentType = componentType;
-		this.attributeId = attributeId;
 		this.additionalMessages = additionalMessages;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(key.toString(), (Object[])  additionalMessages);
 	}
 }

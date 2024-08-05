@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2024 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -15,28 +15,22 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import java.util.Objects;
-
-import info.rexs.db.DbModelRegistry;
 import info.rexs.db.IDbModelRegistry;
 
 /**
- * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file
- * and includes the specification of official REXS versions.
+ * This implementation of {@link IRexsFileValidator} validates if a REXS file conforms to the 
+ * modelling guideline quasistatic and includes the specification of official REXS versions.
  *
  * @author FVA GmbH
  */
-public class RexsStandardFileValidator extends DefaultRexsFileValidator {
+public class RexsModellingGuidelineQuasistaticFileValidator extends RexsStandardFileValidator {
 
-	protected final IDbModelRegistry dbModelRegistry;
-
-	public RexsStandardFileValidator() {
-		this(DbModelRegistry.getInstance());
+	public RexsModellingGuidelineQuasistaticFileValidator() {
+		super();
 	}
 
-	public RexsStandardFileValidator(IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
-		this.dbModelRegistry = dbModelRegistry;
+	public RexsModellingGuidelineQuasistaticFileValidator(IDbModelRegistry dbModelRegistry) {
+		super(dbModelRegistry);
 	}
 
 	/**
@@ -44,6 +38,6 @@ public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 	 */
 	@Override
 	public IRexsModelValidator createModelValidator() {
-		return new RexsStandardModelValidator(dbModelRegistry);
+		return new RexsModellingGuidelineQuasistaticModelValidator(dbModelRegistry);
 	}
 }

@@ -38,7 +38,6 @@ import info.rexs.io.Resource;
 import info.rexs.io.RexsFileReader;
 import info.rexs.io.RexsIoFormat;
 import info.rexs.io.zip.RexsZipFileReader;
-import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.schema.RexsSchema;
 
@@ -149,12 +148,12 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		}
 
 		List<String> errorMessages = errorHandler.getErrorMessages();
-		if (!errorMessages.isEmpty())
-			validationResult.addError(RexsValidationResultMessageKey.XML_SCHEMA, errorMessages);
+		for (String error : errorMessages)
+			validationResult.addError(RexsValidationResultMessageKey.XML_SCHEMA, error);
 
 		List<String> warningMessages = errorHandler.getWarningMessages();
-		if (!warningMessages.isEmpty())
-			validationResult.addWarning(RexsValidationResultMessageKey.XML_SCHEMA, warningMessages);
+		for (String warning : warningMessages)
+			validationResult.addWarning(RexsValidationResultMessageKey.XML_SCHEMA, warning);
 
 		return validationResult;
 	}
@@ -211,18 +210,8 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 			return validationResult;
 		}
 
-		validationResult.add(validateVersion(rexsModel.getOriginVersion()));
-
-		if (rexsModel.getComponents() == null
-				|| rexsModel.getComponents().isEmpty()) {
-			validationResult.addError(RexsValidationResultMessageKey.MODEL_COMPONENTS_EMPTY);
-			return validationResult;
-		}
-
-		IRexsComponentValidator componentValidator = createComponentValidator();
-		for (RexsComponent rexsComponent : rexsModel.getComponents()) {
-			validationResult.add(componentValidator.validate(rexsComponent));
-		}
+		IRexsModelValidator modelValidator = createModelValidator();
+		validationResult.add(modelValidator.validate(rexsModel));
 
 		return validationResult;
 	}
@@ -231,22 +220,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public RexsValidationResult validateVersion(String version) {
-
-		RexsValidationResult validationResult = new RexsValidationResult();
-
-		if (version == null
-				|| version.isEmpty())
-			validationResult.addError(RexsValidationResultMessageKey.MODEL_VERSION_EMPTY);
-
-		return validationResult;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public IRexsComponentValidator createComponentValidator() {
-		return new DefaultRexsComponentValidator();
+	public IRexsModelValidator createModelValidator() {
+		return new DefaultRexsModelValidator();
 	}
 }

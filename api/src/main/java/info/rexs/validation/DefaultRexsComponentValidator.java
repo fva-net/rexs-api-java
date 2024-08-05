@@ -38,11 +38,9 @@ public class DefaultRexsComponentValidator implements IRexsComponentValidator {
 
 		RexsValidationResult validationResult = new RexsValidationResult();
 
-		String componentType = rexsComponent.getOriginType();
-
 		if (rexsComponent.getAttributes() == null
 				|| rexsComponent.getAttributes().isEmpty()) {
-			validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTES_EMPTY, componentType);
+			validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTES_EMPTY, rexsComponent.toString());
 			return validationResult;
 
 		} else {
@@ -57,7 +55,7 @@ public class DefaultRexsComponentValidator implements IRexsComponentValidator {
 				String attributeId = rexsAttribute.getOriginAttributeId();
 				if (existingAttributeIds.contains(attributeId)
 						&& !existingAttributeIdsReported.contains(attributeId)) {
-					validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTE_MULTIPLE, componentType, attributeId);
+					validationResult.addWarning(RexsValidationResultMessageKey.COMPONENT_ATTRIBUTE_MULTIPLE, attributeId, rexsComponent.toString());
 					existingAttributeIdsReported.add(attributeId);
 				}
 				existingAttributeIds.add(attributeId);

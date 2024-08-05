@@ -38,7 +38,7 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 
 	/** The actual key of the relation type as a {@link String}. */
 	private final String key;
-	
+
 	private final List<RexsRelationRole> roles;
 
 	private RexsRelationType(String key) {
@@ -49,6 +49,8 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 	}
 
 	private RexsRelationType(String key, List<RexsRelationRole> roles) {
+		if (key == null || key.isEmpty())
+			throw new IllegalArgumentException("key cannot be empty");
 		this.key = key;
 		this.roles = roles;
 	}
@@ -56,6 +58,7 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 	public List<RexsRelationRole> getRoles() {
 		return roles;
 	}
+
 	/**
 	 * @return
 	 * 				The actual key of the relation type as a {@link String}.
@@ -85,6 +88,10 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 		}
 
 		return false;
+	}
+
+	public boolean isOrdered() {
+		return key.contains("ordered");
 	}
 
 	/**
