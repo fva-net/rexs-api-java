@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.Locale;
 
 /**
- * Adapter class to convert between `String` and `Locale` for XML binding in the `RexsModel`.
+ * Adapter class to convert between {@link String} and {@link Locale} for XML binding in the {@link info.rexs.model.RexsModel RexsModel}
  * <p>
- * This adapter is used to marshal and unmarshal `Locale` objects to and from their language code representation in XML.
+ * This adapter is used to marshal and unmarshal {@link Locale} objects to and from their language code representation in XML.
  */
 public class ApplicationLanguageAdapter extends XmlAdapter<String, Locale> {
 

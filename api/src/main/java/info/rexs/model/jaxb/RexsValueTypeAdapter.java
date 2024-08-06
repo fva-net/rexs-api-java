@@ -4,9 +4,9 @@ import info.rexs.db.constants.RexsValueType;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
- * Adapter class to convert between `Integer` and `RexsValueType` for XML binding.
+ * Adapter class to convert between {@link Integer} and {@link RexsValueType}  for XML binding.
  * <p>
- * This adapter is used to marshal and unmarshal `RexsValueType` objects to and from their numeric ID representation in XML.
+ * This adapter is used to marshal and unmarshal {@link RexsValueType}  objects to and from their numeric ID representation in XML.
  */
 public class RexsValueTypeAdapter extends XmlAdapter<Integer, RexsValueType> {
 

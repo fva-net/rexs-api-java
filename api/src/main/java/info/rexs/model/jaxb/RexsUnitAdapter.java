@@ -5,9 +5,9 @@ import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
- * Adapter class to convert between `Integer` and `RexsUnitId` for XML binding.
+ * Adapter class to convert between {@link Integer} and {@link RexsUnitId}  for XML binding.
  * <p>
- * This adapter is used to marshal and unmarshal `RexsUnitId` objects to and from their numeric ID representation in XML.
+ * This adapter is used to marshal and unmarshal {@link RexsUnitId}  objects to and from their numeric ID representation in XML.
  */
 public class RexsUnitAdapter extends XmlAdapter<Integer, RexsUnitId> {
 
