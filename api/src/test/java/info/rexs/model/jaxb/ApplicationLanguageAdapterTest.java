@@ -6,9 +6,9 @@ import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LocaleAdapterTest {
+public class ApplicationLanguageAdapterTest {
 
-    public static final LocaleAdapter ADAPTER = new LocaleAdapter();
+    public static final ApplicationLanguageAdapter ADAPTER = new ApplicationLanguageAdapter();
 
     @Test
     public void marshal_givenValidLocale_returnsLanguageCode() {
