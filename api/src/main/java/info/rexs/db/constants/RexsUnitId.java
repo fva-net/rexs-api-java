@@ -146,6 +146,7 @@ public class RexsUnitId implements RexsStandardUnitIds {
 	}
 
 	public static RexsUnitId findById(int numericId) {
+		RexsStandardUnitIds.init();
 		for (RexsUnitId unit : allUnitIds.values()) {
 			if (unit.numericId == numericId) {
 				return unit;
