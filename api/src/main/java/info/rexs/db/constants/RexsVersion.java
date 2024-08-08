@@ -15,13 +15,11 @@
  ******************************************************************************/
 package info.rexs.db.constants;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import info.rexs.db.constants.standard.RexsStandardVersions;
+import lombok.Getter;
 
 /**
  * This class represents a REXS version.
@@ -36,12 +34,19 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 
 
 	/** An internal index with all created versions (REXS standard and own) for quick access. */
-	private static Set<RexsVersion> allVerions = new HashSet<>();
+	private static final Set<RexsVersion> allVerions = new HashSet<>();
 
-	/** The version name. */
-	private final String name;
+	/**
+     * The version name.
+     */
+	@Getter
+    private final String name;
 
-	private final int order;
+    /**
+     * The version order.
+     */
+    @Getter
+    private final int order;
 
 	/** Alternative version names that can also be assigned to an official version (e.g. a beta version name). */
 	private final Set<String> alternativeNames;
@@ -62,31 +67,12 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 		return V1_6;
 	}
 
-	/**
-	 * @return
-	 * 				The version name as a {@link String}.
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @return
-	 * 				The version order as a {@code int}.
-	 */
-	public int getOrder() {
-		return order;
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param checkVersions
-	 * 				TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
+    /**
+     * Checks if this version is one of the specified versions.
+     *
+     * @param checkVersions An array of {@link RexsVersion} to check against.
+     * @return {@code true} if this version is one of the specified versions; {@code false} otherwise.
+     */
 	public boolean isOneOf(RexsVersion ... checkVersions)
 	{
 		if (checkVersions == null)
@@ -170,16 +156,13 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsVersion)) {
+		if (!(o instanceof RexsVersion other)) {
 			return false;
 		}
-		RexsVersion other = (RexsVersion)o;
-		if (!other.canEqual(this)) {
+        if (!other.canEqual(this)) {
 			return false;
 		}
-		Object this_name = getName();
-		Object other_name = other.getName();
-		return this_name == null ? other_name == null : this_name.equals(other_name);
+        return Objects.equals(getName(), other.getName());
 	}
 
 	protected boolean canEqual(Object other) {
@@ -189,8 +172,7 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 	@Override
 	public int hashCode() {
 		int result = 1;
-		Object _name = getName();
-		result = result * 59 + (_name == null ? 43 : _name.hashCode());
+		result = result * 59 + (name == null ? 43 : name.hashCode());
 		return result;
 	}
 
