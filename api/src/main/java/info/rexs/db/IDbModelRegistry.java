@@ -104,5 +104,7 @@ public interface IDbModelRegistry {
 
 	public boolean hasAttributeWithId(RexsVersion version, String attributeId);
 
+	public boolean hasRelationTypes(RexsVersion version);
+
 	public List<List<AllowedCombinationRole>> getAllowedCombinationsForRelation(RexsVersion version, RexsRelationType relationType);
 }

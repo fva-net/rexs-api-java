@@ -352,11 +352,17 @@ public class DbModelRegistry implements IDbModelRegistry {
 	}
 
 	@Override
+	public boolean hasRelationTypes(RexsVersion version) {
+		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapOfVersion = relationsToAllowedCombinationsMap.get(version);
+		return relationsToAllowedCombinationsMapOfVersion != null
+				&& !relationsToAllowedCombinationsMapOfVersion.isEmpty();
+	}
+
+	@Override
 	public List<List<AllowedCombinationRole>> getAllowedCombinationsForRelation(RexsVersion version, RexsRelationType relationType) {
 		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapOfVersion = relationsToAllowedCombinationsMap.get(version);
-		// TODO: Das muss noch angepasst werden.
 		if (relationsToAllowedCombinationsMapOfVersion==null)
-			throw new IllegalArgumentException(String.format("Invalid REXS version %s", version.getName()));
+			throw new IllegalArgumentException(String.format("No relation types for REXS version %s specified", version.getName()));
 		List<List<AllowedCombinationRole>> listOfAllowedCombinations = relationsToAllowedCombinationsMapOfVersion.get(relationType);
 		if (listOfAllowedCombinations==null || listOfAllowedCombinations.isEmpty())
 			throw new IllegalArgumentException(String.format("Rexs Relation type %s is not defined in version %s", relationType, version.getName()));

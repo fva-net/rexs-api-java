@@ -65,7 +65,8 @@ public class RexsStandardRelationValidator extends DefaultRexsRelationValidator 
 		if (rexsVersion == null)
 			return validationResult;
 
-		validationResult.add(checkIfIsAllowedCombination(rexsRelation, rexsModel));
+		if (dbModelRegistry.hasRelationTypes(rexsVersion))
+			validationResult.add(checkIfIsAllowedCombination(rexsRelation, rexsModel));
 
 		return validationResult;
 	}

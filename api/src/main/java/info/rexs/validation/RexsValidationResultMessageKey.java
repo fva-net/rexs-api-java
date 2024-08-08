@@ -39,6 +39,7 @@ public enum RexsValidationResultMessageKey {
 
 	UNIT_UNKNOWN("The unit %s is unknown."),
 
+	RELATION_NO_TYPES_FOR_VERSION("No relation types for REXS version %s specified"),
 	RELATION_ROLE_INVALID_FOR_RELATION_TYPE("The role %s is not valid for the relation type %s"),
 	RELATION_NOT_ALLOWED_COMBINATION("The relation %s contains an invalid combination of component types in the respective roles for relation type %s: %s"),
 	RELATION_COMPONENT_MISSING("The relation %s references the component id %s which is not present in the REXS model"),

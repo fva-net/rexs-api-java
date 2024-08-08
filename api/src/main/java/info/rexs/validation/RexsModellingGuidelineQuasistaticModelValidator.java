@@ -60,23 +60,25 @@ public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandar
 	private RexsValidationResult checkSideReleations(RexsModel rexsModel) {
 		RexsValidationResult validationResult = new RexsValidationResult();
 
-		List<List<AllowedCombinationRole>> listOfAllowedCombinationsSideRelation = dbModelRegistry.getAllowedCombinationsForRelation(rexsVersion, RexsStandardRelationTypes.side);
-		Set<RexsComponentType> mainComponentTypesForSideRelation = new HashSet<>();
-		for (List<AllowedCombinationRole> allowedCombination : listOfAllowedCombinationsSideRelation) {
-			for (AllowedCombinationRole combination : allowedCombination) {
-				if (combination.getRoleId().equals(RexsStandardRelationRoles.assembly.getKey())) {
-					mainComponentTypesForSideRelation.add(RexsComponentType.findById(combination.getComponentId()));
-					break;
-				}
-			}
-		}
-
 		List<RexsRelation> sideRelations = rexsModel.getRelationsOfType(RexsStandardRelationTypes.side);
 
-		for (RexsComponentType mainType : mainComponentTypesForSideRelation) {
-			for (RexsComponent mainComponent : rexsModel.getComponentsOfType(mainType)) {
-				if (sideRelations.stream().noneMatch(r -> r.hasComponent(mainComponent.getId())))
-					validationResult.addError(RexsValidationResultMessageKey.GUIDELINE_QUASISTATIC_COMPONENT_REQUIRES_SIDE_RELATION, mainComponent.toString(), mainComponent.getType().getId());
+		if (dbModelRegistry.hasRelationTypes(rexsVersion)) {
+			List<List<AllowedCombinationRole>> listOfAllowedCombinationsSideRelation = dbModelRegistry.getAllowedCombinationsForRelation(rexsVersion, RexsStandardRelationTypes.side);
+			Set<RexsComponentType> mainComponentTypesForSideRelation = new HashSet<>();
+			for (List<AllowedCombinationRole> allowedCombination : listOfAllowedCombinationsSideRelation) {
+				for (AllowedCombinationRole combination : allowedCombination) {
+					if (combination.getRoleId().equals(RexsStandardRelationRoles.assembly.getKey())) {
+						mainComponentTypesForSideRelation.add(RexsComponentType.findById(combination.getComponentId()));
+						break;
+					}
+				}
+			}
+
+			for (RexsComponentType mainType : mainComponentTypesForSideRelation) {
+				for (RexsComponent mainComponent : rexsModel.getComponentsOfType(mainType)) {
+					if (sideRelations.stream().noneMatch(r -> r.hasComponent(mainComponent.getId())))
+						validationResult.addError(RexsValidationResultMessageKey.GUIDELINE_QUASISTATIC_COMPONENT_REQUIRES_SIDE_RELATION, mainComponent.toString(), mainComponent.getType().getId());
+				}
 			}
 		}
 

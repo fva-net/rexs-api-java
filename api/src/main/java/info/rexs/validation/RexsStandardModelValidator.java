@@ -74,6 +74,9 @@ public class RexsStandardModelValidator extends DefaultRexsModelValidator {
 	public RexsValidationResult validate(RexsModel rexsModel) {
 		RexsValidationResult validationResult = super.validate(rexsModel);
 
+		if (!dbModelRegistry.hasRelationTypes(rexsVersion))
+			validationResult.addWarning(RexsValidationResultMessageKey.RELATION_NO_TYPES_FOR_VERSION, rexsVersion.getName());
+
 		validationResult.add(checkPlanetaryStage(rexsModel));
 
 		return validationResult;
