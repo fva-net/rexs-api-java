@@ -5882,4 +5882,1341 @@
         <componentAttributeMapping componentId="zero_degree_grinding_disk_tool" attributeId="utilized_dedendum_reference_profile" attributeNumericId="3069"/>
         <componentAttributeMapping componentId="zero_degree_grinding_disk_tool" attributeId="version" attributeNumericId="21102"/>
     </componentAttributeMappings>
+    <relations>
+        <relation numericId="1" relationId="assembly" orderRequired="false" databaseId="54">
+            <roles>
+                <role roleId="assembly"/>
+                <role roleId="part"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="additional_mass"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="external_load"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="involute_spline_gear_hub"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="involute_spline_gear_shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="rectangular_groove"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="ring_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="round_groove"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="shaft_shoulder"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="shaft_shoulder_with_undercut"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="transverse_bore"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="v_notch"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="worm_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="worm_wheel"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="shaft_section"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_unit"/>
+                    <allowedCombinationRole roleId="part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_unit"/>
+                    <allowedCombinationRole roleId="part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_unit"/>
+                    <allowedCombinationRole roleId="part" componentId="bevel_stage"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_unit"/>
+                    <allowedCombinationRole roleId="part" componentId="cylindrical_stage"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_unit"/>
+                    <allowedCombinationRole roleId="part" componentId="worm_stage"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_unit"/>
+                    <allowedCombinationRole roleId="part" componentId="planetary_stage"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rectangular_groove"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="round_groove"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft_shoulder"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="shaft_shoulder_with_undercut"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="transverse_bore"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="v_notch"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="notch_effect_shaft_hub_connection"/>
+                    <allowedCombinationRole roleId="part" componentId="fkm_evaluation_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="worm_wheel"/>
+                    <allowedCombinationRole roleId="part" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_element"/>
+                    <allowedCombinationRole roleId="part" componentId="rolling_element_contact"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="part" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="part" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="part" componentId="radial_plain_bearing_groove"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="part" componentId="radial_plain_bearing_hole"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="part" componentId="radial_plain_bearing_profile"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="part" componentId="radial_plain_bearing_slot"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="radial_plain_bearing_profile"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="bevel_gear_flank"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_gear_flank"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="worm_gear_flank"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="bevel_stage_gear_data"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_stage_gear_data"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="worm_stage_gear_data"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_gear_hub"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_gear_shaft"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="worm_wheel"/>
+                    <allowedCombinationRole roleId="part" componentId="point_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="part" componentId="additional_mass"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="planetary_stage"/>
+                    <allowedCombinationRole roleId="part" componentId="planet_carrier"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="planetary_stage"/>
+                    <allowedCombinationRole roleId="part" componentId="cylindrical_stage"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="planet_carrier"/>
+                    <allowedCombinationRole roleId="part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="planet_carrier"/>
+                    <allowedCombinationRole roleId="part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="part" componentId="cylindrical_interference_fit"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="part" componentId="notch_effect_shaft_hub_connection"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="part" componentId="notch_effect_shaft_hub_connection"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="part" componentId="notch_effect_shaft_hub_connection"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="part" componentId="notch_effect_shaft_hub_connection"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="10" relationId="central_shaft" orderRequired="false" databaseId="55">
+            <roles>
+                <role roleId="planetary_stage"/>
+                <role roleId="shaft"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="planetary_stage" componentId="planetary_stage"/>
+                    <allowedCombinationRole roleId="shaft" componentId="shaft"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="13" relationId="contact" orderRequired="false" databaseId="56">
+            <roles>
+                <role roleId="assembly"/>
+                <role roleId="side_1"/>
+                <role roleId="side_2"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="shaft"/>
+                    <allowedCombinationRole roleId="side_2" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="shaft"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="shaft"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="shaft"/>
+                    <allowedCombinationRole roleId="side_2" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="shaft"/>
+                    <allowedCombinationRole roleId="side_2" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="shaft"/>
+                    <allowedCombinationRole roleId="side_2" componentId="sleeve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="side_2" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="side_2" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="side_2" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="side_2" componentId="sleeve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="side_2" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="side_2" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="side_2" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="side_2" componentId="sleeve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="side_2" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="side_2" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="side_2" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="side_2" componentId="sleeve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="side_2" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="side_2" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="side_2" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="side_2" componentId="sleeve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="sleeve"/>
+                    <allowedCombinationRole roleId="side_2" componentId="bearing_ring"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="sleeve"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_body"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="sleeve"/>
+                    <allowedCombinationRole roleId="side_2" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="sleeve"/>
+                    <allowedCombinationRole roleId="side_2" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="sleeve"/>
+                    <allowedCombinationRole roleId="side_2" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="surface_contact"/>
+                    <allowedCombinationRole roleId="side_1" componentId="sleeve"/>
+                    <allowedCombinationRole roleId="side_2" componentId="sleeve"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="6" relationId="flank" orderRequired="false" databaseId="57">
+            <roles>
+                <role roleId="gear"/>
+                <role roleId="left"/>
+                <role roleId="right"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="left" componentId="bevel_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="bevel_gear_flank"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="left" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="cylindrical_gear_flank"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="involute_spline_gear_shaft"/>
+                    <allowedCombinationRole roleId="left" componentId="involute_spline_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="involute_spline_gear_flank"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="involute_spline_gear_hub"/>
+                    <allowedCombinationRole roleId="left" componentId="involute_spline_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="involute_spline_gear_flank"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="left" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="cylindrical_gear_flank"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="left" componentId="worm_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="worm_gear_flank"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="gear" componentId="worm_wheel"/>
+                    <allowedCombinationRole roleId="left" componentId="worm_gear_flank"/>
+                    <allowedCombinationRole roleId="right" componentId="worm_gear_flank"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="8" relationId="manufacturing_step" orderRequired="true" databaseId="58">
+            <roles>
+                <role roleId="workpiece"/>
+                <role roleId="tool"/>
+                <role roleId="manufacturing_settings"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="workpiece" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="tool" componentId="cutter_wheel_tool"/>
+                    <allowedCombinationRole roleId="manufacturing_settings" componentId="cylindrical_gear_manufacturing_settings"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="workpiece" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="tool" componentId="rack_shaped_tool"/>
+                    <allowedCombinationRole roleId="manufacturing_settings" componentId="cylindrical_gear_manufacturing_settings"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="workpiece" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="tool" componentId="zero_degree_grinding_disk_tool"/>
+                    <allowedCombinationRole roleId="manufacturing_settings" componentId="cylindrical_gear_manufacturing_settings"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="workpiece" componentId="bevel_gear_flank"/>
+                    <allowedCombinationRole roleId="tool" componentId="bevel_gear_tool"/>
+                    <allowedCombinationRole roleId="manufacturing_settings" componentId="bevel_gear_manufacturing_settings"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="workpiece" componentId="worm_gear_flank"/>
+                    <allowedCombinationRole roleId="tool" componentId="worm_grinding_disc_tool"/>
+                    <allowedCombinationRole roleId="manufacturing_settings" componentId="worm_gear_manufacturing_settings"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="workpiece" componentId="worm_gear_flank"/>
+                    <allowedCombinationRole roleId="tool" componentId="worm_wheel_hob_tool"/>
+                    <allowedCombinationRole roleId="manufacturing_settings" componentId="worm_gear_manufacturing_settings"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="2" relationId="ordered_assembly" orderRequired="true" databaseId="59">
+            <roles>
+                <role roleId="assembly"/>
+                <role roleId="part"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="part" componentId="rolling_bearing_row"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="part" componentId="rolling_bearing_row"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_row"/>
+                    <allowedCombinationRole roleId="part" componentId="rolling_element"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="part" componentId="radial_plain_bearing_shell"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="assembly_group"/>
+                    <allowedCombinationRole roleId="part" componentId="reduction_point"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="part" componentId="joint_section"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="part" componentId="joint_section"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="11" relationId="planet_carrier_shaft" orderRequired="false" databaseId="60">
+            <roles>
+                <role roleId="planetary_stage"/>
+                <role roleId="shaft"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="planetary_stage" componentId="planetary_stage"/>
+                    <allowedCombinationRole roleId="shaft" componentId="shaft"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="12" relationId="planet_pin" orderRequired="false" databaseId="61">
+            <roles>
+                <role roleId="planetary_stage"/>
+                <role roleId="shaft"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="planetary_stage" componentId="planetary_stage"/>
+                    <allowedCombinationRole roleId="shaft" componentId="shaft"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="9" relationId="planet_shaft" orderRequired="false" databaseId="62">
+            <roles>
+                <role roleId="planetary_stage"/>
+                <role roleId="shaft"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="planetary_stage" componentId="planetary_stage"/>
+                    <allowedCombinationRole roleId="shaft" componentId="shaft"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="7" relationId="reference" orderRequired="false" databaseId="63">
+            <roles>
+                <role roleId="origin"/>
+                <role roleId="referenced"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="involute_spline_gear_hub"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="involute_spline_gear_shaft"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="radial_plain_bearing_shell"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="rolling_element"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="shaft"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="side_plate"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="worm_wheel"/>
+                    <allowedCombinationRole roleId="referenced" componentId="material"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="bevel_stage"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="concept_bearing"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_stage"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="worm_stage"/>
+                    <allowedCombinationRole roleId="referenced" componentId="lubricant"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="end_relief_datum_face"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="end_relief_non_datum_face"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="helix_crowning"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="helix_deviation"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="helix_slope"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="profile_crowning"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="profile_deviation"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="profile_slope"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="profile_twist"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="root_relief"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="tip_relief"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="topographical_modification"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="triangular_root_relief"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear_flank"/>
+                    <allowedCombinationRole roleId="referenced" componentId="triangular_tip_relief"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="referenced" componentId="assembly_group"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="bearing_ring"/>
+                    <allowedCombinationRole roleId="referenced" componentId="assembly_group"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="radial_plain_bearing_profile_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="element_list"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="fem_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="gear_flank_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="gear_root_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="meshing_contact_gear_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="point_list"/>
+                    <allowedCombinationRole roleId="referenced" componentId="meshing_contact_stage_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="sn_curve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="sn_curve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="sn_curve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="shaft"/>
+                    <allowedCombinationRole roleId="referenced" componentId="sn_curve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="referenced" componentId="sn_curve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="worm_wheel"/>
+                    <allowedCombinationRole roleId="referenced" componentId="sn_curve"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="referenced" componentId="assembly_group"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="gear_body"/>
+                    <allowedCombinationRole roleId="referenced" componentId="assembly_group"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="planet_carrier"/>
+                    <allowedCombinationRole roleId="referenced" componentId="assembly_group"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="shaft"/>
+                    <allowedCombinationRole roleId="referenced" componentId="assembly_group"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="coupling"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="additional_mass"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="concept_bearing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="external_load"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="rolling_bearing_with_catalog_geometry"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="rolling_bearing_with_detailed_geometry"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="switchable_coupling"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="bevel_stage_gear_data"/>
+                    <allowedCombinationRole roleId="referenced" componentId="gear_root_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="cylindrical_stage_gear_data"/>
+                    <allowedCombinationRole roleId="referenced" componentId="gear_root_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="worm_stage_gear_data"/>
+                    <allowedCombinationRole roleId="referenced" componentId="gear_root_data_set"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="origin" componentId="reduction_point"/>
+                    <allowedCombinationRole roleId="referenced" componentId="fem_data_set"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="5" relationId="side" orderRequired="false" databaseId="64">
+            <roles>
+                <role roleId="assembly"/>
+                <role roleId="inner_part"/>
+                <role roleId="outer_part"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="concept_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="concept_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="concept_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="concept_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="hydrodynamic_radial_plain_bearing"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_catalog_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="rolling_bearing_with_detailed_geometry"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_wheel"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_wheel"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_wheel"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_wheel"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="side_plate"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="worm_wheel"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="gear_casing"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="gear_casing"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="cylindrical_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="feather_key_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="switchable_coupling"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="tapered_interference_fit"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="inner_part" componentId="shaft"/>
+                    <allowedCombinationRole roleId="outer_part" componentId="shaft"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="3" relationId="stage" orderRequired="false" databaseId="65">
+            <roles>
+                <role roleId="stage"/>
+                <role roleId="gear_1"/>
+                <role roleId="gear_2"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="bevel_stage"/>
+                    <allowedCombinationRole roleId="gear_1" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="gear_2" componentId="bevel_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="cylindrical_stage"/>
+                    <allowedCombinationRole roleId="gear_1" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="gear_2" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="cylindrical_stage"/>
+                    <allowedCombinationRole roleId="gear_1" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="gear_2" componentId="ring_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="cylindrical_stage"/>
+                    <allowedCombinationRole roleId="gear_1" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="gear_2" componentId="cylindrical_gear"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="gear_1" componentId="involute_spline_gear_shaft"/>
+                    <allowedCombinationRole roleId="gear_2" componentId="involute_spline_gear_hub"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="worm_stage"/>
+                    <allowedCombinationRole roleId="gear_1" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="gear_2" componentId="worm_wheel"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+        <relation numericId="4" relationId="stage_gear_data" orderRequired="false" databaseId="66">
+            <roles>
+                <role roleId="stage"/>
+                <role roleId="gear"/>
+                <role roleId="stage_gear_data"/>
+            </roles>
+            <allowedCombinations>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="bevel_stage"/>
+                    <allowedCombinationRole roleId="gear" componentId="bevel_gear"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="bevel_stage_gear_data"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="cylindrical_stage"/>
+                    <allowedCombinationRole roleId="gear" componentId="cylindrical_gear"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="cylindrical_stage_gear_data"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="cylindrical_stage"/>
+                    <allowedCombinationRole roleId="gear" componentId="ring_gear"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="cylindrical_stage_gear_data"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="gear" componentId="involute_spline_gear_shaft"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="involute_spline_stage_gear_data"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="gear" componentId="involute_spline_gear_hub"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="involute_spline_stage_gear_data"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="worm_stage"/>
+                    <allowedCombinationRole roleId="gear" componentId="worm_gear"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="worm_stage_gear_data"/>
+                </allowedCombination>
+                <allowedCombination>
+                    <allowedCombinationRole roleId="stage" componentId="worm_stage"/>
+                    <allowedCombinationRole roleId="gear" componentId="worm_wheel"/>
+                    <allowedCombinationRole roleId="stage_gear_data" componentId="worm_stage_gear_data"/>
+                </allowedCombination>
+            </allowedCombinations>
+        </relation>
+    </relations>
 </rexsModel>
