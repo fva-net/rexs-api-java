@@ -22,72 +22,72 @@ import info.rexs.db.constants.RexsRelationRole;
 /**
  * This class represents a REXS relation role.
  * <p>
- * It contains constants for all relation roles of official REXS versions (1.0, 1.1, 1.2, 1.3).
+ * It contains constants for all relation roles of official REXS versions (1.3, 1.4, 1.5, 1.6).
  *
  * @author FVA GmbH
  */
 @Generated("REXS-Database by FVA GmbH (see https://database.rexs.info/)")
 public interface RexsStandardRelationRoles {
 
-	/** Relation role "assembly". */
+	/** Relation role "assembly" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole assembly = RexsRelationRole.create("assembly");
 
-	/** Relation role "part". */
-	RexsRelationRole part = RexsRelationRole.create("part");
-
-	/** Relation role "stage". */
-	RexsRelationRole stage = RexsRelationRole.create("stage");
-
-	/** Relation role "gear". */
+	/** Relation role "gear" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole gear = RexsRelationRole.create("gear");
 
-	/** Relation role "gear_1". */
+	/** Relation role "gear_1" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole gear_1 = RexsRelationRole.create("gear_1");
 
-	/** Relation role "gear_2". */
+	/** Relation role "gear_2" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole gear_2 = RexsRelationRole.create("gear_2");
 
-	/** Relation role "stage_gear_data". */
-	RexsRelationRole stage_gear_data = RexsRelationRole.create("stage_gear_data");
-
-	/** Relation role "left". */
-	RexsRelationRole left = RexsRelationRole.create("left");
-
-	/** Relation role "right". */
-	RexsRelationRole right = RexsRelationRole.create("right");
-
-	/** Relation role "inner_part". */
+	/** Relation role "inner_part" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole inner_part = RexsRelationRole.create("inner_part");
 
-	/** Relation role "outer_part". */
-	RexsRelationRole outer_part = RexsRelationRole.create("outer_part");
+	/** Relation role "left" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole left = RexsRelationRole.create("left");
 
-	/** Relation role "side_1". */
-	RexsRelationRole side_1 = RexsRelationRole.create("side_1");
+	/** Relation role "manufacturing_settings" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole manufacturing_settings = RexsRelationRole.create("manufacturing_settings");
 
-	/** Relation role "side_2". */
-	RexsRelationRole side_2 = RexsRelationRole.create("side_2");
-
-	/** Relation role "origin". */
+	/** Relation role "origin" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole origin = RexsRelationRole.create("origin");
 
-	/** Relation role "referenced". */
-	RexsRelationRole referenced = RexsRelationRole.create("referenced");
+	/** Relation role "outer_part" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole outer_part = RexsRelationRole.create("outer_part");
 
-	/** Relation role "planetary_stage". */
+	/** Relation role "part" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole part = RexsRelationRole.create("part");
+
+	/** Relation role "planetary_stage" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole planetary_stage = RexsRelationRole.create("planetary_stage");
 
-	/** Relation role "shaft". */
+	/** Relation role "referenced" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole referenced = RexsRelationRole.create("referenced");
+
+	/** Relation role "right" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole right = RexsRelationRole.create("right");
+
+	/** Relation role "shaft" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole shaft = RexsRelationRole.create("shaft");
 
-	/** Relation role "workpiece". */
-	RexsRelationRole workpiece = RexsRelationRole.create("workpiece");
+	/** Relation role "side_1" (Versions: 1.6). */
+	RexsRelationRole side_1 = RexsRelationRole.create("side_1");
 
-	/** Relation role "tool". */
+	/** Relation role "side_2" (Versions: 1.6). */
+	RexsRelationRole side_2 = RexsRelationRole.create("side_2");
+
+	/** Relation role "stage" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole stage = RexsRelationRole.create("stage");
+
+	/** Relation role "stage_gear_data" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole stage_gear_data = RexsRelationRole.create("stage_gear_data");
+
+	/** Relation role "tool" (Versions: 1.3, 1.4, 1.5, 1.6). */
 	RexsRelationRole tool = RexsRelationRole.create("tool");
 
-	/** Relation role "manufacturing_settings". */
-	RexsRelationRole manufacturing_settings = RexsRelationRole.create("manufacturing_settings");
+	/** Relation role "workpiece" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	RexsRelationRole workpiece = RexsRelationRole.create("workpiece");
 
 	/** Constant for an unknown relation role. */
 	RexsRelationRole UNKNOWN = RexsRelationRole.create("unknown");

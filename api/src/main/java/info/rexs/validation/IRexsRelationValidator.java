@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2020 FVA GmbH
+ * Copyright (C) 2024 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
@@ -15,35 +15,25 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import java.util.Objects;
-
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
+import info.rexs.model.RexsModel;
+import info.rexs.model.RexsRelation;
 
 /**
- * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file
- * and includes the specification of official REXS versions.
+ * This interface represents the validator of a REXS relation.
  *
  * @author FVA GmbH
  */
-public class RexsStandardFileValidator extends DefaultRexsFileValidator {
-
-	protected final IDbModelRegistry dbModelRegistry;
-
-	public RexsStandardFileValidator() {
-		this(DbModelRegistry.getInstance());
-	}
-
-	public RexsStandardFileValidator(IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
-		this.dbModelRegistry = dbModelRegistry;
-	}
+public interface IRexsRelationValidator {
 
 	/**
-	 * {@inheritDoc}
+	 * Validates a REXS relation and returns the validation result.
+	 *
+	 * @param rexsRelation
+	 * 				The REXS relation to validate.
+	 * @param rexsModel 
+	 *
+	 * @return
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	@Override
-	public IRexsModelValidator createModelValidator() {
-		return new RexsStandardModelValidator(dbModelRegistry);
-	}
+	public RexsValidationResult validate(RexsRelation rexsRelation, RexsModel rexsModel);
 }

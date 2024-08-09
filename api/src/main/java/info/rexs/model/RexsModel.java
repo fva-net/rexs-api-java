@@ -30,6 +30,7 @@ import info.rexs.db.constants.RexsComponentType;
 import info.rexs.db.constants.RexsRelationRole;
 import info.rexs.db.constants.RexsRelationType;
 import info.rexs.db.constants.RexsVersion;
+import info.rexs.db.constants.standard.RexsStandardAttributeIds;
 import info.rexs.db.constants.standard.RexsStandardComponentTypes;
 import info.rexs.db.constants.standard.RexsStandardRelationRoles;
 import info.rexs.db.constants.standard.RexsStandardRelationTypes;
@@ -185,7 +186,6 @@ public class RexsModel {
 	public List<RexsRelation> getRelations() {
 		return relations;
 	}
-
 
 	/**
 	 * @return
@@ -382,25 +382,14 @@ public class RexsModel {
 		return getComponent(stageRel.findComponentIdByRole(RexsStandardRelationRoles.gear_2));
 	}
 
-//	/**
-//	 * Finds all children of the desired type. If no such children exist, finds
-//	 * all grand children of the desired type. If those do not exist either returns
-//	 * an empty List.
-//	 * Special case: if type==mainCompType returns mainComp
-//	 * @param mainCompId
-//	 * @param type
-//	 * @return
-//	 */
 	/**
-	 * TODO Document me!
-	 *
+	 * Finds all children of the desired type. If no such children exist, finds
+	 * all grand children of the desired type. If those do not exist either returns
+	 * an empty List.
+	 * Special case: if type==mainCompType returns mainComp
 	 * @param mainCompId
-	 * 				TODO Document me!
 	 * @param type
-	 * 				TODO Document me!
-	 *
 	 * @return
-	 * 				TODO Document me!
 	 */
 	public List<RexsComponent> getSubComponentsWithType(Integer mainCompId, RexsComponentType type) {
 		RexsComponent mainComp = getComponent(mainCompId);
@@ -605,7 +594,7 @@ public class RexsModel {
 	 * 				TODO Document me!
 	 */
 	public RexsComponent getGearUnit() {
-		List<RexsComponent> listOfGearUnits = getComponentsOfType(RexsStandardComponentTypes.gear_unit);
+		List<RexsComponent> listOfGearUnits = getComponentsOfType(RexsComponentType.gear_unit);
 		if (listOfGearUnits.size() != 1)
 			throw new RexsModelAccessException("there has to be exactly one gear_unit component in the model!");
 		return listOfGearUnits.get(0);
@@ -1328,6 +1317,14 @@ public class RexsModel {
 
 		components.remove(oldId);
 		components.put(newId, component);
+
+		for (RexsComponent comp : components.values()) {
+			if (comp.hasAttribute(RexsStandardAttributeIds.reference_component_for_position)) {
+				RexsAttribute refCompAttribute = comp.getAttribute(RexsStandardAttributeIds.reference_component_for_position);
+				if (Integer.valueOf(refCompAttribute.getStringValue())==oldId)
+					refCompAttribute.setStringValue(String.valueOf(newId));
+			}
+		}
 
 		for (RexsRelation relation : relations) {
 			if (relation.hasComponent(oldId))

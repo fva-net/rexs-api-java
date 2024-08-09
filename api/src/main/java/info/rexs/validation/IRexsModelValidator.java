@@ -15,35 +15,39 @@
  ******************************************************************************/
 package info.rexs.validation;
 
-import java.util.Objects;
-
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
+import info.rexs.model.RexsModel;
 
 /**
- * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file
- * and includes the specification of official REXS versions.
+ * This interface represents the validator of a REXS model.
  *
  * @author FVA GmbH
  */
-public class RexsStandardFileValidator extends DefaultRexsFileValidator {
-
-	protected final IDbModelRegistry dbModelRegistry;
-
-	public RexsStandardFileValidator() {
-		this(DbModelRegistry.getInstance());
-	}
-
-	public RexsStandardFileValidator(IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
-		this.dbModelRegistry = dbModelRegistry;
-	}
+public interface IRexsModelValidator {
 
 	/**
-	 * {@inheritDoc}
+	 * Validates a REXS model and returns the validation result.
+	 *
+	 * @param rexsModel
+	 * 				The REXS model to validate.
+	 *
+	 * @return
+	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	@Override
-	public IRexsModelValidator createModelValidator() {
-		return new RexsStandardModelValidator(dbModelRegistry);
-	}
+	public RexsValidationResult validate(RexsModel rexsModel);
+
+	/**
+	 * Creates a new validator for the components of the REXS file.
+	 *
+	 * @return
+	 * 				The component validator as {@link IRexsComponentValidator}.
+	 */
+	public IRexsComponentValidator createComponentValidator();
+
+	/**
+	 * Creates a new validator for the relations of the REXS file.
+	 * 
+	 * @return
+	 * 				The relation validator as {@link IRexsRelationValidator}.
+	 */
+	IRexsRelationValidator createRelationValidator();
 }

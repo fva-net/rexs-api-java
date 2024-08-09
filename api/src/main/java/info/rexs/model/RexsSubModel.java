@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import info.rexs.db.constants.standard.RexsStandardAttributeIds;
+
 /**
  * This class represents a sub-model (containing only the varied data) of a REXS model.
  *
@@ -143,6 +145,14 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 			components.remove(oldId);
 			components.put(newId, component);
 		}
+		for (RexsComponent component : components.values()) {
+			if (component.hasAttribute(RexsStandardAttributeIds.reference_component_for_position)) {
+				RexsAttribute refCompAttribute = component.getAttribute(RexsStandardAttributeIds.reference_component_for_position);
+				if (Integer.valueOf(refCompAttribute.getStringValue())==oldId)
+					refCompAttribute.setStringValue(String.valueOf(newId));
+			}
+		}
+		
 	}
 
 	/**

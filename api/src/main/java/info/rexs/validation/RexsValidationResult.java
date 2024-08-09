@@ -37,20 +37,8 @@ public class RexsValidationResult {
 	 * @return
 	 * 				{@code true} if the validation is valid, otherwise {@code false}.
 	 */
-	public boolean isValid()
-	{
+	public boolean isValid() {
 		return errors == null || errors.isEmpty();
-	}
-
-	/**
-	 * Add an error to the validation result.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the error.
-	 */
-	public void addError(RexsValidationResultMessageKey key)
-	{
-		errors.add(new RexsValidationResultMessage(key));
 	}
 
 	/**
@@ -59,82 +47,10 @@ public class RexsValidationResult {
 	 * @param key
 	 * 				The {@link RexsValidationResultMessageKey} describing the error.
 	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
+	 * 				Additional messages as an array of {@link String}.
 	 */
-	public void addError(RexsValidationResultMessageKey key, List<String> additionalMessages)
-	{
-		errors.add(new RexsValidationResultMessage(key, null, null, additionalMessages));
-	}
-
-	/**
-	 * Add an error to the validation result containing the related component type.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the error.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 */
-	public void addError(RexsValidationResultMessageKey key, String componentType)
-	{
-		errors.add(new RexsValidationResultMessage(key, componentType, null, null));
-	}
-
-	/**
-	 * Add an error to the validation result containing the related component type and additional messages.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the error.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
-	 */
-	public void addError(RexsValidationResultMessageKey key, String componentType, List<String> additionalMessages)
-	{
-		errors.add(new RexsValidationResultMessage(key, componentType, null, additionalMessages));
-	}
-
-	/**
-	 * Add an error to the validation result containing the related component type and the related attribute id.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the error.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param attributeId
-	 * 				The related attribute id as {@link String}.
-	 */
-	public void addError(RexsValidationResultMessageKey key, String componentType, String attributeId)
-	{
-		errors.add(new RexsValidationResultMessage(key, componentType, attributeId, null));
-	}
-
-	/**
-	 * Add an error to the validation result containing the related component type, the related attribute id and additional messages.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the error.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param attributeId
-	 * 				The related attribute id as {@link String}.
-	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
-	 */
-	public void addError(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages)
-	{
-		errors.add(new RexsValidationResultMessage(key, componentType, attributeId, additionalMessages));
-	}
-
-	/**
-	 * Add an warning to the validation result.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
-	 */
-	public void addWarning(RexsValidationResultMessageKey key)
-	{
-		warnings.add(new RexsValidationResultMessage(key));
+	public void addError(RexsValidationResultMessageKey key, String... additionalMessages) {
+		errors.add(new RexsValidationResultMessage(key, additionalMessages));
 	}
 
 	/**
@@ -143,71 +59,10 @@ public class RexsValidationResult {
 	 * @param key
 	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
 	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
+	 * 				Additional messages as an array of {@link String}.
 	 */
-	public void addWarning(RexsValidationResultMessageKey key, List<String> additionalMessages)
-	{
-		warnings.add(new RexsValidationResultMessage(key, null, null, additionalMessages));
-	}
-
-	/**
-	 * Add an warning to the validation result containing the related component type.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 */
-	public void addWarning(RexsValidationResultMessageKey key, String componentType)
-	{
-		warnings.add(new RexsValidationResultMessage(key, componentType, null, null));
-	}
-
-	/**
-	 * Add an warning to the validation result containing the related component type and additional messages.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
-	 */
-	public void addWarning(RexsValidationResultMessageKey key, String componentType, List<String> additionalMessages)
-	{
-		warnings.add(new RexsValidationResultMessage(key, componentType, null, additionalMessages));
-	}
-
-	/**
-	 * Add an warning to the validation result containing the related component type and the related attribute id.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param attributeId
-	 * 				The related attribute id as {@link String}.
-	 */
-	public void addWarning(RexsValidationResultMessageKey key, String componentType, String attributeId)
-	{
-		warnings.add(new RexsValidationResultMessage(key, componentType, attributeId, null));
-	}
-
-	/**
-	 * Add an warning to the validation result containing the related component type, the related attribute id and additional messages.
-	 *
-	 * @param key
-	 * 				The {@link RexsValidationResultMessageKey} describing the warning.
-	 * @param componentType
-	 * 				The related component type as {@link String}.
-	 * @param attributeId
-	 * 				The related attribute id as {@link String}.
-	 * @param additionalMessages
-	 * 				Additional messages as a {@link List} of {@link String}.
-	 */
-	public void addWarning(RexsValidationResultMessageKey key, String componentType, String attributeId, List<String> additionalMessages)
-	{
-		warnings.add(new RexsValidationResultMessage(key, componentType, attributeId, additionalMessages));
+	public void addWarning(RexsValidationResultMessageKey key, String... additionalMessages) {
+		warnings.add(new RexsValidationResultMessage(key, additionalMessages));
 	}
 
 	/**
@@ -221,11 +76,11 @@ public class RexsValidationResult {
 		warnings.addAll(validationResult.getWarnings());
 	}
 
-	private List<RexsValidationResultMessage> getWarnings() {
+	public List<RexsValidationResultMessage> getWarnings() {
 		return this.warnings;
 	}
 
-	private List<RexsValidationResultMessage> getErrors() {
+	public List<RexsValidationResultMessage> getErrors() {
 		return this.errors;
 	}
 }

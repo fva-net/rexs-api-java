@@ -23,16 +23,21 @@ import java.util.Locale;
 import java.util.Map;
 
 import info.rexs.db.constants.RexsComponentType;
+import info.rexs.db.constants.RexsRelationType;
 import info.rexs.db.constants.RexsUnitId;
 import info.rexs.db.constants.RexsValueType;
 import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.constants.standard.RexsStandardComponentTypes;
 import info.rexs.db.constants.standard.RexsStandardUnitIds;
 import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.db.jaxb.AllowedCombination;
+import info.rexs.db.jaxb.AllowedCombinationRole;
+import info.rexs.db.jaxb.AllowedCombinations;
 import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.ComponentAttributeMapping;
 import info.rexs.db.jaxb.EnumValue;
+import info.rexs.db.jaxb.Relation;
 import info.rexs.db.jaxb.RexsDatabaseModelFile;
 import info.rexs.db.jaxb.Unit;
 import info.rexs.db.jaxb.ValueType;
@@ -43,7 +48,7 @@ import info.rexs.db.jaxb.ValueType;
  *
  * @author FVA GmbH
  */
-public class DbModelRegistry {
+public class DbModelRegistry implements IDbModelRegistry {
 
 	private static DbModelRegistry instance = null;
 
@@ -54,6 +59,7 @@ public class DbModelRegistry {
 	private Map<RexsVersion, Map<String, Attribute>> attributeMap = new HashMap<>();
 	private Map<RexsVersion, Map<String, List<RexsComponentType>>> attributeToComponentMap = new HashMap<>();
 	private Map<RexsVersion, Map<RexsComponentType, List<String>>> componentToAttributesMap = new HashMap<>();
+	private Map<RexsVersion, Map<RexsRelationType, List<List<AllowedCombinationRole>>>> relationsToAllowedCombinationsMap = new HashMap<>();
 
 	private DbModelRegistry() {
 		try {
@@ -96,6 +102,21 @@ public class DbModelRegistry {
 		generateAttributeTypeMap(version, rexsModel);
 		generateAttributeUnitMap(version, rexsModel);
 		generateAttributeComponentMappings(version, rexsModel);
+		if (version.isGreater(RexsStandardVersions.V1_6))
+			generateRelationsWithAllowedCombinations(version, rexsModel);
+	}
+
+	private void generateRelationsWithAllowedCombinations(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapofVersion = relationsToAllowedCombinationsMap.computeIfAbsent(version, k -> new HashMap<>());
+		if (rexsModel.getRelations() != null) {
+			for (Relation relation : rexsModel.getRelations().getRelation()) {
+				RexsRelationType relationType = RexsRelationType.findByKey(relation.getRelationId());
+				List<List<AllowedCombinationRole>> listOfCombinations = relationsToAllowedCombinationsMapofVersion.computeIfAbsent(relationType, k -> new ArrayList<>());
+				AllowedCombinations combinations = relation.getAllowedCombinations();
+				for (AllowedCombination combination : combinations.getAllowedCombination())
+					listOfCombinations.add(combination.getAllowedCombinationRole());
+			}
+		}
 	}
 
 	private void generateComponentMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
@@ -166,6 +187,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public RexsUnitId getAttributeUnit(String rexsAttributeId, RexsVersion version) {
 		Map<String, RexsUnitId> unitsMap = attributeUnits.get(version);
 		if (unitsMap != null && (unitsMap.containsKey(rexsAttributeId)) )
@@ -179,6 +201,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public RexsValueType getAttributeType(String rexsAttributeId, RexsVersion version) {
 		Map<String, RexsValueType> map = attributeTypes.get(version);
 		if (map != null && (map.containsKey(rexsAttributeId)) )
@@ -192,6 +215,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public String getAttributeName(String attributeId, RexsVersion version) {
 		if (!attributeMap.get(version).containsKey(attributeId))
 			return attributeId;
@@ -207,6 +231,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public String getAttributeSymbol(String attributeId, RexsVersion version) {
 		if (!attributeMap.get(version).containsKey(attributeId))
 			return "";
@@ -220,6 +245,7 @@ public class DbModelRegistry {
 	 * @param value
 	 * @return
 	 */
+	@Override
 	public String getNameForEnumValue(String attributeId, RexsVersion version, String value) {
 		Attribute attribute = attributeMap.get(version).get(attributeId);
 		for (EnumValue enumValue : attribute.getEnumValues().getEnumValue()) {
@@ -263,6 +289,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public boolean componentAttributeMappingExists(String rexsAttributeId, RexsComponentType rexsCompType, RexsVersion version) {
 		Map<String, List<RexsComponentType>> map = attributeToComponentMap.get(version);
 		if (map != null && (map.containsKey(rexsAttributeId)) )
@@ -276,6 +303,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public List<RexsComponentType> getAvailableComponentTypesForAttributeId(String rexsAttributeId, RexsVersion version) {
 		Map<String, List<RexsComponentType>> map = attributeToComponentMap.get(version);
 		if (map != null && (map.containsKey(rexsAttributeId)) )
@@ -289,6 +317,7 @@ public class DbModelRegistry {
 	 * @param version
 	 * @return
 	 */
+	@Override
 	public List<String> getAttributeIdsOfComponentType(RexsComponentType rexsComponentType, RexsVersion version) {
 		Map<RexsComponentType, List<String>> map = componentToAttributesMap.get(version);
 		if (map != null && (map.containsKey(rexsComponentType)) )
@@ -296,10 +325,12 @@ public class DbModelRegistry {
 		throw new IllegalArgumentException(String.format("Rexs component type %s is not registered in RexsVersion %s", rexsComponentType, version.getName()));
 	}
 
+	@Override
 	public RexsVersion getVersion(String version) {
 		return versions.get(version);
 	}
 
+	@Override
 	public RexsComponentType getComponentType(RexsVersion version, String componentType) {
 		Map<String, RexsComponentType> map = componentMap.get(version);
 		if (map != null && map.containsKey(componentType))
@@ -307,6 +338,7 @@ public class DbModelRegistry {
 		return RexsStandardComponentTypes.UNKNOWN;
 	}
 
+	@Override
 	public boolean hasAttributeWithId(RexsVersion version, String attributeId) {
 		Map<String, Attribute> map = attributeMap.get(version);
 		return map != null && map.containsKey(attributeId);
@@ -317,5 +349,23 @@ public class DbModelRegistry {
 		if (!locale.getLanguage().equalsIgnoreCase("en") && !locale.getLanguage().equalsIgnoreCase("de"))
 			return Locale.ENGLISH.getLanguage();
 		return locale.getLanguage();
+	}
+
+	@Override
+	public boolean hasRelationTypes(RexsVersion version) {
+		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapOfVersion = relationsToAllowedCombinationsMap.get(version);
+		return relationsToAllowedCombinationsMapOfVersion != null
+				&& !relationsToAllowedCombinationsMapOfVersion.isEmpty();
+	}
+
+	@Override
+	public List<List<AllowedCombinationRole>> getAllowedCombinationsForRelation(RexsVersion version, RexsRelationType relationType) {
+		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapOfVersion = relationsToAllowedCombinationsMap.get(version);
+		if (relationsToAllowedCombinationsMapOfVersion==null)
+			throw new IllegalArgumentException(String.format("No relation types for REXS version %s specified", version.getName()));
+		List<List<AllowedCombinationRole>> listOfAllowedCombinations = relationsToAllowedCombinationsMapOfVersion.get(relationType);
+		if (listOfAllowedCombinations==null || listOfAllowedCombinations.isEmpty())
+			throw new IllegalArgumentException(String.format("Rexs Relation type %s is not defined in version %s", relationType, version.getName()));
+		return listOfAllowedCombinations;
 	}
 }
