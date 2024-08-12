@@ -15,12 +15,13 @@
  ******************************************************************************/
 package info.rexs.db.constants;
 
-import static info.rexs.db.constants.standard.RexsStandardVersions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.Test;
+
+import info.rexs.db.constants.standard.RexsStandardVersions;
 
 public class RexsVersionTest {
 
@@ -57,19 +58,19 @@ public class RexsVersionTest {
 
 	@Test
 	public void findByName_givenNullReturnsUnknown() {
-		assertThat(RexsVersion.findByName(null)).isEqualTo(UNKNOWN);
+		assertThat(RexsVersion.findByName(null)).isEqualTo(RexsStandardVersions.UNKNOWN);
 	}
 
 	@Test
 	public void findByName_givenUnknownNameReturnsUnknown() {
-		assertThat(RexsVersion.findByName("foo.bar")).isEqualTo(UNKNOWN);
+		assertThat(RexsVersion.findByName("foo.bar")).isEqualTo(RexsStandardVersions.UNKNOWN);
 	}
 
 	@Test
 	public void findByName_returnsRexsStandardVersion() {
-		RexsVersion version = RexsVersion.findByName(V1_0.getName());
+		RexsVersion version = RexsVersion.findByName(RexsStandardVersions.V1_0.getName());
 		assertThat(version).isNotNull();
-		assertThat(version.getName()).isEqualTo(V1_0.getName());
+		assertThat(version.getName()).isEqualTo(RexsStandardVersions.V1_0.getName());
 	}
 
 	@Test
@@ -99,41 +100,40 @@ public class RexsVersionTest {
 
 	@Test
 	public void isLessOrEqual_whenVersionIsLessOrEqual_returnsTrue() {
-
-        assertThat(V1_0.isLessOrEqual(V1_1)).isTrue();
-		assertThat(V1_1.isLessOrEqual(V1_1)).isTrue();
-		assertThat(V1_2.isLessOrEqual(V1_1)).isFalse();
+		assertThat(RexsStandardVersions.V1_0.isLessOrEqual(RexsStandardVersions.V1_1)).isTrue();
+		assertThat(RexsStandardVersions.V1_1.isLessOrEqual(RexsStandardVersions.V1_1)).isTrue();
+		assertThat(RexsStandardVersions.V1_2.isLessOrEqual(RexsStandardVersions.V1_1)).isFalse();
 	}
 
 	@Test
 	public void isEqual_whenVersionIsEqual_returnsTrue() {
 		RexsVersion V1_1_copy = RexsVersion.create("1.1", 1100);
 
-		assertThat(V1_1.isEqual(V1_1_copy)).isTrue();
-		assertThat(V1_1.isEqual(V1_1)).isTrue();
+		assertThat(RexsStandardVersions.V1_1.isEqual(V1_1_copy)).isTrue();
+		assertThat(RexsStandardVersions.V1_1.isEqual(RexsStandardVersions.V1_1)).isTrue();
 	}
 
 	@Test
 	public void isGreater_whenVersionIsGreater_returnsTrue() {
-		assertThat(V1_2.isGreater(V1_0)).isTrue();
-		assertThat(V1_0.isGreater(V1_2)).isFalse();
+		assertThat(RexsStandardVersions.V1_2.isGreater(RexsStandardVersions.V1_0)).isTrue();
+		assertThat(RexsStandardVersions.V1_0.isGreater(RexsStandardVersions.V1_2)).isFalse();
 	}
 
 	@Test
 	public void isLess_whenVersionIsLess_returnsTrue() {
-		assertThat(V1_0.isLess(V1_2)).isTrue();
-		assertThat(V1_2.isLess(V1_0)).isFalse();
+		assertThat(RexsStandardVersions.V1_0.isLess(RexsStandardVersions.V1_2)).isTrue();
+		assertThat(RexsStandardVersions.V1_2.isLess(RexsStandardVersions.V1_0)).isFalse();
 	}
 
 	@Test
 	public void isOneOf_whenVersionMatchesOneOfTheSpecifiedVersions_returnsTrue() {
-		assertThat(V1_1.isOneOf(V1_1, V1_2, V1_3)).isTrue();
-		assertThat(V1_2.isOneOf(V1_1, V1_2, V1_3)).isTrue();
-		assertThat(V1_3.isOneOf(V1_1, V1_2, V1_3)).isTrue();
+		assertThat(RexsStandardVersions.V1_1.isOneOf(RexsStandardVersions.V1_1, RexsStandardVersions.V1_2, RexsStandardVersions.V1_3)).isTrue();
+		assertThat(RexsStandardVersions.V1_2.isOneOf(RexsStandardVersions.V1_1, RexsStandardVersions.V1_2, RexsStandardVersions.V1_3)).isTrue();
+		assertThat(RexsStandardVersions.V1_3.isOneOf(RexsStandardVersions.V1_1, RexsStandardVersions.V1_2, RexsStandardVersions.V1_3)).isTrue();
 	}
 
 	@Test
 	public void isOneOf_whenVersionDoesNotMatchAnySpecifiedVersions_returnsFalse() {
-		assertThat(V1_4.isOneOf(V1_1, V1_2, V1_3)).isFalse();
+		assertThat(RexsStandardVersions.V1_4.isOneOf(RexsStandardVersions.V1_1, RexsStandardVersions.V1_2, RexsStandardVersions.V1_3)).isFalse();
 	}
 }

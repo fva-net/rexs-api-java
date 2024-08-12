@@ -15,11 +15,14 @@
  ******************************************************************************/
 package info.rexs.db.constants;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import info.rexs.db.constants.standard.RexsStandardVersions;
-import lombok.Getter;
 
 /**
  * This class represents a REXS version.
@@ -36,17 +39,11 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 	/** An internal index with all created versions (REXS standard and own) for quick access. */
 	private static final Set<RexsVersion> allVerions = new HashSet<>();
 
-	/**
-     * The version name.
-     */
-	@Getter
-    private final String name;
+	/** The version name. */
+	private final String name;
 
-    /**
-     * The version order.
-     */
-    @Getter
-    private final int order;
+	/** The version order. */
+	private final int order;
 
 	/** Alternative version names that can also be assigned to an official version (e.g. a beta version name). */
 	private final Set<String> alternativeNames;
@@ -67,19 +64,33 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 		return V1_6;
 	}
 
-    /**
-     * Checks if this version is one of the specified versions.
-     *
-     * @param checkVersions An array of {@link RexsVersion} to check against.
-     * @return {@code true} if this version is one of the specified versions; {@code false} otherwise.
-     */
-	public boolean isOneOf(RexsVersion ... checkVersions)
-	{
+	/**
+	 * @return
+	 * 				The version name as a {@link String}.
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return
+	 * 				The version order as a {@code int}.
+	 */
+	public int getOrder() {
+		return order;
+	}
+
+	/**
+	 * Checks if this version is one of the specified versions.
+	 *
+	 * @param checkVersions An array of {@link RexsVersion} to check against.
+	 * @return {@code true} if this version is one of the specified versions; {@code false} otherwise.
+	 */
+	public boolean isOneOf(RexsVersion ... checkVersions) {
 		if (checkVersions == null)
 			return false;
 
-		for (RexsVersion checkVersion : checkVersions)
-		{
+		for (RexsVersion checkVersion : checkVersions) {
 			if (this.equals(checkVersion))
 				return true;
 		}
@@ -159,10 +170,10 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 		if (!(o instanceof RexsVersion other)) {
 			return false;
 		}
-        if (!other.canEqual(this)) {
+		if (!other.canEqual(this)) {
 			return false;
 		}
-        return Objects.equals(getName(), other.getName());
+		return Objects.equals(getName(), other.getName());
 	}
 
 	protected boolean canEqual(Object other) {
