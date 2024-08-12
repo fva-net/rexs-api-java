@@ -18,35 +18,39 @@ package info.rexs.db.constants.standard;
 import info.rexs.db.constants.RexsVersion;
 
 /**
- * TODO Document me!
+ * Standard REXS versions.
  *
- * @author FVA GmbH
+ * @see RexsVersion
+ * @see <a href="https://database.rexs.info/rexs/version/list">REXS Database</a>
  */
 public interface RexsStandardVersions {
 
-	/** 1.0 */
+	/** REXS version 1.0. */
 	RexsVersion V1_0 = RexsVersion.create("1.0", 1000, "0.90", "0.10", "1.00");
 
-	/** 1.1 */
+	/** REXS version 1.1. */
 	RexsVersion V1_1 = RexsVersion.create("1.1", 1100, "1.10", "1.1-Beta");
 
-	/** 1.2 */
+	/** REXS version 1.2. */
 	RexsVersion V1_2 = RexsVersion.create("1.2", 1200);
 
-	/** 1.3 */
+	/** REXS version 1.3. */
 	RexsVersion V1_3 = RexsVersion.create("1.3", 1300);
 
-	/** 1.4 */
+	/** REXS version 1.4. */
 	RexsVersion V1_4 = RexsVersion.create("1.4", 1400);
 
-	/** 1.5 */
+	/** REXS version 1.5. */
 	RexsVersion V1_5 = RexsVersion.create("1.5", 1500);
 
-	/** 1.6 */
+	/** REXS version 1.6. */
 	RexsVersion V1_6 = RexsVersion.create("1.6", 1600);
+
+	/** Constant for the current development version. */
+	RexsVersion DEV = RexsVersion.create("DEV", 9999);
 
 	/** Constant for an unknown version. */
 	RexsVersion UNKNOWN = RexsVersion.create("unknown", -1);
 
-	public static void init() {}
+	static void init() {}
 }
