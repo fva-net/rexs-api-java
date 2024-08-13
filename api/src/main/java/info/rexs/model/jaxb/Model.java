@@ -37,6 +37,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       &lt;attribute name="applicationId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="applicationVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *       &lt;attribute name="applicationLanguage" use="optional" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -65,6 +66,8 @@ public class Model {
     protected String applicationVersion;
     @XmlAttribute(name = "date", required = true)
     protected String date;
+    @XmlAttribute(name = "applicationLanguage", required = false)
+    protected String applicationLanguage;
 
     /**
      * Ruft den Wert der relations-Eigenschaft ab.
@@ -237,6 +240,30 @@ public class Model {
      */
     public void setDate(String value) {
         this.date = value;
+    }
+
+    /**
+     * Ruft den Wert der applicationLanguage-Eigenschaft ab.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getApplicationLanguage() {
+        return applicationLanguage;
+    }
+
+    /**
+     * Legt den Wert der applicationLanguage-Eigenschaft fest.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setApplicationLanguage(String value) {
+        this.applicationLanguage = value;
     }
 
 	public void setLoadSpectrum(LoadSpectrum loadSpectrum) {
