@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * Copyright (C) 2020 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,7 +12,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- ******************************************************************************/
+ */
 package info.rexs.model.util;
 
 import java.nio.ByteBuffer;
@@ -180,7 +180,7 @@ public class Base64Utils {
 
 	private static int[] flatIntMatrix(int[][] matrix) {
 		if (matrix.length==0)
-			return new int[0]; 
+			return new int[0];
 		int arrayLength = 0;
 		int numRows = matrix.length;
 		int numColumns =  matrix[0].length;
@@ -203,7 +203,7 @@ public class Base64Utils {
 
 	private static float[] flatFloatMatrix(float[][] matrix) {
 		if (matrix.length==0)
-			return new float[0]; 
+			return new float[0];
 		int arrayLength = 0;
 		int numRows = matrix.length;
 		int numColumns =  matrix[0].length;
@@ -221,7 +221,7 @@ public class Base64Utils {
 			}
 		}
 
-		return array;		
+		return array;
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class Base64Utils {
 	 */
 	private static double[] flatDoubleMatrix(double[][] matrix) {
 		if (matrix.length==0)
-			return new double[0]; 
+			return new double[0];
 		int arrayLength = 0;
 		int numRows = matrix.length;
 		int numColumns =  matrix[0].length;
@@ -263,8 +263,8 @@ public class Base64Utils {
 	private static float[][] unflatFloatMatrix(float[] array, int rows, int cols) {
 		float[][] matrix = new float[rows][cols];
 		for (int i = 0; i < array.length; i++) {
-			int rowIndex = i % rows; 
-			int colIndex = i / rows; 
+			int rowIndex = i % rows;
+			int colIndex = i / rows;
 			matrix[rowIndex][colIndex] = array[i];
 		}
 		return matrix;

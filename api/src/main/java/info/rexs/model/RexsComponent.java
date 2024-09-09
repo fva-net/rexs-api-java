@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * Copyright (C) 2020 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,7 +12,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- ******************************************************************************/
+ */
 package info.rexs.model;
 
 import java.util.Collection;
@@ -101,7 +101,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public Integer getId() {
 		return id;
 	}
-	
+
 	/**
 	 * @return
 	 * 				The type of the component as {@link RexsComponentType}.
@@ -1031,7 +1031,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public boolean isOfType(RexsComponentType... rexsComponentTypes) {
 		return this.type.isOneOf(rexsComponentTypes);
 	}
-	
+
 	@Override
     public String toString() {
     	if (name!=null)
@@ -1041,9 +1041,9 @@ public class RexsComponent implements Comparable<RexsComponent> {
 
 	public void setId(Integer newCompId) {
 		if(newCompId != null)
-			this.id = newCompId;		
+			this.id = newCompId;
 	}
-	
+
 	public void setType(RexsComponentType newType) {
 		this.type = newType;
 	}

@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * Copyright (C) 2023 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,7 +12,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- ******************************************************************************/
+ */
 package info.rexs.io;
 
 import java.io.FileNotFoundException;
@@ -25,7 +25,7 @@ import java.nio.file.Path;
 public class FileResource implements Resource {
 
 	private final Path filePath;
-	
+
 	public FileResource(Path filePath) {
 		this.filePath = filePath;
 	}

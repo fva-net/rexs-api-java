@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * Copyright (C) 2020 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,7 +12,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- ******************************************************************************/
+ */
 package info.rexs.model.value;
 
 import java.time.OffsetDateTime;
@@ -29,7 +29,7 @@ public abstract class AbstractRexsAttributeValue {
 	public OffsetDateTime getValueDateTime() {
 		throw new RexsModelAccessException("attribute value is not available as ISO-8601 date-time");
 	}
-	
+
 	public boolean getValueBoolean() {
 		throw new RexsModelAccessException("attribute value is not available as a boolean");
 	}
