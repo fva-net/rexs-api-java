@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * Copyright (C) 2020 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,7 +12,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- ******************************************************************************/
+ */
 package info.rexs.model.value;
 
 import java.time.OffsetDateTime;
@@ -29,7 +29,7 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 	public RexsAttributeValueScalar(String value) {
 		this.value = value;
 	}
-	
+
 	@Override
 	public boolean hasValue() {
 		return value != null
@@ -47,7 +47,7 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 		if(!value.equals("false")&&!value.equals("true")) {
 			throw new RexsModelAccessException("boolean value cannot be "+value);
 		}
-			
+
 		if (value != null && !value.isEmpty())
 			val = Boolean.valueOf(value);
 
@@ -117,7 +117,7 @@ public class RexsAttributeValueScalar extends AbstractRexsAttributeValue {
 	public void setValueTime(OffsetDateTime time) {
 		this.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(time);
 	}
-	
+
 	public OffsetDateTime getValueDateTime() {
 		return OffsetDateTime.parse(value, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 	}

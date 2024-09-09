@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * Copyright (C) 2020 FVA GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,7 +12,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- ******************************************************************************/
+ */
 package info.rexs.db.constants;
 
 import java.util.HashMap;
@@ -50,7 +50,7 @@ public class RexsComponentType implements RexsStandardComponentTypes {
 	public String getId() {
 		return id;
 	}
-	
+
 	/**
 	 * @return
 	 * 				The actual ID of the component type as a {@link String}.
