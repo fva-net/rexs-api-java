@@ -1,86 +1,93 @@
-# 0.9.0-SNAPSHOT (yyyy-MM-dd)
+# Changelog
 
-Features:
-* ?
+All notable changes to this project will be documented in this file.
 
-Improvements:
-* ?
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Fixes:
-* ?
+## [Unreleased]
 
+### Changed
 
-# 0.8.1 (2024-08-09)
-
-Features:
-* Add numeric ID to RexsValueType and RexsUnitId
-
-Improvements:
-* Improved validation of REXS files
+- Adding missing "applicationLanguage" to XML and XSD
+- Add "DEV" as a constant version
 
 
-# 0.7.0 (2024-05-06)
+## [0.8.1] - 2024-08-09
 
-Features:
-* feat: Adjustments for relations in the REXS database
+### Added
 
+- Add numeric ID to RexsValueType and RexsUnitId
 
-# 0.6.1 (2024-01-24)
+### Changed
 
-Features:
-* REXS 1.6 added
+- Improved validation of REXS files
 
+## [0.7.0] - 2024-05-06
 
-# 0.5.1 (2023-06-22)
+### Added
 
+- Adjustments for relations in the REXS database
 
-# 0.5.0 (2023-06-22)
+## [0.6.1] - 2024-01-24
 
-Features:
-* Upgraders for REXS versions 1.0 to 1.5
+### Added
 
+- REXS 1.6 added
 
-# 0.4.0 (2023-05-08)
+## [0.5.1] - 2023-06-22
 
-Features:
-* REXS 1.4 Change: Unit "°" changed to "deg"
-* REXS 1.4: Component types, attribute ids, units
-* REXS 1.5: Component types, attribute ids, units
-* Input/output of REXS json
-* Input/output of rexsz format
-* Provided CLI for functions of the REXS-API
+## [0.5.0] - 2023-06-22
 
-Improvements:
-* Upgrade to Java 17
-* Moved from http://github.com/fva-gmbh/rexs-api to http://github.com/fva-net/rexs-api-java
-* Merged REXS database model files for different languages (kept the old ones for backward compatibility)
-* Detached JAXB model from REXS core model
+### Added
 
+- Upgraders for REXS versions 1.0 to 1.5
 
-# 0.3.0 (2021-10-19)
+## [0.4.0] - 2023-05-08
 
-Features:
-* Added handling of Base64 encoded matrixes
-* Added a validator for REXS files
-* Reading of .rexsz files
-* Added the 'RexsModelObjectFactory' to enable custom implementations of the 'RexsModel' classes
-* Added possibility to specify custom XML attributes in REXS files (are ignored during validation)
+### Added
 
-Improvements:
-* Changed group id from fva-gmbh.rexs-api to de.fva-service.rexs
-* Added suffix 'Base64' to setters for Base64 encoded values
-* Added get*Value() methods in RexsComponent for direct access to attribute values
-* Added getValue(RexsValueType) method in RexsAttribute
+- REXS 1.4 Change: Unit "°" changed to "deg"
+- REXS 1.4: Component types, attribute ids, units
+- REXS 1.5: Component types, attribute ids, units
+- Input/output of REXS json
+- Input/output of rexsz format
+- Provided CLI for functions of the REXS-API
 
+### Changed
 
-# 0.2.0 (2021-07-29)
+- Upgrade to Java 17
+- Moved from http://github.com/fva-gmbh/rexs-api to http://github.com/fva-net/rexs-api-java
+- Merged REXS database model files for different languages (kept the old ones for backward compatibility)
+- Detached JAXB model from REXS core model
 
-Features:
-* Handling of Base64 encoded arrays
-* New REXS data types: enum_array & array_of_integer_arrays
-* Access to REXS XSD schema files
+## [0.3.0] - 2021-10-19
 
+### Added
 
-# 0.1.0 (2021-07-22)
+- Added handling of Base64 encoded matrixes
+- Added a validator for REXS files
+- Reading of .rexsz files
+- Added the 'RexsModelObjectFactory' to enable custom implementations of the 'RexsModel' classes
+- Added possibility to specify custom XML attributes in REXS files (are ignored during validation)
 
-First release
+### Changed
+
+- Changed group id from fva-gmbh.rexs-api to de.fva-service.rexs
+- Added suffix 'Base64' to setters for Base64 encoded values
+- Added get*Value() methods in RexsComponent for direct access to attribute values
+- Added getValue(RexsValueType) method in RexsAttribute
+
+## [0.2.0] - 2021-07-29
+
+### Added
+
+- Handling of Base64 encoded arrays
+- New REXS data types: enum_array & array_of_integer_arrays
+- Access to REXS XSD schema files
+
+## [0.1.0] - 2021-07-22
+
+### Added
+
+- First release
