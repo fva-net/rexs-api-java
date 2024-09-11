@@ -1,0 +1,22 @@
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+max_line_length = 160
+tab_width = 4
+trim_trailing_whitespace = true
+
+[*.java]
+indent_style = tab
+
+[{*.yaml,*.yml}]
+indent_size = 2
+
+[*.xml]
+max_line_length = off
+
+[*.xsd]
+max_line_length = off
+indent_style = tab
