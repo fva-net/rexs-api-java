@@ -27,6 +27,7 @@
 
 	<name>REXS-API :: Project</name>
 	<description>The REXS API Java library contains core utility classes for the REXS interface.</description>
+	<url>https://github.com/fva-net/rexs-api-java</url>
 
 	<organization>
 		<name>FVA GmbH</name>
@@ -44,6 +45,14 @@
 			<url>LICENSE.txt</url>
 		</license>
 	</licenses>
+
+	<developers>
+		<developer>
+			<name>Karsten Röthig</name>
+			<email>karsten.roethig@fva-service.de</email>
+			<organization>FVA GmbH</organization>
+		</developer>
+	</developers>
 
 	<modules>
 		<module>api</module>
