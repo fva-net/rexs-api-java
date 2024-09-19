@@ -1,4 +1,16 @@
 {
+    "editor.rulers": [
+        160
+    ],
     "java.configuration.updateBuildConfiguration": "interactive",
-    "java.dependency.packagePresentation": "flat"
+    "java.dependency.packagePresentation": "flat",
+    "prettier.printWidth": 160,
+    "[xml]": {
+        "editor.rulers": [],
+        "prettier.printWidth": null
+    },
+    "[xsd]": {
+        "editor.rulers": [],
+        "prettier.printWidth": null
+    }
 }
