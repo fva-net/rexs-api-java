@@ -29,7 +29,7 @@
 
 	<artifactId>rexs-api-java</artifactId>
 
-	<name>REXS-API</name>
+	<name>REXS-API-Java :: API</name>
 
 	<dependencies>
 

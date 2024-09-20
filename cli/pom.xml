@@ -29,7 +29,7 @@
 
 	<artifactId>rexs-api-java-cli</artifactId>
 
-	<name>REXS-API :: Command Line Interface</name>
+	<name>REXS-API-Java :: Command Line Interface</name>
 	<description>Command line interface for REXS-API functions.</description>
 
 	<dependencies>
