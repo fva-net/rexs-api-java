@@ -21,15 +21,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>de.fva-service.rexs</groupId>
-		<artifactId>rexs-api-project</artifactId>
+		<groupId>io.github.fva-net</groupId>
+		<artifactId>rexs-api-java-project</artifactId>
 		<version>0.9.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>rexs-api-cli</artifactId>
+	<artifactId>rexs-api-java-cli</artifactId>
 
-	<name>REXS-API :: Command Line Interface</name>
+	<name>REXS-API-Java :: Command Line Interface</name>
 	<description>Command line interface for REXS-API functions.</description>
 
 	<dependencies>
@@ -62,7 +62,7 @@
 		<!-- The REXS-API -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>rexs-api</artifactId>
+			<artifactId>rexs-api-java</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -88,6 +88,32 @@
 		</resources>
 
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

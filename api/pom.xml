@@ -21,15 +21,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>de.fva-service.rexs</groupId>
-		<artifactId>rexs-api-project</artifactId>
+		<groupId>io.github.fva-net</groupId>
+		<artifactId>rexs-api-java-project</artifactId>
 		<version>0.9.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>rexs-api</artifactId>
+	<artifactId>rexs-api-java</artifactId>
 
-	<name>REXS-API</name>
+	<name>REXS-API-Java :: API</name>
 
 	<dependencies>
 
