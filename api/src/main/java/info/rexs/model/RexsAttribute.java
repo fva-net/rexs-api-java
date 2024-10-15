@@ -19,11 +19,11 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsValueType;
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.RexsAttributeId;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.RexsValueType;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.value.AbstractRexsAttributeValue;
 import info.rexs.model.value.RexsAttributeValueArray;
 import info.rexs.model.value.RexsAttributeValueArrayBase64;

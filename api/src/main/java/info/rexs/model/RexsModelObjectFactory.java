@@ -15,11 +15,11 @@
  */
 package info.rexs.model;
 
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsRelationType;
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.schema.constants.RexsAttributeId;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsRelationType;
+import info.rexs.schema.constants.RexsVersion;
 
 /**
  * TODO Document me!

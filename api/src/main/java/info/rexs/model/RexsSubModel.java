@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 
 /**
  * This class represents a sub-model (containing only the varied data) of a REXS model.

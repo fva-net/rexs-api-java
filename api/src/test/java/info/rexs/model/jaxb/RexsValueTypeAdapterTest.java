@@ -1,6 +1,6 @@
 package info.rexs.model.jaxb;
 
-import info.rexs.db.constants.RexsValueType;
+import info.rexs.schema.constants.RexsValueType;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

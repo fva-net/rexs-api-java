@@ -2,8 +2,8 @@ package info.rexs.model.jaxb;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import org.junit.Test;
 
 public class RexsUnitAdapterTest {

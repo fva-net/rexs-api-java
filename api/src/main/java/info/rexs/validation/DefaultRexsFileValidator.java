@@ -39,7 +39,7 @@ import info.rexs.io.RexsFileReader;
 import info.rexs.io.RexsIoFormat;
 import info.rexs.io.zip.RexsZipFileReader;
 import info.rexs.model.RexsModel;
-import info.rexs.schema.RexsSchema;
+import info.rexs.xsd.RexsXsd;
 
 /**
  * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file.
@@ -133,7 +133,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		SchemaValidationErrorHandler errorHandler = new SchemaValidationErrorHandler();
 
 		try (
-			InputStream schemaInput = RexsSchema.FILE.openInputStream();
+			InputStream schemaInput = RexsXsd.FILE.openInputStream();
 			InputStream rexsFileInput = rexsFileResource.openInputStream();) {
 
 			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

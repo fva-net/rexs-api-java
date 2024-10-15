@@ -18,8 +18,8 @@ package info.rexs.upgrade;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
 import info.rexs.upgrade.upgraders.ModelUpgrader;

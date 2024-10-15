@@ -17,11 +17,11 @@ package info.rexs.validation;
 
 import java.util.Objects;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.model.RexsComponent;
 
 /**
@@ -32,18 +32,18 @@ import info.rexs.model.RexsComponent;
  */
 public class RexsStandardComponentValidator extends DefaultRexsComponentValidator {
 
-	protected final IDbModelRegistry dbModelRegistry;
+	protected final IRexsSchemaRegistry rexsSchemaRegistry;
 
 	protected final RexsVersion rexsVersion;
 
 	public RexsStandardComponentValidator(RexsVersion rexsVersion) {
-		this(rexsVersion, DbModelRegistry.getInstance());
+		this(rexsVersion, RexsSchemaRegistry.getInstance());
 	}
 
-	public RexsStandardComponentValidator(RexsVersion rexsVersion, IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
+	public RexsStandardComponentValidator(RexsVersion rexsVersion, IRexsSchemaRegistry rexsSchemaRegistry) {
+		Objects.nonNull(rexsSchemaRegistry);
 		this.rexsVersion = rexsVersion;
-		this.dbModelRegistry = dbModelRegistry;
+		this.rexsSchemaRegistry = rexsSchemaRegistry;
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 			return validationResult;
 
 		String componentType = rexsComponent.getOriginType();
-		RexsComponentType rexsComponentType = dbModelRegistry.getComponentType(rexsVersion, componentType);
+		RexsComponentType rexsComponentType = rexsSchemaRegistry.getComponentType(rexsVersion, componentType);
 
 		if (rexsComponentType.isOneOf(RexsStandardComponentTypes.UNKNOWN))
 			validationResult.addError(RexsValidationResultMessageKey.COMPONENT_TYPE_UNKNOWN, componentType);
@@ -72,6 +72,6 @@ public class RexsStandardComponentValidator extends DefaultRexsComponentValidato
 	public IRexsAttributeValidator createAttributeValidator() {
 		if (rexsVersion == null)
 			return super.createAttributeValidator();
-		return new RexsStandardAttributeValidator(rexsVersion, dbModelRegistry);
+		return new RexsStandardAttributeValidator(rexsVersion, rexsSchemaRegistry);
 	}
 }
