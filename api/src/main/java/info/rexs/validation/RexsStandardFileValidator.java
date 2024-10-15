@@ -17,8 +17,8 @@ package info.rexs.validation;
 
 import java.util.Objects;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.IRexsSchemaRegistry;
 
 /**
  * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file
@@ -28,15 +28,15 @@ import info.rexs.db.IDbModelRegistry;
  */
 public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 
-	protected final IDbModelRegistry dbModelRegistry;
+	protected final IRexsSchemaRegistry rexsSchemaRegistry;
 
 	public RexsStandardFileValidator() {
-		this(DbModelRegistry.getInstance());
+		this(RexsSchemaRegistry.getInstance());
 	}
 
-	public RexsStandardFileValidator(IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
-		this.dbModelRegistry = dbModelRegistry;
+	public RexsStandardFileValidator(IRexsSchemaRegistry rexsSchemaRegistry) {
+		Objects.nonNull(rexsSchemaRegistry);
+		this.rexsSchemaRegistry = rexsSchemaRegistry;
 	}
 
 	/**
@@ -44,6 +44,6 @@ public class RexsStandardFileValidator extends DefaultRexsFileValidator {
 	 */
 	@Override
 	public IRexsModelValidator createModelValidator() {
-		return new RexsStandardModelValidator(dbModelRegistry);
+		return new RexsStandardModelValidator(rexsSchemaRegistry);
 	}
 }

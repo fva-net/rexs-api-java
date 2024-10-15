@@ -7,13 +7,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.constants.RexsValueType;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.constants.RexsValueType;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.io.json.model.Accumulation;
 import info.rexs.io.json.model.Component;
 import info.rexs.io.json.model.FloatingPointArrayCoded;
@@ -181,7 +181,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 	 */
 	private List<Attribute> createAttributeJson(RexsAttribute attribute) {
 		try {
-		DbModelRegistry registry = DbModelRegistry.getInstance();
+		RexsSchemaRegistry registry = RexsSchemaRegistry.getInstance();
 		String attributeId = getRexsAttrId(attribute);
 		String unit = getRexsAttrUnit(attribute);
 		AbstractRexsAttributeValue value = attribute.getRawValue();

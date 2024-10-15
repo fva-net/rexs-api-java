@@ -20,8 +20,8 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 
 public class RexsAttributeTest {
 

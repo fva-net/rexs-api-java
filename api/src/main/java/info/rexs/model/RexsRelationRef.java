@@ -15,7 +15,7 @@
  */
 package info.rexs.model;
 
-import info.rexs.db.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsRelationRole;
 
 /**
  * This class represents a relation reference of a REXS model.

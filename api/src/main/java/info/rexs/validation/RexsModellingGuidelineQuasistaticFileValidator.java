@@ -15,7 +15,7 @@
  */
 package info.rexs.validation;
 
-import info.rexs.db.IDbModelRegistry;
+import info.rexs.schema.IRexsSchemaRegistry;
 
 /**
  * This implementation of {@link IRexsFileValidator} validates if a REXS file conforms to the
@@ -29,8 +29,8 @@ public class RexsModellingGuidelineQuasistaticFileValidator extends RexsStandard
 		super();
 	}
 
-	public RexsModellingGuidelineQuasistaticFileValidator(IDbModelRegistry dbModelRegistry) {
-		super(dbModelRegistry);
+	public RexsModellingGuidelineQuasistaticFileValidator(IRexsSchemaRegistry rexsSchemaRegistry) {
+		super(rexsSchemaRegistry);
 	}
 
 	/**
@@ -38,6 +38,6 @@ public class RexsModellingGuidelineQuasistaticFileValidator extends RexsStandard
 	 */
 	@Override
 	public IRexsModelValidator createModelValidator() {
-		return new RexsModellingGuidelineQuasistaticModelValidator(dbModelRegistry);
+		return new RexsModellingGuidelineQuasistaticModelValidator(rexsSchemaRegistry);
 	}
 }

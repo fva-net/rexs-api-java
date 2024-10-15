@@ -22,8 +22,8 @@ import java.io.InputStream;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 
 public class ChangelogFileTest {
 

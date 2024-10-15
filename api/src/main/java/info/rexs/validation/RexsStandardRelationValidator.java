@@ -21,12 +21,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.jaxb.AllowedCombinationRole;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.jaxb.AllowedCombinationRole;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
 import info.rexs.model.RexsRelationRef;
@@ -39,18 +39,18 @@ import info.rexs.model.RexsRelationRef;
  */
 public class RexsStandardRelationValidator extends DefaultRexsRelationValidator {
 
-	protected final IDbModelRegistry dbModelRegistry;
+	protected final IRexsSchemaRegistry rexsSchemaRegistry;
 
 	protected final RexsVersion rexsVersion;
 
 	public RexsStandardRelationValidator(RexsVersion rexsVersion) {
-		this(rexsVersion, DbModelRegistry.getInstance());
+		this(rexsVersion, RexsSchemaRegistry.getInstance());
 	}
 
-	public RexsStandardRelationValidator(RexsVersion rexsVersion, IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
+	public RexsStandardRelationValidator(RexsVersion rexsVersion, IRexsSchemaRegistry rexsSchemaRegistry) {
+		Objects.nonNull(rexsSchemaRegistry);
 		this.rexsVersion = rexsVersion;
-		this.dbModelRegistry = dbModelRegistry;
+		this.rexsSchemaRegistry = rexsSchemaRegistry;
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class RexsStandardRelationValidator extends DefaultRexsRelationValidator 
 		if (rexsVersion == null)
 			return validationResult;
 
-		if (dbModelRegistry.hasRelationTypes(rexsVersion))
+		if (rexsSchemaRegistry.hasRelationTypes(rexsVersion))
 			validationResult.add(checkIfIsAllowedCombination(rexsRelation, rexsModel));
 
 		return validationResult;
@@ -75,7 +75,7 @@ public class RexsStandardRelationValidator extends DefaultRexsRelationValidator 
 		RexsValidationResult validationResult = new RexsValidationResult();
 
 		try {
-			List<List<AllowedCombinationRole>> listOfAllowedCombinations = dbModelRegistry.getAllowedCombinationsForRelation(rexsVersion, rexsRelation.getType());
+			List<List<AllowedCombinationRole>> listOfAllowedCombinations = rexsSchemaRegistry.getAllowedCombinationsForRelation(rexsVersion, rexsRelation.getType());
 
 			Map<RexsRelationRole, RexsComponentType> mapRoleToComponentType = new HashMap<>();
 			for (RexsRelationRef ref : rexsRelation.getRefs())

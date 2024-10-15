@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;

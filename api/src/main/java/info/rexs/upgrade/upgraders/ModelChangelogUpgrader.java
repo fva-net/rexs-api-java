@@ -18,11 +18,11 @@ package info.rexs.upgrade.upgraders;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsValueType;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.RexsAttributeId;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.RexsValueType;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;

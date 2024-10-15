@@ -18,11 +18,11 @@ package info.rexs.validation;
 import java.util.List;
 import java.util.Objects;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardRelationTypes;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
@@ -35,17 +35,17 @@ import info.rexs.model.RexsRelation;
  */
 public class RexsStandardModelValidator extends DefaultRexsModelValidator {
 
-	protected final IDbModelRegistry dbModelRegistry;
+	protected final IRexsSchemaRegistry rexsSchemaRegistry;
 
 	protected RexsVersion rexsVersion = null;
 
 	public RexsStandardModelValidator() {
-		this(DbModelRegistry.getInstance());
+		this(RexsSchemaRegistry.getInstance());
 	}
 
-	public RexsStandardModelValidator(IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
-		this.dbModelRegistry = dbModelRegistry;
+	public RexsStandardModelValidator(IRexsSchemaRegistry rexsSchemaRegistry) {
+		Objects.nonNull(rexsSchemaRegistry);
+		this.rexsSchemaRegistry = rexsSchemaRegistry;
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class RexsStandardModelValidator extends DefaultRexsModelValidator {
 				|| version.isEmpty())
 			return validationResult;
 
-		rexsVersion = dbModelRegistry.getVersion(version);
+		rexsVersion = rexsSchemaRegistry.getVersion(version);
 
 		if (rexsVersion == null)
 			validationResult.addError(RexsValidationResultMessageKey.MODEL_VERSION_UNKNOWN);
@@ -74,7 +74,7 @@ public class RexsStandardModelValidator extends DefaultRexsModelValidator {
 	public RexsValidationResult validate(RexsModel rexsModel) {
 		RexsValidationResult validationResult = super.validate(rexsModel);
 
-		if (!dbModelRegistry.hasRelationTypes(rexsVersion))
+		if (!rexsSchemaRegistry.hasRelationTypes(rexsVersion))
 			validationResult.addWarning(RexsValidationResultMessageKey.RELATION_NO_TYPES_FOR_VERSION, rexsVersion.getName());
 
 		validationResult.add(checkPlanetaryStage(rexsModel));
@@ -109,7 +109,7 @@ public class RexsStandardModelValidator extends DefaultRexsModelValidator {
 	public IRexsComponentValidator createComponentValidator() {
 		if (rexsVersion == null)
 			return super.createComponentValidator();
-		return new RexsStandardComponentValidator(rexsVersion, dbModelRegistry);
+		return new RexsStandardComponentValidator(rexsVersion, rexsSchemaRegistry);
 	}
 
 	/**
@@ -119,6 +119,6 @@ public class RexsStandardModelValidator extends DefaultRexsModelValidator {
 	public IRexsRelationValidator createRelationValidator() {
 		if (rexsVersion == null)
 			return super.createRelationValidator();
-		return new RexsStandardRelationValidator(rexsVersion, dbModelRegistry);
+		return new RexsStandardRelationValidator(rexsVersion, rexsSchemaRegistry);
 	}
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.beust.jcommander.internal.Console;
 
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.schema.constants.RexsVersion;
 import info.rexs.io.RexsFileReader;
 import info.rexs.io.RexsFileWriter;
 import info.rexs.model.RexsModel;

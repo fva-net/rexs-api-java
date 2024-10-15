@@ -26,14 +26,14 @@ import java.util.OptionalInt;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsRelationType;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardRelationRoles;
-import info.rexs.db.constants.standard.RexsStandardRelationTypes;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsRelationType;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
+import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 
 /**
  * This class represents a REXS model.

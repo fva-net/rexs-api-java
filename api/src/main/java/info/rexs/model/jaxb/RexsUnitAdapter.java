@@ -1,7 +1,7 @@
 package info.rexs.model.jaxb;
 
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**

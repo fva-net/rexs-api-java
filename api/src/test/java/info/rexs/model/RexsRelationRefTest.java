@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.standard.RexsStandardRelationRoles;
+import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 
 public class RexsRelationRefTest {
 

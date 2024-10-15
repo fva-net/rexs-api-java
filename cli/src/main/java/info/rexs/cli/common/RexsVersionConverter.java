@@ -2,7 +2,7 @@ package info.rexs.cli.common;
 
 import com.beust.jcommander.IStringConverter;
 
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.schema.constants.RexsVersion;
 
 public class RexsVersionConverter implements IStringConverter<RexsVersion> {
 

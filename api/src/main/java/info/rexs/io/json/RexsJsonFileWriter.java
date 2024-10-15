@@ -26,10 +26,10 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.io.AbstractRexsFileWriter;
 import info.rexs.io.RexsIoException;
 import info.rexs.io.json.model.Accumulation;

@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 
 public class RexsSubModelTest {
 

@@ -17,12 +17,12 @@ package info.rexs.validation;
 
 import java.util.Objects;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.IDbModelRegistry;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 
@@ -34,18 +34,18 @@ import info.rexs.model.RexsComponent;
  */
 public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidator {
 
-	protected final IDbModelRegistry dbModelRegistry;
+	protected final IRexsSchemaRegistry rexsSchemaRegistry;
 
 	protected final RexsVersion rexsVersion;
 
 	public RexsStandardAttributeValidator(RexsVersion rexsVersion) {
-		this(rexsVersion, DbModelRegistry.getInstance());
+		this(rexsVersion, RexsSchemaRegistry.getInstance());
 	}
 
-	public RexsStandardAttributeValidator(RexsVersion rexsVersion, IDbModelRegistry dbModelRegistry) {
-		Objects.nonNull(dbModelRegistry);
+	public RexsStandardAttributeValidator(RexsVersion rexsVersion, IRexsSchemaRegistry rexsSchemaRegistry) {
+		Objects.nonNull(rexsSchemaRegistry);
 		this.rexsVersion = rexsVersion;
-		this.dbModelRegistry = dbModelRegistry;
+		this.rexsSchemaRegistry = rexsSchemaRegistry;
 	}
 
 	/**
@@ -59,15 +59,15 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 			return validationResult;
 
 		String componentType = rexsComponent.getOriginType();
-		RexsComponentType rexsComponentType = dbModelRegistry.getComponentType(rexsVersion, componentType);
+		RexsComponentType rexsComponentType = rexsSchemaRegistry.getComponentType(rexsVersion, componentType);
 		String attributeId = rexsAttribute.getOriginAttributeId();
 		boolean attributeKnown = true;
 
-		if (!dbModelRegistry.hasAttributeWithId(rexsVersion, attributeId)) {
+		if (!rexsSchemaRegistry.hasAttributeWithId(rexsVersion, attributeId)) {
 			validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_ID_UNKNOWN, attributeId);
 			attributeKnown = false;
 		}
-		else if (!dbModelRegistry.componentAttributeMappingExists(attributeId, rexsComponentType, rexsVersion))
+		else if (!rexsSchemaRegistry.componentAttributeMappingExists(attributeId, rexsComponentType, rexsVersion))
 			validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_COMPONENT_MAPPING_UNKNOWN, rexsComponent.toString(), attributeId);
 
 		validationResult.add(validateUnit(rexsAttribute.getOriginUnit(), rexsComponent.toString(), attributeId, attributeKnown));
@@ -88,7 +88,7 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 			validationResult.addError(RexsValidationResultMessageKey.UNIT_UNKNOWN, unit);
 
 		if (unitId != null && attributeKnown) {
-			RexsUnitId dbUnitId = dbModelRegistry.getAttributeUnit(attributeId, rexsVersion);
+			RexsUnitId dbUnitId = rexsSchemaRegistry.getAttributeUnit(attributeId, rexsVersion);
 			if (!unitId.equals(dbUnitId)) {
 				String additionalMessage = String.format("expected: \"%s\" but was: \"%s\"", dbUnitId.getId(), unit);
 				validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_UNIT_MAPPING_UNKNOWN, attributeId, componentName , additionalMessage);

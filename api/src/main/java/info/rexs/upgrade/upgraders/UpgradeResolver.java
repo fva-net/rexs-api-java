@@ -23,8 +23,8 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.upgrade.RexsUpgradeException;
 
