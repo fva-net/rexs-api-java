@@ -20,7 +20,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Test;
@@ -32,14 +31,14 @@ import info.rexs.db.constants.RexsVersion;
 import info.rexs.db.constants.standard.RexsStandardVersions;
 import info.rexs.db.jaxb.Attribute;
 import info.rexs.db.jaxb.Component;
-import info.rexs.db.jaxb.RexsDatabaseModelFile;
+import info.rexs.db.jaxb.RexsModel;
 import info.rexs.db.jaxb.Unit;
 import info.rexs.db.jaxb.ValueType;
 
 public class DbModelResolverTest {
 
 	@Test
-	public void resolve_unknownDbModelFileReturnsNull() throws Exception {
+	public void resolve_unknownDbModelFileReturnsNull() {
 		RexsVersion newVersion = RexsVersion.create("r.s", 10000);
 		assertThat(DbModelResolver.getInstance().resolve(newVersion)).isNull();
 
@@ -47,7 +46,7 @@ public class DbModelResolverTest {
 	}
 
 	@Test
-	public void resolve_invalidDbModelFileResolverThrowsIllegalStateException() throws Exception {
+	public void resolve_invalidDbModelFileResolverThrowsIllegalStateException() {
 		RexsVersion newVersion = RexsVersion.create("s.t", 11000);
 		DbModelFile.create(newVersion, new DbModelFileResolver() {
 			@Override
@@ -57,25 +56,23 @@ public class DbModelResolverTest {
 		});
 
 		assertThatIllegalStateException()
-			.isThrownBy(() -> {
-				DbModelResolver.getInstance().resolve(newVersion);
-			})
+			.isThrownBy(() -> DbModelResolver.getInstance().resolve(newVersion))
 			.withMessageStartingWith("could not load rexs db model for version");
 	}
 
 	@Test
-	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
-		RexsDatabaseModelFile rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
-		RexsDatabaseModelFile rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
+	public void resolve_cachingReturnsSameObjectForMultipleCalls() {
+		RexsModel rexsModel1 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsModel rexsModel2 = DbModelResolver.getInstance().resolve(RexsVersion.getLatest());
 
 		assertThat(rexsModel1).isSameAs(rexsModel2);
 	}
 
 	@Test
-	public void resolve_everyRexsStandardVersionHasDbModel() throws Exception {
-		List<RexsVersion> rexsStandardVersions = Stream.of(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, RexsStandardVersions.V1_2).collect(Collectors.toList());
+	public void resolve_everyRexsStandardVersionHasDbModel() {
+		List<RexsVersion> rexsStandardVersions = Stream.of(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, RexsStandardVersions.V1_2).toList();
 		for (RexsVersion version : rexsStandardVersions) {
-			RexsDatabaseModelFile rexsModel = DbModelResolver.getInstance().resolve(version);
+			RexsModel rexsModel = DbModelResolver.getInstance().resolve(version);
 			assertThat(rexsModel.getVersion()).isEqualTo(version.getName());
 
 			for (Unit unit : rexsModel.getUnits().getUnit()) {

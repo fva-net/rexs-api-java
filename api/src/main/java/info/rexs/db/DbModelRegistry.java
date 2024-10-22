@@ -38,7 +38,7 @@ import info.rexs.db.jaxb.Component;
 import info.rexs.db.jaxb.ComponentAttributeMapping;
 import info.rexs.db.jaxb.EnumValue;
 import info.rexs.db.jaxb.Relation;
-import info.rexs.db.jaxb.RexsDatabaseModelFile;
+import info.rexs.db.jaxb.RexsModel;
 import info.rexs.db.jaxb.Unit;
 import info.rexs.db.jaxb.ValueType;
 
@@ -89,14 +89,14 @@ public class DbModelRegistry implements IDbModelRegistry {
 	}
 
 	public void registerRexsVersion(RexsVersion version) {
-		RexsDatabaseModelFile rexsModel = DbModelResolver.getInstance().resolve(version);
+		RexsModel rexsModel = DbModelResolver.getInstance().resolve(version);
 		if (rexsModel == null)
 			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getName()));
 		registerRexsModel(version, rexsModel);
 		versions.put(version.getName(), version);
 	}
 
-	private void registerRexsModel(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void registerRexsModel(RexsVersion version, RexsModel rexsModel) {
 		generateComponentMap(version, rexsModel);
 		generateAttributeMap(version, rexsModel);
 		generateAttributeTypeMap(version, rexsModel);
@@ -106,7 +106,7 @@ public class DbModelRegistry implements IDbModelRegistry {
 			generateRelationsWithAllowedCombinations(version, rexsModel);
 	}
 
-	private void generateRelationsWithAllowedCombinations(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void generateRelationsWithAllowedCombinations(RexsVersion version, RexsModel rexsModel) {
 		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapofVersion = relationsToAllowedCombinationsMap.computeIfAbsent(version, k -> new HashMap<>());
 		if (rexsModel.getRelations() != null) {
 			for (Relation relation : rexsModel.getRelations().getRelation()) {
@@ -119,7 +119,7 @@ public class DbModelRegistry implements IDbModelRegistry {
 		}
 	}
 
-	private void generateComponentMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void generateComponentMap(RexsVersion version, RexsModel rexsModel) {
 		Map<String, RexsComponentType> mapOfVersion = componentMap.computeIfAbsent(version, k -> new HashMap<>());
 		for (Component component : rexsModel.getComponents().getComponent()) {
 			RexsComponentType componentType = RexsComponentType.findById(component.getComponentId());
@@ -133,7 +133,7 @@ public class DbModelRegistry implements IDbModelRegistry {
 	 * @param version
 	 * @param rexsModel
 	 */
-	private void generateAttributeMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void generateAttributeMap(RexsVersion version, RexsModel rexsModel) {
 		Map<String, Attribute> mapofVersion = attributeMap.computeIfAbsent(version, k -> new HashMap<>());
 		for (Attribute attribute : rexsModel.getAttributes().getAttribute()) {
 			mapofVersion.put(attribute.getAttributeId(), attribute);
@@ -147,7 +147,7 @@ public class DbModelRegistry implements IDbModelRegistry {
 	 * @param rexsModel
 	 * @param valueTypeMap
 	 */
-	private void generateAttributeTypeMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void generateAttributeTypeMap(RexsVersion version, RexsModel rexsModel) {
 		Map<String, RexsValueType> mapofVersion = attributeTypes.computeIfAbsent(version, k -> new HashMap<>());
 		Map<BigInteger, String> valueTypeMap = new HashMap<>();
 		if (rexsModel.getValueTypes() != null) {
@@ -162,7 +162,7 @@ public class DbModelRegistry implements IDbModelRegistry {
 		}
 	}
 
-	private void generateAttributeUnitMap(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void generateAttributeUnitMap(RexsVersion version, RexsModel rexsModel) {
 		Map<String, RexsUnitId> mapofVersion = attributeUnits.computeIfAbsent(version, k -> new HashMap<>());
 		Map<BigInteger, String> unitMap = new HashMap<>();
 		if (rexsModel.getUnits() != null) {
@@ -266,7 +266,7 @@ public class DbModelRegistry implements IDbModelRegistry {
 	 * @param version
 	 * @param rexsModel
 	 */
-	private void generateAttributeComponentMappings(RexsVersion version, RexsDatabaseModelFile rexsModel) {
+	private void generateAttributeComponentMappings(RexsVersion version, RexsModel rexsModel) {
 		Map<String, List<RexsComponentType>> attributeToComponentMapofVersion = attributeToComponentMap.computeIfAbsent(version, k -> new HashMap<>());
 		Map<RexsComponentType, List<String>> componentToAttributeMapofVersion = componentToAttributesMap.computeIfAbsent(version, k -> new HashMap<>());
 		if (rexsModel.getComponentAttributeMappings() != null) {
