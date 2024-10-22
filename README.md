@@ -17,49 +17,39 @@
 
 The REXS API library contains core utility classes for the REXS interface.
 
-ATTENTION: The current status of the REXS API is not yet fully covered by Javadoc and unit tests. For this reason we cannot publish a first version yet. Before using this stand productively, you should therefore test sufficiently.
+ATTENTION: The current status of the REXS API is not yet fully covered by Javadoc and unit tests. For this reason we cannot publish a first major version yet. Before using this stand productively, you should therefore test sufficiently.
 
 
 ## Requirements
 
 * Java 17
-* Maven 3.8.5 ([http://maven.apache.org](http://maven.apache.org))
-* (Optional) Lombok ([https://projectlombok.org/](https://projectlombok.org/)) (only if you use an IDE like Eclipse)
 
 
-## IDE Support
+## Installation
 
-To use these projects in an IDE you will need the [project Lombok](https://projectlombok.org/) agent. Full instructions can be found on the Lombok website. The sign that you need to do this is a lot of compiler errors to do with missing methods and fields.
+Add the dependency to your project:
 
+### Using Maven
 
-## Build the package
-
-1. Install Java and create a `JAVA_HOME` environment variable that points to the location of your JDK
-
-	`set PATH=C:\develop\lib\jdk-17.0.2\bin;%PATH%`
-
-	`set JAVA_HOME=C:\develop\lib\jdk-17.0.2`
-
-2. Install Maven and create Maven environment variables
-
-	`set PATH=C:\develop\lib\apache-maven-3.8.5\bin;%PATH%`
-
-	`set M2_HOME=C:\develop\lib\apache-maven-3.8.5`
-
-	`set M2=%M2_HOME%\bin`
-
-3. Run `mvn clean package` in the root directory of the application
-
-4. Navigate to `api/target` where you find the `rexs-api-1.0.0.jar`
+```xml
+<dependency>
+    <groupId>io.github.fva-net</groupId>
+    <artifactId>rexs-api-java</artifactId>
+    <version>0.9.0</version>
+</dependency>
+```
 
 
-## Run the Command Line Interface
+## Contributing
 
-1. Build the package
+Any pull request or bug report are welcome!
+If you have any suggestion about new features, you can **open an issue**.
 
-2. Navigate to `cli/target` where you find the `rexs-api-cli-1.0.0.jar`
 
-3. Run `java -jar rexs-api-cli-1.0.0.jar --help`
+## Developer documentation
+
+[How-to build on your local pc?](documentation/development/how-to_build_on_local_pc.md)
+[How-to release a new version?](documentation/development/how-to_release_a_new_version.md)
 
 
 ## Next steps
