@@ -15,7 +15,6 @@
  */
 package info.rexs.schema;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -145,11 +144,10 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	 * such that given a version and an attribute id the corresponding RexsValueType is returned
 	 * @param version
 	 * @param rexsModel
-	 * @param valueTypeMap
 	 */
 	private void generateAttributeTypeMap(RexsVersion version, RexsSchema rexsModel) {
 		Map<String, RexsValueType> mapofVersion = attributeTypes.computeIfAbsent(version, k -> new HashMap<>());
-		Map<BigInteger, String> valueTypeMap = new HashMap<>();
+		Map<Integer, String> valueTypeMap = new HashMap<>();
 		if (rexsModel.getValueTypes() != null) {
 			for (ValueType valueType : rexsModel.getValueTypes().getValueType()) {
 				valueTypeMap.put(valueType.getId(), valueType.getName());
@@ -164,7 +162,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 
 	private void generateAttributeUnitMap(RexsVersion version, RexsSchema rexsModel) {
 		Map<String, RexsUnitId> mapofVersion = attributeUnits.computeIfAbsent(version, k -> new HashMap<>());
-		Map<BigInteger, String> unitMap = new HashMap<>();
+		Map<Integer, String> unitMap = new HashMap<>();
 		if (rexsModel.getUnits() != null) {
 			for (Unit unit : rexsModel.getUnits().getUnit()) {
 				if (RexsStandardUnitIds.degree.getId().equals(unit.getName()))

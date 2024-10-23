@@ -8,8 +8,6 @@
 
 package info.rexs.schema.jaxb;
 
-import java.math.BigInteger;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -49,7 +47,7 @@ public class Component {
     @XmlAttribute(name = "nameDe", required = true)
     protected String nameDe;
     @XmlAttribute(name = "databaseId")
-    protected BigInteger databaseId;
+    protected int databaseId;
 
     /**
      * Ruft den Wert der componentId-Eigenschaft ab.
@@ -128,10 +126,10 @@ public class Component {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getDatabaseId() {
+    public int getDatabaseId() {
         return databaseId;
     }
 
@@ -140,10 +138,10 @@ public class Component {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setDatabaseId(BigInteger value) {
+    public void setDatabaseId(int value) {
         this.databaseId = value;
     }
 

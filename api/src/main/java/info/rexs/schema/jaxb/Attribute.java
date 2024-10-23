@@ -9,7 +9,7 @@
 package info.rexs.schema.jaxb;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -57,13 +57,13 @@ public class Attribute {
 
     protected EnumValues enumValues;
     @XmlAttribute(name = "numericId", required = true)
-    protected BigInteger numericId;
+    protected int numericId;
     @XmlAttribute(name = "attributeId", required = true)
     protected String attributeId;
     @XmlAttribute(name = "valueType", required = true)
-    protected BigInteger valueType;
+    protected int valueType;
     @XmlAttribute(name = "unit", required = true)
-    protected BigInteger unit;
+    protected int unit;
     @XmlAttribute(name = "symbol")
     protected String symbol;
     @XmlAttribute(name = "nameEn", required = true)
@@ -79,7 +79,7 @@ public class Attribute {
     @XmlAttribute(name = "rangeMaxIntervalOpen")
     protected Boolean rangeMaxIntervalOpen;
     @XmlAttribute(name = "databaseId")
-    protected BigInteger databaseId;
+    protected int databaseId;
 
     /**
      * Ruft den Wert der enumValues-Eigenschaft ab.
@@ -110,10 +110,10 @@ public class Attribute {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getNumericId() {
+    public int getNumericId() {
         return numericId;
     }
 
@@ -122,10 +122,10 @@ public class Attribute {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setNumericId(BigInteger value) {
+    public void setNumericId(int value) {
         this.numericId = value;
     }
 
@@ -158,10 +158,10 @@ public class Attribute {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getValueType() {
+    public int getValueType() {
         return valueType;
     }
 
@@ -170,10 +170,10 @@ public class Attribute {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setValueType(BigInteger value) {
+    public void setValueType(int value) {
         this.valueType = value;
     }
 
@@ -182,10 +182,10 @@ public class Attribute {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getUnit() {
+    public int getUnit() {
         return unit;
     }
 
@@ -194,10 +194,10 @@ public class Attribute {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setUnit(BigInteger value) {
+    public void setUnit(int value) {
         this.unit = value;
     }
 
@@ -374,10 +374,10 @@ public class Attribute {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getDatabaseId() {
+    public int getDatabaseId() {
         return databaseId;
     }
 
@@ -386,10 +386,10 @@ public class Attribute {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setDatabaseId(BigInteger value) {
+    public void setDatabaseId(int value) {
         this.databaseId = value;
     }
 

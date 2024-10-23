@@ -8,7 +8,6 @@
 
 package info.rexs.schema.jaxb;
 
-import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -51,13 +50,13 @@ public class Relation {
     protected Roles roles;
     protected AllowedCombinations allowedCombinations;
     @XmlAttribute(name = "numericId", required = true)
-    protected BigInteger numericId;
+    protected int numericId;
     @XmlAttribute(name = "relationId", required = true)
     protected String relationId;
     @XmlAttribute(name = "orderRequired", required = true)
     protected boolean orderRequired;
     @XmlAttribute(name = "databaseId")
-    protected BigInteger databaseId;
+    protected int databaseId;
 
     /**
      * Ruft den Wert der roles-Eigenschaft ab.
@@ -112,10 +111,10 @@ public class Relation {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getNumericId() {
+    public int getNumericId() {
         return numericId;
     }
 
@@ -124,10 +123,10 @@ public class Relation {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setNumericId(BigInteger value) {
+    public void setNumericId(int value) {
         this.numericId = value;
     }
 
@@ -176,10 +175,10 @@ public class Relation {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getDatabaseId() {
+    public int getDatabaseId() {
         return databaseId;
     }
 
@@ -188,10 +187,10 @@ public class Relation {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setDatabaseId(BigInteger value) {
+    public void setDatabaseId(int value) {
         this.databaseId = value;
     }
 

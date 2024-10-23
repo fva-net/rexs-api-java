@@ -74,7 +74,7 @@
 			<xsd:sequence>
 				<xsd:element ref="ref" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id"    type="xsd:integer"            use="required"/>
+			<xsd:attribute name="id"    type="xsd:int"            use="required"/>
 			<xsd:attribute name="type"  type="xsd:string"             use="required"/>
 			<xsd:attribute name="order" type="xsd:nonNegativeInteger" use="optional"/>
 			<xsd:anyAttribute processContents="skip"/>
@@ -83,7 +83,7 @@
 
 	<xsd:element name="ref">
 		<xsd:complexType>
-			<xsd:attribute name="id"   type="xsd:integer" use="required"/>
+			<xsd:attribute name="id"   type="xsd:int" use="required"/>
 			<xsd:attribute name="role" type="xsd:string"  use="required"/>
 			<xsd:attribute name="hint" type="xsd:string"  use="optional"/>
 			<xsd:anyAttribute processContents="skip"/>
@@ -104,7 +104,7 @@
 			<xsd:sequence>
 				<xsd:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id"   type="xsd:integer" use="required"/>
+			<xsd:attribute name="id"   type="xsd:int" use="required"/>
 			<xsd:attribute name="type" type="xsd:string"  use="required"/>
 			<xsd:attribute name="name" type="xsd:string"  use="optional"/>
 			<xsd:anyAttribute processContents="skip"/>
@@ -140,8 +140,8 @@
 				<xsd:element ref="r" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="code"    type="codeType"    use="optional"/>
-			<xsd:attribute name="rows"    type="xsd:integer" use="optional"/>
-			<xsd:attribute name="columns" type="xsd:integer" use="optional"/>
+			<xsd:attribute name="rows"    type="xsd:int" use="optional"/>
+			<xsd:attribute name="columns" type="xsd:int" use="optional"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -182,7 +182,7 @@
 				<xsd:element ref="load_case"    minOccurs="1" maxOccurs="unbounded"/>
 				<xsd:element ref="accumulation" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
-			<xsd:attribute name="id" type="xsd:integer" use="required"/>
+			<xsd:attribute name="id" type="xsd:int" use="required"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 		<xsd:key          name="loadCaseId">
@@ -196,7 +196,7 @@
 			<xsd:sequence>
 				<xsd:element ref="component" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id" type="xsd:integer" use="required"/>
+			<xsd:attribute name="id" type="xsd:int" use="required"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>

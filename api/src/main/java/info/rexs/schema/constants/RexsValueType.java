@@ -60,11 +60,11 @@ public enum RexsValueType {
 	 * @param key
 	 * 				The actual key of the RexsValueType as a String.
 	 */
-	private RexsValueType(int id, String key) {
+	RexsValueType(int id, String key) {
 		this(id, key, null);
 	}
 
-	private RexsValueType(int id, String key, RexsValueType basicType) {
+	RexsValueType(int id, String key, RexsValueType basicType) {
 		this.numericId = id;
 		this.key = key;
 		this.basicType = basicType;
@@ -72,7 +72,7 @@ public enum RexsValueType {
 
 	/**
 	 * @return
-	 * 				The numeric id of the value type as a {@link int}.
+	 * 				The numeric id of the value type as a {@code int}.
 	 */
 	public int getNumericId() {
 		return numericId;

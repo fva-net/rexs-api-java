@@ -116,14 +116,14 @@
 
 	<xsd:element name="unit">
 		<xsd:complexType>
-			<xsd:attribute name="id" type="xsd:integer" use="required"/>
+			<xsd:attribute name="id" type="xsd:int" use="required"/>
 			<xsd:attribute name="name" type="xsd:string" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
 	<xsd:element name="valueType">
 		<xsd:complexType>
-			<xsd:attribute name="id" type="xsd:integer" use="required"/>
+			<xsd:attribute name="id" type="xsd:int" use="required"/>
 			<xsd:attribute name="name" type="xsd:string" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -133,7 +133,7 @@
 			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
-			<xsd:attribute name="databaseId" type="xsd:integer" use="optional"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -142,10 +142,10 @@
 			<xsd:sequence>
 				<xsd:element ref="enumValues" maxOccurs="1" minOccurs="0"/>
 			</xsd:sequence>
-			<xsd:attribute name="numericId" type="xsd:integer" use="required"/>
+			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
 			<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
-			<xsd:attribute name="valueType" type="xsd:integer" use="required"/>
-			<xsd:attribute name="unit" type="xsd:integer" use="required"/>
+			<xsd:attribute name="valueType" type="xsd:int" use="required"/>
+			<xsd:attribute name="unit" type="xsd:int" use="required"/>
 			<xsd:attribute name="symbol" type="xsd:string" use="optional"/>
 			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
@@ -153,7 +153,7 @@
 			<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean" use="optional"/>
 			<xsd:attribute name="rangeMax" type="xsd:decimal" use="optional"/>
 			<xsd:attribute name="rangeMaxIntervalOpen" type="xsd:boolean" use="optional"/>
-			<xsd:attribute name="databaseId" type="xsd:integer" use="optional"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -169,7 +169,7 @@
 		<xsd:complexType>
 			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
 			<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
-			<xsd:attribute name="attributeNumericId" type="xsd:integer" use="required"/>
+			<xsd:attribute name="attributeNumericId" type="xsd:int" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -179,10 +179,10 @@
 				<xsd:element ref="roles" maxOccurs="1" minOccurs="0"/>
 				<xsd:element ref="allowedCombinations" maxOccurs="1" minOccurs="0"/>
 			</xsd:sequence>
-			<xsd:attribute name="numericId" type="xsd:integer" use="required"/>
+			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
 			<xsd:attribute name="relationId" type="xsd:string" use="required"/>
 			<xsd:attribute name="orderRequired" type="xsd:boolean" use="required"/>
-			<xsd:attribute name="databaseId" type="xsd:integer" use="optional"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
 
