@@ -8,17 +8,17 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-import info.rexs.db.DbModelRegistry;
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsRelationType;
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardRelationRoles;
-import info.rexs.db.constants.standard.RexsStandardRelationTypes;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.constants.RexsAttributeId;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsRelationType;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
+import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
@@ -351,7 +351,7 @@ public class ModelUpgraderV10toV11 {
 		// the generic update deletes the attribute accidently. Make sure the attribute and its value is restored
 		RexsComponent oldComp = oldModel.getComponent(comp.getId());
 		if (oldComp.hasAttribute(attrId)) {
-			RexsUnitId defaultUnit = DbModelRegistry.getInstance().getAttributeUnit(attrId.getId(), RexsStandardVersions.V1_1);
+			RexsUnitId defaultUnit = RexsSchemaRegistry.getInstance().getAttributeUnit(attrId.getId(), RexsStandardVersions.V1_1);
 			double oldValue = oldComp.getDoubleValue(attrId, defaultUnit);
 			comp.addAttribute(attrId, oldValue);
 		}

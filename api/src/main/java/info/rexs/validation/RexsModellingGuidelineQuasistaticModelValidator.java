@@ -19,12 +19,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import info.rexs.db.IDbModelRegistry;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardRelationRoles;
-import info.rexs.db.constants.standard.RexsStandardRelationTypes;
-import info.rexs.db.jaxb.AllowedCombinationRole;
+import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
+import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import info.rexs.schema.jaxb.AllowedCombinationRole;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
@@ -35,8 +35,8 @@ public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandar
 		super();
 	}
 
-	public RexsModellingGuidelineQuasistaticModelValidator(IDbModelRegistry dbModelRegistry) {
-		super(dbModelRegistry);
+	public RexsModellingGuidelineQuasistaticModelValidator(IRexsSchemaRegistry rexsSchemaRegistry) {
+		super(rexsSchemaRegistry);
 	}
 
 	/**
@@ -62,8 +62,8 @@ public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandar
 
 		List<RexsRelation> sideRelations = rexsModel.getRelationsOfType(RexsStandardRelationTypes.side);
 
-		if (dbModelRegistry.hasRelationTypes(rexsVersion)) {
-			List<List<AllowedCombinationRole>> listOfAllowedCombinationsSideRelation = dbModelRegistry.getAllowedCombinationsForRelation(rexsVersion, RexsStandardRelationTypes.side);
+		if (rexsSchemaRegistry.hasRelationTypes(rexsVersion)) {
+			List<List<AllowedCombinationRole>> listOfAllowedCombinationsSideRelation = rexsSchemaRegistry.getAllowedCombinationsForRelation(rexsVersion, RexsStandardRelationTypes.side);
 			Set<RexsComponentType> mainComponentTypesForSideRelation = new HashSet<>();
 			for (List<AllowedCombinationRole> allowedCombination : listOfAllowedCombinationsSideRelation) {
 				for (AllowedCombinationRole combination : allowedCombination) {
@@ -218,6 +218,6 @@ public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandar
 	public IRexsRelationValidator createRelationValidator() {
 		if (rexsVersion == null)
 			return super.createRelationValidator();
-		return new RexsModellingGuidelineQuasistaticRelationValidator(rexsVersion, dbModelRegistry);
+		return new RexsModellingGuidelineQuasistaticRelationValidator(rexsVersion, rexsSchemaRegistry);
 	}
 }

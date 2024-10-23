@@ -9,7 +9,7 @@ import info.rexs.cli.common.RexsFileExistingValidator;
 import info.rexs.cli.common.RexsFileValidator;
 import info.rexs.cli.common.RexsVersionConverter;
 import info.rexs.cli.common.RexsVersionParameterValidator;
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.schema.constants.RexsVersion;
 import lombok.Getter;
 import lombok.Setter;
 

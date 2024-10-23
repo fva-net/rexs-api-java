@@ -21,8 +21,8 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 
 public class RexsModelAccessExceptionTest {
 

@@ -3,9 +3,9 @@ package info.rexs.validation;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.rexs.db.IDbModelRegistry;
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsVersion;
+import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsVersion;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
 
@@ -15,8 +15,8 @@ public class RexsModellingGuidelineQuasistaticRelationValidator extends RexsStan
 		super(rexsVersion);
 	}
 
-	public RexsModellingGuidelineQuasistaticRelationValidator(RexsVersion rexsVersion, IDbModelRegistry dbModelRegistry) {
-		super(rexsVersion, dbModelRegistry);
+	public RexsModellingGuidelineQuasistaticRelationValidator(RexsVersion rexsVersion, IRexsSchemaRegistry rexsSchemaRegistry) {
+		super(rexsVersion, rexsSchemaRegistry);
 	}
 
 	/**

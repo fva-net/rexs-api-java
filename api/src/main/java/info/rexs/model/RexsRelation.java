@@ -20,10 +20,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.RexsRelationType;
-import info.rexs.db.constants.standard.RexsStandardRelationRoles;
-import info.rexs.db.constants.standard.RexsStandardRelationTypes;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.RexsRelationType;
+import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
+import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 
 /**
  * This class represents a relation of a REXS model.

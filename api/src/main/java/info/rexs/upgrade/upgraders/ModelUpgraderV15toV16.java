@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 import jakarta.xml.bind.JAXBException;
 
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;

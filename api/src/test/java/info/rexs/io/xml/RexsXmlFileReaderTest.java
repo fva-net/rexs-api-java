@@ -27,7 +27,7 @@ import java.nio.file.StandardOpenOption;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;

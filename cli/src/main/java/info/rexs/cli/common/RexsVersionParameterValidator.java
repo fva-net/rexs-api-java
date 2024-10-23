@@ -3,8 +3,8 @@ package info.rexs.cli.common;
 import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.ParameterException;
 
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 
 public class RexsVersionParameterValidator implements IParameterValidator {
 

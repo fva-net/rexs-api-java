@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 import jakarta.xml.bind.JAXBException;
 
-import info.rexs.db.constants.RexsRelationRole;
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
@@ -29,19 +29,19 @@ import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
 public class ModelUpgraderV13toV14 {
 
 	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.3_to_1.4.xml";
-	
+
 	private RexsModel newModel;
 	private final RexsModel oldModel;
 	private final boolean strictMode;
 
 	private RexsChangelogFile.RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
-	
+
 	public ModelUpgraderV13toV14(RexsModel model, boolean strictMode) {
 		this.oldModel = model;
 		this.newModel = new RexsModel(model);
 		this.strictMode = strictMode;
-		
+
 		try (InputStream stream = this.getClass().getResourceAsStream(CHANGELOG_FILENAME)) {
 			changelog = RexsChangelogFile.load(stream);
 		} catch(IOException ex) {
@@ -51,15 +51,15 @@ public class ModelUpgraderV13toV14 {
 		}
 
 	}
-	
+
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
 		ModelChangelogUpgrader changeLogUpgrader = new ModelChangelogUpgrader(newModel, changelog, strictMode);
 		newModel = changeLogUpgrader.applyChangelog();
 		notifications.addAll(changeLogUpgrader.getNotifications().getNotifications());
-		
+
 		checkDuplicateReferences(newModel);
 		setCoordinateSystemReference(newModel);
-		
+
 		newModel.setVersion(RexsStandardVersions.V1_4);
 		newModel.setApplicationId("REXS API Upgrader");
 
@@ -91,7 +91,7 @@ public class ModelUpgraderV13toV14 {
 			model.removeRelation(rel);
 		}
 	}
-	
+
 	private void setCoordinateSystemReference(RexsModel model) {
 		for (RexsComponent gearUnitComp: model.getComponentsOfType(RexsStandardComponentTypes.gear_unit)) {
 			// Set reference to gear unit. Attribute may not yet exist.
@@ -101,5 +101,5 @@ public class ModelUpgraderV13toV14 {
 					new AttributeSource(RexsStandardAttributeIds.reference_component_for_position.getId())));
 		}
 	}
-	
+
 }

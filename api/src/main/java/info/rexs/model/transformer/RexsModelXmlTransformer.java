@@ -23,10 +23,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import info.rexs.db.constants.standard.RexsStandardAttributeIds;
-import info.rexs.db.constants.standard.RexsStandardComponentTypes;
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsLoadSpectrum;

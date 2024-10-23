@@ -25,7 +25,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 

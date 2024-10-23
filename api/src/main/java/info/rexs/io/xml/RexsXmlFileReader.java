@@ -28,7 +28,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.stream.StreamSource;
 
-import info.rexs.db.constants.standard.RexsStandardUnitIds;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.io.AbstractRexsFileReader;
 import info.rexs.io.Resource;
 import info.rexs.io.RexsIoException;

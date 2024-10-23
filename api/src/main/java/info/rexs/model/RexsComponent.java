@@ -21,10 +21,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import info.rexs.db.constants.RexsAttributeId;
-import info.rexs.db.constants.RexsComponentType;
-import info.rexs.db.constants.RexsUnitId;
-import info.rexs.db.constants.RexsValueType;
+import info.rexs.schema.constants.RexsAttributeId;
+import info.rexs.schema.constants.RexsComponentType;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.RexsValueType;
 
 /**
  * This class represents an component of a REXS model.

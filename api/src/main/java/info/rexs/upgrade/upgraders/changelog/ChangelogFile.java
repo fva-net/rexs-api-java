@@ -19,8 +19,8 @@ import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import info.rexs.db.constants.RexsVersion;
-import info.rexs.db.constants.standard.RexsStandardVersions;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 
 /**
  * This class represents a REXS database changelog file.
