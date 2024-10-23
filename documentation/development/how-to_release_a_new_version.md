@@ -28,7 +28,7 @@ $ git push origin v0.9.0
 $ mvn versions:set -DnewVersion=0.10.0-SNAPSHOT -DgenerateBackupPoms=false
 $ git add pom.xml
 $ git commit -m '[release] prepare for next development iteration'
-$ git push origin master
+$ git push origin main
 ```
 
 * Delete test versions from Maven Central
