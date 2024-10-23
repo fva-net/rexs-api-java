@@ -23,15 +23,15 @@
 	<xsd:element name="model">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="relations"     minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="components"    minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="relations"     minOccurs="0"/>
+				<xsd:element ref="components"    minOccurs="0"/>
 				<xsd:element ref="load_spectrum" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="version"             type="xsd:string" use="required"/>
 			<xsd:attribute name="applicationId"       type="xsd:string" use="required"/>
 			<xsd:attribute name="applicationVersion"  type="xsd:string" use="required"/>
 			<xsd:attribute name="date"                type="xsd:string" use="required"/>
-			<xsd:attribute name="applicationLanguage" type="xsd:string" use="optional"/>
+			<xsd:attribute name="applicationLanguage" type="xsd:string"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 		<xsd:key          name="relationId">
@@ -72,11 +72,11 @@
 	<xsd:element name="relation">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="ref" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="ref" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="id"    type="xsd:int"            use="required"/>
 			<xsd:attribute name="type"  type="xsd:string"             use="required"/>
-			<xsd:attribute name="order" type="xsd:nonNegativeInteger" use="optional"/>
+			<xsd:attribute name="order" type="xsd:nonNegativeInteger"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -85,7 +85,7 @@
 		<xsd:complexType>
 			<xsd:attribute name="id"   type="xsd:int" use="required"/>
 			<xsd:attribute name="role" type="xsd:string"  use="required"/>
-			<xsd:attribute name="hint" type="xsd:string"  use="optional"/>
+			<xsd:attribute name="hint" type="xsd:string"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -106,7 +106,7 @@
 			</xsd:sequence>
 			<xsd:attribute name="id"   type="xsd:int" use="required"/>
 			<xsd:attribute name="type" type="xsd:string"  use="required"/>
-			<xsd:attribute name="name" type="xsd:string"  use="optional"/>
+			<xsd:attribute name="name" type="xsd:string"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -114,12 +114,12 @@
 	<xsd:element name="attribute">
 		<xsd:complexType mixed="true">
 			<xsd:sequence>
-				<xsd:element ref="array"           minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="matrix"          minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="array_of_arrays" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="array"           minOccurs="0"/>
+				<xsd:element ref="matrix"          minOccurs="0"/>
+				<xsd:element ref="array_of_arrays" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="id"   type="xsd:string" use="required"/>
-			<xsd:attribute name="unit" type="xsd:string" use="optional"/>
+			<xsd:attribute name="unit" type="xsd:string"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -129,7 +129,7 @@
 			<xsd:sequence>
 				<xsd:element ref="c" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="code" type="codeType" use="optional"/>
+			<xsd:attribute name="code" type="codeType"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -139,9 +139,9 @@
 			<xsd:sequence>
 				<xsd:element ref="r" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="code"    type="codeType"    use="optional"/>
-			<xsd:attribute name="rows"    type="xsd:int" use="optional"/>
-			<xsd:attribute name="columns" type="xsd:int" use="optional"/>
+			<xsd:attribute name="code"    type="codeType"/>
+			<xsd:attribute name="rows"    type="xsd:int"/>
+			<xsd:attribute name="columns" type="xsd:int"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
@@ -149,7 +149,7 @@
 	<xsd:element name="r">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="c" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element name="c" type="xsd:string" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
@@ -170,7 +170,7 @@
 	<xsd:element name="array_of_arrays">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="array" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="array" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
@@ -179,8 +179,8 @@
 	<xsd:element name="load_spectrum">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="load_case"    minOccurs="1" maxOccurs="unbounded"/>
-				<xsd:element ref="accumulation" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="load_case" maxOccurs="unbounded"/>
+				<xsd:element ref="accumulation" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:int" use="required"/>
 			<xsd:anyAttribute processContents="skip"/>
@@ -204,7 +204,7 @@
 	<xsd:element name="accumulation">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="component" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="component" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
