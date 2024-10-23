@@ -268,7 +268,7 @@
 	</profiles>
 
 	<scm>
-		<url>http://github.com/fva-net/rexs-api-java/tree/master</url>
+		<url>http://github.com/fva-net/rexs-api-java/tree/main</url>
 		<connection>scm:git:git://github.com/fva-net/rexs-api-java.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/fva-net/rexs-api-java.git</developerConnection>
 	</scm>
