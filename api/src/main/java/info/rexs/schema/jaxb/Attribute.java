@@ -8,8 +8,6 @@
 
 package info.rexs.schema.jaxb;
 
-import java.math.BigDecimal;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -71,11 +69,11 @@ public class Attribute {
     @XmlAttribute(name = "nameDe", required = true)
     protected String nameDe;
     @XmlAttribute(name = "rangeMin")
-    protected BigDecimal rangeMin;
+    protected double rangeMin;
     @XmlAttribute(name = "rangeMinIntervalOpen")
     protected Boolean rangeMinIntervalOpen;
     @XmlAttribute(name = "rangeMax")
-    protected BigDecimal rangeMax;
+    protected double rangeMax;
     @XmlAttribute(name = "rangeMaxIntervalOpen")
     protected Boolean rangeMaxIntervalOpen;
     @XmlAttribute(name = "databaseId")
@@ -278,10 +276,10 @@ public class Attribute {
      *
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@code double}
      *
      */
-    public BigDecimal getRangeMin() {
+    public double getRangeMin() {
         return rangeMin;
     }
 
@@ -290,10 +288,10 @@ public class Attribute {
      *
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@code double}
      *
      */
-    public void setRangeMin(BigDecimal value) {
+    public void setRangeMin(double value) {
         this.rangeMin = value;
     }
 
@@ -326,10 +324,10 @@ public class Attribute {
      *
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@code double}
      *
      */
-    public BigDecimal getRangeMax() {
+    public double getRangeMax() {
         return rangeMax;
     }
 
@@ -338,10 +336,10 @@ public class Attribute {
      *
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@code double}
      *
      */
-    public void setRangeMax(BigDecimal value) {
+    public void setRangeMax(double value) {
         this.rangeMax = value;
     }
 

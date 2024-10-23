@@ -148,9 +148,9 @@
 			<xsd:attribute name="unit" type="xsd:int" use="required"/>
 			<xsd:attribute name="symbol" type="xsd:string" use="optional"/>
 			<xsd:attribute name="name" type="xsd:string" use="required"/>
-			<xsd:attribute name="rangeMin" type="xsd:decimal" use="optional"/>
+			<xsd:attribute name="rangeMin" type="xsd:double" use="optional"/>
 			<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean" use="optional"/>
-			<xsd:attribute name="rangeMax" type="xsd:decimal" use="optional"/>
+			<xsd:attribute name="rangeMax" type="xsd:double" use="optional"/>
 			<xsd:attribute name="rangeMaxIntervalOpen" type="xsd:boolean" use="optional"/>
 			<xsd:attribute name="databaseId" type="xsd:int" use="optional"/>
 		</xsd:complexType>
