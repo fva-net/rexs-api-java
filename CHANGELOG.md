@@ -9,11 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Renaming "DbModel" to "Schema" (packages, classes)
+- Renaming default branch from "master" to "main"
+
+
+
+## [0.9.0] - 2024-10-23
+
+### Added
+
 - Automatic publishing to Maven Central for releases
 - Adding missing "applicationLanguage" to XML and XSD
 - Add "DEV" as a constant version
 
+### Changed
+
+- Renaming "DbModel" to "Schema" (packages, classes)
 
 ## [0.8.1] - 2024-08-09
 
