@@ -15,15 +15,7 @@
   the License.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0">
-
-	<xsd:annotation>
-		<xsd:appinfo>
-			<jaxb:schemaBindings>
-				<jaxb:package name="info.rexs.schema.jaxb"/>
-			</jaxb:schemaBindings>
-		</xsd:appinfo>
-	</xsd:annotation>
+            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified" >
 
 	<xsd:element name="rexsSchema">
 		<xsd:complexType>

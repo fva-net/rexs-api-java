@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0">
-
-	<!-- This tells JAXB what package to create the Java classes in. -->
-	<xsd:annotation>
-		<xsd:appinfo>
-			<jaxb:schemaBindings>
-				<jaxb:package name="info.rexs.upgrade.upgraders.changelog.jaxb"/>
-			</jaxb:schemaBindings>
-		</xsd:appinfo>
-	</xsd:annotation>
+            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified" >
 
 	<xsd:element name="rexsChangelog">
 		<xsd:complexType>
@@ -18,7 +9,7 @@
 				<xsd:element ref="componentChanges" minOccurs="0"/>
 				<xsd:element ref="attributeChanges" minOccurs="0"/>
 				<xsd:element ref="mappingChanges"   minOccurs="0"/>
-				<xsd:element ref="relationChanges" minOccurs="0"/>
+				<xsd:element ref="relationChanges"  minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="fromVersion" type="xsd:string" use="required"/>
 			<xsd:attribute name="toVersion"   type="xsd:string" use="required"/>
@@ -56,9 +47,9 @@
 			<xsd:sequence>
 				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
-			<xsd:attribute name="type"      type="changeType"          use="required"/>
-			<xsd:attribute name="id"        type="xsd:string"          use="required"/>
-			<xsd:attribute name="numericId" type="xsd:positiveInteger" use="required"/>
+			<xsd:attribute name="type"      type="changeType" use="required"/>
+			<xsd:attribute name="id"        type="xsd:string" use="required"/>
+			<xsd:attribute name="numericId" type="xsd:int"    use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -72,10 +63,10 @@
 
 	<xsd:element name="mappingChange">
 		<xsd:complexType>
-			<xsd:attribute name="type"               type="changeType"          use="required"/>
-			<xsd:attribute name="componentId"        type="xsd:string"          use="required"/>
-			<xsd:attribute name="attributeId"        type="xsd:string"          use="required"/>
-			<xsd:attribute name="attributeNumericId" type="xsd:positiveInteger" use="required"/>
+			<xsd:attribute name="type"               type="changeType" use="required"/>
+			<xsd:attribute name="componentId"        type="xsd:string" use="required"/>
+			<xsd:attribute name="attributeId"        type="xsd:string" use="required"/>
+			<xsd:attribute name="attributeNumericId" type="xsd:int"    use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -92,9 +83,9 @@
 			<xsd:sequence>
 				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
-			<xsd:attribute name="type"      type="changeType"          use="required"/>
-			<xsd:attribute name="id"        type="xsd:string"          use="required"/>
-			<xsd:attribute name="numericId" type="xsd:positiveInteger" use="required"/>
+			<xsd:attribute name="type"      type="changeType" use="required"/>
+			<xsd:attribute name="id"        type="xsd:string" use="required"/>
+			<xsd:attribute name="numericId" type="xsd:int"    use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 

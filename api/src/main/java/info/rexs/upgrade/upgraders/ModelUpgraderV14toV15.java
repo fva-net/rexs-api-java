@@ -1,24 +1,21 @@
 package info.rexs.upgrade.upgraders;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import jakarta.xml.bind.JAXBException;
-
 import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.upgrade.RexsUpgradeException;
-import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogResolver;
+import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 
 public class ModelUpgraderV14toV15 {
 
-	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.4_to_1.5.xml";
+	private static final ChangelogFile CHANGELOG_FILE = ChangelogFile.V1_4_TO_V1_5;
 
 	private RexsModel newModel;
 	private final RexsModel oldModel;
 	private final boolean strictMode;
 
-	private RexsChangelogFile.RexsChangelog changelog;
+	private RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
 
 	public ModelUpgraderV14toV15(RexsModel model, boolean strictMode) {
@@ -26,11 +23,9 @@ public class ModelUpgraderV14toV15 {
 		this.newModel = new RexsModel(model);
 		this.strictMode = strictMode;
 
-		try (InputStream stream = this.getClass().getResourceAsStream(CHANGELOG_FILENAME)) {
-			changelog = RexsChangelogFile.load(stream);
-		} catch(IOException ex) {
-			System.err.println(ex);
-		} catch (JAXBException ex) {
+		try {
+			this.changelog = ChangelogResolver.getInstance().resolve(CHANGELOG_FILE);
+		} catch(RexsUpgradeException ex) {
 			System.err.println(ex);
 		}
 	}

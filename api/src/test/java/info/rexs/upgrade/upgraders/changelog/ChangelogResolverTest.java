@@ -69,9 +69,9 @@ public class ChangelogResolverTest {
 			assertThat(rexsChangelog.getToVersion()).isEqualTo(changelogFile.getToVersion().getName());
 
 			int countChangelogChanges = 0;
-			countChangelogChanges += rexsChangelog.getComponentChanges().getComponentChange().size();
-			countChangelogChanges += rexsChangelog.getAttributeChanges().getAttributeChange().size();
-			countChangelogChanges += rexsChangelog.getMappingChanges().getMappingChange().size();
+			countChangelogChanges += rexsChangelog.getComponentChanges() != null ? rexsChangelog.getComponentChanges().getComponentChange().size() : 0;
+			countChangelogChanges += rexsChangelog.getAttributeChanges() != null ? rexsChangelog.getAttributeChanges().getAttributeChange().size() : 0;
+			countChangelogChanges += rexsChangelog.getMappingChanges() != null ? rexsChangelog.getMappingChanges().getMappingChange().size() : 0;
 			assertThat(countChangelogChanges).isGreaterThan(0);
 		}
 	}
