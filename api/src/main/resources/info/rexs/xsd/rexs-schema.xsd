@@ -145,7 +145,7 @@
 			<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean"/>
 			<xsd:attribute name="rangeMax" type="xsd:double"/>
 			<xsd:attribute name="rangeMaxIntervalOpen" type="xsd:boolean"/>
-			<xsd:attribute name="databaseId" type="xsd:int use="required"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
