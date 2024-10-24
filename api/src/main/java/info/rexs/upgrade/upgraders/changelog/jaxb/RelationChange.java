@@ -8,7 +8,6 @@
 
 package info.rexs.upgrade.upgraders.changelog.jaxb;
 
-import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -53,7 +52,7 @@ public class RelationChange {
     protected String id;
     @XmlAttribute(name = "numericId", required = true)
     @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger numericId;
+    protected int numericId;
 
     /**
      * Ruft den Wert der changedValues-Eigenschaft ab.
@@ -132,10 +131,10 @@ public class RelationChange {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getNumericId() {
+    public int getNumericId() {
         return numericId;
     }
 
@@ -144,10 +143,10 @@ public class RelationChange {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setNumericId(BigInteger value) {
+    public void setNumericId(int value) {
         this.numericId = value;
     }
 

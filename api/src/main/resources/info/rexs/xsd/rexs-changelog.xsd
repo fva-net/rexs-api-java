@@ -15,10 +15,10 @@
 	<xsd:element name="rexsChangelog">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="componentChanges" minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="attributeChanges" minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="mappingChanges"   minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="relationChanges" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="componentChanges" minOccurs="0"/>
+				<xsd:element ref="attributeChanges" minOccurs="0"/>
+				<xsd:element ref="mappingChanges"   minOccurs="0"/>
+				<xsd:element ref="relationChanges" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="fromVersion" type="xsd:string" use="required"/>
 			<xsd:attribute name="toVersion"   type="xsd:string" use="required"/>
@@ -36,7 +36,7 @@
 	<xsd:element name="componentChange">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="type" type="changeType" use="required"/>
 			<xsd:attribute name="id"   type="xsd:string" use="required"/>
@@ -54,7 +54,7 @@
 	<xsd:element name="attributeChange">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="type"      type="changeType"          use="required"/>
 			<xsd:attribute name="id"        type="xsd:string"          use="required"/>
@@ -90,7 +90,7 @@
 	<xsd:element name="relationChange">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="type"      type="changeType"          use="required"/>
 			<xsd:attribute name="id"        type="xsd:string"          use="required"/>
@@ -109,20 +109,20 @@
 	<xsd:element name="changedValue">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="enumValueChanges" minOccurs="0" maxOccurs="1"/>
-				<xsd:element ref="roleChanges" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="enumValueChanges" minOccurs="0"/>
+				<xsd:element ref="roleChanges" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="key"      type="xsd:string" use="required"/>
-			<xsd:attribute name="lang"     type="xsd:string" use="optional"/>
-			<xsd:attribute name="oldValue" type="xsd:string" use="optional"/>
-			<xsd:attribute name="newValue" type="xsd:string" use="optional"/>
+			<xsd:attribute name="lang"     type="xsd:string"/>
+			<xsd:attribute name="oldValue" type="xsd:string"/>
+			<xsd:attribute name="newValue" type="xsd:string"/>
 		</xsd:complexType>
 	</xsd:element>
 
 	<xsd:element name="enumValueChanges">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="enumValueChange" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="enumValueChange" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -130,7 +130,7 @@
 	<xsd:element name="enumValueChange">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="type"  type="changeType" use="required"/>
 			<xsd:attribute name="value" type="xsd:string" use="required"/>
@@ -140,7 +140,7 @@
 	<xsd:element name="roleChanges">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="roleChange" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="roleChange" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -148,7 +148,7 @@
 	<xsd:element name="roleChange">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="changedValues" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="type"  type="changeType" use="required"/>
 			<xsd:attribute name="roleId" type="xsd:string" use="required"/>

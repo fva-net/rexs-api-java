@@ -8,7 +8,6 @@
 
 package info.rexs.schema.jaxb;
 
-import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -40,7 +39,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ValueType {
 
     @XmlAttribute(name = "id", required = true)
-    protected BigInteger id;
+    protected int id;
     @XmlAttribute(name = "name", required = true)
     protected String name;
 
@@ -49,10 +48,10 @@ public class ValueType {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getId() {
+    public int getId() {
         return id;
     }
 
@@ -61,10 +60,10 @@ public class ValueType {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setId(BigInteger value) {
+    public void setId(int value) {
         this.id = value;
     }
 

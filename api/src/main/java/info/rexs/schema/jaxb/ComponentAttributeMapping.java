@@ -8,7 +8,6 @@
 
 package info.rexs.schema.jaxb;
 
-import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,7 +44,7 @@ public class ComponentAttributeMapping {
     @XmlAttribute(name = "attributeId", required = true)
     protected String attributeId;
     @XmlAttribute(name = "attributeNumericId", required = true)
-    protected BigInteger attributeNumericId;
+    protected int attributeNumericId;
 
     /**
      * Ruft den Wert der componentId-Eigenschaft ab.
@@ -100,10 +99,10 @@ public class ComponentAttributeMapping {
      *
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public BigInteger getAttributeNumericId() {
+    public int getAttributeNumericId() {
         return attributeNumericId;
     }
 
@@ -112,10 +111,10 @@ public class ComponentAttributeMapping {
      *
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@code int}
      *
      */
-    public void setAttributeNumericId(BigInteger value) {
+    public void setAttributeNumericId(int value) {
         this.attributeNumericId = value;
     }
 

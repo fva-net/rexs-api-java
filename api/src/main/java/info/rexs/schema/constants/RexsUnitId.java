@@ -38,7 +38,7 @@ public class RexsUnitId implements RexsStandardUnitIds {
 	/** The actual unit ID as a {@link String}. */
 	private final String id;
 
-	/** The units unique numeric ID as a {@link int}. */
+	/** The units unique numeric ID as a {@code int}. */
 	private int numericId = 0;
 
 	private RexsUnitId(String id) {
@@ -66,7 +66,7 @@ public class RexsUnitId implements RexsStandardUnitIds {
 
 	/**
 	 * @return
-	 * 				The units numeric ID as a {@link int}.
+	 * 				The units numeric ID as a {@code int}.
 	 */
 	public int getNumericId() {
 		return numericId;
