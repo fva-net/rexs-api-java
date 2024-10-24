@@ -1,7 +1,5 @@
 package info.rexs.upgrade.upgraders;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -26,8 +24,9 @@ import info.rexs.model.RexsRelationRef;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.NotificationType;
-import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
-import jakarta.xml.bind.JAXBException;
+import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogResolver;
+import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 
 public class ModelUpgraderV10toV11 {
 
@@ -41,7 +40,7 @@ public class ModelUpgraderV10toV11 {
 		}
 	}
 
-	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.0_to_1.1.xml";
+	private static final ChangelogFile CHANGELOG_FILE = ChangelogFile.V1_0_TO_V1_1;
 
 	/** attributes that are deleted by the changelog upgrader but are meant to live on with a different numeric id */
 	private static final List<AttributeLocation> attributesToRestore = Arrays.asList(
@@ -79,7 +78,7 @@ public class ModelUpgraderV10toV11 {
 	private final RexsModel oldModel;
 	private final boolean strictMode;
 
-	private RexsChangelogFile.RexsChangelog changelog;
+	private RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
 
 	public ModelUpgraderV10toV11(RexsModel model, boolean strictMode) {
@@ -87,14 +86,11 @@ public class ModelUpgraderV10toV11 {
 		this.newModel = new RexsModel(model);
 		this.strictMode = strictMode;
 
-		try (InputStream stream = this.getClass().getResourceAsStream(CHANGELOG_FILENAME)) {
-			changelog = RexsChangelogFile.load(stream);
-		} catch(IOException ex) {
-			System.err.println(ex);
-		} catch (JAXBException ex) {
+		try {
+			this.changelog = ChangelogResolver.getInstance().resolve(CHANGELOG_FILE);
+		} catch(RexsUpgradeException ex) {
 			System.err.println(ex);
 		}
-
 	}
 
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {

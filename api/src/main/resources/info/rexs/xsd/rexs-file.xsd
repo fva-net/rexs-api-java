@@ -15,16 +15,7 @@
   the License.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
-            elementFormDefault="qualified">
-
-	<xsd:annotation>
-		<xsd:appinfo>
-			<jaxb:schemaBindings>
-				<jaxb:package name="info.rexs.model.jaxb"/>
-			</jaxb:schemaBindings>
-		</xsd:appinfo>
-	</xsd:annotation>
+            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified" >
 
 	<xsd:element name="model">
 		<xsd:complexType>
@@ -80,16 +71,16 @@
 			<xsd:sequence>
 				<xsd:element ref="ref" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id"    type="xsd:int"            use="required"/>
-			<xsd:attribute name="type"  type="xsd:string"             use="required"/>
-			<xsd:attribute name="order" type="xsd:nonNegativeInteger"/>
+			<xsd:attribute name="id"    type="xsd:int"    use="required"/>
+			<xsd:attribute name="type"  type="xsd:string" use="required"/>
+			<xsd:attribute name="order" type="xsd:int"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>
 
 	<xsd:element name="ref">
 		<xsd:complexType>
-			<xsd:attribute name="id"   type="xsd:int" use="required"/>
+			<xsd:attribute name="id"   type="xsd:int"     use="required"/>
 			<xsd:attribute name="role" type="xsd:string"  use="required"/>
 			<xsd:attribute name="hint" type="xsd:string"/>
 			<xsd:anyAttribute processContents="skip"/>
@@ -110,8 +101,8 @@
 			<xsd:sequence>
 				<xsd:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id"   type="xsd:int" use="required"/>
-			<xsd:attribute name="type" type="xsd:string"  use="required"/>
+			<xsd:attribute name="id"   type="xsd:int"    use="required"/>
+			<xsd:attribute name="type" type="xsd:string" use="required"/>
 			<xsd:attribute name="name" type="xsd:string"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
@@ -184,7 +175,7 @@
 	<xsd:element name="load_spectrum">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="load_case" maxOccurs="unbounded"/>
+				<xsd:element ref="load_case"    maxOccurs="unbounded"/>
 				<xsd:element ref="accumulation" minOccurs="0"/>
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:int" use="required"/>

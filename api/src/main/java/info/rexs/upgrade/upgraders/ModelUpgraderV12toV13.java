@@ -1,11 +1,7 @@
 package info.rexs.upgrade.upgraders;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Comparator;
 import java.util.List;
-
-import jakarta.xml.bind.JAXBException;
 
 import info.rexs.schema.constants.RexsValueType;
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
@@ -19,17 +15,19 @@ import info.rexs.model.RexsRelation;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.ComponentSource;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
-import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogResolver;
+import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 
 public class ModelUpgraderV12toV13 {
 
-	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.2_to_1.3.xml";
+	private static final ChangelogFile CHANGELOG_FILE = ChangelogFile.V1_2_TO_V1_3;
 
 	private RexsModel newModel;
 	private final RexsModel oldModel;
 	private final boolean strictMode;
 
-	private RexsChangelogFile.RexsChangelog changelog;
+	private RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
 
 	public ModelUpgraderV12toV13(RexsModel model, boolean strictMode) {
@@ -37,14 +35,11 @@ public class ModelUpgraderV12toV13 {
 		this.newModel = new RexsModel(model);
 		this.strictMode = strictMode;
 
-		try (InputStream stream = this.getClass().getResourceAsStream(CHANGELOG_FILENAME)) {
-			changelog = RexsChangelogFile.load(stream);
-		} catch(IOException ex) {
-			System.err.println(ex);
-		} catch (JAXBException ex) {
+		try {
+			this.changelog = ChangelogResolver.getInstance().resolve(CHANGELOG_FILE);
+		} catch(RexsUpgradeException ex) {
 			System.err.println(ex);
 		}
-
 	}
 
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {

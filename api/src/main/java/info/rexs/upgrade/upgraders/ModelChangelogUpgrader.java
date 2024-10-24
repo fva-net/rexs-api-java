@@ -38,7 +38,7 @@ import info.rexs.upgrade.upgraders.changelog.jaxb.ChangedValue;
 import info.rexs.upgrade.upgraders.changelog.jaxb.ComponentChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.EnumValueChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.MappingChange;
-import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 
 /** generic upgrade for changes defined in the changelog file */
 public class ModelChangelogUpgrader {
@@ -46,12 +46,12 @@ public class ModelChangelogUpgrader {
 	private final RexsModel newModel;
 	private final RexsModel oldModel;
 
-	private final RexsChangelogFile.RexsChangelog changelog;
+	private final RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
 	/** remove invalid attributes in strict mode */
 	private boolean strictMode;
 
-	public ModelChangelogUpgrader(RexsModel model, RexsChangelogFile.RexsChangelog changelog, boolean strictMode) {
+	public ModelChangelogUpgrader(RexsModel model, RexsChangelog changelog, boolean strictMode) {
 		this.oldModel = model;
 		this.newModel = new RexsModel(model);
 		this.changelog = changelog;
@@ -60,28 +60,31 @@ public class ModelChangelogUpgrader {
 
 
 	public RexsModel applyChangelog() throws RexsUpgradeException {
-		for (ComponentChange change : changelog.componentChanges) {
-			if (change.getType() == ChangeType.DELETE)
-				deleteComponentsByType(newModel, change.getId());
+		if (changelog.getComponentChanges() != null)
+			for (ComponentChange change : changelog.getComponentChanges().getComponentChange()) {
+				if (change.getType() == ChangeType.DELETE)
+					deleteComponentsByType(newModel, change.getId());
 
-			if (change.getType() == ChangeType.EDIT)
-				editComponentsByType(change.getId(), change.getChangedValues().getChangedValue());
-		}
-
-		for (MappingChange change : changelog.mappingChanges) {
-			if (change.getType() == ChangeType.DELETE) {
-				if (strictMode) {
-					deleteAttributesByComponentTypeAndAttributeId(newModel, change.getComponentId(), change.getAttributeId());
-				}
-				else
-					notifyAboutOutdatedAttributeMapping(change.getComponentId(), change.getAttributeId());
+				if (change.getType() == ChangeType.EDIT)
+					editComponentsByType(change.getId(), change.getChangedValues().getChangedValue());
 			}
-		}
 
-		for (AttributeChange change : changelog.attributeChanges) {
-			if (change.getType() == ChangeType.EDIT)
-				editAttributesById(change.getId(), change.getChangedValues().getChangedValue());
-		}
+		if (changelog.getMappingChanges() != null)
+			for (MappingChange change : changelog.getMappingChanges().getMappingChange()) {
+				if (change.getType() == ChangeType.DELETE) {
+					if (strictMode) {
+						deleteAttributesByComponentTypeAndAttributeId(newModel, change.getComponentId(), change.getAttributeId());
+					}
+					else
+						notifyAboutOutdatedAttributeMapping(change.getComponentId(), change.getAttributeId());
+				}
+			}
+
+		if (changelog.getAttributeChanges() != null)
+			for (AttributeChange change : changelog.getAttributeChanges().getAttributeChange()) {
+				if (change.getType() == ChangeType.EDIT)
+					editAttributesById(change.getId(), change.getChangedValues().getChangedValue());
+			}
 
 		return newModel;
 	}
