@@ -15,15 +15,7 @@
   the License.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0">
-
-	<xsd:annotation>
-		<xsd:appinfo>
-			<jaxb:schemaBindings>
-				<jaxb:package name="info.rexs.schema.jaxb"/>
-			</jaxb:schemaBindings>
-		</xsd:appinfo>
-	</xsd:annotation>
+            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified" >
 
 	<xsd:element name="rexsSchema">
 		<xsd:complexType>
@@ -133,7 +125,7 @@
 			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
-			<xsd:attribute name="databaseId" type="xsd:int"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -153,7 +145,7 @@
 			<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean"/>
 			<xsd:attribute name="rangeMax" type="xsd:double"/>
 			<xsd:attribute name="rangeMaxIntervalOpen" type="xsd:boolean"/>
-			<xsd:attribute name="databaseId" type="xsd:int"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -182,7 +174,7 @@
 			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
 			<xsd:attribute name="relationId" type="xsd:string" use="required"/>
 			<xsd:attribute name="orderRequired" type="xsd:boolean" use="required"/>
-			<xsd:attribute name="databaseId" type="xsd:int"/>
+			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 

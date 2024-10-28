@@ -74,9 +74,9 @@
 			<xsd:sequence>
 				<xsd:element ref="ref" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id"    type="xsd:int"            use="required"/>
-			<xsd:attribute name="type"  type="xsd:string"             use="required"/>
-			<xsd:attribute name="order" type="xsd:nonNegativeInteger"/>
+			<xsd:attribute name="id"    type="xsd:int"    use="required"/>
+			<xsd:attribute name="type"  type="xsd:string" use="required"/>
+			<xsd:attribute name="order" type="xsd:int"/>
 			<xsd:anyAttribute processContents="skip"/>
 		</xsd:complexType>
 	</xsd:element>

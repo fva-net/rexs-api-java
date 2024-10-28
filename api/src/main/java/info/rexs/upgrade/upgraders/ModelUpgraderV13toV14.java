@@ -1,14 +1,10 @@
 package info.rexs.upgrade.upgraders;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-
-import jakarta.xml.bind.JAXBException;
 
 import info.rexs.schema.constants.RexsRelationRole;
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
@@ -24,17 +20,19 @@ import info.rexs.upgrade.upgraders.UpgradeNotifications.ComponentSource;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.NotificationType;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.RelationSource;
-import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
+import info.rexs.upgrade.upgraders.changelog.ChangelogResolver;
+import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
 
 public class ModelUpgraderV13toV14 {
 
-	private static final String CHANGELOG_FILENAME = "/info/rexs/upgrade/upgraders/changelog/rexs_changelog_1.3_to_1.4.xml";
+	private static final ChangelogFile CHANGELOG_FILE = ChangelogFile.V1_3_TO_V1_4;
 
 	private RexsModel newModel;
 	private final RexsModel oldModel;
 	private final boolean strictMode;
 
-	private RexsChangelogFile.RexsChangelog changelog;
+	private RexsChangelog changelog;
 	private UpgradeNotifications notifications = new UpgradeNotifications();
 
 	public ModelUpgraderV13toV14(RexsModel model, boolean strictMode) {
@@ -42,14 +40,11 @@ public class ModelUpgraderV13toV14 {
 		this.newModel = new RexsModel(model);
 		this.strictMode = strictMode;
 
-		try (InputStream stream = this.getClass().getResourceAsStream(CHANGELOG_FILENAME)) {
-			changelog = RexsChangelogFile.load(stream);
-		} catch(IOException ex) {
-			System.err.println(ex);
-		} catch (JAXBException ex) {
+		try {
+			this.changelog = ChangelogResolver.getInstance().resolve(CHANGELOG_FILE);
+		} catch(RexsUpgradeException ex) {
 			System.err.println(ex);
 		}
-
 	}
 
 	public ModelUpgraderResult doupgrade() throws RexsUpgradeException {
