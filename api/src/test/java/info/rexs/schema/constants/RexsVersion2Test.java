@@ -127,7 +127,10 @@ public class RexsVersion2Test {
 	@Test
 	public void findBySchema_whenSchemaVersionMatchesButProviderDoesNot_thenReturnsUnknown() {
 		RexsVersion2.create("1.0", "provider1", "1.0");
+		RexsVersion2.create("200.0", "provider200", "200.0 provider200");
 		assertEquals(RexsVersion2.UNKNOWN, RexsVersion2.findBySchema("1.0", "provider2"));
+		assertEquals(RexsVersion2.UNKNOWN, RexsVersion2.findBySchema("99.99", ""));
+		assertEquals(RexsVersion2.UNKNOWN, RexsVersion2.findBySchema("200.0", ""));
 	}
 
 	@Test
