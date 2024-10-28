@@ -13,11 +13,21 @@ public class RexsVersion2Test {
 
 	@Test
 	public void create_whenValidInput_thenCreatesVersion() {
+		// provider-specific version
 		RexsVersion2 version = RexsVersion2.create("1.0", "provider", "1.0");
 		assertNotNull(version);
 		assertEquals("1.0", version.getSchemaVersion());
 		assertEquals("provider", version.getSchemaProvider());
 		assertEquals("1.0", version.getModelVersion());
+		assertEquals(10000, version.getNumericVersion());
+
+		// provider-specific DEV version
+		version = RexsVersion2.create("DEV", "ACME", "DEVACME");
+		assertNotNull(version);
+		assertEquals("DEV", version.getSchemaVersion());
+		assertEquals("ACME", version.getSchemaProvider());
+		assertEquals("DEVACME", version.getModelVersion());
+		assertEquals(Integer.MAX_VALUE, version.getNumericVersion());
 	}
 
 	@Test

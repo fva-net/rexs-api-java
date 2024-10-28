@@ -70,7 +70,8 @@ public class RexsVersion2 {
 		}
 
 		// assure that the schema version follows X.X pattern
-		if (!schemaVersion.matches("\\d+\\.\\d+")) throw new IllegalArgumentException("schemaVersion must follow the pattern X.X");
+		if (!schemaVersion.matches("\\d+\\.\\d+") && !schemaVersion.equalsIgnoreCase("DEV"))
+			throw new IllegalArgumentException("schemaVersion must follow the pattern X.X");
 
 		// create the primary version
 		RexsVersion2 primaryVersion = new RexsVersion2(schemaVersion, schemaProvider, primaryModelVersion);
@@ -164,7 +165,7 @@ public class RexsVersion2 {
 		}
 
 		// return max value for DEV
-		if (this == DEV) {
+		if (this.getSchemaVersion().equalsIgnoreCase("DEV")) {
 			return Integer.MAX_VALUE;
 		}
 
