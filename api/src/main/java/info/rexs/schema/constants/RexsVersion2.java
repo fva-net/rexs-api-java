@@ -115,6 +115,42 @@ public class RexsVersion2 {
 	}
 
 	/**
+	 * Finds a version by its schema version and schema provider.
+	 *
+	 * @param schemaVersion  The schema version.
+	 * @param schemaProvider The schema provider.
+	 * @return The corresponding RexsVersion2 object, or null if not found.
+	 */
+	public static RexsVersion2 findBySchema(String schemaVersion, String schemaProvider) {
+		// null-check
+		if (schemaVersion == null) {
+			return UNKNOWN;
+		}
+
+		// replace empty schema provider with null
+		if (schemaProvider != null && schemaProvider.isEmpty()) {
+			schemaProvider = null;
+		}
+
+		// check for registered versions (both with and without schema provider)
+		for (RexsVersion2 version : allModelVersions.values()) {
+			if(schemaProvider == null) {
+				if (schemaVersion.equalsIgnoreCase(version.getSchemaVersion()) && version.schemaProvider == null) {
+					return version;
+				}
+			}
+			else {
+				if (schemaVersion.equalsIgnoreCase(version.getSchemaVersion()) && schemaProvider.equalsIgnoreCase(version.getSchemaProvider())) {
+					return version;
+				}
+			}
+		}
+
+		// return unknown if nothing matches
+		return UNKNOWN;
+	}
+
+	/**
 	 * Gets the schema version.
 	 *
 	 * @return The schema version.

@@ -102,6 +102,41 @@ public class RexsVersion2Test {
 	}
 
 	@Test
+	public void findBySchema_whenSchemaVersionIsNull_thenReturnsUnknown() {
+		assertEquals(RexsVersion2.UNKNOWN, RexsVersion2.findBySchema(null, "provider"));
+	}
+
+	@Test
+	public void findBySchema_whenSchemaProviderIsEmpty_thenTreatAsNull() {
+		RexsVersion2 version = RexsVersion2.create("1.0", null, "1.0");
+		assertEquals(version, RexsVersion2.findBySchema("1.0", ""));
+	}
+
+	@Test
+	public void findBySchema_whenSchemaVersionAndProviderMatch_thenReturnsVersion() {
+		RexsVersion2 version = RexsVersion2.create("1.0", "provider", "1.0");
+		assertEquals(version, RexsVersion2.findBySchema("1.0", "provider"));
+	}
+
+	@Test
+	public void findBySchema_whenSchemaVersionMatchesWithoutProvider_thenReturnsVersion() {
+		RexsVersion2 version = RexsVersion2.create("1.0", null, "1.0");
+		assertEquals(version, RexsVersion2.findBySchema("1.0", null));
+	}
+
+	@Test
+	public void findBySchema_whenSchemaVersionMatchesButProviderDoesNot_thenReturnsUnknown() {
+		RexsVersion2.create("1.0", "provider1", "1.0");
+		assertEquals(RexsVersion2.UNKNOWN, RexsVersion2.findBySchema("1.0", "provider2"));
+	}
+
+	@Test
+	public void findBySchema_whenSchemaVersionDoesNotMatch_thenReturnsUnknown() {
+		RexsVersion2.create("1.0", "provider", "1.0");
+		assertEquals(RexsVersion2.UNKNOWN, RexsVersion2.findBySchema("7.0", "provider"));
+	}
+
+	@Test
 	public void equals_whenSameSchemaAndProvider_thenReturnsTrue() {
 		// without provider
 		RexsVersion2 version1 = RexsVersion2.create("1.0", null, "1.0");
