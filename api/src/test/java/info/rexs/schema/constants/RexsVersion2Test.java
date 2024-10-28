@@ -3,9 +3,11 @@ package info.rexs.schema.constants;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class RexsVersion2Test {
 
@@ -139,4 +141,119 @@ public class RexsVersion2Test {
 		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider2", "1.0");
 		assertNotEquals(version1.hashCode(), version2.hashCode());
 	}
+
+	@Test
+	public void getNumericVersion_whenUnknownVersion_thenReturnsMinusOne() {
+		assertEquals(-1, RexsVersion2.UNKNOWN.getNumericVersion());
+	}
+
+	@Test
+	public void getNumericVersion_whenDevVersion_thenReturnsMaxValue() {
+		assertEquals(Integer.MAX_VALUE, RexsVersion2.DEV.getNumericVersion());
+	}
+
+	@Test
+	public void getNumericVersion_whenValidVersion_thenReturnsNumericValue() {
+		RexsVersion2 version = RexsVersion2.create("1.0", "provider", "1.0");
+		assertEquals(10000, version.getNumericVersion());
+
+		version = RexsVersion2.create("2.5", "provider", "2.5");
+		assertEquals(20500, version.getNumericVersion());
+	}
+
+	@Test
+	public void compareTo_whenVersionsAreEqual_thenReturnsZero() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.1");
+		assertEquals(0, version1.compareTo(version2));
+	}
+
+	@Test
+	public void compareTo_whenThisVersionIsLessThanOther_thenReturnsNegative() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("2.0", "provider", "2.0");
+		assertTrue(version1.compareTo(version2) < 0);
+	}
+
+	@Test
+	public void compareTo_whenThisVersionIsGreaterThanOther_thenReturnsPositive() {
+		RexsVersion2 version1 = RexsVersion2.create("2.0", "provider", "2.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.0");
+		assertTrue(version1.compareTo(version2) > 0);
+	}
+
+	@Test
+	public void isLessThan_whenThisVersionIsLessThanOther_thenReturnsTrue() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("2.0", "provider", "2.0");
+		assertTrue(version1.isLessThan(version2));
+	}
+
+	@Test
+	public void isLessThan_whenThisVersionIsNotLessThanOther_thenReturnsFalse() {
+		RexsVersion2 version1 = RexsVersion2.create("2.0", "provider", "2.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.0");
+		assertFalse(version1.isLessThan(version2));
+	}
+
+	@Test
+	public void isLessThanOrEquivalentTo_whenThisVersionIsLessThanOrEqualToOther_thenReturnsTrue() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("2.0", "provider", "2.0");
+		RexsVersion2 version3 = RexsVersion2.create("1.0", "provider", "1.1");
+		assertTrue(version1.isLessThanOrEquivalentTo(version2));
+		assertTrue(version1.isLessThanOrEquivalentTo(version3));
+	}
+
+	@Test
+	public void isLessThanOrEquivalentTo_whenThisVersionIsNotLessThanOrEqualToOther_thenReturnsFalse() {
+		RexsVersion2 version1 = RexsVersion2.create("2.0", "provider", "2.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.0");
+		assertFalse(version1.isLessThanOrEquivalentTo(version2));
+	}
+
+	@Test
+	public void isGreaterThan_whenThisVersionIsGreaterThanOther_thenReturnsTrue() {
+		RexsVersion2 version1 = RexsVersion2.create("2.0", "provider", "2.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.0");
+		assertTrue(version1.isGreaterThan(version2));
+	}
+
+	@Test
+	public void isGreaterThan_whenThisVersionIsNotGreaterThanOther_thenReturnsFalse() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("2.0", "provider", "2.0");
+		assertFalse(version1.isGreaterThan(version2));
+	}
+
+	@Test
+	public void isGreaterThanOrEquivalentTo_whenThisVersionIsGreaterThanOrEqualToOther_thenReturnsTrue() {
+		RexsVersion2 version1 = RexsVersion2.create("2.0", "provider", "2.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version3 = RexsVersion2.create("2.0", "provider", "2.1");
+		assertTrue(version1.isGreaterThanOrEquivalentTo(version2));
+		assertTrue(version1.isGreaterThanOrEquivalentTo(version3));
+	}
+
+	@Test
+	public void isGreaterThanOrEquivalentTo_whenThisVersionIsNotGreaterThanOrEqualToOther_thenReturnsFalse() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("2.0", "provider", "2.0");
+		assertFalse(version1.isGreaterThanOrEquivalentTo(version2));
+	}
+
+	@Test
+	public void isEquivalentTo_whenVersionsAreEqual_thenReturnsTrue() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("1.0", "provider", "1.1");
+		assertTrue(version1.isEquivalentTo(version2));
+	}
+
+	@Test
+	public void isEquivalentTo_whenVersionsAreNotEqual_thenReturnsFalse() {
+		RexsVersion2 version1 = RexsVersion2.create("1.0", "provider", "1.0");
+		RexsVersion2 version2 = RexsVersion2.create("2.0", "provider", "2.0");
+		assertFalse(version1.isEquivalentTo(version2));
+	}
+
 }
