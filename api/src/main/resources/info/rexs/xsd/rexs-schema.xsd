@@ -15,17 +15,17 @@
   the License.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified" >
+			xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified">
 
 	<xsd:element name="rexsSchema">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="units" minOccurs="0"/>
-				<xsd:element ref="valueTypes" minOccurs="0"/>
-				<xsd:element ref="components" minOccurs="0"/>
-				<xsd:element ref="attributes" minOccurs="0"/>
-				<xsd:element ref="componentAttributeMappings" minOccurs="0"/>
-				<xsd:element ref="relations" minOccurs="0"/>
+				<xsd:element name="units" type="unit" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="valueTypes" type="valueType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="components" type="component" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="attributes" type="attribute" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="componentAttributeMappings" type="componentAttributeMapping" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="relations" type="relation" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="version" type="xsd:string" use="required"/>
 			<xsd:attribute name="status" type="versionStatusType" use="required"/>
@@ -34,164 +34,74 @@
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="units">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="unit" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="unit">
+		<xsd:attribute name="id" type="xsd:int" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="valueTypes">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="valueType" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="valueType">
+		<xsd:attribute name="id" type="xsd:int" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="components">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="component" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="component">
+		<xsd:attribute name="numericId" type="xsd:int" use="required"/>
+		<xsd:attribute name="componentId" type="xsd:string" use="required"/>
+		<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
+		<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
+		<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="attributes">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="attribute">
+		<xsd:sequence>
+			<xsd:element name="enumValues" type="enumValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="numericId" type="xsd:int" use="required"/>
+		<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
+		<xsd:attribute name="valueType" type="xsd:int" use="required"/>
+		<xsd:attribute name="unit" type="xsd:int" use="required"/>
+		<xsd:attribute name="symbol" type="xsd:string"/>
+		<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
+		<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
+		<xsd:attribute name="rangeMin" type="xsd:double"/>
+		<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean"/>
+		<xsd:attribute name="rangeMax" type="xsd:double"/>
+		<xsd:attribute name="rangeMaxIntervalOpen" type="xsd:boolean"/>
+		<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="enumValues">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="enumValue" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="enumValue">
+		<xsd:attribute name="value" type="xsd:string" use="required"/>
+		<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
+		<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="componentAttributeMappings">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="componentAttributeMapping" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="componentAttributeMapping">
+		<xsd:attribute name="componentId" type="xsd:string" use="required"/>
+		<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
+		<xsd:attribute name="attributeNumericId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="relations">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="relation" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="relation">
+		<xsd:sequence>
+			<xsd:element name="roles" type="role" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="allowedCombinations" type="allowedCombination" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="numericId" type="xsd:int" use="required"/>
+		<xsd:attribute name="relationId" type="xsd:string" use="required"/>
+		<xsd:attribute name="orderRequired" type="xsd:boolean" use="required"/>
+		<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="roles">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="role" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="role">
+		<xsd:attribute name="roleId" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="allowedCombinations">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="allowedCombination" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="unit">
-		<xsd:complexType>
-			<xsd:attribute name="id" type="xsd:int" use="required"/>
-			<xsd:attribute name="name" type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="valueType">
-		<xsd:complexType>
-			<xsd:attribute name="id" type="xsd:int" use="required"/>
-			<xsd:attribute name="name" type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="component">
-		<xsd:complexType>
-			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
-			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
-			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
-			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
-			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="attribute">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="enumValues" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
-			<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
-			<xsd:attribute name="valueType" type="xsd:int" use="required"/>
-			<xsd:attribute name="unit" type="xsd:int" use="required"/>
-			<xsd:attribute name="symbol" type="xsd:string"/>
-			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
-			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
-			<xsd:attribute name="rangeMin" type="xsd:double"/>
-			<xsd:attribute name="rangeMinIntervalOpen" type="xsd:boolean"/>
-			<xsd:attribute name="rangeMax" type="xsd:double"/>
-			<xsd:attribute name="rangeMaxIntervalOpen" type="xsd:boolean"/>
-			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="enumValue">
-		<xsd:complexType>
-			<xsd:attribute name="value" type="xsd:string" use="required"/>
-			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
-			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="componentAttributeMapping">
-		<xsd:complexType>
-			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
-			<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
-			<xsd:attribute name="attributeNumericId" type="xsd:int" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="relation">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="roles" minOccurs="0"/>
-				<xsd:element ref="allowedCombinations" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
-			<xsd:attribute name="relationId" type="xsd:string" use="required"/>
-			<xsd:attribute name="orderRequired" type="xsd:boolean" use="required"/>
-			<xsd:attribute name="databaseId" type="xsd:int" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="role">
-		<xsd:complexType>
-			<xsd:attribute name="roleId" type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="allowedCombination">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="allowedCombinationRole" maxOccurs="unbounded" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="allowedCombination">
+		<xsd:sequence>
+			<xsd:element ref="allowedCombinationRole" maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
 
 	<xsd:element name="allowedCombinationRole">
 		<xsd:complexType>
