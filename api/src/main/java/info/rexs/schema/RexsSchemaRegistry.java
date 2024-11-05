@@ -101,8 +101,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		generateAttributeTypeMap(version, rexsModel);
 		generateAttributeUnitMap(version, rexsModel);
 		generateAttributeComponentMappings(version, rexsModel);
-		if (version.isGreater(RexsStandardVersions.V1_6))
-			generateRelationsWithAllowedCombinations(version, rexsModel);
+		generateRelationsWithAllowedCombinations(version, rexsModel);
 	}
 
 	private void generateRelationsWithAllowedCombinations(RexsVersion version, RexsSchema rexsModel) {
