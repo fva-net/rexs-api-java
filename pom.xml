@@ -22,7 +22,7 @@
 
 	<groupId>io.github.fva-net</groupId>
 	<artifactId>rexs-api-java-project</artifactId>
-	<version>0.10.0</version>
+	<version>0.10.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>REXS-API-Java :: Project</name>
