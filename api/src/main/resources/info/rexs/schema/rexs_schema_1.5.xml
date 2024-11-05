@@ -81,90 +81,90 @@
         <valueType id="17" name="string_matrix"/>
     </valueTypes>
     <components>
-        <component componentId="additional_mass" nameEn="Additional mass" nameDe="Zusatzmasse" databaseId="1139"/>
-        <component componentId="assembly_group" nameEn="Assembly group" nameDe="Baugruppe" databaseId="1140"/>
-        <component componentId="bevel_gear" nameEn="Bevel gear" nameDe="Kegelrad" databaseId="1141"/>
-        <component componentId="bevel_gear_flank" nameEn="Flank of bevel gear" nameDe="Flanke eines Kegelrades" databaseId="1142"/>
-        <component componentId="bevel_gear_manufacturing_settings" nameEn="Bevel gear manufacturing settings" nameDe="Einstellungen für die Herstellung von Kegelrädern" databaseId="1143"/>
-        <component componentId="bevel_gear_tool" nameEn="Bevel gear tool" nameDe="Kegelrad Messer" databaseId="1144"/>
-        <component componentId="bevel_stage" nameEn="Bevel stage" nameDe="Kegelradstufe" databaseId="1145"/>
-        <component componentId="bevel_stage_gear_data" nameEn="Bevel stage gear data" nameDe="Kegelradbezogene Eingriffsdaten" databaseId="1146"/>
-        <component componentId="concept_bearing" nameEn="Concept bearing" nameDe="Konzeptlager" databaseId="1147"/>
-        <component componentId="coupling" nameEn="Coupling" nameDe="Koppelstelle" databaseId="1148"/>
-        <component componentId="cutter_wheel_tool" nameEn="Cutter wheel tool" nameDe="Schneidrad" databaseId="1149"/>
-        <component componentId="cylindrical_gear" nameEn="Cylindrical gear" nameDe="Stirnrad" databaseId="1150"/>
-        <component componentId="cylindrical_gear_flank" nameEn="Flank of cylindrical gear" nameDe="Flanke eines Stirnrad" databaseId="1151"/>
-        <component componentId="cylindrical_gear_manufacturing_settings" nameEn="Cylindrical gear manufacturing settings" nameDe="Einstellungen für die Herstellung von Stirnrädern" databaseId="1152"/>
-        <component componentId="cylindrical_interference_fit" nameEn="Cylindrical interference fit" nameDe="Zylindrischer Pressverband" databaseId="1153"/>
-        <component componentId="cylindrical_stage" nameEn="Cylindrical stage" nameDe="Stirnradstufe" databaseId="1154"/>
-        <component componentId="cylindrical_stage_gear_data" nameEn="Cylindrical stage gear data" nameDe="Stirnradbezogene Eingriffsdaten" databaseId="1155"/>
-        <component componentId="element_list" nameEn="Element list" nameDe="Elementliste" databaseId="1156"/>
-        <component componentId="end_relief_datum_face" nameEn="End relief datum face" nameDe="Endrücknahme Bezugsseite" databaseId="1157"/>
-        <component componentId="end_relief_non_datum_face" nameEn="End relief non-datum face" nameDe="Endrücknahme Nicht-Bezugsseite" databaseId="1158"/>
-        <component componentId="external_load" nameEn="External load" nameDe="Externe Belastung" databaseId="1159"/>
-        <component componentId="feather_key_connection" nameEn="Feather key connection" nameDe="Passfederverbindung" databaseId="1160"/>
-        <component componentId="fem_data_set" nameEn="FEM data set" nameDe="FEM-Daten" databaseId="1161"/>
-        <component componentId="fkm_evaluation_point" nameEn="FKM evaluation point" nameDe="Auswertepunkt FKM" databaseId="1162"/>
-        <component componentId="gear_casing" nameEn="Gear casing" nameDe="Gehäuse" databaseId="1163"/>
-        <component componentId="gear_flank_data_set" nameEn="Gear flank data of a point list" nameDe="Zahnflankendaten einer Punkteliste" databaseId="1164"/>
-        <component componentId="gear_root_data_set" nameEn="Gear root data of a point list" nameDe="Zahnfußdaten einer Punkteliste" databaseId="1165"/>
-        <component componentId="gear_unit" nameEn="Gear unit" nameDe="Getriebeeinheit" databaseId="1166"/>
-        <component componentId="helix_crowning" nameEn="Helix crowning" nameDe="Flankenlinien-Balligkeit" databaseId="1167"/>
-        <component componentId="helix_deviation" nameEn="Helix deviation" nameDe="Flankenlinien-Abweichung" databaseId="1168"/>
-        <component componentId="helix_slope" nameEn="Helix slope" nameDe="Flankenlinien-Winkelmodifikation" databaseId="1169"/>
-        <component componentId="involute_spline_connection" nameEn="Involute spline connection" nameDe="Evolventische Passverzahnung" databaseId="1170"/>
-        <component componentId="involute_spline_gear_flank" nameEn="Involute spline gear flank" nameDe="Zahnflanke eines Passverzahnungsrades" databaseId="1171"/>
-        <component componentId="involute_spline_gear_hub" nameEn="Involute spline gear hub" nameDe="Evolventische Zahnnabe" databaseId="1172"/>
-        <component componentId="involute_spline_gear_shaft" nameEn="Involute spline gear shaft" nameDe="Evolventische Zahnwelle" databaseId="1173"/>
-        <component componentId="involute_spline_stage_gear_data" nameEn="Involute spline stage gear data" nameDe="Radbezogene Eingriffsdaten (Evolventische Passverzahnung)" databaseId="1174"/>
-        <component componentId="joint_section" nameEn="Joint section" nameDe="Fugenabschnitt" databaseId="1175"/>
-        <component componentId="lubricant" nameEn="Lubricant" nameDe="Schmierstoff" databaseId="1176"/>
-        <component componentId="material" nameEn="Material" nameDe="Werkstoff" databaseId="1177"/>
-        <component componentId="meshing_contact_gear_data_set" nameEn="Meshing contact gear data of a point list" nameDe="Eingriffsbezogene Zahnraddaten einer Punkteliste" databaseId="1178"/>
-        <component componentId="meshing_contact_stage_data_set" nameEn="Meshing contact stage data of a point list" nameDe="Eingriffsbezogene Stufendaten einer Punkteliste" databaseId="1179"/>
-        <component componentId="notch_effect_shaft_hub_connection" nameEn="Notch effect of shaft-hub-connection" nameDe="Kerbwirkung der Welle-Nabe-Verbindung" databaseId="1180"/>
-        <component componentId="planet_carrier" nameEn="Planetary carrier" nameDe="Planetenträger" databaseId="1181"/>
-        <component componentId="planetary_stage" nameEn="Planetary stage" nameDe="Planetenstufe" databaseId="1182"/>
-        <component componentId="point_list" nameEn="Point list" nameDe="Punkteliste" databaseId="1183"/>
-        <component componentId="profile_crowning" nameEn="Profile crowning" nameDe="Profil-Balligkeit" databaseId="1184"/>
-        <component componentId="profile_deviation" nameEn="Profile deviation" nameDe="Profil-Abweichung" databaseId="1185"/>
-        <component componentId="profile_slope" nameEn="Profile slope modification" nameDe="Profil-Winkelmodifikation" databaseId="1186"/>
-        <component componentId="profile_twist" nameEn="Profile twist" nameDe="Profil-Schränkung" databaseId="1187"/>
-        <component componentId="rack_shaped_tool" nameEn="Rack-shaped tool" nameDe="Zahnstangenförmiges Werkzeug" databaseId="1188"/>
-        <component componentId="rectangular_groove" nameEn="Rectangular groove" nameDe="Rechtecknut" databaseId="1189"/>
-        <component componentId="reduction_point" nameEn="Reduction point" nameDe="Reduktionspunkt" databaseId="1190"/>
-        <component componentId="ring_gear" nameEn="Ring gear" nameDe="Hohlrad" databaseId="1191"/>
-        <component componentId="rolling_bearing_row" nameEn="Rolling bearing row" nameDe="Wälzlagerreihe" databaseId="1192"/>
-        <component componentId="rolling_bearing_with_catalog_geometry" nameEn="Rolling bearing with catalog data" nameDe="Wälzlager mit Katalogdaten" databaseId="1193"/>
-        <component componentId="rolling_bearing_with_detailed_geometry" nameEn="Rolling bearing with detailed geometry" nameDe="Wälzlager mit Innengeometrie" databaseId="1194"/>
-        <component componentId="rolling_element" nameEn="Rolling element" nameDe="Wälzkörper" databaseId="1195"/>
-        <component componentId="rolling_element_contact" nameEn="Rolling element contact" nameDe="Wälzkörperkontakt" databaseId="1196"/>
-        <component componentId="root_relief" nameEn="Root relief" nameDe="Fußrücknahme" databaseId="1197"/>
-        <component componentId="round_groove" nameEn="Round groove" nameDe="Rundkerbe" databaseId="1198"/>
-        <component componentId="shaft" nameEn="Shaft" nameDe="Welle" databaseId="1199"/>
-        <component componentId="shaft_section" nameEn="Shaft section" nameDe="Wellenabschnitt" databaseId="1200"/>
-        <component componentId="shaft_shoulder" nameEn="Shaft shoulder" nameDe="Wellenabsatz" databaseId="1201"/>
-        <component componentId="shaft_shoulder_with_undercut" nameEn="Shaft shoulder with undercut" nameDe="Wellenabsatz mit Freistich" databaseId="1202"/>
-        <component componentId="side_plate" nameEn="Side plate" nameDe="Wange" databaseId="1203"/>
-        <component componentId="slide_bearing" nameEn="Slide bearing" nameDe="Gleitlager" databaseId="1204"/>
-        <component componentId="sn_curve" nameEn="S/N Curve" nameDe="Wöhlerlinie" databaseId="1205"/>
-        <component componentId="switchable_coupling" nameEn="Switchable coupling" nameDe="Schaltbare Kupplung" databaseId="1206"/>
-        <component componentId="tapered_interference_fit" nameEn="Tapered interference fit" nameDe="Kegeliger Pressverband" databaseId="1207"/>
-        <component componentId="tip_relief" nameEn="Tip relief" nameDe="Kopfrücknahme" databaseId="1208"/>
-        <component componentId="topographical_modification" nameEn="Topographical flank modification" nameDe="Topografische Flankenmodifikation" databaseId="1209"/>
-        <component componentId="transverse_bore" nameEn="Transverse bore" nameDe="Querbohrung" databaseId="1210"/>
-        <component componentId="triangular_root_relief" nameEn="Triangular root relief" nameDe="Dreieckförmige Fußrücknahme" databaseId="1211"/>
-        <component componentId="triangular_tip_relief" nameEn="Triangular tip relief" nameDe="Dreieckförmige Kopfrücknahme" databaseId="1212"/>
-        <component componentId="v_notch" nameEn="V-notch" nameDe="Spitzkerbe" databaseId="1213"/>
-        <component componentId="worm_gear" nameEn="Worm gear" nameDe="Schnecke" databaseId="1214"/>
-        <component componentId="worm_gear_flank" nameEn="Flank of worm gear or worm wheel" nameDe="Zahnflanke einer Schnecke oder eines Schneckenrades" databaseId="1215"/>
-        <component componentId="worm_gear_manufacturing_settings" nameEn="Worm gear and worm wheel manufacturing settings" nameDe="Einstellungen für die Herstellung von Schnecken und Schneckenrädern" databaseId="1216"/>
-        <component componentId="worm_grinding_disc_tool" nameEn="Worm grinding disc" nameDe="Schneckenschleifscheibe" databaseId="1217"/>
-        <component componentId="worm_stage" nameEn="Worm stage" nameDe="Schneckenstufe" databaseId="1218"/>
-        <component componentId="worm_stage_gear_data" nameEn="Worm stage gear data" nameDe="Radbezogene Eingriffsdaten (Schneckenstufe)" databaseId="1219"/>
-        <component componentId="worm_wheel" nameEn="Worm wheel" nameDe="Schneckenrad" databaseId="1220"/>
-        <component componentId="worm_wheel_hob_tool" nameEn="Worm wheel hob" nameDe="Schneckenradfräser" databaseId="1221"/>
-        <component componentId="zero_degree_grinding_disk_tool" nameEn="0° grinding disk tool" nameDe="0° Schleifscheibe" databaseId="1222"/>
+        <component numericId="82" componentId="additional_mass" nameEn="Additional mass" nameDe="Zusatzmasse" databaseId="1139"/>
+        <component numericId="34" componentId="assembly_group" nameEn="Assembly group" nameDe="Baugruppe" databaseId="1140"/>
+        <component numericId="1" componentId="bevel_gear" nameEn="Bevel gear" nameDe="Kegelrad" databaseId="1141"/>
+        <component numericId="80" componentId="bevel_gear_flank" nameEn="Flank of bevel gear" nameDe="Flanke eines Kegelrades" databaseId="1142"/>
+        <component numericId="84" componentId="bevel_gear_manufacturing_settings" nameEn="Bevel gear manufacturing settings" nameDe="Einstellungen für die Herstellung von Kegelrädern" databaseId="1143"/>
+        <component numericId="86" componentId="bevel_gear_tool" nameEn="Bevel gear tool" nameDe="Kegelrad Messer" databaseId="1144"/>
+        <component numericId="2" componentId="bevel_stage" nameEn="Bevel stage" nameDe="Kegelradstufe" databaseId="1145"/>
+        <component numericId="77" componentId="bevel_stage_gear_data" nameEn="Bevel stage gear data" nameDe="Kegelradbezogene Eingriffsdaten" databaseId="1146"/>
+        <component numericId="3" componentId="concept_bearing" nameEn="Concept bearing" nameDe="Konzeptlager" databaseId="1147"/>
+        <component numericId="28" componentId="coupling" nameEn="Coupling" nameDe="Koppelstelle" databaseId="1148"/>
+        <component numericId="4" componentId="cutter_wheel_tool" nameEn="Cutter wheel tool" nameDe="Schneidrad" databaseId="1149"/>
+        <component numericId="5" componentId="cylindrical_gear" nameEn="Cylindrical gear" nameDe="Stirnrad" databaseId="1150"/>
+        <component numericId="79" componentId="cylindrical_gear_flank" nameEn="Flank of cylindrical gear" nameDe="Flanke eines Stirnrad" databaseId="1151"/>
+        <component numericId="83" componentId="cylindrical_gear_manufacturing_settings" nameEn="Cylindrical gear manufacturing settings" nameDe="Einstellungen für die Herstellung von Stirnrädern" databaseId="1152"/>
+        <component numericId="96" componentId="cylindrical_interference_fit" nameEn="Cylindrical interference fit" nameDe="Zylindrischer Pressverband" databaseId="1153"/>
+        <component numericId="6" componentId="cylindrical_stage" nameEn="Cylindrical stage" nameDe="Stirnradstufe" databaseId="1154"/>
+        <component numericId="76" componentId="cylindrical_stage_gear_data" nameEn="Cylindrical stage gear data" nameDe="Stirnradbezogene Eingriffsdaten" databaseId="1155"/>
+        <component numericId="90" componentId="element_list" nameEn="Element list" nameDe="Elementliste" databaseId="1156"/>
+        <component numericId="43" componentId="end_relief_datum_face" nameEn="End relief datum face" nameDe="Endrücknahme Bezugsseite" databaseId="1157"/>
+        <component numericId="55" componentId="end_relief_non_datum_face" nameEn="End relief non-datum face" nameDe="Endrücknahme Nicht-Bezugsseite" databaseId="1158"/>
+        <component numericId="7" componentId="external_load" nameEn="External load" nameDe="Externe Belastung" databaseId="1159"/>
+        <component numericId="87" componentId="feather_key_connection" nameEn="Feather key connection" nameDe="Passfederverbindung" databaseId="1160"/>
+        <component numericId="99" componentId="fem_data_set" nameEn="FEM data set" nameDe="FEM-Daten" databaseId="1161"/>
+        <component numericId="65" componentId="fkm_evaluation_point" nameEn="FKM evaluation point" nameDe="Auswertepunkt FKM" databaseId="1162"/>
+        <component numericId="10" componentId="gear_casing" nameEn="Gear casing" nameDe="Gehäuse" databaseId="1163"/>
+        <component numericId="92" componentId="gear_flank_data_set" nameEn="Gear flank data of a point list" nameDe="Zahnflankendaten einer Punkteliste" databaseId="1164"/>
+        <component numericId="91" componentId="gear_root_data_set" nameEn="Gear root data of a point list" nameDe="Zahnfußdaten einer Punkteliste" databaseId="1165"/>
+        <component numericId="11" componentId="gear_unit" nameEn="Gear unit" nameDe="Getriebeeinheit" databaseId="1166"/>
+        <component numericId="42" componentId="helix_crowning" nameEn="Helix crowning" nameDe="Flankenlinien-Balligkeit" databaseId="1167"/>
+        <component numericId="60" componentId="helix_deviation" nameEn="Helix deviation" nameDe="Flankenlinien-Abweichung" databaseId="1168"/>
+        <component numericId="41" componentId="helix_slope" nameEn="Helix slope" nameDe="Flankenlinien-Winkelmodifikation" databaseId="1169"/>
+        <component numericId="100" componentId="involute_spline_connection" nameEn="Involute spline connection" nameDe="Evolventische Passverzahnung" databaseId="1170"/>
+        <component numericId="104" componentId="involute_spline_gear_flank" nameEn="Involute spline gear flank" nameDe="Zahnflanke eines Passverzahnungsrades" databaseId="1171"/>
+        <component numericId="102" componentId="involute_spline_gear_hub" nameEn="Involute spline gear hub" nameDe="Evolventische Zahnnabe" databaseId="1172"/>
+        <component numericId="101" componentId="involute_spline_gear_shaft" nameEn="Involute spline gear shaft" nameDe="Evolventische Zahnwelle" databaseId="1173"/>
+        <component numericId="103" componentId="involute_spline_stage_gear_data" nameEn="Involute spline stage gear data" nameDe="Radbezogene Eingriffsdaten (Evolventische Passverzahnung)" databaseId="1174"/>
+        <component numericId="95" componentId="joint_section" nameEn="Joint section" nameDe="Fugenabschnitt" databaseId="1175"/>
+        <component numericId="14" componentId="lubricant" nameEn="Lubricant" nameDe="Schmierstoff" databaseId="1176"/>
+        <component numericId="15" componentId="material" nameEn="Material" nameDe="Werkstoff" databaseId="1177"/>
+        <component numericId="93" componentId="meshing_contact_gear_data_set" nameEn="Meshing contact gear data of a point list" nameDe="Eingriffsbezogene Zahnraddaten einer Punkteliste" databaseId="1178"/>
+        <component numericId="94" componentId="meshing_contact_stage_data_set" nameEn="Meshing contact stage data of a point list" nameDe="Eingriffsbezogene Stufendaten einer Punkteliste" databaseId="1179"/>
+        <component numericId="98" componentId="notch_effect_shaft_hub_connection" nameEn="Notch effect of shaft-hub-connection" nameDe="Kerbwirkung der Welle-Nabe-Verbindung" databaseId="1180"/>
+        <component numericId="30" componentId="planet_carrier" nameEn="Planetary carrier" nameDe="Planetenträger" databaseId="1181"/>
+        <component numericId="29" componentId="planetary_stage" nameEn="Planetary stage" nameDe="Planetenstufe" databaseId="1182"/>
+        <component numericId="89" componentId="point_list" nameEn="Point list" nameDe="Punkteliste" databaseId="1183"/>
+        <component numericId="40" componentId="profile_crowning" nameEn="Profile crowning" nameDe="Profil-Balligkeit" databaseId="1184"/>
+        <component numericId="59" componentId="profile_deviation" nameEn="Profile deviation" nameDe="Profil-Abweichung" databaseId="1185"/>
+        <component numericId="39" componentId="profile_slope" nameEn="Profile slope modification" nameDe="Profil-Winkelmodifikation" databaseId="1186"/>
+        <component numericId="61" componentId="profile_twist" nameEn="Profile twist" nameDe="Profil-Schränkung" databaseId="1187"/>
+        <component numericId="16" componentId="rack_shaped_tool" nameEn="Rack-shaped tool" nameDe="Zahnstangenförmiges Werkzeug" databaseId="1188"/>
+        <component numericId="70" componentId="rectangular_groove" nameEn="Rectangular groove" nameDe="Rechtecknut" databaseId="1189"/>
+        <component numericId="35" componentId="reduction_point" nameEn="Reduction point" nameDe="Reduktionspunkt" databaseId="1190"/>
+        <component numericId="33" componentId="ring_gear" nameEn="Ring gear" nameDe="Hohlrad" databaseId="1191"/>
+        <component numericId="17" componentId="rolling_bearing_row" nameEn="Rolling bearing row" nameDe="Wälzlagerreihe" databaseId="1192"/>
+        <component numericId="18" componentId="rolling_bearing_with_catalog_geometry" nameEn="Rolling bearing with catalog data" nameDe="Wälzlager mit Katalogdaten" databaseId="1193"/>
+        <component numericId="19" componentId="rolling_bearing_with_detailed_geometry" nameEn="Rolling bearing with detailed geometry" nameDe="Wälzlager mit Innengeometrie" databaseId="1194"/>
+        <component numericId="20" componentId="rolling_element" nameEn="Rolling element" nameDe="Wälzkörper" databaseId="1195"/>
+        <component numericId="66" componentId="rolling_element_contact" nameEn="Rolling element contact" nameDe="Wälzkörperkontakt" databaseId="1196"/>
+        <component numericId="38" componentId="root_relief" nameEn="Root relief" nameDe="Fußrücknahme" databaseId="1197"/>
+        <component numericId="69" componentId="round_groove" nameEn="Round groove" nameDe="Rundkerbe" databaseId="1198"/>
+        <component numericId="22" componentId="shaft" nameEn="Shaft" nameDe="Welle" databaseId="1199"/>
+        <component numericId="23" componentId="shaft_section" nameEn="Shaft section" nameDe="Wellenabschnitt" databaseId="1200"/>
+        <component numericId="67" componentId="shaft_shoulder" nameEn="Shaft shoulder" nameDe="Wellenabsatz" databaseId="1201"/>
+        <component numericId="68" componentId="shaft_shoulder_with_undercut" nameEn="Shaft shoulder with undercut" nameDe="Wellenabsatz mit Freistich" databaseId="1202"/>
+        <component numericId="31" componentId="side_plate" nameEn="Side plate" nameDe="Wange" databaseId="1203"/>
+        <component numericId="24" componentId="slide_bearing" nameEn="Slide bearing" nameDe="Gleitlager" databaseId="1204"/>
+        <component numericId="88" componentId="sn_curve" nameEn="S/N Curve" nameDe="Wöhlerlinie" databaseId="1205"/>
+        <component numericId="26" componentId="switchable_coupling" nameEn="Switchable coupling" nameDe="Schaltbare Kupplung" databaseId="1206"/>
+        <component numericId="97" componentId="tapered_interference_fit" nameEn="Tapered interference fit" nameDe="Kegeliger Pressverband" databaseId="1207"/>
+        <component numericId="37" componentId="tip_relief" nameEn="Tip relief" nameDe="Kopfrücknahme" databaseId="1208"/>
+        <component numericId="44" componentId="topographical_modification" nameEn="Topographical flank modification" nameDe="Topografische Flankenmodifikation" databaseId="1209"/>
+        <component numericId="72" componentId="transverse_bore" nameEn="Transverse bore" nameDe="Querbohrung" databaseId="1210"/>
+        <component numericId="63" componentId="triangular_root_relief" nameEn="Triangular root relief" nameDe="Dreieckförmige Fußrücknahme" databaseId="1211"/>
+        <component numericId="62" componentId="triangular_tip_relief" nameEn="Triangular tip relief" nameDe="Dreieckförmige Kopfrücknahme" databaseId="1212"/>
+        <component numericId="71" componentId="v_notch" nameEn="V-notch" nameDe="Spitzkerbe" databaseId="1213"/>
+        <component numericId="57" componentId="worm_gear" nameEn="Worm gear" nameDe="Schnecke" databaseId="1214"/>
+        <component numericId="81" componentId="worm_gear_flank" nameEn="Flank of worm gear or worm wheel" nameDe="Zahnflanke einer Schnecke oder eines Schneckenrades" databaseId="1215"/>
+        <component numericId="85" componentId="worm_gear_manufacturing_settings" nameEn="Worm gear and worm wheel manufacturing settings" nameDe="Einstellungen für die Herstellung von Schnecken und Schneckenrädern" databaseId="1216"/>
+        <component numericId="73" componentId="worm_grinding_disc_tool" nameEn="Worm grinding disc" nameDe="Schneckenschleifscheibe" databaseId="1217"/>
+        <component numericId="56" componentId="worm_stage" nameEn="Worm stage" nameDe="Schneckenstufe" databaseId="1218"/>
+        <component numericId="78" componentId="worm_stage_gear_data" nameEn="Worm stage gear data" nameDe="Radbezogene Eingriffsdaten (Schneckenstufe)" databaseId="1219"/>
+        <component numericId="58" componentId="worm_wheel" nameEn="Worm wheel" nameDe="Schneckenrad" databaseId="1220"/>
+        <component numericId="74" componentId="worm_wheel_hob_tool" nameEn="Worm wheel hob" nameDe="Schneckenradfräser" databaseId="1221"/>
+        <component numericId="27" componentId="zero_degree_grinding_disk_tool" nameEn="0° grinding disk tool" nameDe="0° Schleifscheibe" databaseId="1222"/>
     </components>
     <attributes>
         <attribute numericId="5406" attributeId="acceleration_factor_according_fva_341" valueType="1" unit="4" nameEn="Acceleration factor according to FVA 341" nameDe="Beschleunigungsfaktor nach FVA 341" rangeMin="0" rangeMinIntervalOpen="false" rangeMaxIntervalOpen="true" databaseId="18706"/>

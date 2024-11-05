@@ -122,6 +122,7 @@
 
 	<xsd:element name="component">
 		<xsd:complexType>
+			<xsd:attribute name="numericId" type="xsd:int" use="required"/>
 			<xsd:attribute name="componentId" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameEn" type="xsd:string" use="required"/>
 			<xsd:attribute name="nameDe" type="xsd:string" use="required"/>

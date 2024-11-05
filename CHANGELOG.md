@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Using JAXB to generate data classes
 - Renaming default branch from "master" to "main"
 - Changed class types on data classes from `BigInteger` and `BigDecimal` to `int` and `double`
+- Added numericId to components in schema files
 
 
 ## [0.9.0] - 2024-10-23
