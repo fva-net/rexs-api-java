@@ -1,150 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified" >
+			xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0" elementFormDefault="qualified">
 
 	<xsd:element name="rexsChangelog">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="componentChanges" minOccurs="0"/>
-				<xsd:element ref="attributeChanges" minOccurs="0"/>
-				<xsd:element ref="mappingChanges"   minOccurs="0"/>
-				<xsd:element ref="relationChanges"  minOccurs="0"/>
+				<xsd:element name="componentChanges" type="componentChange" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="attributeChanges" type="attributeChange" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="mappingChanges" type="mappingChange" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="relationChanges" type="relationChange" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:attribute name="fromVersion" type="xsd:string" use="required"/>
-			<xsd:attribute name="toVersion"   type="xsd:string" use="required"/>
+			<xsd:attribute name="toVersion" type="xsd:string" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="componentChanges">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="componentChange" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="componentChange">
+		<xsd:sequence>
+			<xsd:element name="changedValues" type="changedValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="changeType" use="required"/>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="componentChange">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="type" type="changeType" use="required"/>
-			<xsd:attribute name="id"   type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="attributeChange">
+		<xsd:sequence>
+			<xsd:element name="changedValues" type="changedValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="changeType" use="required"/>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="numericId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="attributeChanges">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="attributeChange" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="mappingChange">
+		<xsd:attribute name="type" type="changeType" use="required"/>
+		<xsd:attribute name="componentId" type="xsd:string" use="required"/>
+		<xsd:attribute name="attributeId" type="xsd:string" use="required"/>
+		<xsd:attribute name="attributeNumericId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="attributeChange">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="type"      type="changeType" use="required"/>
-			<xsd:attribute name="id"        type="xsd:string" use="required"/>
-			<xsd:attribute name="numericId" type="xsd:int"    use="required"/>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="relationChange">
+		<xsd:sequence>
+			<xsd:element name="changedValues" type="changedValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="changeType" use="required"/>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="numericId" type="xsd:int" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="mappingChanges">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="mappingChange" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="changedValue">
+		<xsd:sequence>
+			<xsd:element name="enumValueChanges" type="enumValueChange" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="roleChanges" type="roleChange" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="key" type="xsd:string" use="required"/>
+		<xsd:attribute name="lang" type="xsd:string"/>
+		<xsd:attribute name="oldValue" type="xsd:string"/>
+		<xsd:attribute name="newValue" type="xsd:string"/>
+	</xsd:complexType>
 
-	<xsd:element name="mappingChange">
-		<xsd:complexType>
-			<xsd:attribute name="type"               type="changeType" use="required"/>
-			<xsd:attribute name="componentId"        type="xsd:string" use="required"/>
-			<xsd:attribute name="attributeId"        type="xsd:string" use="required"/>
-			<xsd:attribute name="attributeNumericId" type="xsd:int"    use="required"/>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="enumValueChange">
+		<xsd:sequence>
+			<xsd:element name="changedValues" type="changedValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="changeType" use="required"/>
+		<xsd:attribute name="value" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
-	<xsd:element name="relationChanges">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="relationChange" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="relationChange">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="type"      type="changeType" use="required"/>
-			<xsd:attribute name="id"        type="xsd:string" use="required"/>
-			<xsd:attribute name="numericId" type="xsd:int"    use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="changedValues">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="changedValue" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="changedValue">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="enumValueChanges" minOccurs="0"/>
-				<xsd:element ref="roleChanges" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="key"      type="xsd:string" use="required"/>
-			<xsd:attribute name="lang"     type="xsd:string"/>
-			<xsd:attribute name="oldValue" type="xsd:string"/>
-			<xsd:attribute name="newValue" type="xsd:string"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="enumValueChanges">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="enumValueChange" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="enumValueChange">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="type"  type="changeType" use="required"/>
-			<xsd:attribute name="value" type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="roleChanges">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="roleChange" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="roleChange">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="changedValues" minOccurs="0"/>
-			</xsd:sequence>
-			<xsd:attribute name="type"  type="changeType" use="required"/>
-			<xsd:attribute name="roleId" type="xsd:string" use="required"/>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="roleChange">
+		<xsd:sequence>
+			<xsd:element name="changedValues" type="changedValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="changeType" use="required"/>
+		<xsd:attribute name="roleId" type="xsd:string" use="required"/>
+	</xsd:complexType>
 
 	<xsd:simpleType name="changeType">
 		<xsd:restriction base="xsd:string">
