@@ -35,7 +35,7 @@ Add the dependency to your project:
 <dependency>
     <groupId>io.github.fva-net</groupId>
     <artifactId>rexs-api-java</artifactId>
-    <version>0.9.0</version>
+    <version>0.10.0</version>
 </dependency>
 ```
 

@@ -9,11 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- ???
+
+
+## [0.10.0] - 2024-11-05
+
+### Added
+
+- Added numericId to components in schema files
+
+### Changed
+
 - Using JAXB to generate data classes
 - Renaming default branch from "master" to "main"
 - Changed class types on data classes from `BigInteger` and `BigDecimal` to `int` and `double`
-- Added numericId to components in schema files
 
+### Removed
+
+- Dropped language-dependent schema files
+
+### Fixed
+
+- Relations not loaded in schema for versions lower than 1.6
 
 ## [0.9.0] - 2024-10-23
 
