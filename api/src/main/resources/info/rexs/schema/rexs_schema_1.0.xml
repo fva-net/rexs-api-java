@@ -80,33 +80,33 @@
         <valueType id="17" name="string_matrix"/>
     </valueTypes>
     <components>
-        <component componentId="bevel_gear" nameEn="Bevel gear" nameDe="Kegelrad" databaseId="1"/>
-        <component componentId="bevel_stage" nameEn="Bevel stage" nameDe="Kegelradstufe" databaseId="2"/>
-        <component componentId="concept_bearing" nameEn="Concept bearing" nameDe="Konzeptlager" databaseId="3"/>
-        <component componentId="cutter_wheel_tool" nameEn="Cutter wheel tool" nameDe="Schneidrad" databaseId="4"/>
-        <component componentId="cylindrical_gear" nameEn="Cylindrical gear" nameDe="Stirnrad" databaseId="5"/>
-        <component componentId="cylindrical_stage" nameEn="Cylindrical stage" nameDe="Stirnradstufe" databaseId="6"/>
-        <component componentId="external_load" nameEn="External load" nameDe="Externe Belastung" databaseId="7"/>
-        <component componentId="fixed_coupling" nameEn="Non-switchable coupling" nameDe="Nicht-schaltbare Kupplung" databaseId="8"/>
-        <component componentId="flank_geometry" nameEn="Tooth flank" nameDe="Zahnflanke" databaseId="9"/>
-        <component componentId="gear_casing" nameEn="Gear casing" nameDe="Gehäuse" databaseId="10"/>
-        <component componentId="gear_unit" nameEn="Gear unit" nameDe="Getriebeeinheit" databaseId="11"/>
-        <component componentId="general_gear" nameEn="General gear" nameDe="Zahnrad" databaseId="12"/>
-        <component componentId="general_stage" nameEn="General stage" nameDe="Zahnradstufe" databaseId="13"/>
-        <component componentId="lubricant" nameEn="Lubricant" nameDe="Schmierstoff" databaseId="14"/>
-        <component componentId="material" nameEn="Material" nameDe="Werkstoff" databaseId="15"/>
-        <component componentId="rack_shaped_tool" nameEn="Rack-shaped tool" nameDe="Zahnstangenförmiges Werkzeug" databaseId="16"/>
-        <component componentId="rolling_bearing_row" nameEn="Rolling bearing row" nameDe="Wälzlagerreihe" databaseId="17"/>
-        <component componentId="rolling_bearing_with_catalog_geometry" nameEn="Rolling bearing with catalog data" nameDe="Wälzlager mit Katalogdaten" databaseId="18"/>
-        <component componentId="rolling_bearing_with_detailed_geometry" nameEn="Rolling bearing with detailed geometry" nameDe="Wälzlager mit Innengeometrie" databaseId="19"/>
-        <component componentId="rolling_element" nameEn="Rolling element" nameDe="Wälzkörper" databaseId="20"/>
-        <component componentId="root" nameEn="Model" nameDe="Modell" databaseId="21"/>
-        <component componentId="shaft" nameEn="Shaft" nameDe="Welle" databaseId="22"/>
-        <component componentId="shaft_section" nameEn="Shaft section" nameDe="Wellenabschnitt" databaseId="23"/>
-        <component componentId="slide_bearing" nameEn="Slide bearing" nameDe="Gleitlager" databaseId="24"/>
-        <component componentId="stage_gear_data" nameEn="Stage gear data" nameDe="Radbezogene Eingriffsdaten" databaseId="25"/>
-        <component componentId="switchable_coupling" nameEn="Switchable coupling" nameDe="Schaltbare Kupplung" databaseId="26"/>
-        <component componentId="zero_degree_grinding_disk_tool" nameEn="0° grinding disk tool" nameDe="0° Schleifscheibe" databaseId="27"/>
+        <component numericId="1" componentId="bevel_gear" nameEn="Bevel gear" nameDe="Kegelrad" databaseId="1"/>
+        <component numericId="2" componentId="bevel_stage" nameEn="Bevel stage" nameDe="Kegelradstufe" databaseId="2"/>
+        <component numericId="3" componentId="concept_bearing" nameEn="Concept bearing" nameDe="Konzeptlager" databaseId="3"/>
+        <component numericId="4" componentId="cutter_wheel_tool" nameEn="Cutter wheel tool" nameDe="Schneidrad" databaseId="4"/>
+        <component numericId="5" componentId="cylindrical_gear" nameEn="Cylindrical gear" nameDe="Stirnrad" databaseId="5"/>
+        <component numericId="6" componentId="cylindrical_stage" nameEn="Cylindrical stage" nameDe="Stirnradstufe" databaseId="6"/>
+        <component numericId="7" componentId="external_load" nameEn="External load" nameDe="Externe Belastung" databaseId="7"/>
+        <component numericId="8" componentId="fixed_coupling" nameEn="Non-switchable coupling" nameDe="Nicht-schaltbare Kupplung" databaseId="8"/>
+        <component numericId="9" componentId="flank_geometry" nameEn="Tooth flank" nameDe="Zahnflanke" databaseId="9"/>
+        <component numericId="10" componentId="gear_casing" nameEn="Gear casing" nameDe="Gehäuse" databaseId="10"/>
+        <component numericId="11" componentId="gear_unit" nameEn="Gear unit" nameDe="Getriebeeinheit" databaseId="11"/>
+        <component numericId="12" componentId="general_gear" nameEn="General gear" nameDe="Zahnrad" databaseId="12"/>
+        <component numericId="13" componentId="general_stage" nameEn="General stage" nameDe="Zahnradstufe" databaseId="13"/>
+        <component numericId="14" componentId="lubricant" nameEn="Lubricant" nameDe="Schmierstoff" databaseId="14"/>
+        <component numericId="15" componentId="material" nameEn="Material" nameDe="Werkstoff" databaseId="15"/>
+        <component numericId="16" componentId="rack_shaped_tool" nameEn="Rack-shaped tool" nameDe="Zahnstangenförmiges Werkzeug" databaseId="16"/>
+        <component numericId="17" componentId="rolling_bearing_row" nameEn="Rolling bearing row" nameDe="Wälzlagerreihe" databaseId="17"/>
+        <component numericId="18" componentId="rolling_bearing_with_catalog_geometry" nameEn="Rolling bearing with catalog data" nameDe="Wälzlager mit Katalogdaten" databaseId="18"/>
+        <component numericId="19" componentId="rolling_bearing_with_detailed_geometry" nameEn="Rolling bearing with detailed geometry" nameDe="Wälzlager mit Innengeometrie" databaseId="19"/>
+        <component numericId="20" componentId="rolling_element" nameEn="Rolling element" nameDe="Wälzkörper" databaseId="20"/>
+        <component numericId="21" componentId="root" nameEn="Model" nameDe="Modell" databaseId="21"/>
+        <component numericId="22" componentId="shaft" nameEn="Shaft" nameDe="Welle" databaseId="22"/>
+        <component numericId="23" componentId="shaft_section" nameEn="Shaft section" nameDe="Wellenabschnitt" databaseId="23"/>
+        <component numericId="24" componentId="slide_bearing" nameEn="Slide bearing" nameDe="Gleitlager" databaseId="24"/>
+        <component numericId="25" componentId="stage_gear_data" nameEn="Stage gear data" nameDe="Radbezogene Eingriffsdaten" databaseId="25"/>
+        <component numericId="26" componentId="switchable_coupling" nameEn="Switchable coupling" nameDe="Schaltbare Kupplung" databaseId="26"/>
+        <component numericId="27" componentId="zero_degree_grinding_disk_tool" nameEn="0° grinding disk tool" nameDe="0° Schleifscheibe" databaseId="27"/>
     </components>
     <attributes>
         <attribute numericId="5406" attributeId="acceleration_factor_according_fva_341" valueType="1" unit="4" nameEn="Acceleration factor according to FVA 341" nameDe="Beschleunigungsfaktor nach FVA 431" rangeMin="0" rangeMinIntervalOpen="false" rangeMaxIntervalOpen="true" databaseId="232"/>
