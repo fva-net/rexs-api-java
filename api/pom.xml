@@ -15,172 +15,187 @@
   the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>io.github.fva-net</groupId>
-		<artifactId>rexs-api-java-project</artifactId>
-		<version>0.11.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
+    <parent>
+        <groupId>io.github.fva-net</groupId>
+        <artifactId>rexs-api-java-project</artifactId>
+        <version>0.11.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-	<artifactId>rexs-api-java</artifactId>
+    <artifactId>rexs-api-java</artifactId>
 
-	<name>REXS-API-Java :: API</name>
+    <name>REXS-API-Java :: API</name>
 
-	<dependencies>
+    <dependencies>
 
-		<!-- JAXB API only -->
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-		</dependency>
+        <!-- JAXB API only -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
 
-		<!-- JAXB implementation -->
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-		</dependency>
+        <!-- JAXB implementation -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jaxb-xew-plugin</groupId>
+            <artifactId>jaxb-xew-plugin</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-		<!-- Jackson for JSON -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
+        <!-- Jackson for JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
 
-		<!-- Unit tesing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <!-- Unit tesing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources/</directory>
-				<excludes>
-					<exclude>**/*.properties</exclude>
-					<exclude>**/*.yml</exclude>
-				</excludes>
-				<filtering>false</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources/</directory>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.yml</include>
-				</includes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/*.yml</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
-		<plugins>
+        <plugins>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources/jaxb/rexs-schema</source>
-								<source>${project.build.directory}/generated-sources/jaxb/rexs-file</source>
-								<source>${project.build.directory}/generated-sources/jaxb/rexs-changelog</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/jaxb/rexs-schema</source>
+                                <source>${project.build.directory}/generated-sources/jaxb/rexs-file</source>
+                                <source>${project.build.directory}/generated-sources/jaxb/rexs-changelog</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>xjc-rexs-schema</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${basedir}/src/main/resources/info/rexs/xsd/rexs-schema.xsd</source>
-							</sources>
-							<packageName>info.rexs.schema.jaxb</packageName>
-							<outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-schema</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>xjc-rexs-file</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${basedir}/src/main/resources/info/rexs/xsd/rexs-file.xsd</source>
-							</sources>
-							<packageName>info.rexs.model.jaxb</packageName>
-							<outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-file</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>xjc-rexs-changelog</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${basedir}/src/main/resources/info/rexs/xsd/rexs-changelog.xsd</source>
-							</sources>
-							<packageName>info.rexs.upgrade.upgraders.changelog.jaxb</packageName>
-							<outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-changelog</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc-rexs-schema</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/main/resources/info/rexs/xsd/rexs-schema.xsd</source>
+                            </sources>
+                            <packageName>info.rexs.schema.jaxb</packageName>
+                            <outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-schema</outputDirectory>
+                            <arguments>
+                                <argument>-Xxew</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>xjc-rexs-file</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/main/resources/info/rexs/xsd/rexs-file.xsd</source>
+                            </sources>
+                            <packageName>info.rexs.model.jaxb</packageName>
+                            <outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-file</outputDirectory>
+                            <arguments>
+                                <argument>-Xxew</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>xjc-rexs-changelog</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/main/resources/info/rexs/xsd/rexs-changelog.xsd</source>
+                            </sources>
+                            <packageName>info.rexs.upgrade.upgraders.changelog.jaxb</packageName>
+                            <outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-changelog</outputDirectory>
+                            <arguments>
+                                <argument>-Xxew</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 
 </project>
