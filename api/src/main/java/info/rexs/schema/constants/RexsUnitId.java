@@ -17,6 +17,7 @@ package info.rexs.schema.constants;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import info.rexs.schema.constants.standard.RexsStandardUnitIds;
@@ -186,5 +187,30 @@ public class RexsUnitId implements RexsStandardUnitIds {
 				return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof RexsUnitId other)) {
+			return false;
+		}
+		if (!other.canEqual(this)) {
+			return false;
+		}
+		return Objects.equals(getId(), other.getId());
+	}
+
+	protected boolean canEqual(Object other) {
+		return other instanceof RexsUnitId;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 1;
+		result = result * 59 + (id == null ? 43 : id.hashCode());
+		return result;
 	}
 }
