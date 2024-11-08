@@ -44,13 +44,15 @@
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>com.github.jaxb-xew-plugin</groupId>
-            <artifactId>jaxb-xew-plugin</artifactId>
-            <version>2.1</version>
-        </dependency>
 
-        <!-- Jackson for JSON -->
+		<!-- JAXB @XmlElementWrapper Plugin (see https://github.com/dmak/jaxb-xew-plugin) -->
+		<dependency>
+			<groupId>com.github.jaxb-xew-plugin</groupId>
+			<artifactId>jaxb-xew-plugin</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Jackson for JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -128,9 +130,9 @@
 							</sources>
 							<packageName>info.rexs.schema.jaxb</packageName>
 							<outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-schema</outputDirectory>
-                            <arguments>
-                                <argument>-Xxew</argument>
-                            </arguments>
+							<arguments>
+								<argument>-Xxew</argument>
+							</arguments>
 						</configuration>
 					</execution>
 					<execution>
@@ -144,9 +146,9 @@
 							</sources>
 							<packageName>info.rexs.model.jaxb</packageName>
 							<outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-file</outputDirectory>
-                            <arguments>
-                                <argument>-Xxew</argument>
-                            </arguments>
+							<arguments>
+								<argument>-Xxew</argument>
+							</arguments>
 						</configuration>
 					</execution>
 					<execution>
@@ -160,9 +162,9 @@
 							</sources>
 							<packageName>info.rexs.upgrade.upgraders.changelog.jaxb</packageName>
 							<outputDirectory>${project.build.directory}/generated-sources/jaxb/rexs-changelog</outputDirectory>
-                            <arguments>
-                                <argument>-Xxew</argument>
-                            </arguments>
+							<arguments>
+								<argument>-Xxew</argument>
+							</arguments>
 						</configuration>
 					</execution>
 				</executions>
