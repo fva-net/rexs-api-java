@@ -18,15 +18,15 @@ package info.rexs.upgrade.upgraders;
 import java.util.ArrayList;
 import java.util.List;
 
+import info.rexs.model.RexsAttribute;
+import info.rexs.model.RexsComponent;
+import info.rexs.model.RexsModel;
+import info.rexs.model.value.RexsAttributeValueScalar;
 import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsUnitId;
 import info.rexs.schema.constants.RexsValueType;
 import info.rexs.schema.constants.standard.RexsStandardUnitIds;
-import info.rexs.model.RexsAttribute;
-import info.rexs.model.RexsComponent;
-import info.rexs.model.RexsModel;
-import info.rexs.model.value.RexsAttributeValueScalar;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.AttributeSource;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.ComponentSource;
@@ -61,16 +61,16 @@ public class ModelChangelogUpgrader {
 
 	public RexsModel applyChangelog() throws RexsUpgradeException {
 		if (changelog.getComponentChanges() != null)
-			for (ComponentChange change : changelog.getComponentChanges().getComponentChange()) {
+			for (ComponentChange change : changelog.getComponentChanges()) {
 				if (change.getType() == ChangeType.DELETE)
 					deleteComponentsByType(newModel, change.getId());
 
 				if (change.getType() == ChangeType.EDIT)
-					editComponentsByType(change.getId(), change.getChangedValues().getChangedValue());
+					editComponentsByType(change.getId(), change.getChangedValues());
 			}
 
 		if (changelog.getMappingChanges() != null)
-			for (MappingChange change : changelog.getMappingChanges().getMappingChange()) {
+			for (MappingChange change : changelog.getMappingChanges()) {
 				if (change.getType() == ChangeType.DELETE) {
 					if (strictMode) {
 						deleteAttributesByComponentTypeAndAttributeId(newModel, change.getComponentId(), change.getAttributeId());
@@ -81,9 +81,9 @@ public class ModelChangelogUpgrader {
 			}
 
 		if (changelog.getAttributeChanges() != null)
-			for (AttributeChange change : changelog.getAttributeChanges().getAttributeChange()) {
+			for (AttributeChange change : changelog.getAttributeChanges()) {
 				if (change.getType() == ChangeType.EDIT)
-					editAttributesById(change.getId(), change.getChangedValues().getChangedValue());
+					editAttributesById(change.getId(), change.getChangedValues());
 			}
 
 		return newModel;
@@ -233,7 +233,7 @@ public class ModelChangelogUpgrader {
 
 
 	private void changeEnumValue(RexsAttribute attribute, ChangedValue changedValue) {
-		for (EnumValueChange enumChange: changedValue.getEnumValueChanges().getEnumValueChange()) {
+		for (EnumValueChange enumChange: changedValue.getEnumValueChanges()) {
 			switch (enumChange.getType()) {
 			case ADD: {
 				// Do nothing. Change must be handled by custom upgrade.
@@ -246,7 +246,7 @@ public class ModelChangelogUpgrader {
 			case EDIT: {
 				String attrValue = attribute.getStringValue();
 				if (attrValue.equals(enumChange.getValue())) {
-					ChangedValue changedEnumValue = enumChange.getChangedValues().getChangedValue().get(0);
+					ChangedValue changedEnumValue = enumChange.getChangedValues().get(0);
 					String newName = changedEnumValue.getNewValue();
 					attribute.setStringValue(newName);
 				}

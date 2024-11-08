@@ -78,19 +78,19 @@ public class RexsSchemaResolverTest {
 			RexsSchema rexsModel = RexsSchemaResolver.getInstance().resolve(version);
 			assertThat(rexsModel.getVersion()).isEqualTo(version.getName());
 
-			for (Unit unit : rexsModel.getUnits().getUnit()) {
+			for (Unit unit : rexsModel.getUnits()) {
 				assertThat(RexsUnitId.findById(unit.getName())).isNotNull();
 			}
 
-			for (ValueType valueType : rexsModel.getValueTypes().getValueType()) {
+			for (ValueType valueType : rexsModel.getValueTypes()) {
 				assertThat(info.rexs.schema.constants.RexsValueType.findByKey(valueType.getName())).isNotNull();
 			}
 
-			for (Component component : rexsModel.getComponents().getComponent()) {
+			for (Component component : rexsModel.getComponents()) {
 				assertThat(RexsComponentType.findById(component.getComponentId())).isNotNull();
 			}
 
-			for (Attribute attribute : rexsModel.getAttributes().getAttribute()) {
+			for (Attribute attribute : rexsModel.getAttributes()) {
 				assertThat(RexsAttributeId.findById(attribute.getAttributeId())).isNotNull();
 			}
 		}

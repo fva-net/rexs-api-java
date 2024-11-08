@@ -92,6 +92,13 @@
 				<version>1.82</version>
 			</dependency>
 
+			<!-- JAXB @XmlElementWrapper Plugin (see https://github.com/dmak/jaxb-xew-plugin) -->
+			<dependency>
+				<groupId>com.github.jaxb-xew-plugin</groupId>
+				<artifactId>jaxb-xew-plugin</artifactId>
+				<version>2.1</version>
+			</dependency>
+
 			<!-- Modules -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
