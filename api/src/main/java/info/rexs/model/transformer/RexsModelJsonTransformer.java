@@ -7,12 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import info.rexs.schema.RexsSchemaRegistry;
-import info.rexs.schema.constants.RexsValueType;
-import info.rexs.schema.constants.RexsVersion;
-import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
-import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
-import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.io.json.model.Accumulation;
 import info.rexs.io.json.model.Component;
 import info.rexs.io.json.model.FloatingPointArrayCoded;
@@ -28,6 +22,7 @@ import info.rexs.io.json.model.attributes.Attribute;
 import info.rexs.io.json.model.attributes.BooleanArrayAttribute;
 import info.rexs.io.json.model.attributes.BooleanAttribute;
 import info.rexs.io.json.model.attributes.BooleanMatrixAttribute;
+import info.rexs.io.json.model.attributes.DateTimeAttribute;
 import info.rexs.io.json.model.attributes.EnumArrayAttribute;
 import info.rexs.io.json.model.attributes.EnumAttribute;
 import info.rexs.io.json.model.attributes.FileReferenceAttribute;
@@ -36,7 +31,6 @@ import info.rexs.io.json.model.attributes.FloatingPointArrayCodedAttribute;
 import info.rexs.io.json.model.attributes.FloatingPointAttribute;
 import info.rexs.io.json.model.attributes.FloatingPointMatrixAttribute;
 import info.rexs.io.json.model.attributes.FloatingPointMatrixCodedAttribute;
-import info.rexs.io.json.model.attributes.DateTimeAttribute;
 import info.rexs.io.json.model.attributes.IntegerArrayAttribute;
 import info.rexs.io.json.model.attributes.IntegerAttribute;
 import info.rexs.io.json.model.attributes.IntegerMatrixAttribute;
@@ -62,6 +56,12 @@ import info.rexs.model.value.RexsAttributeValueArrayOfArrays;
 import info.rexs.model.value.RexsAttributeValueMatrix;
 import info.rexs.model.value.RexsAttributeValueMatrixBase64;
 import info.rexs.model.value.RexsAttributeValueScalar;
+import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.schema.constants.RexsValueType;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 
 
 /**
@@ -343,7 +343,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			return new FloatingPointMatrixCodedAttribute().withFloatingPointMatrixCoded(fpac);
 		}
 		else if (value instanceof RexsAttributeValueArrayOfArrays) {
-			List<Integer[]> valueString = ((RexsAttributeValueArrayOfArrays) value).getValueArrayOfIntegerArrays();
+			List<Integer[]> valueString = value.getValueArrayOfIntegerArrays();
 			return new ArrayOfIntegerArraysAttribute().withArrayOfIntegerArrays(valueString.stream().map(array -> Arrays.asList(array)).toList());
 		}
 		else
