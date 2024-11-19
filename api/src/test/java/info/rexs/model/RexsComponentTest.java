@@ -64,9 +64,7 @@ public class RexsComponentTest {
 	public void getAttribute_attributeNotInComponentReturnsNull() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.coupling, null);
 
-		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
-			rexsComponent.getAttribute(RexsStandardAttributeIds.account_for_gravity);
-		}).withMessage("attribute 'account_for_gravity' not found!");
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> rexsComponent.getAttribute(RexsStandardAttributeIds.account_for_gravity)).withMessage("attribute 'account_for_gravity' not found!");
 	}
 
 	@Test

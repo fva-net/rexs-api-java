@@ -29,27 +29,21 @@ public class RexsAttributeIdTest {
 	@Test
 	public void create_givenNullIdThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				RexsAttributeId.create(null, RexsStandardUnitIds.kg);
-			})
+			.isThrownBy(() -> RexsAttributeId.create(null, RexsStandardUnitIds.kg))
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_givenNullUnitThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-		.isThrownBy(() -> {
-			RexsAttributeId.create("foo_bar", null);
-		})
+		.isThrownBy(() -> RexsAttributeId.create("foo_bar", null))
 		.withMessage("unit cannot be empty");
 	}
 
 	@Test
 	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> {
-				RexsAttributeId.create("", RexsStandardUnitIds.kg);
-			})
+			.isThrownBy(() -> RexsAttributeId.create("", RexsStandardUnitIds.kg))
 			.withMessage("id cannot be empty");
 	}
 

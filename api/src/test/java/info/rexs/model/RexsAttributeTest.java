@@ -343,9 +343,7 @@ public class RexsAttributeTest {
 
 		rexsAttribute.setStringArrayValue(null);
 
-		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
-			rexsAttribute.getStringArrayValue();
-		})
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> rexsAttribute.getStringArrayValue())
 		.withMessageStartingWith("value cannot be null for attribute");
 	}
 
@@ -364,9 +362,7 @@ public class RexsAttributeTest {
 
 		rexsAttribute.setStringMatrixValue(null);
 
-		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
-			rexsAttribute.getStringMatrixValue();
-		})
+		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> rexsAttribute.getStringMatrixValue())
 		.withMessageStartingWith("value cannot be null for attribute");
 	}
 

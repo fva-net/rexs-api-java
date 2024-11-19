@@ -28,18 +28,14 @@ public class RexsRelationTypeTest {
 	@Test
 	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				RexsRelationType.create(null);
-			})
+			.isThrownBy(() -> RexsRelationType.create(null))
 			.withMessage("key cannot be empty");
 	}
 
 	@Test
 	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> {
-				RexsRelationType.create("");
-			})
+			.isThrownBy(() -> RexsRelationType.create(""))
 			.withMessage("key cannot be empty");
 	}
 
