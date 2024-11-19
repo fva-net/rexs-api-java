@@ -84,6 +84,6 @@ public class RexsJsonFileWriterTest {
 
 		Path rexsOutputFilePath = Paths.get(rexsOutputFileStringPath);
 		assertThat(rexsOutputFilePath).exists();
-		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0l);
+		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0L);
 	}
 }

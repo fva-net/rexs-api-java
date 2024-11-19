@@ -35,7 +35,7 @@ public class RexsFileUpgraderTest {
 		rexsFileUpgrader.upgrade();
 
 		assertThat(rexsOutputFilePath).exists();
-		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0l);
+		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0L);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class RexsFileUpgraderTest {
 		rexsFileUpgrader.upgrade();
 
 		assertThat(rexsOutputFile).exists();
-		assertThat(rexsOutputFile.length()).isGreaterThan(0l);
+		assertThat(rexsOutputFile.length()).isGreaterThan(0L);
 	}
 
 	@Test
@@ -60,6 +60,6 @@ public class RexsFileUpgraderTest {
 
 		Path rexsOutputFilePath = Paths.get(rexsOutputFileStringPath);
 		assertThat(rexsOutputFilePath).exists();
-		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0l);
+		assertThat(Files.size(rexsOutputFilePath)).isGreaterThan(0L);
 	}
 }
