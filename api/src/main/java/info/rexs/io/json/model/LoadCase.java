@@ -109,11 +109,10 @@ public class LoadCase {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof LoadCase)) {
+        if (!(other instanceof LoadCase rhs)) {
             return false;
         }
-        LoadCase rhs = ((LoadCase) other);
-        return ((((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components)))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+		return ((((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components)))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
     }
 
 }

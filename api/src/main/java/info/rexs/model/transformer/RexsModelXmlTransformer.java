@@ -222,8 +222,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 	}
 
 	private Object createAttributeContentXml(AbstractRexsAttributeValue value) {
-		if (value instanceof RexsAttributeValueScalar) {
-			RexsAttributeValueScalar valueScalar = (RexsAttributeValueScalar)value;
+		if (value instanceof RexsAttributeValueScalar valueScalar) {
 			return valueScalar.getRawValue() != null ? valueScalar.getRawValue() : "";
 
 		} else if (value instanceof AbstractRexsAttributeValueArray) {
@@ -257,8 +256,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 				array.getContent().add(c);
 			}
 
-		} else if (value instanceof RexsAttributeValueArrayBase64) {
-			RexsAttributeValueArrayBase64 valueBase64 = (RexsAttributeValueArrayBase64)value;
+		} else if (value instanceof RexsAttributeValueArrayBase64 valueBase64) {
 			if (valueBase64.getRawValue() == null)
 				return null;
 
@@ -292,8 +290,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 				matrix.getContent().add(row);
 			}
 
-		} else if (value instanceof RexsAttributeValueMatrixBase64) {
-			RexsAttributeValueMatrixBase64 valueBase64 = (RexsAttributeValueMatrixBase64)value;
+		} else if (value instanceof RexsAttributeValueMatrixBase64 valueBase64) {
 			if (valueBase64.getRawValue() == null)
 				return null;
 

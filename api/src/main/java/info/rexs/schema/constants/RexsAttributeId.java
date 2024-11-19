@@ -126,10 +126,9 @@ public class RexsAttributeId implements RexsStandardAttributeIds {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsAttributeId)) {
+		if (!(o instanceof RexsAttributeId other)) {
 			return false;
 		}
-		RexsAttributeId other = (RexsAttributeId)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

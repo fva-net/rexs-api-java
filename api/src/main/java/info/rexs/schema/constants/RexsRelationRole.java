@@ -110,10 +110,9 @@ public class RexsRelationRole implements RexsStandardRelationRoles {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsRelationRole)) {
+		if (!(o instanceof RexsRelationRole other)) {
 			return false;
 		}
-		RexsRelationRole other = (RexsRelationRole)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

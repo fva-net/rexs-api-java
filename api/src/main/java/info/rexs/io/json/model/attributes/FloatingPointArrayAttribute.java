@@ -64,11 +64,10 @@ public class FloatingPointArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof FloatingPointArrayAttribute)) {
+        if (!(other instanceof FloatingPointArrayAttribute rhs)) {
             return false;
         }
-        FloatingPointArrayAttribute rhs = ((FloatingPointArrayAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPointArray.containsAll(rhs.getFloatingPointArray())
             && rhs.getFloatingPointArray().containsAll(this.floatingPointArray);

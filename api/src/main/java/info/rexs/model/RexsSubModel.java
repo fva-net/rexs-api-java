@@ -177,10 +177,9 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsSubModel)) {
+		if (!(o instanceof RexsSubModel other)) {
 			return false;
 		}
-		RexsSubModel other = (RexsSubModel)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

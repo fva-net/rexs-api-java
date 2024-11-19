@@ -66,11 +66,10 @@ public class StringMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof StringMatrixAttribute)) {
+        if (!(other instanceof StringMatrixAttribute rhs)) {
             return false;
         }
-        StringMatrixAttribute rhs = ((StringMatrixAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.stringMatrix.containsAll(rhs.getStringMatrix())
             && rhs.getStringMatrix().containsAll(this.stringMatrix);

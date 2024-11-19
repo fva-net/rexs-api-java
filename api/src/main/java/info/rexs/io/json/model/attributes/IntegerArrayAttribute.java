@@ -65,11 +65,10 @@ public class IntegerArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof IntegerArrayAttribute)) {
+        if (!(other instanceof IntegerArrayAttribute rhs)) {
             return false;
         }
-        IntegerArrayAttribute rhs = ((IntegerArrayAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.integerArray.containsAll(rhs.getIntegerArray())
             && rhs.getIntegerArray().containsAll(this.integerArray);

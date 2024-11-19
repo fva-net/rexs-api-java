@@ -62,11 +62,10 @@ public class StringAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof StringAttribute)) {
+        if (!(other instanceof StringAttribute rhs)) {
             return false;
         }
-        StringAttribute rhs = ((StringAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.string.equals(rhs.getString());
     }

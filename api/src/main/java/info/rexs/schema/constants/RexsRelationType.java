@@ -136,10 +136,9 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsRelationType)) {
+		if (!(o instanceof RexsRelationType other)) {
 			return false;
 		}
-		RexsRelationType other = (RexsRelationType)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

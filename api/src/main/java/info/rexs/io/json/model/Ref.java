@@ -130,11 +130,10 @@ public class Ref {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof Ref)) {
+        if (!(other instanceof Ref rhs)) {
             return false;
         }
-        Ref rhs = ((Ref) other);
-        return (((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.role == rhs.role)||((this.role!= null)&&this.role.equals(rhs.role))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.hint == rhs.hint)||((this.hint!= null)&&this.hint.equals(rhs.hint))));
+		return (((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.role == rhs.role)||((this.role!= null)&&this.role.equals(rhs.role))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.hint == rhs.hint)||((this.hint!= null)&&this.hint.equals(rhs.hint))));
     }
 
 }

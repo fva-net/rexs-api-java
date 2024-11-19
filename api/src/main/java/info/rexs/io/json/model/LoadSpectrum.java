@@ -132,11 +132,10 @@ public class LoadSpectrum {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof LoadSpectrum)) {
+        if (!(other instanceof LoadSpectrum rhs)) {
             return false;
         }
-        LoadSpectrum rhs = ((LoadSpectrum) other);
-        return (((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.loadCases == rhs.loadCases)||((this.loadCases!= null)&&this.loadCases.equals(rhs.loadCases))))&&((this.accumulation == rhs.accumulation)||((this.accumulation!= null)&&this.accumulation.equals(rhs.accumulation))));
+		return (((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.loadCases == rhs.loadCases)||((this.loadCases!= null)&&this.loadCases.equals(rhs.loadCases))))&&((this.accumulation == rhs.accumulation)||((this.accumulation!= null)&&this.accumulation.equals(rhs.accumulation))));
     }
 
 }

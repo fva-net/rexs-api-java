@@ -143,10 +143,9 @@ public class ChangelogFile {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof ChangelogFile)) {
+		if (!(o instanceof ChangelogFile other)) {
 			return false;
 		}
-		ChangelogFile other = (ChangelogFile)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

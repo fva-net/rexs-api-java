@@ -86,11 +86,10 @@ public class Accumulation {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof Accumulation)) {
+        if (!(other instanceof Accumulation rhs)) {
             return false;
         }
-        Accumulation rhs = ((Accumulation) other);
-        return (((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components))));
+		return (((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components))));
     }
 
 }

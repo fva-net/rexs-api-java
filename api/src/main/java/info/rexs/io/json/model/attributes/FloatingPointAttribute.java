@@ -69,11 +69,10 @@ public class FloatingPointAttribute extends Attribute{
         if (other == this) {
             return true;
         }
-        if (!(other instanceof FloatingPointAttribute)) {
+        if (!(other instanceof FloatingPointAttribute rhs)) {
             return false;
         }
-        FloatingPointAttribute rhs = ((FloatingPointAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPoint.equals(rhs.getFloatingPoint());
     }

@@ -118,10 +118,9 @@ public class RexsComponentType implements RexsStandardComponentTypes {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsComponentType)) {
+		if (!(o instanceof RexsComponentType other)) {
 			return false;
 		}
-		RexsComponentType other = (RexsComponentType)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

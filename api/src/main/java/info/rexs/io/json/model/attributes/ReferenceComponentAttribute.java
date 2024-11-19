@@ -62,11 +62,10 @@ public class ReferenceComponentAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof ReferenceComponentAttribute)) {
+        if (!(other instanceof ReferenceComponentAttribute rhs)) {
             return false;
         }
-        ReferenceComponentAttribute rhs = ((ReferenceComponentAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.referenceComponent.equals(rhs.getReferenceComponent());
     }

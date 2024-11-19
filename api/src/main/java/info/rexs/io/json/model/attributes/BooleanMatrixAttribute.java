@@ -66,11 +66,10 @@ public class BooleanMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof BooleanMatrixAttribute)) {
+        if (!(other instanceof BooleanMatrixAttribute rhs)) {
             return false;
         }
-        BooleanMatrixAttribute rhs = ((BooleanMatrixAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.booleanMatrix.containsAll(rhs.getBooleanMatrix())
             && rhs.getBooleanMatrix().containsAll(this.booleanMatrix);
