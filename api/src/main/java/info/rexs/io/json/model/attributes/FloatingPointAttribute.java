@@ -21,7 +21,7 @@ public class FloatingPointAttribute extends Attribute{
     @JsonProperty("floating_point")
     private Double floatingPoint;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("floating_point")
     public Double getFloatingPoint() {
@@ -73,8 +73,8 @@ public class FloatingPointAttribute extends Attribute{
             return false;
         }
         FloatingPointAttribute rhs = ((FloatingPointAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPoint.equals(rhs.getFloatingPoint());
     }
 

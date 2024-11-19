@@ -1,8 +1,10 @@
 package info.rexs.io.json.model;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,11 +23,11 @@ public class LoadSpectrum {
     @JsonProperty("id")
     private Integer id;
     @JsonProperty("load_cases")
-    private List<LoadCase> loadCases = new ArrayList<LoadCase>();
+    private List<LoadCase> loadCases = new ArrayList<>();
     @JsonProperty("accumulation")
     private Accumulation accumulation;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {

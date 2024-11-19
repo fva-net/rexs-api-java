@@ -1,8 +1,10 @@
 package info.rexs.io.json.model;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,13 +36,13 @@ public class Model {
     @JsonProperty("applicationLanguage")
     private String applicationLanguage;
     @JsonProperty("relations")
-    private List<Relation> relations = new ArrayList<Relation>();
+    private List<Relation> relations = new ArrayList<>();
     @JsonProperty("components")
-    private List<Component> components = new ArrayList<Component>();
+    private List<Component> components = new ArrayList<>();
     @JsonProperty("load_spectrum")
     private LoadSpectrum loadSpectrum;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("version")
     public String getVersion() {

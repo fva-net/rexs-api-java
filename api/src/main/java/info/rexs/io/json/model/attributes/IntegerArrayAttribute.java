@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class IntegerArrayAttribute extends Attribute {
 
     @JsonProperty("integer_array")
-    private List<Integer> integerArray = new ArrayList<Integer>();
+    private List<Integer> integerArray = new ArrayList<>();
 
     @JsonProperty("integer_array")
     public List<Integer> getIntegerArray() {
@@ -69,9 +69,9 @@ public class IntegerArrayAttribute extends Attribute {
             return false;
         }
         IntegerArrayAttribute rhs = ((IntegerArrayAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.integerArray.containsAll(rhs.getIntegerArray()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.integerArray.containsAll(rhs.getIntegerArray())
             && rhs.getIntegerArray().containsAll(this.integerArray);
     }
 

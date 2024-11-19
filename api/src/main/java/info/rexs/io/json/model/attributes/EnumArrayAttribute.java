@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class EnumArrayAttribute extends Attribute {
 
     @JsonProperty("enum_array")
-    private List<String> enumArray = new ArrayList<String>();
+    private List<String> enumArray = new ArrayList<>();
 
     @JsonProperty("enum_array")
     public List<String> getEnumArray() {
@@ -69,9 +69,9 @@ public class EnumArrayAttribute extends Attribute {
             return false;
         }
         EnumArrayAttribute rhs = ((EnumArrayAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.enumArray.containsAll(rhs.getEnumArray()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.enumArray.containsAll(rhs.getEnumArray())
             && rhs.getEnumArray().containsAll(this.enumArray);
     }
 

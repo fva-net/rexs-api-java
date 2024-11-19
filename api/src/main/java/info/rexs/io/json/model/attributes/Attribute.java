@@ -3,6 +3,7 @@ package info.rexs.io.json.model.attributes;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,9 +35,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = FloatingPointMatrixAttribute.class, name = "FloatingPointMatrixAttribute"),
     @JsonSubTypes.Type(value = IntegerMatrixAttribute.class, name = "IntegerMatrixAttribute"),
     @JsonSubTypes.Type(value = StringMatrixAttribute.class, name = "StringMatrixAttribute"),
-    
+
     @JsonSubTypes.Type(value = ArrayOfIntegerArraysAttribute.class, name = "ArrayOfIntegerArraysAttribute"),
-    
+
 
     @JsonSubTypes.Type(value = FileReferenceAttribute.class, name = "FileReferenceAttribute"),
     @JsonSubTypes.Type(value = ReferenceComponentAttribute.class, name = "ReferenceComponentAttribute")
@@ -53,9 +54,9 @@ public abstract class Attribute {
 
     @JsonProperty("unit")
     protected String unit;
-    
+
     @JsonIgnore
-    protected Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    protected Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public String getId() {

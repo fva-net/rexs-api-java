@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class FloatingPointArrayAttribute extends Attribute {
 
     @JsonProperty("floating_point_array")
-    private List<Double> floatingPointArray = new ArrayList<Double>();
+    private List<Double> floatingPointArray = new ArrayList<>();
 
     @JsonProperty("floating_point_array")
     public List<Double> getFloatingPointArray() {
@@ -68,9 +68,9 @@ public class FloatingPointArrayAttribute extends Attribute {
             return false;
         }
         FloatingPointArrayAttribute rhs = ((FloatingPointArrayAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.floatingPointArray.containsAll(rhs.getFloatingPointArray()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.floatingPointArray.containsAll(rhs.getFloatingPointArray())
             && rhs.getFloatingPointArray().containsAll(this.floatingPointArray);
     }
 

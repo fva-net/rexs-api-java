@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class BooleanMatrixAttribute extends Attribute {
 
-    
+
     @JsonProperty("boolean_matrix")
-    private List<List<Boolean>> booleanMatrix = new ArrayList<List<Boolean>>();
+    private List<List<Boolean>> booleanMatrix = new ArrayList<>();
 
     @JsonProperty("boolean_matrix")
     public List<List<Boolean>> getBooleanMatrix() {
@@ -70,9 +70,9 @@ public class BooleanMatrixAttribute extends Attribute {
             return false;
         }
         BooleanMatrixAttribute rhs = ((BooleanMatrixAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.booleanMatrix.containsAll(rhs.getBooleanMatrix()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.booleanMatrix.containsAll(rhs.getBooleanMatrix())
             && rhs.getBooleanMatrix().containsAll(this.booleanMatrix);
     }
 

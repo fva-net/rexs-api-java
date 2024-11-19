@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class IntegerMatrixAttribute extends Attribute {
 
-    
+
     @JsonProperty("integer_matrix")
-    private List<List<Integer>> integerMatrix = new ArrayList<List<Integer>>();
+    private List<List<Integer>> integerMatrix = new ArrayList<>();
 
     @JsonProperty("integer_matrix")
     public List<List<Integer>> getIntegerMatrix() {
@@ -70,9 +70,9 @@ public class IntegerMatrixAttribute extends Attribute {
             return false;
         }
         IntegerMatrixAttribute rhs = ((IntegerMatrixAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.integerMatrix.containsAll(rhs.getIntegerMatrix()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.integerMatrix.containsAll(rhs.getIntegerMatrix())
             && rhs.getIntegerMatrix().containsAll(this.integerMatrix);
     }
 

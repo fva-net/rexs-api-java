@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class StringMatrixAttribute extends Attribute {
 
-    
+
     @JsonProperty("string_matrix")
-    private List<List<String>> stringMatrix = new ArrayList<List<String>>();
+    private List<List<String>> stringMatrix = new ArrayList<>();
 
     @JsonProperty("string_matrix")
     public List<List<String>> getStringMatrix() {
@@ -70,9 +70,9 @@ public class StringMatrixAttribute extends Attribute {
             return false;
         }
         StringMatrixAttribute rhs = ((StringMatrixAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.stringMatrix.containsAll(rhs.getStringMatrix()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.stringMatrix.containsAll(rhs.getStringMatrix())
             && rhs.getStringMatrix().containsAll(this.stringMatrix);
     }
 

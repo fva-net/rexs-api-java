@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class ArrayOfIntegerArraysAttribute extends Attribute {
 
     @JsonProperty("array_of_integer_arrays")
-    private List<List<Integer>> arrayOfIntegerArrays = new ArrayList<List<Integer>>();
+    private List<List<Integer>> arrayOfIntegerArrays = new ArrayList<>();
 
     @JsonProperty("array_of_integer_arrays")
     public List<List<Integer>> getArrayOfIntegerArrays() {
@@ -67,9 +67,9 @@ public class ArrayOfIntegerArraysAttribute extends Attribute {
             return false;
         }
         ArrayOfIntegerArraysAttribute rhs = ((ArrayOfIntegerArraysAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.arrayOfIntegerArrays.containsAll(rhs.getArrayOfIntegerArrays()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.arrayOfIntegerArrays.containsAll(rhs.getArrayOfIntegerArrays())
             && rhs.getArrayOfIntegerArrays().containsAll(this.arrayOfIntegerArrays);
     }
 
