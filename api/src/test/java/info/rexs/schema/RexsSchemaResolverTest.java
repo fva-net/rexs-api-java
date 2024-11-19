@@ -15,16 +15,6 @@
  */
 package info.rexs.schema;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-
-import java.io.InputStream;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.junit.Test;
-
 import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsUnitId;
@@ -35,6 +25,15 @@ import info.rexs.schema.jaxb.Component;
 import info.rexs.schema.jaxb.RexsSchema;
 import info.rexs.schema.jaxb.Unit;
 import info.rexs.schema.jaxb.ValueType;
+import org.junit.Test;
+
+import java.io.InputStream;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 public class RexsSchemaResolverTest {
 
@@ -65,32 +64,32 @@ public class RexsSchemaResolverTest {
 
 	@Test
 	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
-		RexsSchema rexsModel1 = RexsSchemaResolver.getInstance().resolve(RexsVersion.getLatest());
-		RexsSchema rexsModel2 = RexsSchemaResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsSchema rexsSchema1 = RexsSchemaResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsSchema rexsSchema2 = RexsSchemaResolver.getInstance().resolve(RexsVersion.getLatest());
 
-		assertThat(rexsModel1).isSameAs(rexsModel2);
+		assertThat(rexsSchema1).isSameAs(rexsSchema2);
 	}
 
 	@Test
 	public void resolve_everyRexsStandardVersionHasRexsSchema() throws Exception {
 		List<RexsVersion> rexsStandardVersions = Stream.of(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, RexsStandardVersions.V1_2).collect(Collectors.toList());
 		for (RexsVersion version : rexsStandardVersions) {
-			RexsSchema rexsModel = RexsSchemaResolver.getInstance().resolve(version);
-			assertThat(rexsModel.getVersion()).isEqualTo(version.getName());
+			RexsSchema rexsSchema = RexsSchemaResolver.getInstance().resolve(version);
+			assertThat(rexsSchema.getVersion()).isEqualTo(version.getName());
 
-			for (Unit unit : rexsModel.getUnits()) {
+			for (Unit unit : rexsSchema.getUnits()) {
 				assertThat(RexsUnitId.findById(unit.getName())).isNotNull();
 			}
 
-			for (ValueType valueType : rexsModel.getValueTypes()) {
+			for (ValueType valueType : rexsSchema.getValueTypes()) {
 				assertThat(info.rexs.schema.constants.RexsValueType.findByKey(valueType.getName())).isNotNull();
 			}
 
-			for (Component component : rexsModel.getComponents()) {
+			for (Component component : rexsSchema.getComponents()) {
 				assertThat(RexsComponentType.findById(component.getComponentId())).isNotNull();
 			}
 
-			for (Attribute attribute : rexsModel.getAttributes()) {
+			for (Attribute attribute : rexsSchema.getAttributes()) {
 				assertThat(RexsAttributeId.findById(attribute.getAttributeId())).isNotNull();
 			}
 		}
