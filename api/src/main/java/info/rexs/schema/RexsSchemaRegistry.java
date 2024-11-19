@@ -87,26 +87,26 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	}
 
 	public void registerRexsVersion(RexsVersion version) {
-		RexsSchema rexsModel = RexsSchemaResolver.getInstance().resolve(version);
-		if (rexsModel == null)
+		RexsSchema rexsSchema = RexsSchemaResolver.getInstance().resolve(version);
+		if (rexsSchema == null)
 			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getName()));
-		registerRexsModel(version, rexsModel);
+		registerRexsSchema(version, rexsSchema);
 		versions.put(version.getName(), version);
 	}
 
-	private void registerRexsModel(RexsVersion version, RexsSchema rexsModel) {
-		generateComponentMap(version, rexsModel);
-		generateAttributeMap(version, rexsModel);
-		generateAttributeTypeMap(version, rexsModel);
-		generateAttributeUnitMap(version, rexsModel);
-		generateAttributeComponentMappings(version, rexsModel);
-		generateRelationsWithAllowedCombinations(version, rexsModel);
+	private void registerRexsSchema(RexsVersion version, RexsSchema rexsSchema) {
+		generateComponentMap(version, rexsSchema);
+		generateAttributeMap(version, rexsSchema);
+		generateAttributeTypeMap(version, rexsSchema);
+		generateAttributeUnitMap(version, rexsSchema);
+		generateAttributeComponentMappings(version, rexsSchema);
+		generateRelationsWithAllowedCombinations(version, rexsSchema);
 	}
 
-	private void generateRelationsWithAllowedCombinations(RexsVersion version, RexsSchema rexsModel) {
+	private void generateRelationsWithAllowedCombinations(RexsVersion version, RexsSchema rexsSchema) {
 		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapofVersion = relationsToAllowedCombinationsMap.computeIfAbsent(version, k -> new HashMap<>());
-		if (rexsModel.getRelations() != null) {
-			for (Relation relation : rexsModel.getRelations()) {
+		if (rexsSchema.getRelations() != null) {
+			for (Relation relation : rexsSchema.getRelations()) {
 				RexsRelationType relationType = RexsRelationType.findByKey(relation.getRelationId());
 				List<List<AllowedCombinationRole>> listOfCombinations = relationsToAllowedCombinationsMapofVersion.computeIfAbsent(relationType, k -> new ArrayList<>());
 				for (AllowedCombination combination : ( relation.getAllowedCombinations()))
@@ -115,9 +115,9 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		}
 	}
 
-	private void generateComponentMap(RexsVersion version, RexsSchema rexsModel) {
+	private void generateComponentMap(RexsVersion version, RexsSchema rexsSchema) {
 		Map<String, RexsComponentType> mapOfVersion = componentMap.computeIfAbsent(version, k -> new HashMap<>());
-		for (Component component : rexsModel.getComponents()) {
+		for (Component component : rexsSchema.getComponents()) {
 			RexsComponentType componentType = RexsComponentType.findById(component.getComponentId());
 			mapOfVersion.put(component.getComponentId(), componentType);
 		}
@@ -127,11 +127,11 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	 * Generates the Map<RexsVersion, Map<String, Attribute>> attributeMap
 	 * such that given a version and an attribute id the corresponding instance of the Attribute.java class is returned
 	 * @param version
-	 * @param rexsModel
+	 * @param rexsSchema
 	 */
-	private void generateAttributeMap(RexsVersion version, RexsSchema rexsModel) {
+	private void generateAttributeMap(RexsVersion version, RexsSchema rexsSchema) {
 		Map<String, Attribute> mapofVersion = attributeMap.computeIfAbsent(version, k -> new HashMap<>());
-		for (Attribute attribute : rexsModel.getAttributes()) {
+		for (Attribute attribute : rexsSchema.getAttributes()) {
 			mapofVersion.put(attribute.getAttributeId(), attribute);
 		}
 	}
@@ -140,36 +140,36 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	 * generates the Map<RexsVersion, Map<String, RexsValueType>> attributeTypes map
 	 * such that given a version and an attribute id the corresponding RexsValueType is returned
 	 * @param version
-	 * @param rexsModel
+	 * @param rexsSchema
 	 */
-	private void generateAttributeTypeMap(RexsVersion version, RexsSchema rexsModel) {
+	private void generateAttributeTypeMap(RexsVersion version, RexsSchema rexsSchema) {
 		Map<String, RexsValueType> mapofVersion = attributeTypes.computeIfAbsent(version, k -> new HashMap<>());
 		Map<Integer, String> valueTypeMap = new HashMap<>();
-		if (rexsModel.getValueTypes() != null) {
-			for (ValueType valueType : rexsModel.getValueTypes()) {
+		if (rexsSchema.getValueTypes() != null) {
+			for (ValueType valueType : rexsSchema.getValueTypes()) {
 				valueTypeMap.put(valueType.getId(), valueType.getName());
 			}
 		}
-		if (rexsModel.getAttributes() != null) {
-			for (Attribute attribute : rexsModel.getAttributes()) {
+		if (rexsSchema.getAttributes() != null) {
+			for (Attribute attribute : rexsSchema.getAttributes()) {
 				mapofVersion.put(attribute.getAttributeId(), RexsValueType.findByKey(valueTypeMap.get(attribute.getValueType())));
 			}
 		}
 	}
 
-	private void generateAttributeUnitMap(RexsVersion version, RexsSchema rexsModel) {
+	private void generateAttributeUnitMap(RexsVersion version, RexsSchema rexsSchema) {
 		Map<String, RexsUnitId> mapofVersion = attributeUnits.computeIfAbsent(version, k -> new HashMap<>());
 		Map<Integer, String> unitMap = new HashMap<>();
-		if (rexsModel.getUnits() != null) {
-			for (Unit unit : rexsModel.getUnits()) {
+		if (rexsSchema.getUnits() != null) {
+			for (Unit unit : rexsSchema.getUnits()) {
 				if (RexsStandardUnitIds.degree.getId().equals(unit.getName()))
 					unitMap.put(unit.getId(), RexsStandardUnitIds.deg.getId());
 				else
 					unitMap.put(unit.getId(), unit.getName());
 			}
 		}
-		if (rexsModel.getAttributes() != null) {
-			for (Attribute attribute : rexsModel.getAttributes()) {
+		if (rexsSchema.getAttributes() != null) {
+			for (Attribute attribute : rexsSchema.getAttributes()) {
 				String unit = unitMap.get(attribute.getUnit());
 				mapofVersion.put(attribute.getAttributeId(), RexsUnitId.findById(unit));
 			}
@@ -259,13 +259,13 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	 * such that given a version and a component type the  list of available attributes for this component type can be returned
 	 * as well as given a version and an attribute id the  list of component type which contain this attribute can be returned
 	 * @param version
-	 * @param rexsModel
+	 * @param rexsSchema
 	 */
-	private void generateAttributeComponentMappings(RexsVersion version, RexsSchema rexsModel) {
+	private void generateAttributeComponentMappings(RexsVersion version, RexsSchema rexsSchema) {
 		Map<String, List<RexsComponentType>> attributeToComponentMapofVersion = attributeToComponentMap.computeIfAbsent(version, k -> new HashMap<>());
 		Map<RexsComponentType, List<String>> componentToAttributeMapofVersion = componentToAttributesMap.computeIfAbsent(version, k -> new HashMap<>());
-		if (rexsModel.getComponentAttributeMappings() != null) {
-			for (ComponentAttributeMapping mapping : rexsModel.getComponentAttributeMappings()) {
+		if (rexsSchema.getComponentAttributeMappings() != null) {
+			for (ComponentAttributeMapping mapping : rexsSchema.getComponentAttributeMappings()) {
 				RexsComponentType componentType = RexsComponentType.findById(mapping.getComponentId());
 				String attributeId = mapping.getAttributeId();
 
