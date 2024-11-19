@@ -63,7 +63,7 @@ public class ArrayOfIntegerArraysAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof ArrayOfIntegerArraysAttribute) == false) {
+        if (!(other instanceof ArrayOfIntegerArraysAttribute)) {
             return false;
         }
         ArrayOfIntegerArraysAttribute rhs = ((ArrayOfIntegerArraysAttribute) other);

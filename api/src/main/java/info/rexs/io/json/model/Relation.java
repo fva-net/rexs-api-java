@@ -155,7 +155,7 @@ public class Relation {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Relation) == false) {
+        if (!(other instanceof Relation)) {
             return false;
         }
         Relation rhs = ((Relation) other);

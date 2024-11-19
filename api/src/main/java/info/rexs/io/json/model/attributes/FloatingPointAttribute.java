@@ -69,7 +69,7 @@ public class FloatingPointAttribute extends Attribute{
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointAttribute) == false) {
+        if (!(other instanceof FloatingPointAttribute)) {
             return false;
         }
         FloatingPointAttribute rhs = ((FloatingPointAttribute) other);

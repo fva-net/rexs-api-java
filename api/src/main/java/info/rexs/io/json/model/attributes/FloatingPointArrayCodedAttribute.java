@@ -1,12 +1,9 @@
 package info.rexs.io.json.model.attributes;
 
 
-
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import info.rexs.io.json.model.FloatingPointArrayCoded;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,7 +17,7 @@ public class FloatingPointArrayCodedAttribute extends Attribute {
 
     @JsonProperty("floating_point_array_coded")
     private FloatingPointArrayCoded floatingPointArrayCoded;
-    
+
 
     @JsonProperty("floating_point_array_coded")
     public FloatingPointArrayCoded getFloatingPointArrayCoded() {
@@ -67,12 +64,12 @@ public class FloatingPointArrayCodedAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointArrayCodedAttribute) == false) {
+        if (!(other instanceof FloatingPointArrayCodedAttribute)) {
             return false;
         }
         FloatingPointArrayCodedAttribute rhs = ((FloatingPointArrayCodedAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPointArrayCoded.equals(rhs.getFloatingPointArrayCoded());
     }
 

@@ -107,7 +107,7 @@ public class FloatingPointArrayCoded {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointArrayCoded) == false) {
+        if (!(other instanceof FloatingPointArrayCoded)) {
             return false;
         }
         FloatingPointArrayCoded rhs = ((FloatingPointArrayCoded) other);

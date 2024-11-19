@@ -16,7 +16,7 @@ public class FileReferenceAttribute extends Attribute {
 
     @JsonProperty("file_reference")
     private String fileReference;
-    
+
     @JsonProperty("file_reference")
     public String getFileReference() {
         return fileReference;
@@ -62,12 +62,12 @@ public class FileReferenceAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FileReferenceAttribute) == false) {
+        if (!(other instanceof FileReferenceAttribute)) {
             return false;
         }
         FileReferenceAttribute rhs = ((FileReferenceAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.fileReference.equals(rhs.getFileReference());
     }
 

@@ -1,14 +1,5 @@
 package info.rexs.io.json.model.attributes;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -24,7 +15,7 @@ public class IntegerAttribute extends Attribute {
 
     @JsonProperty("integer")
     private Integer integer;
-    
+
 
     @JsonProperty("integer")
     public Integer getInteger() {
@@ -71,12 +62,12 @@ public class IntegerAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof IntegerAttribute) == false) {
+        if (!(other instanceof IntegerAttribute)) {
             return false;
         }
         IntegerAttribute rhs = ((IntegerAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.integer.equals(rhs.getInteger());
     }
 

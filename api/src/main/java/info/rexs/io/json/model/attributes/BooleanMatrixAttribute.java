@@ -66,7 +66,7 @@ public class BooleanMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof BooleanMatrixAttribute) == false) {
+        if (!(other instanceof BooleanMatrixAttribute)) {
             return false;
         }
         BooleanMatrixAttribute rhs = ((BooleanMatrixAttribute) other);

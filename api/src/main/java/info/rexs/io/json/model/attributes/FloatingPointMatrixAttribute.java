@@ -66,7 +66,7 @@ public class FloatingPointMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointMatrixAttribute) == false) {
+        if (!(other instanceof FloatingPointMatrixAttribute)) {
             return false;
         }
         FloatingPointMatrixAttribute rhs = ((FloatingPointMatrixAttribute) other);

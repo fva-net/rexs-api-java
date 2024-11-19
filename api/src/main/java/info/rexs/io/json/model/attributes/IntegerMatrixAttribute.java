@@ -66,7 +66,7 @@ public class IntegerMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof IntegerMatrixAttribute) == false) {
+        if (!(other instanceof IntegerMatrixAttribute)) {
             return false;
         }
         IntegerMatrixAttribute rhs = ((IntegerMatrixAttribute) other);

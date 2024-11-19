@@ -86,7 +86,7 @@ public class Accumulation {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Accumulation) == false) {
+        if (!(other instanceof Accumulation)) {
             return false;
         }
         Accumulation rhs = ((Accumulation) other);

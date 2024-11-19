@@ -247,7 +247,7 @@ public class Model {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Model) == false) {
+        if (!(other instanceof Model)) {
             return false;
         }
         Model rhs = ((Model) other);

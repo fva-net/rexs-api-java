@@ -1,12 +1,9 @@
 package info.rexs.io.json.model.attributes;
 
 
-
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import info.rexs.io.json.model.FloatingPointMatrixCoded;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,7 +17,7 @@ public class FloatingPointMatrixCodedAttribute extends Attribute {
 
     @JsonProperty("floating_point_matrix_coded")
     private FloatingPointMatrixCoded floatingPointMatrixCoded;
-    
+
 
     @JsonProperty("floating_point_matrix_coded")
     public FloatingPointMatrixCoded getFloatingPointMatrixCoded() {
@@ -67,12 +64,12 @@ public class FloatingPointMatrixCodedAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointMatrixCodedAttribute) == false) {
+        if (!(other instanceof FloatingPointMatrixCodedAttribute)) {
             return false;
         }
         FloatingPointMatrixCodedAttribute rhs = ((FloatingPointMatrixCodedAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPointMatrixCoded.equals(rhs.getFloatingPointMatrixCoded());
     }
 

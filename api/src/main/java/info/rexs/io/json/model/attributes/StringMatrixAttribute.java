@@ -66,7 +66,7 @@ public class StringMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof StringMatrixAttribute) == false) {
+        if (!(other instanceof StringMatrixAttribute)) {
             return false;
         }
         StringMatrixAttribute rhs = ((StringMatrixAttribute) other);

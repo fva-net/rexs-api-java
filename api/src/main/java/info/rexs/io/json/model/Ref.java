@@ -130,7 +130,7 @@ public class Ref {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Ref) == false) {
+        if (!(other instanceof Ref)) {
             return false;
         }
         Ref rhs = ((Ref) other);
