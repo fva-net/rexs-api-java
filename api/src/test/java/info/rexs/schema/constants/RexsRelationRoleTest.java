@@ -26,7 +26,7 @@ import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 public class RexsRelationRoleTest {
 
 	@Test
-	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				RexsRelationRole.create(null);
@@ -35,7 +35,7 @@ public class RexsRelationRoleTest {
 	}
 
 	@Test
-	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
+	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				RexsRelationRole.create("");
@@ -44,7 +44,7 @@ public class RexsRelationRoleTest {
 	}
 
 	@Test
-	public void create_newRelationRoleHasKey() throws Exception {
+	public void create_newRelationRoleHasKey() {
 		RexsRelationRole newRelationRole = RexsRelationRole.create("foo");
 		assertThat(newRelationRole.getKey()).isEqualTo("foo");
 	}
@@ -60,14 +60,14 @@ public class RexsRelationRoleTest {
 	}
 
 	@Test
-	public void findByKey_returnsRexsStandardRelationRole() throws Exception {
+	public void findByKey_returnsRexsStandardRelationRole() {
 		RexsRelationRole relationRole = RexsRelationRole.findByKey(RexsStandardRelationRoles.inner_part.getKey());
 		assertThat(relationRole).isNotNull();
 		assertThat(relationRole.getKey()).isEqualTo(RexsStandardRelationRoles.inner_part.getKey());
 	}
 
 	@Test
-	public void findByKey_returnsNewlyCreatedRelationRole() throws Exception {
+	public void findByKey_returnsNewlyCreatedRelationRole() {
 		RexsRelationRole.create("bar");
 		RexsRelationRole newRelationRole = RexsRelationRole.findByKey("bar");
 		assertThat(newRelationRole).isNotNull();

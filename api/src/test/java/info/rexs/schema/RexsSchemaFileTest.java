@@ -28,7 +28,7 @@ import info.rexs.schema.constants.standard.RexsStandardVersions;
 public class RexsSchemaFileTest {
 
 	@Test
-	public void create_givenNullVersionThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullVersionThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				RexsSchemaFile.create(null);
@@ -72,14 +72,14 @@ public class RexsSchemaFileTest {
 	}
 
 	@Test
-	public void findByVersion_returnsRequestedRexsSchemaFile() throws Exception {
+	public void findByVersion_returnsRequestedRexsSchemaFile() {
 		RexsSchemaFile rexsSchemaFile = RexsSchemaFile.findByVersion(RexsStandardVersions.V1_2);
 		assertThat(rexsSchemaFile).isNotNull();
 		assertThat(rexsSchemaFile.getVersion()).isEqualTo(RexsStandardVersions.V1_2);
 	}
 
 	@Test
-	public void findByVersion_returnsNewlyCreatedRexsSchemaFile() throws Exception {
+	public void findByVersion_returnsNewlyCreatedRexsSchemaFile() {
 		RexsVersion newVersion = RexsVersion.create("66.7", null, "66.7");
 		RexsSchemaFile.create(newVersion);
 		RexsSchemaFile newRexsSchemaFile = RexsSchemaFile.findByVersion(newVersion);

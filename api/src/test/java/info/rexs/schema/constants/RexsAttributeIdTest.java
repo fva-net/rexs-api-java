@@ -27,7 +27,7 @@ import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 public class RexsAttributeIdTest {
 
 	@Test
-	public void create_givenNullIdThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullIdThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				RexsAttributeId.create(null, RexsStandardUnitIds.kg);
@@ -36,7 +36,7 @@ public class RexsAttributeIdTest {
 	}
 
 	@Test
-	public void create_givenNullUnitThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullUnitThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 		.isThrownBy(() -> {
 			RexsAttributeId.create("foo_bar", null);
@@ -45,7 +45,7 @@ public class RexsAttributeIdTest {
 	}
 
 	@Test
-	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
+	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				RexsAttributeId.create("", RexsStandardUnitIds.kg);
@@ -54,7 +54,7 @@ public class RexsAttributeIdTest {
 	}
 
 	@Test
-	public void create_newAttributeIdHasIdAndUnit() throws Exception {
+	public void create_newAttributeIdHasIdAndUnit() {
 		RexsAttributeId newAttributeId = RexsAttributeId.create("foo", RexsStandardUnitIds.kg);
 		assertThat(newAttributeId.getId()).isEqualTo("foo");
 		assertThat(newAttributeId.getUnit()).isEqualTo(RexsStandardUnitIds.kg);
@@ -71,14 +71,14 @@ public class RexsAttributeIdTest {
 	}
 
 	@Test
-	public void findById_returnsRexsStandardAttributeId() throws Exception {
+	public void findById_returnsRexsStandardAttributeId() {
 		RexsAttributeId attributeId = RexsAttributeId.findById(RexsStandardAttributeIds.width.getId());
 		assertThat(attributeId).isNotNull();
 		assertThat(attributeId.getId()).isEqualTo(RexsStandardAttributeIds.width.getId());
 	}
 
 	@Test
-	public void findById_returnsNewlyCreatedAttributeId() throws Exception {
+	public void findById_returnsNewlyCreatedAttributeId() {
 		RexsAttributeId.create("bar", RexsStandardUnitIds.kg);
 		RexsAttributeId newAttributeId = RexsAttributeId.findById("bar");
 		assertThat(newAttributeId).isNotNull();

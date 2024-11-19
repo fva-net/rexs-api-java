@@ -22,16 +22,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import info.rexs.io.FileResource;
 import info.rexs.io.Resource;
@@ -40,6 +35,9 @@ import info.rexs.io.RexsIoFormat;
 import info.rexs.io.zip.RexsZipFileReader;
 import info.rexs.model.RexsModel;
 import info.rexs.xsd.RexsXsd;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 /**
  * This implementation of {@link IRexsFileValidator} validates the basic structure of a REXS file.
@@ -164,8 +162,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		private List<String> warningMessages = new ArrayList<>();
 
 		@Override
-		public void error(SAXParseException ex) throws SAXException
-		{
+		public void error(SAXParseException ex) {
 			errorMessages.add(createExceptionMessage(ex));
 		}
 
@@ -178,14 +175,12 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		}
 
 		@Override
-		public void fatalError(SAXParseException ex) throws SAXException
-		{
+		public void fatalError(SAXParseException ex) {
 			errorMessages.add(createExceptionMessage(ex));
 		}
 
 		@Override
-		public void warning(SAXParseException ex) throws SAXException
-		{
+		public void warning(SAXParseException ex) {
 			warningMessages.add(createExceptionMessage(ex));
 		}
 

@@ -28,7 +28,7 @@ import info.rexs.schema.constants.standard.RexsStandardVersions;
 public class ChangelogFileTest {
 
 	@Test
-	public void create_givenNullVersionThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullVersionThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				ChangelogFile.create(null, RexsStandardVersions.V1_1);

@@ -15,6 +15,16 @@
  */
 package info.rexs.schema;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
+import java.io.InputStream;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.Test;
+
 import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsUnitId;
@@ -25,20 +35,11 @@ import info.rexs.schema.jaxb.Component;
 import info.rexs.schema.jaxb.RexsSchema;
 import info.rexs.schema.jaxb.Unit;
 import info.rexs.schema.jaxb.ValueType;
-import org.junit.Test;
-
-import java.io.InputStream;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 public class RexsSchemaResolverTest {
 
 	@Test
-	public void resolve_unknownRexsSchemaFileReturnsNull() throws Exception {
+	public void resolve_unknownRexsSchemaFileReturnsNull() {
 		RexsVersion newVersion = RexsVersion.create("67.6", null, "67.6");
 		assertThat(RexsSchemaResolver.getInstance().resolve(newVersion)).isNull();
 
@@ -63,7 +64,7 @@ public class RexsSchemaResolverTest {
 	}
 
 	@Test
-	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
+	public void resolve_cachingReturnsSameObjectForMultipleCalls() {
 		RexsSchema rexsSchema1 = RexsSchemaResolver.getInstance().resolve(RexsStandardVersions.getLatest());
 		RexsSchema rexsSchema2 = RexsSchemaResolver.getInstance().resolve(RexsStandardVersions.getLatest());
 
@@ -71,7 +72,7 @@ public class RexsSchemaResolverTest {
 	}
 
 	@Test
-	public void resolve_everyRexsStandardVersionHasRexsSchema() throws Exception {
+	public void resolve_everyRexsStandardVersionHasRexsSchema() {
 		List<RexsVersion> rexsStandardVersions = Stream.of(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, RexsStandardVersions.V1_2).collect(Collectors.toList());
 		for (RexsVersion version : rexsStandardVersions) {
 			RexsSchema rexsSchema = RexsSchemaResolver.getInstance().resolve(version);

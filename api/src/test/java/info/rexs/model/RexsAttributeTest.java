@@ -26,7 +26,7 @@ import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 public class RexsAttributeTest {
 
 	@Test
-	public void attributeIdConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void attributeIdConstructor_getterMatchesValuePassedToConstructor() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 
 		assertThat(rexsAttribute.getAttributeId()).isEqualTo(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
@@ -34,7 +34,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void attributeIdConstructor_originIdCreated() throws Exception {
+	public void attributeIdConstructor_originIdCreated() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 
 		assertThat(rexsAttribute.getOriginAttributeId()).isNotNull();
@@ -42,14 +42,14 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void hasValue_emptyValueReturnsFalse() throws Exception {
+	public void hasValue_emptyValueReturnsFalse() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 
 		assertThat(rexsAttribute.hasValue()).isFalse();
 	}
 
 	@Test
-	public void hasValue_emptyStringValueReturnsFalse() throws Exception {
+	public void hasValue_emptyStringValueReturnsFalse() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringValue("");
 
@@ -57,7 +57,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void hasValue_setStringValueReturnsTrue() throws Exception {
+	public void hasValue_setStringValueReturnsTrue() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringValue("foo_bar");
 
@@ -65,7 +65,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void hasValue_emptyStringArrayValueReturnsFalse() throws Exception {
+	public void hasValue_emptyStringArrayValueReturnsFalse() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringArrayValue(new String[] {});
 
@@ -73,7 +73,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void hasValue_setStringArrayValueReturnsTrue() throws Exception {
+	public void hasValue_setStringArrayValueReturnsTrue() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringArrayValue(new String[] {"foo", "bar"});
 
@@ -81,7 +81,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void hasValue_emptyStringMatrixValueReturnsFalse() throws Exception {
+	public void hasValue_emptyStringMatrixValueReturnsFalse() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 
 		rexsAttribute.setStringMatrixValue(new String[][] {});
@@ -92,7 +92,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void hasValue_setStringMatrixValueReturnsTrue() throws Exception {
+	public void hasValue_setStringMatrixValueReturnsTrue() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringMatrixValue(new String[][] {{"foo"}, {"bar"}});
 
@@ -100,7 +100,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getStringValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getStringValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringValue();
@@ -109,7 +109,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getStringValue_setValueIsReturned() throws Exception {
+	public void getStringValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringValue("foo_bar");
 
@@ -117,7 +117,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getBooleanValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getBooleanValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanValue();
@@ -126,7 +126,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getBooleanValue_setValueIsReturned() throws Exception {
+	public void getBooleanValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 
 		rexsAttribute.setBooleanValue(Boolean.TRUE);
@@ -137,7 +137,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getIntegerValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getIntegerValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerValue();
@@ -146,7 +146,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getIntegerValue_setValueIsReturned() throws Exception {
+	public void getIntegerValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setIntegerValue(42);
 
@@ -154,7 +154,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getDoubleValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleValue(RexsStandardUnitIds.hertz);
@@ -163,7 +163,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleValue_setValueButWrongUnitThrowsRexsModelAccessException() throws Exception {
+	public void getDoubleValue_setValueButWrongUnitThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.setDoubleValue(8.24);
@@ -173,7 +173,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleValue_setValueIsReturned() throws Exception {
+	public void getDoubleValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setDoubleValue(8.24);
 
@@ -181,7 +181,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getStringArrayValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getStringArrayValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringArrayValue();
@@ -190,7 +190,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getStringArrayValue_setValueIsReturned() throws Exception {
+	public void getStringArrayValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringArrayValue(new String[] {"foo", "bar"});
 
@@ -198,7 +198,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getBooleanArrayValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getBooleanArrayValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanArrayValue();
@@ -207,7 +207,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getBooleanArrayValue_setValueIsReturned() throws Exception {
+	public void getBooleanArrayValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setBooleanArrayValue(new Boolean[] {Boolean.FALSE, Boolean.TRUE});
 
@@ -215,7 +215,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getIntegerArrayValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getIntegerArrayValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerArrayValue();
@@ -224,7 +224,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getIntegerArrayValue_setValueIsReturned() throws Exception {
+	public void getIntegerArrayValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setIntegerArrayValue(new Integer[] {42, 23});
 
@@ -232,7 +232,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleArrayValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getDoubleArrayValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleArrayValue(RexsStandardUnitIds.hertz);
@@ -241,7 +241,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleArrayValue_setValueButWrongUnitThrowsRexsModelAccessException() throws Exception {
+	public void getDoubleArrayValue_setValueButWrongUnitThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.setDoubleArrayValue(new Double[] {8.24, 23.33});
@@ -251,7 +251,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleArrayValue_setValueIsReturned() throws Exception {
+	public void getDoubleArrayValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setDoubleArrayValue(new Double[] {8.24, 23.33});
 
@@ -259,7 +259,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getStringMatrixValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getStringMatrixValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getStringMatrixValue();
@@ -268,7 +268,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getStringMatrixValue_setValueIsReturned() throws Exception {
+	public void getStringMatrixValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringMatrixValue(new String[][] {{"foo"}, {"bar"}});
 
@@ -276,7 +276,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getBooleanMatrixValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getBooleanMatrixValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getBooleanMatrixValue();
@@ -285,7 +285,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getBooleanMatrixValue_setValueIsReturned() throws Exception {
+	public void getBooleanMatrixValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setBooleanMatrixValue(new Boolean[][] {{Boolean.FALSE}, {Boolean.TRUE}});
 
@@ -293,7 +293,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getIntegerMatrixValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getIntegerMatrixValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getIntegerMatrixValue();
@@ -302,7 +302,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getIntegerMatrixValue_setValueIsReturned() throws Exception {
+	public void getIntegerMatrixValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setIntegerMatrixValue(new Integer[][] {{42}, {23}});
 
@@ -310,7 +310,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleMatrixValue_emptyValueThrowsRexsModelAccessException() throws Exception {
+	public void getDoubleMatrixValue_emptyValueThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.getDoubleMatrixValue(RexsStandardUnitIds.hertz);
@@ -319,7 +319,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleMatrixValue_setValueButWrongUnitThrowsRexsModelAccessException() throws Exception {
+	public void getDoubleMatrixValue_setValueButWrongUnitThrowsRexsModelAccessException() {
 		assertThatExceptionOfType(RexsModelAccessException.class).isThrownBy(() -> {
 			RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 			rexsAttribute.setDoubleMatrixValue(new Double[][] {{8.24}, {23.33}});
@@ -329,7 +329,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void getDoubleMatrixValue_setValueIsReturned() throws Exception {
+	public void getDoubleMatrixValue_setValueIsReturned() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setDoubleMatrixValue(new Double[][] {{8.24}, {23.33}});
 
@@ -337,7 +337,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringArrayValue_nullValueDeletesPreviousValue() throws Exception {
+	public void setStringArrayValue_nullValueDeletesPreviousValue() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringArrayValue(new String[] {"foo", "bar"});
 
@@ -350,7 +350,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringArrayValue_nullElementConvertsToEmptyString() throws Exception {
+	public void setStringArrayValue_nullElementConvertsToEmptyString() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringArrayValue(new String[] {"foo", null, "bar"});
 
@@ -358,7 +358,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringMatrixValue_nullValueDeletesPreviousValue() throws Exception {
+	public void setStringMatrixValue_nullValueDeletesPreviousValue() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringMatrixValue(new String[][] {{"foo"}, {"bar"}});
 
@@ -371,7 +371,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringMatrixValue_nullElementConvertsToEmptyString() throws Exception {
+	public void setStringMatrixValue_nullElementConvertsToEmptyString() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringMatrixValue(new String[][] {{"foo", null}, {"bar", ""}});
 
@@ -379,7 +379,7 @@ public class RexsAttributeTest {
 	}
 
 	@Test
-	public void setStringMatrixValue_nullMatrixRowConvertsToNullElements() throws Exception {
+	public void setStringMatrixValue_nullMatrixRowConvertsToNullElements() {
 		RexsAttribute rexsAttribute = new RexsAttribute(RexsStandardAttributeIds.overrolling_frequency_rolling_element);
 		rexsAttribute.setStringMatrixValue(new String[][] {{"foo", "bar"}, null});
 

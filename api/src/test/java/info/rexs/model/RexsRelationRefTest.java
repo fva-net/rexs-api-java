@@ -24,7 +24,7 @@ import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 public class RexsRelationRefTest {
 
 	@Test
-	public void integerStringConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void integerStringConstructor_getterMatchesValuePassedToConstructor() {
 		RexsRelationRef rexsRelationData = new RexsRelationRef(42, RexsStandardRelationRoles.UNKNOWN, "foo bar");
 
 		assertThat(rexsRelationData.getId()).isEqualTo(42);
