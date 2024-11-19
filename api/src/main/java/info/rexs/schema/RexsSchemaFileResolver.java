@@ -36,7 +36,7 @@ public class RexsSchemaFileResolver {
 	 * 				The {@link InputStream} of the file.
 	 */
 	public InputStream openInputStream(RexsSchemaFile rexsSchemaFile) {
-		String rexsSchemaFilename = String.format("rexs_schema_%s.xml", rexsSchemaFile.getVersion().getName());
+		String rexsSchemaFilename = String.format("rexs_schema_%s.xml", rexsSchemaFile.getVersion().getModelVersion());
 		return rexsSchemaFile.getClass().getResourceAsStream(rexsSchemaFilename);
 	}
 }

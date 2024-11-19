@@ -65,8 +65,8 @@ public class ChangelogResolverTest {
 		List<ChangelogFile> rexsStandardChangelogFiles = Stream.of(ChangelogFile.V1_0_TO_V1_1, ChangelogFile.V1_1_TO_V1_2).collect(Collectors.toList());
 		for (ChangelogFile changelogFile : rexsStandardChangelogFiles) {
 			RexsChangelog rexsChangelog = ChangelogResolver.getInstance().resolve(changelogFile);
-			assertThat(rexsChangelog.getFromVersion()).isEqualTo(changelogFile.getFromVersion().getName());
-			assertThat(rexsChangelog.getToVersion()).isEqualTo(changelogFile.getToVersion().getName());
+			assertThat(rexsChangelog.getFromVersion()).isEqualTo(changelogFile.getFromVersion().getModelVersion());
+			assertThat(rexsChangelog.getToVersion()).isEqualTo(changelogFile.getToVersion().getModelVersion());
 
 			int countChangelogChanges = 0;
 			countChangelogChanges += rexsChangelog.getComponentChanges() != null ? rexsChangelog.getComponentChanges().size() : 0;

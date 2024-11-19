@@ -64,7 +64,7 @@ public class RexsUpgrader {
 	 * 				If an unexpected error occurs during the upgrade process.
 	 */
 	public ModelUpgraderResult upgrade() throws RexsUpgradeException {
-		return upgrade(RexsVersion.getLatest(), false);
+		return upgrade(RexsStandardVersions.getLatest(), false);
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class RexsUpgrader {
 	 */
 	public ModelUpgraderResult upgrade(RexsVersion toVersion, boolean strictMode) throws RexsUpgradeException {
 		RexsVersion fromVersion = rexsModel.getVersion();
-		if (fromVersion == null || fromVersion.equals(RexsStandardVersions.UNKNOWN))
+		if (fromVersion == null || fromVersion.equals(RexsVersion.UNKNOWN))
 			throw new RexsUpgradeException(String.format("unknown version %s", rexsModel.getVersion()));
 
 		List<Notification> notifications = new ArrayList<>();

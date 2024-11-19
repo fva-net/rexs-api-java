@@ -44,8 +44,8 @@ public class ConvertCommandServiceImpl {
 		 */
 		RexsVersion targetVersion = options.getTargetVersion() != null ? options.getTargetVersion() : rexsModel.getVersion();
 
-		if (targetVersion.isLess(rexsModel.getVersion())) {
-			console.println(String.format("The target version is smaller than the version of the REXS model (%s < %s).", targetVersion.getName(), rexsModel.getVersion().getName()));
+		if (targetVersion.isLessThan(rexsModel.getVersion())) {
+			console.println(String.format("The target version is smaller than the version of the REXS model (%s < %s).", targetVersion.getModelVersion(), rexsModel.getVersion().getModelVersion()));
 			return;
 		}
 

@@ -121,12 +121,12 @@ public class RexsXmlFileWriter extends AbstractRexsFileWriter {
 			return model;
 
 		String versionName = model.getVersion();
-		RexsVersion version = RexsVersion.findByName(versionName);
+		RexsVersion version = RexsVersion.findByModelVersion(versionName);
 		if (version == null)
 			return model;
 
-		RexsUnitId searchUnit = version.isLess(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.deg : RexsStandardUnitIds.degree;
-		RexsUnitId replaceUnit = version.isLess(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.degree : RexsStandardUnitIds.deg;
+		RexsUnitId searchUnit = version.isLessThan(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.deg : RexsStandardUnitIds.degree;
+		RexsUnitId replaceUnit = version.isLessThan(RexsStandardVersions.V1_4) ? RexsStandardUnitIds.degree : RexsStandardUnitIds.deg;
 
 		List<Component> allComponents = new ArrayList<>();
 		allComponents.addAll(model.getComponents().getComponent());

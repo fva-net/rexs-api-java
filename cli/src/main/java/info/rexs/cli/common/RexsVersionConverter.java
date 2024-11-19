@@ -8,6 +8,6 @@ public class RexsVersionConverter implements IStringConverter<RexsVersion> {
 
 	@Override
 	public RexsVersion convert(String value) {
-		return RexsVersion.findByName(value);
+		return RexsVersion.findByModelVersion(value);
 	}
 }

@@ -83,7 +83,7 @@ public class RexsModel {
 	 * 				Version of the application.
 	 */
 	public RexsModel(String version, String applicationId, String applicationVersion) {
-		this.version = RexsVersion.findByName(version);
+		this.version = RexsVersion.findByModelVersion(version);
 		this.originVersion = version;
 		this.applicationId = applicationId;
 		this.applicationVersion = applicationVersion;
@@ -118,7 +118,7 @@ public class RexsModel {
 	 */
 	protected RexsModel(RexsVersion version, String applicationId, String applicationVersion) {
 		this.version = version;
-		this.originVersion = version.getName();
+		this.originVersion = version.getModelVersion();
 		this.applicationId = applicationId;
 		this.applicationVersion = applicationVersion;
 	}

@@ -76,7 +76,7 @@ public class ChangelogResolver {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			changelog = (RexsChangelog)unmarshaller.unmarshal(input);
 		} catch (Exception ex) {
-			throw new RexsUpgradeException(String.format("could not load rexs changelog for version %s to version %s", changelogFile.getFromVersion().getName(), changelogFile.getToVersion().getName()), ex);
+			throw new RexsUpgradeException(String.format("could not load rexs changelog for version %s to version %s", changelogFile.getFromVersion().getModelVersion(), changelogFile.getToVersion().getModelVersion()), ex);
 		}
 
 		changelogFileCache.put(changelogFile, changelog);

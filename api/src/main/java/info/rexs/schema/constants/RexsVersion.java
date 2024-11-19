@@ -1,165 +1,283 @@
-/*
- * Copyright (C) 2020 FVA GmbH
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License.  You may obtain a copy
- * of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package info.rexs.schema.constants;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import info.rexs.schema.constants.standard.RexsStandardVersions;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
- * This class represents a REXS version.
- * <p>
- * It contains constants for all official REXS versions.
- * <p>
- * Since REXS is freely expandable, you can also add your own versions using the {@link #create(String, int, String...)} method.
+ * Class representing a version in the REXS (Reusable Engineering EXchange Standard) schema.
  *
- * @author FVA GmbH
+ * @apiNote {@link #equals} and {@link #hashCode} are implemented based on the schema version and schema provider only. Two versions are considered equal if their schema version and schema provider are equal, even if their model version is different.
  */
-public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion> {
+public class RexsVersion {
 
-
-	/** An internal index with all created versions (REXS standard and own) for quick access. */
-	private static final Set<RexsVersion> allVerions = new HashSet<>();
-
-	/** The version name. */
-	private final String name;
-
-	/** The version order. */
-	private final int order;
-
-	/** Alternative version names that can also be assigned to an official version (e.g. a beta version name). */
-	private final Set<String> alternativeNames;
-
-	private RexsVersion(String name, int order, Set<String> alternativeNames) {
-		if (name == null || name.isEmpty())
-			throw new IllegalArgumentException("name cannot be empty");
-		this.name = name;
-		this.order = order;
-		this.alternativeNames = alternativeNames;
-	}
+	private static final String DEV_VERSION_NAME = "DEV";
 
 	/**
-	 * @return
-	 * 				The latest official REXS {@link RexsVersion}.
+	 * A constant representing the development version.
 	 */
-	public static RexsVersion getLatest() {
-		return V1_6;
-	}
+	public static final RexsVersion DEV = new RexsVersion(DEV_VERSION_NAME, null, DEV_VERSION_NAME);
 
 	/**
-	 * @return
-	 * 				The version name as a {@link String}.
+	 * A constant representing an unknown version.
 	 */
-	public String getName() {
-		return name;
-	}
+	public static final RexsVersion UNKNOWN = new RexsVersion("UNKNOWN", null, "UNKNOWN");
 
 	/**
-	 * @return
-	 * 				The version order as a {@code int}.
+	 * A map to store all versions by their model identifier.
 	 */
-	public int getOrder() {
-		return order;
-	}
+	private static final Map<String, RexsVersion> allModelVersions = new HashMap<>();
 
-	/**
-	 * Checks if this version is one of the specified versions.
-	 *
-	 * @param checkVersions An array of {@link RexsVersion} to check against.
-	 * @return {@code true} if this version is one of the specified versions; {@code false} otherwise.
-	 */
-	public boolean isOneOf(RexsVersion ... checkVersions) {
-		if (checkVersions == null)
-			return false;
-
-		for (RexsVersion checkVersion : checkVersions) {
-			if (this.equals(checkVersion))
-				return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Creates a new version and adds it to the internal index.
-	 *
-	 * @param name
-	 * 				The version name as a {@link String}.
-	 * @param order
-	 * 				The version order as a {@code int}.
-	 * @param alternativeNames
-	 * 				Optional alternative version names that can also be assigned to the version (e.g. a beta version name).
-	 *
-	 * @return
-	 * 				The newly created version as {@link RexsVersion}.
-	 */
-	public static RexsVersion create(String name, int order, String... alternativeNames) {
-		Set<String> alternativeNamesSet = null;
-		if (alternativeNames != null && alternativeNames.length > 0)
-			alternativeNamesSet = Arrays.stream(alternativeNames).collect(Collectors.toSet());
-
-		RexsVersion version = new RexsVersion(name, order, alternativeNamesSet);
-		allVerions.add(version);
-		return version;
-	}
-
-	/**
-	 * Returns the version for a version name from the internally stored index of all versions.
-	 * <p>
-	 * Alternate version names are taken into account in the search.
-	 *
-	 * @param name
-	 * 				The name of the version to be found as a {@link String}.
-	 *
-	 * @return
-	 * 				The found {@link RexsVersion}, or {@code null} if the version could not be found.
-	 */
-	public static RexsVersion findByName(String name) {
-		if (name == null)
-			return UNKNOWN;
+	static {
+		// initialize the standard versions
 		RexsStandardVersions.init();
+	}
 
-		for (RexsVersion version : allVerions) {
-			if (name.equals(version.getName())
-					|| (version.alternativeNames != null && version.alternativeNames.contains(name)))
-				return version;
+	/**
+	 * The (case-insensitive) identifier of the version in the REXS schema.
+	 */
+	private final String schemaVersion;
+
+	/**
+	 * The (case-insensitive) identifier of the provider in the REXS schema.
+	 */
+	private final String schemaProvider;
+
+	/**
+	 * The (case-insensitive) identifier of the version in the REXS model.
+	 */
+	private final String modelVersion;
+
+	/**
+	 * Creates a new REXS version.
+	 *
+	 * @param schemaVersion  The (case-insensitive) identifier of the version in the REXS schema.
+	 * @param schemaProvider The (case-insensitive) identifier of the provider in the REXS schema.
+	 * @param modelVersion   The (case-insensitive) identifier of the version in the REXS model.
+	 */
+	private RexsVersion(String schemaVersion, String schemaProvider, String modelVersion) {
+		this.schemaVersion = schemaVersion;
+		this.schemaProvider = schemaProvider;
+		this.modelVersion = modelVersion;
+	}
+
+	public static RexsVersion create(String schemaVersion, String schemaProvider, String primaryModelVersion, String... additionalModelVersions) {
+		// input data validation
+		if (schemaVersion == null || schemaVersion.isEmpty()) throw new IllegalArgumentException("The schema version cannot be empty");
+		if (schemaProvider != null && schemaProvider.isEmpty()) schemaProvider = null;
+		if (primaryModelVersion == null || primaryModelVersion.isEmpty()) throw new IllegalArgumentException("The primary model version cannot be empty");
+
+		// check that no entry of additionalModelVersions is empty
+		for (String additionalModelVersion : additionalModelVersions) {
+			if (additionalModelVersion == null || additionalModelVersion.isEmpty())
+				throw new IllegalArgumentException("Additional model versions cannot contain empty entries");
 		}
 
+		// assure that the schema version follows X.X pattern
+		if (!schemaVersion.matches("\\d+\\.\\d+") && !schemaVersion.equalsIgnoreCase(DEV_VERSION_NAME))
+			throw new IllegalArgumentException("schemaVersion must follow the pattern X.X");
+
+		// create the primary version
+		RexsVersion primaryVersion = new RexsVersion(schemaVersion, schemaProvider, primaryModelVersion);
+		allModelVersions.put(primaryVersion.getModelVersion(), primaryVersion);
+
+		// register additional versions
+		for (String additionalModelVersion : additionalModelVersions) {
+			allModelVersions.put(additionalModelVersion, primaryVersion);
+		}
+
+		// return the primary version
+		return primaryVersion;
+	}
+
+	/**
+	 * Finds a version by its model version.
+	 *
+	 * @param modelVersion The model version.
+	 * @return The corresponding RexsVersion2 object, or null if not found.
+	 */
+	public static RexsVersion findByModelVersion(String modelVersion) {
+		// null-check
+		if (modelVersion == null) {
+			return UNKNOWN;
+		}
+
+		// check for DEV
+		if (modelVersion.equalsIgnoreCase(DEV.getModelVersion())) {
+			return DEV;
+		}
+
+		// check for registered versions
+		for (RexsVersion version : allModelVersions.values()) {
+			if (modelVersion.equalsIgnoreCase(version.getModelVersion())) {
+				return version;
+			}
+		}
+
+		// return unknown if nothing matches
 		return UNKNOWN;
 	}
 
-	public boolean isLess(RexsVersion version) {
-		return this.compareTo(version) < 0;
+	/**
+	 * Finds a version by its schema version and schema provider.
+	 *
+	 * @param schemaVersion  The schema version.
+	 * @param schemaProvider The schema provider.
+	 * @return The corresponding RexsVersion2 object, or null if not found.
+	 */
+	public static RexsVersion findBySchema(String schemaVersion, String schemaProvider) {
+		// null-check
+		if (schemaVersion == null) {
+			return UNKNOWN;
+		}
+
+		// replace empty schema provider with null
+		if (schemaProvider != null && schemaProvider.isEmpty()) {
+			schemaProvider = null;
+		}
+
+		// check for registered versions (both with and without schema provider)
+		for (RexsVersion version : allModelVersions.values()) {
+			if(schemaProvider == null) {
+				if (schemaVersion.equalsIgnoreCase(version.getSchemaVersion()) && version.schemaProvider == null) {
+					return version;
+				}
+			}
+			else {
+				if (schemaVersion.equalsIgnoreCase(version.getSchemaVersion()) && schemaProvider.equalsIgnoreCase(version.getSchemaProvider())) {
+					return version;
+				}
+			}
+		}
+
+		// return unknown if nothing matches
+		return UNKNOWN;
 	}
 
-	public boolean isLessOrEqual(RexsVersion version) {
-		return this.compareTo(version) <= 0;
+	/**
+	 * Gets the schema version.
+	 *
+	 * @return The schema version.
+	 */
+	public String getSchemaVersion() {
+		return schemaVersion;
 	}
 
-	public boolean isEqual(RexsVersion version) {
-		return this.compareTo(version) == 0;
+	/**
+	 * Gets the schema provider.
+	 *
+	 * @return The schema provider.
+	 */
+	public String getSchemaProvider() {
+		return schemaProvider;
 	}
 
-	public boolean isGreater(RexsVersion version) {
-		return this.compareTo(version) > 0;
+	/**
+	 * Gets the model version.
+	 *
+	 * @return The model version.
+	 */
+	public String getModelVersion() {
+		return modelVersion;
+	}
+
+	/**
+	 * Gets the numeric representation of the REXS version.
+	 * <p>
+	 * The numeric version is derived from the {@link #getSchemaVersion() schemaVersion} as follows:
+	 * <ul>
+	 *   <li>Major version is multiplied by {@code 10000}</li>
+	 *   <li>Minor version is multiplied by {@code 100}</li>
+	 *   <li>Patch version (optional) is multiplied by {@code 1}</li>
+	 * </ul>
+	 * <p>
+	 * Example: {@code "1.6"} results in {@code 10600}.
+	 * </p>
+	 * {@link #DEV} and {@link #UNKNOWN} are handled as special cases. The latest development version is always {@link java.lang.Integer#MAX_VALUE Integer.MAX_VALUE}, the unknown version is returning as {@code -1}.
+	 *
+	 * @return the numeric representation of the REXS version
+	 * @apiNote The {@link #getSchemaProvider() schemaProvider} and {@link #getModelVersion() modelVersion} are not considered in the numeric version.
+	 */
+	public int getNumericVersion() {
+		// return -1 for UNKNOWN
+		if (this == UNKNOWN) {
+			return -1;
+		}
+
+		// return max value for DEV
+		if (this.getSchemaVersion().equalsIgnoreCase(DEV_VERSION_NAME)) {
+			return Integer.MAX_VALUE;
+		}
+
+		// extract major and minor from the schema version
+		String[] parts = schemaVersion.split("\\.");
+		int major = Integer.parseInt(parts[0]);
+		int minor = Integer.parseInt(parts[1]);
+
+		// return the numeric version
+		return 10000 * major + 100 * minor;
+	}
+
+	/**
+	 * Compares this version with another version.
+	 *
+	 * @param other The other version to compare with.
+	 * @return A negative integer, zero, or a positive integer as this version is less than, equal to, or greater than the specified version.
+	 */
+	public int compareTo(RexsVersion other) {
+		return Integer.compare(this.getNumericVersion(), other.getNumericVersion());
+	}
+
+	/**
+	 * Checks if this version is less than the specified version.
+	 *
+	 * @param other The other version to compare with.
+	 * @return true if this version is less than the specified version, false otherwise.
+	 */
+	public boolean isLessThan(RexsVersion other) {
+		return this.compareTo(other) < 0;
+	}
+
+	/**
+	 * Checks if this version is less than or equivalent to the specified version.
+	 *
+	 * @param other The other version to compare with.
+	 * @return true if this version is less than or equivalent to the specified version, false otherwise.
+	 */
+	public boolean isLessThanOrEquivalentTo(RexsVersion other) {
+		return this.compareTo(other) <= 0;
+	}
+
+	/**
+	 * Checks if this version is greater than the specified version.
+	 *
+	 * @param other The other version to compare with.
+	 * @return true if this version is greater than the specified version, false otherwise.
+	 */
+	public boolean isGreaterThan(RexsVersion other) {
+		return this.compareTo(other) > 0;
+	}
+
+	/**
+	 * Checks if this version is greater than or equivalent to the specified version.
+	 *
+	 * @param other The other version to compare with.
+	 * @return true if this version is greater than or equivalent to the specified version, false otherwise.
+	 */
+	public boolean isGreaterThanOrEquivalentTo(RexsVersion other) {
+		return this.compareTo(other) >= 0;
+	}
+
+	/**
+	 * Checks if this version is equivalent to the specified version.
+	 *
+	 * @param other The other version to compare with.
+	 * @return true if this version is equivalent to the specified version, false otherwise.
+	 */
+	public boolean isEquivalentTo(RexsVersion other) {
+		return this.compareTo(other) == 0;
 	}
 
 	@Override
@@ -167,28 +285,19 @@ public class RexsVersion implements RexsStandardVersions, Comparable<RexsVersion
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsVersion other)) {
-			return false;
-		}
-		if (!other.canEqual(this)) {
-			return false;
-		}
-		return Objects.equals(getName(), other.getName());
-	}
+		if (o instanceof RexsVersion other) {
+			if (this.schemaProvider != null) {
+				return this.schemaVersion.equals(other.schemaVersion) && this.schemaProvider.equals(other.schemaProvider);
+			} else {
+				return this.schemaVersion.equals(other.schemaVersion) && other.schemaProvider == null;
+			}
 
-	protected boolean canEqual(Object other) {
-		return other instanceof RexsVersion;
+		}
+		return false;
 	}
 
 	@Override
 	public int hashCode() {
-		int result = 1;
-		result = result * 59 + (name == null ? 43 : name.hashCode());
-		return result;
-	}
-
-	@Override
-	public int compareTo(RexsVersion other) {
-		return Comparator.comparing(RexsVersion::getOrder).compare(this, other);
+		return Objects.hash(schemaVersion, schemaProvider);
 	}
 }

@@ -13,7 +13,6 @@ import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardUnitIds;
-import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.io.json.model.Accumulation;
 import info.rexs.io.json.model.Component;
 import info.rexs.io.json.model.FloatingPointArrayCoded;
@@ -72,18 +71,16 @@ import info.rexs.model.value.RexsAttributeValueScalar;
  */
 public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel>{
 
-
-
 	private RexsVersion version;
 
 	@Override
 	public JSONModel transform(RexsModel model) {
-		version = model.getVersion().equals(RexsStandardVersions.UNKNOWN) ? RexsVersion.create(model.getOriginVersion(), 0) : model.getVersion();
+		version = model.getVersion();
 		return new JSONModel().withModel(new Model()
 				.withDate(DateUtils.getISO8601Date())
 				.withApplicationId(model.getApplicationId())
 				.withApplicationVersion(model.getApplicationVersion())
-				.withVersion(version.getName())
+				.withVersion(model.getVersion().equals(RexsVersion.UNKNOWN) ? model.getOriginVersion() : model.getVersion().getModelVersion())
 				.withComponents(createComponentsJson(model.getComponents()))
 				.withRelations(createRelationsJson(model.getRelations()))
 				.withLoadSpectrum(createLoadSpectrumsJson(model.getLoadSpectrums())));

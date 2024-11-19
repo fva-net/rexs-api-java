@@ -36,7 +36,7 @@ public class ChangelogFileResolver {
 	 * 				The {@link InputStream} of the file.
 	 */
 	public InputStream openInputStream(ChangelogFile changelogFile) {
-		String changelogFilename = String.format("rexs_changelog_%s_to_%s.xml", changelogFile.getFromVersion().getName(), changelogFile.getToVersion().getName());
+		String changelogFilename = String.format("rexs_changelog_%s_to_%s.xml", changelogFile.getFromVersion().getModelVersion(), changelogFile.getToVersion().getModelVersion());
 		return changelogFile.getClass().getResourceAsStream(changelogFilename);
 	}
 }

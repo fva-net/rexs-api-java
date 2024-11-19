@@ -22,7 +22,7 @@ public class StringAttribute extends Attribute {
 
     @JsonProperty("string")
     private String string;
-    
+
 
     @JsonProperty("string")
     public String getString() {
@@ -73,8 +73,8 @@ public class StringAttribute extends Attribute {
             return false;
         }
         StringAttribute rhs = ((StringAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.string.equals(rhs.getString());
     }
 
