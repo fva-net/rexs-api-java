@@ -71,7 +71,7 @@ public enum RexsValidationResultMessageKey {
 	/** The default message of the message key. */
 	private String defaultMessage;
 
-	private RexsValidationResultMessageKey(String defaultMessage) {
+	RexsValidationResultMessageKey(String defaultMessage) {
 		this.defaultMessage = defaultMessage;
 	}
 

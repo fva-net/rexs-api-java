@@ -33,7 +33,7 @@ public interface IRexsModelTransformer<E> {
 	 * @return
 	 * 				The REXS model in the foreign model.
 	 */
-	public E transform(RexsModel model);
+	E transform(RexsModel model);
 
 	/**
 	 * Transforms a foreign model to a REXS model.
@@ -44,5 +44,5 @@ public interface IRexsModelTransformer<E> {
 	 * @return
 	 * 				The REXS model as a {@link RexsModel}.
 	 */
-	public RexsModel transform(E model);
+	RexsModel transform(E model);
 }

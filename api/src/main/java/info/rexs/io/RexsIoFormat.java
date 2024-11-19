@@ -62,7 +62,7 @@ public enum RexsIoFormat {
 		}
 	};
 
-	private RexsIoFormat(String... endings) {
+	RexsIoFormat(String... endings) {
 		this.endings = endings;
 	}
 

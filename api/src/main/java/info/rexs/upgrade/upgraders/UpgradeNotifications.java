@@ -7,11 +7,11 @@ import java.util.List;
 
 public class UpgradeNotifications {
 
-	public static enum NotificationType {
+	public enum NotificationType {
 		/** for changes and upgrades that went as expected and specified by the spec */
 		INFO,
 		/**
-		 * for deviations from the spec that can be safely ignored  
+		 * for deviations from the spec that can be safely ignored
 		 * for errors are be fixed automatically and do not require the users attention
 		 * for deprecated things
 		 * */
@@ -53,7 +53,7 @@ public class UpgradeNotifications {
 		}
 	}
 
-	public static interface Source {
+	public interface Source {
 	}
 
 	public static class ComponentSource implements Source {
@@ -112,7 +112,7 @@ public class UpgradeNotifications {
 	public void addAll(Collection<Notification> notification) {
 		notifications.addAll(notification);
 	}
-	
+
 	public List<Notification> getNotifications() {
 		return notifications;
 	}

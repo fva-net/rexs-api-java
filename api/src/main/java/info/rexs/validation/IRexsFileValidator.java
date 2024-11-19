@@ -36,7 +36,7 @@ public interface IRexsFileValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(Resource rexsFileResource);
+	RexsValidationResult validate(Resource rexsFileResource);
 
 	/**
 	 * Validates a REXS file for the given {@link Path} to the REXS file and returns the validation result.
@@ -47,7 +47,7 @@ public interface IRexsFileValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(Path pathToRexsFile);
+	RexsValidationResult validate(Path pathToRexsFile);
 
 	/**
 	 * Validates a REXS file for the given REXS {@link File} and returns the validation result.
@@ -58,7 +58,7 @@ public interface IRexsFileValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(File rexsFile);
+	RexsValidationResult validate(File rexsFile);
 
 	/**
 	 * Validates a REXS file for the given path to the REXS file as {@link String} and returns the validation result.
@@ -69,7 +69,7 @@ public interface IRexsFileValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(String pathToRexsFile);
+	RexsValidationResult validate(String pathToRexsFile);
 
 	/**
 	 * Creates a new validator for the model of the REXS file.
@@ -77,5 +77,5 @@ public interface IRexsFileValidator {
 	 * @return
 	 * 				The model validator as {@link IRexsModelValidator}.
 	 */
-	public IRexsModelValidator createModelValidator();
+	IRexsModelValidator createModelValidator();
 }
