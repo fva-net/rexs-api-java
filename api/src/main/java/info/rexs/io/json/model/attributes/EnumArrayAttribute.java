@@ -65,7 +65,7 @@ public class EnumArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof EnumArrayAttribute) == false) {
+        if (!(other instanceof EnumArrayAttribute)) {
             return false;
         }
         EnumArrayAttribute rhs = ((EnumArrayAttribute) other);

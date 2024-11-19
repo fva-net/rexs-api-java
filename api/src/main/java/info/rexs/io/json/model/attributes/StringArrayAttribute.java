@@ -65,7 +65,7 @@ public class StringArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof StringArrayAttribute) == false) {
+        if (!(other instanceof StringArrayAttribute)) {
             return false;
         }
         StringArrayAttribute rhs = ((StringArrayAttribute) other);

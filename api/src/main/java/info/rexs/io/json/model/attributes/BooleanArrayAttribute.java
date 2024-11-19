@@ -65,7 +65,7 @@ public class BooleanArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof BooleanArrayAttribute) == false) {
+        if (!(other instanceof BooleanArrayAttribute)) {
             return false;
         }
         BooleanArrayAttribute rhs = ((BooleanArrayAttribute) other);

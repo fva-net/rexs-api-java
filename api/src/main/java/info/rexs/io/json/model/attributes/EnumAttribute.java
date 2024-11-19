@@ -16,7 +16,7 @@ public class EnumAttribute extends Attribute {
 
     @JsonProperty("enum")
     private String _enum;
-    
+
     @JsonProperty("enum")
     public String getEnum() {
         return _enum;
@@ -62,12 +62,12 @@ public class EnumAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof StringAttribute) == false) {
+        if (!(other instanceof StringAttribute)) {
             return false;
         }
         EnumAttribute rhs = ((EnumAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this._enum.equals(rhs.getEnum());
     }
 

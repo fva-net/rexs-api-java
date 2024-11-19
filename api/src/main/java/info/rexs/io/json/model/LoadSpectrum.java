@@ -132,7 +132,7 @@ public class LoadSpectrum {
         if (other == this) {
             return true;
         }
-        if ((other instanceof LoadSpectrum) == false) {
+        if (!(other instanceof LoadSpectrum)) {
             return false;
         }
         LoadSpectrum rhs = ((LoadSpectrum) other);

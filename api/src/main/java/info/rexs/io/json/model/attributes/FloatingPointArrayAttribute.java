@@ -64,7 +64,7 @@ public class FloatingPointArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointArrayAttribute) == false) {
+        if (!(other instanceof FloatingPointArrayAttribute)) {
             return false;
         }
         FloatingPointArrayAttribute rhs = ((FloatingPointArrayAttribute) other);

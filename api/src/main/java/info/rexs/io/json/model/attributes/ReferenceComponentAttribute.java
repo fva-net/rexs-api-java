@@ -16,7 +16,7 @@ public class ReferenceComponentAttribute extends Attribute {
 
     @JsonProperty("reference_component")
     private Integer referenceComponent;
-    
+
     @JsonProperty("reference_component")
     public Integer getReferenceComponent() {
         return referenceComponent;
@@ -62,12 +62,12 @@ public class ReferenceComponentAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof ReferenceComponentAttribute) == false) {
+        if (!(other instanceof ReferenceComponentAttribute)) {
             return false;
         }
         ReferenceComponentAttribute rhs = ((ReferenceComponentAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.referenceComponent.equals(rhs.getReferenceComponent());
     }
 

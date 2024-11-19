@@ -84,7 +84,7 @@ public class JSONModel {
         if (other == this) {
             return true;
         }
-        if ((other instanceof JSONModel) == false) {
+        if (!(other instanceof JSONModel)) {
             return false;
         }
         JSONModel rhs = ((JSONModel) other);

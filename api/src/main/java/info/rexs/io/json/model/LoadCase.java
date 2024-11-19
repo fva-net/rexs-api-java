@@ -109,7 +109,7 @@ public class LoadCase {
         if (other == this) {
             return true;
         }
-        if ((other instanceof LoadCase) == false) {
+        if (!(other instanceof LoadCase)) {
             return false;
         }
         LoadCase rhs = ((LoadCase) other);

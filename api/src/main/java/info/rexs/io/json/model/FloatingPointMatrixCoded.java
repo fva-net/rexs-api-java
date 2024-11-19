@@ -153,7 +153,7 @@ public class FloatingPointMatrixCoded {
         if (other == this) {
             return true;
         }
-        if ((other instanceof FloatingPointMatrixCoded) == false) {
+        if (!(other instanceof FloatingPointMatrixCoded)) {
             return false;
         }
         FloatingPointMatrixCoded rhs = ((FloatingPointMatrixCoded) other);

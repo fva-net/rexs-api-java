@@ -156,7 +156,7 @@ public class Component {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Component) == false) {
+        if (!(other instanceof Component)) {
             return false;
         }
         Component rhs = ((Component) other);

@@ -65,7 +65,7 @@ public class IntegerArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof IntegerArrayAttribute) == false) {
+        if (!(other instanceof IntegerArrayAttribute)) {
             return false;
         }
         IntegerArrayAttribute rhs = ((IntegerArrayAttribute) other);

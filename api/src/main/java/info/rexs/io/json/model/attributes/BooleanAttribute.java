@@ -16,7 +16,7 @@ public class BooleanAttribute extends Attribute {
 
     @JsonProperty("boolean")
     private Boolean _boolean;
-    
+
     @JsonProperty("boolean")
     public Boolean getBoolean() {
         return _boolean;
@@ -62,12 +62,12 @@ public class BooleanAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof BooleanAttribute) == false) {
+        if (!(other instanceof BooleanAttribute)) {
             return false;
         }
         BooleanAttribute rhs = ((BooleanAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this._boolean.equals(rhs.getBoolean());
     }
 
