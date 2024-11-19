@@ -38,7 +38,7 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public RexsUnitId getAttributeUnit(String rexsAttributeId, RexsVersion version);
+	RexsUnitId getAttributeUnit(String rexsAttributeId, RexsVersion version);
 
 	/**
 	 * returns the RexsValueType of the attribute in the specified REXS version
@@ -46,7 +46,7 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public RexsValueType getAttributeType(String rexsAttributeId, RexsVersion version);
+	RexsValueType getAttributeType(String rexsAttributeId, RexsVersion version);
 
 	/**
 	 * returns the (translated) name of the attribute in the specified REXS version
@@ -54,7 +54,7 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public String getAttributeName(String attributeId, RexsVersion version);
+	String getAttributeName(String attributeId, RexsVersion version);
 
 	/**
 	 * returns the symbol of the attribute in the specified REXS version
@@ -62,7 +62,7 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public String getAttributeSymbol(String attributeId, RexsVersion version);
+	String getAttributeSymbol(String attributeId, RexsVersion version);
 
 	/**
 	 * returns the (translated) name of an enum value of an enum attribute
@@ -71,7 +71,7 @@ public interface IRexsSchemaRegistry {
 	 * @param value
 	 * @return
 	 */
-	public String getNameForEnumValue(String attributeId, RexsVersion version, String value);
+	String getNameForEnumValue(String attributeId, RexsVersion version, String value);
 
 	/**
 	 * returns true if this attribute is mapped to this component type in the specified REXS version
@@ -80,7 +80,7 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public boolean componentAttributeMappingExists(String rexsAttributeId, RexsComponentType rexsCompType, RexsVersion version);
+	boolean componentAttributeMappingExists(String rexsAttributeId, RexsComponentType rexsCompType, RexsVersion version);
 
 	/**
 	 * returns the list of component types which are mapped to this attribute in the specified REXS version
@@ -88,7 +88,7 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public List<RexsComponentType> getAvailableComponentTypesForAttributeId(String rexsAttributeId, RexsVersion version);
+	List<RexsComponentType> getAvailableComponentTypesForAttributeId(String rexsAttributeId, RexsVersion version);
 
 	/**
 	 * returns the list of attributes which are mapped to this component type in the specified REXS version
@@ -96,15 +96,15 @@ public interface IRexsSchemaRegistry {
 	 * @param version
 	 * @return
 	 */
-	public List<String> getAttributeIdsOfComponentType(RexsComponentType rexsComponentType, RexsVersion version);
+	List<String> getAttributeIdsOfComponentType(RexsComponentType rexsComponentType, RexsVersion version);
 
-	public RexsVersion getVersion(String version);
+	RexsVersion getVersion(String version);
 
-	public RexsComponentType getComponentType(RexsVersion version, String componentType);
+	RexsComponentType getComponentType(RexsVersion version, String componentType);
 
-	public boolean hasAttributeWithId(RexsVersion version, String attributeId);
+	boolean hasAttributeWithId(RexsVersion version, String attributeId);
 
-	public boolean hasRelationTypes(RexsVersion version);
+	boolean hasRelationTypes(RexsVersion version);
 
-	public List<List<AllowedCombinationRole>> getAllowedCombinationsForRelation(RexsVersion version, RexsRelationType relationType);
+	List<List<AllowedCombinationRole>> getAllowedCombinationsForRelation(RexsVersion version, RexsRelationType relationType);
 }

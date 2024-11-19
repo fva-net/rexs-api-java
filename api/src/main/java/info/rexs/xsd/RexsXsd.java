@@ -47,7 +47,7 @@ public enum RexsXsd {
 
 	private String filename;
 
-	private RexsXsd(String filename) {
+	RexsXsd(String filename) {
 		this.filename = filename;
 	}
 

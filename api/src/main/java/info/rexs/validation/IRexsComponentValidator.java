@@ -33,7 +33,7 @@ public interface IRexsComponentValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(RexsComponent rexsComponent);
+	RexsValidationResult validate(RexsComponent rexsComponent);
 
 	/**
 	 * Creates a new validator for the attributes of the component.
@@ -41,5 +41,5 @@ public interface IRexsComponentValidator {
 	 * @return
 	 * 				The attribute validator as {@link IRexsAttributeValidator}.
 	 */
-	public IRexsAttributeValidator createAttributeValidator();
+	IRexsAttributeValidator createAttributeValidator();
 }

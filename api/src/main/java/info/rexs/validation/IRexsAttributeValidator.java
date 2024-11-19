@@ -36,5 +36,5 @@ public interface IRexsAttributeValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(RexsAttribute rexsAttribute, RexsComponent rexsComponent);
+	RexsValidationResult validate(RexsAttribute rexsAttribute, RexsComponent rexsComponent);
 }

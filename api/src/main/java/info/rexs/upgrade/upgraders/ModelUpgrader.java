@@ -36,5 +36,5 @@ public interface ModelUpgrader {
 	 * @throws RexsUpgradeException
 	 * 				If an unexpected error occurs during the upgrade process.
 	 */
-	public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException;
+	ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException;
 }

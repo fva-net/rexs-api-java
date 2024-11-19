@@ -35,5 +35,5 @@ public interface IRexsRelationValidator {
 	 * @return
 	 * 				The validation result as {@link RexsValidationResult}.
 	 */
-	public RexsValidationResult validate(RexsRelation rexsRelation, RexsModel rexsModel);
+	RexsValidationResult validate(RexsRelation rexsRelation, RexsModel rexsModel);
 }
