@@ -57,7 +57,7 @@ public class RexsFileWriterTest {
 		writer.write(aRexsModelToWrite);
 
 		assertThat(rexsTargetFile).exists();
-		assertThat(rexsTargetFile.length()).isGreaterThan(0l);
+		assertThat(rexsTargetFile.length()).isGreaterThan(0L);
 	}
 
 	@Test
@@ -98,6 +98,6 @@ public class RexsFileWriterTest {
 
 		Path rexsTargetFilePath = Paths.get(rexsTargetFileStringPath);
 		assertThat(rexsTargetFilePath).exists();
-		assertThat(Files.size(rexsTargetFilePath)).isGreaterThan(0l);
+		assertThat(Files.size(rexsTargetFilePath)).isGreaterThan(0L);
 	}
 }
