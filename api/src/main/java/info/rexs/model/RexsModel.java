@@ -176,7 +176,7 @@ public class RexsModel {
 	 * 				All components of the model as a {@link List} of {@link RexsComponent} sorted by component Id.
 	 */
 	public List<RexsComponent> getComponentsSorted() {
-		return components.keySet().stream().sorted().map(id -> getComponent(id)).collect(Collectors.toList());
+		return components.keySet().stream().sorted().map(this::getComponent).collect(Collectors.toList());
 	}
 
 	/**

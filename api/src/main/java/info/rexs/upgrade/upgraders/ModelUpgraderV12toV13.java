@@ -3,15 +3,15 @@ package info.rexs.upgrade.upgraders;
 import java.util.Comparator;
 import java.util.List;
 
+import info.rexs.model.RexsComponent;
+import info.rexs.model.RexsModel;
+import info.rexs.model.RexsRelation;
 import info.rexs.schema.constants.RexsValueType;
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 import info.rexs.schema.constants.standard.RexsStandardVersions;
-import info.rexs.model.RexsComponent;
-import info.rexs.model.RexsModel;
-import info.rexs.model.RexsRelation;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.ComponentSource;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
@@ -107,7 +107,7 @@ public class ModelUpgraderV12toV13 {
 	private void upgradeTools(RexsModel model) {
 		for (RexsComponent gearComp: model.getComponentsOfType(RexsStandardComponentTypes.cylindrical_gear)) {
 			List<RexsRelation> toolRelations = model.getRelations(RexsStandardRelationTypes.ordered_reference, RexsStandardRelationRoles.origin, gearComp.getId()).stream()
-			  .sorted(Comparator.comparingInt(rel -> rel.getOrder()))
+			  .sorted(Comparator.comparingInt(RexsRelation::getOrder))
 			  .toList();
 
 			RexsComponent leftFlankComp = model.getFlankGeometry(gearComp.getId(), RexsStandardRelationRoles.left.getKey());

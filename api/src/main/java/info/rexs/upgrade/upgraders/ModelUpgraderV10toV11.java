@@ -6,6 +6,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+import info.rexs.model.RexsComponent;
+import info.rexs.model.RexsModel;
+import info.rexs.model.RexsRelation;
+import info.rexs.model.RexsRelationRef;
 import info.rexs.schema.RexsSchemaRegistry;
 import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
@@ -17,10 +21,6 @@ import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 import info.rexs.schema.constants.standard.RexsStandardVersions;
-import info.rexs.model.RexsComponent;
-import info.rexs.model.RexsModel;
-import info.rexs.model.RexsRelation;
-import info.rexs.model.RexsRelationRef;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.NotificationType;
@@ -207,7 +207,7 @@ public class ModelUpgraderV10toV11 {
 	private void upgradeOrder(RexsComponent parentComponent, RexsRelationType relType, RexsRelationRole parentRole) {
 		List<RexsRelation> sortedRelations = newModel.getRelationsOfType(relType).stream()
 				.filter(rel -> Objects.equals(rel.findComponentIdByRole(parentRole), parentComponent.getId()))
-				.sorted(Comparator.comparing(rel -> rel.getOrder()))
+				.sorted(Comparator.comparing(RexsRelation::getOrder))
 				.toList();
 		for (int i=0; i<sortedRelations.size(); i++) {
 			RexsRelation rel = sortedRelations.get(i);

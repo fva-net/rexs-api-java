@@ -142,7 +142,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 
 	private List<Component> createComponentsJson(List<RexsComponent> components) {
 		List<Component> componentsJson = new ArrayList<>();
-		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(RexsComponent::getId)).toList();
 		for (RexsComponent component : sortedComponents)
 			componentsJson.add(createComponentJson(component));
 		return componentsJson;
@@ -288,16 +288,16 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			if (valueString==null || valueString.isEmpty() || valueString.get(0)==null || valueString.get(0).isEmpty())
 				return new StringArrayAttribute().withStringArray(valueString);
 			else if (valueString.get(0).equals("true") || valueString.get(0).equals("false"))
-				return new BooleanArrayAttribute().withBooleanArray(valueString.stream().map(s -> Boolean.valueOf(s)).toList());
+				return new BooleanArrayAttribute().withBooleanArray(valueString.stream().map(Boolean::valueOf).toList());
 			else if (!unit.equals(RexsStandardUnitIds.none.getId()))
-				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(s -> Double.valueOf(s)).toList());
+				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(Double::valueOf).toList());
 			// if nothing better is known try valueOf...
 			try {
-				return new IntegerArrayAttribute().withIntegerArray(valueString.stream().map(s -> Integer.valueOf(s)).toList());
+				return new IntegerArrayAttribute().withIntegerArray(valueString.stream().map(Integer::valueOf).toList());
 			}
 			catch (NumberFormatException e) {}
 			try {
-				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(s -> Double.valueOf(s)).toList());
+				return new FloatingPointArrayAttribute().withFloatingPointArray(valueString.stream().map(Double::valueOf).toList());
 			}
 			catch (NumberFormatException e) {}
 			// if nothing else fits use string
@@ -317,16 +317,16 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			if (valueString==null || valueString.isEmpty() || valueString.get(0)==null || valueString.get(0).isEmpty() || valueString.get(0).get(0)==null || valueString.get(0).get(0).isEmpty())
 				return new StringMatrixAttribute().withStringMatrix(valueString);
 			else if (valueString.get(0).get(0).equals("true") || valueString.get(0).get(0).equals("false"))
-				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(s -> Boolean.valueOf(s)).toList()).toList());
+				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(Boolean::valueOf).toList()).toList());
 			else if (!unit.equals(RexsStandardUnitIds.none.getId()))
-				return new FloatingPointMatrixAttribute().withFloatingPointMatrix(valueString.stream().map(list -> list.stream().map(s -> Double.valueOf(s)).toList()).toList());
+				return new FloatingPointMatrixAttribute().withFloatingPointMatrix(valueString.stream().map(list -> list.stream().map(Double::valueOf).toList()).toList());
 			// if nothing better is known try valueOf...
 			try {
-				return new IntegerMatrixAttribute().withIntegerMatrix(valueString.stream().map(list -> list.stream().map(s -> Integer.valueOf(s)).toList()).toList());
+				return new IntegerMatrixAttribute().withIntegerMatrix(valueString.stream().map(list -> list.stream().map(Integer::valueOf).toList()).toList());
 			}
 			catch (NumberFormatException e) {}
 			try {
-				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(s -> Boolean.valueOf(s)).toList()).toList());
+				return new BooleanMatrixAttribute().withBooleanMatrix(valueString.stream().map(list -> list.stream().map(Boolean::valueOf).toList()).toList());
 			}
 			catch (NumberFormatException e) {}
 			// if nothing else fits use string
@@ -344,7 +344,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		}
 		else if (value instanceof RexsAttributeValueArrayOfArrays) {
 			List<Integer[]> valueString = value.getValueArrayOfIntegerArrays();
-			return new ArrayOfIntegerArraysAttribute().withArrayOfIntegerArrays(valueString.stream().map(array -> Arrays.asList(array)).toList());
+			return new ArrayOfIntegerArraysAttribute().withArrayOfIntegerArrays(valueString.stream().map(Arrays::asList).toList());
 		}
 		else
 			throw new RexsModelAccessException("unkown value type: "+value);
@@ -507,14 +507,14 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			List<List<Integer>> jsonValue = ((IntegerMatrixAttribute) attributeJson).getIntegerMatrix();
 			List<List<String>> stringValue = new ArrayList<>();
 			for (List<Integer> list : jsonValue)
-				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+				stringValue.add(list.stream().map(Object::toString).toList());
 			return new RexsAttributeValueMatrix(stringValue);
 		}
 		if(attributeJson instanceof FloatingPointMatrixAttribute){
 			List<List<Double>> jsonValue = ((FloatingPointMatrixAttribute) attributeJson).getFloatingPointMatrix();
 			List<List<String>> stringValue = new ArrayList<>();
 			for (List<Double> list : jsonValue)
-				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+				stringValue.add(list.stream().map(Object::toString).toList());
 			return new RexsAttributeValueMatrix(stringValue);
 		}
 		if(attributeJson instanceof FloatingPointMatrixCodedAttribute){
@@ -525,14 +525,14 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			List<List<Boolean>> jsonValue = ((BooleanMatrixAttribute) attributeJson).getBooleanMatrix();
 			List<List<String>> stringValue = new ArrayList<>();
 			for (List<Boolean> list : jsonValue)
-				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+				stringValue.add(list.stream().map(Object::toString).toList());
 			return new RexsAttributeValueMatrix(stringValue);
 		}
 		if(attributeJson instanceof ArrayOfIntegerArraysAttribute){
 			List<List<Integer>> jsonValue = ((ArrayOfIntegerArraysAttribute) attributeJson).getArrayOfIntegerArrays();
 			List<List<String>> stringValue = new ArrayList<>();
 			for (List<Integer> list : jsonValue)
-				stringValue.add(list.stream().map(entry -> entry.toString()).toList());
+				stringValue.add(list.stream().map(Object::toString).toList());
 			return new RexsAttributeValueMatrix(stringValue);
 		}
 		return null;

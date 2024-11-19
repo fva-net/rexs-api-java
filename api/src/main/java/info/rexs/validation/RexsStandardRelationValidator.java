@@ -21,15 +21,15 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-import info.rexs.schema.RexsSchemaRegistry;
+import info.rexs.model.RexsModel;
+import info.rexs.model.RexsRelation;
+import info.rexs.model.RexsRelationRef;
 import info.rexs.schema.IRexsSchemaRegistry;
+import info.rexs.schema.RexsSchemaRegistry;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsRelationRole;
 import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.jaxb.AllowedCombinationRole;
-import info.rexs.model.RexsModel;
-import info.rexs.model.RexsRelation;
-import info.rexs.model.RexsRelationRef;
 
 /**
  * This implementation of {@link IRexsRelationValidator} validates the basic structure of a REXS relation
@@ -108,7 +108,7 @@ public class RexsStandardRelationValidator extends DefaultRexsRelationValidator 
 
 	private boolean allowedCombinationMatches(List<AllowedCombinationRole> allowedCombination, Map<RexsRelationRole, RexsComponentType> mapRoleToComponentType) {
 		for (RexsRelationRole role : mapRoleToComponentType.keySet()) {
-			Optional<String> allowedComponentTypeForRole = allowedCombination.stream().filter(a -> a.getRoleId().equals(role.getKey())).map(a -> a.getComponentId()).findFirst();
+			Optional<String> allowedComponentTypeForRole = allowedCombination.stream().filter(a -> a.getRoleId().equals(role.getKey())).map(AllowedCombinationRole::getComponentId).findFirst();
 			if (allowedComponentTypeForRole.isEmpty() || !allowedComponentTypeForRole.get().equals(mapRoleToComponentType.get(role).getId()))
 				return false;
 		}
