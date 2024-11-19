@@ -6,14 +6,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import info.rexs.schema.constants.RexsRelationRole;
-import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
-import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
-import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsModel;
 import info.rexs.model.RexsRelation;
 import info.rexs.model.RexsRelationRef;
+import info.rexs.schema.constants.RexsRelationRole;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.AttributeSource;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.ComponentSource;
@@ -69,7 +69,7 @@ public class ModelUpgraderV13toV14 {
 
 	private void checkDuplicateReferences(RexsModel model, RexsRelation rel) {
 		Map<RexsRelationRole, List<RexsRelationRef>> map = rel.getRefs().stream()
-				.collect(Collectors.groupingBy(ref -> ref.getRole()));
+				.collect(Collectors.groupingBy(RexsRelationRef::getRole));
 		boolean hasDuplicate = false;
 		for (Entry<RexsRelationRole, List<RexsRelationRef>> entry: map.entrySet()) {
 			RexsRelationRole role = entry.getKey();

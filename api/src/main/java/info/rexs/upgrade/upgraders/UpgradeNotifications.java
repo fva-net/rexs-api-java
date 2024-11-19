@@ -48,7 +48,7 @@ public class UpgradeNotifications {
 		}
 
 		public String getMessageVerbose() {
-			String sourceStr = sources.stream().map(source -> source.toString()).reduce((a,b) -> a+", "+b).orElse("");
+			String sourceStr = sources.stream().map(Object::toString).reduce((a, b) -> a+", "+b).orElse("");
 			return type+": "+message+" ["+sourceStr+"]";
 		}
 	}

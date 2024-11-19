@@ -19,15 +19,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import info.rexs.model.RexsComponent;
+import info.rexs.model.RexsModel;
+import info.rexs.model.RexsRelation;
 import info.rexs.schema.IRexsSchemaRegistry;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 import info.rexs.schema.jaxb.AllowedCombinationRole;
-import info.rexs.model.RexsComponent;
-import info.rexs.model.RexsModel;
-import info.rexs.model.RexsRelation;
 
 public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandardModelValidator {
 
@@ -122,7 +122,7 @@ public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandar
 
 				for (Integer pinId : pinShaftIds) {
 					List<RexsRelation> sideRelations = rexsModel.getRelations(RexsStandardRelationTypes.side, RexsStandardRelationRoles.inner_part, pinId);
-					if (!atLeastOneIdIsContainedInRelations(sidePlates.stream().map(c -> c.getId()).toList(), sideRelations))
+					if (!atLeastOneIdIsContainedInRelations(sidePlates.stream().map(RexsComponent::getId).toList(), sideRelations))
 						validationResult.addError(RexsValidationResultMessageKey.GUIDELINE_QUASISTATIC_SIDE_PLATE_MISSING_PIN_COUPLING, rexsModel.getComponent(pinId).toString());
 				}
 

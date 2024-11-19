@@ -23,10 +23,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import info.rexs.schema.constants.RexsVersion;
-import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
-import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
-import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsLoadSpectrum;
@@ -63,6 +59,10 @@ import info.rexs.model.value.RexsAttributeValueArrayOfArrays;
 import info.rexs.model.value.RexsAttributeValueMatrix;
 import info.rexs.model.value.RexsAttributeValueMatrixBase64;
 import info.rexs.model.value.RexsAttributeValueScalar;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 
 /**
  * This class is a {@link IRexsModelTransformer} to transform REXS models of the types {@link RexsModel} and {@link Model}.
@@ -115,7 +115,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Relations relationsXml = objectFactory.createRelations();
 
-		List<RexsRelation> sortedRelations = relations.stream().sorted(Comparator.comparingInt(rel -> rel.getId())).toList();
+		List<RexsRelation> sortedRelations = relations.stream().sorted(Comparator.comparingInt(RexsRelation::getId)).toList();
 		for (RexsRelation relation : sortedRelations) {
 			relationsXml.getRelation().add(createRelationXml(relation));
 		}
@@ -156,7 +156,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Components componentsXml = objectFactory.createComponents();
 
-		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(RexsComponent::getId)).toList();
 		for (RexsComponent component : sortedComponents) {
 			componentsXml.getComponent().add(createComponentXml(component));
 		}
@@ -373,7 +373,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		LoadCase loadCaseXml = objectFactory.createLoadCase();
 		loadCaseXml.setId(loadCase.getId());
 
-		List<RexsComponent> sortedComponents = loadCase.getComponents().stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		List<RexsComponent> sortedComponents = loadCase.getComponents().stream().sorted(Comparator.comparingInt(RexsComponent::getId)).toList();
 		for (RexsComponent component : sortedComponents) {
 			loadCaseXml.getComponent().add(createComponentXml(component));
 		}
@@ -391,7 +391,7 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 
 		Accumulation accumulationXml = objectFactory.createAccumulation();
 
-		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(component -> component.getId())).toList();
+		List<RexsComponent> sortedComponents = components.stream().sorted(Comparator.comparingInt(RexsComponent::getId)).toList();
 		for (RexsComponent component : sortedComponents) {
 			accumulationXml.getComponent().add(createComponentXml(component));
 		}
