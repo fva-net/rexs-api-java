@@ -27,16 +27,15 @@ import java.nio.file.StandardOpenOption;
 
 import org.junit.Test;
 
-import info.rexs.schema.constants.RexsVersion;
-import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.io.RexsIoException;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 
 public class RexsXmlFileReaderTest {
 
 	@Test
-	public void readRawModel_nonExistingFileThrowsFileNotFoundException() throws Exception {
+	public void readRawModel_nonExistingFileThrowsFileNotFoundException() {
 		Path nonExistingFilePath = Paths.get("path/to/non/existing/file");
 
 		assertThatExceptionOfType(RexsIoException.class).isThrownBy(() -> {

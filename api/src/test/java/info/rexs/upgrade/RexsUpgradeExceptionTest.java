@@ -24,7 +24,7 @@ import org.junit.Test;
 public class RexsUpgradeExceptionTest {
 
 	@Test
-	public void messageConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void messageConstructor_getterMatchesValuePassedToConstructor() {
 		String message = UUID.randomUUID().toString();
 		RexsUpgradeException ex = new RexsUpgradeException(message);
 
@@ -32,7 +32,7 @@ public class RexsUpgradeExceptionTest {
 	}
 
 	@Test
-	public void messageAndCauseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void messageAndCauseConstructor_getterMatchesValuePassedToConstructor() {
 		Exception cause = new Exception("foo");
 		RexsUpgradeException ex = new RexsUpgradeException("bar", cause);
 

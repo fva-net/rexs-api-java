@@ -27,7 +27,7 @@ import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 public class RexsModelAccessExceptionTest {
 
 	@Test
-	public void messageConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void messageConstructor_getterMatchesValuePassedToConstructor() {
 		String message = UUID.randomUUID().toString();
 		RexsModelAccessException ex = new RexsModelAccessException(message);
 
@@ -37,7 +37,7 @@ public class RexsModelAccessExceptionTest {
 	}
 
 	@Test
-	public void messageAndCauseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void messageAndCauseConstructor_getterMatchesValuePassedToConstructor() {
 		Exception cause = new Exception("foo");
 		RexsModelAccessException ex = new RexsModelAccessException("bar", cause);
 
@@ -48,7 +48,7 @@ public class RexsModelAccessExceptionTest {
 	}
 
 	@Test
-	public void componentAndmessageConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void componentAndmessageConstructor_getterMatchesValuePassedToConstructor() {
 		Integer id = 15;
 		RexsComponentType type = RexsStandardComponentTypes.UNKNOWN;
 		String name = "SampleComponent";
@@ -62,7 +62,7 @@ public class RexsModelAccessExceptionTest {
 	}
 
 	@Test
-	public void componentAndmessageAndCauseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void componentAndmessageAndCauseConstructor_getterMatchesValuePassedToConstructor() {
 		Integer id = 15;
 		RexsComponentType type = RexsStandardComponentTypes.UNKNOWN;
 		String name = "SampleComponent";

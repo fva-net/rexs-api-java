@@ -30,7 +30,7 @@ import info.rexs.model.RexsModel;
 public class RexsZipFileReaderTest {
 
 	@Test
-	public void read_nonExistingFileThrowsFileNotFoundException() throws Exception {
+	public void read_nonExistingFileThrowsFileNotFoundException() {
 		Path nonExistingFilePath = Paths.get("path/to/non/existing/file");
 
 		assertThatExceptionOfType(RexsIoException.class).isThrownBy(() -> {

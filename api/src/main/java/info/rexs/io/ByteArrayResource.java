@@ -16,7 +16,6 @@
 package info.rexs.io;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 public class ByteArrayResource implements Resource {
@@ -31,7 +30,7 @@ public class ByteArrayResource implements Resource {
 	}
 
 	@Override
-	public InputStream openInputStream() throws IOException {
+	public InputStream openInputStream() {
 		return new ByteArrayInputStream(this.byteArray);
 	}
 
@@ -41,7 +40,7 @@ public class ByteArrayResource implements Resource {
 	}
 
 	@Override
-	public long getContentLength() throws IOException {
+	public long getContentLength() {
 		return this.byteArray.length;
 	}
 

@@ -26,7 +26,7 @@ import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 public class RexsComponentTypeTest {
 
 	@Test
-	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				RexsComponentType.create(null);
@@ -35,7 +35,7 @@ public class RexsComponentTypeTest {
 	}
 
 	@Test
-	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
+	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				RexsComponentType.create("");
@@ -44,7 +44,7 @@ public class RexsComponentTypeTest {
 	}
 
 	@Test
-	public void create_newComponentTypeHasId() throws Exception {
+	public void create_newComponentTypeHasId() {
 		RexsComponentType newComponentType = RexsComponentType.create("foo");
 		assertThat(newComponentType.getId()).isEqualTo("foo");
 	}
@@ -60,14 +60,14 @@ public class RexsComponentTypeTest {
 	}
 
 	@Test
-	public void findById_returnsRexsStandardComponentType() throws Exception {
+	public void findById_returnsRexsStandardComponentType() {
 		RexsComponentType componentType = RexsComponentType.findById(RexsStandardComponentTypes.coupling.getId());
 		assertThat(componentType).isNotNull();
 		assertThat(componentType.getId()).isEqualTo(RexsStandardComponentTypes.coupling.getId());
 	}
 
 	@Test
-	public void findById_returnsNewlyCreatedComponentType() throws Exception {
+	public void findById_returnsNewlyCreatedComponentType() {
 		RexsComponentType.create("bar");
 		RexsComponentType newComponentType = RexsComponentType.findById("bar");
 		assertThat(newComponentType).isNotNull();

@@ -26,7 +26,7 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 public class RexsRelationTypeTest {
 
 	@Test
-	public void create_givenNullThrowsIllegalArgumentException() throws Exception {
+	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				RexsRelationType.create(null);
@@ -35,7 +35,7 @@ public class RexsRelationTypeTest {
 	}
 
 	@Test
-	public void create_givenEmptyIdThrowsIllegalArgumentException() throws Exception {
+	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				RexsRelationType.create("");
@@ -44,7 +44,7 @@ public class RexsRelationTypeTest {
 	}
 
 	@Test
-	public void create_newRelationTypeHasKey() throws Exception {
+	public void create_newRelationTypeHasKey() {
 		RexsRelationType newRelationType = RexsRelationType.create("foo");
 		assertThat(newRelationType.getKey()).isEqualTo("foo");
 	}
@@ -60,14 +60,14 @@ public class RexsRelationTypeTest {
 	}
 
 	@Test
-	public void findByKey_returnsRexsStandardRelationType() throws Exception {
+	public void findByKey_returnsRexsStandardRelationType() {
 		RexsRelationType relationType = RexsRelationType.findByKey(RexsStandardRelationTypes.central_shaft.getKey());
 		assertThat(relationType).isNotNull();
 		assertThat(relationType.getKey()).isEqualTo(RexsStandardRelationTypes.central_shaft.getKey());
 	}
 
 	@Test
-	public void findByKey_returnsNewlyCreatedRelationType() throws Exception {
+	public void findByKey_returnsNewlyCreatedRelationType() {
 		RexsRelationType.create("bar");
 		RexsRelationType newRelationType = RexsRelationType.findByKey("bar");
 		assertThat(newRelationType).isNotNull();

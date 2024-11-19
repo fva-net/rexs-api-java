@@ -24,7 +24,7 @@ import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 public class RexsSubModelTest {
 
 	@Test
-	public void integerConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void integerConstructor_getterMatchesValuePassedToConstructor() {
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
 
 		assertThat(rexsSubModel.getId()).isEqualTo(41);
@@ -32,7 +32,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void loadCaseConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void loadCaseConstructor_getterMatchesValuePassedToConstructor() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
@@ -44,7 +44,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void accumulationConstructor_getterMatchesValuePassedToConstructor() throws Exception {
+	public void accumulationConstructor_getterMatchesValuePassedToConstructor() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel();
@@ -56,7 +56,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void accumulationConstructor_nullParameterDoesNotCrash() throws Exception {
+	public void accumulationConstructor_nullParameterDoesNotCrash() {
 		RexsSubModel rexsSubModel = new RexsSubModel();
 
 		assertThat(rexsSubModel.getId()).isNull();
@@ -65,7 +65,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void hasComponent_componentNotInSubModelReturnsFalse() throws Exception {
+	public void hasComponent_componentNotInSubModelReturnsFalse() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
@@ -75,7 +75,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void hasComponent_componentInSubModelReturnsTrue() throws Exception {
+	public void hasComponent_componentInSubModelReturnsTrue() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
@@ -85,7 +85,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void getComponent_componentNotInSubModelReturnsNull() throws Exception {
+	public void getComponent_componentNotInSubModelReturnsNull() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
@@ -95,7 +95,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void getComponent_componentInSubModelReturnsComponent() throws Exception {
+	public void getComponent_componentInSubModelReturnsComponent() {
 		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
 
 		RexsSubModel rexsSubModel = new RexsSubModel(41);
@@ -108,7 +108,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void changeComponentId_nonExistingComponentIdIgnoresMethodCall() throws Exception {
+	public void changeComponentId_nonExistingComponentIdIgnoresMethodCall() {
 		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
 		RexsComponent rexsComponent2 = new RexsComponent(2, RexsStandardComponentTypes.bevel_gear, "Bar");
 
@@ -124,7 +124,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void changeComponentId_changesIdOfComponent() throws Exception {
+	public void changeComponentId_changesIdOfComponent() {
 		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
 		RexsComponent rexsComponent2 = new RexsComponent(2, RexsStandardComponentTypes.bevel_gear, "Bar");
 
@@ -139,7 +139,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void compareTo_accumulationIsAlwaysGreaterThanAnyOtherLoadCase() throws Exception {
+	public void compareTo_accumulationIsAlwaysGreaterThanAnyOtherLoadCase() {
 		RexsSubModel rexsSubModelAccumulation = new RexsSubModel();
 		RexsSubModel rexsSubModelLoadCase1 = new RexsSubModel(1);
 		RexsSubModel rexsSubModelLoadCase24 = new RexsSubModel(24);
@@ -152,7 +152,7 @@ public class RexsSubModelTest {
 	}
 
 	@Test
-	public void compareTo_comparesById() throws Exception {
+	public void compareTo_comparesById() {
 		RexsSubModel rexsSubModel23 = new RexsSubModel(23);
 		RexsSubModel rexsSubModel24 = new RexsSubModel(24);
 

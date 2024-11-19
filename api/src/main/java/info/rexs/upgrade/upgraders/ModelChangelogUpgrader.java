@@ -262,7 +262,7 @@ public class ModelChangelogUpgrader {
 			RexsComponent component,
 			RexsAttribute attribute,
 			RexsValueType oldType,
-			RexsValueType newType) throws RexsUpgradeException {
+			RexsValueType newType) {
 
 		String rawValue = attribute.getRawValue().getValueString();
 		switch(newType) {
