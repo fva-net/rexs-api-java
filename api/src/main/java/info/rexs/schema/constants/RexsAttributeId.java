@@ -17,6 +17,7 @@ package info.rexs.schema.constants;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 
@@ -134,12 +135,12 @@ public class RexsAttributeId implements RexsStandardAttributeIds {
 		}
 		Object this_id = getId();
 		Object other_id = other.getId();
-		if (this_id == null ? other_id != null : !this_id.equals(other_id)) {
+		if (!Objects.equals(this_id, other_id)) {
 			return false;
 		}
 		Object this_unit = getUnit();
 		Object other_unit = other.getUnit();
-		return this_unit == null ? other_unit == null : this_unit.equals(other_unit);
+		return Objects.equals(this_unit, other_unit);
 	}
 
 	protected boolean canEqual(Object other) {

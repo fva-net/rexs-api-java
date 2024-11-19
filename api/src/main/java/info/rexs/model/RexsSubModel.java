@@ -18,6 +18,7 @@ package info.rexs.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
@@ -185,12 +186,12 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 		}
 		Object this_id = getId();
 		Object other_id = other.getId();
-		if (this_id == null ? other_id != null : !this_id.equals(other_id)) {
+		if (!Objects.equals(this_id, other_id)) {
 			return false;
 		}
 		Object this_isAccumulation = isAccumulation();
 		Object other_isAccumulation = other.isAccumulation();
-		return this_isAccumulation == null ? other_isAccumulation == null : this_isAccumulation.equals(other_isAccumulation);
+		return Objects.equals(this_isAccumulation, other_isAccumulation);
 	}
 
 	protected boolean canEqual(Object other) {

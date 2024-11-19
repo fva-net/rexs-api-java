@@ -17,6 +17,7 @@ package info.rexs.upgrade.upgraders.changelog;
 
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import info.rexs.schema.constants.RexsVersion;
@@ -151,12 +152,12 @@ public class ChangelogFile {
 		}
 		Object this_fromVersion = getFromVersion();
 		Object other_fromVersion = other.getFromVersion();
-		if (this_fromVersion == null ? other_fromVersion != null : !this_fromVersion.equals(other_fromVersion)) {
+		if (!Objects.equals(this_fromVersion, other_fromVersion)) {
 			return false;
 		}
 		Object this_toVersion = getToVersion();
 		Object other_toVersion = other.getToVersion();
-		return this_toVersion == null ? other_toVersion == null : this_toVersion.equals(other_toVersion);
+		return Objects.equals(this_toVersion, other_toVersion);
 	}
 
 	protected boolean canEqual(Object other) {

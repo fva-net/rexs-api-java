@@ -2,6 +2,7 @@ package info.rexs.io.json.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -87,7 +88,7 @@ public class JSONModel {
         if (!(other instanceof JSONModel rhs)) {
             return false;
         }
-		return (((this.model == rhs.model)||((this.model!= null)&&this.model.equals(rhs.model)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+		return ((Objects.equals(this.model, rhs.model))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)));
     }
 
 }

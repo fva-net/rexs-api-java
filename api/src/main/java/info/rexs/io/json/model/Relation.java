@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -158,7 +159,7 @@ public class Relation {
         if (!(other instanceof Relation rhs)) {
             return false;
         }
-		return ((((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.type == rhs.type)||((this.type!= null)&&this.type.equals(rhs.type))))&&((this.refs == rhs.refs)||((this.refs!= null)&&this.refs.equals(rhs.refs))))&&((this.order == rhs.order)||((this.order!= null)&&this.order.equals(rhs.order))));
+		return (((((Objects.equals(this.id, rhs.id))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)))&&(Objects.equals(this.type, rhs.type)))&&(Objects.equals(this.refs, rhs.refs)))&&(Objects.equals(this.order, rhs.order)));
     }
 
 }

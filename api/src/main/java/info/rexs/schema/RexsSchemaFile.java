@@ -17,6 +17,7 @@ package info.rexs.schema;
 
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import info.rexs.schema.constants.RexsVersion;
@@ -157,7 +158,7 @@ public class RexsSchemaFile {
 		}
 		Object this_version = getVersion();
 		Object other_version = other.getVersion();
-		return this_version == null ? other_version == null : this_version.equals(other_version);
+		return Objects.equals(this_version, other_version);
 	}
 
 	protected boolean canEqual(Object other) {

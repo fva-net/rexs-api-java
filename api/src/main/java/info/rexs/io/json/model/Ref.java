@@ -2,6 +2,7 @@ package info.rexs.io.json.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -133,7 +134,7 @@ public class Ref {
         if (!(other instanceof Ref rhs)) {
             return false;
         }
-		return (((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.role == rhs.role)||((this.role!= null)&&this.role.equals(rhs.role))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.hint == rhs.hint)||((this.hint!= null)&&this.hint.equals(rhs.hint))));
+		return ((((Objects.equals(this.id, rhs.id))&&(Objects.equals(this.role, rhs.role)))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)))&&(Objects.equals(this.hint, rhs.hint)));
     }
 
 }

@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
@@ -1061,7 +1062,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		}
 		Object this_id = getId();
 		Object other_id = other.getId();
-		return this_id == null ? other_id == null : this_id.equals(other_id);
+		return Objects.equals(this_id, other_id);
 	}
 
 	protected boolean canEqual(Object other) {
