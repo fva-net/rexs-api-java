@@ -17,6 +17,8 @@ package info.rexs.schema;
 
 import java.io.InputStream;
 
+import info.rexs.schema.constants.RexsVersion;
+
 /**
  * This class is used to determine the content of REXS schema files.
  * <p>
@@ -36,7 +38,10 @@ public class RexsSchemaFileResolver {
 	 * 				The {@link InputStream} of the file.
 	 */
 	public InputStream openInputStream(RexsSchemaFile rexsSchemaFile) {
-		String rexsSchemaFilename = String.format("rexs_schema_%s.xml", rexsSchemaFile.getVersion().getModelVersion());
+		RexsVersion version = rexsSchemaFile.getVersion();
+		String rexsSchemaFilename = version.getSchemaProvider() == null
+			? String.format("rexs_schema_%s.xml", version.getSchemaVersion())
+			: String.format("rexs_schema_%s_%s.xml", version.getSchemaVersion(), version.getSchemaProvider());
 		return rexsSchemaFile.getClass().getResourceAsStream(rexsSchemaFilename);
 	}
 }
