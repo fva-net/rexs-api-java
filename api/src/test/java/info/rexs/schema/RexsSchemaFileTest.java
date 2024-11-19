@@ -30,9 +30,7 @@ public class RexsSchemaFileTest {
 	@Test
 	public void create_givenNullVersionThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				RexsSchemaFile.create(null);
-			})
+			.isThrownBy(() -> RexsSchemaFile.create(null))
 			.withMessage("version cannot be empty");
 	}
 

@@ -19,41 +19,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import org.junit.Test;
+
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 
 public class RexsUnitIdTest {
 
 	@Test
 	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				RexsUnitId.create(null);
-			})
+			.isThrownBy(() -> RexsUnitId.create(null))
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> {
-				RexsUnitId.create("");
-			})
+			.isThrownBy(() -> RexsUnitId.create(""))
 			.withMessage("id cannot be empty");
 
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					RexsUnitId.create("", 123);
-				})
+				.isThrownBy(() -> RexsUnitId.create("", 123))
 				.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_givenNegativeNumericIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					RexsUnitId.create("unit", -1);
-				})
+				.isThrownBy(() -> RexsUnitId.create("unit", -1))
 				.withMessage("numericId cannot be negative");
 	}
 
@@ -64,9 +57,7 @@ public class RexsUnitIdTest {
 
 		// Attempt to create another unit with the same numeric ID (should throw an exception)
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					RexsUnitId.create("unit2", 123);
-				})
+				.isThrownBy(() -> RexsUnitId.create("unit2", 123))
 				.withMessage("numericId already exists");
 	}
 

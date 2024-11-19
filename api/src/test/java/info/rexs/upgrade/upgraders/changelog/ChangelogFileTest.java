@@ -30,15 +30,11 @@ public class ChangelogFileTest {
 	@Test
 	public void create_givenNullVersionThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				ChangelogFile.create(null, RexsStandardVersions.V1_1);
-			})
+			.isThrownBy(() -> ChangelogFile.create(null, RexsStandardVersions.V1_1))
 			.withMessage("from version cannot be empty");
 
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				ChangelogFile.create(RexsStandardVersions.V1_0, null);
-			})
+			.isThrownBy(() -> ChangelogFile.create(RexsStandardVersions.V1_0, null))
 			.withMessage("to version cannot be empty");
 	}
 

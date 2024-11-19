@@ -28,18 +28,14 @@ public class RexsComponentTypeTest {
 	@Test
 	public void create_givenNullThrowsIllegalArgumentException() {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> {
-				RexsComponentType.create(null);
-			})
+			.isThrownBy(() -> RexsComponentType.create(null))
 			.withMessage("id cannot be empty");
 	}
 
 	@Test
 	public void create_givenEmptyIdThrowsIllegalArgumentException() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> {
-				RexsComponentType.create("");
-			})
+			.isThrownBy(() -> RexsComponentType.create(""))
 			.withMessage("id cannot be empty");
 	}
 

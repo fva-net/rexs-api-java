@@ -57,9 +57,7 @@ public class RexsSchemaResolverTest {
 		});
 
 		assertThatIllegalStateException()
-			.isThrownBy(() -> {
-				RexsSchemaResolver.getInstance().resolve(newVersion);
-			})
+			.isThrownBy(() -> RexsSchemaResolver.getInstance().resolve(newVersion))
 			.withMessageStartingWith("could not load rexs schema for version");
 	}
 

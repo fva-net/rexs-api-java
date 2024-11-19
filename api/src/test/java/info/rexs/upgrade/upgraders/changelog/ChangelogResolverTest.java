@@ -46,9 +46,7 @@ public class ChangelogResolverTest {
 		});
 
 		assertThatExceptionOfType(RexsUpgradeException.class)
-			.isThrownBy(() -> {
-				ChangelogResolver.getInstance().resolve(newChangelogFile);
-			})
+			.isThrownBy(() -> ChangelogResolver.getInstance().resolve(newChangelogFile))
 			.withMessageStartingWith("could not load rexs changelog for version");
 	}
 
