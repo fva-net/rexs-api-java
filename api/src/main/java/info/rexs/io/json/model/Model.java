@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -250,7 +251,7 @@ public class Model {
         if (!(other instanceof Model rhs)) {
             return false;
         }
-		return ((((((((((this.applicationVersion == rhs.applicationVersion)||((this.applicationVersion!= null)&&this.applicationVersion.equals(rhs.applicationVersion)))&&((this.date == rhs.date)||((this.date!= null)&&this.date.equals(rhs.date))))&&((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components))))&&((this.applicationLanguage == rhs.applicationLanguage)||((this.applicationLanguage!= null)&&this.applicationLanguage.equals(rhs.applicationLanguage))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.applicationId == rhs.applicationId)||((this.applicationId!= null)&&this.applicationId.equals(rhs.applicationId))))&&((this.relations == rhs.relations)||((this.relations!= null)&&this.relations.equals(rhs.relations))))&&((this.version == rhs.version)||((this.version!= null)&&this.version.equals(rhs.version))))&&((this.loadSpectrum == rhs.loadSpectrum)||((this.loadSpectrum!= null)&&this.loadSpectrum.equals(rhs.loadSpectrum))));
+		return (((((((((Objects.equals(this.applicationVersion, rhs.applicationVersion))&&(Objects.equals(this.date, rhs.date)))&&(Objects.equals(this.components, rhs.components)))&&(Objects.equals(this.applicationLanguage, rhs.applicationLanguage)))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)))&&(Objects.equals(this.applicationId, rhs.applicationId)))&&(Objects.equals(this.relations, rhs.relations)))&&(Objects.equals(this.version, rhs.version)))&&(Objects.equals(this.loadSpectrum, rhs.loadSpectrum)));
     }
 
 }

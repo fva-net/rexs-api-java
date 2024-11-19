@@ -2,6 +2,7 @@ package info.rexs.io.json.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -156,7 +157,7 @@ public class FloatingPointMatrixCoded {
         if (!(other instanceof FloatingPointMatrixCoded rhs)) {
             return false;
         }
-		return ((((((this.code == rhs.code)||((this.code!= null)&&this.code.equals(rhs.code)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.rows == rhs.rows)||((this.rows!= null)&&this.rows.equals(rhs.rows))))&&((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value))))&&((this.columns == rhs.columns)||((this.columns!= null)&&this.columns.equals(rhs.columns))));
+		return (((((Objects.equals(this.code, rhs.code))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)))&&(Objects.equals(this.rows, rhs.rows)))&&(Objects.equals(this.value, rhs.value)))&&(Objects.equals(this.columns, rhs.columns)));
     }
 
 }

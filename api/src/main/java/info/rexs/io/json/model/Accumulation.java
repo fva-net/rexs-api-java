@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -89,7 +90,7 @@ public class Accumulation {
         if (!(other instanceof Accumulation rhs)) {
             return false;
         }
-		return (((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components))));
+		return ((Objects.equals(this.components, rhs.components)));
     }
 
 }

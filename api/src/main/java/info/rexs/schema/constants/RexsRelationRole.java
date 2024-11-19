@@ -17,6 +17,7 @@ package info.rexs.schema.constants;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 
@@ -118,7 +119,7 @@ public class RexsRelationRole implements RexsStandardRelationRoles {
 		}
 		Object this_key = getKey();
 		Object other_key = other.getKey();
-		return this_key == null ? other_key == null : this_key.equals(other_key);
+		return Objects.equals(this_key, other_key);
 	}
 
 	protected boolean canEqual(Object other) {

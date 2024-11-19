@@ -2,6 +2,7 @@ package info.rexs.io.json.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -110,7 +111,7 @@ public class FloatingPointArrayCoded {
         if (!(other instanceof FloatingPointArrayCoded rhs)) {
             return false;
         }
-		return ((((this.code == rhs.code)||((this.code!= null)&&this.code.equals(rhs.code)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value))));
+		return (((Objects.equals(this.code, rhs.code))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)))&&(Objects.equals(this.value, rhs.value)));
     }
 
 }

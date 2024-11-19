@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -135,7 +136,7 @@ public class LoadSpectrum {
         if (!(other instanceof LoadSpectrum rhs)) {
             return false;
         }
-		return (((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.loadCases == rhs.loadCases)||((this.loadCases!= null)&&this.loadCases.equals(rhs.loadCases))))&&((this.accumulation == rhs.accumulation)||((this.accumulation!= null)&&this.accumulation.equals(rhs.accumulation))));
+		return ((((Objects.equals(this.id, rhs.id))&&(Objects.equals(this.additionalProperties, rhs.additionalProperties)))&&(Objects.equals(this.loadCases, rhs.loadCases)))&&(Objects.equals(this.accumulation, rhs.accumulation)));
     }
 
 }
