@@ -62,11 +62,10 @@ public class FileReferenceAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof FileReferenceAttribute)) {
+        if (!(other instanceof FileReferenceAttribute rhs)) {
             return false;
         }
-        FileReferenceAttribute rhs = ((FileReferenceAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.fileReference.equals(rhs.getFileReference());
     }

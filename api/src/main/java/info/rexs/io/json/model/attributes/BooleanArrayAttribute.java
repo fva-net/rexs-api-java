@@ -65,11 +65,10 @@ public class BooleanArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof BooleanArrayAttribute)) {
+        if (!(other instanceof BooleanArrayAttribute rhs)) {
             return false;
         }
-        BooleanArrayAttribute rhs = ((BooleanArrayAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.booleanArray.containsAll(rhs.getBooleanArray())
             && rhs.getBooleanArray().containsAll(this.booleanArray);

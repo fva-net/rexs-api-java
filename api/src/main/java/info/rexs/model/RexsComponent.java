@@ -1053,10 +1053,9 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsComponent)) {
+		if (!(o instanceof RexsComponent other)) {
 			return false;
 		}
-		RexsComponent other = (RexsComponent)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

@@ -155,11 +155,10 @@ public class Relation {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof Relation)) {
+        if (!(other instanceof Relation rhs)) {
             return false;
         }
-        Relation rhs = ((Relation) other);
-        return ((((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.type == rhs.type)||((this.type!= null)&&this.type.equals(rhs.type))))&&((this.refs == rhs.refs)||((this.refs!= null)&&this.refs.equals(rhs.refs))))&&((this.order == rhs.order)||((this.order!= null)&&this.order.equals(rhs.order))));
+		return ((((((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.type == rhs.type)||((this.type!= null)&&this.type.equals(rhs.type))))&&((this.refs == rhs.refs)||((this.refs!= null)&&this.refs.equals(rhs.refs))))&&((this.order == rhs.order)||((this.order!= null)&&this.order.equals(rhs.order))));
     }
 
 }

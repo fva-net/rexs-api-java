@@ -65,11 +65,10 @@ public class StringArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof StringArrayAttribute)) {
+        if (!(other instanceof StringArrayAttribute rhs)) {
             return false;
         }
-        StringArrayAttribute rhs = ((StringArrayAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.stringArray.containsAll(rhs.getStringArray())
             && rhs.getStringArray().containsAll(this.stringArray);

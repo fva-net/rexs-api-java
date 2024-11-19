@@ -84,11 +84,10 @@ public class JSONModel {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof JSONModel)) {
+        if (!(other instanceof JSONModel rhs)) {
             return false;
         }
-        JSONModel rhs = ((JSONModel) other);
-        return (((this.model == rhs.model)||((this.model!= null)&&this.model.equals(rhs.model)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+		return (((this.model == rhs.model)||((this.model!= null)&&this.model.equals(rhs.model)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
     }
 
 }

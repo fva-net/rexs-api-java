@@ -65,11 +65,10 @@ public class EnumArrayAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof EnumArrayAttribute)) {
+        if (!(other instanceof EnumArrayAttribute rhs)) {
             return false;
         }
-        EnumArrayAttribute rhs = ((EnumArrayAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.enumArray.containsAll(rhs.getEnumArray())
             && rhs.getEnumArray().containsAll(this.enumArray);

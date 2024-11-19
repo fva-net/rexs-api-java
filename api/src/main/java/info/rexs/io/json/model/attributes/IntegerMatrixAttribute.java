@@ -66,11 +66,10 @@ public class IntegerMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof IntegerMatrixAttribute)) {
+        if (!(other instanceof IntegerMatrixAttribute rhs)) {
             return false;
         }
-        IntegerMatrixAttribute rhs = ((IntegerMatrixAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.integerMatrix.containsAll(rhs.getIntegerMatrix())
             && rhs.getIntegerMatrix().containsAll(this.integerMatrix);

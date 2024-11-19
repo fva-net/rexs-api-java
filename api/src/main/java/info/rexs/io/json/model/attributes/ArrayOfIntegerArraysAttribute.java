@@ -63,11 +63,10 @@ public class ArrayOfIntegerArraysAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof ArrayOfIntegerArraysAttribute)) {
+        if (!(other instanceof ArrayOfIntegerArraysAttribute rhs)) {
             return false;
         }
-        ArrayOfIntegerArraysAttribute rhs = ((ArrayOfIntegerArraysAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.arrayOfIntegerArrays.containsAll(rhs.getArrayOfIntegerArrays())
             && rhs.getArrayOfIntegerArrays().containsAll(this.arrayOfIntegerArrays);

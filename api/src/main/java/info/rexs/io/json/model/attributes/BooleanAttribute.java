@@ -62,11 +62,10 @@ public class BooleanAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof BooleanAttribute)) {
+        if (!(other instanceof BooleanAttribute rhs)) {
             return false;
         }
-        BooleanAttribute rhs = ((BooleanAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this._boolean.equals(rhs.getBoolean());
     }

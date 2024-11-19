@@ -64,11 +64,10 @@ public class FloatingPointMatrixCodedAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof FloatingPointMatrixCodedAttribute)) {
+        if (!(other instanceof FloatingPointMatrixCodedAttribute rhs)) {
             return false;
         }
-        FloatingPointMatrixCodedAttribute rhs = ((FloatingPointMatrixCodedAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPointMatrixCoded.equals(rhs.getFloatingPointMatrixCoded());
     }

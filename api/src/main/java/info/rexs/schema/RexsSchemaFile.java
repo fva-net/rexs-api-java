@@ -149,10 +149,9 @@ public class RexsSchemaFile {
 		if (o == this) {
 			return true;
 		}
-		if (!(o instanceof RexsSchemaFile)) {
+		if (!(o instanceof RexsSchemaFile other)) {
 			return false;
 		}
-		RexsSchemaFile other = (RexsSchemaFile)o;
 		if (!other.canEqual(this)) {
 			return false;
 		}

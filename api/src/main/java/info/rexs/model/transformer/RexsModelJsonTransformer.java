@@ -211,8 +211,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			case ENUM_ARRAY:
 				jsonAttribute = new EnumArrayAttribute().withEnumArray(attribute.hasValue() ? Arrays.asList(attribute.getStringArrayValue()) : null ); break;
 			case FLOATING_POINT_ARRAY:
-				if (value instanceof RexsAttributeValueArrayBase64) {
-					RexsAttributeValueArrayBase64 valueBase64 = (RexsAttributeValueArrayBase64) value;
+				if (value instanceof RexsAttributeValueArrayBase64 valueBase64) {
 					Base64Type code = valueBase64.getRawType();
 					FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
 							.withCode(code == null? null: code.toString())
@@ -228,8 +227,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			case BOOLEAN_MATRIX:
 				jsonAttribute = new BooleanMatrixAttribute().withBooleanMatrix(attribute.hasValue() ? (get2DArrayAsList(attribute.getBooleanMatrixValue())) : null ); break;
 			case FLOATING_POINT_MATRIX:
-				if (value instanceof RexsAttributeValueMatrixBase64) {
-					RexsAttributeValueMatrixBase64 valueBase64 = (RexsAttributeValueMatrixBase64) value;
+				if (value instanceof RexsAttributeValueMatrixBase64 valueBase64) {
 					Base64Type code = valueBase64.getRawType();
 					FloatingPointMatrixCoded fpac = new FloatingPointMatrixCoded()
 							.withCode(code == null? null: code.toString())
@@ -282,8 +280,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			// if nothing else fits use string
 			return new StringAttribute().withString(valueString);
 		}
-		else if (value instanceof RexsAttributeValueArray) {
-			RexsAttributeValueArray arrayValue = (RexsAttributeValueArray) value;
+		else if (value instanceof RexsAttributeValueArray arrayValue) {
 			List<String> valueString = arrayValue.getRawValue();
 			if (valueString==null || valueString.isEmpty() || valueString.get(0)==null || valueString.get(0).isEmpty())
 				return new StringArrayAttribute().withStringArray(valueString);
@@ -303,16 +300,14 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			// if nothing else fits use string
 			return new StringArrayAttribute().withStringArray(valueString);
 		}
-		else if (value instanceof RexsAttributeValueArrayBase64) {
-			RexsAttributeValueArrayBase64 valueBase64 = (RexsAttributeValueArrayBase64) value;
+		else if (value instanceof RexsAttributeValueArrayBase64 valueBase64) {
 			Base64Type code = valueBase64.getRawType();
 			FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
 					.withCode(code == null? null: code.toString())
 					.withValue(valueBase64.getRawValue());
 			return new FloatingPointArrayCodedAttribute().withFloatingPointArrayCoded(fpac);
 		}
-		else if (value instanceof RexsAttributeValueMatrix) {
-			RexsAttributeValueMatrix matrixValue = (RexsAttributeValueMatrix) value;
+		else if (value instanceof RexsAttributeValueMatrix matrixValue) {
 			List<List<String>> valueString = matrixValue.getRawValue();
 			if (valueString==null || valueString.isEmpty() || valueString.get(0)==null || valueString.get(0).isEmpty() || valueString.get(0).get(0)==null || valueString.get(0).get(0).isEmpty())
 				return new StringMatrixAttribute().withStringMatrix(valueString);
@@ -332,8 +327,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 			// if nothing else fits use string
 			return new StringMatrixAttribute().withStringMatrix(valueString);
 		}
-		else if (value instanceof RexsAttributeValueMatrixBase64) {
-			RexsAttributeValueMatrixBase64 valueBase64 = (RexsAttributeValueMatrixBase64) value;
+		else if (value instanceof RexsAttributeValueMatrixBase64 valueBase64) {
 			Base64Type code = valueBase64.getRawType();
 			FloatingPointMatrixCoded fpac = new FloatingPointMatrixCoded()
 					.withCode(code == null? null: code.toString())

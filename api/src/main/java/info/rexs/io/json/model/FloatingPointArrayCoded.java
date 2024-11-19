@@ -107,11 +107,10 @@ public class FloatingPointArrayCoded {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof FloatingPointArrayCoded)) {
+        if (!(other instanceof FloatingPointArrayCoded rhs)) {
             return false;
         }
-        FloatingPointArrayCoded rhs = ((FloatingPointArrayCoded) other);
-        return ((((this.code == rhs.code)||((this.code!= null)&&this.code.equals(rhs.code)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value))));
+		return ((((this.code == rhs.code)||((this.code!= null)&&this.code.equals(rhs.code)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value))));
     }
 
 }

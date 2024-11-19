@@ -66,11 +66,10 @@ public class FloatingPointMatrixAttribute extends Attribute {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof FloatingPointMatrixAttribute)) {
+        if (!(other instanceof FloatingPointMatrixAttribute rhs)) {
             return false;
         }
-        FloatingPointMatrixAttribute rhs = ((FloatingPointMatrixAttribute) other);
-        return (this.id.equals(rhs.getId()))
+		return (this.id.equals(rhs.getId()))
             && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
             && this.floatingPointMatrix.containsAll(rhs.getFloatingPointMatrix())
             && rhs.getFloatingPointMatrix().containsAll(this.floatingPointMatrix);

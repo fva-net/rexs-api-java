@@ -247,11 +247,10 @@ public class Model {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof Model)) {
+        if (!(other instanceof Model rhs)) {
             return false;
         }
-        Model rhs = ((Model) other);
-        return ((((((((((this.applicationVersion == rhs.applicationVersion)||((this.applicationVersion!= null)&&this.applicationVersion.equals(rhs.applicationVersion)))&&((this.date == rhs.date)||((this.date!= null)&&this.date.equals(rhs.date))))&&((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components))))&&((this.applicationLanguage == rhs.applicationLanguage)||((this.applicationLanguage!= null)&&this.applicationLanguage.equals(rhs.applicationLanguage))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.applicationId == rhs.applicationId)||((this.applicationId!= null)&&this.applicationId.equals(rhs.applicationId))))&&((this.relations == rhs.relations)||((this.relations!= null)&&this.relations.equals(rhs.relations))))&&((this.version == rhs.version)||((this.version!= null)&&this.version.equals(rhs.version))))&&((this.loadSpectrum == rhs.loadSpectrum)||((this.loadSpectrum!= null)&&this.loadSpectrum.equals(rhs.loadSpectrum))));
+		return ((((((((((this.applicationVersion == rhs.applicationVersion)||((this.applicationVersion!= null)&&this.applicationVersion.equals(rhs.applicationVersion)))&&((this.date == rhs.date)||((this.date!= null)&&this.date.equals(rhs.date))))&&((this.components == rhs.components)||((this.components!= null)&&this.components.equals(rhs.components))))&&((this.applicationLanguage == rhs.applicationLanguage)||((this.applicationLanguage!= null)&&this.applicationLanguage.equals(rhs.applicationLanguage))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.applicationId == rhs.applicationId)||((this.applicationId!= null)&&this.applicationId.equals(rhs.applicationId))))&&((this.relations == rhs.relations)||((this.relations!= null)&&this.relations.equals(rhs.relations))))&&((this.version == rhs.version)||((this.version!= null)&&this.version.equals(rhs.version))))&&((this.loadSpectrum == rhs.loadSpectrum)||((this.loadSpectrum!= null)&&this.loadSpectrum.equals(rhs.loadSpectrum))));
     }
 
 }

@@ -19,7 +19,7 @@ public class DateTimeAttribute extends Attribute {
 
     @JsonProperty("date_time")
     private String date_time;
-    
+
     @JsonProperty("date_time")
     public String getTime() {
         return date_time;
@@ -58,9 +58,8 @@ public class DateTimeAttribute extends Attribute {
     	if (other == this) {
     		return true;
     	}
-    	if (other instanceof DateTimeAttribute) {
-    		DateTimeAttribute rhs = ((DateTimeAttribute) other);
-    		return Objects.equals(this.id, rhs.id) && Objects.equals(this.unit, rhs.unit) && Objects.equals(this.date_time, rhs.date_time);
+    	if (other instanceof DateTimeAttribute rhs) {
+			return Objects.equals(this.id, rhs.id) && Objects.equals(this.unit, rhs.unit) && Objects.equals(this.date_time, rhs.date_time);
     	}
     	return false;
     }
