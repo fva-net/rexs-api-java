@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class BooleanArrayAttribute extends Attribute {
 
     @JsonProperty("boolean_array")
-    private List<Boolean> booleanArray = new ArrayList<Boolean>();
+    private List<Boolean> booleanArray = new ArrayList<>();
 
     @JsonProperty("boolean_array")
     public List<Boolean> getBooleanArray() {
@@ -69,9 +69,9 @@ public class BooleanArrayAttribute extends Attribute {
             return false;
         }
         BooleanArrayAttribute rhs = ((BooleanArrayAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.booleanArray.containsAll(rhs.getBooleanArray()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.booleanArray.containsAll(rhs.getBooleanArray())
             && rhs.getBooleanArray().containsAll(this.booleanArray);
     }
 

@@ -1,7 +1,7 @@
 package info.rexs.io.json.model.attributes;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class FloatingPointMatrixAttribute extends Attribute {
 
-    
+
     @JsonProperty("floating_point_matrix")
-    private List<List<Double>> floatingPointMatrix = new ArrayList<List<Double>>();
+    private List<List<Double>> floatingPointMatrix = new ArrayList<>();
 
     @JsonProperty("floating_point_matrix")
     public List<List<Double>> getFloatingPointMatrix() {
@@ -70,9 +70,9 @@ public class FloatingPointMatrixAttribute extends Attribute {
             return false;
         }
         FloatingPointMatrixAttribute rhs = ((FloatingPointMatrixAttribute) other);
-        return (this.id.equals(rhs.getId())) 
-            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null) 
-            && this.floatingPointMatrix.containsAll(rhs.getFloatingPointMatrix()) 
+        return (this.id.equals(rhs.getId()))
+            && (this.unit != null && rhs.unit != null && this.unit.equals(rhs.getUnit())|| this.unit == null || rhs.unit == null)
+            && this.floatingPointMatrix.containsAll(rhs.getFloatingPointMatrix())
             && rhs.getFloatingPointMatrix().containsAll(this.floatingPointMatrix);
     }
 

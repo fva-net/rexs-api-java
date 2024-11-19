@@ -1,8 +1,10 @@
 package info.rexs.io.json.model;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,9 +22,9 @@ public class LoadCase {
     @JsonProperty("id")
     private Integer id;
     @JsonProperty("components")
-    private List<Component> components = new ArrayList<Component>();
+    private List<Component> components = new ArrayList<>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {
