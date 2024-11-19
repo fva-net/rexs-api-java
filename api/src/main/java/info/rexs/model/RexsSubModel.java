@@ -65,7 +65,7 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * Constructs a new {@link RexsSubModel} for an accumilation.
 	 */
 	protected RexsSubModel() {
-		this((Integer)null, true);
+		this(null, true);
 	}
 
 	/**
