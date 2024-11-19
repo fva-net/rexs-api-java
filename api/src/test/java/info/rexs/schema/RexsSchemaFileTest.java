@@ -67,7 +67,8 @@ public class RexsSchemaFileTest {
 
 	@Test
 	public void findByVersion_givenUnknownVersionReturnsNull() {
-		assertThat(RexsSchemaFile.findByVersion(RexsVersion.create("m.n", 10000))).isNull();
+		RexsVersion versionWithNoSchema = RexsVersion.create("66.6", null, "66.6");
+		assertThat(RexsSchemaFile.findByVersion(versionWithNoSchema)).isNull();
 	}
 
 	@Test
@@ -79,18 +80,18 @@ public class RexsSchemaFileTest {
 
 	@Test
 	public void findByVersion_returnsNewlyCreatedRexsSchemaFile() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("n.o", 11000);
+		RexsVersion newVersion = RexsVersion.create("66.7", null, "66.7");
 		RexsSchemaFile.create(newVersion);
 		RexsSchemaFile newRexsSchemaFile = RexsSchemaFile.findByVersion(newVersion);
 		assertThat(newRexsSchemaFile).isNotNull();
-		assertThat(newRexsSchemaFile.getVersion().getName()).isEqualTo("n.o");
+		assertThat(newRexsSchemaFile.getVersion().getModelVersion()).isEqualTo("66.7");
 	}
 
 	@Test
 	public void equals_equalObjects() {
 		assertThat(RexsSchemaFile.V1_0.equals(RexsSchemaFile.V1_0)).isTrue();
 
-		RexsVersion newVersion = RexsVersion.create("o.p", 12000);
+		RexsVersion newVersion = RexsVersion.create("66.8", null, "66.8");
 		assertThat(RexsSchemaFile.create(newVersion)).isEqualTo(RexsSchemaFile.create(newVersion));
 	}
 
@@ -99,8 +100,8 @@ public class RexsSchemaFileTest {
 		assertThat(RexsSchemaFile.V1_1).isNotEqualTo(RexsSchemaFile.V1_2);
 		assertThat(RexsSchemaFile.V1_1).isNotEqualTo("test");
 
-		RexsVersion newVersion1 = RexsVersion.create("p.q", 13000);
-		RexsVersion newVersion2 = RexsVersion.create("q.r", 14000);
+		RexsVersion newVersion1 = RexsVersion.create("6.66", null, "6.66");
+		RexsVersion newVersion2 = RexsVersion.create("66.66", null, "66.66");
 		assertThat(RexsSchemaFile.create(newVersion1)).isNotEqualTo(RexsSchemaFile.create(newVersion2));
 	}
 }

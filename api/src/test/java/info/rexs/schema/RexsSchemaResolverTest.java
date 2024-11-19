@@ -39,7 +39,7 @@ public class RexsSchemaResolverTest {
 
 	@Test
 	public void resolve_unknownRexsSchemaFileReturnsNull() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("r.s", 10000);
+		RexsVersion newVersion = RexsVersion.create("67.6", null, "67.6");
 		assertThat(RexsSchemaResolver.getInstance().resolve(newVersion)).isNull();
 
 		assertThat(RexsSchemaResolver.getInstance().resolve(null)).isNull();
@@ -47,7 +47,7 @@ public class RexsSchemaResolverTest {
 
 	@Test
 	public void resolve_invalidRexsSchemaFileResolverThrowsIllegalStateException() throws Exception {
-		RexsVersion newVersion = RexsVersion.create("s.t", 11000);
+		RexsVersion newVersion = RexsVersion.create("68.6", null, "68.6");
 		RexsSchemaFile.create(newVersion, new RexsSchemaFileResolver() {
 			@Override
 			public InputStream openInputStream(RexsSchemaFile rexsSchemaFile) {
@@ -64,8 +64,8 @@ public class RexsSchemaResolverTest {
 
 	@Test
 	public void resolve_cachingReturnsSameObjectForMultipleCalls() throws Exception {
-		RexsSchema rexsSchema1 = RexsSchemaResolver.getInstance().resolve(RexsVersion.getLatest());
-		RexsSchema rexsSchema2 = RexsSchemaResolver.getInstance().resolve(RexsVersion.getLatest());
+		RexsSchema rexsSchema1 = RexsSchemaResolver.getInstance().resolve(RexsStandardVersions.getLatest());
+		RexsSchema rexsSchema2 = RexsSchemaResolver.getInstance().resolve(RexsStandardVersions.getLatest());
 
 		assertThat(rexsSchema1).isSameAs(rexsSchema2);
 	}
@@ -75,7 +75,7 @@ public class RexsSchemaResolverTest {
 		List<RexsVersion> rexsStandardVersions = Stream.of(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, RexsStandardVersions.V1_2).collect(Collectors.toList());
 		for (RexsVersion version : rexsStandardVersions) {
 			RexsSchema rexsSchema = RexsSchemaResolver.getInstance().resolve(version);
-			assertThat(rexsSchema.getVersion()).isEqualTo(version.getName());
+			assertThat(rexsSchema.getVersion()).isEqualTo(version.getModelVersion());
 
 			for (Unit unit : rexsSchema.getUnits()) {
 				assertThat(RexsUnitId.findById(unit.getName())).isNotNull();

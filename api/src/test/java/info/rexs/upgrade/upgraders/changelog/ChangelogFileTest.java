@@ -70,8 +70,8 @@ public class ChangelogFileTest {
 	public void equals_equalObjects() {
 		assertThat(ChangelogFile.V1_0_TO_V1_1.equals(ChangelogFile.V1_0_TO_V1_1)).isTrue();
 
-		RexsVersion newFromVersion = RexsVersion.create("o.p", 1);
-		RexsVersion newToVersion = RexsVersion.create("p.q", 1);
+		RexsVersion newFromVersion = RexsVersion.create("41.1", null, "41.1");
+		RexsVersion newToVersion = RexsVersion.create("41.2", null, "41.2");
 		assertThat(ChangelogFile.create(newFromVersion, newToVersion)).isEqualTo(ChangelogFile.create(newFromVersion, newToVersion));
 	}
 
@@ -80,8 +80,8 @@ public class ChangelogFileTest {
 		assertThat(ChangelogFile.V1_0_TO_V1_1).isNotEqualTo(ChangelogFile.V1_1_TO_V1_2);
 		assertThat(ChangelogFile.V1_1_TO_V1_2).isNotEqualTo("test");
 
-		RexsVersion newVersion1 = RexsVersion.create("p.q", 1);
-		RexsVersion newVersion2 = RexsVersion.create("q.r", 1);
+		RexsVersion newVersion1 = RexsVersion.create("41.1", null, "41.1");
+		RexsVersion newVersion2 = RexsVersion.create("41.2", null, "41.2");
 		assertThat(ChangelogFile.create(newVersion1, newVersion2)).isNotEqualTo(ChangelogFile.create(newVersion2, newVersion1));
 		assertThat(ChangelogFile.create(newVersion2, newVersion1)).isNotEqualTo(ChangelogFile.create(newVersion1, newVersion2));
 	}

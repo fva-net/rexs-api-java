@@ -23,10 +23,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardUnitIds;
-import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsAttribute;
 import info.rexs.model.RexsComponent;
 import info.rexs.model.RexsLoadSpectrum;
@@ -96,10 +96,10 @@ public class RexsModelXmlTransformer implements IRexsModelTransformer<Model> {
 		modelXml.setApplicationVersion(model.getApplicationVersion());
 		modelXml.setDate(DateUtils.getISO8601Date());
 
-		if (model.getVersion().equals(RexsStandardVersions.UNKNOWN)) {
+		if (model.getVersion().equals(RexsVersion.UNKNOWN)) {
 			modelXml.setVersion(model.getOriginVersion());
 		} else {
-			modelXml.setVersion(model.getVersion().getName());
+			modelXml.setVersion(model.getVersion().getModelVersion());
 		}
 
 		modelXml.setRelations(createRelationsXml(model.getRelations()));

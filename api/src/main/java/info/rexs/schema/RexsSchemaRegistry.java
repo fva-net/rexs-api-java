@@ -89,9 +89,9 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	public void registerRexsVersion(RexsVersion version) {
 		RexsSchema rexsSchema = RexsSchemaResolver.getInstance().resolve(version);
 		if (rexsSchema == null)
-			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getName()));
+			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getModelVersion()));
 		registerRexsSchema(version, rexsSchema);
-		versions.put(version.getName(), version);
+		versions.put(version.getModelVersion(), version);
 	}
 
 	private void registerRexsSchema(RexsVersion version, RexsSchema rexsSchema) {
@@ -187,7 +187,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		Map<String, RexsUnitId> unitsMap = attributeUnits.get(version);
 		if (unitsMap != null && (unitsMap.containsKey(rexsAttributeId)) )
 			return unitsMap.get(rexsAttributeId);
-		throw new IllegalArgumentException(String.format("Rexs Attribute with id %s is not registered in RexsVersion %s", rexsAttributeId, version.getName()));
+		throw new IllegalArgumentException(String.format("Rexs Attribute with id %s is not registered in RexsVersion %s", rexsAttributeId, version.getModelVersion()));
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		Map<String, RexsValueType> map = attributeTypes.get(version);
 		if (map != null && (map.containsKey(rexsAttributeId)) )
 			return map.get(rexsAttributeId);
-		throw new IllegalArgumentException(String.format("Rexs Attribute with id %s is not registered in RexsVersion %s", rexsAttributeId, version.getName()));
+		throw new IllegalArgumentException(String.format("Rexs Attribute with id %s is not registered in RexsVersion %s", rexsAttributeId, version.getModelVersion()));
 	}
 
 	/**
@@ -303,7 +303,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		Map<String, List<RexsComponentType>> map = attributeToComponentMap.get(version);
 		if (map != null && (map.containsKey(rexsAttributeId)) )
 			return map.get(rexsAttributeId);
-		throw new IllegalArgumentException(String.format("Rexs Attribute with id %s is not registered in RexsVersion %s", rexsAttributeId, version.getName()));
+		throw new IllegalArgumentException(String.format("Rexs Attribute with id %s is not registered in RexsVersion %s", rexsAttributeId, version.getModelVersion()));
 	}
 
 	/**
@@ -317,7 +317,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		Map<RexsComponentType, List<String>> map = componentToAttributesMap.get(version);
 		if (map != null && (map.containsKey(rexsComponentType)) )
 			return map.get(rexsComponentType);
-		throw new IllegalArgumentException(String.format("Rexs component type %s is not registered in RexsVersion %s", rexsComponentType, version.getName()));
+		throw new IllegalArgumentException(String.format("Rexs component type %s is not registered in RexsVersion %s", rexsComponentType, version.getModelVersion()));
 	}
 
 	@Override
@@ -357,10 +357,10 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 	public List<List<AllowedCombinationRole>> getAllowedCombinationsForRelation(RexsVersion version, RexsRelationType relationType) {
 		Map<RexsRelationType, List<List<AllowedCombinationRole>>> relationsToAllowedCombinationsMapOfVersion = relationsToAllowedCombinationsMap.get(version);
 		if (relationsToAllowedCombinationsMapOfVersion==null)
-			throw new IllegalArgumentException(String.format("No relation types for REXS version %s specified", version.getName()));
+			throw new IllegalArgumentException(String.format("No relation types for REXS version %s specified", version.getModelVersion()));
 		List<List<AllowedCombinationRole>> listOfAllowedCombinations = relationsToAllowedCombinationsMapOfVersion.get(relationType);
 		if (listOfAllowedCombinations==null || listOfAllowedCombinations.isEmpty())
-			throw new IllegalArgumentException(String.format("Rexs Relation type %s is not defined in version %s", relationType, version.getName()));
+			throw new IllegalArgumentException(String.format("Rexs Relation type %s is not defined in version %s", relationType, version.getModelVersion()));
 		return listOfAllowedCombinations;
 	}
 }

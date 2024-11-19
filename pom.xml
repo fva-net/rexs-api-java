@@ -159,6 +159,13 @@
 					<version>3.11.1</version>
 					<configuration>
 						<quiet>true</quiet>
+						<tags>
+							<tag>
+								<name>apiNote</name>
+								<placement>a</placement>
+								<head>API Note:</head>
+							</tag>
+						</tags>
 					</configuration>
 				</plugin>
 
