@@ -9,6 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="rexs-api" />
         <module name="rexs-api-cli" />
+        <module name="rexs-api-java" />
+        <module name="rexs-api-java-cli" />
       </profile>
     </annotationProcessing>
   </component>
