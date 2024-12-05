@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - JAXB classes are now using element wrappers instead of wrapper classes
 - RexsVersion with distinction in schemaVersion and modelVersion
+- Validation: Display unknown custom attributes as a warning
 
 
 ## [0.10.0] - 2024-11-05

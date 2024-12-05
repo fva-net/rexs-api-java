@@ -17,6 +17,8 @@ package info.rexs.validation;
 
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
+
 import info.rexs.schema.RexsSchemaRegistry;
 import info.rexs.schema.IRexsSchemaRegistry;
 import info.rexs.schema.constants.RexsComponentType;
@@ -64,7 +66,10 @@ public class RexsStandardAttributeValidator extends DefaultRexsAttributeValidato
 		boolean attributeKnown = true;
 
 		if (!rexsSchemaRegistry.hasAttributeWithId(rexsVersion, attributeId)) {
-			validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_ID_UNKNOWN, attributeId);
+			if (StringUtils.startsWith(attributeId, "custom_"))
+				validationResult.addWarning(RexsValidationResultMessageKey.ATTRIBUTE_ID_CUSTOM, attributeId);
+			else
+				validationResult.addError(RexsValidationResultMessageKey.ATTRIBUTE_ID_UNKNOWN, attributeId);
 			attributeKnown = false;
 		}
 		else if (!rexsSchemaRegistry.componentAttributeMappingExists(attributeId, rexsComponentType, rexsVersion))
