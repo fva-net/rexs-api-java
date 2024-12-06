@@ -1,10 +1,10 @@
 package info.rexs.schema.constants;
 
-import info.rexs.schema.constants.standard.RexsStandardVersions;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 
 /**
  * Class representing a version in the REXS (Reusable Engineering EXchange Standard) schema.
@@ -63,6 +63,16 @@ public class RexsVersion {
 		this.modelVersion = modelVersion;
 	}
 
+	/**
+	 * Creates a new REXS version and registers it along with any additional model versions.
+	 *
+	 * @param schemaVersion           The (case-insensitive) identifier of the version in the REXS schema.
+	 * @param schemaProvider          The (case-insensitive) identifier of the provider in the REXS schema.
+	 * @param primaryModelVersion     The (case-insensitive) identifier of the primary version in the REXS model.
+	 * @param additionalModelVersions Additional (case-insensitive) identifiers of the versions in the REXS model.
+	 * @return The primary REXS version created.
+	 * @throws IllegalArgumentException if any of the input parameters are invalid.
+	 */
 	public static RexsVersion create(String schemaVersion, String schemaProvider, String primaryModelVersion, String... additionalModelVersions) {
 		// input data validation
 		if (schemaVersion == null || schemaVersion.isEmpty()) throw new IllegalArgumentException("The schema version cannot be empty");
@@ -109,15 +119,12 @@ public class RexsVersion {
 			return DEV;
 		}
 
-		// check for registered versions
-		for (RexsVersion version : allModelVersions.values()) {
-			if (modelVersion.equalsIgnoreCase(version.getModelVersion())) {
-				return version;
-			}
-		}
-
-		// return unknown if nothing matches
-		return UNKNOWN;
+		// Check for registered versions and return the corresponding version or UNKNOWN if not found
+		return allModelVersions.entrySet().stream()
+			.filter(entry -> modelVersion.equalsIgnoreCase(entry.getKey()))
+			.map(Map.Entry::getValue)
+			.findFirst()
+			.orElse(UNKNOWN);
 	}
 
 	/**
@@ -140,12 +147,11 @@ public class RexsVersion {
 
 		// check for registered versions (both with and without schema provider)
 		for (RexsVersion version : allModelVersions.values()) {
-			if(schemaProvider == null) {
+			if (schemaProvider == null) {
 				if (schemaVersion.equalsIgnoreCase(version.getSchemaVersion()) && version.schemaProvider == null) {
 					return version;
 				}
-			}
-			else {
+			} else {
 				if (schemaVersion.equalsIgnoreCase(version.getSchemaVersion()) && schemaProvider.equalsIgnoreCase(version.getSchemaProvider())) {
 					return version;
 				}

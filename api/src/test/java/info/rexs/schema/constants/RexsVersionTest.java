@@ -1,13 +1,13 @@
 package info.rexs.schema.constants;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 public class RexsVersionTest {
 
@@ -89,6 +89,14 @@ public class RexsVersionTest {
 	}
 
 	@Test
+	public void findByModelVersion_whenModelVersionWasGivenAsAdditional_thenReturnsVersion() {
+		RexsVersion v10pro = RexsVersion.create("1.0", "provider", "1.0 PROVIDER", "additionalWhatever");
+		RexsVersion version = RexsVersion.findByModelVersion("additionalWhatever");
+		assertNotNull(version);
+		assertEquals(v10pro, version);
+	}
+
+	@Test
 	public void findByModelVersion_whenModelVersionDoesNotExist_thenReturnsUnknown() {
 		RexsVersion version = RexsVersion.findByModelVersion("nonexistent");
 		assertNotNull(version);
@@ -167,7 +175,7 @@ public class RexsVersionTest {
 	@Test
 	public void equals_whenDifferentObject_thenNotEqual() {
 		RexsVersion version = RexsVersion.create("1.0", null, "1.0");
-		assertNotEquals(version, new Object());
+		assertNotEquals(new Object(), version);
 	}
 
 	@Test
