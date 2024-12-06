@@ -119,15 +119,12 @@ public class RexsVersion {
 			return DEV;
 		}
 
-		// check for registered versions
-		for (RexsVersion version : allModelVersions.values()) {
-			if (modelVersion.equalsIgnoreCase(version.getModelVersion())) {
-				return version;
-			}
-		}
-
-		// return unknown if nothing matches
-		return UNKNOWN;
+		// Check for registered versions and return the corresponding version or UNKNOWN if not found
+		return allModelVersions.entrySet().stream()
+			.filter(entry -> modelVersion.equalsIgnoreCase(entry.getKey()))
+			.map(Map.Entry::getValue)
+			.findFirst()
+			.orElse(UNKNOWN);
 	}
 
 	/**
