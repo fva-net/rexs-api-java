@@ -164,7 +164,7 @@
                 <enumValue value="angular_contact_ball_bearing" nameEn="Angular contact ball bearing" nameDe="Schrägkugellager"/>
                 <enumValue value="axial_angular_contact_ball_bearing" nameEn="Angular contact thrust ball bearing" nameDe="Axial-Schrägkugellager"/>
                 <enumValue value="axial_grooved_ball_bearing" nameEn="Thrust ball bearing" nameDe="Axial-Rillenkugellager"/>
-                <enumValue value="axial_needle_roller_bearing" nameEn="Needle roller thrust bearing" nameDe="Axial–Nadellager"/>
+                <enumValue value="axial_needle_roller_bearing" nameEn="Needle roller thrust bearing" nameDe="Axial-Nadellager"/>
                 <enumValue value="axial_roller_bearing" nameEn="Roller thrust bearing" nameDe="Axial-Rollenlager"/>
                 <enumValue value="axial_self_aligning_roller_bearing" nameEn="Spherical roller thrust bearing" nameDe="Axialpendelrollenlager"/>
                 <enumValue value="four_point_contact_ball_bearing" nameEn="Four point contact ball bearing" nameDe="Vierpunktlager"/>
