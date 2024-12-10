@@ -306,4 +306,9 @@ public class RexsVersion {
 	public int hashCode() {
 		return Objects.hash(schemaVersion, schemaProvider);
 	}
+
+	@Override
+	public String toString() {
+		return schemaVersion + (schemaProvider != null ? " (" + schemaProvider + ")" : "");
+	}
 }

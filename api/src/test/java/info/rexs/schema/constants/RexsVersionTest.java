@@ -9,6 +9,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import info.rexs.schema.constants.standard.RexsStandardVersions;
+
 public class RexsVersionTest {
 
 	@Test
@@ -310,5 +312,15 @@ public class RexsVersionTest {
 		RexsVersion version1 = RexsVersion.create("1.0", "provider", "1.0");
 		RexsVersion version2 = RexsVersion.create("2.0", "provider", "2.0");
 		assertFalse(version1.isEquivalentTo(version2));
+	}
+
+	@Test
+	public void toString_whenCalled_thenReturnsStringRepresentation() {
+		// without provider
+		assertEquals("1.0", RexsStandardVersions.V1_0.toString());
+
+		// with provider
+		RexsVersion version = RexsVersion.create("1.0", "provider", "1.0");
+		assertEquals("1.0 (provider)", version.toString());
 	}
 }
