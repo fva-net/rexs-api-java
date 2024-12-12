@@ -104,6 +104,10 @@ public class RexsModel {
 			RexsComponent newComponent = new RexsComponent(component);
 			this.addComponent(newComponent);
 		}
+		for (RexsLoadSpectrum spectrum : model.loadSpectrums) {
+			RexsLoadSpectrum newLoadSpectrum = new RexsLoadSpectrum(spectrum);
+			this.loadSpectrums.add(newLoadSpectrum);
+		}
 	}
 
 	/**

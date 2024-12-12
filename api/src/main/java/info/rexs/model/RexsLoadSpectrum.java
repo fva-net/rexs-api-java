@@ -45,7 +45,21 @@ public class RexsLoadSpectrum {
 	protected RexsLoadSpectrum(Integer id) {
 		this.id = id;
 	}
+	/**
+	 * Copy constructor for creating a deep copy of the given {@link RexsLoadSpectrum}.
+	 *
+	 * @param spectrum
+	 *        The {@link RexsLoadSpectrum} to copy.
+	 */
+	public RexsLoadSpectrum(RexsLoadSpectrum spectrum) {
+		this.id = spectrum.id;
 
+		for (Map.Entry<Integer, RexsSubModel> loadCase : spectrum.loadCases.entrySet()) {
+			RexsSubModel subModel = new RexsSubModel(loadCase.getValue());
+			this.loadCases.put(loadCase.getKey(),subModel);
+		}
+		this.accumulation = new RexsSubModel(spectrum.accumulation);
+	}
 	/**
 	 * @return
 	 * 				The numeric ID of the load spectrum within the REXS model.
