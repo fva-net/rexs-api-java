@@ -70,6 +70,20 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	}
 
 	/**
+	 * Copy constructor for creating a deep copy of the given {@link RexsSubModel}.
+	 *
+	 * @param subModel
+	 *        The {@link RexsSubModel} to copy.
+	 */
+	public RexsSubModel(RexsSubModel subModel) {
+		this.id = subModel.id;
+		this.isAccumulation = subModel.isAccumulation;
+		for (RexsComponent component : subModel.getComponents()) {
+			RexsComponent rexsComponent = new RexsComponent(component);
+			this.addComponent(rexsComponent);
+		}
+	}
+	/**
 	 * @return
 	 * 				The numeric ID of the sub-model within the REXS model.
 	 */

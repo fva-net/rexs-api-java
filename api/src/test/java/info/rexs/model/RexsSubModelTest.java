@@ -187,4 +187,44 @@ public class RexsSubModelTest {
 		assertThat(rexsSubModelLoadCase1).isNotEqualTo(rexsSubModelLoadCase24);
 		assertThat(rexsSubModelLoadCase1).isNotEqualTo("1");
 	}
+
+	@Test
+	public void copyConstructor_copiesIdAndAccumulationFlag() {
+		RexsSubModel original = new RexsSubModel(41);
+		RexsSubModel copy = new RexsSubModel(original);
+
+		assertThat(copy.getId()).isEqualTo(original.getId());
+		assertThat(copy.isAccumulation()).isEqualTo(original.isAccumulation());
+	}
+
+	@Test
+	public void copyConstructor_copiesComponents() {
+		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
+		RexsSubModel original = new RexsSubModel(41);
+		original.addComponent(rexsComponent);
+
+		RexsSubModel copy = new RexsSubModel(original);
+
+		assertThat(copy.hasComponent(1)).isTrue();
+		assertThat(copy.getComponent(1)).isNotSameAs(rexsComponent);
+		assertThat(copy.getComponent(1).getId()).isEqualTo(rexsComponent.getId());
+		assertThat(copy.getComponent(1).getType()).isEqualTo(rexsComponent.getType());
+	}
+
+	@Test
+	public void copyConstructor_handlesEmptyComponents() {
+		RexsSubModel original = new RexsSubModel(41);
+		RexsSubModel copy = new RexsSubModel(original);
+
+		assertThat(copy.getComponents()).isEmpty();
+	}
+
+	@Test
+	public void copyConstructor_handlesAccumulationSubModel() {
+		RexsSubModel original = new RexsSubModel();
+		RexsSubModel copy = new RexsSubModel(original);
+
+		assertThat(copy.getId()).isNull();
+		assertThat(copy.isAccumulation()).isTrue();
+	}
 }
