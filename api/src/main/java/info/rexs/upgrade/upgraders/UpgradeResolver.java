@@ -91,6 +91,14 @@ public class UpgradeResolver {
 				return upgrader.doupgrade();
 			}
 		});
+
+		register(RexsStandardVersions.V1_6, RexsStandardVersions.V1_7, new ModelUpgrader() {
+			@Override
+			public ModelUpgraderResult upgrade(RexsModel rexsModel, boolean strictMode) throws RexsUpgradeException {
+				ModelUpgraderV16toV17 upgrader = new ModelUpgraderV16toV17(rexsModel, strictMode);
+				return upgrader.doupgrade();
+			}
+		});
 	}
 
 	/**
