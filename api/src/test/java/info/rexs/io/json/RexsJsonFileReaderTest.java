@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 
 public class RexsJsonFileReaderTest {
@@ -31,7 +32,7 @@ public class RexsJsonFileReaderTest {
 	public void read_readsExsistingRexsFile() throws Exception {
 		Path rexsFilePath = Paths.get("src/test/resources").resolve("FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj");
 		RexsJsonFileReader reader = new RexsJsonFileReader(rexsFilePath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents()).hasSize(97);
@@ -41,7 +42,7 @@ public class RexsJsonFileReaderTest {
 	public void read_readsExsistingRexsFileWithFile() throws Exception {
 		File rexsFile = new File("src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj");
 		RexsJsonFileReader reader = new RexsJsonFileReader(rexsFile);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents()).hasSize(97);
@@ -51,7 +52,7 @@ public class RexsJsonFileReaderTest {
 	public void read_readsExsistingRexsFileWithString() throws Exception {
 		String rexsFileStringPath = "src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj";
 		RexsJsonFileReader reader = new RexsJsonFileReader(rexsFileStringPath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents()).hasSize(97);

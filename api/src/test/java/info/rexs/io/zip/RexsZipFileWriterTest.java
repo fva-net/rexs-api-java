@@ -26,6 +26,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import info.rexs.io.xml.RexsXmlFileReader;
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 
 public class RexsZipFileWriterTest {
@@ -67,7 +68,7 @@ public class RexsZipFileWriterTest {
 		writer.write(aRexsModelToWrite);
 
 		RexsZipFileReader reader = new RexsZipFileReader(rexsTargetFilePath);
-		RexsModel writtenRexsModel = reader.read();
+		IRexsModel writtenRexsModel = reader.read();
 
 		assertThat(writtenRexsModel.getComponents().size()).isEqualTo(aRexsModelToWrite.getComponents().size());
 	}

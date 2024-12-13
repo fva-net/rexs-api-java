@@ -26,6 +26,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import info.rexs.io.RexsFileReader;
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 
 public class RexsJsonFileWriterTest {
@@ -46,7 +47,7 @@ public class RexsJsonFileWriterTest {
 		writer.write(aRexsModelToWrite);
 
 		RexsJsonFileReader reader = new RexsJsonFileReader(rexsTargetFilePath);
-		RexsModel writtenRexsModel = reader.read();
+		IRexsModel writtenRexsModel = reader.read();
 
 		assertThat(writtenRexsModel.getComponents()).hasSameSizeAs(aRexsModelToWrite.getComponents());
 	}
