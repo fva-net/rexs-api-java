@@ -32,43 +32,43 @@ import info.rexs.schema.constants.RexsRelationType;
 @Generated("REXS-Database by FVA GmbH (see https://database.rexs.info/)")
 public interface RexsStandardRelationTypes {
 
-	/** Relation type "assembly" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "assembly" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType assembly = RexsRelationType.create("assembly", RexsStandardRelationRoles.assembly, RexsStandardRelationRoles.part);
 
-	/** Relation type "central_shaft" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "central_shaft" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType central_shaft = RexsRelationType.create("central_shaft", RexsStandardRelationRoles.planetary_stage, RexsStandardRelationRoles.shaft);
 
-	/** Relation type "contact" (Versions: 1.6). */
+	/** Relation type "contact" (Versions: 1.6, 1.7). */
 	RexsRelationType contact = RexsRelationType.create("contact", RexsStandardRelationRoles.assembly, RexsStandardRelationRoles.side_1, RexsStandardRelationRoles.side_2);
 
-	/** Relation type "flank" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "flank" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType flank = RexsRelationType.create("flank", RexsStandardRelationRoles.gear, RexsStandardRelationRoles.left, RexsStandardRelationRoles.right);
 
-	/** Relation type "manufacturing_step" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "manufacturing_step" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType manufacturing_step = RexsRelationType.create("manufacturing_step", RexsStandardRelationRoles.manufacturing_settings, RexsStandardRelationRoles.tool, RexsStandardRelationRoles.workpiece);
 
-	/** Relation type "ordered_assembly" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "ordered_assembly" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType ordered_assembly = RexsRelationType.create("ordered_assembly", RexsStandardRelationRoles.assembly, RexsStandardRelationRoles.part);
 
-	/** Relation type "planet_carrier_shaft" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "planet_carrier_shaft" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType planet_carrier_shaft = RexsRelationType.create("planet_carrier_shaft", RexsStandardRelationRoles.planetary_stage, RexsStandardRelationRoles.shaft);
 
-	/** Relation type "planet_pin" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "planet_pin" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType planet_pin = RexsRelationType.create("planet_pin", RexsStandardRelationRoles.planetary_stage, RexsStandardRelationRoles.shaft);
 
-	/** Relation type "planet_shaft" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "planet_shaft" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType planet_shaft = RexsRelationType.create("planet_shaft", RexsStandardRelationRoles.planetary_stage, RexsStandardRelationRoles.shaft);
 
-	/** Relation type "reference" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "reference" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType reference = RexsRelationType.create("reference", RexsStandardRelationRoles.origin, RexsStandardRelationRoles.referenced);
 
-	/** Relation type "side" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "side" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType side = RexsRelationType.create("side", RexsStandardRelationRoles.assembly, RexsStandardRelationRoles.inner_part, RexsStandardRelationRoles.outer_part);
 
-	/** Relation type "stage" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "stage" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType stage = RexsRelationType.create("stage", RexsStandardRelationRoles.gear_1, RexsStandardRelationRoles.gear_2, RexsStandardRelationRoles.stage);
 
-	/** Relation type "stage_gear_data" (Versions: 1.3, 1.4, 1.5, 1.6). */
+	/** Relation type "stage_gear_data" (Versions: 1.3, 1.4, 1.5, 1.6, 1.7). */
 	RexsRelationType stage_gear_data = RexsRelationType.create("stage_gear_data", RexsStandardRelationRoles.gear, RexsStandardRelationRoles.stage, RexsStandardRelationRoles.stage_gear_data);
 
 	/** Constant for an unknown relation type. */
