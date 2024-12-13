@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+
+## [0.12.0] - 2024-12-13
 
 ### Added
 
@@ -15,7 +16,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed the issue that `RexsVersion.findByModelVersion(...)` did not searches for additional model versions.
 - Fixed the issue that schema files contains non-UTF8 characters.
-
 
 ## [0.11.0] - 2024-12-05
 
