@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- ?
+
+
+## [0.12.0] - 2024-12-13
+
 ### Added
 
 - Added REXS 1.7
@@ -15,7 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed the issue that `RexsVersion.findByModelVersion(...)` did not searches for additional model versions.
 - Fixed the issue that schema files contains non-UTF8 characters.
-
 
 ## [0.11.0] - 2024-12-05
 
