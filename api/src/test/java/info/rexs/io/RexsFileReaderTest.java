@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 
 public class RexsFileReaderTest {
@@ -31,7 +32,7 @@ public class RexsFileReaderTest {
 	public void read_readsExsistingRexsFile() throws Exception {
 		Path rexsFilePath = Paths.get("src/test/resources").resolve("FVA_Planetary_stage_-_Minus_gearing_1.1.rexs");
 		RexsFileReader reader = new RexsFileReader(rexsFilePath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -41,7 +42,7 @@ public class RexsFileReaderTest {
 	public void read_readsExsistingRexsFileWithFile() throws Exception {
 		File rexsFile = new File("src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexs");
 		RexsFileReader reader = new RexsFileReader(rexsFile);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -51,7 +52,7 @@ public class RexsFileReaderTest {
 	public void read_readsExsistingRexsFileWithString() throws Exception {
 		String rexsFileStringPath = "src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexs";
 		RexsFileReader reader = new RexsFileReader(rexsFileStringPath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -61,7 +62,7 @@ public class RexsFileReaderTest {
 	public void read_readsExsistingRexsFileJson() throws Exception {
 		Path rexsFilePath = Paths.get("src/test/resources").resolve("FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj");
 		RexsFileReader reader = new RexsFileReader(rexsFilePath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -71,7 +72,7 @@ public class RexsFileReaderTest {
 	public void read_readsExsistingRexsFileWithFileJson() throws Exception {
 		File rexsFile = new File("src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj");
 		RexsFileReader reader = new RexsFileReader(rexsFile);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -81,7 +82,7 @@ public class RexsFileReaderTest {
 	public void read_readsExsistingRexsFileWithStringJson() throws Exception {
 		String rexsFileStringPath = "src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexsj";
 		RexsFileReader reader = new RexsFileReader(rexsFileStringPath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);

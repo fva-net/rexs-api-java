@@ -25,6 +25,7 @@ import java.nio.file.Paths;
 import org.junit.Test;
 
 import info.rexs.io.RexsIoException;
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 
 public class RexsZipFileReaderTest {
@@ -44,7 +45,7 @@ public class RexsZipFileReaderTest {
 	public void read_readsExsistingRexsFile() throws Exception {
 		Path rexsFilePath = Paths.get("src/test/resources").resolve("FVA_Planetary_stage_-_Minus_gearing_1.1.rexsz");
 		RexsZipFileReader reader = new RexsZipFileReader(rexsFilePath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -54,7 +55,7 @@ public class RexsZipFileReaderTest {
 	public void read_readsExsistingRexsFileWithFile() throws Exception {
 		File rexsFile = new File("src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexsz");
 		RexsZipFileReader reader = new RexsZipFileReader(rexsFile);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);
@@ -64,7 +65,7 @@ public class RexsZipFileReaderTest {
 	public void read_readsExsistingRexsFileWithString() throws Exception {
 		String rexsFileStringPath = "src/test/resources/FVA_Planetary_stage_-_Minus_gearing_1.1.rexsz";
 		RexsZipFileReader reader = new RexsZipFileReader(rexsFileStringPath);
-		RexsModel rexsModel = reader.read();
+		IRexsModel rexsModel = reader.read();
 
 		assertThat(rexsModel).isNotNull();
 		assertThat(rexsModel.getComponents().size()).isEqualTo(97);

@@ -25,6 +25,7 @@ import java.nio.file.Paths;
 import org.junit.Before;
 import org.junit.Test;
 
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 
 public class RexsFileWriterTest {
@@ -45,7 +46,7 @@ public class RexsFileWriterTest {
 		writer.write(aRexsModelToWrite);
 
 		RexsFileReader reader = new RexsFileReader(rexsTargetFilePath);
-		RexsModel writtenRexsModel = reader.read();
+		IRexsModel writtenRexsModel = reader.read();
 
 		assertThat(writtenRexsModel.getComponents().size()).isEqualTo(aRexsModelToWrite.getComponents().size());
 	}

@@ -28,7 +28,7 @@ import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
  *
  * @author FVA GmbH
  */
-public class RexsSubModel implements Comparable<RexsSubModel> {
+public class RexsSubModel implements Comparable<RexsSubModel>,IRexsModel {
 
 	/** An internal index with all components of the sub-model for quick access. */
 	protected Map<Integer, RexsComponent> components = new HashMap<>();
@@ -99,10 +99,11 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 		return isAccumulation;
 	}
 
-	/**
+/**
 	 * @return
 	 * 				All components of the sub-model as a {@link List} of {@link RexsComponent}.
 	 */
+@Override
 	public List<RexsComponent> getComponents() {
 		return components.values().stream().collect(Collectors.toList());
 	}
@@ -113,6 +114,7 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @param component
 	 * 				The additional component as a {@link RexsComponent}.
 	 */
+	@Override
 	public void addComponent(RexsComponent component) {
 		this.components.put(component.getId(), component);
 	}
@@ -126,6 +128,7 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @return
 	 * 				{@code true} if the sub-model contains the component, otherwise {@code false}.
 	 */
+	@Override
 	public boolean hasComponent(Integer compId) {
 		return components.containsKey(compId);
 	}
@@ -139,6 +142,7 @@ public class RexsSubModel implements Comparable<RexsSubModel> {
 	 * @return
 	 * 				The component as {@link RexsComponent} or {@code null} if the sub-model does not contain a corresponding component.
 	 */
+	@Override
 	public RexsComponent getComponent(Integer compId) {
 		return components.get(compId);
 	}

@@ -40,7 +40,7 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
  *
  * @author FVA GmbH
  */
-public class RexsModel {
+public class RexsModel implements IRexsModel {
 
 	/** The version of the REXS model. */
 	private RexsVersion version;
@@ -171,6 +171,7 @@ public class RexsModel {
 	 * @return
 	 * 				All components of the model as a {@link List} of {@link RexsComponent}.
 	 */
+	@Override
 	public List<RexsComponent> getComponents() {
 		return components.values().stream().collect(Collectors.toList());
 	}
@@ -218,6 +219,7 @@ public class RexsModel {
 	 * @return
 	 * 				{@code true} if the model contains the component, otherwise {@code false}.
 	 */
+	@Override
 	public boolean hasComponent(Integer compId) {
 		return components.containsKey(compId);
 	}
@@ -231,6 +233,7 @@ public class RexsModel {
 	 * @return
 	 * 				The component as {@link RexsComponent} or {@code null} if the sub-model does not contain a corresponding component.
 	 */
+	@Override
 	public RexsComponent getComponent(Integer compId) {
 		return components.get(compId);
 	}
@@ -666,6 +669,7 @@ public class RexsModel {
 	 * @param component
 	 * 				The additional component as a {@link RexsComponent}.
 	 */
+	@Override
 	public void addComponent(RexsComponent component) {
 		components.put(component.getId(), component);
 

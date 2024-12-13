@@ -68,7 +68,7 @@ public class RexsSubModelTest {
 	public void hasComponent_componentNotInSubModelReturnsFalse() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
-		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		IRexsModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.hasComponent(2)).isFalse();
@@ -78,7 +78,7 @@ public class RexsSubModelTest {
 	public void hasComponent_componentInSubModelReturnsTrue() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
-		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		IRexsModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.hasComponent(1)).isTrue();
@@ -88,7 +88,7 @@ public class RexsSubModelTest {
 	public void getComponent_componentNotInSubModelReturnsNull() {
 		RexsComponent rexsComponent = new RexsComponent(1, RexsStandardComponentTypes.UNKNOWN, "Foo");
 
-		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		IRexsModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent);
 
 		assertThat(rexsSubModel.getComponent(2)).isNull();
@@ -98,7 +98,7 @@ public class RexsSubModelTest {
 	public void getComponent_componentInSubModelReturnsComponent() {
 		RexsComponent rexsComponent1 = new RexsComponent(1, RexsStandardComponentTypes.cylindrical_gear, "Foo");
 
-		RexsSubModel rexsSubModel = new RexsSubModel(41);
+		IRexsModel rexsSubModel = new RexsSubModel(41);
 		rexsSubModel.addComponent(rexsComponent1);
 
 		RexsComponent rexsComponent2 = rexsSubModel.getComponent(1);
@@ -203,7 +203,7 @@ public class RexsSubModelTest {
 		RexsSubModel original = new RexsSubModel(41);
 		original.addComponent(rexsComponent);
 
-		RexsSubModel copy = new RexsSubModel(original);
+		IRexsModel copy = new RexsSubModel(original);
 
 		assertThat(copy.hasComponent(1)).isTrue();
 		assertThat(copy.getComponent(1)).isNotSameAs(rexsComponent);
@@ -214,7 +214,7 @@ public class RexsSubModelTest {
 	@Test
 	public void copyConstructor_handlesEmptyComponents() {
 		RexsSubModel original = new RexsSubModel(41);
-		RexsSubModel copy = new RexsSubModel(original);
+		IRexsModel copy = new RexsSubModel(original);
 
 		assertThat(copy.getComponents()).isEmpty();
 	}

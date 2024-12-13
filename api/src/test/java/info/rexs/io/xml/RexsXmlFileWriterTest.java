@@ -27,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import info.rexs.io.RexsIoException;
+import info.rexs.model.IRexsModel;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
 
@@ -85,7 +86,7 @@ public class RexsXmlFileWriterTest {
 		writer.write(aRexsModelToWrite);
 
 		RexsXmlFileReader reader = new RexsXmlFileReader(rexsTargetFilePath);
-		RexsModel writtenRexsModel = reader.read();
+		IRexsModel writtenRexsModel = reader.read();
 
 		assertThat(writtenRexsModel.getComponents().size()).isEqualTo(aRexsModelToWrite.getComponents().size());
 	}
