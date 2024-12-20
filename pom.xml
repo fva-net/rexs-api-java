@@ -70,7 +70,7 @@
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<spring.boot.version>3.4.0</spring.boot.version>
+		<spring.boot.version>3.4.1</spring.boot.version>
 	</properties>
 
 	<dependencyManagement>
