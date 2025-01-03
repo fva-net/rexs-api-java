@@ -35,7 +35,7 @@ Add the dependency to your project:
 <dependency>
     <groupId>io.github.fva-net</groupId>
     <artifactId>rexs-api-java</artifactId>
-    <version>0.9.0</version>
+    <version>0.12.0</version>
 </dependency>
 ```
 
@@ -56,4 +56,3 @@ If you have any suggestion about new features, you can **open an issue**.
 
 * Complete unit tests
 * Complete the Javadoc
-* Publish the project to Maven Central Repository

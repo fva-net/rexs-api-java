@@ -38,3 +38,9 @@ jobs:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          artifacts: "api/target/*.tar.gz,api/target/*.zip,cli/target/*.tar.gz,cli/target/*.zip"
+          body: "TODO Document me!"
