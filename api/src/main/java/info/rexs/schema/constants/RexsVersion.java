@@ -144,6 +144,11 @@ public class RexsVersion {
 			schemaProvider = null;
 		}
 
+		// check for DEV
+		if (schemaVersion.equalsIgnoreCase(DEV_VERSION_NAME) && schemaProvider == null) {
+			return DEV;
+		}
+
 		// check for registered versions (both with and without schema provider)
 		for (RexsVersion version : allModelVersions.values()) {
 			if (schemaProvider == null) {
