@@ -114,6 +114,16 @@ public class RexsVersionTest {
 	}
 
 	@Test
+	public void findBySchema_whenSchemaVersionIsDev_thenReturnDev() {
+		assertEquals(RexsVersion.DEV, RexsVersion.findBySchema("DEV", null));
+	}
+
+	@Test
+	public void findBySchema_whenSchemaVersionIsDevAndProviderIsNotExisting_thenReturnUnknown() {
+		assertEquals(RexsVersion.UNKNOWN, RexsVersion.findBySchema("DEV", "non_existing_provider"));
+	}
+
+	@Test
 	public void findBySchema_whenSchemaVersionIsNull_thenReturnsUnknown() {
 		assertEquals(RexsVersion.UNKNOWN, RexsVersion.findBySchema(null, "provider"));
 	}
