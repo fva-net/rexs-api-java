@@ -7,6 +7,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import info.rexs.schema.constants.standard.RexsStandardVersions;
@@ -323,4 +325,26 @@ public class RexsVersionTest {
 		RexsVersion version = RexsVersion.create("1.0", "provider", "1.0");
 		assertEquals("1.0 (provider)", version.toString());
 	}
+
+	@Test
+	public void getAll_whenCalled_returnsAllRegisteredVersionsWithoutDuplicates() {
+		// Get all registered versions
+		List<RexsVersion> allVersions = RexsVersion.getAll();
+
+		// Verify that the list is not null
+		assertNotNull(allVersions);
+
+		// Verify that all entries to the list are unique
+		assertEquals(allVersions.size(), allVersions.stream().distinct().count());
+
+		// Verify that the registered versions are in the list
+		assertTrue(allVersions.stream().anyMatch(v -> v.equals(RexsStandardVersions.V1_0)));
+		assertTrue(allVersions.stream().anyMatch(v -> v.equals(RexsStandardVersions.V1_1)));
+		assertTrue(allVersions.stream().anyMatch(v -> v.equals(RexsStandardVersions.V1_7)));
+
+		// Verify that DEV is in that list but UNKNOWN isn't
+		assertTrue(allVersions.stream().anyMatch(v -> v.equals(RexsVersion.DEV)));
+		assertFalse(allVersions.stream().anyMatch(v -> v.equals(RexsVersion.UNKNOWN)));
+	}
+
 }
