@@ -1,6 +1,8 @@
 package info.rexs.schema.constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -13,18 +15,15 @@ import info.rexs.schema.constants.standard.RexsStandardVersions;
  */
 public class RexsVersion {
 
-	private static final String DEV_VERSION_NAME = "DEV";
-
-	/**
-	 * A constant representing the development version.
-	 */
-	public static final RexsVersion DEV = new RexsVersion(DEV_VERSION_NAME, null, DEV_VERSION_NAME);
-
 	/**
 	 * A constant representing an unknown version.
 	 */
 	public static final RexsVersion UNKNOWN = new RexsVersion("UNKNOWN", null, "UNKNOWN");
-
+	private static final String DEV_VERSION_NAME = "DEV";
+	/**
+	 * A constant representing the development version.
+	 */
+	public static final RexsVersion DEV = new RexsVersion(DEV_VERSION_NAME, null, DEV_VERSION_NAME);
 	/**
 	 * A map to store all versions by their model identifier.
 	 */
@@ -160,6 +159,20 @@ public class RexsVersion {
 
 		// return unknown if nothing matches
 		return UNKNOWN;
+	}
+
+	/**
+	 * Gets all registered REXS versions.
+	 *
+	 * @return A list of all registered REXS versions.
+	 */
+	public static List<RexsVersion> getAll() {
+		// create a list of all registered versions + DEV
+		List<RexsVersion> listOfVersions = new ArrayList<>(allModelVersions.values());
+		listOfVersions.add(DEV);
+
+		// return the list without duplicates
+		return listOfVersions.stream().distinct().toList();
 	}
 
 	/**
