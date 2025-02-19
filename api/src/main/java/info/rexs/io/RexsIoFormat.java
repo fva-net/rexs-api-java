@@ -26,7 +26,7 @@ import info.rexs.io.zip.RexsZipFileWriter;
 
 public enum RexsIoFormat {
 
-	JSON("rexsj", "rexs.json", "json") {
+	JSON("rexsj", "rexs.json") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsJsonFileWriter(pathToRexsOutputFile);
@@ -38,7 +38,7 @@ public enum RexsIoFormat {
 		}
 	},
 
-	XML("rexs", "xml") {
+	XML("rexs", "rexs.xml") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsXmlFileWriter(pathToRexsOutputFile);
@@ -50,7 +50,7 @@ public enum RexsIoFormat {
 		}
 	},
 
-	ZIP("rexsz", "zip") {
+	ZIP("rexsz", "rexs.zip") {
 		@Override
 		public AbstractRexsFileWriter createNewFileWriter(Path pathToRexsOutputFile) {
 			return new RexsZipFileWriter(pathToRexsOutputFile);

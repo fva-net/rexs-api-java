@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `RexsVersion.getAll()`.
+- Synchronized `RexsIoFormat` with permitted extensions from the REXS specification
 
 
 ## [0.12.0] - 2024-12-13
