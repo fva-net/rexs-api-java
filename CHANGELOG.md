@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Addded `RexsVerion.getAll()`.
+- Added `RexsVersion.getAll()`.
 
 
 ## [0.12.0] - 2024-12-13
