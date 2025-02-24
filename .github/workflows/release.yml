@@ -38,7 +38,7 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Create GitHub Release
-        uses: ncipollo/release-action@v1.15.0
+        uses: ncipollo/release-action@v1.16.0
         with:
           artifacts: "api/target/*.tar.gz,api/target/*.zip,cli/target/*.tar.gz,cli/target/*.zip"
           body: "TODO Document me!"
