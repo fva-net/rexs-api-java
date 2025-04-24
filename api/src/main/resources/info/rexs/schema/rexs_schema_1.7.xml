@@ -9726,7 +9726,7 @@
                     <allowedCombinationRole roleId="part" componentId="notch_effect_shaft_hub_connection"/>
                 </allowedCombination>
                 <allowedCombination>
-                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_connection"/>
+                    <allowedCombinationRole roleId="assembly" componentId="involute_spline_gear_shaft"/>
                     <allowedCombinationRole roleId="part" componentId="notch_effect_shaft_hub_connection"/>
                 </allowedCombination>
                 <allowedCombination>
