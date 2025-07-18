@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ???
 
+
+## [0.14.0] - 2025-07-18
+
 ### Changed
 
 - Changed assembly component from `involute_spline_connection` to `involute_spline_gear_shaft` for assembly relations in REXS versions 1.4, 1.5, 1.6 and 1.7
@@ -18,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Full support for binary information in arrays and matrices in the .rexsj format
-
 
 ## [0.13.0] - 2025-02-19
 
