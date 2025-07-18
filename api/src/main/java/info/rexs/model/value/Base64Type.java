@@ -16,7 +16,27 @@
 package info.rexs.model.value;
 
 public enum Base64Type {
-	INT_32,
-	FLOAT_32,
-	FLOAT_64;
+
+	INT_32("int32"),
+	FLOAT_32("float32"),
+	FLOAT_64("float64");
+
+	private final String code;
+
+	private Base64Type(String code) {
+		this.code = code;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public static Base64Type fromCode(String code) {
+		for (Base64Type type: Base64Type.values()) {
+			if (type.code.equals(code)) {
+				return type;
+			}
+		}
+		throw new IllegalArgumentException(code);
+	}
 }

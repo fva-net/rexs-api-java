@@ -28,11 +28,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = BooleanArrayAttribute.class, name = "BooleanArrayAttribute"),
     @JsonSubTypes.Type(value = EnumArrayAttribute.class, name = "EnumArrayAttribute"),
     @JsonSubTypes.Type(value = FloatingPointArrayAttribute.class, name = "FloatingPointArrayAttribute"),
+    @JsonSubTypes.Type(value = FloatingPointArrayCodedAttribute.class, name = "FloatingPointArrayCodedAttribute"),
     @JsonSubTypes.Type(value = IntegerArrayAttribute.class, name = "IntegerArrayAttribute"),
     @JsonSubTypes.Type(value = StringArrayAttribute.class, name = "StringArrayAttribute"),
 
     @JsonSubTypes.Type(value = BooleanMatrixAttribute.class, name = "BooleanMatrixAttribute"),
     @JsonSubTypes.Type(value = FloatingPointMatrixAttribute.class, name = "FloatingPointMatrixAttribute"),
+    @JsonSubTypes.Type(value = FloatingPointMatrixCodedAttribute.class, name = "FloatingPointMatrixCodedAttribute"),
     @JsonSubTypes.Type(value = IntegerMatrixAttribute.class, name = "IntegerMatrixAttribute"),
     @JsonSubTypes.Type(value = StringMatrixAttribute.class, name = "StringMatrixAttribute"),
 

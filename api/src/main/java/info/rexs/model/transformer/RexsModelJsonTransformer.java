@@ -214,7 +214,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 				if (value instanceof RexsAttributeValueArrayBase64 valueBase64) {
 					Base64Type code = valueBase64.getRawType();
 					FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
-							.withCode(code == null? null: code.toString())
+							.withCode(code == null? null: code.getCode())
 							.withValue(valueBase64.getRawValue());
 					jsonAttribute = new FloatingPointArrayCodedAttribute().withFloatingPointArrayCoded(fpac); break;
 				}
@@ -230,7 +230,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 				if (value instanceof RexsAttributeValueMatrixBase64 valueBase64) {
 					Base64Type code = valueBase64.getRawType();
 					FloatingPointMatrixCoded fpac = new FloatingPointMatrixCoded()
-							.withCode(code == null? null: code.toString())
+							.withCode(code == null? null: code.getCode())
 							.withColumns(valueBase64.getRawCols())
 							.withRows(valueBase64.getRawRows())
 							.withValue(valueBase64.getRawValue());
@@ -303,7 +303,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		else if (value instanceof RexsAttributeValueArrayBase64 valueBase64) {
 			Base64Type code = valueBase64.getRawType();
 			FloatingPointArrayCoded fpac = new FloatingPointArrayCoded()
-					.withCode(code == null? null: code.toString())
+					.withCode(code == null? null: code.getCode())
 					.withValue(valueBase64.getRawValue());
 			return new FloatingPointArrayCodedAttribute().withFloatingPointArrayCoded(fpac);
 		}
@@ -330,7 +330,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		else if (value instanceof RexsAttributeValueMatrixBase64 valueBase64) {
 			Base64Type code = valueBase64.getRawType();
 			FloatingPointMatrixCoded fpac = new FloatingPointMatrixCoded()
-					.withCode(code == null? null: code.toString())
+					.withCode(code == null? null: code.getCode())
 					.withColumns(valueBase64.getRawCols())
 					.withRows(valueBase64.getRawRows())
 					.withValue(valueBase64.getRawValue());
@@ -485,7 +485,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		}
 		if(attributeJson instanceof FloatingPointArrayCodedAttribute){
 			FloatingPointArrayCoded arrayCoded = ((FloatingPointArrayCodedAttribute)attributeJson).getFloatingPointArrayCoded();
-			return new RexsAttributeValueArrayBase64(arrayCoded.getValue(), Base64Type.valueOf(arrayCoded.getCode()));
+			return new RexsAttributeValueArrayBase64(arrayCoded.getValue(), Base64Type.fromCode(arrayCoded.getCode()));
 		}
 		if(attributeJson instanceof BooleanArrayAttribute){
 			RexsAttributeValueArray array = new RexsAttributeValueArray();
@@ -513,7 +513,7 @@ public class RexsModelJsonTransformer implements IRexsModelTransformer<JSONModel
 		}
 		if(attributeJson instanceof FloatingPointMatrixCodedAttribute){
 			FloatingPointMatrixCoded matrixCoded = ((FloatingPointMatrixCodedAttribute)attributeJson).getFloatingPointMatrixCoded();
-			return new RexsAttributeValueMatrixBase64(matrixCoded.getValue(), Base64Type.valueOf(matrixCoded.getCode()), matrixCoded.getRows(), matrixCoded.getColumns());
+			return new RexsAttributeValueMatrixBase64(matrixCoded.getValue(), Base64Type.fromCode(matrixCoded.getCode()), matrixCoded.getRows(), matrixCoded.getColumns());
 		}
 		if(attributeJson instanceof BooleanMatrixAttribute){
 			List<List<Boolean>> jsonValue = ((BooleanMatrixAttribute) attributeJson).getBooleanMatrix();
