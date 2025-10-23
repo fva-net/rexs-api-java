@@ -228,7 +228,8 @@ public interface RexsStandardUnitIds {
 	/** A set of equivalent units. */
 	Set<Set<RexsUnitId>> EQUIVALENT_UNITS = new HashSet<>(Arrays.asList(
 		new HashSet<>(Arrays.asList(mega_pascal, newton_per_mm2)),
-		new HashSet<>(Arrays.asList(rotation_per_second, hertz))
+		new HashSet<>(Arrays.asList(rotation_per_second, hertz)),
+		new HashSet<>(Arrays.asList(deg, degree))
 	));
 
 	public static void init() {}
