@@ -17,6 +17,9 @@ indent_size = 2
 [*.xml]
 max_line_length = off
 
+[pom.xml]
+indent_size = 2
+
 [*.xsd]
 max_line_length = off
 indent_style = tab
