@@ -60,6 +60,9 @@ fabric.properties
 # CSV Editor Plugin
 .idea/csv-editor.xml
 .idea/csv-plugin.xml
+# Github Copilot
+.idea/copilotDiffState.xml
+.idea/copilot.*.xml
 
 # Maven
 target
