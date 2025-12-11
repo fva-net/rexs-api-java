@@ -19,11 +19,10 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.Unmarshaller;
-
 import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.jaxb.RexsSchema;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  * This class provides the REXS schemas of all available REXS versions (REXS standard and own).
@@ -36,7 +35,7 @@ public class RexsSchemaResolver {
 	private static RexsSchemaResolver instance = null;
 
 	/** An internal index with all created REXS schemas (REXS standard and own) for quick access. */
-	private Map<RexsSchemaFile, RexsSchema> rexsSchemaFileCache = new HashMap<>();
+	private final Map<RexsSchemaFile, RexsSchema> rexsSchemaFileCache = new HashMap<>();
 
 	private RexsSchemaResolver() {}
 

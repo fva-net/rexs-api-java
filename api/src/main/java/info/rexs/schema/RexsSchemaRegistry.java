@@ -50,14 +50,14 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 
 	private static RexsSchemaRegistry instance = null;
 
-	private Map<String, RexsVersion> versions = new HashMap<>();
-	private Map<RexsVersion, Map<String, RexsComponentType>> componentMap = new HashMap<>();
-	private Map<RexsVersion, Map<String, RexsUnitId>> attributeUnits = new HashMap<>();
-	private Map<RexsVersion, Map<String, RexsValueType>> attributeTypes = new HashMap<>();
-	private Map<RexsVersion, Map<String, Attribute>> attributeMap = new HashMap<>();
-	private Map<RexsVersion, Map<String, List<RexsComponentType>>> attributeToComponentMap = new HashMap<>();
-	private Map<RexsVersion, Map<RexsComponentType, List<String>>> componentToAttributesMap = new HashMap<>();
-	private Map<RexsVersion, Map<RexsRelationType, List<List<AllowedCombinationRole>>>> relationsToAllowedCombinationsMap = new HashMap<>();
+	private final Map<String, RexsVersion> versions = new HashMap<>();
+	private final Map<RexsVersion, Map<String, RexsComponentType>> componentMap = new HashMap<>();
+	private final Map<RexsVersion, Map<String, RexsUnitId>> attributeUnits = new HashMap<>();
+	private final Map<RexsVersion, Map<String, RexsValueType>> attributeTypes = new HashMap<>();
+	private final Map<RexsVersion, Map<String, Attribute>> attributeMap = new HashMap<>();
+	private final Map<RexsVersion, Map<String, List<RexsComponentType>>> attributeToComponentMap = new HashMap<>();
+	private final Map<RexsVersion, Map<RexsComponentType, List<String>>> componentToAttributesMap = new HashMap<>();
+	private final Map<RexsVersion, Map<RexsRelationType, List<List<AllowedCombinationRole>>>> relationsToAllowedCombinationsMap = new HashMap<>();
 
 	private RexsSchemaRegistry() {
 		try {
@@ -92,7 +92,10 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		if (rexsSchema == null)
 			throw new IllegalStateException(String.format("rexs db model for version %s not found", version.getModelVersion()));
 		registerRexsSchema(version, rexsSchema);
+		// register primary version
 		versions.put(version.getModelVersion(), version);
+		// register additional versions
+		version.getAdditionalModelVersions().forEach(additionalVersion -> versions.put(additionalVersion, version));
 	}
 
 	private void registerRexsSchema(RexsVersion version, RexsSchema rexsSchema) {
@@ -323,7 +326,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 
 	@Override
 	public RexsVersion getVersion(String version) {
-		return versions.get(version);
+		return versions.getOrDefault(version, RexsVersion.UNKNOWN);
 	}
 
 	@Override

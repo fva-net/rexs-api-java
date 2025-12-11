@@ -50,6 +50,35 @@ public class RexsVersion {
 	private final String modelVersion;
 
 	/**
+	 * Additional (case-insensitive) identifiers of the versions in the REXS model.
+	 */
+	private final List<String> additionalModelVersions = new ArrayList<>();
+
+	/**
+	 * Gets the additional model versions.
+	 *
+	 * @return A list of additional model versions.
+	 */
+	public List<String> getAdditionalModelVersions() {
+		return new ArrayList<>(additionalModelVersions);
+	}
+
+	/**
+	 * Creates a new REXS version with additional model versions.
+	 *
+	 * @param schemaVersion  The (case-insensitive) identifier of the version in the REXS schema.
+	 * @param schemaProvider The (case-insensitive) identifier of the provider in the REXS schema.
+	 * @param modelVersion   The (case-insensitive) identifier of the version in the REXS model.
+	 * @param additionalModelVersions Additional (case-insensitive) identifiers of the versions inthe REXS model.
+	 */
+	private RexsVersion(String schemaVersion, String schemaProvider, String modelVersion, List<String> additionalModelVersions) {
+		this.schemaVersion = schemaVersion;
+		this.schemaProvider = schemaProvider;
+		this.modelVersion = modelVersion;
+		this.additionalModelVersions.addAll(additionalModelVersions);
+	}
+
+	/**
 	 * Creates a new REXS version.
 	 *
 	 * @param schemaVersion  The (case-insensitive) identifier of the version in the REXS schema.
@@ -89,7 +118,7 @@ public class RexsVersion {
 			throw new IllegalArgumentException("schemaVersion must follow the pattern X.X");
 
 		// create the primary version
-		RexsVersion primaryVersion = new RexsVersion(schemaVersion, schemaProvider, primaryModelVersion);
+		RexsVersion primaryVersion = new RexsVersion(schemaVersion, schemaProvider, primaryModelVersion, List.of(additionalModelVersions));
 		allModelVersions.put(primaryVersion.getModelVersion(), primaryVersion);
 
 		// register additional versions
