@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added equivalent untis to `RexsStandardUnitIds` (`deg`, `degree`)
+- Changelog: Added changes to allowed combinations in relations.
 
 ### Fixed
 
