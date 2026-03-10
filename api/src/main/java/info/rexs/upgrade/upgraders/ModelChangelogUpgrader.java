@@ -168,18 +168,22 @@ public class ModelChangelogUpgrader {
 							break;
 						}
 						case "unit": {
-							if (changedValue.getOldValue().equals("\u00B0") && changedValue.getNewValue().equals("deg")) {
-								attribute.setUnit(RexsStandardUnitIds.deg);
-							} else
-							if (changedValue.getOldValue().equals("N") && changedValue.getNewValue().equals("N / mm")) {
+							RexsUnitId oldUnit = RexsUnitId.findById(changedValue.getOldValue());
+							RexsUnitId newUnit = RexsUnitId.findById(changedValue.getNewValue());
+
+							if (oldUnit.isEquivalent(newUnit)) {
+								attribute.setUnit(newUnit);
+
+							} else if (oldUnit.equals(RexsStandardUnitIds.newton) && newUnit.equals(RexsStandardUnitIds.newton_per_mm)) {
 								attribute.setUnit(RexsStandardUnitIds.newton_per_mm);
 								notifications.add(new Notification(NotificationType.WARNING, "unit conversion from N to N/mm",
 										new AttributeSource(attribute.getAttributeId().getId())));
+
 							} else {
-								throw new RuntimeException("unsupported unit conversion");
+								throw new RuntimeException(
+									String.format("unsupported unit conversion from %s to %s", changedValue.getOldValue(), changedValue.getNewValue()));
 							}
-							RexsUnitId unit = RexsUnitId.findById(changedValue.getNewValue());
-							attribute.setUnit(unit);
+
 							break;
 						}
 						case "symbol": {

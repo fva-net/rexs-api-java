@@ -48,11 +48,16 @@ public final class RexsStandardVersions {
 	public static final RexsVersion V1_7 = RexsVersion.create("1.7", null, "1.7");
 
 	/**
+	 * Version 2.0.0 of the REXS schema.
+	 */
+	public static final RexsVersion V2_0_0 = RexsVersion.create("2.0.0", null, "2.0.0");
+
+	/**
 	 * @return
 	 * 				The latest official REXS {@link RexsVersion}.
 	 */
 	public static RexsVersion getLatest() {
-		return V1_7;
+		return V2_0_0;
 	}
 
 	/**

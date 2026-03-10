@@ -26,7 +26,7 @@ import info.rexs.schema.constants.RexsUnitId;
 /**
  * This class represents a REXS unit.
  * <p>
- * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7).
+ * It contains constants for all units of official REXS versions (1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 2.0.0).
  *
  * @author FVA GmbH
  */
@@ -209,6 +209,21 @@ public interface RexsStandardUnitIds {
 
 	/** kg / mm */
 	RexsUnitId unit_61 = RexsUnitId.create("kg / mm", 61);
+
+	/** pF */
+	RexsUnitId unit_62 = RexsUnitId.create("pF", 62);
+
+	/** Ohm */
+	RexsUnitId unit_63 = RexsUnitId.create("Ohm", 63);
+
+	/** V */
+	RexsUnitId unit_64 = RexsUnitId.create("V", 64);
+
+	/** pS / m */
+	RexsUnitId unit_65 = RexsUnitId.create("pS / m", 65);
+
+	/** V / m */
+	RexsUnitId unit_66 = RexsUnitId.create("V / m", 66);
 
 	/** W */
 	RexsUnitId watt = RexsUnitId.create("W", 29);

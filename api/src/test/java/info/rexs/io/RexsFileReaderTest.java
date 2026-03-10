@@ -24,7 +24,6 @@ import java.nio.file.Paths;
 import org.junit.Test;
 
 import info.rexs.model.IRexsModel;
-import info.rexs.model.RexsModel;
 
 public class RexsFileReaderTest {
 
