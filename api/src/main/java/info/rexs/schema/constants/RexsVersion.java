@@ -114,8 +114,8 @@ public class RexsVersion {
 		}
 
 		// assure that the schema version follows X.X pattern
-		if (!schemaVersion.matches("\\d+\\.\\d+") && !schemaVersion.equalsIgnoreCase(DEV_VERSION_NAME))
-			throw new IllegalArgumentException("schemaVersion must follow the pattern X.X");
+		if (!schemaVersion.matches("\\d+\\.\\d+(\\.\\d)?") && !schemaVersion.equalsIgnoreCase(DEV_VERSION_NAME))
+			throw new IllegalArgumentException("schemaVersion must follow the pattern X.X or X.X.X");
 
 		// create the primary version
 		RexsVersion primaryVersion = new RexsVersion(schemaVersion, schemaProvider, primaryModelVersion, List.of(additionalModelVersions));

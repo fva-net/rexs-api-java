@@ -26,7 +26,6 @@ import org.junit.Test;
 
 import info.rexs.io.RexsIoException;
 import info.rexs.model.IRexsModel;
-import info.rexs.model.RexsModel;
 
 public class RexsZipFileReaderTest {
 

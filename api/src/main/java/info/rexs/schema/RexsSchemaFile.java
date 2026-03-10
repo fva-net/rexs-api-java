@@ -64,6 +64,9 @@ public class RexsSchemaFile {
 	/** REXS 1.7 */
 	public static final RexsSchemaFile V1_7 = create(RexsStandardVersions.V1_7);
 
+	/** REXS 2.0.0 */
+	public static final RexsSchemaFile V2_0_0 = create(RexsStandardVersions.V2_0_0);
+
 	/** The {@link RexsVersion} of the REXS schema file. */
 	private final RexsVersion version;
 

@@ -69,6 +69,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 			registerRexsVersion(RexsStandardVersions.V1_5);
 			registerRexsVersion(RexsStandardVersions.V1_6);
 			registerRexsVersion(RexsStandardVersions.V1_7);
+			registerRexsVersion(RexsStandardVersions.V2_0_0);
 		} catch (Exception ex) {
 			throw new RuntimeException("error while registering rexs model:", ex);
 		}

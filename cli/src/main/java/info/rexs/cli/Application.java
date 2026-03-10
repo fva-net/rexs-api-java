@@ -1,6 +1,6 @@
 package info.rexs.cli;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -56,10 +56,10 @@ public class Application implements CommandLineRunner {
 			if (globalOptions.isHelp() || args == null || args.length < 1)
 				jcommander.usage();
 
-			if (StringUtils.equals(jcommander.getParsedCommand(), COMMAND_CONVERT))
+			if (Strings.CS.equals(jcommander.getParsedCommand(), COMMAND_CONVERT))
 				convertCommandService.convert(jcommander.getConsole(), convertOptions);
 
-			if (StringUtils.equals(jcommander.getParsedCommand(), COMMAND_VALIDATE))
+			if (Strings.CS.equals(jcommander.getParsedCommand(), COMMAND_VALIDATE))
 				validateCommandService.validate(jcommander.getConsole(), validateOptions);
 		}
 		catch (ParameterException ex)
