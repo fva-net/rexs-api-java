@@ -27,7 +27,6 @@ import info.rexs.schema.constants.RexsUnitId;
 import info.rexs.schema.constants.RexsValueType;
 import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
-import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.schema.jaxb.AllowedCombination;
 import info.rexs.schema.jaxb.AllowedCombinationRole;
@@ -167,10 +166,7 @@ public class RexsSchemaRegistry implements IRexsSchemaRegistry {
 		Map<Integer, String> unitMap = new HashMap<>();
 		if (rexsSchema.getUnits() != null) {
 			for (Unit unit : rexsSchema.getUnits()) {
-				if (RexsStandardUnitIds.degree.getId().equals(unit.getName()))
-					unitMap.put(unit.getId(), RexsStandardUnitIds.deg.getId());
-				else
-					unitMap.put(unit.getId(), unit.getName());
+				unitMap.put(unit.getId(), unit.getName());
 			}
 		}
 		if (rexsSchema.getAttributes() != null) {
