@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Ensure that when exporting older versions of REXS "°" is used instead of the newer "deg"
+- ModellingGuidelineValidator: check in case of interference_fit of feather_key_connection
 
 
 ## [0.15.0] - 2026-03-11

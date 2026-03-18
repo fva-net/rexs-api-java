@@ -32,7 +32,6 @@ import info.rexs.schema.jaxb.AllowedCombinationRole;
 public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandardModelValidator {
 
 	public RexsModellingGuidelineQuasistaticModelValidator() {
-		super();
 	}
 
 	public RexsModellingGuidelineQuasistaticModelValidator(IRexsSchemaRegistry rexsSchemaRegistry) {
@@ -76,6 +75,10 @@ public class RexsModellingGuidelineQuasistaticModelValidator extends RexsStandar
 
 			for (RexsComponentType mainType : mainComponentTypesForSideRelation) {
 				for (RexsComponent mainComponent : rexsModel.getComponentsOfType(mainType)) {
+					// special case: cylindrical_interference_fit of a feather_key_connection
+					if (mainComponent.isOfType(RexsComponentType.cylindrical_interference_fit) &&
+							rexsModel.getParent(mainComponent.getId(), RexsComponentType.feather_key_connection)!=null)
+						continue;
 					if (sideRelations.stream().noneMatch(r -> r.hasComponent(mainComponent.getId())))
 						validationResult.addError(RexsValidationResultMessageKey.GUIDELINE_QUASISTATIC_COMPONENT_REQUIRES_SIDE_RELATION, mainComponent.toString(), mainComponent.getType().getId());
 				}
