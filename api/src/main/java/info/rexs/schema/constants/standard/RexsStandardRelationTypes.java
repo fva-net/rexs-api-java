@@ -78,7 +78,7 @@ public interface RexsStandardRelationTypes {
 	RexsRelationType connection = RexsRelationType.create("connection", RexsStandardRelationRoles.side_1, RexsStandardRelationRoles.side_2);
 
 	/** Relation type "coupling". */
-	RexsRelationType coupling = RexsRelationType.create("coupling", RexsStandardRelationRoles.side_1, RexsStandardRelationRoles.side_2);
+	RexsRelationType coupling = RexsRelationType.create("coupling", RexsStandardRelationRoles.assembly, RexsStandardRelationRoles.side_1, RexsStandardRelationRoles.side_2);
 
 	/** Relation type "ordered_reference". */
 	RexsRelationType ordered_reference = RexsRelationType.create("ordered_reference", RexsStandardRelationRoles.origin, RexsStandardRelationRoles.referenced);
