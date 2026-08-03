@@ -93,7 +93,7 @@ public class UpgradeNotifications {
 		}
 	}
 
-	private List<Notification> notifications = new ArrayList<>();
+	private final List<Notification> notifications = new ArrayList<>();
 
 	public UpgradeNotifications() {
 	}

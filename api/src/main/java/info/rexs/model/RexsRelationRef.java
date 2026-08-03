@@ -42,7 +42,7 @@ public class RexsRelationRef {
 	/**
 	 * Optional note for better readability of the relation reference.
 	 */
-	private String hint;
+	private final String hint;
 
 	/**
 	 * Constructs a new {@link RexsRelationRef} for the given properties.

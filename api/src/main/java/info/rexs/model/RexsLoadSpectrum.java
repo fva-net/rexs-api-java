@@ -34,7 +34,7 @@ public class RexsLoadSpectrum {
 	 * The numeric ID of the load spectrum within the REXS model.
 	 */
 	@Getter
-	private Integer id;
+	private final Integer id;
 
 	/** An internal index with all load cases of the load spectrum for quick access. */
 	protected Map<Integer, RexsSubModel> loadCases = new HashMap<>();

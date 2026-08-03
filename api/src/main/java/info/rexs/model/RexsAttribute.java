@@ -50,7 +50,7 @@ public class RexsAttribute {
 	 * The origin ID of the attribute as a {@link String}.
 	 */
 	@Getter
-	private String originAttributeId;
+	private final String originAttributeId;
 
 	/**
 	 * The unit of the attribute as a {@link RexsUnitId}.

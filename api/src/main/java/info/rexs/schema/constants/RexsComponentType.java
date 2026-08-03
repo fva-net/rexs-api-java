@@ -35,7 +35,7 @@ import lombok.Getter;
 public class RexsComponentType implements RexsStandardComponentTypes {
 
 	/** An internal index with all created component types (REXS standard and own) for quick access. */
-	private static Map<String, RexsComponentType> allComponentTypes = new HashMap<>();
+	private static final Map<String, RexsComponentType> allComponentTypes = new HashMap<>();
 
 	/**
 	 * The actual ID of the component type as a {@link String}.

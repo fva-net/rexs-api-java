@@ -35,7 +35,7 @@ import lombok.Getter;
 public class RexsAttributeId implements RexsStandardAttributeIds {
 
 	/** An internal index with all created attribute IDs (REXS standard and own) for quick access. */
-	private static Map<String, RexsAttributeId> allAttributeIds = new HashMap<>();
+	private static final Map<String, RexsAttributeId> allAttributeIds = new HashMap<>();
 
 	/**
 	 * The actual attribute ID as a {@link String}.

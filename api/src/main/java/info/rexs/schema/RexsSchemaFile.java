@@ -39,7 +39,7 @@ public class RexsSchemaFile {
 	private static final RexsSchemaFileResolver DEFAULT_FILE_RESOLVER = new RexsSchemaFileResolver();
 
 	/** An internal index with all created REXS schema files (REXS standard and own) for quick access. */
-	private static Set<RexsSchemaFile> allRexsSchemaFiles = new HashSet<>();
+	private static final Set<RexsSchemaFile> allRexsSchemaFiles = new HashSet<>();
 
 	/** REXS 1.0 */
 	public static final RexsSchemaFile V1_0 = create(RexsStandardVersions.V1_0);

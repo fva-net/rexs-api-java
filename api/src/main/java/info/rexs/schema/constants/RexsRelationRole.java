@@ -35,7 +35,7 @@ import lombok.Getter;
 public class RexsRelationRole implements RexsStandardRelationRoles {
 
 	/** An internal index with all created relation roles (REXS standard and own) for quick access. */
-	private static Map<String, RexsRelationRole> allRelationRoles = new HashMap<>();
+	private static final Map<String, RexsRelationRole> allRelationRoles = new HashMap<>();
 
 	/**
 	 * The actual key of the relation role as a {@link String}.

@@ -38,7 +38,7 @@ public class RexsSubModel implements Comparable<RexsSubModel>,IRexsModel {
 	 * The numeric ID of the sub-model within the REXS model.
 	 */
 	@Getter
-	private Integer id;
+	private final Integer id;
 
 	/**
 	 * Indicates whether it is a separate sub-model for accumulated values.

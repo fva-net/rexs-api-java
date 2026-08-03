@@ -44,7 +44,7 @@ public class RexsRelation {
 	 * The type of the relation as a {@link RexsRelationType}.
 	 */
 	@Getter
-	private RexsRelationType type;
+	private final RexsRelationType type;
 
 	/**
 	 * Optional order for sorting in the case of several relations.
@@ -57,10 +57,10 @@ public class RexsRelation {
 	 * All relation references of the relation as a {@link List} of {@link RexsRelationRef}.
 	 */
 	@Getter
-	private List<RexsRelationRef> refs = new ArrayList<>();
+	private final List<RexsRelationRef> refs = new ArrayList<>();
 
 	/** A set with all component IDs of this relation. */
-	private Set<Integer> componentIds = new HashSet<>();
+	private final Set<Integer> componentIds = new HashSet<>();
 
 	/**
 	 * Constructs a new {@link RexsRelation} for the given properties.

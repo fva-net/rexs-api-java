@@ -73,7 +73,7 @@ public enum RexsValidationResultMessageKey {
 	CAUGHT_EXCEPTION("%s");
 
 	/** The default message of the message key. */
-	private String defaultMessage;
+	private final String defaultMessage;
 
 	RexsValidationResultMessageKey(String defaultMessage) {
 		this.defaultMessage = defaultMessage;

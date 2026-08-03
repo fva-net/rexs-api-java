@@ -49,9 +49,9 @@ public class ModelChangelogUpgrader {
 
 	private final RexsChangelog changelog;
 	@Getter
-	private UpgradeNotifications notifications = new UpgradeNotifications();
+	private final UpgradeNotifications notifications = new UpgradeNotifications();
 	/** remove invalid attributes in strict mode */
-	private boolean strictMode;
+	private final boolean strictMode;
 
 	public ModelChangelogUpgrader(RexsModel model, RexsChangelog changelog, boolean strictMode) {
 		this.oldModel = model;

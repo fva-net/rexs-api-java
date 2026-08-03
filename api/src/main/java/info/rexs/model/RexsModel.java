@@ -55,7 +55,7 @@ public class RexsModel implements IRexsModel {
 	 * The origin version of the REXS model as a {@link String}.
 	 */
 	@Getter
-	private String originVersion;
+	private final String originVersion;
 
 	/**
 	 * The name of the application that created the REXS model, e.g. "FVA Workbench".
@@ -68,7 +68,7 @@ public class RexsModel implements IRexsModel {
 	 * The version of the application as a {@link String}.
 	 */
 	@Getter
-	private String applicationVersion;
+	private final String applicationVersion;
 
 	/**
 	 * All relations of the model as a {@link List} of {@link RexsRelation}.
@@ -83,16 +83,16 @@ public class RexsModel implements IRexsModel {
 	protected List<RexsLoadSpectrum> loadSpectrums = new ArrayList<>();
 
 	/** An internal index with all components of the model for quick access. */
-	private Map<Integer, RexsComponent> components = new HashMap<>();
+	private final Map<Integer, RexsComponent> components = new HashMap<>();
 
 	/** An internal index with all components of the component types in the model for quick access. */
-	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponent = new HashMap<>();
+	private final Map<RexsComponentType, List<RexsComponent>> mapTypeToComponent = new HashMap<>();
 
 	/** An internal index with all relations of the component in the model for quick access. */
-	private Map<Integer, List<RexsRelation>> mapMainCompToRelation = new HashMap<>();
+	private final Map<Integer, List<RexsRelation>> mapMainCompToRelation = new HashMap<>();
 
 	/** An internal index with all relations of the relation types in the model for quick access. */
-	private Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation = new HashMap<>();
+	private final Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation = new HashMap<>();
 
 	/**
 	 * Constructs a new {@link RexsModel} from scratch.

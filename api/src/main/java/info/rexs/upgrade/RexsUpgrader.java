@@ -40,7 +40,7 @@ public class RexsUpgrader {
 	/**
 	 * The REXS model.
 	 */
-	private RexsModel rexsModel;
+	private final RexsModel rexsModel;
 
 	/**
 	 * Constructs a new {@link RexsUpgrader} for the given {@link Model}.

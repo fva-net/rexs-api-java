@@ -29,10 +29,10 @@ import lombok.Getter;
 public class RexsValidationResult {
 
 	/** A list containing all warning messages. */
-	private List<RexsValidationResultMessage> warnings = new ArrayList<>();
+	private final List<RexsValidationResultMessage> warnings = new ArrayList<>();
 
 	/** A list containing all error messages. */
-	private List<RexsValidationResultMessage> errors = new ArrayList<>();
+	private final List<RexsValidationResultMessage> errors = new ArrayList<>();
 
 	/**
 	 * Returns the status of the validation.

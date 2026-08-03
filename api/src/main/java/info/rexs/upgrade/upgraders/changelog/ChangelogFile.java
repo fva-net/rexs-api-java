@@ -39,7 +39,7 @@ public class ChangelogFile {
 	private static final ChangelogFileResolver DEFAULT_FILE_RESOLVER = new ChangelogFileResolver();
 
 	/** An internal index with all created REXS database changelog files (REXS standard and own) for quick access. */
-	private static Set<ChangelogFile> allChangelogFiles = new HashSet<>();
+	private static final Set<ChangelogFile> allChangelogFiles = new HashSet<>();
 
 	/** REXS Changelog 1.0 to 1.1 */
 	public static final ChangelogFile V1_0_TO_V1_1 = create(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1);

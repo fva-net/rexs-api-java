@@ -37,7 +37,7 @@ import lombok.Getter;
 public class RexsRelationType implements RexsStandardRelationTypes {
 
 	/** An internal index with all created relation types (REXS standard and own) for quick access. */
-	private static Map<String, RexsRelationType> allRelationTypes = new HashMap<>();
+	private static final Map<String, RexsRelationType> allRelationTypes = new HashMap<>();
 
 	/**
 	 * The actual key of the relation type as a {@link String}.

@@ -160,8 +160,8 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 	@Getter
 	private class SchemaValidationErrorHandler implements ErrorHandler {
 
-		private List<String> errorMessages = new ArrayList<>();
-		private List<String> warningMessages = new ArrayList<>();
+		private final List<String> errorMessages = new ArrayList<>();
+		private final List<String> warningMessages = new ArrayList<>();
 
 		@Override
 		public void error(SAXParseException ex) {

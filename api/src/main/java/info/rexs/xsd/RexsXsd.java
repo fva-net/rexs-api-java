@@ -45,7 +45,7 @@ public enum RexsXsd {
 	 */
 	FILE_WITH_NAMESPACE("rexs-file-ns.xsd");
 
-	private String filename;
+	private final String filename;
 
 	RexsXsd(String filename) {
 		this.filename = filename;

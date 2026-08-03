@@ -53,14 +53,14 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	 * The origin type of the component as a {@link String}.
 	 */
 	@Getter
-	private String originType;
+	private final String originType;
 
 	/** The name of the component */
 	@Setter
 	private String name;
 
 	/** An internal index with all attributes of the component for quick access. */
-	private Map<String, RexsAttribute> attributes = new HashMap<>();
+	private final Map<String, RexsAttribute> attributes = new HashMap<>();
 
 	/**
 	 * Constructs a new {@link RexsComponent} for the given properties.
