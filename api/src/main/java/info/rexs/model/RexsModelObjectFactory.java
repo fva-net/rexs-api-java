@@ -20,6 +20,7 @@ import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsRelationRole;
 import info.rexs.schema.constants.RexsRelationType;
 import info.rexs.schema.constants.RexsVersion;
+import lombok.Getter;
 
 /**
  * TODO Document me!
@@ -28,6 +29,10 @@ import info.rexs.schema.constants.RexsVersion;
  */
 public class RexsModelObjectFactory {
 
+	/**
+	 * The singleton factory instance.
+	 */
+	@Getter
 	private static RexsModelObjectFactory instance = new RexsModelObjectFactory();
 
 	/**
@@ -38,16 +43,6 @@ public class RexsModelObjectFactory {
 	 */
 	public static void setInstance(RexsModelObjectFactory newInstance) {
 		instance = newInstance;
-	}
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @return
-	 * 				TODO Document me!
-	 */
-	public static RexsModelObjectFactory getInstance() {
-		return instance;
 	}
 
 	/**

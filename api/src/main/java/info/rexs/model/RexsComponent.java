@@ -26,6 +26,7 @@ import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsUnitId;
 import info.rexs.schema.constants.RexsValueType;
+import lombok.Getter;
 
 /**
  * This class represents an component of a REXS model.
@@ -34,13 +35,22 @@ import info.rexs.schema.constants.RexsValueType;
  */
 public class RexsComponent implements Comparable<RexsComponent> {
 
-	/** The numeric ID of the component within the REXS model. */
+	/**
+	 * The numeric ID of the component within the REXS model.
+	 */
+	@Getter
 	private Integer id;
 
-	/** The type of the component. */
+	/**
+	 * The type of the component as a {@link RexsComponentType}.
+	 */
+	@Getter
 	private RexsComponentType type;
 
-	/** The origin type of the component */
+	/**
+	 * The origin type of the component as a {@link String}.
+	 */
+	@Getter
 	private String originType;
 
 	/** The name of the component */
@@ -93,30 +103,6 @@ public class RexsComponent implements Comparable<RexsComponent> {
 			RexsAttribute newAttribute = new RexsAttribute(attribute);
 			this.addAttribute(newAttribute);
 		}
-	}
-
-	/**
-	 * @return
-	 * 				The numeric ID of the component within the REXS model.
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The type of the component as {@link RexsComponentType}.
-	 */
-	public RexsComponentType getType() {
-		return type;
-	}
-
-	/**
-	 * @return
-	 * 				The orign type of the component as a {@link String}.
-	 */
-	public String getOriginType() {
-		return originType;
 	}
 
 	/**

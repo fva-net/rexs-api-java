@@ -35,6 +35,7 @@ import info.rexs.io.RexsIoFormat;
 import info.rexs.io.zip.RexsZipFileReader;
 import info.rexs.model.RexsModel;
 import info.rexs.xsd.RexsXsd;
+import lombok.Getter;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -156,6 +157,7 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		return validationResult;
 	}
 
+	@Getter
 	private class SchemaValidationErrorHandler implements ErrorHandler {
 
 		private List<String> errorMessages = new ArrayList<>();
@@ -164,14 +166,6 @@ public class DefaultRexsFileValidator implements IRexsFileValidator {
 		@Override
 		public void error(SAXParseException ex) {
 			errorMessages.add(createExceptionMessage(ex));
-		}
-
-		public List<String> getWarningMessages() {
-			return this.warningMessages;
-		}
-
-		public List<String> getErrorMessages() {
-			return this.errorMessages;
 		}
 
 		@Override

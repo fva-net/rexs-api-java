@@ -16,21 +16,29 @@
 package info.rexs.model;
 
 import info.rexs.schema.constants.RexsRelationRole;
+import lombok.Getter;
 
 /**
  * This class represents a relation reference of a REXS model.
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsRelationRef {
 
-	/** The numeric ID of the relation reference */
+	/**
+	 * The numeric ID of the relation reference as an {@link Integer}.
+	 */
 	private Integer id;
 
-	/** The role of the relation reference */
+	/**
+	 * The role of the relation reference as a {@link RexsRelationRole}.
+	 */
 	private RexsRelationRole role;
 
-	/** Optional note for better readability of the relation reference. */
+	/**
+	 * Optional note for better readability of the relation reference.
+	 */
 	private String hint;
 
 	/**
@@ -75,14 +83,6 @@ public class RexsRelationRef {
 	}
 
 	/**
-	 * @return
-	 * 				The ID of the relation reference as a {@link Integer}.
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
 	 * Sets the ID of the relation reference.
 	 *
 	 * @param id
@@ -92,24 +92,9 @@ public class RexsRelationRef {
 		this.id = id;
 	}
 
-	/**
-	 * @return
-	 * 				The role of the relation reference as a {@link RexsRelationRole}.
-	 */
-	public RexsRelationRole getRole() {
-		return role;
-	}
-
 	public void setRole(RexsRelationRole role) {
 		this.role = role;
 	}
 
 
-	/**
-	 * @return
-	 * 				The hint of the relation reference as a {@link String}.
-	 */
-	public String getHint() {
-		return hint;
-	}
 }

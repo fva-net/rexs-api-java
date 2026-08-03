@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import lombok.Getter;
 
 /**
  * This class represents the ID of a REXS attribute.
@@ -30,15 +31,20 @@ import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsAttributeId implements RexsStandardAttributeIds {
 
 	/** An internal index with all created attribute IDs (REXS standard and own) for quick access. */
 	private static Map<String, RexsAttributeId> allAttributeIds = new HashMap<>();
 
-	/** The actual attribute ID as a {@link String}. */
+	/**
+	 * The actual attribute ID as a {@link String}.
+	 */
 	private final String id;
 
-	/** The unit of the attribute as {@link RexsUnitId}. */
+	/**
+	 * The unit of the attribute as a {@link RexsUnitId}.
+	 */
 	private final RexsUnitId unit;
 
 	private RexsAttributeId(String id, RexsUnitId unit) {
@@ -48,22 +54,6 @@ public class RexsAttributeId implements RexsStandardAttributeIds {
 			throw new IllegalArgumentException("unit cannot be empty");
 		this.id = id;
 		this.unit = unit;
-	}
-
-	/**
-	 * @return
-	 * 				The actual attribute ID as a {@link String}.
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The unit of the attribute as {@link RexsUnitId}.
-	 */
-	public RexsUnitId getUnit() {
-		return unit;
 	}
 
 	/**

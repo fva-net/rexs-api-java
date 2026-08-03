@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
+import lombok.Getter;
 
 /**
  * This class represents a REXS relation role.
@@ -30,26 +31,21 @@ import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsRelationRole implements RexsStandardRelationRoles {
 
 	/** An internal index with all created relation roles (REXS standard and own) for quick access. */
 	private static Map<String, RexsRelationRole> allRelationRoles = new HashMap<>();
 
-	/** The actual key of the relation role as a {@link String}. */
+	/**
+	 * The actual key of the relation role as a {@link String}.
+	 */
 	private final String key;
 
 	private RexsRelationRole(String key) {
 		if (key == null || key.isEmpty())
 			throw new IllegalArgumentException("key cannot be empty");
 		this.key = key;
-	}
-
-	/**
-	 * @return
-	 * 				The actual key of the relation role as a {@link String}.
-	 */
-	public String getKey() {
-		return key;
 	}
 
 	/**

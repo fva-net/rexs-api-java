@@ -24,6 +24,7 @@ import info.rexs.schema.constants.RexsRelationRole;
 import info.rexs.schema.constants.RexsRelationType;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import lombok.Getter;
 
 /**
  * This class represents a relation of a REXS model.
@@ -32,16 +33,28 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
  */
 public class RexsRelation {
 
-	/** The numeric ID of the relation. */
+	/**
+	 * The numeric ID of the relation as an {@link Integer}.
+	 */
+	@Getter
 	private final Integer id;
 
-	/** The type of the relation. */
+	/**
+	 * The type of the relation as a {@link RexsRelationType}.
+	 */
+	@Getter
 	private RexsRelationType type;
 
-	/** Optional order for sorting in the case of several relations. */
+	/**
+	 * Optional order for sorting in the case of several relations.
+	 */
+	@Getter
 	private Integer order;
 
-	/** All relation references of the relation. */
+	/**
+	 * All relation references of the relation as a {@link List} of {@link RexsRelationRef}.
+	 */
+	@Getter
 	private List<RexsRelationRef> refs = new ArrayList<>();
 
 	/** A set with all component IDs of this relation. */
@@ -92,30 +105,6 @@ public class RexsRelation {
 		}
 	}
 
-	/**
-	 * @return
-	 * 				The ID of the relation as {@link Integer}.
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The type of the relation as {@link RexsRelationType}.
-	 */
-	public RexsRelationType getType() {
-		return type;
-	}
-
-
-	/**
-	 * @return
-	 * 				The order of the relation as {@link Integer}.
-	 */
-	public Integer getOrder() {
-		return order;
-	}
 
 	/**
 	 * Sets the order of the relation.
@@ -125,14 +114,6 @@ public class RexsRelation {
 	 */
 	public void setOrder(Integer order) {
 		this.order = order;
-	}
-
-	/**
-	 * @return
-	 * 				All relation references of the relation as a {@link List} of {@link RexsRelationRef}.
-	 */
-	public List<RexsRelationRef> getRefs() {
-		return refs;
 	}
 
 	/**

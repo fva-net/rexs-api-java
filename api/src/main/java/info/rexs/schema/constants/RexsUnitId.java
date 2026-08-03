@@ -21,6 +21,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import info.rexs.schema.constants.standard.RexsStandardUnitIds;
+import lombok.Getter;
 
 /**
  * This class represents a REXS unit.
@@ -31,15 +32,20 @@ import info.rexs.schema.constants.standard.RexsStandardUnitIds;
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsUnitId implements RexsStandardUnitIds {
 
 	/** An internal index with all created units (REXS standard and own) for quick access. */
 	private static final Map<String, RexsUnitId> allUnitIds = new HashMap<>();
 
-	/** The actual unit ID as a {@link String}. */
+	/**
+	 * The actual unit ID as a {@link String}.
+	 */
 	private final String id;
 
-	/** The units unique numeric ID as a {@code int}. */
+	/**
+	 * The unit's unique numeric ID as an {@code int}.
+	 */
 	private int numericId = 0;
 
 	private RexsUnitId(String id) {
@@ -55,22 +61,6 @@ public class RexsUnitId implements RexsStandardUnitIds {
 			throw new IllegalArgumentException("numericId cannot be negative");
 		this.id = id;
 		this.numericId = numericId;
-	}
-
-	/**
-	 * @return
-	 * 				The actual unit ID as a {@link String}.
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The units numeric ID as a {@code int}.
-	 */
-	public int getNumericId() {
-		return numericId;
 	}
 
 	/**

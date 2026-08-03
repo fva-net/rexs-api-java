@@ -34,6 +34,7 @@ import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import lombok.Getter;
 
 /**
  * This class represents a REXS model.
@@ -42,22 +43,40 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
  */
 public class RexsModel implements IRexsModel {
 
-	/** The version of the REXS model. */
+	/**
+	 * The version of the REXS model as a {@link RexsVersion}.
+	 */
+	@Getter
 	private RexsVersion version;
 
-	/** The origin version of the REXS model */
+	/**
+	 * The origin version of the REXS model as a {@link String}.
+	 */
+	@Getter
 	private String originVersion;
 
-	/** Name of the application that created the REXS model, e.g. "FVA Workbench". */
+	/**
+	 * The name of the application that created the REXS model, e.g. "FVA Workbench".
+	 */
+	@Getter
 	private String applicationId;
 
-	/** Version of the application. */
+	/**
+	 * The version of the application as a {@link String}.
+	 */
+	@Getter
 	private String applicationVersion;
 
-	/** All relations of the model as a {@link List} of {@link RexsRelation}. */
+	/**
+	 * All relations of the model as a {@link List} of {@link RexsRelation}.
+	 */
+	@Getter
 	protected List<RexsRelation> relations = new ArrayList<>();
 
-	/** All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}. */
+	/**
+	 * All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}.
+	 */
+	@Getter
 	protected List<RexsLoadSpectrum> loadSpectrums = new ArrayList<>();
 
 	/** An internal index with all components of the model for quick access. */
@@ -127,44 +146,12 @@ public class RexsModel implements IRexsModel {
 		this.applicationVersion = applicationVersion;
 	}
 
-	/**
-	 * @return
-	 * 				The version of the REXS model as a {@link RexsVersion}.
-	 */
-	public RexsVersion getVersion() {
-		return version;
-	}
-
 	public void setVersion(RexsVersion version) {
 		this.version = version;
 	}
 
-	/**
-	 * @return
-	 * 				The origin version of the REXS model as a {@link String}.
-	 */
-	public String getOriginVersion() {
-		return originVersion;
-	}
-
-	/**
-	 * @return
-	 * 				The name of the application that created the REXS model as a {@link String}.
-	 */
-	public String getApplicationId() {
-		return applicationId;
-	}
-
 	public void setApplicationId(String applicationId) {
 		this.applicationId = applicationId;
-	}
-
-	/**
-	 * @return
-	 * 				The version of the application as a {@link String}.
-	 */
-	public String getApplicationVersion() {
-		return applicationVersion;
 	}
 
 	/**
@@ -182,22 +169,6 @@ public class RexsModel implements IRexsModel {
 	 */
 	public List<RexsComponent> getComponentsSorted() {
 		return components.keySet().stream().sorted().map(this::getComponent).collect(Collectors.toList());
-	}
-
-	/**
-	 * @return
-	 * 				All relations of the model as a {@link List} of {@link RexsRelation}.
-	 */
-	public List<RexsRelation> getRelations() {
-		return relations;
-	}
-
-	/**
-	 * @return
-	 * 				All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}.
-	 */
-	public List<RexsLoadSpectrum> getLoadSpectrums() {
-		return loadSpectrums;
 	}
 
 	/**

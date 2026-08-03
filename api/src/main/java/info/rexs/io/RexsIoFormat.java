@@ -23,7 +23,9 @@ import info.rexs.io.xml.RexsXmlFileReader;
 import info.rexs.io.xml.RexsXmlFileWriter;
 import info.rexs.io.zip.RexsZipFileReader;
 import info.rexs.io.zip.RexsZipFileWriter;
+import lombok.Getter;
 
+@Getter
 public enum RexsIoFormat {
 
 	JSON("rexsj", "rexs.json") {
@@ -67,10 +69,6 @@ public enum RexsIoFormat {
 	}
 
 	private final String[] endings;
-
-	public String[] getEndings() {
-		return endings;
-	}
 
 	public boolean hasEnding(String filename) {
 		if (filename == null)

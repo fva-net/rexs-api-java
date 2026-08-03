@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardVersions;
+import lombok.Getter;
 
 /**
  * Class representing a version in the REXS (Reusable Engineering EXchange Standard) schema.
@@ -37,16 +38,19 @@ public class RexsVersion {
 	/**
 	 * The (case-insensitive) identifier of the version in the REXS schema.
 	 */
+	@Getter
 	private final String schemaVersion;
 
 	/**
 	 * The (case-insensitive) identifier of the provider in the REXS schema.
 	 */
+	@Getter
 	private final String schemaProvider;
 
 	/**
 	 * The (case-insensitive) identifier of the version in the REXS model.
 	 */
+	@Getter
 	private final String modelVersion;
 
 	/**
@@ -207,33 +211,6 @@ public class RexsVersion {
 
 		// return the list without duplicates
 		return listOfVersions.stream().distinct().toList();
-	}
-
-	/**
-	 * Gets the schema version.
-	 *
-	 * @return The schema version.
-	 */
-	public String getSchemaVersion() {
-		return schemaVersion;
-	}
-
-	/**
-	 * Gets the schema provider.
-	 *
-	 * @return The schema provider.
-	 */
-	public String getSchemaProvider() {
-		return schemaProvider;
-	}
-
-	/**
-	 * Gets the model version.
-	 *
-	 * @return The model version.
-	 */
-	public String getModelVersion() {
-		return modelVersion;
 	}
 
 	/**

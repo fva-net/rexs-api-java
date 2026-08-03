@@ -18,24 +18,28 @@ package info.rexs.upgrade;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.rexs.schema.constants.RexsVersion;
-import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
 import info.rexs.model.jaxb.Model;
+import info.rexs.schema.constants.RexsVersion;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.upgrade.upgraders.ModelUpgrader;
 import info.rexs.upgrade.upgraders.ModelUpgraderResult;
 import info.rexs.upgrade.upgraders.UpgradeNotifications;
 import info.rexs.upgrade.upgraders.UpgradeNotifications.Notification;
 import info.rexs.upgrade.upgraders.UpgradeResolver;
+import lombok.Getter;
 
 /**
  * The {@link RexsUpgrader} upgrades a REXS model {@link Model}.
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsUpgrader {
 
-	/** The REXS model {@link Model}. */
+	/**
+	 * The REXS model.
+	 */
 	private RexsModel rexsModel;
 
 	/**
@@ -46,14 +50,6 @@ public class RexsUpgrader {
 	 */
 	public RexsUpgrader(RexsModel rexsModel) {
 		this.rexsModel = rexsModel;
-	}
-
-	/**
-	 * @return
-	 * 				The REXS model {@link Model}.
-	 */
-	public RexsModel getRexsModel() {
-		return rexsModel;
 	}
 
 	/**

@@ -19,11 +19,6 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
-import info.rexs.schema.constants.RexsAttributeId;
-import info.rexs.schema.constants.RexsUnitId;
-import info.rexs.schema.constants.RexsValueType;
-import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
-import info.rexs.schema.constants.standard.RexsStandardUnitIds;
 import info.rexs.model.value.AbstractRexsAttributeValue;
 import info.rexs.model.value.RexsAttributeValueArray;
 import info.rexs.model.value.RexsAttributeValueArrayBase64;
@@ -31,6 +26,12 @@ import info.rexs.model.value.RexsAttributeValueArrayOfArrays;
 import info.rexs.model.value.RexsAttributeValueMatrix;
 import info.rexs.model.value.RexsAttributeValueMatrixBase64;
 import info.rexs.model.value.RexsAttributeValueScalar;
+import info.rexs.schema.constants.RexsAttributeId;
+import info.rexs.schema.constants.RexsUnitId;
+import info.rexs.schema.constants.RexsValueType;
+import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import info.rexs.schema.constants.standard.RexsStandardUnitIds;
+import lombok.Getter;
 
 /**
  * This class represents an attribute of a REXS model.
@@ -39,16 +40,28 @@ import info.rexs.model.value.RexsAttributeValueScalar;
  */
 public class RexsAttribute {
 
-	/** The ID of the attribute. */
+	/**
+	 * The ID of the attribute as a {@link RexsAttributeId}.
+	 */
+	@Getter
 	private RexsAttributeId attributeId;
 
-	/** The origin ID of the attribute */
+	/**
+	 * The origin ID of the attribute as a {@link String}.
+	 */
+	@Getter
 	private String originAttributeId;
 
-	/** The unit of the attribute. */
+	/**
+	 * The unit of the attribute as a {@link RexsUnitId}.
+	 */
+	@Getter
 	private RexsUnitId unit;
 
-	/** The orign unti of the attribute */
+	/**
+	 * The origin unit of the attribute as a {@link String}.
+	 */
+	@Getter
 	private String originUnit;
 
 	/**The value of the attribute */
@@ -108,41 +121,9 @@ public class RexsAttribute {
 			this.setRawValue(attribute.value.copy());
 	}
 
-	/**
-	 * @return
-	 * 				The ID of the attribute as a {@link RexsAttributeId}.
-	 */
-	public RexsAttributeId getAttributeId() {
-		return attributeId;
-	}
-
-	/**
-	 * @return
-	 * 				The origin ID of the attribute as a {@link String}.
-	 */
-	public String getOriginAttributeId() {
-		return originAttributeId;
-	}
-
-	/**
-	 * @return
-	 * 				The unit of the attribute as {@link RexsUnitId}.
-	 */
-	public RexsUnitId getUnit() {
-		return unit;
-	}
-
 	public void setUnit(RexsUnitId unit) {
 		this.unit = unit;
 		this.originUnit = unit.getId();
-	}
-
-	/**
-	 * @return
-	 * 				The origing unit of the attribute as a {@link String}.
-	 */
-	public String getOriginUnit() {
-		return originUnit;
 	}
 
 	/**
