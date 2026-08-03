@@ -27,6 +27,7 @@ import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsUnitId;
 import info.rexs.schema.constants.RexsValueType;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents an component of a REXS model.
@@ -44,6 +45,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	/**
 	 * The type of the component as a {@link RexsComponentType}.
 	 */
+	@Setter
 	@Getter
 	private RexsComponentType type;
 
@@ -54,6 +56,7 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	private String originType;
 
 	/** The name of the component */
+	@Setter
 	private String name;
 
 	/** An internal index with all attributes of the component for quick access. */
@@ -113,10 +116,6 @@ public class RexsComponent implements Comparable<RexsComponent> {
 		if (name == null)
 			name = "";
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -1029,10 +1028,6 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public void setId(Integer newCompId) {
 		if(newCompId != null)
 			this.id = newCompId;
-	}
-
-	public void setType(RexsComponentType newType) {
-		this.type = newType;
 	}
 
 	@Override

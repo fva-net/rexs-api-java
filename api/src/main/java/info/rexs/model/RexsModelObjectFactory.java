@@ -21,6 +21,7 @@ import info.rexs.schema.constants.RexsRelationRole;
 import info.rexs.schema.constants.RexsRelationType;
 import info.rexs.schema.constants.RexsVersion;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * TODO Document me!
@@ -32,18 +33,9 @@ public class RexsModelObjectFactory {
 	/**
 	 * The singleton factory instance.
 	 */
+	@Setter
 	@Getter
 	private static RexsModelObjectFactory instance = new RexsModelObjectFactory();
-
-	/**
-	 * TODO Document me!
-	 *
-	 * @param newInstance
-	 * 				TODO Document me!
-	 */
-	public static void setInstance(RexsModelObjectFactory newInstance) {
-		instance = newInstance;
-	}
 
 	/**
 	 * Creates a new {@link RexsModel} for the given properties.

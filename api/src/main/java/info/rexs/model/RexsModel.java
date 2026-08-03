@@ -35,6 +35,7 @@ import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents a REXS model.
@@ -46,6 +47,7 @@ public class RexsModel implements IRexsModel {
 	/**
 	 * The version of the REXS model as a {@link RexsVersion}.
 	 */
+	@Setter
 	@Getter
 	private RexsVersion version;
 
@@ -58,6 +60,7 @@ public class RexsModel implements IRexsModel {
 	/**
 	 * The name of the application that created the REXS model, e.g. "FVA Workbench".
 	 */
+	@Setter
 	@Getter
 	private String applicationId;
 
@@ -144,14 +147,6 @@ public class RexsModel implements IRexsModel {
 		this.originVersion = version.getModelVersion();
 		this.applicationId = applicationId;
 		this.applicationVersion = applicationVersion;
-	}
-
-	public void setVersion(RexsVersion version) {
-		this.version = version;
-	}
-
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
 	}
 
 	/**

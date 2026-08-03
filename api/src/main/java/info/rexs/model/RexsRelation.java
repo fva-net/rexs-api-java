@@ -25,6 +25,7 @@ import info.rexs.schema.constants.RexsRelationType;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents a relation of a REXS model.
@@ -48,6 +49,7 @@ public class RexsRelation {
 	/**
 	 * Optional order for sorting in the case of several relations.
 	 */
+	@Setter
 	@Getter
 	private Integer order;
 
@@ -105,16 +107,6 @@ public class RexsRelation {
 		}
 	}
 
-
-	/**
-	 * Sets the order of the relation.
-	 *
-	 * @param order
-	 * 				The order of the relation as a {@link Integer}.
-	 */
-	public void setOrder(Integer order) {
-		this.order = order;
-	}
 
 	/**
 	 * Adds a relation reference to the relation.

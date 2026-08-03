@@ -17,6 +17,7 @@ package info.rexs.model;
 
 import info.rexs.schema.constants.RexsRelationRole;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents a relation reference of a REXS model.
@@ -29,11 +30,13 @@ public class RexsRelationRef {
 	/**
 	 * The numeric ID of the relation reference as an {@link Integer}.
 	 */
+	@Setter
 	private Integer id;
 
 	/**
 	 * The role of the relation reference as a {@link RexsRelationRole}.
 	 */
+	@Setter
 	private RexsRelationRole role;
 
 	/**
@@ -80,20 +83,6 @@ public class RexsRelationRef {
 		this.id = reference.id;
 		this.role = reference.role;
 		this.hint = reference.hint;
-	}
-
-	/**
-	 * Sets the ID of the relation reference.
-	 *
-	 * @param id
-	 * 				The ID of the relation reference as a {@link Integer}.
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setRole(RexsRelationRole role) {
-		this.role = role;
 	}
 
 

@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents a load spectrum of a REXS model.
@@ -41,6 +42,7 @@ public class RexsLoadSpectrum {
 	/**
 	 * The sub-model for accumulated values of this load spectrum.
 	 */
+	@Setter
 	@Getter
 	private RexsSubModel accumulation = new RexsSubModel();
 
@@ -100,13 +102,4 @@ public class RexsLoadSpectrum {
 		this.loadCases.put(loadCase.getId(), loadCase);
 	}
 
-	/**
-	 * Sets the accumulation of the load spectrum.
-	 *
-	 * @param accumulation
-	 * 				The new accumulation as a {@link RexsSubModel}.
-	 */
-	public void setAccumulation(RexsSubModel accumulation) {
-		this.accumulation = accumulation;
-	}
 }
