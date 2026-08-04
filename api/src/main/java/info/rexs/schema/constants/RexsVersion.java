@@ -216,7 +216,7 @@ public class RexsVersion {
 	/**
 	 * Gets the numeric representation of the REXS version.
 	 * <p>
-	 * The numeric version is derived from the {@link #getSchemaVersion() schemaVersion} as follows:
+	 * The numeric version is derived from the schema version as follows:
 	 * <ul>
 	 *   <li>Major version is multiplied by {@code 10000}</li>
 	 *   <li>Minor version is multiplied by {@code 100}</li>
@@ -228,7 +228,6 @@ public class RexsVersion {
 	 * {@link #DEV} and {@link #UNKNOWN} are handled as special cases. The latest development version is always {@link java.lang.Integer#MAX_VALUE Integer.MAX_VALUE}, the unknown version is returning as {@code -1}.
 	 *
 	 * @return the numeric representation of the REXS version
-	 * @apiNote The {@link #getSchemaProvider() schemaProvider} and {@link #getModelVersion() modelVersion} are not considered in the numeric version.
 	 */
 	public int getNumericVersion() {
 		// return -1 for UNKNOWN
