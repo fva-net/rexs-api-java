@@ -34,6 +34,8 @@ import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents a REXS model.
@@ -42,35 +44,55 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
  */
 public class RexsModel implements IRexsModel {
 
-	/** The version of the REXS model. */
+	/**
+	 * The version of the REXS model as a {@link RexsVersion}.
+	 */
+	@Setter
+	@Getter
 	private RexsVersion version;
 
-	/** The origin version of the REXS model */
-	private String originVersion;
+	/**
+	 * The origin version of the REXS model as a {@link String}.
+	 */
+	@Getter
+	private final String originVersion;
 
-	/** Name of the application that created the REXS model, e.g. "FVA Workbench". */
+	/**
+	 * The name of the application that created the REXS model, e.g. "FVA Workbench".
+	 */
+	@Setter
+	@Getter
 	private String applicationId;
 
-	/** Version of the application. */
-	private String applicationVersion;
+	/**
+	 * The version of the application as a {@link String}.
+	 */
+	@Getter
+	private final String applicationVersion;
 
-	/** All relations of the model as a {@link List} of {@link RexsRelation}. */
+	/**
+	 * All relations of the model as a {@link List} of {@link RexsRelation}.
+	 */
+	@Getter
 	protected List<RexsRelation> relations = new ArrayList<>();
 
-	/** All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}. */
+	/**
+	 * All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}.
+	 */
+	@Getter
 	protected List<RexsLoadSpectrum> loadSpectrums = new ArrayList<>();
 
 	/** An internal index with all components of the model for quick access. */
-	private Map<Integer, RexsComponent> components = new HashMap<>();
+	private final Map<Integer, RexsComponent> components = new HashMap<>();
 
 	/** An internal index with all components of the component types in the model for quick access. */
-	private Map<RexsComponentType, List<RexsComponent>> mapTypeToComponent = new HashMap<>();
+	private final Map<RexsComponentType, List<RexsComponent>> mapTypeToComponent = new HashMap<>();
 
 	/** An internal index with all relations of the component in the model for quick access. */
-	private Map<Integer, List<RexsRelation>> mapMainCompToRelation = new HashMap<>();
+	private final Map<Integer, List<RexsRelation>> mapMainCompToRelation = new HashMap<>();
 
 	/** An internal index with all relations of the relation types in the model for quick access. */
-	private Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation = new HashMap<>();
+	private final Map<RexsRelationType, List<RexsRelation>> mapTypeToRelation = new HashMap<>();
 
 	/**
 	 * Constructs a new {@link RexsModel} from scratch.
@@ -129,46 +151,6 @@ public class RexsModel implements IRexsModel {
 
 	/**
 	 * @return
-	 * 				The version of the REXS model as a {@link RexsVersion}.
-	 */
-	public RexsVersion getVersion() {
-		return version;
-	}
-
-	public void setVersion(RexsVersion version) {
-		this.version = version;
-	}
-
-	/**
-	 * @return
-	 * 				The origin version of the REXS model as a {@link String}.
-	 */
-	public String getOriginVersion() {
-		return originVersion;
-	}
-
-	/**
-	 * @return
-	 * 				The name of the application that created the REXS model as a {@link String}.
-	 */
-	public String getApplicationId() {
-		return applicationId;
-	}
-
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
-	}
-
-	/**
-	 * @return
-	 * 				The version of the application as a {@link String}.
-	 */
-	public String getApplicationVersion() {
-		return applicationVersion;
-	}
-
-	/**
-	 * @return
 	 * 				All components of the model as a {@link List} of {@link RexsComponent}.
 	 */
 	@Override
@@ -182,22 +164,6 @@ public class RexsModel implements IRexsModel {
 	 */
 	public List<RexsComponent> getComponentsSorted() {
 		return components.keySet().stream().sorted().map(this::getComponent).collect(Collectors.toList());
-	}
-
-	/**
-	 * @return
-	 * 				All relations of the model as a {@link List} of {@link RexsRelation}.
-	 */
-	public List<RexsRelation> getRelations() {
-		return relations;
-	}
-
-	/**
-	 * @return
-	 * 				All load spectrums of the model as a {@link List} of {@link RexsLoadSpectrum}.
-	 */
-	public List<RexsLoadSpectrum> getLoadSpectrums() {
-		return loadSpectrums;
 	}
 
 	/**

@@ -26,6 +26,8 @@ import info.rexs.schema.constants.RexsAttributeId;
 import info.rexs.schema.constants.RexsComponentType;
 import info.rexs.schema.constants.RexsUnitId;
 import info.rexs.schema.constants.RexsValueType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents an component of a REXS model.
@@ -34,20 +36,31 @@ import info.rexs.schema.constants.RexsValueType;
  */
 public class RexsComponent implements Comparable<RexsComponent> {
 
-	/** The numeric ID of the component within the REXS model. */
+	/**
+	 * The numeric ID of the component within the REXS model.
+	 */
+	@Getter
 	private Integer id;
 
-	/** The type of the component. */
+	/**
+	 * The type of the component as a {@link RexsComponentType}.
+	 */
+	@Setter
+	@Getter
 	private RexsComponentType type;
 
-	/** The origin type of the component */
-	private String originType;
+	/**
+	 * The origin type of the component as a {@link String}.
+	 */
+	@Getter
+	private final String originType;
 
 	/** The name of the component */
+	@Setter
 	private String name;
 
 	/** An internal index with all attributes of the component for quick access. */
-	private Map<String, RexsAttribute> attributes = new HashMap<>();
+	private final Map<String, RexsAttribute> attributes = new HashMap<>();
 
 	/**
 	 * Constructs a new {@link RexsComponent} for the given properties.
@@ -97,40 +110,12 @@ public class RexsComponent implements Comparable<RexsComponent> {
 
 	/**
 	 * @return
-	 * 				The numeric ID of the component within the REXS model.
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The type of the component as {@link RexsComponentType}.
-	 */
-	public RexsComponentType getType() {
-		return type;
-	}
-
-	/**
-	 * @return
-	 * 				The orign type of the component as a {@link String}.
-	 */
-	public String getOriginType() {
-		return originType;
-	}
-
-	/**
-	 * @return
 	 * 				The name of the component within the REXS model.
 	 */
 	public String getName() {
 		if (name == null)
 			name = "";
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -1043,10 +1028,6 @@ public class RexsComponent implements Comparable<RexsComponent> {
 	public void setId(Integer newCompId) {
 		if(newCompId != null)
 			this.id = newCompId;
-	}
-
-	public void setType(RexsComponentType newType) {
-		this.type = newType;
 	}
 
 	@Override

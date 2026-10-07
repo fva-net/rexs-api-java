@@ -22,6 +22,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import info.rexs.schema.constants.standard.RexsStandardAttributeIds;
+import lombok.Getter;
 
 /**
  * This class represents a sub-model (containing only the varied data) of a REXS model.
@@ -33,10 +34,16 @@ public class RexsSubModel implements Comparable<RexsSubModel>,IRexsModel {
 	/** An internal index with all components of the sub-model for quick access. */
 	protected Map<Integer, RexsComponent> components = new HashMap<>();
 
-	/** The numeric ID of the sub-model within the REXS model. */
-	private Integer id;
+	/**
+	 * The numeric ID of the sub-model within the REXS model.
+	 */
+	@Getter
+	private final Integer id;
 
-	/** Indicates whether it is a separate sub-model for accumulated values. */
+	/**
+	 * Indicates whether it is a separate sub-model for accumulated values.
+	 */
+	@Getter
 	private boolean isAccumulation = false;
 
 	/**
@@ -83,23 +90,8 @@ public class RexsSubModel implements Comparable<RexsSubModel>,IRexsModel {
 			this.addComponent(rexsComponent);
 		}
 	}
-	/**
-	 * @return
-	 * 				The numeric ID of the sub-model within the REXS model.
-	 */
-	public Integer getId() {
-		return id;
-	}
 
 	/**
-	 * @return
-	 * 				{@code true} if it is a separate sub-model for accumulated values, otherwise {@code false}.
-	 */
-	public boolean isAccumulation() {
-		return isAccumulation;
-	}
-
-/**
 	 * @return
 	 * 				All components of the sub-model as a {@link List} of {@link RexsComponent}.
 	 */

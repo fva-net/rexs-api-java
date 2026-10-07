@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * This class represents a load spectrum of a REXS model.
  *
@@ -27,13 +30,20 @@ import java.util.Map;
  */
 public class RexsLoadSpectrum {
 
-	/** The numeric ID of the load spectrum within the REXS model. */
-	private Integer id;
+	/**
+	 * The numeric ID of the load spectrum within the REXS model.
+	 */
+	@Getter
+	private final Integer id;
 
 	/** An internal index with all load cases of the load spectrum for quick access. */
 	protected Map<Integer, RexsSubModel> loadCases = new HashMap<>();
 
-	/** The sub-model for accumulated values of this load spectrum. */
+	/**
+	 * The sub-model for accumulated values of this load spectrum.
+	 */
+	@Setter
+	@Getter
 	private RexsSubModel accumulation = new RexsSubModel();
 
 	/**
@@ -59,13 +69,6 @@ public class RexsLoadSpectrum {
 			this.loadCases.put(loadCase.getKey(),subModel);
 		}
 		this.accumulation = new RexsSubModel(spectrum.accumulation);
-	}
-	/**
-	 * @return
-	 * 				The numeric ID of the load spectrum within the REXS model.
-	 */
-	public Integer getId() {
-		return id;
 	}
 
 	/**
@@ -99,21 +102,4 @@ public class RexsLoadSpectrum {
 		this.loadCases.put(loadCase.getId(), loadCase);
 	}
 
-	/**
-	 * @return
-	 * 				The sub-model for accumulated values of this load spectrum.
-	 */
-	public RexsSubModel getAccumulation() {
-		return accumulation;
-	}
-
-	/**
-	 * Sets the accumulation of the load spectrum.
-	 *
-	 * @param accumulation
-	 * 				The new accumulation as a {@link RexsSubModel}.
-	 */
-	public void setAccumulation(RexsSubModel accumulation) {
-		this.accumulation = accumulation;
-	}
 }

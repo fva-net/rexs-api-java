@@ -25,7 +25,7 @@ public class LoadCase {
     @JsonProperty("components")
     private List<Component> components = new ArrayList<>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {

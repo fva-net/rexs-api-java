@@ -15,11 +15,14 @@
  */
 package info.rexs.validation;
 
+import lombok.Getter;
+
 /**
  * This class represents the key of a result message for a REXS validation.
  *
  * @author FVA GmbH
  */
+@Getter
 public enum RexsValidationResultMessageKey {
 
 	EMPTY_FILE("The file is empty."),
@@ -70,13 +73,10 @@ public enum RexsValidationResultMessageKey {
 	CAUGHT_EXCEPTION("%s");
 
 	/** The default message of the message key. */
-	private String defaultMessage;
+	private final String defaultMessage;
 
 	RexsValidationResultMessageKey(String defaultMessage) {
 		this.defaultMessage = defaultMessage;
 	}
 
-	public String getDefaultMessage() {
-		return defaultMessage;
-	}
 }

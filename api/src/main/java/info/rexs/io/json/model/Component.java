@@ -32,7 +32,7 @@ public class Component {
     @JsonProperty("attributes")
     private List<Attribute> attributes = new ArrayList<>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {

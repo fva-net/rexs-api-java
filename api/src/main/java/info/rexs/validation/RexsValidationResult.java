@@ -18,18 +18,21 @@ package info.rexs.validation;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+
 /**
  * This class represents the result of a REXS validation.
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsValidationResult {
 
 	/** A list containing all warning messages. */
-	private List<RexsValidationResultMessage> warnings = new ArrayList<>();
+	private final List<RexsValidationResultMessage> warnings = new ArrayList<>();
 
 	/** A list containing all error messages. */
-	private List<RexsValidationResultMessage> errors = new ArrayList<>();
+	private final List<RexsValidationResultMessage> errors = new ArrayList<>();
 
 	/**
 	 * Returns the status of the validation.
@@ -76,11 +79,4 @@ public class RexsValidationResult {
 		warnings.addAll(validationResult.getWarnings());
 	}
 
-	public List<RexsValidationResultMessage> getWarnings() {
-		return this.warnings;
-	}
-
-	public List<RexsValidationResultMessage> getErrors() {
-		return this.errors;
-	}
 }

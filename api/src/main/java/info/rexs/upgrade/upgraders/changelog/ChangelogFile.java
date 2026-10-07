@@ -22,6 +22,7 @@ import java.util.Set;
 
 import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.constants.standard.RexsStandardVersions;
+import lombok.Getter;
 
 /**
  * This class represents a REXS database changelog file.
@@ -38,7 +39,7 @@ public class ChangelogFile {
 	private static final ChangelogFileResolver DEFAULT_FILE_RESOLVER = new ChangelogFileResolver();
 
 	/** An internal index with all created REXS database changelog files (REXS standard and own) for quick access. */
-	private static Set<ChangelogFile> allChangelogFiles = new HashSet<>();
+	private static final Set<ChangelogFile> allChangelogFiles = new HashSet<>();
 
 	/** REXS Changelog 1.0 to 1.1 */
 	public static final ChangelogFile V1_0_TO_V1_1 = create(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1);
@@ -64,10 +65,16 @@ public class ChangelogFile {
 	/** REXS Changelog 1.7 to 2.0.0 */
 	public static final ChangelogFile V1_7_TO_V2_0_0 = create(RexsStandardVersions.V1_7, RexsStandardVersions.V2_0_0);
 
-	/** The from {@link RexsVersion} of the REXS database changelog file. */
+	/**
+	 * The source {@link RexsVersion} of the REXS database changelog file.
+	 */
+	@Getter
 	private final RexsVersion fromVersion;
 
-	/** The to {@link RexsVersion} of the REXS database changelog file. */
+	/**
+	 * The target {@link RexsVersion} of the REXS database changelog file.
+	 */
+	@Getter
 	private final RexsVersion toVersion;
 
 	/** The {@link ChangelogFileResolver} for the REXS database changelog file. */
@@ -81,22 +88,6 @@ public class ChangelogFile {
 		this.fromVersion = fromVersion;
 		this.toVersion = toVersion;
 		this.fileResolver = fileResolver;
-	}
-
-	/**
-	 * @return
-	 * 				The from {@link RexsVersion} of the REXS database changelog file.
-	 */
-	public RexsVersion getFromVersion() {
-		return fromVersion;
-	}
-
-	/**
-	 * @return
-	 * 				The to {@link RexsVersion} of the REXS database changelog file.
-	 */
-	public RexsVersion getToVersion() {
-		return toVersion;
 	}
 
 	/**

@@ -23,7 +23,7 @@ public class FloatingPointArrayCoded {
     @JsonProperty("value")
     private String value;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("code")
     public String getCode() {

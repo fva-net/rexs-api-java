@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import lombok.Getter;
 
 /**
  * This class represents a REXS relation type.
@@ -32,12 +33,15 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsRelationType implements RexsStandardRelationTypes {
 
 	/** An internal index with all created relation types (REXS standard and own) for quick access. */
-	private static Map<String, RexsRelationType> allRelationTypes = new HashMap<>();
+	private static final Map<String, RexsRelationType> allRelationTypes = new HashMap<>();
 
-	/** The actual key of the relation type as a {@link String}. */
+	/**
+	 * The actual key of the relation type as a {@link String}.
+	 */
 	private final String key;
 
 	private final List<RexsRelationRole> roles;
@@ -54,18 +58,6 @@ public class RexsRelationType implements RexsStandardRelationTypes {
 			throw new IllegalArgumentException("key cannot be empty");
 		this.key = key;
 		this.roles = roles;
-	}
-
-	public List<RexsRelationRole> getRoles() {
-		return roles;
-	}
-
-	/**
-	 * @return
-	 * 				The actual key of the relation type as a {@link String}.
-	 */
-	public String getKey() {
-		return key;
 	}
 
 	/**
