@@ -22,6 +22,7 @@ import java.util.Set;
 
 import info.rexs.schema.constants.RexsVersion;
 import info.rexs.schema.constants.standard.RexsStandardVersions;
+import lombok.Getter;
 
 /**
  * This class represents a REXS schema file.
@@ -38,7 +39,7 @@ public class RexsSchemaFile {
 	private static final RexsSchemaFileResolver DEFAULT_FILE_RESOLVER = new RexsSchemaFileResolver();
 
 	/** An internal index with all created REXS schema files (REXS standard and own) for quick access. */
-	private static Set<RexsSchemaFile> allRexsSchemaFiles = new HashSet<>();
+	private static final Set<RexsSchemaFile> allRexsSchemaFiles = new HashSet<>();
 
 	/** REXS 1.0 */
 	public static final RexsSchemaFile V1_0 = create(RexsStandardVersions.V1_0);
@@ -67,7 +68,10 @@ public class RexsSchemaFile {
 	/** REXS 2.0.0 */
 	public static final RexsSchemaFile V2_0_0 = create(RexsStandardVersions.V2_0_0);
 
-	/** The {@link RexsVersion} of the REXS schema file. */
+	/**
+	 * The {@link RexsVersion} of the REXS schema file.
+	 */
+	@Getter
 	private final RexsVersion version;
 
 	/** The {@link RexsSchemaFileResolver} for the REXS schema file. */
@@ -78,14 +82,6 @@ public class RexsSchemaFile {
 			throw new IllegalArgumentException("version cannot be empty");
 		this.version = version;
 		this.fileResolver = fileResolver;
-	}
-
-	/**
-	 * @return
-	 * 				The {@link RexsVersion} of the REXS schema file.
-	 */
-	public RexsVersion getVersion() {
-		return version;
 	}
 
 	/**

@@ -15,11 +15,14 @@
  */
 package info.rexs.validation;
 
+import lombok.Getter;
+
 /**
  * This class represents the result message of a REXS validation.
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsValidationResultMessage {
 
 	/** The key of the message. */
@@ -40,14 +43,6 @@ public class RexsValidationResultMessage {
 	public RexsValidationResultMessage(RexsValidationResultMessageKey key, String... additionalMessages) {
 		this.key = key;
 		this.additionalMessages = additionalMessages;
-	}
-
-	public RexsValidationResultMessageKey getKey() {
-		return key;
-	}
-
-	public String[] getAdditionalMessages() {
-		return additionalMessages;
 	}
 
 	public String getDefaultMessage() {

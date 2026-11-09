@@ -43,7 +43,7 @@ public class Model {
     @JsonProperty("load_spectrum")
     private LoadSpectrum loadSpectrum;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("version")
     public String getVersion() {

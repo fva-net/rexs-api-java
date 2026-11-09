@@ -24,6 +24,8 @@ import info.rexs.schema.constants.RexsRelationRole;
 import info.rexs.schema.constants.RexsRelationType;
 import info.rexs.schema.constants.standard.RexsStandardRelationRoles;
 import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class represents a relation of a REXS model.
@@ -32,20 +34,33 @@ import info.rexs.schema.constants.standard.RexsStandardRelationTypes;
  */
 public class RexsRelation {
 
-	/** The numeric ID of the relation. */
+	/**
+	 * The numeric ID of the relation as an {@link Integer}.
+	 */
+	@Getter
 	private final Integer id;
 
-	/** The type of the relation. */
-	private RexsRelationType type;
+	/**
+	 * The type of the relation as a {@link RexsRelationType}.
+	 */
+	@Getter
+	private final RexsRelationType type;
 
-	/** Optional order for sorting in the case of several relations. */
+	/**
+	 * Optional order for sorting in the case of several relations.
+	 */
+	@Setter
+	@Getter
 	private Integer order;
 
-	/** All relation references of the relation. */
-	private List<RexsRelationRef> refs = new ArrayList<>();
+	/**
+	 * All relation references of the relation as a {@link List} of {@link RexsRelationRef}.
+	 */
+	@Getter
+	private final List<RexsRelationRef> refs = new ArrayList<>();
 
 	/** A set with all component IDs of this relation. */
-	private Set<Integer> componentIds = new HashSet<>();
+	private final Set<Integer> componentIds = new HashSet<>();
 
 	/**
 	 * Constructs a new {@link RexsRelation} for the given properties.
@@ -92,48 +107,6 @@ public class RexsRelation {
 		}
 	}
 
-	/**
-	 * @return
-	 * 				The ID of the relation as {@link Integer}.
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @return
-	 * 				The type of the relation as {@link RexsRelationType}.
-	 */
-	public RexsRelationType getType() {
-		return type;
-	}
-
-
-	/**
-	 * @return
-	 * 				The order of the relation as {@link Integer}.
-	 */
-	public Integer getOrder() {
-		return order;
-	}
-
-	/**
-	 * Sets the order of the relation.
-	 *
-	 * @param order
-	 * 				The order of the relation as a {@link Integer}.
-	 */
-	public void setOrder(Integer order) {
-		this.order = order;
-	}
-
-	/**
-	 * @return
-	 * 				All relation references of the relation as a {@link List} of {@link RexsRelationRef}.
-	 */
-	public List<RexsRelationRef> getRefs() {
-		return refs;
-	}
 
 	/**
 	 * Adds a relation reference to the relation.

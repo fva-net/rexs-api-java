@@ -39,6 +39,7 @@ import info.rexs.upgrade.upgraders.changelog.jaxb.ComponentChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.EnumValueChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.MappingChange;
 import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
+import lombok.Getter;
 
 /** generic upgrade for changes defined in the changelog file */
 public class ModelChangelogUpgrader {
@@ -47,9 +48,10 @@ public class ModelChangelogUpgrader {
 	private final RexsModel oldModel;
 
 	private final RexsChangelog changelog;
-	private UpgradeNotifications notifications = new UpgradeNotifications();
+	@Getter
+	private final UpgradeNotifications notifications = new UpgradeNotifications();
 	/** remove invalid attributes in strict mode */
-	private boolean strictMode;
+	private final boolean strictMode;
 
 	public ModelChangelogUpgrader(RexsModel model, RexsChangelog changelog, boolean strictMode) {
 		this.oldModel = model;
@@ -318,10 +320,6 @@ public class ModelChangelogUpgrader {
 		default:
 			throw new RuntimeException("unsupported type conversion to "+newType);
 		}
-	}
-
-	public UpgradeNotifications getNotifications() {
-		return notifications;
 	}
 
 }

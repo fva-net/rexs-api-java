@@ -21,7 +21,7 @@ public class FloatingPointAttribute extends Attribute{
     @JsonProperty("floating_point")
     private Double floatingPoint;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("floating_point")
     public Double getFloatingPoint() {

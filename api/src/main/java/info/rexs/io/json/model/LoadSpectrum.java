@@ -28,7 +28,7 @@ public class LoadSpectrum {
     @JsonProperty("accumulation")
     private Accumulation accumulation;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {

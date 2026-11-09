@@ -41,7 +41,7 @@ public class UpgradeResolver {
 	private static UpgradeResolver instance = null;
 
 	/** An internal index with all registered upgraders (REXS standard and own) for quick access. [toVersion -> fromVersion -> upgrader] */
-	private Map<RexsVersion, Map<RexsVersion, ModelUpgrader>> registeredUpgraders = new HashMap<>();
+	private final Map<RexsVersion, Map<RexsVersion, ModelUpgrader>> registeredUpgraders = new HashMap<>();
 
 	private UpgradeResolver() {
 		register(RexsStandardVersions.V1_0, RexsStandardVersions.V1_1, new ModelUpgrader() {

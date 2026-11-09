@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
+import lombok.Getter;
 
 /**
  * This class represents the type of a REXS component.
@@ -30,26 +31,21 @@ import info.rexs.schema.constants.standard.RexsStandardComponentTypes;
  *
  * @author FVA GmbH
  */
+@Getter
 public class RexsComponentType implements RexsStandardComponentTypes {
 
 	/** An internal index with all created component types (REXS standard and own) for quick access. */
-	private static Map<String, RexsComponentType> allComponentTypes = new HashMap<>();
+	private static final Map<String, RexsComponentType> allComponentTypes = new HashMap<>();
 
-	/** The actual ID of the component type as a {@link String}. */
+	/**
+	 * The actual ID of the component type as a {@link String}.
+	 */
 	private final String id;
 
 	private RexsComponentType(String id) {
 		if (id == null || id.isEmpty())
 			throw new IllegalArgumentException("id cannot be empty");
 		this.id = id;
-	}
-
-	/**
-	 * @return
-	 * 				The actual ID of the component type as a {@link String}.
-	 */
-	public String getId() {
-		return id;
 	}
 
 	/**

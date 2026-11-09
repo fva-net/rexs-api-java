@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import lombok.Getter;
+
+@Getter
 public class UpgradeNotifications {
 
 	public enum NotificationType {
@@ -23,7 +26,9 @@ public class UpgradeNotifications {
 	}
 
 	public static class Notification {
+		@Getter
 		private final NotificationType type;
+		@Getter
 		private final String message;
 		private final List<Source> sources;
 
@@ -37,14 +42,6 @@ public class UpgradeNotifications {
 			this.type = type;
 			this.message = message;
 			this.sources = Arrays.asList(sources);
-		}
-
-		public NotificationType getType() {
-			return type;
-		}
-
-		public String getMessage() {
-			return message;
 		}
 
 		public String getMessageVerbose() {
@@ -96,7 +93,7 @@ public class UpgradeNotifications {
 		}
 	}
 
-	private List<Notification> notifications = new ArrayList<>();
+	private final List<Notification> notifications = new ArrayList<>();
 
 	public UpgradeNotifications() {
 	}
@@ -113,7 +110,4 @@ public class UpgradeNotifications {
 		notifications.addAll(notification);
 	}
 
-	public List<Notification> getNotifications() {
-		return notifications;
-	}
 }

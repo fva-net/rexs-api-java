@@ -31,7 +31,7 @@ public class Relation {
     @JsonProperty("refs")
     private List<Ref> refs = new ArrayList<>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {

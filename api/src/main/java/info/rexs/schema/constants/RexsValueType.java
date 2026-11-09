@@ -15,6 +15,8 @@
  */
 package info.rexs.schema.constants;
 
+import lombok.Getter;
+
 /**
  * This enum represents a REXS value type.
  * <p>
@@ -43,10 +45,16 @@ public enum RexsValueType {
 	FILE_REFERENCE(6, "file_reference"),
 	DATE_TIME(19, "date_time");
 
-	/** The numeric ID of this value type. */
+	/**
+	 * The numeric ID of this value type as an {@code int}.
+	 */
+	@Getter
 	private final int numericId;
 
-	/** The actual key of the value type. */
+	/**
+	 * The actual key of the value type as a {@link String}.
+	 */
+	@Getter
 	private final String key;
 
 	/** The base type associated with the value type. */
@@ -68,22 +76,6 @@ public enum RexsValueType {
 		this.numericId = id;
 		this.key = key;
 		this.basicType = basicType;
-	}
-
-	/**
-	 * @return
-	 * 				The numeric id of the value type as a {@code int}.
-	 */
-	public int getNumericId() {
-		return numericId;
-	}
-
-	/**
-	 * @return
-	 * 				The actual key of the value type as a {@link String}.
-	 */
-	public String getKey() {
-		return key;
 	}
 
 	/**

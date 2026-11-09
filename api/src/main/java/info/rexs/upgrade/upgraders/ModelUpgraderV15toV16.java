@@ -1,7 +1,7 @@
 package info.rexs.upgrade.upgraders;
 
-import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.model.RexsModel;
+import info.rexs.schema.constants.standard.RexsStandardVersions;
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.changelog.ChangelogFile;
 import info.rexs.upgrade.upgraders.changelog.ChangelogResolver;
@@ -16,7 +16,7 @@ public class ModelUpgraderV15toV16 {
 	private final boolean strictMode;
 
 	private RexsChangelog changelog;
-	private UpgradeNotifications notifications = new UpgradeNotifications();
+	private final UpgradeNotifications notifications = new UpgradeNotifications();
 
 	public ModelUpgraderV15toV16(RexsModel model, boolean strictMode) {
 		this.oldModel = model;

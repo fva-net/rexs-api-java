@@ -28,7 +28,7 @@ public class ModelUpgraderV12toV13 {
 	private final boolean strictMode;
 
 	private RexsChangelog changelog;
-	private UpgradeNotifications notifications = new UpgradeNotifications();
+	private final UpgradeNotifications notifications = new UpgradeNotifications();
 
 	public ModelUpgraderV12toV13(RexsModel model, boolean strictMode) {
 		this.oldModel = model;

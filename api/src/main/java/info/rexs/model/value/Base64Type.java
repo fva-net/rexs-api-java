@@ -15,6 +15,9 @@
  */
 package info.rexs.model.value;
 
+import lombok.Getter;
+
+@Getter
 public enum Base64Type {
 
 	INT_32("int32"),
@@ -25,10 +28,6 @@ public enum Base64Type {
 
 	private Base64Type(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 	public static Base64Type fromCode(String code) {

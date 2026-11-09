@@ -19,11 +19,10 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.Unmarshaller;
-
 import info.rexs.upgrade.RexsUpgradeException;
 import info.rexs.upgrade.upgraders.changelog.jaxb.RexsChangelog;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  * This class provides the REXS database changelogs of all available REXS versions (REXS standard and own).
@@ -36,7 +35,7 @@ public class ChangelogResolver {
 	private static ChangelogResolver instance = null;
 
 	/** An internal index with all created REXS database changelogs (REXS standard and own) for quick access. */
-	private Map<ChangelogFile, RexsChangelog> changelogFileCache = new HashMap<>();
+	private final Map<ChangelogFile, RexsChangelog> changelogFileCache = new HashMap<>();
 
 	private ChangelogResolver() {}
 

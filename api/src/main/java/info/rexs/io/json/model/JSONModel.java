@@ -20,7 +20,7 @@ public class JSONModel {
     @JsonProperty("model")
     private Model model;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("model")
     public Model getModel() {
